@@ -1,0 +1,60 @@
+{
+  "candidate": {
+    "recall_at_300": 0.020318931250276888,
+    "macro_users": 710,
+    "empty_target_users": 1290,
+    "average_truth_size": 5.669014084507042,
+    "candidate_count_min": 300,
+    "candidate_count_max": 300,
+    "eligible_catalog": 96151,
+    "unavailable_truth_items": 1135,
+    "rare_truth_items": 3441,
+    "new_truth_items": 1242,
+    "repeated_purchase_truth_items": 76,
+    "average_recall_upper_bound": 1.0,
+    "cohorts": {
+      "all": {
+        "users": 710,
+        "recall_at_300": 0.020318931250276888
+      },
+      "cold": {
+        "users": 158,
+        "recall_at_300": 0.016877637130801686
+      },
+      "warm": {
+        "users": 552,
+        "recall_at_300": 0.021303939349691887
+      },
+      "no_history": {
+        "users": 102,
+        "recall_at_300": 0.010620915032679737
+      },
+      "rare_target": {
+        "users": 688,
+        "recall_at_300": 0.020241920330954344
+      },
+      "new_target": {
+        "users": 432,
+        "recall_at_300": 0.012123045077339988
+      },
+      "unavailable_target": {
+        "users": 407,
+        "recall_at_300": 0.011600202598373117
+      },
+      "repeat_purchase": {
+        "users": 55,
+        "recall_at_300": 0.023885695079643558
+      }
+    }
+  },
+  "ranking": {
+    "users": 710,
+    "empty_target_users": 1290,
+    "hit_rate_at_50": 0.02676056338028169,
+    "ndcg_at_50": 0.002225769550777418,
+    "coverage_at_50": 0.009901271531712493
+  },
+  "scope": "post-freeze diagnostic only; no selection or fitting",
+  "model_sha256": "e07ba26bea34bc716ded018770fc110191030a8fc23738bf975b2c638c4d6c34",
+  "data_fingerprint": "156ddd999aca1afd0e3f41e9e15d26f3d2d326c89f747f287fbfc51542f0b6b4"
+}

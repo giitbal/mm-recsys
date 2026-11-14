@@ -114,3 +114,31 @@ def test_inventory_refuses_reusing_changed_source_version(tmp_path):
     assert inventory(spec)['identity'] == one['identity']
     changed = copy.deepcopy(spec); changed['seed'] += 1
     with pytest.raises(ValueError, match='new work_dir'): inventory(changed)
+
+
+def test_hm_population_counts_exclude_cutoff_and_future_and_preserve_ids():
+    from src.external_data.hm_revisit import counts_before
+    import pandas as pd
+    chunks = [pd.DataFrame({'t_dat': ['2020-01-01', '2020-02-01', '2020-02-02', '2020-02-03'],
+                            'article_id': ['001', '002', '002', '001']})]
+    counts = counts_before(chunks, ['<PAD>', 'HM-001', 'HM-002'], pd.Timestamp('2020-02-02', tz='UTC'), [0, 2])
+    assert counts.tolist() == [[0, 1, 1], [0, 0, 1]]
+
+
+def test_hm_fusion_keeps_full_catalog_count_without_future_items():
+    from types import SimpleNamespace
+    import numpy as np
+    from src.external_data.hm_revisit import hybrid_lists
+    ids = ['<PAD>'] + [f'P{i:04}' for i in range(401)]
+    table = SimpleNamespace(ids=ids, id_to_index={pid: i for i, pid in enumerate(ids)},
+                            public_ids=lambda rows: [ids[i] for i in rows])
+    evaluation = SimpleNamespace(table=table, eligible=np.arange(1, 401))
+    # Highest-count product is future-only and must not enter even at weight zero.
+    pop = np.arange(len(ids))
+    neural = [ids[1:301]]
+    global_only = hybrid_lists(neural, pop, evaluation, 0., 60)[0]
+    assert global_only == list(reversed(ids[101:401]))
+    assert hybrid_lists(neural, pop, evaluation, 1., 60) == neural
+    mixed = hybrid_lists(neural, pop, evaluation, .5, 60)[0]
+    assert len(mixed) == len(set(mixed)) == 300
+    assert ids[-1] not in mixed and '<PAD>' not in mixed

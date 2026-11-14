@@ -419,3 +419,14 @@ DeepFashion test Top-1=34.3%, Top-5=75.6%다. 이 결과를 합성 full acceptan
 회귀 144개와 변경 Python 코드 11파일 타입 검사를 통과했고 원자료·모델·결과 해시를 대조했다.
 전체 고객 평가·교정 full 학습·서빙 지연·실제 CTR/CVR·온라인 A/B·CT 승격은 미측정이다.
 설정·실행·한계는 [활용 문서](../external_datasets.md), 실측은 [보고서](../results/external/v1/report.md)에 기록했다.
+
+## WORKFLOW — H&M 품질 원인 분리와 재검증 (2026-11-14)
+
+v1 데이터·정답·K를 고정하고 Two-Tower 학습을 최대 20 epoch로 늘려 valid 선택 9번째,
+14번째 조기 종료를 확인했다. 전체 train 2,545만 거래의 판매량과 기존 표본 인기도를 비교하고
+valid에서만 기간·후보 fusion·순위 fusion을 선택한 뒤 같은 test를 재평가했다.
+80.1% 후보 상품이 표본 train에서 미관측이며 ANN보다 학습 신호 부족의 영향이 큰 근거를 남겼다.
+판매량 기준선 선택의 test Recall@300=0.061304, 최종 NDCG@50=0.006575이나
+신경망·DeepFM 비중은 모두 0이고 기존 인기도 NDCG에도 미달한다. 이를 모델 개선 완료로 표시하지 않는다.
+회귀 50개를 통과했다. 이전 test를 본 상태의 후속 탐색이며 전체 신경망 학습·새 holdout·지연은 미측정이다.
+세부 근거는 [재검증 보고서](../results/external/hm-v2/report.md)를 따른다.

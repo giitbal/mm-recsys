@@ -103,3 +103,13 @@ CONFIG_PATH=.team/external-data-v1/calibrated_simulator.yaml SCALE=full \
 [Retailrocket](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset),
 [DeepFashion](https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html).
 DeepFashion 비상업 연구·재배포 제한과 H&M 원배포 조건을 따르며 원본 이미지를 GitHub에 올리지 않는다.
+
+## H&M 재검증 v2 (2026-11-14)
+
+[재검증 보고서](results/external/hm-v2/report.md)는 같은 v1 코호트·카탈로그·시간 분할을 유지하고
+학습 횟수, 정확/ANN 검색, 전체 train 인기도·최근 판매량을 분리 비교한다.
+실행은 `.venv/bin/python -m src.external_data.hm_revisit --task all`이며
+`config/external_hm_v2.yaml`의 새 작업·결과 경로를 사용한다. v1 실행이 선행돼야 한다.
+최대 20 epoch 중 valid 기준 9번째를 선택했고 14번째에서 조기 종료했다.
+valid에서 가장 좋았던 것은 신경망 가중치 0인 30일 판매량 기준선이다.
+같은 test Recall@300은 0.061304지만 독립 holdout 검증이나 딥러닝 문제 해결로 주장하지 않는다.
