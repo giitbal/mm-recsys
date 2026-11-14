@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "benchmark": "DeepFashion Category and Attribute Prediction",
+  "scope": "fixed seed image sample from official splits; category relevance, not instance identity or PDF product-search acceptance",
+  "official_counts": {
+    "train": 209222,
+    "val": 40000,
+    "test": 40000
+  },
+  "counts": {
+    "train": 1000,
+    "val": 1000,
+    "test": 1000
+  },
+  "classes": 50,
+  "model": {
+    "model": "openai/clip-vit-base-patch32",
+    "model_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "processor_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "projection_dim": 512,
+    "normalization": "L2",
+    "dtype": "float32",
+    "max_text_length": 77,
+    "preprocess_version": "observable-alias-v1",
+    "alias_fingerprint": "4839d249f340369c7e1c913f5755f452c6264f0a4242f5806e6b4126f266be29",
+    "transformers": "4.46.3",
+    "torch": "2.6.0+cpu",
+    "device": "cpu"
+  },
+  "selection_fingerprint": "54d2f21294f7ff5aa1be3bc1ebda4cdbcf93879e27cc3ba1f5270d29cc303124",
+  "content_fingerprint": "ca445e1337d55a0c48b6ddbde355edaa029f01d992f16a3b10e946635fe42377",
+  "source_hashes": {
+    "images_zip": "eff431e5b210c98c515da18d469abf1883666189c8ce6caf10c1d4e65ebedbdd",
+    "labels": "06b5094e18302e3dbdaa7e13f0163b914ae530eb65a46b3ac2ddfc92a4f4fb71",
+    "partitions": "ccad42e707ecbb430d55e88f310a0be4540ee7c17655304789c73ee2945e0bca",
+    "classes": "ec4a1be64f61c5f6ce2113df602b6eca3f27c14a67694cdad78d83654a15ab81"
+  },
+  "metrics": {
+    "val": {
+      "queries": 1000,
+      "zero_shot_category_accuracy": 0.328,
+      "train_majority_category_accuracy": 0.237,
+      "macro_category_accuracy": 0.342745083140729,
+      "zero_shot_category_top5": 0.723,
+      "class_retrieval_mrr_at_10": 0.49721944444444444,
+      "class_retrieval_ndcg_at_10": 0.5794408175440918,
+      "image_category_mrr_at_10": 0.5082107142857143,
+      "image_category_ndcg_at_10": 0.3290052138402234,
+      "queries_without_relevant_gallery": 6,
+      "exact_duplicate_pairs_excluded": 0,
+      "embedding_seconds": 34.838471934000154
+    },
+    "test": {
+      "queries": 1000,
+      "zero_shot_category_accuracy": 0.343,
+      "train_majority_category_accuracy": 0.242,
+      "macro_category_accuracy": 0.3624362590233404,
+      "zero_shot_category_top5": 0.756,
+      "class_retrieval_mrr_at_10": 0.5130472222222222,
+      "class_retrieval_ndcg_at_10": 0.5962898967594122,
+      "image_category_mrr_at_10": 0.5209480158730159,
+      "image_category_ndcg_at_10": 0.33845046826949104,
+      "queries_without_relevant_gallery": 4,
+      "exact_duplicate_pairs_excluded": 0,
+      "embedding_seconds": 35.362989374000335
+    }
+  },
+  "training": "none; frozen checkpoint, fixed prompts, no test-driven selection",
+  "limitations": [
+    "category labels only; fine-grained attributes not evaluated",
+    "exact duplicates excluded; perceptual near duplicates not audited",
+    "no In-shop or Consumer-to-shop passwords required",
+    "batch encoding time is not API latency"
+  ]
+}

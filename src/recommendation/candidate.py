@@ -56,6 +56,7 @@ class FaissCandidate:
         if len(eligible) != len(set(eligible)) or (eligible <= 0).any():
             raise ValueError('invalid eligible item mapping')
         self.allowed = set(map(int, eligible))
+        self.exact_refill_queries = 0
 
     def user_vectors(self, contexts: list[UserContext]) -> np.ndarray:
         with torch.inference_mode():
@@ -85,7 +86,18 @@ class FaissCandidate:
                     ranked.append(self.table.public_ids(rows))
                     break
                 if fetch == self.index.ntotal:
-                    raise ValueError('ANN exhausted catalog without required distinct candidates')
+                    # HNSW can have disconnected components (e.g. many identical
+                    # unknown-item vectors). Larger k/efSearch cannot reach them.
+                    # Complete this exceptional query from the same stored vectors;
+                    # preserve the full cutoff catalog, exclusions and top-k contract.
+                    from src.recommendation.index import stored_vectors
+                    eligible = np.array(sorted(allowed), dtype=np.int64)
+                    values = stored_vectors(self.index)[eligible - 1]
+                    scores = dot_scores(vector[None], values)[0]
+                    exact_rows = top_indices(scores, eligible, wanted)
+                    ranked.append(self.table.public_ids(exact_rows))
+                    self.exact_refill_queries += 1
+                    break
                 fetch = min(self.index.ntotal, fetch * 2)
         return ranked
 

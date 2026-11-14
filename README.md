@@ -167,3 +167,9 @@ docker compose down
 # 다시 실행
 docker compose up -d
 ```
+
+## 실제 데이터셋 추가 검증
+
+H&M 구매 추천·시뮬레이터 교정, Retailrocket Markov 전이 추정, DeepFashion CLIP 검증은
+[실제 데이터 활용·재현 절차](docs/external_datasets.md)를 따른다. 원자료는 `학습 데이터셋 추천/`에 두며
+기존 합성 full 결과와 별도 경로에서 실행한다. 고객·이미지 표본 실험을 전체 데이터 품질로 해석하지 않는다.

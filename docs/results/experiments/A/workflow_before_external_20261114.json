@@ -1,0 +1,59 @@
+{
+  "step": "WORKFLOW",
+  "owner": "A",
+  "status": "PASS",
+  "scale": "full",
+  "acceptance": "UNMEASURED",
+  "commands": [
+    {
+      "command": ".venv/bin/python .team/checks/checklist-fix-20261017/verify_results.py",
+      "exit_code": 0
+    }
+  ],
+  "artifacts": [
+    "README.md",
+    "config/recommend.yaml",
+    "config/team_workflow.yaml",
+    "dashboard/app.py",
+    "docs/contracts.md",
+    "scripts/prepare_all.py",
+    "src/ct/retrain_trigger.py",
+    "src/recommendation/recommender.py",
+    "src/recommendation/reranking.py",
+    "src/recommendation/scoring.py",
+    "src/serving/ct_admin.py",
+    "src/serving/main.py",
+    "src/serving/model_loader.py",
+    "src/simulator/generate.py",
+    "tests/test_ponytail_refactor.py",
+    "tests/test_simulator.py",
+    "tests/test_checklist_fixes.py",
+    "docs/results/experiments/A/workflow_checklist_fix_20261017.json",
+    "docs/results/experiments/A/workflow_checklist_fix_20261017.md"
+  ],
+  "data_fingerprint": "8b578e5cf32d1074fabbabf8fff9db3135c23e34ea65424a0376f54570d9fb40",
+  "config_fingerprint": "e2636a7a17dd43c58ca6301032ad12a88b9d9576d0c42529b9a9bda1773b4f67",
+  "evaluation_version": "fixed-origin-v1",
+  "source_hashes": {
+    "README.md": "ad89f4d1c3d18b2cdd093c0321905cf146e1d276c9282e3b591a9d55daae046f",
+    "config/recommend.yaml": "bea0ed232d12156aad5196b30d0c2d86ff4815caae9fb31469870024b90c74d4",
+    "config/team_workflow.yaml": "b651f4d82a2d511fe52620c4ac76ea7699c05212c63e7c41bcd7c430219881e8",
+    "dashboard/app.py": "f72cb9ef1180c3d97f02c6b39bb42c1777653ca5e8a85b70c8ff80a152d5f7a1",
+    "docs/contracts.md": "9e704e8b71c7b6b8f408b6f2b98482dc35230356ccd92e0de38bce486ab6ca7a",
+    "scripts/prepare_all.py": "20785998ad5f1583bd8e20955e64943a3e0aecb6e39173cfb572dba24ddb76cd",
+    "src/ct/retrain_trigger.py": "ec818ec9cb332507ed0a4f85fcb44fbd26fe31128f34d9b4fe4ae4224f87cd03",
+    "src/recommendation/recommender.py": "d2f189cab87eff8230d31f790a20428dedf84e3ec00866e884d29446ca203f93",
+    "src/recommendation/reranking.py": "2f3732eefe3c7b2ddad02cdfab9e58c8fa6815dd8f11f4cabd0aff4cd86feae2",
+    "src/recommendation/scoring.py": "b2cd350b1f6b255553ffea3b3db4495939895ecc86e2e3dbb227c976243188f9",
+    "src/serving/ct_admin.py": "47ccd969735c2bf055c8b7557946c593d70831cca9bd23bfbf5ce5899f80fcd8",
+    "src/serving/main.py": "bf1ffbd1aaefd734288528c078ed4a53175cc93ce9c2d2a20df0f12e64f6d4d6",
+    "src/serving/model_loader.py": "53cba7658cff9bba0308d3e9206303b86ab377093f4af14cbbbcc8ff7343c94b",
+    "src/simulator/generate.py": "a1cda93dcafa4b1a19fe2ef22404f13b91fd9e28c1c069cdb97b4648eba03766",
+    "tests/test_ponytail_refactor.py": "f3084726def29be6aac129c60cba17bc22e2fe7679d66d399bf678c2eb031307",
+    "tests/test_simulator.py": "f0e6bce11c3762abe166bd24ccdf41c2f8407cfe18d5fd00db277c265d31bf12",
+    "tests/test_checklist_fixes.py": "6cae34c182a43ac661cd13b68d9c9344091dc49d05862d1655aa9faea7d5e73b",
+    "docs/results/experiments/A/workflow_checklist_fix_20261017.json": "8a0d32dea27aed0380e539a6ac65386e6573ca16db1ca489b70cd7c67bd5047a",
+    "docs/results/experiments/A/workflow_checklist_fix_20261017.md": "56dfc614f393bfa175be7ef7b2028124902f80e6a44b2f1430943b02bec00a8f"
+  },
+  "commit_summary_ko": "빈 데이터 Docker 기동·신상품 누락·최신순 설정 오류 수정"
+}

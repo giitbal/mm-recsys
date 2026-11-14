@@ -1,0 +1,184 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "config_path": ".team/external-data-v1/calibrated_simulator.yaml",
+  "config_fingerprint": "18fba89c43cbb1b5a268fe4708f5f80ade961b925052f91bd55ccc6960b5bffd",
+  "hm_parameters": {
+    "persona_category_preferences": {
+      "trendsetter": [
+        0.42079064944896205,
+        0.24541221027632817,
+        0.1286864263877353,
+        0.11740054242635543,
+        0.08771017146061899
+      ],
+      "pragmatist": [
+        0.3957906494489621,
+        0.27041221027632817,
+        0.1286864263877353,
+        0.11740054242635543,
+        0.08771017146061899
+      ],
+      "bargain": [
+        0.42079064944896205,
+        0.27041221027632817,
+        0.07868642638773532,
+        0.11740054242635543,
+        0.11271017146061899
+      ],
+      "brand_loyal": [
+        0.3707906494489621,
+        0.24541221027632817,
+        0.1286864263877353,
+        0.11740054242635543,
+        0.13771017146061898
+      ],
+      "impulsive": [
+        0.3957906494489621,
+        0.22041221027632818,
+        0.1286864263877353,
+        0.11740054242635543,
+        0.13771017146061898
+      ],
+      "careful": [
+        0.3707906494489621,
+        0.24541221027632817,
+        0.1786864263877353,
+        0.11740054242635543,
+        0.08771017146061899
+      ]
+    },
+    "category_price_ranges": {
+      "tops": [
+        12461,
+        116311
+      ],
+      "bottoms": [
+        23929,
+        191433
+      ],
+      "outerwear": [
+        118204,
+        827428
+      ],
+      "footwear": [
+        42574,
+        312215
+      ],
+      "accessories": [
+        5613,
+        101047
+      ]
+    }
+  },
+  "retailrocket_parameters": {
+    "search": {
+      "view": 1.0
+    },
+    "view": {
+      "view": 0.3354502943744894,
+      "cart": 0.018668600993455214,
+      "purchase": 0.0015676497929519142,
+      "exit": 0.6443134548391034
+    },
+    "cart": {
+      "view": 0.3907258889860628,
+      "cart": 0.15503991365996167,
+      "purchase": 0.16830725144675387,
+      "exit": 0.2859269459072217
+    },
+    "purchase": {
+      "view": 0.37837651122625215,
+      "cart": 0.012089810017271158,
+      "purchase": 0.10010362694300518,
+      "exit": 0.5094300518134715
+    },
+    "exit": {
+      "search": 1.0
+    }
+  },
+  "pilot_manifest": {
+    "generator_version": "4.4.0",
+    "generation_fingerprint": "d748632a3105efb766e643ce1a02cf8587e05fbffb16410ace88cd335437a6ff",
+    "scale": "dev",
+    "seed": 42,
+    "reference_time": "2026-01-01T00:00:00Z",
+    "counts": {
+      "products": 1000,
+      "users": 200,
+      "events": 10000,
+      "impressions": 23360
+    },
+    "split_counts": {
+      "train": 8000,
+      "valid": 1000,
+      "test": 1000
+    },
+    "boundaries": {
+      "train": {
+        "start": "2025-12-02 00:00:00+00:00",
+        "end": "2025-12-25 11:06:06.060000+00:00"
+      },
+      "valid": {
+        "start": "2025-12-25 11:17:02.706000+00:00",
+        "end": "2025-12-28 09:11:56.010000+00:00"
+      },
+      "test": {
+        "start": "2025-12-28 09:19:33.774000+00:00",
+        "end": "2025-12-31 22:49:44.472000+00:00"
+      }
+    },
+    "file_hashes": {
+      "products.parquet": "b70618d3bd2c5c92d9534fdcec49fd09c920fbdec89df774976da791c386051d",
+      "users.parquet": "ca3f0585cc2e37d2d5325ade83daaf8837a37b7e848169d304d0fec2102bd1a0",
+      "events.parquet": "e3b3599fe28b07549856c2d1734c08b68b6202dc11fe84b4a503419ad512555a",
+      "impressions.parquet": "120126c1cefd5bdb10f17b6c062bffb3568ab69dc97911d70039ef81eea99c09",
+      "image_manifest.json": "f2bccd97593742feb43e64981723a4c487729e740abc0d20ae2e9db424f15c37",
+      "split/train.parquet": "5d4e201bf174290b7e73abf0927e2f82cdfbbd459591c725d6581e2d1c1510d5",
+      "split/valid.parquet": "ba3f26d5331dc2729354c33ab7d7d2052e4fb7deda08fc8f4e67ec6dd7c664f7",
+      "split/test.parquet": "07bf78d888f191b8417ca7b63ab8c03a2f8619e712e93e971b56ec6d9bec1333"
+    },
+    "cutoff_policy": "fixed_origin",
+    "images": "synthetic category silhouettes; observed attributes only; no unique-ID semantics"
+  },
+  "generated_observed_transitions": {
+    "view": {
+      "view": 0.3178082191780822,
+      "cart": 0.016952054794520548,
+      "purchase": 0.0018835616438356165,
+      "exit": 0.6633561643835616
+    },
+    "cart": {
+      "view": 0.35344827586206895,
+      "cart": 0.14655172413793102,
+      "purchase": 0.19827586206896552,
+      "exit": 0.3017241379310345
+    },
+    "purchase": {
+      "view": 0.4594594594594595,
+      "cart": 0.0,
+      "purchase": 0.08108108108108109,
+      "exit": 0.4594594594594595
+    }
+  },
+  "generated_total_variation_from_real_train": {
+    "view": 0.019358621395341884,
+    "cart": 0.04576580264602448,
+    "purchase": 0.08108294823320727
+  },
+  "pilot_diagnostics": {
+    "events": 5993,
+    "visitors": 200,
+    "observed_transitions": 2067,
+    "observed_exits": 3926,
+    "ambiguous_same_timestamp_pairs": 0,
+    "ambiguous_tied_event_rows": 0,
+    "right_censored_events": 0
+  },
+  "limitations": [
+    "H&M mapped categories only; unsupported categories excluded from calibration but retained in recommendation",
+    "persona memberships, search/exit restart, exposure counts remain synthetic",
+    "persona conversion adjustments mean generated aggregate transitions need not equal fitted matrix",
+    "pilot validates recipe execution, not full-scale quality, CTR/CVR or final acceptance"
+  ]
+}

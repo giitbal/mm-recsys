@@ -1,43 +1,38 @@
 # 데이터 범위와 출처
 
-## 현재 결정: RESOLVED_OPTIONAL (2026-10-16)
+## 현재 사용 상태 (2026-11-14)
 
-사용자가 전달한 강사 지시는 **합성 데이터로 개발을 완료하고, 외부 실제 데이터셋은
-이후 추가 모델 검증에 사용**하는 것이다. H&M·Retailrocket·DeepFashion 사용은 필수가 아니다.
-필수 acceptance는 합성 full 데이터 기준으로 진행한다. [결정 기록](submission/dataset_scope.json)을
-따르며, 이번 통합 단계에서 외부 원자료를 획득하거나 재배포하지 않는다.
-아래 UNRESOLVED 기록은 B11 당시 상태를 보존한 이력이다.
+사용자가 로컬 `학습 데이터셋 추천/`에 H&M 전체 ZIP, Retailrocket 이벤트·상품 속성 ZIP,
+카테고리 트리, DeepFashion 이미지·주석을 준비했다. 이전의 미획득 상태는 현재 상태가 아니다.
+사용자의 추가 활용 요청에 따라 다음 오프라인 실험을 구현했다.
 
-이 단계의 데이터는 프로젝트 자체 시뮬레이터가 seed42/config/reference_time으로 생성한다.
-상품 이미지도 Pillow의 패션 카테고리 실루엣이며 실제 상품 사진/인물/외부 데이터 복제물이 아니다.
-외부 클라우드 추론 API를 호출하지 않는다. CLIP checkpoint만 Hugging Face에서 받는다.
-
-PDF p.7은 “필수 활용 데이터셋” 제목과 “활용할 수 있다” 본문이 함께 있다.
-현재는 simulator 기반을 기본 제출 경로로 삼고 H&M/Retailrocket/DeepFashion은 추가
-교정/검증 후보로 기록한다. 강사의 의도는 미확인이다. 이것을 이유로 공통/병렬 개발을 중단하지 않는다.
-B11 최종 보고서에는 이 해석과 미확인 상태를 공개한다.
-
-## B11 당시 기록: UNRESOLVED
-
-2026-10-16 기준 저장소에는 강사의 해석 결정이 기록되어 있지 않다.
-따라서 실제 데이터 요구까지 충족했다고 주장하지 않는다. 강사에게 확인할 사항은 다음과 같다.
-
-1. H&M·Retailrocket·DeepFashion의 실제 사용이 필수인가, 선택인가?
-2. 필수라면 세 데이터셋 모두 필요한가? H&M 분포 교정·Retailrocket 행동 전이 교정·
-   DeepFashion CLIP 검증 중 어느 수준의 실험과 근거를 제출해야 하는가?
-3. 접근 제한이 있으면 합성 데이터와 접근 불가 근거로 대체할 수 있는가?
-
-| 출처 | 현재 사용/획득 | 버전·권리·접근 검증 |
+| 출처 | 사용 목적 | 범위 |
 |---|---|---|
-| 자체 시뮬레이터 | 사용; Git의 config/seed로 생성 | generator 4.0.0; synthetic 실루엣, manifest 참조 |
-| CLIP checkpoint | 사용; 모델 준비 시 다운로드 | 고정 revision은 config/search.yaml; checkpoint를 Git으로 재배포하지 않음 |
-| H&M | 미획득, 추가 교정 후보 | 버전·현재 약관·허용 용도 미검증 |
-| Retailrocket | 미획득, 행동 전이 검증 후보 | 버전·현재 약관·허용 용도 미검증 |
-| DeepFashion | 미획득, 이미지 검증 후보 | 버전·현재 약관·허용 용도 미검증 |
+| H&M | Multi-Stage 구매 추천 검증, 시뮬레이터 파라미터 교정 | 전체 거래로 시간 경계·train 교정 통계 산출, 고정 2,000명·전체 상품 추천 평가 |
+| Retailrocket | Markov Chain 전이 확률 추정 | 전체 이벤트의 train에서 추정, valid/test에서 분포 차이 측정 |
+| DeepFashion | CLIP 임베딩 품질 검증 | 암호 없는 Category/Attribute 공식 분할의 고정 이미지 표본 |
+| 자체 시뮬레이터 | 기본 제출 경로 및 교정 효과 확인 | 기존 full 유지, 교정된 별도 설정·pilot 실행 |
 
-외부 데이터의 현재 라이선스를 PDF 표만으로 확정하지 않는다.
-획득 요청이 생기면 공식 원문에서 버전·약관·허용 용도·접근 절차를 확인하고 근거를 남긴다.
-이번 B11에서는 외부 데이터 획득이나 원자료 업로드를 수행하지 않았다.
+실행 명령·평가 정의·데이터 누수 방지·측정 한계는 [실제 데이터 활용 문서](external_datasets.md),
+실행 결과는 [외부 데이터 결과](results/external/v1/)에 있다. 원자료·이미지·모델은 GitHub나 Docker 이미지에 넣지 않는다.
+데이터별 ID를 임의로 서로 연결하지 않는다. H&M 구매 이력에 노출 후 비클릭 정답을 만들어 붙이지 않는다.
 
-실제 획득이 요청되면 원문 공식 페이지의 접근/권리/목적을 확인하고, 제한된 원자료와 인증정보를
-GitHub에 업로드하지 않는다. 현재 외부 실제 데이터셋은 다운로드하지 않았다.
+공식 출처: [H&M](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations),
+[Retailrocket](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset),
+[DeepFashion](https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html).
+DeepFashion의 비상업 연구·재배포 제한과 각 원배포 조건을 따른다. 일부 DeepFashion 이미지의
+암호를 우회하지 않으며, 비암호 Category/Attribute 자료만 사용한다.
+
+## 기본 평가 범위: RESOLVED_OPTIONAL (2026-10-16 결정 유지)
+
+사용자가 전달한 강사 지시는 합성 데이터로 기본 개발과 필수 검증을 완료하고, 외부 실제
+데이터셋은 추가 모델 검증에 사용한다는 것이다. [결정 기록](submission/dataset_scope.json)을 따른다.
+이번 실제 데이터 사용은 그 후속 작업이며, 외부 데이터 표본 결과가 기존 합성 full acceptance를 대신하지 않는다.
+교정된 full 데이터의 재학습·품질·Docker·A/B·CT는 새 실행 전까지 UNMEASURED다.
+
+## 과거 기록
+
+B11 당시에는 PDF p.7의 “필수 활용 데이터셋” 제목과 “활용할 수 있다” 본문이 함께 있어
+UNRESOLVED로 기록했고 원자료를 획득하지 않았다. 2026-10-16 강사 지시 전달로
+RESOLVED_OPTIONAL이 됐다. 이후 2026-11-14 사용자가 자료를 추가하고 세 가지 용도의 실제 활용을 요청했다.
+CLIP checkpoint는 기존 고정 revision을 재사용하며 외부 클라우드 추론 API를 호출하지 않는다.

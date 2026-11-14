@@ -124,6 +124,8 @@ class Evaluation:
         for one, two in zip(exact_ranked, ann_ranked):
             agreement.append(len(set(one) & set(two)) / len(one) if one else 1.0)
         return dict(exact_flat_ip=self.measure(exact_ranked), ann_two_tower=self.measure(ann_ranked),
+                    exact_refill_queries=ann.exact_refill_queries,
+                    retrieval_policy='HNSW with same-vector exact completion on insufficient eligible candidates',
                     ann_agreement_at_300=float(np.mean(agreement)) if agreement else None,
                     agreement_denominator='exact IndexFlatIP top300 IDs, not future truth',
                     agreement_users=len(agreement), boundary_ties='FAISS top-k tie selection; public-ID order within returned ties')

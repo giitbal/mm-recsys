@@ -404,3 +404,18 @@ full CT는 실제 신규 관측 10,000건과 세 모델 학습·checkpoint 재�
 재개해 자연 유지 판정을 확인했고, 같은 후보의 별도 full 크기 교체·HTTP 재로딩·롤백도
 검증했다. 최종 제출 검사와 단일 배포 지연의 실제 결과는
 [현재 실행 기록](../results/integration/20261020_full/report.md)을 따른다.
+
+## WORKFLOW — 실제 데이터 활용 (2026-11-14)
+
+로컬 H&M·Retailrocket·DeepFashion 자료를 재확인하고 원본 ZIP을 변경하지 않는 재현 명령을 추가했다.
+H&M 전체 카탈로그와 사전 고정 2,000명 코호트로 Two-Tower → 구매 선호 DeepFM → 기존 재정렬을
+학습·평가했다. 전체 train 카테고리·상대 가격과 Retailrocket train Markov 전이를 별도 설정에 적용하고
+실제 시뮬레이터 1,000상품·200사용자·10,000이벤트 pilot을 생성했다. 암호 없는 DeepFashion
+공식 분할 표본으로 기존 고정 CLIP의 카테고리 분류·검색을 측정했다.
+
+실제 HNSW 후보 부족 오류를 보존하고 같은 저장 벡터의 cutoff 전체 카탈로그 정확 검색 보완을 추가했다.
+H&M test Recall@300=0.020475, 최종 NDCG@50=0.003459로 인기도 기준선 0.010357보다 낮다.
+DeepFashion test Top-1=34.3%, Top-5=75.6%다. 이 결과를 합성 full acceptance와 합치지 않는다.
+회귀 144개와 변경 Python 코드 11파일 타입 검사를 통과했고 원자료·모델·결과 해시를 대조했다.
+전체 고객 평가·교정 full 학습·서빙 지연·실제 CTR/CVR·온라인 A/B·CT 승격은 미측정이다.
+설정·실행·한계는 [활용 문서](../external_datasets.md), 실측은 [보고서](../results/external/v1/report.md)에 기록했다.
