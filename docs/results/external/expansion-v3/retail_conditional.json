@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "diagnostics": {
+    "events": 2756101,
+    "property_category_rows": 788214,
+    "unknown_category_events": 656928,
+    "categories": 1140,
+    "tree_categories": 1669,
+    "events_with_category_outside_tree": 0
+  },
+  "selected": {
+    "method": "category_activity",
+    "alpha": 10,
+    "valid": {
+      "observations": 274408,
+      "nll": 0.6773172225700025,
+      "brier": 0.414188255203636
+    }
+  },
+  "test": [
+    {
+      "method": "global",
+      "alpha": 0,
+      "metrics": {
+        "observations": 274798,
+        "nll": 0.7278376633905552,
+        "brier": 0.4599481347741791
+      }
+    },
+    {
+      "method": "category",
+      "alpha": 100,
+      "metrics": {
+        "observations": 274798,
+        "nll": 0.7141053943210371,
+        "brier": 0.450071306128902
+      }
+    },
+    {
+      "method": "activity",
+      "alpha": 1000,
+      "metrics": {
+        "observations": 274798,
+        "nll": 0.6750767557081917,
+        "brier": 0.41500370457727287
+      }
+    },
+    {
+      "method": "category_activity",
+      "alpha": 10,
+      "metrics": {
+        "observations": 274798,
+        "nll": 0.6683060387322294,
+        "brier": 0.4098877560672001
+      }
+    }
+  ],
+  "global_matrix": [
+    [
+      0.3354502943744894,
+      0.018668600993455214,
+      0.0015676497929519142,
+      0.6443134548391034
+    ],
+    [
+      0.3907258889860628,
+      0.15503991365996167,
+      0.16830725144675387,
+      0.2859269459072217
+    ],
+    [
+      0.37837651122625215,
+      0.012089810017271158,
+      0.10010362694300518,
+      0.5094300518134715
+    ]
+  ],
+  "counts": {
+    "train": 2198144,
+    "valid": 274408,
+    "test": 274798
+  },
+  "model_hashes": {
+    ".team/external-expansion-v3/retail_conditional/category.parquet": "d123b62cb1dd2b396d0e5b345ad3fa7cdddb7eb2b213f2c38168e5e4affa6af7",
+    ".team/external-expansion-v3/retail_conditional/activity.parquet": "0f6af07ed71a0e6fd86601edb1a48054006c2a20944ca86dcb12ca48e06b754a",
+    ".team/external-expansion-v3/retail_conditional/category_activity.parquet": "5b05300d932b9ad40c04d215cc22cdda2c2aa08d2851e1a02028bf241c7ea429",
+    ".team/external-expansion-v3/retail_conditional/global.parquet": "1e533e806b0cccfff7976c40190b84b605142fcf59dce9d55a35c12b29ccfa34"
+  },
+  "limitations": [
+    "observed transitions only; same-timestamp ambiguity and boundary censoring retained",
+    "category hierarchy inventory checked; models condition on observed property category IDs, not assumed hierarchy levels or semantic labels",
+    "no search or persona labels; no causal or production claim"
+  ]
+}

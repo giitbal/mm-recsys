@@ -1,0 +1,10 @@
+H&M candidate 100000-text epoch 1 valid 0.07035409142675533
+H&M candidate 100000-multimodal epoch 1 valid 0.07084312614606801
+H&M candidate 100000-text epoch 2 valid 0.0753198591055087
+H&M candidate 100000-multimodal epoch 2 valid 0.07827726905300866
+H&M candidate 100000-text epoch 3 valid 0.07158247242367141
+H&M candidate 100000-multimodal epoch 3 valid 0.0818056408346392
+H&M candidate 100000-text epoch 4 valid 0.07671989824345764
+H&M candidate 100000-multimodal epoch 4 valid 0.08348646859051423
+H&M candidate 100000-text epoch 5 valid 0.07111820501161187
+H&M candidate 100000-multimodal epoch 5 valid 0.08490111140558723

@@ -1,0 +1,140 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "condition": "retailrocket",
+  "seed": 44,
+  "distribution": {
+    "category_purchase_shares": {
+      "accessories": 0.21791044776119403,
+      "bottoms": 0.2298507462686567,
+      "footwear": 0.14626865671641792,
+      "outerwear": 0.21492537313432836,
+      "tops": 0.191044776119403
+    },
+    "relative_category_price": {
+      "accessories": 0.7588573671202009,
+      "bottoms": 0.739463337242188,
+      "footwear": 1.1281217460426953,
+      "outerwear": 1.733652109376397,
+      "tops": 0.6650596531466281
+    },
+    "category_total_variation": 0.41151019706252084,
+    "relative_price_mae": 0.3483368171467297,
+    "transitions": {
+      "view": {
+        "view": 0.3293912336287084,
+        "cart": 0.018434116670337678,
+        "purchase": 0.0016434828281459142,
+        "exit": 0.650531166872808
+      },
+      "cart": {
+        "view": 0.40706605222734255,
+        "cart": 0.16052227342549924,
+        "purchase": 0.15745007680491552,
+        "exit": 0.2749615975422427
+      },
+      "purchase": {
+        "view": 0.3641791044776119,
+        "cart": 0.014925373134328358,
+        "purchase": 0.09850746268656717,
+        "exit": 0.5223880597014925
+      }
+    },
+    "transition_total_variation": {
+      "view": 0.006293545068898557,
+      "cart": 0.02182252300681732,
+      "purchase": 0.015793571005078236
+    },
+    "diagnostics": {
+      "events": 60658,
+      "visitors": 1000,
+      "observed_transitions": 21730,
+      "observed_exits": 38928,
+      "ambiguous_same_timestamp_pairs": 0,
+      "ambiguous_tied_event_rows": 0,
+      "right_censored_events": 0
+    }
+  },
+  "test_candidate": {
+    "recall_at_300": 0.8177570093457944,
+    "macro_users": 107,
+    "empty_target_users": 893,
+    "average_truth_size": 1.0186915887850467,
+    "candidate_count_min": 300,
+    "candidate_count_max": 300,
+    "eligible_catalog": 2925,
+    "unavailable_truth_items": 1,
+    "rare_truth_items": 12,
+    "new_truth_items": 5,
+    "repeated_purchase_truth_items": 9,
+    "average_recall_upper_bound": 1.0,
+    "cohorts": {
+      "all": {
+        "users": 107,
+        "recall_at_300": 0.8177570093457944
+      },
+      "cold": {
+        "users": 0,
+        "recall_at_300": null
+      },
+      "warm": {
+        "users": 107,
+        "recall_at_300": 0.8177570093457944
+      },
+      "no_history": {
+        "users": 0,
+        "recall_at_300": null
+      },
+      "rare_target": {
+        "users": 12,
+        "recall_at_300": 0.4166666666666667
+      },
+      "new_target": {
+        "users": 5,
+        "recall_at_300": 0.4
+      },
+      "unavailable_target": {
+        "users": 1,
+        "recall_at_300": 0.0
+      },
+      "repeat_purchase": {
+        "users": 9,
+        "recall_at_300": 1.0
+      }
+    }
+  },
+  "test_ranking": {
+    "two_tower": {
+      "hit_rate_at_50": 0.719626168224299,
+      "ndcg_at_50": 0.4330020920599022,
+      "coverage": 0.965,
+      "unique_recommended_items": 2895
+    },
+    "deepfm": {
+      "hit_rate_at_50": 0.7570093457943925,
+      "ndcg_at_50": 0.413335182195233,
+      "coverage": 0.9186666666666666,
+      "unique_recommended_items": 2756
+    }
+  },
+  "classification": {
+    "ctr": {
+      "auc": 0.9453162063571826,
+      "auc_status": "MEASURED",
+      "logloss": 0.6842826728591075,
+      "samples": 22252,
+      "positives": 5563,
+      "denominator": "observed exposures"
+    },
+    "cvr": {
+      "auc": 0.4607184459647914,
+      "auc_status": "MEASURED",
+      "logloss": 0.09427132538519617,
+      "samples": 5563,
+      "positives": 22,
+      "denominator": "observed clicked exposures"
+    }
+  },
+  "data_fingerprint": "aa4c15a3fe6223ad461c4fd2c83ae31fd69bb89b2fa72187b5e6f6701fd388bf",
+  "config_fingerprint": "f7761b32948cdfaca396c8695a5483ab8dd93eb0793767715c34a9c59406a659"
+}

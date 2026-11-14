@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "archives": {
+    "학습 데이터셋 추천/h-and-m-personalized-fashion-recommendations.zip": {
+      "sha256": "e4695ac063fd621a29ba83523aa97be4041a91c45fba331162784f55771fbe9c",
+      "bytes": 30810293747,
+      "directory_fingerprint": "9c7ecd4f624e7c0245ece3d55d907897950ad744b58120bced3ff4ff2e8e6172"
+    },
+    "학습 데이터셋 추천/img-008.zip": {
+      "sha256": "eff431e5b210c98c515da18d469abf1883666189c8ce6caf10c1d4e65ebedbdd",
+      "bytes": 2681199362,
+      "directory_fingerprint": "2230f35a70b66dff4991e1c038d4df4ebec893637f8aaf76a87ea2924d82341c"
+    },
+    "학습 데이터셋 추천/drive-download-20261114T051047Z-1-015.zip": {
+      "sha256": "9dab5ee63701248358272783c2f7f453d6f73ab08f8ce34dbca98d5126a1ffde",
+      "bytes": 1208554,
+      "directory_fingerprint": "84ef0e8f16288670ec6c613d5749533ea980948d062b34e886a86e4b30e00036"
+    },
+    "학습 데이터셋 추천/drive-download-20261114T051047Z-1-001.zip": {
+      "sha256": "35ebd273125e8539d2cacf2fda8eb4d9a54f22b7ac4e836f0da5a0e99f3a6259",
+      "bytes": 844535992,
+      "directory_fingerprint": "57c780e24221db1e2280bc7c0248e5e36928509e347490d9b4f259dfc83ffd30"
+    },
+    "학습 데이터셋 추천/drive-download-20261114T051047Z-1-018.zip": {
+      "sha256": "04764afcb045f83b1c81672575cb2fd6eaba655ac63e514f1da5e691c4c56ec3",
+      "bytes": 1604247161,
+      "directory_fingerprint": "7be7e418564f6e5e42ad0f2537f6936b046faea84a5399094b782f075b29f3ff"
+    },
+    "학습 데이터셋 추천/drive-download-20261114T051047Z-1-012.zip": {
+      "sha256": "f37e4663104094b7802f6f935651efcd7058f8ac380c61f43ca6409df3efb997",
+      "bytes": 8340732,
+      "directory_fingerprint": "6137d4cf07f14c430c20d4997ee79633fbbb5e90db273ccd43ce13e034be66b7"
+    }
+  },
+  "scope": "All H&M image/CSV and DeepFashion image/category/split/attribute archives used by expansion; original v1 ZIP directory identities preserved"
+}

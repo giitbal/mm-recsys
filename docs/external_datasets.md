@@ -7,6 +7,9 @@ Retailrocket은 Markov Chain 전이 확률 추정, DeepFashion은 CLIP 임베딩
 
 ## 실행
 
+아래의 기본 실행과 세 데이터셋 설명은 최초 v1 실험 범위다. 이후 H&M 재검증은 v2,
+학습 규모·멀티모달 특징·전이 세분화·DeepFashion 확대 실험은 문서 끝의 expansion-v3를 따른다.
+
 저장소 루트에서 다음을 실행한다. 원자료는 `학습 데이터셋 추천/`에 둔다.
 설정은 `config/external_data.yaml`, 작업 데이터·모델은 `.team/external-data-v1/`,
 요약 결과는 `docs/results/external/v1/`에 저장한다. 기존 합성 데이터와 서빙 모델은 바꾸지 않는다.
@@ -113,3 +116,55 @@ DeepFashion 비상업 연구·재배포 제한과 H&M 원배포 조건을 따르
 최대 20 epoch 중 valid 기준 9번째를 선택했고 14번째에서 조기 종료했다.
 valid에서 가장 좋았던 것은 신경망 가중치 0인 30일 판매량 기준선이다.
 같은 test Recall@300은 0.061304지만 독립 holdout 검증이나 딥러닝 문제 해결로 주장하지 않는다.
+
+## 여섯 가지 추가 실험 expansion-v3 (2026-11-14)
+
+설정은 `config/external_expansion.yaml`, 원자료에서 만든 데이터·모델·임베딩은
+`.team/external-expansion-v3/`, 집계 결과는 `docs/results/external/expansion-v3/`에 저장한다.
+v1 입력 준비가 선행돼야 한다. [측정 보고서](results/external/expansion-v3/report.md)의
+학습 곡선, 동일 후보 단계별 비교, 교정 분포 거리와 CLIP 오분류를 함께 확인한다.
+
+1. H&M 학습 고객을 2천 → 2만 → 10만 명으로 확대한다. 기존 평가 고객과 카탈로그,
+   시간 경계·정답·K=300은 유지하고 추가 고객은 정답을 보기 전에 균등 추출한다.
+2. 전체 상품의 텍스트와 실제 이미지를 고정 CLIP으로 인코딩한다. train 시점 가용 상품만으로
+   fit한 PCA 64차원을 사용해 메타데이터 / 텍스트 추가 / 텍스트·이미지 추가를 비교한다.
+   원본 512차원 벡터를 보존하고 이미지 누락 상품은 제거하지 않는다.
+3. 각 조건의 같은 후보 300개에서 Two-Tower / 인기도 / 구매 선호 DeepFM / 재정렬을
+   비교한다. 최종 설정은 valid에서 선택하고 모델·소스 해시를 고정한 뒤 test를 평가한다.
+4. 기존 / H&M만 / Retailrocket만 / 둘 다 교정한 시뮬레이터를 각각 seed 42·43·44로
+   생성하고 모델을 새로 학습한다. 실행당 3천 상품·1천 사용자·10만 이벤트를 사용한다.
+5. Retailrocket의 과거 시점 카테고리와 이전 활동량별 Markov 모델을 추정한다.
+   평활화는 valid NLL로 선택하며 미관측 조건은 전역 확률로 보완한다.
+6. DeepFashion gallery 1만 장과 valid/test 각 5천 장으로 확대한다. 카테고리별 성능과
+   혼동, 같은 카테고리 이미지 검색, 1천 속성의 AP를 측정한다.
+
+```bash
+PYTHONHASHSEED=42 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 \
+  ./.venv/bin/python -m src.external_data.expansion_run --task all
+
+./.venv/bin/python -m src.external_data.expansion_run --task verify
+```
+
+완료한 단계는 기록과 해시를 확인해 재사용한다. 동일 작업 경로를 여러 프로세스에서 중복 실행하지
+않으며 설정을 바꾸는 새 실험은 work/results 경로도 새 버전으로 지정한다.
+H&M test는 앞서 본 구간이므로 후속 탐색 결과다. 시뮬레이터 조건별 정답도 서로 달라
+합성 점수 상승을 실제 추천 개선으로 해석하지 않는다. 실행 완료와 품질 목표 달성을 구분하며
+full acceptance·서빙 지연·온라인 A/B·운영 모델 승격은 이 실험 범위에 포함하지 않는다.
+
+실측 test Recall@300은 metadata 기준 2천/2만/10만 명에서 각각
+0.017706/0.023124/0.028820이었다. 10만 명에 텍스트를 더하면 0.043885,
+이미지까지 더하면 0.059892였고, valid에서 선택한 멀티모달 모델의 최종 NDCG@50은
+0.015305, test 다양성 위반은 0명이었다. 같은 후보에서 인기도 NDCG는 0.013747,
+DeepFM은 0.015075였다. 2만 명 metadata 조건의 test 제약 위반 3명과
+멀티모달 조건의 valid 제약 위반 1명은 별도 기록에 남겼다.
+
+기존 v2의 전체 train 거래 기반 30일 인기도 기준선은 같은 test Recall 0.061304,
+최종 NDCG 0.006575였다. 이번 모델은 최종 순위 품질이 높아졌지만 후보 Recall은 아직
+이 기준선을 넘지 못했다. 학습 정보량도 달라 동일 데이터량의 모델 대조로 해석하지 않는다.
+데이터 식별자와 출처 해시를 대조한 [이전 결과 비교](results/external/expansion-v3/historical_comparison.json)를 참조한다.
+
+시뮬레이터 12회 실험에서는 카테고리·행동 전이 분포가 가까워졌으나, 두 자료를 함께
+교정한 상대 가격 MAE는 0.354558에서 0.463777로 악화됐다. 현재 가격 교정식은 추가 개선이 필요하다.
+Retailrocket 조건부 전이의 test NLL은 0.727838에서 0.668306으로 낮아졌다.
+DeepFashion 2만 장 평가의 test Top-1/Top-5는 34.42%/75.40%, 속성 macro AP는
+0.051748이었다. 평가 가능한 test 카테고리는 43/50개, 속성은 913/1,000개다.

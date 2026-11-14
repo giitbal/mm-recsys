@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "files": 22,
+  "hashes": {
+    "docs/results/external/hm-v2/candidate_training.json": "5b60a04ce4bb5bb3b3197f4d7bc14e409d1dbbc77da31195539919eb957200d7",
+    "docs/results/external/hm-v2/diagnosis.json": "d79ac97a610816175c7de472068fc6f3d613c90acb47b0e700c1bd2272f26da6",
+    "docs/results/external/hm-v2/original_test_exact.json": "79c0a75632d3b4079ae2e2b0306a4f3df89cf4b1139e6dfc8fac35bd1107d6e4",
+    "docs/results/external/hm-v2/population.json": "f9fddbb072bae53ce4e0071eaed0b6e1e5475d39593afdb08c49502baf8be27d",
+    "docs/results/external/hm-v2/regression.txt": "b83e29d3c66298671760335a4cbb66a1f545c143d7cd0081a0c727300c9e3907",
+    "docs/results/external/hm-v2/report.md": "b620655bea4f8392aa80c7cbdcb49c852e247ed630da1ed3d1684cb6aa3ec416",
+    "docs/results/external/hm-v2/selection.json": "d2d25affe1e3a5da602ab31e79032a7c5862e050011ec81f069f2f4f808ab12c",
+    "docs/results/external/hm-v2/test.json": "494f1a501990726110db03a2651f8f82fe420f397757c1913383d7c68c366297",
+    "docs/results/external/hm-v2/valid.json": "54e02232fcf94bc952f0e9e5882048e1c45fd935ee3522076c059ba1bbf32f05",
+    "docs/results/external/hm-v2/verification.json": "14ca1ecb62705a244e314dc8bc5fa207501afdc71a87e503be6dae95167251fd",
+    "docs/results/external/v1/calibration.json": "a43da85e38f68f1c29c5e1451c4bbeb9975907a436af66149af7d58351e96905",
+    "docs/results/external/v1/deepfashion.json": "a64e5b256341a6999ecf5afa7759de65616af4339d9a554702a79cfc3862b180",
+    "docs/results/external/v1/hm_candidate_training.json": "0366451042472d2dfea05ae026ea4baa32ebd8e534bd1b0ba989b4e9ef0e30c7",
+    "docs/results/external/v1/hm_data.json": "f13b2b4ba14b4848951021a0672c17143a6df65d05085d213f11f7761e269121",
+    "docs/results/external/v1/hm_initial_ann_failure.json": "8382d1f2246ba5da918fb5b382ebb607606ccbddbc0d6993f2327668da672220",
+    "docs/results/external/v1/hm_recommendation.json": "4d5a0946ff3decd137782dd166ca52a452af0024745516859803ce37a58701ae",
+    "docs/results/external/v1/hm_selection.json": "ee191c2cf2db82eeec6d688a6e46bdb3993fea08455e219767def2cb1fde668d",
+    "docs/results/external/v1/inventory.json": "148e04ce84108c2f03bd9c9dffb78877af1835f35f5fd6a8db85c4d6d564db99",
+    "docs/results/external/v1/report.md": "e84b0b9682af41dda5c64e4171f95e15e57b0b08bb3a05fe06e3fc142530c093",
+    "docs/results/external/v1/retailrocket.json": "4adf1052084f4d27e8c98757c807609ae2032909644fec9971e3a1cf49d2231e",
+    "docs/results/external/v1/run.json": "5c519ba16fc0a95d5bd1428b74c91db78b29abdd68a94c2f623dec9b5128232b",
+    "docs/results/external/v1/verification.json": "b3270a557d8f77126d25aed2b4d6c0081aac8531f65e3926ba364a9e577280a3"
+  }
+}

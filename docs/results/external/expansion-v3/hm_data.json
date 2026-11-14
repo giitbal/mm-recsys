@@ -1,0 +1,626 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "source_sha256": "fff5e3b35c1b26016aa0bf2231be9525bc766eed32c94f1653420b465aef84fa",
+  "training_users": [
+    2000,
+    20000,
+    100000
+  ],
+  "training_events": {
+    "2000": 38750,
+    "20000": 370288,
+    "100000": 1850919
+  },
+  "shards": [
+    {
+      "number": 0,
+      "rows": 19504,
+      "path": ".team/external-expansion-v3/hm_data/shard-000.parquet"
+    },
+    {
+      "number": 1,
+      "rows": 19246,
+      "path": ".team/external-expansion-v3/hm_data/shard-001.parquet"
+    },
+    {
+      "number": 2,
+      "rows": 18195,
+      "path": ".team/external-expansion-v3/hm_data/shard-002.parquet"
+    },
+    {
+      "number": 3,
+      "rows": 19574,
+      "path": ".team/external-expansion-v3/hm_data/shard-003.parquet"
+    },
+    {
+      "number": 4,
+      "rows": 18514,
+      "path": ".team/external-expansion-v3/hm_data/shard-004.parquet"
+    },
+    {
+      "number": 5,
+      "rows": 20026,
+      "path": ".team/external-expansion-v3/hm_data/shard-005.parquet"
+    },
+    {
+      "number": 6,
+      "rows": 17987,
+      "path": ".team/external-expansion-v3/hm_data/shard-006.parquet"
+    },
+    {
+      "number": 7,
+      "rows": 17006,
+      "path": ".team/external-expansion-v3/hm_data/shard-007.parquet"
+    },
+    {
+      "number": 8,
+      "rows": 19653,
+      "path": ".team/external-expansion-v3/hm_data/shard-008.parquet"
+    },
+    {
+      "number": 9,
+      "rows": 20019,
+      "path": ".team/external-expansion-v3/hm_data/shard-009.parquet"
+    },
+    {
+      "number": 10,
+      "rows": 18575,
+      "path": ".team/external-expansion-v3/hm_data/shard-010.parquet"
+    },
+    {
+      "number": 11,
+      "rows": 18093,
+      "path": ".team/external-expansion-v3/hm_data/shard-011.parquet"
+    },
+    {
+      "number": 12,
+      "rows": 17762,
+      "path": ".team/external-expansion-v3/hm_data/shard-012.parquet"
+    },
+    {
+      "number": 13,
+      "rows": 19203,
+      "path": ".team/external-expansion-v3/hm_data/shard-013.parquet"
+    },
+    {
+      "number": 14,
+      "rows": 18533,
+      "path": ".team/external-expansion-v3/hm_data/shard-014.parquet"
+    },
+    {
+      "number": 15,
+      "rows": 15870,
+      "path": ".team/external-expansion-v3/hm_data/shard-015.parquet"
+    },
+    {
+      "number": 16,
+      "rows": 18715,
+      "path": ".team/external-expansion-v3/hm_data/shard-016.parquet"
+    },
+    {
+      "number": 17,
+      "rows": 16939,
+      "path": ".team/external-expansion-v3/hm_data/shard-017.parquet"
+    },
+    {
+      "number": 18,
+      "rows": 19246,
+      "path": ".team/external-expansion-v3/hm_data/shard-018.parquet"
+    },
+    {
+      "number": 19,
+      "rows": 17628,
+      "path": ".team/external-expansion-v3/hm_data/shard-019.parquet"
+    },
+    {
+      "number": 20,
+      "rows": 19294,
+      "path": ".team/external-expansion-v3/hm_data/shard-020.parquet"
+    },
+    {
+      "number": 21,
+      "rows": 16427,
+      "path": ".team/external-expansion-v3/hm_data/shard-021.parquet"
+    },
+    {
+      "number": 22,
+      "rows": 18386,
+      "path": ".team/external-expansion-v3/hm_data/shard-022.parquet"
+    },
+    {
+      "number": 23,
+      "rows": 17588,
+      "path": ".team/external-expansion-v3/hm_data/shard-023.parquet"
+    },
+    {
+      "number": 24,
+      "rows": 18283,
+      "path": ".team/external-expansion-v3/hm_data/shard-024.parquet"
+    },
+    {
+      "number": 25,
+      "rows": 19096,
+      "path": ".team/external-expansion-v3/hm_data/shard-025.parquet"
+    },
+    {
+      "number": 26,
+      "rows": 18333,
+      "path": ".team/external-expansion-v3/hm_data/shard-026.parquet"
+    },
+    {
+      "number": 27,
+      "rows": 17658,
+      "path": ".team/external-expansion-v3/hm_data/shard-027.parquet"
+    },
+    {
+      "number": 28,
+      "rows": 19449,
+      "path": ".team/external-expansion-v3/hm_data/shard-028.parquet"
+    },
+    {
+      "number": 29,
+      "rows": 16939,
+      "path": ".team/external-expansion-v3/hm_data/shard-029.parquet"
+    },
+    {
+      "number": 30,
+      "rows": 18234,
+      "path": ".team/external-expansion-v3/hm_data/shard-030.parquet"
+    },
+    {
+      "number": 31,
+      "rows": 17991,
+      "path": ".team/external-expansion-v3/hm_data/shard-031.parquet"
+    },
+    {
+      "number": 32,
+      "rows": 18770,
+      "path": ".team/external-expansion-v3/hm_data/shard-032.parquet"
+    },
+    {
+      "number": 33,
+      "rows": 18106,
+      "path": ".team/external-expansion-v3/hm_data/shard-033.parquet"
+    },
+    {
+      "number": 34,
+      "rows": 18147,
+      "path": ".team/external-expansion-v3/hm_data/shard-034.parquet"
+    },
+    {
+      "number": 35,
+      "rows": 19306,
+      "path": ".team/external-expansion-v3/hm_data/shard-035.parquet"
+    },
+    {
+      "number": 36,
+      "rows": 19302,
+      "path": ".team/external-expansion-v3/hm_data/shard-036.parquet"
+    },
+    {
+      "number": 37,
+      "rows": 19063,
+      "path": ".team/external-expansion-v3/hm_data/shard-037.parquet"
+    },
+    {
+      "number": 38,
+      "rows": 17986,
+      "path": ".team/external-expansion-v3/hm_data/shard-038.parquet"
+    },
+    {
+      "number": 39,
+      "rows": 19195,
+      "path": ".team/external-expansion-v3/hm_data/shard-039.parquet"
+    },
+    {
+      "number": 40,
+      "rows": 17767,
+      "path": ".team/external-expansion-v3/hm_data/shard-040.parquet"
+    },
+    {
+      "number": 41,
+      "rows": 17626,
+      "path": ".team/external-expansion-v3/hm_data/shard-041.parquet"
+    },
+    {
+      "number": 42,
+      "rows": 19821,
+      "path": ".team/external-expansion-v3/hm_data/shard-042.parquet"
+    },
+    {
+      "number": 43,
+      "rows": 17557,
+      "path": ".team/external-expansion-v3/hm_data/shard-043.parquet"
+    },
+    {
+      "number": 44,
+      "rows": 18929,
+      "path": ".team/external-expansion-v3/hm_data/shard-044.parquet"
+    },
+    {
+      "number": 45,
+      "rows": 18443,
+      "path": ".team/external-expansion-v3/hm_data/shard-045.parquet"
+    },
+    {
+      "number": 46,
+      "rows": 18768,
+      "path": ".team/external-expansion-v3/hm_data/shard-046.parquet"
+    },
+    {
+      "number": 47,
+      "rows": 18609,
+      "path": ".team/external-expansion-v3/hm_data/shard-047.parquet"
+    },
+    {
+      "number": 48,
+      "rows": 18207,
+      "path": ".team/external-expansion-v3/hm_data/shard-048.parquet"
+    },
+    {
+      "number": 49,
+      "rows": 17878,
+      "path": ".team/external-expansion-v3/hm_data/shard-049.parquet"
+    },
+    {
+      "number": 50,
+      "rows": 19997,
+      "path": ".team/external-expansion-v3/hm_data/shard-050.parquet"
+    },
+    {
+      "number": 51,
+      "rows": 18168,
+      "path": ".team/external-expansion-v3/hm_data/shard-051.parquet"
+    },
+    {
+      "number": 52,
+      "rows": 16770,
+      "path": ".team/external-expansion-v3/hm_data/shard-052.parquet"
+    },
+    {
+      "number": 53,
+      "rows": 17965,
+      "path": ".team/external-expansion-v3/hm_data/shard-053.parquet"
+    },
+    {
+      "number": 54,
+      "rows": 19226,
+      "path": ".team/external-expansion-v3/hm_data/shard-054.parquet"
+    },
+    {
+      "number": 55,
+      "rows": 18756,
+      "path": ".team/external-expansion-v3/hm_data/shard-055.parquet"
+    },
+    {
+      "number": 56,
+      "rows": 18615,
+      "path": ".team/external-expansion-v3/hm_data/shard-056.parquet"
+    },
+    {
+      "number": 57,
+      "rows": 16355,
+      "path": ".team/external-expansion-v3/hm_data/shard-057.parquet"
+    },
+    {
+      "number": 58,
+      "rows": 17255,
+      "path": ".team/external-expansion-v3/hm_data/shard-058.parquet"
+    },
+    {
+      "number": 59,
+      "rows": 18614,
+      "path": ".team/external-expansion-v3/hm_data/shard-059.parquet"
+    },
+    {
+      "number": 60,
+      "rows": 20209,
+      "path": ".team/external-expansion-v3/hm_data/shard-060.parquet"
+    },
+    {
+      "number": 61,
+      "rows": 17457,
+      "path": ".team/external-expansion-v3/hm_data/shard-061.parquet"
+    },
+    {
+      "number": 62,
+      "rows": 17430,
+      "path": ".team/external-expansion-v3/hm_data/shard-062.parquet"
+    },
+    {
+      "number": 63,
+      "rows": 20178,
+      "path": ".team/external-expansion-v3/hm_data/shard-063.parquet"
+    },
+    {
+      "number": 64,
+      "rows": 18875,
+      "path": ".team/external-expansion-v3/hm_data/shard-064.parquet"
+    },
+    {
+      "number": 65,
+      "rows": 19089,
+      "path": ".team/external-expansion-v3/hm_data/shard-065.parquet"
+    },
+    {
+      "number": 66,
+      "rows": 19132,
+      "path": ".team/external-expansion-v3/hm_data/shard-066.parquet"
+    },
+    {
+      "number": 67,
+      "rows": 16397,
+      "path": ".team/external-expansion-v3/hm_data/shard-067.parquet"
+    },
+    {
+      "number": 68,
+      "rows": 18198,
+      "path": ".team/external-expansion-v3/hm_data/shard-068.parquet"
+    },
+    {
+      "number": 69,
+      "rows": 17784,
+      "path": ".team/external-expansion-v3/hm_data/shard-069.parquet"
+    },
+    {
+      "number": 70,
+      "rows": 18659,
+      "path": ".team/external-expansion-v3/hm_data/shard-070.parquet"
+    },
+    {
+      "number": 71,
+      "rows": 19477,
+      "path": ".team/external-expansion-v3/hm_data/shard-071.parquet"
+    },
+    {
+      "number": 72,
+      "rows": 17658,
+      "path": ".team/external-expansion-v3/hm_data/shard-072.parquet"
+    },
+    {
+      "number": 73,
+      "rows": 18251,
+      "path": ".team/external-expansion-v3/hm_data/shard-073.parquet"
+    },
+    {
+      "number": 74,
+      "rows": 19261,
+      "path": ".team/external-expansion-v3/hm_data/shard-074.parquet"
+    },
+    {
+      "number": 75,
+      "rows": 18813,
+      "path": ".team/external-expansion-v3/hm_data/shard-075.parquet"
+    },
+    {
+      "number": 76,
+      "rows": 20447,
+      "path": ".team/external-expansion-v3/hm_data/shard-076.parquet"
+    },
+    {
+      "number": 77,
+      "rows": 16849,
+      "path": ".team/external-expansion-v3/hm_data/shard-077.parquet"
+    },
+    {
+      "number": 78,
+      "rows": 17946,
+      "path": ".team/external-expansion-v3/hm_data/shard-078.parquet"
+    },
+    {
+      "number": 79,
+      "rows": 21039,
+      "path": ".team/external-expansion-v3/hm_data/shard-079.parquet"
+    },
+    {
+      "number": 80,
+      "rows": 18455,
+      "path": ".team/external-expansion-v3/hm_data/shard-080.parquet"
+    },
+    {
+      "number": 81,
+      "rows": 18601,
+      "path": ".team/external-expansion-v3/hm_data/shard-081.parquet"
+    },
+    {
+      "number": 82,
+      "rows": 18518,
+      "path": ".team/external-expansion-v3/hm_data/shard-082.parquet"
+    },
+    {
+      "number": 83,
+      "rows": 17497,
+      "path": ".team/external-expansion-v3/hm_data/shard-083.parquet"
+    },
+    {
+      "number": 84,
+      "rows": 18740,
+      "path": ".team/external-expansion-v3/hm_data/shard-084.parquet"
+    },
+    {
+      "number": 85,
+      "rows": 17969,
+      "path": ".team/external-expansion-v3/hm_data/shard-085.parquet"
+    },
+    {
+      "number": 86,
+      "rows": 18340,
+      "path": ".team/external-expansion-v3/hm_data/shard-086.parquet"
+    },
+    {
+      "number": 87,
+      "rows": 19955,
+      "path": ".team/external-expansion-v3/hm_data/shard-087.parquet"
+    },
+    {
+      "number": 88,
+      "rows": 18863,
+      "path": ".team/external-expansion-v3/hm_data/shard-088.parquet"
+    },
+    {
+      "number": 89,
+      "rows": 17867,
+      "path": ".team/external-expansion-v3/hm_data/shard-089.parquet"
+    },
+    {
+      "number": 90,
+      "rows": 18203,
+      "path": ".team/external-expansion-v3/hm_data/shard-090.parquet"
+    },
+    {
+      "number": 91,
+      "rows": 18040,
+      "path": ".team/external-expansion-v3/hm_data/shard-091.parquet"
+    },
+    {
+      "number": 92,
+      "rows": 20976,
+      "path": ".team/external-expansion-v3/hm_data/shard-092.parquet"
+    },
+    {
+      "number": 93,
+      "rows": 18873,
+      "path": ".team/external-expansion-v3/hm_data/shard-093.parquet"
+    },
+    {
+      "number": 94,
+      "rows": 18407,
+      "path": ".team/external-expansion-v3/hm_data/shard-094.parquet"
+    },
+    {
+      "number": 95,
+      "rows": 18672,
+      "path": ".team/external-expansion-v3/hm_data/shard-095.parquet"
+    },
+    {
+      "number": 96,
+      "rows": 20000,
+      "path": ".team/external-expansion-v3/hm_data/shard-096.parquet"
+    },
+    {
+      "number": 97,
+      "rows": 19212,
+      "path": ".team/external-expansion-v3/hm_data/shard-097.parquet"
+    },
+    {
+      "number": 98,
+      "rows": 19416,
+      "path": ".team/external-expansion-v3/hm_data/shard-098.parquet"
+    },
+    {
+      "number": 99,
+      "rows": 17999,
+      "path": ".team/external-expansion-v3/hm_data/shard-099.parquet"
+    }
+  ],
+  "hashes": {
+    ".team/external-expansion-v3/hm_data/users.json": "c88c100e400e8a6a790c5666f866167b6493a5b7130c75ae13f35e2c39488206",
+    ".team/external-expansion-v3/hm_data/shard-000.parquet": "556889c4768d63a8797134c6879548888e09b5d34e7128e7cca7123838b4d3d4",
+    ".team/external-expansion-v3/hm_data/shard-001.parquet": "19a6efd2f057c5857e24e9fe9e6d5ec057dd438393dba2d2be0a448c0a23b0ab",
+    ".team/external-expansion-v3/hm_data/shard-002.parquet": "b7b2de99ab4285ca4dfcf405937d72602c8c189ac399b8ca9476716a5fcbb395",
+    ".team/external-expansion-v3/hm_data/shard-003.parquet": "41186f874f98ac6cd645fe975eb80a30d2e4fc2c2beb4e288bd1adb08d8a6b76",
+    ".team/external-expansion-v3/hm_data/shard-004.parquet": "ff979051410c91683027b1b3bdcd07b115aefa181a15d13dc534308ef7cbd04e",
+    ".team/external-expansion-v3/hm_data/shard-005.parquet": "25191c3ed44056d020fa9c86491be12f102ecb1d9c4e0e13aa95935021941bf6",
+    ".team/external-expansion-v3/hm_data/shard-006.parquet": "c9557b79dac9790729c44eddab7c8f441be9c4fd288245142f53d0fc528373de",
+    ".team/external-expansion-v3/hm_data/shard-007.parquet": "33c913ce4fea7965566965b2ecddae19d01c3e9836352add92ce77a5fb085b53",
+    ".team/external-expansion-v3/hm_data/shard-008.parquet": "1a4a482e32b20cb3fa68404523f7b29a7886ee01a05f42ec3a1a36e0da0a95fa",
+    ".team/external-expansion-v3/hm_data/shard-009.parquet": "a9910228ceb4ff293ae22805212cf086e8bed79f72b0d4c3329f383bb7471ab2",
+    ".team/external-expansion-v3/hm_data/shard-010.parquet": "83d050f50cbbf8bc4c41680742a1f902826e7b2bde44f937618e7df2a8295c02",
+    ".team/external-expansion-v3/hm_data/shard-011.parquet": "b918eeb33cb490b2f68811ca14e629526df2ab8f6940dcafd3fbfd8116ddb4ef",
+    ".team/external-expansion-v3/hm_data/shard-012.parquet": "b6c3801251f984b9ec9f721e90ef67316e8614c0e009747d0df1d5db9e54c190",
+    ".team/external-expansion-v3/hm_data/shard-013.parquet": "70add6a0f15f309dfa50a6d01cb81f476dcfde7a857689585ae7049bd83ff0bb",
+    ".team/external-expansion-v3/hm_data/shard-014.parquet": "b8e1efd32d7b7739321225b38ffdde935feff77836056e1b44375c1a7b53f5ac",
+    ".team/external-expansion-v3/hm_data/shard-015.parquet": "fe2ccb20e509e4f11730117d3e51ddf47a6aa87618a351769d19fb9771237c46",
+    ".team/external-expansion-v3/hm_data/shard-016.parquet": "89f27caf16b62bd09f55926fa4b8328379259ce3ab72cdf707da0c3cd0b63e2a",
+    ".team/external-expansion-v3/hm_data/shard-017.parquet": "be3352d05094377aa7ae832811380853f2fad9ecb602a205bdd47f81a21b7d65",
+    ".team/external-expansion-v3/hm_data/shard-018.parquet": "ff4d69a9ec1b57dd857fbafb0c6db690a3d45c26e1744d16281d0c9893696311",
+    ".team/external-expansion-v3/hm_data/shard-019.parquet": "484e253dee055a3934777c5fa42b59f7c83c620e2878be5e9f328e3b782a31ce",
+    ".team/external-expansion-v3/hm_data/shard-020.parquet": "227b8e5c578594f6c96e32033f65f436f0d576dad8c4d3f6dcb6b1c885be0107",
+    ".team/external-expansion-v3/hm_data/shard-021.parquet": "f3e789d31e3806343f6b8d15241a0a785eca07354cb18a9878f7b29ef5c28cf8",
+    ".team/external-expansion-v3/hm_data/shard-022.parquet": "4b457912f5a71d1f36df135e7b0a87260da8710408852b4b21435a51f4feb9fa",
+    ".team/external-expansion-v3/hm_data/shard-023.parquet": "77d6b94ada82a92e937d5a7cbcdf2b4dff4f674cfc5dbdd10f145122aa8348ed",
+    ".team/external-expansion-v3/hm_data/shard-024.parquet": "c315ad132e98d1009cf648ad39b24f374765cdd6f2781e2adc06fc5aa28badfb",
+    ".team/external-expansion-v3/hm_data/shard-025.parquet": "130d582182f03260782d1b588401a6b0e523e0b9362dc5b23a6ac5fef0ec203c",
+    ".team/external-expansion-v3/hm_data/shard-026.parquet": "be349b9876513818e140d4a724ee4402531ea48a1316d3f5301ee0b2aabada43",
+    ".team/external-expansion-v3/hm_data/shard-027.parquet": "28e2d73eede99df9db2b4ff2c2a330e1a82479a7f29db34c695fe69b447a6e5f",
+    ".team/external-expansion-v3/hm_data/shard-028.parquet": "ee912b0e917eef16a47cfd48c64bd395acea909bcb399d383b42873ccf30c9d6",
+    ".team/external-expansion-v3/hm_data/shard-029.parquet": "e1573486643d7af5d08b5d2e58dfc465f0610352a97d696c4b6561c01f75430f",
+    ".team/external-expansion-v3/hm_data/shard-030.parquet": "a362bd7051f8cae2f469f70f5703159621a44fb1a95129ac3585aa8733f9f0ff",
+    ".team/external-expansion-v3/hm_data/shard-031.parquet": "70b744bea4be98123797cd38aba4509e7c760feb9ee4c03bbdc9c17dd59d8180",
+    ".team/external-expansion-v3/hm_data/shard-032.parquet": "ca91bb6be17a9f5b448361fe298debd04d576ec568f24ffb5a9e187feb0bf7bf",
+    ".team/external-expansion-v3/hm_data/shard-033.parquet": "3a4acaf660cefb44cf78e2a06423085fd1e3ba668b86925cc196213fa1bbf27b",
+    ".team/external-expansion-v3/hm_data/shard-034.parquet": "7ac22b4da467c7c2106596ab3bbd024faabf3946278f1c0c2c6191dccc97202c",
+    ".team/external-expansion-v3/hm_data/shard-035.parquet": "485699c87db571b1e076b572133f6dd90a5466ce973558d6c1bfc4ab317871ca",
+    ".team/external-expansion-v3/hm_data/shard-036.parquet": "3b2d93345a5323e311a2885526d1aaac721d26a12603eb51281633c7e70173b2",
+    ".team/external-expansion-v3/hm_data/shard-037.parquet": "eae4cb4487fc99968a873fd4a03327b998a06e7fd8b62be79e845a99545ba79c",
+    ".team/external-expansion-v3/hm_data/shard-038.parquet": "3b491af483b493e9572c054516c1fcc87f787c61a9575390466a667e870f9623",
+    ".team/external-expansion-v3/hm_data/shard-039.parquet": "1827535a263a54d4d3ba072b548a1264807b75d4f5e58563c7490458bb4debeb",
+    ".team/external-expansion-v3/hm_data/shard-040.parquet": "b8c5d8c96b4d28ff43d804218232e263fe077abda9800dc17be2e9b8c8ef7c54",
+    ".team/external-expansion-v3/hm_data/shard-041.parquet": "046bb7d5c00b11d41d57b07afd3450aacaf945c10c64aaad88ab6faa050b82a6",
+    ".team/external-expansion-v3/hm_data/shard-042.parquet": "a4cf460afd748a638f775ab4ccb6322e98fb214a710ab0dbacd9b853c1832838",
+    ".team/external-expansion-v3/hm_data/shard-043.parquet": "3599bf962716020e2c115862a1ee47ec80f4a1de1a481f7675d56d6004e1392a",
+    ".team/external-expansion-v3/hm_data/shard-044.parquet": "1d56439265ac3fa5fd8ab059409b8fdf39edada15d6e480ef467c9861b554a6a",
+    ".team/external-expansion-v3/hm_data/shard-045.parquet": "c030079b036e09f5eb6ecd27a232c917dd3775b15e7a52b47dfdd56f63416e87",
+    ".team/external-expansion-v3/hm_data/shard-046.parquet": "a48e5b167f7c4d5adcf285e8d7567f3ee9ed239b9f8a42c04f82213b9e21a5ee",
+    ".team/external-expansion-v3/hm_data/shard-047.parquet": "549a8bb7b0bce7ae80c46a45c7a9bc9f827e8f1013d54f9e807b0390fb7e018a",
+    ".team/external-expansion-v3/hm_data/shard-048.parquet": "585aa42ebfa7fba2901fa107e69f6e883077695ea49fdd63675ff2e5c552ab12",
+    ".team/external-expansion-v3/hm_data/shard-049.parquet": "84930d2913655837dfd209811c99ce4122268286f4933f4479fa7aba3901a0eb",
+    ".team/external-expansion-v3/hm_data/shard-050.parquet": "38955016745632473dbb3e6d143eec55608a78f1841c9913aa904e54de4dd6b2",
+    ".team/external-expansion-v3/hm_data/shard-051.parquet": "7397c0ac533b8d44ddd1c1a60c4d8f2abd2e4485f0f8792c27f639a4984979e5",
+    ".team/external-expansion-v3/hm_data/shard-052.parquet": "a4551e8e1a9e392aac54ab05c3f88634acde5f091166f7763470ca0fb42c5a7b",
+    ".team/external-expansion-v3/hm_data/shard-053.parquet": "5ffdc4ce93299eb370e2d08b26c39ece2f19a38863ecadc25e59ae0ae1274ee9",
+    ".team/external-expansion-v3/hm_data/shard-054.parquet": "9d76b2ea729e1f0558a5129fc75a48ab018cc653f608d34eb2d3d01af43e7b50",
+    ".team/external-expansion-v3/hm_data/shard-055.parquet": "5480c9e269a236a911655111a09eba90543b4e3c8e59b8adfa67819b9cbed33c",
+    ".team/external-expansion-v3/hm_data/shard-056.parquet": "4927a85a790ceb7a0a0ce37fd6c85f6306d14b78bf31e225eb166c133fedd694",
+    ".team/external-expansion-v3/hm_data/shard-057.parquet": "0bd98004cbf597a4d64e74fb199c9c2ac37f0c65616d6e2bbc2ad3662d22f9ca",
+    ".team/external-expansion-v3/hm_data/shard-058.parquet": "39b92c0fc1b7d618daefd56a62fedc7088a391a2ff035839b41da5447768b3e9",
+    ".team/external-expansion-v3/hm_data/shard-059.parquet": "25be4ce84c8aad562b7a56a90d85afe0e2faaae33df9214719d1dbe5faf1672c",
+    ".team/external-expansion-v3/hm_data/shard-060.parquet": "d049b539525a00a2918f26b0d2e6fdcf3bfb69d565c7545a10c685214e46c9ef",
+    ".team/external-expansion-v3/hm_data/shard-061.parquet": "604d73f5f9956113e8e8be815571e78c2614cec53aa97e844e2e86b5e5c0ccbf",
+    ".team/external-expansion-v3/hm_data/shard-062.parquet": "8a4fca07aea3d665557208a638f3bdd22650aefb388dabf6f29245a6efc3d0b5",
+    ".team/external-expansion-v3/hm_data/shard-063.parquet": "4823fe73bcf5874148c1cbff265dd5055cc44c89d41b461b79a4fb5e7a304efc",
+    ".team/external-expansion-v3/hm_data/shard-064.parquet": "6eca2e158570bf3299e5848a0b11084689a3e5d64751d138dcdb7f7739209ee8",
+    ".team/external-expansion-v3/hm_data/shard-065.parquet": "7afd307dd374f8773197bdfa9af7f2d250a4bb932629024366b7379418146e58",
+    ".team/external-expansion-v3/hm_data/shard-066.parquet": "a380df9a46b5decb27dc3a68b2a313dabe629fa47943ff9c16abbfb347d9de5b",
+    ".team/external-expansion-v3/hm_data/shard-067.parquet": "08ad6e75b522e10d7b8cff08cd6d82434bb1034e67f22343a0ce437be1f56adf",
+    ".team/external-expansion-v3/hm_data/shard-068.parquet": "768ee2dc0ca7ca78c8fd1d06e6de7512346a3df1cba3e9aede308e791640354b",
+    ".team/external-expansion-v3/hm_data/shard-069.parquet": "87041bf590a668e6c46311988b4c99650e2bddb11cda6e38752b6b73d9024735",
+    ".team/external-expansion-v3/hm_data/shard-070.parquet": "633d5f8edbe9e94f56bfe165bb5a1e49bc5c5feb122f7bde6a22faee8aa9e0f1",
+    ".team/external-expansion-v3/hm_data/shard-071.parquet": "442693f628e994f841a554a6c6ffa73252ac46df0b3cc1ef6f4cf73adc9416b5",
+    ".team/external-expansion-v3/hm_data/shard-072.parquet": "b233f5117f591f0c8c4cacc161f119ff8ff87c282e6c2b49bd841053bc5a5234",
+    ".team/external-expansion-v3/hm_data/shard-073.parquet": "6bacf456aad159e42dbfd720acb787834e99e3cfa392440cfde7c76201460e94",
+    ".team/external-expansion-v3/hm_data/shard-074.parquet": "2e156585ebe58d9da299de8f038d67e42fa690cd9118509d354c80d53ac2c4ed",
+    ".team/external-expansion-v3/hm_data/shard-075.parquet": "44170305aa3e3e678fa7e57778d73e5c1bb7a8c8a8ec5b26a8f3fa4b4c7a0761",
+    ".team/external-expansion-v3/hm_data/shard-076.parquet": "b497eff78f46b5742ee1117a7c6b70d184b63cb3bdf1f9f6baa60f5e3423f1e4",
+    ".team/external-expansion-v3/hm_data/shard-077.parquet": "4212522258d5a637dd2c30edf154d633eae3063b6d0c78a1346fcbeaf60e0352",
+    ".team/external-expansion-v3/hm_data/shard-078.parquet": "d68efb13ec63e5700e5867cac9bd0218db72e9c0ab0710aa615b5e9fc343800e",
+    ".team/external-expansion-v3/hm_data/shard-079.parquet": "5d1094a48bf60257aa5e81e4a19f8f2ba64e96f213d9747df27e8a89b9ce0722",
+    ".team/external-expansion-v3/hm_data/shard-080.parquet": "87481b693ebf975069361bb11d9c51dee87aefd19f631ec975cc8acb282002e4",
+    ".team/external-expansion-v3/hm_data/shard-081.parquet": "4c2b68d937e86706cecdf83d455a3b530fd6759dc4b212d55aaadb62859679c6",
+    ".team/external-expansion-v3/hm_data/shard-082.parquet": "beb89cde9b8826090433ed293f723572d91f4b086935861ffc4667417fc07ccb",
+    ".team/external-expansion-v3/hm_data/shard-083.parquet": "cc0d82ebd7e41f49cbb7cd8f57d743134c4166ef4f2e47013a98f95a739f9653",
+    ".team/external-expansion-v3/hm_data/shard-084.parquet": "4925b5808d8864508d9b6cb2e7c3f6f2faa483c690f35fae5a8e047504a275d9",
+    ".team/external-expansion-v3/hm_data/shard-085.parquet": "36db6012ba7b434ef8bdac6544aea365d54fa52527627ecdeb88740be7567a14",
+    ".team/external-expansion-v3/hm_data/shard-086.parquet": "9c9fca124892a41b340c35e1d45b36dac4676d7d4107646857f354e478938faa",
+    ".team/external-expansion-v3/hm_data/shard-087.parquet": "d3b6d0ca0dbd3c9863e42b96a00b49eea4f5ddd37792d37230688f0868ad6308",
+    ".team/external-expansion-v3/hm_data/shard-088.parquet": "5c9ea8919ac2b659112c7d2754adaf9471bbe1001a5aae54cb561369f4febf71",
+    ".team/external-expansion-v3/hm_data/shard-089.parquet": "36d6a5e85dc2fd8654b5d8d17c7f84aa43fb2d2e4efd4fd42b80700beaf3f911",
+    ".team/external-expansion-v3/hm_data/shard-090.parquet": "28d74327297030cb3460cf8a4e85c527669aa37d5c4a47049f93d46b41137c3a",
+    ".team/external-expansion-v3/hm_data/shard-091.parquet": "a998d6b207b93412e999cee9ee51c13835da395bead4518217874c5519e81aea",
+    ".team/external-expansion-v3/hm_data/shard-092.parquet": "5b3e1aac0f7435f6d979241c9be125d9008a7c221503d7ed48bee827d1d3b15c",
+    ".team/external-expansion-v3/hm_data/shard-093.parquet": "9e203882f2c1b028a682c90c82dd12d2f8c8f51af37859a1adf73fc53d40f583",
+    ".team/external-expansion-v3/hm_data/shard-094.parquet": "9b3298e768bea6416b70b927d322b5205474ae24eff3274c973b1c4be643c2e2",
+    ".team/external-expansion-v3/hm_data/shard-095.parquet": "d8ab97c5ea3895c8fabce88a93a07f93fa962f724dd5930c9653560a0ec6f020",
+    ".team/external-expansion-v3/hm_data/shard-096.parquet": "ee174404b75a2ab297b4801f6b100d2831f3c0e1bf676f996d61874b881131a4",
+    ".team/external-expansion-v3/hm_data/shard-097.parquet": "48e0472081ce74addfbe4587385a4f33ca16fefbf691041eb64c06614e2e3bec",
+    ".team/external-expansion-v3/hm_data/shard-098.parquet": "4753b9530aabeccf08b8ad81caba9cd0956f090738449af291272c69d27e26a0",
+    ".team/external-expansion-v3/hm_data/shard-099.parquet": "2c720fab506957826bbc7c8d5afe7d0323424b1eac84ec11fdce578a29a790ef"
+  },
+  "original_data_fingerprint": "156ddd999aca1afd0e3f41e9e15d26f3d2d326c89f747f287fbfc51542f0b6b4",
+  "eval_users": 2000,
+  "products": 105542,
+  "cohort_policy": "original uniform 2000 plus fixed seeded uniform additional customers; nested; no outcome filtering",
+  "scope": "train only expansion; original valid/test users and truth/catalog retained",
+  "seconds": 56.01115680800012
+}

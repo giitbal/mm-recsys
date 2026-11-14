@@ -1,0 +1,111 @@
+{
+  "status": "FROZEN",
+  "trials": [
+    {
+      "method": "global",
+      "alpha": 0,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.73447868377533,
+        "brier": 0.4618897056644816
+      }
+    },
+    {
+      "method": "category",
+      "alpha": 10,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.7212866487818934,
+        "brier": 0.4519614196103684
+      }
+    },
+    {
+      "method": "category",
+      "alpha": 100,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.7206820649529948,
+        "brier": 0.45187910188477726
+      }
+    },
+    {
+      "method": "category",
+      "alpha": 1000,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.7222486757889924,
+        "brier": 0.4528523986194589
+      }
+    },
+    {
+      "method": "activity",
+      "alpha": 10,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.6849899240798497,
+        "brier": 0.41996487855275444
+      }
+    },
+    {
+      "method": "activity",
+      "alpha": 100,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.684979942862552,
+        "brier": 0.41995891380193695
+      }
+    },
+    {
+      "method": "activity",
+      "alpha": 1000,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.684934033719111,
+        "brier": 0.4199233552165253
+      }
+    },
+    {
+      "method": "category_activity",
+      "alpha": 10,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.6773172225700025,
+        "brier": 0.414188255203636
+      }
+    },
+    {
+      "method": "category_activity",
+      "alpha": 100,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.6790209989618676,
+        "brier": 0.41638813615690473
+      }
+    },
+    {
+      "method": "category_activity",
+      "alpha": 1000,
+      "valid": {
+        "observations": 274408,
+        "nll": 0.6923227640052958,
+        "brier": 0.4273736720345241
+      }
+    }
+  ],
+  "selected": {
+    "method": "category_activity",
+    "alpha": 10,
+    "valid": {
+      "observations": 274408,
+      "nll": 0.6773172225700025,
+      "brier": 0.414188255203636
+    }
+  },
+  "spec_fingerprint": "c2df5fcb50919602bc2ce741a169023b56b01ecece17ff01a5483b2c010c8eaa",
+  "source_hashes": {
+    ".team/external-data-v1/retailrocket_raw/events.csv": "3745aa83238b1e6d44d8fda209807899f420084398f94ddf745f3cbcfecbf9e7",
+    ".team/external-data-v1/retailrocket_raw/item_properties_part1.csv": "30aad5aeca58b2dc27dcc73e1708565f5818e45adb3eb57401f91e87355b0b81",
+    ".team/external-data-v1/retailrocket_raw/item_properties_part2.csv": "d5e7d1a91dc40f522aeb596b267e6c87d8aed689a7192d12369cfb165eb987e5"
+  },
+  "policy": "category last observed strictly before origin event; activity counts strictly earlier events; train-only fit; unknown groups shrink to global"
+}

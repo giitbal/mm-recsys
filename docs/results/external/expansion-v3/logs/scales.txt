@@ -1,0 +1,146 @@
+H&M candidate 2000-metadata epoch 1 valid 0.03279991013964025
+H&M candidate 2000-metadata epoch 2 valid 0.028808894891727353
+H&M candidate 2000-metadata epoch 3 valid 0.03527642197918376
+H&M candidate 2000-metadata epoch 4 valid 0.03554470684884376
+H&M candidate 2000-metadata epoch 5 valid 0.029302530206429263
+H&M ranking features 2000 1
+H&M ranking features 2000 2
+H&M ranker 2000 1 0.0063193891861497474
+H&M ranker 2000 2 0.005826693371894137
+H&M ranker 2000 3 0.004586050018620254
+H&M candidate 20000-metadata epoch 1 valid 0.040405438489718386
+H&M candidate 20000-metadata epoch 2 valid 0.03578964862687159
+H&M candidate 20000-metadata epoch 3 valid 0.04051499828653409
+H&M candidate 20000-metadata epoch 4 valid 0.047964193519217053
+H&M candidate 20000-metadata epoch 5 valid 0.045594511394818585
+H&M ranking features 20000 1
+H&M ranking features 20000 2
+H&M ranking features 20000 3
+H&M ranking features 20000 4
+H&M ranking features 20000 5
+H&M ranking features 20000 6
+H&M ranking features 20000 7
+H&M ranking features 20000 8
+H&M ranking features 20000 9
+H&M ranking features 20000 10
+H&M ranking features 20000 11
+H&M ranking features 20000 12
+H&M ranking features 20000 13
+H&M ranking features 20000 14
+H&M ranking features 20000 15
+H&M ranking features 20000 16
+H&M ranking features 20000 17
+H&M ranking features 20000 18
+H&M ranking features 20000 19
+H&M ranking features 20000 20
+H&M ranker 20000 1 0.006934740537360572
+H&M ranker 20000 2 0.010874142441997954
+H&M ranker 20000 3 0.011172402578565091
+H&M candidate 100000-metadata epoch 1 valid 0.049262288143727614
+H&M candidate 100000-metadata epoch 2 valid 0.05219182657996458
+H&M candidate 100000-metadata epoch 3 valid 0.053858535063887936
+H&M candidate 100000-metadata epoch 4 valid 0.058990322719323765
+H&M candidate 100000-metadata epoch 5 valid 0.055933749545345905
+H&M ranking features 100000 1
+H&M ranking features 100000 2
+H&M ranking features 100000 3
+H&M ranking features 100000 4
+H&M ranking features 100000 5
+H&M ranking features 100000 6
+H&M ranking features 100000 7
+H&M ranking features 100000 8
+H&M ranking features 100000 9
+H&M ranking features 100000 10
+H&M ranking features 100000 11
+H&M ranking features 100000 12
+H&M ranking features 100000 13
+H&M ranking features 100000 14
+H&M ranking features 100000 15
+H&M ranking features 100000 16
+H&M ranking features 100000 17
+H&M ranking features 100000 18
+H&M ranking features 100000 19
+H&M ranking features 100000 20
+H&M ranking features 100000 21
+H&M ranking features 100000 22
+H&M ranking features 100000 23
+H&M ranking features 100000 24
+H&M ranking features 100000 25
+H&M ranking features 100000 26
+H&M ranking features 100000 27
+H&M ranking features 100000 28
+H&M ranking features 100000 29
+H&M ranking features 100000 30
+H&M ranking features 100000 31
+H&M ranking features 100000 32
+H&M ranking features 100000 33
+H&M ranking features 100000 34
+H&M ranking features 100000 35
+H&M ranking features 100000 36
+H&M ranking features 100000 37
+H&M ranking features 100000 38
+H&M ranking features 100000 39
+H&M ranking features 100000 40
+H&M ranking features 100000 41
+H&M ranking features 100000 42
+H&M ranking features 100000 43
+H&M ranking features 100000 44
+H&M ranking features 100000 45
+H&M ranking features 100000 46
+H&M ranking features 100000 47
+H&M ranking features 100000 48
+H&M ranking features 100000 49
+H&M ranking features 100000 50
+H&M ranking features 100000 51
+H&M ranking features 100000 52
+H&M ranking features 100000 53
+H&M ranking features 100000 54
+H&M ranking features 100000 55
+H&M ranking features 100000 56
+H&M ranking features 100000 57
+H&M ranking features 100000 58
+H&M ranking features 100000 59
+H&M ranking features 100000 60
+H&M ranking features 100000 61
+H&M ranking features 100000 62
+H&M ranking features 100000 63
+H&M ranking features 100000 64
+H&M ranking features 100000 65
+H&M ranking features 100000 66
+H&M ranking features 100000 67
+H&M ranking features 100000 68
+H&M ranking features 100000 69
+H&M ranking features 100000 70
+H&M ranking features 100000 71
+H&M ranking features 100000 72
+H&M ranking features 100000 73
+H&M ranking features 100000 74
+H&M ranking features 100000 75
+H&M ranking features 100000 76
+H&M ranking features 100000 77
+H&M ranking features 100000 78
+H&M ranking features 100000 79
+H&M ranking features 100000 80
+H&M ranking features 100000 81
+H&M ranking features 100000 82
+H&M ranking features 100000 83
+H&M ranking features 100000 84
+H&M ranking features 100000 85
+H&M ranking features 100000 86
+H&M ranking features 100000 87
+H&M ranking features 100000 88
+H&M ranking features 100000 89
+H&M ranking features 100000 90
+H&M ranking features 100000 91
+H&M ranking features 100000 92
+H&M ranking features 100000 93
+H&M ranking features 100000 94
+H&M ranking features 100000 95
+H&M ranking features 100000 96
+H&M ranking features 100000 97
+H&M ranking features 100000 98
+H&M ranking features 100000 99
+H&M ranking features 100000 100
+H&M ranker 100000 1 0.01570619851381774
+H&M ranker 100000 2 0.015271277082031087
+H&M ranker 100000 3 0.015048111922912024

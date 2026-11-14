@@ -1,0 +1,50 @@
+{
+  "train": {
+    "version": "linked-view-last-view-v3",
+    "rows": 180704,
+    "clicks": 45176,
+    "conversions": 3689,
+    "ctr_observed": 180581,
+    "cvr_observed": 45137,
+    "censored": 164,
+    "censored_cvr_negatives": 39,
+    "unassigned_purchases": 0,
+    "window_seconds": 1800,
+    "start": "2025-12-02T00:00:00+00:00",
+    "end": "2025-12-25T10:09:00.534000+00:00",
+    "ctr_proxy": "linked view; generator timestamps equal exposure timestamps",
+    "cvr_denominator": "observed linked clicked exposures only",
+    "same_timestamp_view_exposure": 45176,
+    "excluded_inputs": [
+      "position",
+      "impression_id",
+      "request_id",
+      "event_type",
+      "persona"
+    ]
+  },
+  "valid": {
+    "version": "linked-view-last-view-v3",
+    "rows": 22788,
+    "clicks": 5697,
+    "conversions": 432,
+    "ctr_observed": 22689,
+    "cvr_observed": 5667,
+    "censored": 132,
+    "censored_cvr_negatives": 30,
+    "unassigned_purchases": 0,
+    "window_seconds": 1800,
+    "start": "2025-12-25T10:09:18.105000+00:00",
+    "end": "2025-12-28T09:46:35.823000+00:00",
+    "ctr_proxy": "linked view; generator timestamps equal exposure timestamps",
+    "cvr_denominator": "observed linked clicked exposures only",
+    "same_timestamp_view_exposure": 50873,
+    "excluded_inputs": [
+      "position",
+      "impression_id",
+      "request_id",
+      "event_type",
+      "persona"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "fit_cutoff": "2020-05-06T23:59:59.999999999+00:00",
+  "modes": {
+    "text": {
+      "fit_products": 91927,
+      "components": 64,
+      "explained_variance": 0.7714168429374695
+    },
+    "image": {
+      "fit_products": 91501,
+      "components": 64,
+      "explained_variance": 0.805243730545044
+    }
+  },
+  "hashes": {
+    ".team/external-expansion-v3/hm_embeddings/text_features.npy": "33e30dae6511a662965c0c0ae8b45d4463d4ba78fce8a50e068406aa5165ba92",
+    ".team/external-expansion-v3/hm_embeddings/text_projection.npz": "0035bf76061d30c14dc5f35c5e1c105523ab8ead0deb3dc225102558884f987c",
+    ".team/external-expansion-v3/hm_embeddings/image_features.npy": "b5bc3e31ca631bd8663079e3d7af6f425b28188572659a4e269fa2db85b7d235",
+    ".team/external-expansion-v3/hm_embeddings/image_projection.npz": "6d9119269a7c3b6efdf48cbdfb87e53e272c736c4f0e1fbce89c52903f03a473"
+  },
+  "source_hashes": {
+    ".team/external-expansion-v3/hm_embeddings/text.npy": "0b40a1b79f81f353b18239737f950a5e539e7c079ac8c43485e26d1adaa06d2d",
+    ".team/external-expansion-v3/hm_embeddings/image.npy": "787445047c248bf99aed6c37f0c33544eaebccf80caa85d93f7031dac6db444a",
+    ".team/external-expansion-v3/hm_embeddings/ids.json": "ad86ffbd3ea764e6002b61522746b026a227b86060be825f0a71a006e4b2bfb1"
+  },
+  "scope": "train-available catalog only, no outcome labels; frozen 512D CLIP projected to the configured 64D candidate space for CPU training; full original vectors retained"
+}

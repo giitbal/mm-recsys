@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "data_fingerprint": "156ddd999aca1afd0e3f41e9e15d26f3d2d326c89f747f287fbfc51542f0b6b4",
+  "metrics": {
+    "v2_full_train_30_day_popularity": {
+      "recall_at_300": 0.061303605206287685,
+      "final_ndcg_at_50": 0.006574567262099457
+    },
+    "v3_valid_selected_multimodal": {
+      "recall_at_300": 0.05989194115016609,
+      "final_ndcg_at_50": 0.015305168230657872
+    }
+  },
+  "source_hashes": {
+    "docs/results/external/hm-v2/test.json": "494f1a501990726110db03a2651f8f82fe420f397757c1913383d7c68c366297",
+    "docs/results/external/expansion-v3/hm_test_100000_multimodal.json": "2e6d575b9c1b908c5a5ff975130add9f4d20f137122c9e248a007f559d0fbd5e",
+    "docs/results/external/expansion-v3/hm_selection.json": "b570e548f14c198bf6d900945c2a0cad0b39d10a15514643f84a0c92efd7bb32"
+  },
+  "scope": "Same already inspected v1 evaluation data and full-catalog K=300; training inputs differ: v2 all-source train sales counts vs v3 100k selected training customers; descriptive historical comparison, not a matched-data ablation or new selection"
+}
