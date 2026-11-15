@@ -168,3 +168,20 @@ DeepFM은 0.015075였다. 2만 명 metadata 조건의 test 제약 위반 3명과
 Retailrocket 조건부 전이의 test NLL은 0.727838에서 0.668306으로 낮아졌다.
 DeepFashion 2만 장 평가의 test Top-1/Top-5는 34.42%/75.40%, 속성 macro AP는
 0.051748이었다. 평가 가능한 test 카테고리는 43/50개, 속성은 913/1,000개다.
+# 가격·행동 현실성 후속 검증 — realism-v4
+
+`config/external_realism.yaml`과 `src/external_data/realism_run.py`로 가격 교정 및 행동 생성의 후속 실험을 수행한다.
+상세 수치·실패·채택 범위는 [realism-v4 보고서](results/external/realism-v4/report.md)에 기록한다.
+
+- 가격: H&M의 매핑 가능한 동일 카테고리·구매 건수 가중 평균을 양쪽 분모에 사용한다. 목표 상대가격을 기존 범위에 다시 곱하지 않고 목표/생성 결과 비율로 완만하게 보정한다. 범위 중앙값은 초기 추정일 뿐이며 실제 생성 구매 가격으로 반복 검증한다.
+- 행동: H&M은 28일, Retailrocket은 14일의 분리된 train/valid/test 창을 사용한다. 구매는 사용자·상품·날짜로 중복 제거하고 당일 반복을 재구매로 세지 않는다. Retailrocket 세션은 30분 비활동 기준으로 재구성하며 경계 검열·동시각 모호성을 기록한다.
+- 선택: 실제 train으로만 가격·활동량·시간·전이 파라미터를 추정한다. seed 41의 valid 지표로 가격 반복 횟수와 행동 조합을 선택한 뒤 소스·설정·입력·레시피 해시를 고정한다. seed 42/43/44의 결과와 기존에 확인한 real test를 후속 탐색으로 보고한다.
+- 비교: 기존 v3 동시 교정 레시피, 가격만, 행동만, 둘 다의 4조건을 새 데이터 경로에서 생성한다. 반복 구매·취향 변화는 활동량별 표본 수를 함께 보고하고 상품 수 및 이벤트 밀도 통제 실험을 분리한다.
+- 안전한 재현: `simulator.realism`은 명시적인 opt-in이다. 기존 설정의 이벤트 일치 검사를 수행하고 기본 경로의 데이터·모델을 교체하지 않는다. opt-in 생성기는 `4.5.0-realism`이며 기존 경로는 `4.4.0`을 유지한다. 과거 v1-v3 결과는 당시 commit의 측정 기록으로 보존하며, 소스 변경 후 예전 소스 동결 검증을 현재 소스에 통과한 것으로 간주하지 않는다.
+
+```bash
+OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 \
+  .venv/bin/python scripts/run_realism_validation.py --run
+```
+
+원본 CSV와 v3 준비 데이터가 선행돼야 한다. `.team/external-realism-v4/`의 plan·동결 해시가 달라지면 새 work/results 버전을 사용한다. 동결 이후 재튜닝을 위해 파일을 삭제하지 않는다. 새 데이터/모델은 운영 승격·full acceptance와 별개다.

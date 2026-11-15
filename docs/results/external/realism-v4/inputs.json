@@ -1,0 +1,26 @@
+{
+  "source_hashes": {
+    ".team/external-data-v1/hm_raw/articles.csv": "25f21882053517f7684ea43f524225a9481a7bb9aab9cf0abfc7fe8c4576a72b",
+    ".team/external-data-v1/hm_raw/transactions_train.csv": "fff5e3b35c1b26016aa0bf2231be9525bc766eed32c94f1653420b465aef84fa",
+    ".team/external-data-v1/retailrocket_raw/events.csv": "3745aa83238b1e6d44d8fda209807899f420084398f94ddf745f3cbcfecbf9e7"
+  },
+  "cohort_hash": "c88c100e400e8a6a790c5666f866167b6493a5b7130c75ae13f35e2c39488206",
+  "cohort_users": 100000,
+  "cache_hashes": {
+    ".team/external-realism-v4/prices_valid.parquet": "391d9e6f54df6b0d9e2476b10b04240357dc6526f75dfe728c7754a13fc34c80",
+    ".team/external-realism-v4/hm_train.parquet": "fed1966e1f7f2c62d969442465153d2dda89889408de70336abc2d75b4be12fc",
+    ".team/external-realism-v4/retail_test.parquet": "1bfd7685cc8ff94c5df9df0b2b203552753d75e01eaefc091aba1e0640c252f6",
+    ".team/external-realism-v4/hm_test.parquet": "00edba51e9ea62f3b11b4a15290cd7c29a85f8edba5f0646b7148a32215843da",
+    ".team/external-realism-v4/prices_train.parquet": "971714909f3f6bf44e5398be84164b415b6b77c0fb7bbe6719d84430d2144da0",
+    ".team/external-realism-v4/hm_valid.parquet": "0d2e542c1aaded41a750d7d7cc3aa2240254dbf1cfc6c5888b2428353309958a",
+    ".team/external-realism-v4/prices_test.parquet": "6b8d16ace2c32ba1b35bf5b239be6512e109f5db7d3d051e75669e5f7b01cea0",
+    ".team/external-realism-v4/retail_valid.parquet": "ccac87cf7bd6d2cc3db864b51e5dfd9e6c62ec7761a700952f3492549d0e4276",
+    ".team/external-realism-v4/retail_train.parquet": "195c4ed0634f4a5a041c72e15f747a2cdbc89525f0c5eb98c9d74ae4d22d3048"
+  },
+  "policy": "Real targets use disjoint trailing 28-day purchase / 14-day session windows; 100k preselected H&M users, all-source mapped transaction prices; active-only Retailrocket visitor roster",
+  "limitations": [
+    "Previously inspected real test is exploratory, not fresh holdout",
+    "H&M has dates, not click-session timestamps; purchase duplicates collapse per user-item-day",
+    "No causal elasticity, release dates, persona membership or cross-brand loyalty inference"
+  ]
+}

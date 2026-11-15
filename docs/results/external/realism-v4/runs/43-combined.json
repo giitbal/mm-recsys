@@ -1,0 +1,224 @@
+{
+  "name": "combined",
+  "seed": 43,
+  "data_fingerprint": "44fd70b734ccc6035e0139787cc4d5dacd88f902b11473181181e83c0fb1aeda",
+  "config_sha256": "8d2ce3c4e1861651e49bdbb6a28646c0b711980e415c4ed4a1e5f8a864dcef5b",
+  "actual": {
+    "price": {
+      "rows": 324,
+      "mean_price": 130070.98765432098,
+      "shares": {
+        "accessories": 0.12654320987654322,
+        "bottoms": 0.20987654320987653,
+        "footwear": 0.13580246913580246,
+        "outerwear": 0.14814814814814814,
+        "tops": 0.37962962962962965
+      },
+      "relative_means": {
+        "accessories": 0.5064776547677681,
+        "bottoms": 1.145641380677274,
+        "footwear": 1.1609045393066464,
+        "outerwear": 2.0043542225280593,
+        "tops": 0.6344878037205497
+      },
+      "relative_quantiles": {
+        "accessories": [
+          0.1922027382958024,
+          0.28446005267778757,
+          0.46897468144175786,
+          0.6304249816102319,
+          0.9379493628835157
+        ],
+        "bottoms": [
+          0.47666279097358993,
+          0.6803976935671405,
+          1.1993450869658069,
+          1.5741404266426215,
+          1.8758987257670314
+        ],
+        "footwear": [
+          0.48896376622452126,
+          0.649645255439812,
+          1.2185653607953872,
+          1.5779844814085378,
+          1.852834397171535
+        ],
+        "outerwear": [
+          0.7918752817787058,
+          1.0917115535201576,
+          1.9835322592126807,
+          2.792705787438009,
+          3.3366395368151296
+        ],
+        "tops": [
+          0.22295517642313079,
+          0.3536530384642764,
+          0.5919844339510714,
+          0.8726004318629428,
+          1.133227344992051
+        ]
+      }
+    },
+    "purchase": {
+      "start": "2025-12-04 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "unit": "unique user-product-day purchases; repeats strictly on later days",
+      "activity": {
+        "users": 1000,
+        "active_users": 226,
+        "events": 291,
+        "counts_quantiles": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          2.0
+        ],
+        "top10_share": 0.22336769759450173
+      },
+      "repeat_rate": 0.048109965635738834,
+      "repeat_by_activity": {
+        "1": {
+          "rows": 180,
+          "rate": 0.0
+        },
+        "2-4": {
+          "rows": 95,
+          "rate": 0.10526315789473684
+        },
+        "5-9": {
+          "rows": 16,
+          "rate": 0.25
+        }
+      },
+      "repurchase_gap_days": [
+        2.9000000000000004,
+        6.0,
+        7.5,
+        14.0,
+        14.700000000000001
+      ],
+      "purchase_day_gap": [
+        2.0,
+        3.0,
+        5.5,
+        11.75,
+        15.0
+      ],
+      "category_concentration": 0.7444444444444445,
+      "category_concentration_users": 3,
+      "half_window_category_tv": 0.16666666666666669,
+      "half_window_users": 2,
+      "mapped_purchase_rows": 291
+    },
+    "session": {
+      "start": "2025-12-18 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "events": 27075,
+      "activity": {
+        "users": 986,
+        "active_users": 986,
+        "events": 27075,
+        "counts_quantiles": [
+          13.0,
+          16.0,
+          18.0,
+          25.0,
+          46.0
+        ],
+        "top10_share": 0.35516158818097876
+      },
+      "sessions": 17501,
+      "complete_sessions": 17475,
+      "censored_sessions": 26,
+      "tied_event_rows": 0,
+      "length_quantiles": [
+        1.0,
+        1.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "duration_seconds": [
+        0.0,
+        0.0,
+        0.0,
+        48.687,
+        287.977109499
+      ],
+      "purchase_rate": 0.007610872675250358,
+      "within_gap_seconds": [
+        10.333,
+        25.885,
+        67.173,
+        183.735107499,
+        489.674
+      ]
+    },
+    "transitions": {
+      "view": {
+        "view": 0.3265979225111836,
+        "cart": 0.017362953976798847,
+        "purchase": 0.001743877473652286,
+        "exit": 0.6542952460383653
+      },
+      "cart": {
+        "view": 0.39090909090909093,
+        "cart": 0.15818181818181817,
+        "purchase": 0.16,
+        "exit": 0.2909090909090909
+      },
+      "purchase": {
+        "view": 0.3197278911564626,
+        "cart": 0.034013605442176874,
+        "purchase": 0.08843537414965986,
+        "exit": 0.5578231292517006
+      }
+    },
+    "transition_diagnostics": {
+      "events": 27075,
+      "visitors": 986,
+      "observed_transitions": 9574,
+      "observed_exits": 17501,
+      "ambiguous_same_timestamp_pairs": 0,
+      "ambiguous_tied_event_rows": 0,
+      "right_censored_events": 0
+    },
+    "events": 100000,
+    "products": 3000,
+    "users": 1000
+  },
+  "distances": {
+    "train": {
+      "price_mae": 0.11056546573829085,
+      "price_quantile_mae": 0.15468208266828296,
+      "category_tv": 0.27458810498948716,
+      "activity_top10_error": 0.02913704580098192,
+      "session_purchase_error": 3.9182951632115576e-05,
+      "session_length_error": 0.3,
+      "gap_error": 0.1557281329922,
+      "behavior_objective": 0.12122609043620351
+    },
+    "valid": {
+      "price_mae": 0.09447966977999263,
+      "price_quantile_mae": 0.15126117168734446,
+      "category_tv": 0.2646747621541663,
+      "activity_top10_error": 0.02804985496653256,
+      "session_purchase_error": 0.0008156810662129374,
+      "session_length_error": 0.3,
+      "gap_error": 0.13250210587483255,
+      "behavior_objective": 0.11534191047689452
+    },
+    "test": {
+      "price_mae": 0.14770186091641146,
+      "price_quantile_mae": 0.17568544138947167,
+      "category_tv": 0.24008129761424918,
+      "activity_top10_error": 0.026709380344670852,
+      "session_purchase_error": 4.017709077426806e-05,
+      "session_length_error": 0.3,
+      "gap_error": 0.1499721832363603,
+      "behavior_objective": 0.11918043516795135
+    }
+  },
+  "seconds": 5.564902948000054
+}

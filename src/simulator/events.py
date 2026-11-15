@@ -34,13 +34,23 @@ def make_events(cfg: dict, products: pd.DataFrame, users: pd.DataFrame,
     ref=pd.Timestamp(sim['reference_time']).value
     start=ref-pd.Timedelta(days=sim['window_days']).value
     cold_limit=sim['cold_max_events'];choice=sim['choice_model'];alpha=choice['zipf_alpha']
+    realism=sim.get('realism')
+    observable_count=np.zeros(n,dtype=int)
+    activity_weights=None
+    if realism:
+        from src.external_data.realism_behavior import validate
+        validate(realism)
+        if realism['activity']:
+            activity_weights=rng.choice(realism['activity_quantiles'],size=n)
     arrivals=np.zeros(n,dtype=np.int64)
     arrivals[cold]=rng.integers(0,max(1,total-n*cold_limit),size=int(cold.sum()))
     interval=int(pd.Timedelta(seconds=sim['event_interval_seconds']).value)
     last_time=np.full(n,start-interval,dtype=np.int64)
     warm_users=max(1,int((~cold).sum()))
-    max_rounds=(total+warm_users-1)//warm_users+1
-    session_budget=max_rounds*interval
+    round_size=max(1,n//10) if activity_weights is not None else n
+    max_rounds=(total+min(warm_users,round_size)-1)//min(warm_users,round_size)+1
+    reserve_interval=int(1e9*np.mean(realism['within_gap_quantiles'])) if realism and realism['timing'] else interval
+    session_budget=max_rounds*reserve_interval
     if session_budget>=ref-start:
         raise ValueError('session intervals do not fit inside the simulator window')
     rows=[];impression_rows=[];offset=0
@@ -50,11 +60,20 @@ def make_events(cfg: dict, products: pd.DataFrame, users: pd.DataFrame,
         active=np.flatnonzero((~cold)|((seen_count<cold_limit)&(arrivals<=offset)))
         if len(active)==0:
             raise ValueError('no eligible users for requested event count')
-        ids=rng.permutation(active)[:total-offset];m=len(ids)
+        if activity_weights is None:
+            ids=rng.permutation(active)[:total-offset]
+        else:
+            weights=activity_weights[active];weights=weights/weights.sum()
+            ids=rng.choice(active,size=min(round_size,len(active),total-offset),replace=False,p=weights)
+        m=len(ids)
         # Divide first: multiplying a nanosecond window by event indices overflows int64.
         now=start+np.arange(offset,offset+m,dtype=np.int64)*step_ns
         fresh=(states[ids]=='search')|(states[ids]=='exit')
-        now=np.where(fresh,np.maximum(now,last_time[ids]+interval),last_time[ids]+interval)
+        elapsed=np.full(m,interval,dtype=np.int64)
+        if realism and realism['timing']:
+            elapsed=np.maximum(1,(rng.choice(realism['within_gap_quantiles'],size=m)*1e9).astype(np.int64))
+            elapsed=np.where(states[ids]=='exit',np.maximum(elapsed,int((realism['session_seconds']+1)*1e9)),elapsed)
+        now=np.where(fresh,np.maximum(now,last_time[ids]+elapsed),last_time[ids]+elapsed)
         last_time[ids]=now
         fresh_ids=ids[fresh]
         if len(fresh_ids):
@@ -113,6 +132,16 @@ def make_events(cfg: dict, products: pd.DataFrame, users: pd.DataFrame,
                     impression_rows.append((f'I{idx:09d}-{rank-1}',f'R{idx:09d}',user_ids[u],product_ids[item],int(now[pos]),rank))
         # Persona-dependent transitions: conversion parameters affect actual purchase outcomes.
         for state in ['search','view','cart','purchase']:
+            if realism and realism['transition'] and state!='search':
+                from src.external_data.realism_behavior import conditional_rows
+                group=ids[event_types==state]
+                if len(group):
+                    rows_p=conditional_rows(realism,observable_count[group],state)
+                    # These are already observed transition probabilities: do not apply persona CVR twice.
+                    draws=rng.random(len(group))
+                    indices=(draws[:,None]>np.cumsum(rows_p,axis=1)).sum(axis=1)
+                    states[group]=np.array(['view','cart','purchase','exit'])[np.minimum(indices,3)]
+                continue
             for persona,spec in sim['personas'].items():
                 group=ids[(event_types==state)&(personas[ids]==persona)]
                 if not len(group):continue
@@ -122,9 +151,12 @@ def make_events(cfg: dict, products: pd.DataFrame, users: pd.DataFrame,
                     transitions['purchase'] *= spec['cvr'] / sim['cart_reference_cvr']
                 labels=list(transitions);probs=np.array(list(transitions.values()),dtype=float);probs/=probs.sum()
                 states[group]=rng.choice(labels,len(group),p=probs)
+        observable_count[ids]+=np.isin(event_types,['view','cart','purchase']).astype(int)
         seen_count[ids]+=1;offset+=m
     events=pd.DataFrame(rows,columns=['event_id','user_id','product_id','event_type','timestamp','session_id','query','impression_id','position'])
     events['timestamp']=pd.to_datetime(events.timestamp,utc=True)
+    if realism and events.timestamp.max().value>=ref:
+        raise ValueError('realism event times exceed configured window; choose a larger window or lower density')
     impressions=pd.DataFrame(impression_rows,columns=['impression_id','request_id','user_id','product_id','exposed_at','position'])
     impressions['exposed_at']=pd.to_datetime(impressions.exposed_at,utc=True)
     return (events.sort_values(['timestamp','event_id'],kind='stable').reset_index(drop=True),

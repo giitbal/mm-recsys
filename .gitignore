@@ -26,3 +26,5 @@ docs/results/integration/runtime/
 docs/results/**/analysis/
 docs/results/docker/runtime-v*/
 docs/results/experiments/**/raw/
+# Transient training JSON is copied to the reviewed training_reports directory.
+docs/results/external/realism-v4/models/

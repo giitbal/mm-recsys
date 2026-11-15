@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "scale": "dev",
+  "split": "valid",
+  "classification": {
+    "ctr": {
+      "auc": 0.942504586081559,
+      "auc_status": "MEASURED",
+      "logloss": 0.6932294193386727,
+      "samples": 23607,
+      "positives": 5946,
+      "denominator": "observed exposures"
+    },
+    "cvr": {
+      "auc": 0.46684217257844474,
+      "auc_status": "MEASURED",
+      "logloss": 0.11513166689005747,
+      "samples": 5888,
+      "positives": 24,
+      "denominator": "observed clicked exposures"
+    }
+  },
+  "labels": {
+    "version": "linked-view-last-view-v3",
+    "rows": 23784,
+    "clicks": 5946,
+    "conversions": 24,
+    "ctr_observed": 23607,
+    "cvr_observed": 5888,
+    "censored": 236,
+    "censored_cvr_negatives": 58,
+    "unassigned_purchases": 0,
+    "window_seconds": 1800,
+    "start": "2025-12-26T01:48:45.063000+00:00",
+    "end": "2025-12-28T21:03:06.546000+00:00",
+    "ctr_proxy": "linked view; generator timestamps equal exposure timestamps",
+    "cvr_denominator": "observed linked clicked exposures only",
+    "same_timestamp_view_exposure": 53478,
+    "excluded_inputs": [
+      "position",
+      "impression_id",
+      "request_id",
+      "event_type",
+      "persona"
+    ]
+  },
+  "metrics": {
+    "two_tower": {
+      "hit_rate_at_50": 0.75,
+      "ndcg_at_50": 0.4224647857447473,
+      "coverage": 0.948,
+      "unique_recommended_items": 2844
+    },
+    "deepfm": {
+      "hit_rate_at_50": 0.6574074074074074,
+      "ndcg_at_50": 0.28843953479083784,
+      "coverage": 0.873,
+      "unique_recommended_items": 2619
+    }
+  },
+  "deepfm_absolute_lift": {
+    "hit_rate_at_50": -0.09259259259259256,
+    "ndcg_at_50": -0.13402525095390944,
+    "coverage": -0.07499999999999996
+  },
+  "truth_users": 108,
+  "coverage_users": 1000,
+  "cold_users": 30,
+  "catalog_items": 3000,
+  "data_counts": {
+    "products": 3000,
+    "users": 1000,
+    "events": 100000,
+    "impressions": 236164
+  },
+  "cutoff": "2025-12-26T01:48:08.547000+00:00",
+  "contract": "fixed origin; nonempty unique cart/purchase truth; unavailable truth retained; coverage denominator full catalog",
+  "session_evaluation": "no within-evaluation session clicks in fixed-origin metrics; live adaptation tested separately",
+  "b5_constraint_violations": 0,
+  "data_fingerprint": "df7676aeadd8b2f40522c7f26ab4ba40cad97014f4e82eef806a909e7f6bc621",
+  "b5_infeasible_candidate_pools": 0,
+  "b5_feasible_pool_violations": 0,
+  "b5_violation_types": {},
+  "b5_violation_examples": [],
+  "scoring": {
+    "strategy": "ctr"
+  },
+  "config_fingerprint": "c2f5a334b863b7d2c067de4986b4aefe45869566770d3db3f60a79099ec028d5",
+  "ranking_model_sha256": "9c297ed185773d49cbc2d9a9190eed640a1e2298f13ac190d2e3d88b28e71575",
+  "candidate_model_sha256": "b4b788b4eb007033f1b4bc7ea3b86291bbc89bccae8588fdb3daffe855450440",
+  "elapsed_seconds": 13.703046027000028,
+  "checks": {
+    "ctr_auc": true,
+    "hit_rate_at_50": true,
+    "ndcg_at_50": true,
+    "coverage": true
+  }
+}

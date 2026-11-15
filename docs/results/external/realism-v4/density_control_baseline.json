@@ -1,0 +1,190 @@
+{
+  "name": "baseline",
+  "events": 500000,
+  "actual": {
+    "price": {
+      "rows": 1683,
+      "mean_price": 123467.61734997029,
+      "shares": {
+        "accessories": 0.1408199643493761,
+        "bottoms": 0.25430778371954843,
+        "footwear": 0.13368983957219252,
+        "outerwear": 0.1467617349970291,
+        "tops": 0.3244206773618538
+      },
+      "relative_means": {
+        "accessories": 0.3542499447486349,
+        "bottoms": 0.7096340263986445,
+        "footwear": 1.233215846310805,
+        "outerwear": 3.1355072005765856,
+        "tops": 0.44574277625202574
+      },
+      "relative_quantiles": {
+        "accessories": [
+          0.09395176038037308,
+          0.1700850834472271,
+          0.332070877206491,
+          0.4940566709657549,
+          0.6884396234768716
+        ],
+        "bottoms": [
+          0.2672765597027854,
+          0.39686519471019654,
+          0.664141754412982,
+          0.996212631619473,
+          1.2553899016342953
+        ],
+        "footwear": [
+          0.42116306377408613,
+          0.664141754412982,
+          1.1662977150667,
+          1.822340179791719,
+          2.2645613967545093
+        ],
+        "outerwear": [
+          1.1144622610637356,
+          1.7332479932241238,
+          2.697063466091744,
+          4.640892991202911,
+          5.531814856878862
+        ],
+        "tops": [
+          0.1619857937592639,
+          0.2672765597027854,
+          0.42926235346204933,
+          0.6074467265972396,
+          0.7613332306685403
+        ]
+      }
+    },
+    "purchase": {
+      "start": "2025-12-04 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "unit": "unique user-product-day purchases; repeats strictly on later days",
+      "activity": {
+        "users": 1000,
+        "active_users": 757,
+        "events": 1500,
+        "counts_quantiles": [
+          1.0,
+          1.0,
+          2.0,
+          3.0,
+          3.0
+        ],
+        "top10_share": 0.21733333333333332
+      },
+      "repeat_rate": 0.108,
+      "repeat_by_activity": {
+        "1": {
+          "rows": 317,
+          "rate": 0.0
+        },
+        "2-4": {
+          "rows": 1081,
+          "rate": 0.12488436632747456
+        },
+        "5-9": {
+          "rows": 102,
+          "rate": 0.2647058823529412
+        }
+      },
+      "repurchase_gap_days": [
+        2.0,
+        3.0,
+        7.0,
+        12.0,
+        17.0
+      ],
+      "purchase_day_gap": [
+        1.0,
+        3.0,
+        6.0,
+        10.0,
+        15.100000000000023
+      ],
+      "category_concentration": 0.9165343915343915,
+      "category_concentration_users": 18,
+      "half_window_category_tv": 0.13906249999999998,
+      "half_window_users": 32,
+      "mapped_purchase_rows": 1500
+    },
+    "session": {
+      "start": "2025-12-18 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "events": 149974,
+      "activity": {
+        "users": 987,
+        "active_users": 987,
+        "events": 149974,
+        "counts_quantiles": [
+          149.0,
+          152.0,
+          155.0,
+          157.0,
+          160.0
+        ],
+        "top10_share": 0.10679184391961273
+      },
+      "sessions": 95482,
+      "complete_sessions": 95328,
+      "censored_sessions": 154,
+      "tied_event_rows": 0,
+      "length_quantiles": [
+        1.0,
+        1.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "duration_seconds": [
+        0.0,
+        0.0,
+        0.0,
+        60.0,
+        120.0
+      ],
+      "purchase_rate": 0.007615810674723061,
+      "within_gap_seconds": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+      ]
+    },
+    "transitions": {
+      "view": {
+        "view": 0.3351464664456197,
+        "cart": 0.018366536048009207,
+        "purchase": 0.001671553448606582,
+        "exit": 0.6448154440577645
+      },
+      "cart": {
+        "view": 0.3992502343017807,
+        "cart": 0.16119962511715089,
+        "purchase": 0.1521399562636676,
+        "exit": 0.2874101843174008
+      },
+      "purchase": {
+        "view": 0.3620474406991261,
+        "cart": 0.004993757802746567,
+        "purchase": 0.08739076154806492,
+        "exit": 0.5455680399500624
+      }
+    },
+    "transition_diagnostics": {
+      "events": 149974,
+      "visitors": 987,
+      "observed_transitions": 54492,
+      "observed_exits": 95482,
+      "ambiguous_same_timestamp_pairs": 0,
+      "ambiguous_tied_event_rows": 0,
+      "right_censored_events": 0
+    },
+    "events": 500000,
+    "products": 3000,
+    "users": 1000
+  },
+  "scope": "Additional diagnostic at fixed 28-day window / 1000 users / 3000 products; cannot pool with 100k-event quality scores; no parameter reselection."
+}

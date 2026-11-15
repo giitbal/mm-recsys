@@ -1,0 +1,220 @@
+{
+  "name": "price",
+  "seed": 42,
+  "data_fingerprint": "2290f18837f68a9bf35dd7316516ed2cb4e5bf28bc3029dddaf21d367b127f7b",
+  "config_sha256": "734bb0da231da618830de901fcc95172b0d7db257ac332f3c4911fce12d66ff7",
+  "actual": {
+    "price": {
+      "rows": 358,
+      "mean_price": 127357.54189944133,
+      "shares": {
+        "accessories": 0.164804469273743,
+        "bottoms": 0.25139664804469275,
+        "footwear": 0.1787709497206704,
+        "outerwear": 0.08659217877094973,
+        "tops": 0.31843575418994413
+      },
+      "relative_means": {
+        "accessories": 0.49986059717937914,
+        "bottoms": 1.0495386819903203,
+        "footwear": 1.3142134930034655,
+        "outerwear": 2.134959749938801,
+        "tops": 0.7347046279558176
+      },
+      "relative_quantiles": {
+        "accessories": [
+          0.13662323989998687,
+          0.23948326534193098,
+          0.45541079966662285,
+          0.7145238408562531,
+          0.9736368820458834
+        ],
+        "bottoms": [
+          0.3996622362591569,
+          0.5653375444137387,
+          0.9422292406895645,
+          1.4800850989165242,
+          1.9017326841251045
+        ],
+        "footwear": [
+          0.4161512479712243,
+          0.5653375444137387,
+          1.2563056542527526,
+          2.1102009036276703,
+          2.3163135500285126
+        ],
+        "outerwear": [
+          0.8244505856033689,
+          1.220972057726894,
+          1.884458481379129,
+          2.9209106461376497,
+          3.7453612317410188
+        ],
+        "tops": [
+          0.2512611308505505,
+          0.343521077334737,
+          0.6674123788217748,
+          1.003081545817432,
+          1.3363951397113658
+        ]
+      }
+    },
+    "purchase": {
+      "start": "2025-12-04 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "unit": "unique user-product-day purchases; repeats strictly on later days",
+      "activity": {
+        "users": 1000,
+        "active_users": 277,
+        "events": 323,
+        "counts_quantiles": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          2.0
+        ],
+        "top10_share": 0.19504643962848298
+      },
+      "repeat_rate": 0.02476780185758514,
+      "repeat_by_activity": {
+        "1": {
+          "rows": 238,
+          "rate": 0.0
+        },
+        "2-4": {
+          "rows": 85,
+          "rate": 0.09411764705882353
+        }
+      },
+      "repurchase_gap_days": [
+        1.7000000000000002,
+        5.0,
+        8.0,
+        10.25,
+        12.5
+      ],
+      "purchase_day_gap": [
+        2.0,
+        4.0,
+        7.0,
+        11.0,
+        17.5
+      ],
+      "category_concentration": null,
+      "category_concentration_users": 0,
+      "half_window_category_tv": null,
+      "half_window_users": 0,
+      "mapped_purchase_rows": 323
+    },
+    "session": {
+      "start": "2025-12-18 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "events": 29561,
+      "activity": {
+        "users": 987,
+        "active_users": 987,
+        "events": 29561,
+        "counts_quantiles": [
+          28.0,
+          29.0,
+          30.0,
+          32.0,
+          33.0
+        ],
+        "top10_share": 0.11302053381144075
+      },
+      "sessions": 18957,
+      "complete_sessions": 18925,
+      "censored_sessions": 32,
+      "tied_event_rows": 0,
+      "length_quantiles": [
+        1.0,
+        1.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "duration_seconds": [
+        0.0,
+        0.0,
+        0.0,
+        60.0,
+        120.0
+      ],
+      "purchase_rate": 0.007661822985468956,
+      "within_gap_seconds": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+      ]
+    },
+    "transitions": {
+      "view": {
+        "view": 0.33030903465776756,
+        "cart": 0.018632460805784404,
+        "purchase": 0.0016685785796224841,
+        "exit": 0.6493899259568255
+      },
+      "cart": {
+        "view": 0.37381703470031546,
+        "cart": 0.1498422712933754,
+        "purchase": 0.15457413249211358,
+        "exit": 0.3217665615141956
+      },
+      "purchase": {
+        "view": 0.44375,
+        "cart": 0.01875,
+        "purchase": 0.0875,
+        "exit": 0.45
+      }
+    },
+    "transition_diagnostics": {
+      "events": 29561,
+      "visitors": 987,
+      "observed_transitions": 10604,
+      "observed_exits": 18957,
+      "ambiguous_same_timestamp_pairs": 0,
+      "ambiguous_tied_event_rows": 0,
+      "right_censored_events": 0
+    },
+    "events": 100000,
+    "products": 3000,
+    "users": 1000
+  },
+  "distances": {
+    "train": {
+      "price_mae": 0.0729159385858632,
+      "price_quantile_mae": 0.22021432135655633,
+      "category_tv": 0.29426187559435646,
+      "activity_top10_error": 0.2712781001705199,
+      "session_purchase_error": 9.013326185071391e-05,
+      "session_length_error": 0.3,
+      "gap_error": 1.3095805886837142,
+      "behavior_objective": 0.4702372055290212
+    },
+    "valid": {
+      "price_mae": 0.10134024505919519,
+      "price_quantile_mae": 0.18271539082551627,
+      "category_tv": 0.28434853275903565,
+      "activity_top10_error": 0.2701909093360706,
+      "session_purchase_error": 0.0007647307559943391,
+      "session_length_error": 0.3,
+      "gap_error": 1.3749183100182676,
+      "behavior_objective": 0.4864684875275831
+    },
+    "test": {
+      "price_mae": 0.0748134335258559,
+      "price_quantile_mae": 0.16897520666262542,
+      "category_tv": 0.2597550682191185,
+      "activity_top10_error": 0.2688504347142089,
+      "session_purchase_error": 9.112740099286639e-05,
+      "session_length_error": 0.3,
+      "gap_error": 1.342710682535994,
+      "behavior_objective": 0.47791306116279897
+    }
+  },
+  "seconds": 5.072607868999967
+}

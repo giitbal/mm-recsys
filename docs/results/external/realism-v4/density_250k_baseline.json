@@ -1,0 +1,190 @@
+{
+  "name": "baseline",
+  "events": 250000,
+  "actual": {
+    "price": {
+      "rows": 872,
+      "mean_price": 130297.01834862385,
+      "shares": {
+        "accessories": 0.13646788990825687,
+        "bottoms": 0.231651376146789,
+        "footwear": 0.14220183486238533,
+        "outerwear": 0.14793577981651376,
+        "tops": 0.34174311926605505
+      },
+      "relative_means": {
+        "accessories": 0.33007972021486226,
+        "bottoms": 0.7098784813131328,
+        "footwear": 1.1414986532522815,
+        "outerwear": 3.242621215157335,
+        "tops": 0.4345003030557029
+      },
+      "relative_quantiles": {
+        "accessories": [
+          0.09209727246323238,
+          0.15733284045802198,
+          0.2839665900949665,
+          0.47967329407933534,
+          0.6753799980637042
+        ],
+        "bottoms": [
+          0.2241033629938655,
+          0.40676295337927637,
+          0.6677052253584348,
+          0.9977204516850174,
+          1.2041718374567636
+        ],
+        "footwear": [
+          0.399088180674007,
+          0.5813640324241545,
+          1.1588906784956743,
+          1.675019142925039,
+          1.9724165852542268
+        ],
+        "outerwear": [
+          1.209544178350452,
+          1.788222040327762,
+          2.916413628002359,
+          4.489742032582579,
+          5.519696529629728
+        ],
+        "tops": [
+          0.14582068140011795,
+          0.2225684084528116,
+          0.4182751124371804,
+          0.6120631232452319,
+          0.7751520432322059
+        ]
+      }
+    },
+    "purchase": {
+      "start": "2025-12-04 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "unit": "unique user-product-day purchases; repeats strictly on later days",
+      "activity": {
+        "users": 1000,
+        "active_users": 508,
+        "events": 769,
+        "counts_quantiles": [
+          1.0,
+          1.0,
+          1.0,
+          2.0,
+          2.0
+        ],
+        "top10_share": 0.2106631989596879
+      },
+      "repeat_rate": 0.07672301690507152,
+      "repeat_by_activity": {
+        "1": {
+          "rows": 307,
+          "rate": 0.0
+        },
+        "2-4": {
+          "rows": 457,
+          "rate": 0.12691466083150985
+        },
+        "5-9": {
+          "rows": 5,
+          "rate": 0.2
+        }
+      },
+      "repurchase_gap_days": [
+        2.0,
+        4.0,
+        9.0,
+        15.5,
+        19.200000000000003
+      ],
+      "purchase_day_gap": [
+        2.0,
+        4.0,
+        7.0,
+        13.0,
+        19.0
+      ],
+      "category_concentration": 1.0,
+      "category_concentration_users": 1,
+      "half_window_category_tv": 0.4,
+      "half_window_users": 5,
+      "mapped_purchase_rows": 769
+    },
+    "session": {
+      "start": "2025-12-18 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "events": 74909,
+      "activity": {
+        "users": 987,
+        "active_users": 987,
+        "events": 74909,
+        "counts_quantiles": [
+          73.0,
+          75.0,
+          77.0,
+          79.0,
+          81.0
+        ],
+        "top10_share": 0.10821129637293249
+      },
+      "sessions": 47978,
+      "complete_sessions": 47903,
+      "censored_sessions": 75,
+      "tied_event_rows": 0,
+      "length_quantiles": [
+        1.0,
+        1.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "duration_seconds": [
+        0.0,
+        0.0,
+        0.0,
+        60.0,
+        120.0
+      ],
+      "purchase_rate": 0.00832933219213828,
+      "within_gap_seconds": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+      ]
+    },
+    "transitions": {
+      "view": {
+        "view": 0.3299187081182028,
+        "cart": 0.018963528507085575,
+        "purchase": 0.001785125782708997,
+        "exit": 0.6493326375920027
+      },
+      "cart": {
+        "view": 0.40258939580764486,
+        "cart": 0.1442663378545006,
+        "purchase": 0.16707768187422933,
+        "exit": 0.28606658446362515
+      },
+      "purchase": {
+        "view": 0.36069114470842334,
+        "cart": 0.01511879049676026,
+        "purchase": 0.13390928725701945,
+        "exit": 0.490280777537797
+      }
+    },
+    "transition_diagnostics": {
+      "events": 74909,
+      "visitors": 987,
+      "observed_transitions": 26931,
+      "observed_exits": 47978,
+      "ambiguous_same_timestamp_pairs": 0,
+      "ambiguous_tied_event_rows": 0,
+      "right_censored_events": 0
+    },
+    "events": 250000,
+    "products": 3000,
+    "users": 1000
+  },
+  "scope": "Matched density diagnostic after 500k timestamp-limit failure; no parameter reselection or model training on this diagnostic"
+}

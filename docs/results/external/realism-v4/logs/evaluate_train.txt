@@ -1,0 +1,35 @@
+[2026-11-15T06:57:32+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/42-baseline/data
+Evaluated 42 baseline {'price_mae': 0.5004925549732955, 'price_quantile_mae': 0.48412916768509284, 'category_tv': 0.24600975784378468, 'activity_top10_error': 0.26895736402807113, 'session_purchase_error': 0.0006522905144998549, 'session_length_error': 0.3, 'gap_error': 1.342710682535994, 'behavior_objective': 0.4780800842696412}
+[2026-11-15T06:57:37+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/42-price/data
+Evaluated 42 price {'price_mae': 0.0748134335258559, 'price_quantile_mae': 0.16897520666262542, 'category_tv': 0.2597550682191185, 'activity_top10_error': 0.2688504347142089, 'session_purchase_error': 9.112740099286639e-05, 'session_length_error': 0.3, 'gap_error': 1.342710682535994, 'behavior_objective': 0.47791306116279897}
+[2026-11-15T06:57:42+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/42-behavior/data
+Evaluated 42 behavior {'price_mae': 0.4433808032408427, 'price_quantile_mae': 0.41121519813714097, 'category_tv': 0.25972445675512523, 'activity_top10_error': 0.013875972757168897, 'session_purchase_error': 0.001128463304796868, 'session_length_error': 0.3, 'gap_error': 0.1499721832363603, 'behavior_objective': 0.11624415482458152}
+[2026-11-15T06:57:48+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/42-combined/data
+Evaluated 42 combined {'price_mae': 0.21298605385799138, 'price_quantile_mae': 0.24136102106702012, 'category_tv': 0.25972445675512523, 'activity_top10_error': 0.013875972757168897, 'session_purchase_error': 0.001128463304796868, 'session_length_error': 0.3, 'gap_error': 0.1499721832363603, 'behavior_objective': 0.11624415482458152}
+[2026-11-15T06:57:53+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/43-baseline/data
+Evaluated 43 baseline {'price_mae': 0.5328402743554456, 'price_quantile_mae': 0.5068291661769823, 'category_tv': 0.2789922323585173, 'activity_top10_error': 0.268934971234759, 'session_purchase_error': 4.2002312916649374e-05, 'session_length_error': 0.3, 'gap_error': 1.342710682535994, 'behavior_objective': 0.47792191402091744}
+[2026-11-15T06:57:59+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/43-price/data
+Evaluated 43 price {'price_mae': 0.14310974409389204, 'price_quantile_mae': 0.17934425117909883, 'category_tv': 0.2789922323585173, 'activity_top10_error': 0.268934971234759, 'session_purchase_error': 4.2002312916649374e-05, 'session_length_error': 0.3, 'gap_error': 1.342710682535994, 'behavior_objective': 0.47792191402091744}
+[2026-11-15T06:58:05+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/43-behavior/data
+Evaluated 43 behavior {'price_mae': 0.4325904110305598, 'price_quantile_mae': 0.42392279947547024, 'category_tv': 0.242490696260207, 'activity_top10_error': 0.02773507487720056, 'session_purchase_error': 0.0007609674013573488, 'session_length_error': 0.3, 'gap_error': 0.1499721832363603, 'behavior_objective': 0.11961705637872955}
+[2026-11-15T06:58:11+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/43-combined/data
+Evaluated 43 combined {'price_mae': 0.14770186091641146, 'price_quantile_mae': 0.17568544138947167, 'category_tv': 0.24008129761424918, 'activity_top10_error': 0.026709380344670852, 'session_purchase_error': 4.017709077426806e-05, 'session_length_error': 0.3, 'gap_error': 0.1499721832363603, 'behavior_objective': 0.11918043516795135}
+[2026-11-15T06:58:16+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/44-baseline/data
+Evaluated 44 baseline {'price_mae': 0.5290006116712006, 'price_quantile_mae': 0.4956891070539027, 'category_tv': 0.23787149412239442, 'activity_top10_error': 0.26888465972803544, 'session_purchase_error': 0.0003707796710852975, 'session_length_error': 0.3, 'gap_error': 1.342710682535994, 'behavior_objective': 0.4779915304837787}
+[2026-11-15T06:58:21+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/44-price/data
+Evaluated 44 price {'price_mae': 0.16923621208964756, 'price_quantile_mae': 0.19064008713964603, 'category_tv': 0.250175705747873, 'activity_top10_error': 0.26875676994889597, 'session_purchase_error': 0.0002131172788212652, 'session_length_error': 0.3, 'gap_error': 1.342710682535994, 'behavior_objective': 0.47792014244092784}
+[2026-11-15T06:58:26+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/44-behavior/data
+Evaluated 44 behavior {'price_mae': 0.5005388667680265, 'price_quantile_mae': 0.4676621786809524, 'category_tv': 0.2121175909356831, 'activity_top10_error': 0.027819914141631874, 'session_purchase_error': 0.00031769729778277113, 'session_length_error': 0.3, 'gap_error': 0.15596458000717994, 'behavior_objective': 0.12102554786164864}
+[2026-11-15T06:58:33+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-realism-v4/runs/44-combined/data
+Evaluated 44 combined {'price_mae': 0.10852246094466549, 'price_quantile_mae': 0.21053763776998932, 'category_tv': 0.2038205992881112, 'activity_top10_error': 0.026798772358878287, 'session_purchase_error': 0.0012394156392331055, 'session_length_error': 0.3, 'gap_error': 0.17223098010825855, 'behavior_objective': 0.12506729202659247}
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/home/peachpetal/ecommerce/mm-recsys/src/external_data/realism_run.py", line 179, in evaluate
+    actual=measure(cfg,*simulate(cfg))
+                        ^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/external_data/realism_run.py", line 44, in simulate
+    events, _ = make_events(cfg, products, users, rng)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/simulator/events.py", line 159, in make_events
+    raise ValueError('realism event times exceed configured window; choose a larger window or lower density')
+ValueError: realism event times exceed configured window; choose a larger window or lower density

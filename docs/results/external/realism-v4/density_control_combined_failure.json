@@ -1,0 +1,11 @@
+{
+  "status": "FAIL",
+  "events": 500000,
+  "users": 1000,
+  "products": 3000,
+  "seed": 42,
+  "window_days": 28,
+  "error": "realism event times exceed configured window; choose a larger window or lower density",
+  "source_log": "docs/results/external/realism-v4/logs/evaluate_train.txt",
+  "interpretation": "Timestamp safety guard rejected high-density simulation; invalid events were not published or trained. No frozen model/recipe modified. Additional matched density diagnostic uses 250000 events for both conditions and does not select parameters."
+}

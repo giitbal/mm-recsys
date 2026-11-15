@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "scope": "Unmodified v3 seed42 combined recipe produces identical event rows under current generator when realism is absent",
+  "events": 100000
+}

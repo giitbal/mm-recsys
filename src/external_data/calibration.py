@@ -15,6 +15,24 @@ from src.external_data.retailrocket import transition_counts, probabilities
 from src.simulator.generate import generate
 
 
+def correct_price_ranges(cfg: dict, target: dict, observed: dict, damping: float = .7) -> dict:
+    """Correct existing relative prices, rather than multiply in the target twice."""
+    if not 0 < damping <= 1:
+        raise ValueError('price damping must be in (0, 1]')
+    result = copy.deepcopy(cfg)
+    ranges = result['simulator']['category_price_ranges']
+    if set(ranges) != set(target) or set(ranges) != set(observed):
+        raise ValueError('price correction must cover all categories')
+    for name, limits in ranges.items():
+        values = np.array([target[name], observed[name], *limits], dtype=float)
+        if not np.isfinite(values).all() or (values <= 0).any() or limits[1] <= limits[0]:
+            raise ValueError('invalid relative prices or ranges')
+        factor = float((target[name] / observed[name]) ** damping)
+        low = max(1000, int(limits[0] * factor))
+        ranges[name] = [low, max(low + 1000, int(limits[1] * factor))]
+    return result
+
+
 def calibrated_config(base: dict, hm: dict, retail: dict, blend: float) -> dict:
     cfg = copy.deepcopy(base)
     sim = cfg['simulator']
@@ -25,10 +43,15 @@ def calibrated_config(base: dict, hm: dict, retail: dict, blend: float) -> dict:
     for persona in sim['personas'].values():
         mixed = (1 - blend) * np.array(persona['category_preferences']) + blend * target
         persona['category_preferences'] = (mixed / mixed.sum()).tolist()
-    # Preserve the simulator's monetary unit; H&M prices only adjust relative ranges.
-    for name, limits in sim['category_price_ranges'].items():
-        ratio = hm['relative_category_price'][name]
-        sim['category_price_ranges'][name] = [max(1000, int(v * ratio)) for v in limits]
+    # Normalize both sides over the same mapped, purchase-weighted categories.
+    # Range midpoints initialize the correction; measured purchases refine it in realism-v4.
+    ratios = hm['relative_category_price']
+    denominator = sum(shares[k] * ratios[k] for k in names)
+    centers = {k: float(np.mean(v)) for k, v in sim['category_price_ranges'].items()}
+    center_mean = sum(shares[k] * centers[k] for k in names)
+    cfg = correct_price_ranges(cfg, {k: ratios[k] / denominator for k in names},
+                               {k: centers[k] / center_mean for k in names}, damping=1)
+    sim = cfg['simulator']
     sim['transitions'].update(retail['fitted_transitions'])
     sim['cart_reference_cvr'] = sum(p['ratio'] * p['cvr'] for p in sim['personas'].values())
     return cfg

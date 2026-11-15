@@ -1,0 +1,224 @@
+{
+  "name": "behavior",
+  "seed": 43,
+  "data_fingerprint": "51c049126820e8b73c336f7ab96dda971f282850ef5373b36ba3f566a004d34b",
+  "config_sha256": "ebff245d4e8b578c5d072ec0728d93ceb0afcb652bd09bc840f419f8d0f58948",
+  "actual": {
+    "price": {
+      "rows": 310,
+      "mean_price": 123106.45161290323,
+      "shares": {
+        "accessories": 0.12903225806451613,
+        "bottoms": 0.22580645161290322,
+        "footwear": 0.12903225806451613,
+        "outerwear": 0.15483870967741936,
+        "tops": 0.36129032258064514
+      },
+      "relative_means": {
+        "accessories": 0.3748788093179257,
+        "bottoms": 0.7417506111005049,
+        "footwear": 1.2479037287424992,
+        "outerwear": 3.1146824149044887,
+        "tops": 0.389833926652966
+      },
+      "relative_quantiles": {
+        "accessories": [
+          0.08935356235096821,
+          0.18073788748264025,
+          0.3533527238424652,
+          0.48129077902680606,
+          0.7188900243691534
+        ],
+        "bottoms": [
+          0.2924298404213505,
+          0.4305217095092105,
+          0.7554437544218222,
+          1.0478735948431726,
+          1.1624086156748683
+        ],
+        "footwear": [
+          0.4906322878180437,
+          0.6945208710007076,
+          1.307811230773262,
+          1.6977176846683961,
+          2.0063936273353775
+        ],
+        "outerwear": [
+          1.2631344495977779,
+          1.7525482797473992,
+          3.05426722217855,
+          4.408785996908,
+          5.320598485444017
+        ],
+        "tops": [
+          0.12996881796504467,
+          0.2111993291931976,
+          0.3614757749652805,
+          0.5381521368865131,
+          0.7058931425726489
+        ]
+      }
+    },
+    "purchase": {
+      "start": "2025-12-04 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "unit": "unique user-product-day purchases; repeats strictly on later days",
+      "activity": {
+        "users": 1000,
+        "active_users": 221,
+        "events": 277,
+        "counts_quantiles": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          2.0
+        ],
+        "top10_share": 0.22743682310469315
+      },
+      "repeat_rate": 0.04693140794223827,
+      "repeat_by_activity": {
+        "1": {
+          "rows": 182,
+          "rate": 0.0
+        },
+        "2-4": {
+          "rows": 89,
+          "rate": 0.12359550561797752
+        },
+        "5-9": {
+          "rows": 6,
+          "rate": 0.3333333333333333
+        }
+      },
+      "repurchase_gap_days": [
+        2.2,
+        5.0,
+        7.0,
+        14.0,
+        14.8
+      ],
+      "purchase_day_gap": [
+        2.0,
+        3.0,
+        4.5,
+        11.0,
+        14.0
+      ],
+      "category_concentration": 0.8333333333333334,
+      "category_concentration_users": 1,
+      "half_window_category_tv": 0.16666666666666669,
+      "half_window_users": 2,
+      "mapped_purchase_rows": 277
+    },
+    "session": {
+      "start": "2025-12-18 00:00:00+00:00",
+      "end": "2026-01-01 00:00:00+00:00",
+      "events": 27080,
+      "activity": {
+        "users": 986,
+        "active_users": 986,
+        "events": 27080,
+        "counts_quantiles": [
+          13.0,
+          16.0,
+          18.5,
+          25.0,
+          46.0
+        ],
+        "top10_share": 0.35413589364844905
+      },
+      "sessions": 17501,
+      "complete_sessions": 17475,
+      "censored_sessions": 26,
+      "tied_event_rows": 0,
+      "length_quantiles": [
+        1.0,
+        1.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "duration_seconds": [
+        0.0,
+        0.0,
+        0.0,
+        48.687,
+        285.4980960586001
+      ],
+      "purchase_rate": 0.006809728183118741,
+      "within_gap_seconds": [
+        10.333,
+        25.885,
+        67.173,
+        183.735107499,
+        489.674
+      ]
+    },
+    "transitions": {
+      "view": {
+        "view": 0.3274654552337687,
+        "cart": 0.017262918796138556,
+        "purchase": 0.0016278629566534165,
+        "exit": 0.6536437630134393
+      },
+      "cart": {
+        "view": 0.41541353383458646,
+        "cart": 0.13533834586466165,
+        "purchase": 0.14473684210526316,
+        "exit": 0.30451127819548873
+      },
+      "purchase": {
+        "view": 0.3233082706766917,
+        "cart": 0.03007518796992481,
+        "purchase": 0.09774436090225563,
+        "exit": 0.5488721804511278
+      }
+    },
+    "transition_diagnostics": {
+      "events": 27080,
+      "visitors": 986,
+      "observed_transitions": 9579,
+      "observed_exits": 17501,
+      "ambiguous_same_timestamp_pairs": 0,
+      "ambiguous_tied_event_rows": 0,
+      "right_censored_events": 0
+    },
+    "events": 100000,
+    "products": 3000,
+    "users": 1000
+  },
+  "distances": {
+    "train": {
+      "price_mae": 0.42663608907935535,
+      "price_quantile_mae": 0.45701403278622027,
+      "category_tv": 0.27699750363544495,
+      "activity_top10_error": 0.03016274033351163,
+      "session_purchase_error": 0.0007619615404995013,
+      "session_length_error": 0.3,
+      "gap_error": 0.1557281329922,
+      "behavior_objective": 0.12166320871655278
+    },
+    "valid": {
+      "price_mae": 0.4395509372109636,
+      "price_quantile_mae": 0.4734782039136995,
+      "category_tv": 0.26708416080012415,
+      "activity_top10_error": 0.02907554949906227,
+      "session_purchase_error": 0.0016168255583445543,
+      "session_length_error": 0.3,
+      "gap_error": 0.13250210587483255,
+      "behavior_objective": 0.11579862023305984
+    },
+    "test": {
+      "price_mae": 0.4325904110305598,
+      "price_quantile_mae": 0.42392279947547024,
+      "category_tv": 0.242490696260207,
+      "activity_top10_error": 0.02773507487720056,
+      "session_purchase_error": 0.0007609674013573488,
+      "session_length_error": 0.3,
+      "gap_error": 0.1499721832363603,
+      "behavior_objective": 0.11961705637872955
+    }
+  },
+  "seconds": 5.562809873999981
+}
