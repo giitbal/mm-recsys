@@ -1,0 +1,1 @@
+{"status":"PASS","tabs":[{"name":"검색","charts":2},{"name":"추천","charts":1},{"name":"A/B 실험","charts":1},{"name":"시스템","charts":1},{"name":"EDA·구매 이력","charts":1},{"name":"상품·CLIP","charts":0}],"errors":[],"failed":[]}

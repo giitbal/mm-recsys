@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "identity": "79ea85491d6353ee00207b5d94cd9a2a209fb247ca7e71c3f11b6f68ca6bfd3b",
+  "products": 105542,
+  "missing_images": 442,
+  "model": {
+    "model": "openai/clip-vit-base-patch32",
+    "model_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "processor_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "projection_dim": 512,
+    "normalization": "L2",
+    "dtype": "float32",
+    "max_text_length": 77,
+    "preprocess_version": "observable-alias-v1",
+    "alias_fingerprint": "4839d249f340369c7e1c913f5755f452c6264f0a4242f5806e6b4126f266be29",
+    "transformers": "4.46.3",
+    "torch": "2.6.0+cpu",
+    "device": "cpu"
+  },
+  "hashes": {
+    ".team/external-expansion-v3/hm_embeddings/text.npy": "0b40a1b79f81f353b18239737f950a5e539e7c079ac8c43485e26d1adaa06d2d",
+    ".team/external-expansion-v3/hm_embeddings/image.npy": "787445047c248bf99aed6c37f0c33544eaebccf80caa85d93f7031dac6db444a"
+  },
+  "ids_sha256": "ad86ffbd3ea764e6002b61522746b026a227b86060be825f0a71a006e4b2bfb1",
+  "seconds_this_invocation": 8183.370950479999,
+  "scope": "all catalog texts and all available source images; frozen CLIP; zero image vector for missing images; no product excluded"
+}

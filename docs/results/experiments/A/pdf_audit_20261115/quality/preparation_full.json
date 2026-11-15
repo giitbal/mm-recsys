@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "scale": "full",
+  "data_fingerprint": "2df9b64e07e3b2aad48c967c4c8d3d8b04883dd19279896bb374c4f9926ad7d8",
+  "manifest_sha256": "62967222a57a01b43d79b021aa1dee8124655006b547f424cf6e9183188c7f86",
+  "config_fingerprint": "d813d40ec0b24a41415e8b7c14e9ff04b02ee4b1b42831bcecc8d8a416312b3e",
+  "stages": [
+    {
+      "stage": "data",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "data"
+      ],
+      "exit_code": 0,
+      "seconds": 14.96560848900026,
+      "log": ".team/pdf-audit-20261115/runtime/full/logs/prepare-data-1794727336961107513.log"
+    },
+    {
+      "stage": "audit",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "audit"
+      ],
+      "exit_code": 0,
+      "seconds": 10.609644265000043,
+      "log": ".team/pdf-audit-20261115/runtime/full/logs/prepare-audit-1794727351927021969.log"
+    },
+    {
+      "stage": "embeddings",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "embeddings"
+      ],
+      "exit_code": 0,
+      "seconds": 8.890796996000063,
+      "log": ".team/pdf-audit-20261115/runtime/full/logs/prepare-embeddings-1794727363334308286.log"
+    },
+    {
+      "stage": "indexes",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "indexes"
+      ],
+      "exit_code": 0,
+      "seconds": 1.6195840479999788,
+      "log": ".team/pdf-audit-20261115/runtime/full/logs/prepare-indexes-1794727372225070816.log"
+    },
+    {
+      "stage": "recommendation",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "recommendation"
+      ],
+      "exit_code": 0,
+      "seconds": 28.9381738940001,
+      "log": ".team/pdf-audit-20261115/runtime/full/logs/prepare-recommendation-1794727373844725865.log"
+    },
+    {
+      "stage": "warmup",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "warmup"
+      ],
+      "exit_code": 0,
+      "seconds": 53.874686870000005,
+      "log": ".team/pdf-audit-20261115/runtime/full/logs/prepare-warmup-1794727403761960261.log"
+    }
+  ],
+  "artifact_state_before": {
+    "data_manifest": true,
+    "search_indexes": true,
+    "recommendation": true
+  },
+  "elapsed_seconds": 118.97646331799979,
+  "scope": "artifact readiness; no full-test quality claim"
+}

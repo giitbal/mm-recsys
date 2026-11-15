@@ -1,0 +1,26 @@
+version: realism-v4
+work_dir: .team/external-realism-v4
+results_dir: docs/results/external/realism-v4
+source_work: .team/external-data-v1
+source_expansion: .team/external-expansion-v3
+seed: 41
+evaluation_seeds: [42, 43, 44]
+products: 3000
+users: 1000
+events: 100000
+purchase_window_days: 28
+session_window_days: 14
+session_seconds: 1800
+price_iterations: 4
+price_damping: 0.7
+activity_thresholds: [5, 20]
+activity_alpha: 1000
+behavior_trials:
+  - {name: activity, activity: true, timing: false, transition: false}
+  - {name: activity_timing, activity: true, timing: true, transition: false}
+  - {name: activity_timing_transition, activity: true, timing: true, transition: true}
+threads: 4
+candidate_epochs: 5
+ranking_epochs: 3
+selection: valid equal mean of activity top10 share error, session purchase-rate error, session-length relative quantile error and within-session gap relative quantile error; preserve all ablations
+scope: Existing real-data holdouts are exploratory; simulator recipes selected without real test or recommendation quality; full acceptance remains UNMEASURED

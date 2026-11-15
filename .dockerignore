@@ -1,4 +1,5 @@
 .venv
+학습 데이터셋 추천
 .git
 __pycache__
 *.pyc

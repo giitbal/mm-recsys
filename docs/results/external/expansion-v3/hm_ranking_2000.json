@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "training_users": 2000,
+  "samples": 193750,
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 2.335487505699896,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.049766718506998445,
+        "ndcg_at_50": 0.0063193891861497474,
+        "coverage_at_50": 0.00746622197798033
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 0.8034133054413334,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.04665629860031104,
+        "ndcg_at_50": 0.005826693371894137,
+        "coverage_at_50": 0.008612684997441777
+      }
+    },
+    {
+      "epoch": 3,
+      "loss": 0.5437173931140284,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.04354587869362364,
+        "ndcg_at_50": 0.004586050018620254,
+        "coverage_at_50": 0.007703094502662447
+      }
+    }
+  ],
+  "best_epoch": 1,
+  "model_sha256": "858e18da946bfca4de667721a594bbeb8f13d0a71242e0cf467db6e99051ad3f",
+  "seconds": 8.018603275000714,
+  "objective": "purchase vs random unobserved, 1:4; not CTR/CVR",
+  "feature_sha256": "fb4ee75f5b3ef53eaf3cc9f98b2fa785e38eaf8980fb11b733cb4c14269cdbf9"
+}

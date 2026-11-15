@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "size": 20000,
+  "variant": "metadata",
+  "split": "valid",
+  "candidate": {
+    "recall_at_300": 0.047964193519217053,
+    "macro_users": 643,
+    "empty_target_users": 1357,
+    "average_truth_size": 6.3172628304821155,
+    "candidate_count_min": 300,
+    "candidate_count_max": 300,
+    "eligible_catalog": 91927,
+    "unavailable_truth_items": 630,
+    "rare_truth_items": 3259,
+    "new_truth_items": 805,
+    "repeated_purchase_truth_items": 62,
+    "average_recall_upper_bound": 1.0,
+    "cohorts": {
+      "all": {
+        "users": 643,
+        "recall_at_300": 0.047964193519217053
+      },
+      "cold": {
+        "users": 142,
+        "recall_at_300": 0.05777353515029572
+      },
+      "warm": {
+        "users": 501,
+        "recall_at_300": 0.045183901080867415
+      },
+      "no_history": {
+        "users": 83,
+        "recall_at_300": 0.05451416053825692
+      },
+      "rare_target": {
+        "users": 615,
+        "recall_at_300": 0.04608288850870986
+      },
+      "new_target": {
+        "users": 329,
+        "recall_at_300": 0.029544951164807584
+      },
+      "unavailable_target": {
+        "users": 284,
+        "recall_at_300": 0.027857971184888537
+      },
+      "repeat_purchase": {
+        "users": 45,
+        "recall_at_300": 0.08293666859456333
+      }
+    }
+  },
+  "stages": {
+    "two_tower": {
+      "users": 643,
+      "empty_target_users": 1357,
+      "hit_rate_at_50": 0.05598755832037325,
+      "ndcg_at_50": 0.005026372047428123,
+      "coverage_at_50": 0.010990885145250233
+    },
+    "same_candidates_popularity": {
+      "users": 643,
+      "empty_target_users": 1357,
+      "hit_rate_at_50": 0.060653188180404355,
+      "ndcg_at_50": 0.008614146547188348,
+      "coverage_at_50": 0.0073525231661329135
+    },
+    "deepfm": {
+      "users": 643,
+      "empty_target_users": 1357,
+      "hit_rate_at_50": 0.104199066874028,
+      "ndcg_at_50": 0.011172402578565091,
+      "coverage_at_50": 0.010659263610695269
+    },
+    "reranked": {
+      "users": 643,
+      "empty_target_users": 1357,
+      "hit_rate_at_50": 0.10108864696734059,
+      "ndcg_at_50": 0.010785225490396344,
+      "coverage_at_50": 0.011701502719296583
+    }
+  },
+  "reranking": {
+    "violating_users": 4,
+    "infeasible_diversity_users": 4
+  },
+  "evaluation_users": 643,
+  "empty_target_users": 1357,
+  "data_fingerprint": "156ddd999aca1afd0e3f41e9e15d26f3d2d326c89f747f287fbfc51542f0b6b4",
+  "model_hashes": {
+    ".team/external-expansion-v3/hm_models/20000-metadata/candidate.pt": "a31a35121f08d3c05fbbb1cf1a36a63f232c1344c2e566ca79b5880f1d2192ac",
+    ".team/external-expansion-v3/hm_models/20000-metadata/ranker.pt": "220c28c0eabd485faf07397d25d864656fed213192132ffbe6d4b95558ee1034",
+    ".team/external-expansion-v3/hm_models/20000-metadata/ranking_features.json": "beee79211a89a05abbe1335677190fb1f1e4bcc9be69474a839166f93bf6e0c1"
+  },
+  "ranking_scope": "metadata purchase DeepFM shared across content variants at the same training size",
+  "test_scope": "same previously inspected v1 interval; exploratory follow-up"
+}

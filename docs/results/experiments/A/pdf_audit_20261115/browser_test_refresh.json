@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "selected": "결과 파일\n\nevaluation_full_test.json",
+  "exceptions": [],
+  "scope": "Fresh full test is automatically preferred in a new browser session after completing current-source test evaluation"
+}

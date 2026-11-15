@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "task": "verify",
+  "reports": {
+    "inventory": {
+      "path": "docs/results/external/v1/inventory.json",
+      "sha256": "148e04ce84108c2f03bd9c9dffb78877af1835f35f5fd6a8db85c4d6d564db99"
+    },
+    "hm_data": {
+      "path": "docs/results/external/v1/hm_data.json",
+      "sha256": "f13b2b4ba14b4848951021a0672c17143a6df65d05085d213f11f7761e269121"
+    },
+    "retailrocket": {
+      "path": "docs/results/external/v1/retailrocket.json",
+      "sha256": "4adf1052084f4d27e8c98757c807609ae2032909644fec9971e3a1cf49d2231e"
+    },
+    "deepfashion": {
+      "path": "docs/results/external/v1/deepfashion.json",
+      "sha256": "a64e5b256341a6999ecf5afa7759de65616af4339d9a554702a79cfc3862b180"
+    },
+    "hm_selection": {
+      "path": "docs/results/external/v1/hm_selection.json",
+      "sha256": "ee191c2cf2db82eeec6d688a6e46bdb3993fea08455e219767def2cb1fde668d"
+    },
+    "hm_recommendation": {
+      "path": "docs/results/external/v1/hm_recommendation.json",
+      "sha256": "4d5a0946ff3decd137782dd166ca52a452af0024745516859803ce37a58701ae"
+    },
+    "calibration": {
+      "path": "docs/results/external/v1/calibration.json",
+      "sha256": "a43da85e38f68f1c29c5e1451c4bbeb9975907a436af66149af7d58351e96905"
+    },
+    "verification": {
+      "path": "docs/results/external/v1/verification.json",
+      "sha256": "b3270a557d8f77126d25aed2b4d6c0081aac8531f65e3926ba364a9e577280a3"
+    }
+  }
+}

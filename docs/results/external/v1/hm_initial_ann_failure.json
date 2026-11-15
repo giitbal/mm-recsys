@@ -1,0 +1,22 @@
+{
+  "status": "FAIL",
+  "phase": "valid candidate generation before test",
+  "error": "ANN exhausted catalog without required distinct candidates",
+  "data_fingerprint": "156ddd999aca1afd0e3f41e9e15d26f3d2d326c89f747f287fbfc51542f0b6b4",
+  "ntotal": 105542,
+  "eligible": 91927,
+  "original_ef_search": 512,
+  "diagnosis": {
+    "validation_users": 643,
+    "users_with_insufficient_candidates_at_k600": 4,
+    "reachable_vectors_for_affected_queries": 89,
+    "eligible_reachable_vectors": 1,
+    "ef_search_probes": [
+      512,
+      8192,
+      105542
+    ],
+    "larger_ef_search_resolved": false,
+    "fix": "same persisted vectors exact completion over full cutoff-available catalog, only upon HNSW exhaustion"
+  }
+}

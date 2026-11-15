@@ -1,0 +1,176 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "source_members": {
+    "events.csv": {
+      "archive": "events.csv.zip",
+      "member": "events.csv",
+      "crc32": 538422580,
+      "bytes": 94237913,
+      "sha256": "3745aa83238b1e6d44d8fda209807899f420084398f94ddf745f3cbcfecbf9e7"
+    },
+    "item_properties_part1.csv": {
+      "archive": "item_properties_part1.csv.zip",
+      "member": "item_properties_part1.csv",
+      "crc32": 3157250922,
+      "bytes": 484315749,
+      "sha256": "30aad5aeca58b2dc27dcc73e1708565f5818e45adb3eb57401f91e87355b0b81"
+    },
+    "item_properties_part2.csv": {
+      "archive": "item_properties_part2.csv.zip",
+      "member": "item_properties_part2.csv",
+      "crc32": 345780403,
+      "bytes": 408929907,
+      "sha256": "d5e7d1a91dc40f522aeb596b267e6c87d8aed689a7192d12369cfb165eb987e5"
+    }
+  },
+  "property_inventory": {
+    "item_properties_part1.csv": {
+      "rows": 10999999,
+      "category_records": 426305,
+      "availability_records": 817387,
+      "use": "inventory only; global state transitions do not require item-property joins"
+    },
+    "item_properties_part2.csv": {
+      "rows": 9275903,
+      "category_records": 361909,
+      "availability_records": 686252,
+      "use": "inventory only; global state transitions do not require item-property joins"
+    }
+  },
+  "counts": {
+    "train": {
+      "view": {
+        "view": 714488,
+        "cart": 39762,
+        "purchase": 3338,
+        "exit": 1372348
+      },
+      "cart": {
+        "view": 20997,
+        "cart": 8331,
+        "purchase": 9044,
+        "exit": 15365
+      },
+      "purchase": {
+        "view": 5476,
+        "cart": 174,
+        "purchase": 1448,
+        "exit": 7373
+      }
+    },
+    "valid": {
+      "view": {
+        "view": 80847,
+        "cart": 5066,
+        "purchase": 429,
+        "exit": 178829
+      },
+      "cart": {
+        "view": 2572,
+        "cart": 1180,
+        "purchase": 1271,
+        "exit": 2167
+      },
+      "purchase": {
+        "view": 720,
+        "cart": 26,
+        "purchase": 250,
+        "exit": 1051
+      }
+    },
+    "test": {
+      "view": {
+        "view": 81431,
+        "cart": 4599,
+        "purchase": 416,
+        "exit": 179636
+      },
+      "cart": {
+        "view": 2489,
+        "cart": 1266,
+        "purchase": 1101,
+        "exit": 2019
+      },
+      "purchase": {
+        "view": 654,
+        "cart": 21,
+        "purchase": 247,
+        "exit": 919
+      }
+    }
+  },
+  "diagnostics": {
+    "train": {
+      "events": 2204881,
+      "visitors": 1123767,
+      "observed_transitions": 803058,
+      "observed_exits": 1395086,
+      "ambiguous_same_timestamp_pairs": 2537,
+      "ambiguous_tied_event_rows": 4670,
+      "right_censored_events": 381
+    },
+    "valid": {
+      "events": 275610,
+      "visitors": 156951,
+      "observed_transitions": 92361,
+      "observed_exits": 182047,
+      "ambiguous_same_timestamp_pairs": 309,
+      "ambiguous_tied_event_rows": 562,
+      "right_censored_events": 434
+    },
+    "test": {
+      "events": 275610,
+      "visitors": 158020,
+      "observed_transitions": 92224,
+      "observed_exits": 182574,
+      "ambiguous_same_timestamp_pairs": 240,
+      "ambiguous_tied_event_rows": 454,
+      "right_censored_events": 195
+    }
+  },
+  "fitted_transitions": {
+    "view": {
+      "view": 0.3354502943744894,
+      "cart": 0.018668600993455214,
+      "purchase": 0.0015676497929519142,
+      "exit": 0.6443134548391034
+    },
+    "cart": {
+      "view": 0.3907258889860628,
+      "cart": 0.15503991365996167,
+      "purchase": 0.16830725144675387,
+      "exit": 0.2859269459072217
+    },
+    "purchase": {
+      "view": 0.37837651122625215,
+      "cart": 0.012089810017271158,
+      "purchase": 0.10010362694300518,
+      "exit": 0.5094300518134715
+    }
+  },
+  "heldout_total_variation": {
+    "valid": {
+      "view": 0.030564013446333655,
+      "cart": 0.03300683474405999,
+      "purchase": 0.0266422659893201
+    },
+    "test": {
+      "view": 0.0308017352150904,
+      "cart": 0.03685132225099848,
+      "purchase": 0.034062587071117555
+    }
+  },
+  "split_boundaries": {
+    "train_end": "2015-08-18 04:23:31.966000+00:00",
+    "valid_end": "2015-09-02 17:49:11.563000+00:00"
+  },
+  "session_seconds": 1800,
+  "smoothing": 1.0,
+  "fit_scope": "train only, user-level successive observable events",
+  "limitations": [
+    "same-timestamp pairs excluded as order is unknown",
+    "split-boundary unfinished sessions censored",
+    "no search logs, persona labels or unclicked impressions; search transitions remain synthetic assumptions"
+  ]
+}

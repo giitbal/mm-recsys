@@ -1,0 +1,283 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "training_users": 100000,
+  "variant": "metadata",
+  "training_events": 1850919,
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 1.1970763498694015,
+      "valid": {
+        "recall_at_300": 0.049262288143727614,
+        "macro_users": 643,
+        "empty_target_users": 1357,
+        "average_truth_size": 6.3172628304821155,
+        "candidate_count_min": 300,
+        "candidate_count_max": 300,
+        "eligible_catalog": 91927,
+        "unavailable_truth_items": 630,
+        "rare_truth_items": 3259,
+        "new_truth_items": 805,
+        "repeated_purchase_truth_items": 62,
+        "average_recall_upper_bound": 1.0,
+        "cohorts": {
+          "all": {
+            "users": 643,
+            "recall_at_300": 0.049262288143727614
+          },
+          "cold": {
+            "users": 142,
+            "recall_at_300": 0.05992088897018475
+          },
+          "warm": {
+            "users": 501,
+            "recall_at_300": 0.04624128751028068
+          },
+          "no_history": {
+            "users": 83,
+            "recall_at_300": 0.05863975382047671
+          },
+          "rare_target": {
+            "users": 615,
+            "recall_at_300": 0.045001058986043674
+          },
+          "new_target": {
+            "users": 329,
+            "recall_at_300": 0.028742183439759192
+          },
+          "unavailable_target": {
+            "users": 284,
+            "recall_at_300": 0.026839976179462755
+          },
+          "repeat_purchase": {
+            "users": 45,
+            "recall_at_300": 0.09002634792108476
+          }
+        }
+      },
+      "elapsed_seconds": 512.6766645419993
+    },
+    {
+      "epoch": 2,
+      "loss": 1.1285192441124845,
+      "valid": {
+        "recall_at_300": 0.05219182657996458,
+        "macro_users": 643,
+        "empty_target_users": 1357,
+        "average_truth_size": 6.3172628304821155,
+        "candidate_count_min": 300,
+        "candidate_count_max": 300,
+        "eligible_catalog": 91927,
+        "unavailable_truth_items": 630,
+        "rare_truth_items": 3259,
+        "new_truth_items": 805,
+        "repeated_purchase_truth_items": 62,
+        "average_recall_upper_bound": 1.0,
+        "cohorts": {
+          "all": {
+            "users": 643,
+            "recall_at_300": 0.05219182657996458
+          },
+          "cold": {
+            "users": 142,
+            "recall_at_300": 0.05871558019445344
+          },
+          "warm": {
+            "users": 501,
+            "recall_at_300": 0.05034277864931106
+          },
+          "no_history": {
+            "users": 83,
+            "recall_at_300": 0.06093464768163563
+          },
+          "rare_target": {
+            "users": 615,
+            "recall_at_300": 0.04481194226165404
+          },
+          "new_target": {
+            "users": 329,
+            "recall_at_300": 0.030901675438530674
+          },
+          "unavailable_target": {
+            "users": 284,
+            "recall_at_300": 0.02942966937522267
+          },
+          "repeat_purchase": {
+            "users": 45,
+            "recall_at_300": 0.10370330936120407
+          }
+        }
+      },
+      "elapsed_seconds": 958.5253445059998
+    },
+    {
+      "epoch": 3,
+      "loss": 1.1051789774887741,
+      "valid": {
+        "recall_at_300": 0.053858535063887936,
+        "macro_users": 643,
+        "empty_target_users": 1357,
+        "average_truth_size": 6.3172628304821155,
+        "candidate_count_min": 300,
+        "candidate_count_max": 300,
+        "eligible_catalog": 91927,
+        "unavailable_truth_items": 630,
+        "rare_truth_items": 3259,
+        "new_truth_items": 805,
+        "repeated_purchase_truth_items": 62,
+        "average_recall_upper_bound": 1.0,
+        "cohorts": {
+          "all": {
+            "users": 643,
+            "recall_at_300": 0.053858535063887936
+          },
+          "cold": {
+            "users": 142,
+            "recall_at_300": 0.05171610470906245
+          },
+          "warm": {
+            "users": 501,
+            "recall_at_300": 0.05446577081315983
+          },
+          "no_history": {
+            "users": 83,
+            "recall_at_300": 0.04600827552634781
+          },
+          "rare_target": {
+            "users": 615,
+            "recall_at_300": 0.046554533408260074
+          },
+          "new_target": {
+            "users": 329,
+            "recall_at_300": 0.03576160350049264
+          },
+          "unavailable_target": {
+            "users": 284,
+            "recall_at_300": 0.03526678156464962
+          },
+          "repeat_purchase": {
+            "users": 45,
+            "recall_at_300": 0.11023150338939812
+          }
+        }
+      },
+      "elapsed_seconds": 1218.5446648999996
+    },
+    {
+      "epoch": 4,
+      "loss": 1.090573980571228,
+      "valid": {
+        "recall_at_300": 0.058990322719323765,
+        "macro_users": 643,
+        "empty_target_users": 1357,
+        "average_truth_size": 6.3172628304821155,
+        "candidate_count_min": 300,
+        "candidate_count_max": 300,
+        "eligible_catalog": 91927,
+        "unavailable_truth_items": 630,
+        "rare_truth_items": 3259,
+        "new_truth_items": 805,
+        "repeated_purchase_truth_items": 62,
+        "average_recall_upper_bound": 1.0,
+        "cohorts": {
+          "all": {
+            "users": 643,
+            "recall_at_300": 0.058990322719323765
+          },
+          "cold": {
+            "users": 142,
+            "recall_at_300": 0.06269587220291446
+          },
+          "warm": {
+            "users": 501,
+            "recall_at_300": 0.05794004721698869
+          },
+          "no_history": {
+            "users": 83,
+            "recall_at_300": 0.06145099880039639
+          },
+          "rare_target": {
+            "users": 615,
+            "recall_at_300": 0.053545979688658846
+          },
+          "new_target": {
+            "users": 329,
+            "recall_at_300": 0.04137353726654733
+          },
+          "unavailable_target": {
+            "users": 284,
+            "recall_at_300": 0.04104069093549319
+          },
+          "repeat_purchase": {
+            "users": 45,
+            "recall_at_300": 0.10266461608566872
+          }
+        }
+      },
+      "elapsed_seconds": 1446.391491632
+    },
+    {
+      "epoch": 5,
+      "loss": 1.079988680571852,
+      "valid": {
+        "recall_at_300": 0.055933749545345905,
+        "macro_users": 643,
+        "empty_target_users": 1357,
+        "average_truth_size": 6.3172628304821155,
+        "candidate_count_min": 300,
+        "candidate_count_max": 300,
+        "eligible_catalog": 91927,
+        "unavailable_truth_items": 630,
+        "rare_truth_items": 3259,
+        "new_truth_items": 805,
+        "repeated_purchase_truth_items": 62,
+        "average_recall_upper_bound": 1.0,
+        "cohorts": {
+          "all": {
+            "users": 643,
+            "recall_at_300": 0.055933749545345905
+          },
+          "cold": {
+            "users": 142,
+            "recall_at_300": 0.05384468817567409
+          },
+          "warm": {
+            "users": 501,
+            "recall_at_300": 0.056525858755911554
+          },
+          "no_history": {
+            "users": 83,
+            "recall_at_300": 0.05370573201898503
+          },
+          "rare_target": {
+            "users": 615,
+            "recall_at_300": 0.04872422919944295
+          },
+          "new_target": {
+            "users": 329,
+            "recall_at_300": 0.03219257896555491
+          },
+          "unavailable_target": {
+            "users": 284,
+            "recall_at_300": 0.032076798804999807
+          },
+          "repeat_purchase": {
+            "users": 45,
+            "recall_at_300": 0.11489460831566095
+          }
+        }
+      },
+      "elapsed_seconds": 1652.1542388429998
+    }
+  ],
+  "best_epoch": 4,
+  "best_valid_recall": 0.058990322719323765,
+  "model_sha256": "e50c7d564047dea3a1b6748e99c42ce0f69655efc2df3f22e95db001ad72279f",
+  "feature_fingerprint": "b0add46993442da2b35e5fb5520fe48a61a9881a96222ea040a444f65dea51a3",
+  "data_fingerprint": "156ddd999aca1afd0e3f41e9e15d26f3d2d326c89f747f287fbfc51542f0b6b4",
+  "elapsed_seconds": 1652.1756978349995,
+  "process_peak_rss_mib": 1006.328125,
+  "evaluation": "original 2000 users, full eligible catalog, unchanged v1 truth; exact retrieval",
+  "training": "nested train-only cohorts; shared per-shard samples; same hyperparameters and epochs budget"
+}

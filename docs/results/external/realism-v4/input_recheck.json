@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "source_checks": {
+    ".team/external-data-v1/hm_raw/articles.csv": true,
+    ".team/external-data-v1/hm_raw/transactions_train.csv": true,
+    ".team/external-data-v1/retailrocket_raw/events.csv": true
+  },
+  "scope": "Actual source CSV hashes rechecked after frozen evaluation"
+}

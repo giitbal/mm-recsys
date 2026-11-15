@@ -1,0 +1,35 @@
+{
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-aarch64-with-glibc2.39",
+  "python": "3.12.3",
+  "torch": "2.6.0+cpu",
+  "cuda_available": false,
+  "logical_cpus": 8,
+  "numpy": "2.1.3",
+  "blas_defaults": [
+    {
+      "internal_api": "openblas",
+      "threads": 8
+    },
+    {
+      "internal_api": "openblas",
+      "threads": 8
+    },
+    {
+      "internal_api": "openmp",
+      "threads": 8
+    }
+  ],
+  "training_threads": 4,
+  "clip_threads": 4,
+  "parallel_jobs": true,
+  "scope": "Concurrent CPU experiments; elapsed times are not isolated serving benchmarks",
+  "image_encoding_resume": "Two earlier encoder invocations were interrupted before image encoding to ensure a single cache writer. The first 10240 text rows were checked for finite unit vectors and reused. Final image encoder starts at image row 0.",
+  "limitations": [
+    "No CUDA device available through installed torch",
+    "Full acceptance, online A/B and production serving latency not measured"
+  ],
+  "interrupted_encoder_logs": [
+    "docs/results/external/expansion-v3/logs/embedding_duplicate_interrupted.txt",
+    "docs/results/external/expansion-v3/logs/embedding_initial_interrupted.txt"
+  ]
+}

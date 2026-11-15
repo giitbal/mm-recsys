@@ -1,0 +1,31 @@
+# Fixed before evaluation. Increase limits in a NEW work/results version.
+seed: 42
+source_dir: 학습 데이터셋 추천
+work_dir: .team/external-data-v1
+results_dir: docs/results/external/v1
+hm:
+  archive: h-and-m-personalized-fashion-recommendations.zip
+  user_limit: 2000
+  chunk_rows: 500000
+  candidate_epochs: 5
+  ranking_epochs: 5
+  batch_size: 512
+  threads: 4
+retailrocket:
+  events_archive: events.csv.zip
+  session_seconds: 1800
+  smoothing: 1.0
+deepfashion:
+  images_archive: img-008.zip
+  categories_archive: drive-download-20261114T051047Z-1-015.zip
+  classes_archive: drive-download-20261114T051047Z-1-001.zip
+  partitions_archive: drive-download-20261114T051047Z-1-018.zip
+  gallery_images: 1000
+  queries_per_split: 1000
+  batch_size: 32
+  threads: 4
+calibration:
+  preference_blend: 0.5
+  pilot_products: 1000
+  pilot_users: 200
+  pilot_events: 10000

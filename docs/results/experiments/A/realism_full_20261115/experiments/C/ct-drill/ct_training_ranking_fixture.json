@@ -1,0 +1,580 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "scale": "dev",
+  "labels": {
+    "train": {
+      "version": "linked-view-last-view-v3",
+      "rows": 10708,
+      "clicks": 2677,
+      "conversions": 12,
+      "ctr_observed": 10693,
+      "cvr_observed": 2672,
+      "censored": 20,
+      "censored_cvr_negatives": 5,
+      "unassigned_purchases": 0,
+      "window_seconds": 1800,
+      "start": "2025-12-04T00:01:19.285521699+00:00",
+      "end": "2025-12-20T01:41:06.706944681+00:00",
+      "ctr_proxy": "linked view; generator timestamps equal exposure timestamps",
+      "cvr_denominator": "observed linked clicked exposures only",
+      "same_timestamp_view_exposure": 2677,
+      "excluded_inputs": [
+        "position",
+        "impression_id",
+        "request_id",
+        "event_type",
+        "persona"
+      ]
+    },
+    "valid": {
+      "version": "linked-view-last-view-v3",
+      "rows": 1380,
+      "clicks": 345,
+      "conversions": 1,
+      "ctr_observed": 1362,
+      "cvr_observed": 339,
+      "censored": 24,
+      "censored_cvr_negatives": 6,
+      "unassigned_purchases": 0,
+      "window_seconds": 1800,
+      "start": "2025-12-20T01:41:15.239944680+00:00",
+      "end": "2025-12-22T03:56:50.174582958+00:00",
+      "ctr_proxy": "linked view; generator timestamps equal exposure timestamps",
+      "cvr_denominator": "observed linked clicked exposures only",
+      "same_timestamp_view_exposure": 3022,
+      "excluded_inputs": [
+        "position",
+        "impression_id",
+        "request_id",
+        "event_type",
+        "persona"
+      ]
+    }
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 13.871447169696122,
+      "valid": {
+        "ctr": {
+          "auc": 0.6344377467116982,
+          "auc_status": "MEASURED",
+          "logloss": 3.330214554592414,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9911242603550297,
+          "auc_status": "MEASURED",
+          "logloss": 0.3528606909787718,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.30823834200009514
+    },
+    {
+      "epoch": 2,
+      "loss": 3.302551524871581,
+      "valid": {
+        "ctr": {
+          "auc": 0.8693457597651519,
+          "auc_status": "MEASURED",
+          "logloss": 1.5215313362415024,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9911242603550297,
+          "auc_status": "MEASURED",
+          "logloss": 0.05397470688407405,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.28105423900024107
+    },
+    {
+      "epoch": 3,
+      "loss": 2.133360322549533,
+      "valid": {
+        "ctr": {
+          "auc": 0.8902768871218276,
+          "auc_status": "MEASURED",
+          "logloss": 1.2577192566420197,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9852071005917159,
+          "auc_status": "MEASURED",
+          "logloss": 0.037773849660835,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.29373344000032375
+    },
+    {
+      "epoch": 4,
+      "loss": 1.7942959853059373,
+      "valid": {
+        "ctr": {
+          "auc": 0.895163381927522,
+          "auc_status": "MEASURED",
+          "logloss": 1.2273761777548833,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.985207100591716,
+          "auc_status": "MEASURED",
+          "logloss": 0.0766870383560194,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.3030135409999275
+    },
+    {
+      "epoch": 5,
+      "loss": 1.5321495462407984,
+      "valid": {
+        "ctr": {
+          "auc": 0.8945691362774858,
+          "auc_status": "MEASURED",
+          "logloss": 1.2714709167827678,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9792899408284024,
+          "auc_status": "MEASURED",
+          "logloss": 0.09061173881457399,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.3260208439996859
+    },
+    {
+      "epoch": 6,
+      "loss": 1.3006677791437284,
+      "valid": {
+        "ctr": {
+          "auc": 0.9013252960540379,
+          "auc_status": "MEASURED",
+          "logloss": 1.035023665451453,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9763313609467456,
+          "auc_status": "MEASURED",
+          "logloss": 0.07998243167269219,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.2738236370000777
+    },
+    {
+      "epoch": 7,
+      "loss": 1.1102439404469084,
+      "valid": {
+        "ctr": {
+          "auc": 0.8996508628674846,
+          "auc_status": "MEASURED",
+          "logloss": 1.0247413601209647,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9763313609467456,
+          "auc_status": "MEASURED",
+          "logloss": 0.06602519321551215,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.26779333600006794
+    },
+    {
+      "epoch": 8,
+      "loss": 0.9359763847788546,
+      "valid": {
+        "ctr": {
+          "auc": 0.9067205335385404,
+          "auc_status": "MEASURED",
+          "logloss": 0.8980860651178597,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9674556213017751,
+          "auc_status": "MEASURED",
+          "logloss": 0.0652693120624683,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.27608043800000814
+    },
+    {
+      "epoch": 9,
+      "loss": 0.8029789625039776,
+      "valid": {
+        "ctr": {
+          "auc": 0.9053325353056019,
+          "auc_status": "MEASURED",
+          "logloss": 0.8997921014456862,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.970414201183432,
+          "auc_status": "MEASURED",
+          "logloss": 0.059894876571121414,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.2829935370000385
+    },
+    {
+      "epoch": 10,
+      "loss": 0.68252248272194,
+      "valid": {
+        "ctr": {
+          "auc": 0.907890499194847,
+          "auc_status": "MEASURED",
+          "logloss": 0.7881766242678394,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9763313609467454,
+          "auc_status": "MEASURED",
+          "logloss": 0.049989178274553944,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.30888379799989707
+    },
+    {
+      "epoch": 11,
+      "loss": 0.5938205677580379,
+      "valid": {
+        "ctr": {
+          "auc": 0.9121200461716044,
+          "auc_status": "MEASURED",
+          "logloss": 0.7118411154973926,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9733727810650887,
+          "auc_status": "MEASURED",
+          "logloss": 0.049969954346037154,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.2788575800000217
+    },
+    {
+      "epoch": 12,
+      "loss": 0.5229408553076805,
+      "valid": {
+        "ctr": {
+          "auc": 0.9128411212289627,
+          "auc_status": "MEASURED",
+          "logloss": 0.6675840438353648,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9733727810650888,
+          "auc_status": "MEASURED",
+          "logloss": 0.05855050147861346,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.2736877170000298
+    },
+    {
+      "epoch": 13,
+      "loss": 0.44982660349999787,
+      "valid": {
+        "ctr": {
+          "auc": 0.9124292819175467,
+          "auc_status": "MEASURED",
+          "logloss": 0.6300649419048957,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9763313609467456,
+          "auc_status": "MEASURED",
+          "logloss": 0.07167907263678014,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.25770448899993426
+    },
+    {
+      "epoch": 14,
+      "loss": 0.4018085685446942,
+      "valid": {
+        "ctr": {
+          "auc": 0.914003961637667,
+          "auc_status": "MEASURED",
+          "logloss": 0.631877565937652,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9674556213017751,
+          "auc_status": "MEASURED",
+          "logloss": 0.06765907802400337,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.29212945399967793
+    },
+    {
+      "epoch": 15,
+      "loss": 0.35358334988144113,
+      "valid": {
+        "ctr": {
+          "auc": 0.9097316631752954,
+          "auc_status": "MEASURED",
+          "logloss": 0.5986821163542323,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9497041420118343,
+          "auc_status": "MEASURED",
+          "logloss": 0.06748965226395008,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.27244324899993444
+    },
+    {
+      "epoch": 16,
+      "loss": 0.3237625395890978,
+      "valid": {
+        "ctr": {
+          "auc": 0.9175751357359667,
+          "auc_status": "MEASURED",
+          "logloss": 0.5316006452183942,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9585798816568047,
+          "auc_status": "MEASURED",
+          "logloss": 0.07737835159505681,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.26921104800021567
+    },
+    {
+      "epoch": 17,
+      "loss": 0.27591829606967494,
+      "valid": {
+        "ctr": {
+          "auc": 0.9182648597038746,
+          "auc_status": "MEASURED",
+          "logloss": 0.515283217353821,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9733727810650887,
+          "auc_status": "MEASURED",
+          "logloss": 0.07382601669736004,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.2578613830000904
+    },
+    {
+      "epoch": 18,
+      "loss": 0.25503266210604125,
+      "valid": {
+        "ctr": {
+          "auc": 0.9119319396349024,
+          "auc_status": "MEASURED",
+          "logloss": 0.5289640438453208,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9585798816568047,
+          "auc_status": "MEASURED",
+          "logloss": 0.06673582891061897,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.2612132819999715
+    },
+    {
+      "epoch": 19,
+      "loss": 0.22579587930879533,
+      "valid": {
+        "ctr": {
+          "auc": 0.9194020492212104,
+          "auc_status": "MEASURED",
+          "logloss": 0.4753170049864042,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9733727810650887,
+          "auc_status": "MEASURED",
+          "logloss": 0.06180499753766922,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.25527955100005784
+    },
+    {
+      "epoch": 20,
+      "loss": 0.20496172499959486,
+      "valid": {
+        "ctr": {
+          "auc": 0.9200005700198082,
+          "auc_status": "MEASURED",
+          "logloss": 0.46253475628841656,
+          "samples": 1362,
+          "positives": 345,
+          "denominator": "observed exposures"
+        },
+        "cvr": {
+          "auc": 0.9585798816568046,
+          "auc_status": "MEASURED",
+          "logloss": 0.06985458170897045,
+          "samples": 339,
+          "positives": 1,
+          "denominator": "observed clicked exposures"
+        }
+      },
+      "updates": 84,
+      "seconds": 0.2430608200002098
+    }
+  ],
+  "best_epoch": 20,
+  "selected_valid": {
+    "ctr": {
+      "auc": 0.9200005700198082,
+      "auc_status": "MEASURED",
+      "logloss": 0.46253475628841656,
+      "samples": 1362,
+      "positives": 345,
+      "denominator": "observed exposures"
+    },
+    "cvr": {
+      "auc": 0.9585798816568046,
+      "auc_status": "MEASURED",
+      "logloss": 0.06985458170897045,
+      "samples": 339,
+      "positives": 1,
+      "denominator": "observed clicked exposures"
+    }
+  },
+  "checkpoint_reload": "PASS",
+  "bundle": {
+    "version": "deepfm-bundle-v1",
+    "scale": "dev",
+    "best_epoch": 20,
+    "selection_split": "valid",
+    "config_fingerprint": "5cde6398c76bea78238d26e9ed333a13249e1a9fc1546da30240c4633b936e36",
+    "feature_fingerprint": "ecc24fa4c68e43473e293cb4b5414fca87fde2cbc43eb4e8447ca1e3be617d46",
+    "data_fingerprint": "668ad75782c97c4c430bcdec756ce98095f9adaff6a63e9b338c35ad924bba9d",
+    "catalog_sha256": "fa257a20255cfe703f13339fb57e0d7f3ba8e139fd9bc15cfb4a92aa00cce22c",
+    "hashes": {
+      "deepfm.pt": "3c96063c5f4d5a347cbcc3adc1673dc82fb2ba253dbe50165a5d2249ddb00a8c",
+      "features.json": "71a35c7f58c5bf9df866936a65fe13405bc33111a934154828b4dd3d319d9079"
+    },
+    "ranking_score": "P(click)*P(purchase|click)"
+  },
+  "elapsed_seconds": 5.945311188999767,
+  "evaluation": "valid features/history frozen at train_end; train features strictly before exposure; no test read",
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.6.0+cpu",
+    "device": "cpu",
+    "threads": 1
+  }
+}

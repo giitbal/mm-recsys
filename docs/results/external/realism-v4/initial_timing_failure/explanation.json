@@ -1,0 +1,5 @@
+{
+  "reason": "Reserving the maximum empirical gap for every potential round pushed session starts out of the trailing validation window. Use mean interval reserve and explicit rejection of any generated timestamp outside the window; do not fabricate missing transition rows.",
+  "stage": "train/valid pilot, before freeze; no test-based decision",
+  "purchase_diagnostic": "Overall repeat similarity is confounded by activity: compare 2-4 purchase bin and catalog-size controls before changing item demand."
+}

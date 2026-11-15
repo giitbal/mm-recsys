@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "training_users": 20000,
+  "samples": 1851440,
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 0.604874160530763,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.06687402799377916,
+        "ndcg_at_50": 0.006934740537360572,
+        "coverage_at_50": 0.012497394402228497
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 0.3178498950262011,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.104199066874028,
+        "ndcg_at_50": 0.010874142441997954,
+        "coverage_at_50": 0.0107634875215554
+      }
+    },
+    {
+      "epoch": 3,
+      "loss": 0.3115676575684843,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.104199066874028,
+        "ndcg_at_50": 0.011172402578565091,
+        "coverage_at_50": 0.010659263610695269
+      }
+    }
+  ],
+  "best_epoch": 3,
+  "model_sha256": "220c28c0eabd485faf07397d25d864656fed213192132ffbe6d4b95558ee1034",
+  "seconds": 359.91756501500004,
+  "objective": "purchase vs random unobserved, 1:4; not CTR/CVR",
+  "feature_sha256": "beee79211a89a05abbe1335677190fb1f1e4bcc9be69474a839166f93bf6e0c1"
+}

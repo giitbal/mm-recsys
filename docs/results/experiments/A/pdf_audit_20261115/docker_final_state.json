@@ -1,0 +1,66 @@
+[
+  {
+    "Command": "\"python -m docker.da…\"",
+    "CreatedAt": "2026-11-15 16:22:16 +0900 KST",
+    "HealthStatus": "healthy",
+    "ID": "09857e946b8b",
+    "Image": "mm-recsys-audit-20261115-dashboard",
+    "Labels": "com.docker.compose.config-hash=61ea0d1bb628a2e17c3a3483fff510b380c91556dc1bbfdd2fa3827cd5e14a7e,com.docker.compose.container-number=1,com.docker.compose.depends_on=api-server:service_healthy:false,com.docker.compose.image=sha256:7fc7363902966c7a6c50b261a53f08896e2fd3029701c63a4db476a9242108c5,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/home/peachpetal/ecommerce/mm-recsys/docker-compose.yml,/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/compose.yaml,com.docker.compose.project.working_dir=/home/peachpetal/ecommerce/mm-recsys,com.docker.compose.project=mm-recsys-audit-20261115,com.docker.compose.service=dashboard,com.docker.compose.version=5.7.0,desktop.docker.io/binds/0/Source=/home/peachpetal/ecommerce/mm-recsys/data,desktop.docker.io/binds/0/SourceKind=wsl2DistroFile,desktop.docker.io/binds/0/Target=/app/data,desktop.docker.io/binds/1/Source=/home/peachpetal/ecommerce/mm-recsys/models,desktop.docker.io/binds/1/SourceKind=wsl2DistroFile,desktop.docker.io/binds/1/Target=/app/models,desktop.docker.io/binds/2/Source=/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115,desktop.docker.io/binds/2/SourceKind=wsl2DistroFile,desktop.docker.io/binds/2/Target=/app/.team/pdf-audit-20261115,desktop.docker.io/binds/3/Source=/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/serving_models,desktop.docker.io/binds/3/SourceKind=wsl2DistroFile,desktop.docker.io/binds/3/Target=/app/models/full-v44,desktop.docker.io/binds/4/Source=/home/peachpetal/ecommerce/mm-recsys/docs/results,desktop.docker.io/binds/4/SourceKind=wsl2DistroFile,desktop.docker.io/binds/4/Target=/app/docs/results,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/8501/tcp=127.0.0.1:18501,desktop.docker.io/wsl-distro=Ubuntu",
+    "LocalVolumes": "0",
+    "Mounts": "/run/desktop/m…,/run/desktop/m…,/run/desktop/m…,/run/desktop/m…,/run/desktop/m…",
+    "Names": "mm-recsys-audit-20261115-dashboard-1",
+    "Networks": "mm-recsys-audit-20261115_default",
+    "Platform": {
+      "architecture": "arm64",
+      "os": "linux"
+    },
+    "Ports": "127.0.0.1:18501->8501/tcp",
+    "RunningFor": "13 minutes ago",
+    "Size": "254kB (virtual 888MB)",
+    "State": "running",
+    "Status": "Up 13 minutes (healthy)"
+  },
+  {
+    "Command": "\"python -m docker.ap…\"",
+    "CreatedAt": "2026-11-15 16:22:16 +0900 KST",
+    "HealthStatus": "healthy",
+    "ID": "991f4d7a99ef",
+    "Image": "mm-recsys-audit-20261115-api-server",
+    "Labels": "com.docker.compose.config-hash=770c9f8f477f6f1abcfd1eaf57ee2ccbe55255c26cf2114cc6e979e44a42579c,com.docker.compose.container-number=1,com.docker.compose.depends_on=redis:service_healthy:false,com.docker.compose.image=sha256:1e815b6274166dcbe4df120b3816cdadeb49c00344e5522e72bcfa73209932bf,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/home/peachpetal/ecommerce/mm-recsys/docker-compose.yml,/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/compose.yaml,com.docker.compose.project.working_dir=/home/peachpetal/ecommerce/mm-recsys,com.docker.compose.project=mm-recsys-audit-20261115,com.docker.compose.service=api-server,com.docker.compose.version=5.7.0,desktop.docker.io/binds/0/Source=/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115,desktop.docker.io/binds/0/SourceKind=wsl2DistroFile,desktop.docker.io/binds/0/Target=/app/.team/pdf-audit-20261115,desktop.docker.io/binds/1/Source=/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/stream,desktop.docker.io/binds/1/SourceKind=wsl2DistroFile,desktop.docker.io/binds/1/Target=/app/data/full-v44/stream,desktop.docker.io/binds/2/Source=/home/peachpetal/ecommerce/mm-recsys/data,desktop.docker.io/binds/2/SourceKind=wsl2DistroFile,desktop.docker.io/binds/2/Target=/app/data,desktop.docker.io/binds/3/Source=/home/peachpetal/ecommerce/mm-recsys/models,desktop.docker.io/binds/3/SourceKind=wsl2DistroFile,desktop.docker.io/binds/3/Target=/app/models,desktop.docker.io/binds/4/Source=/home/peachpetal/ecommerce/mm-recsys/docs/results,desktop.docker.io/binds/4/SourceKind=wsl2DistroFile,desktop.docker.io/binds/4/Target=/app/docs/results,desktop.docker.io/binds/6/Source=/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/serving_models,desktop.docker.io/binds/6/SourceKind=wsl2DistroFile,desktop.docker.io/binds/6/Target=/app/models/full-v44,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/8000/tcp=127.0.0.1:18000,desktop.docker.io/wsl-distro=Ubuntu",
+    "LocalVolumes": "1",
+    "Mounts": "/run/desktop/m…,/run/desktop/m…,mm-recsys_hf_c…,/run/desktop/m…,/run/desktop/m…,/run/desktop/m…,/run/desktop/m…",
+    "Names": "mm-recsys-audit-20261115-api-server-1",
+    "Networks": "mm-recsys-audit-20261115_default",
+    "Platform": {
+      "architecture": "arm64",
+      "os": "linux"
+    },
+    "Ports": "127.0.0.1:18000->8000/tcp",
+    "RunningFor": "13 minutes ago",
+    "Size": "2.97MB (virtual 1.56GB)",
+    "State": "running",
+    "Status": "Up 13 minutes (healthy)"
+  },
+  {
+    "Command": "\"docker-entrypoint.s…\"",
+    "CreatedAt": "2026-11-15 16:21:48 +0900 KST",
+    "HealthStatus": "healthy",
+    "ID": "3731fb6752ca",
+    "Image": "redis:7",
+    "Labels": "com.docker.compose.config-hash=9468fe4af311a40de4b799a66b1544954e2d273a124420b0005c52bca0872ddb,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:cd953e4e9b4725f0d87a2b170c3d313ad641be5370033b46262e07f8010788a3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/home/peachpetal/ecommerce/mm-recsys/docker-compose.yml,/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/compose.yaml,com.docker.compose.project.working_dir=/home/peachpetal/ecommerce/mm-recsys,com.docker.compose.project=mm-recsys-audit-20261115,com.docker.compose.service=redis,com.docker.compose.version=5.7.0,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/6379/tcp=127.0.0.1:16379,desktop.docker.io/wsl-distro=Ubuntu",
+    "LocalVolumes": "1",
+    "Mounts": "mm-recsys-audi…",
+    "Names": "mm-recsys-audit-20261115-redis-1",
+    "Networks": "mm-recsys-audit-20261115_default",
+    "Platform": {
+      "architecture": "arm64",
+      "os": "linux",
+      "variant": "v8"
+    },
+    "Ports": "127.0.0.1:16379->6379/tcp",
+    "RunningFor": "13 minutes ago",
+    "Size": "4.1kB (virtual 146MB)",
+    "State": "running",
+    "Status": "Up 13 minutes (healthy)"
+  }
+]

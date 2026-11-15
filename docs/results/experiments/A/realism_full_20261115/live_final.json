@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "checks": {
+    "health": {
+      "http_status": 200,
+      "body": {
+        "status": "ok",
+        "search_ready": true,
+        "recommend_ready": true,
+        "scale": "full",
+        "model_version": "v1.0"
+      }
+    },
+    "ready": {
+      "http_status": 200,
+      "body": {
+        "status": "ready"
+      }
+    },
+    "dashboard": {
+      "http_status": 200,
+      "body": "ok"
+    }
+  }
+}

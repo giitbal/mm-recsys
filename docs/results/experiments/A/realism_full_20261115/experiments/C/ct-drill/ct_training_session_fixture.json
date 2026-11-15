@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "scale": "dev",
+  "acceptance": "UNMEASURED",
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 4.434370994567871,
+      "valid": {
+        "loss": 4.251062590500404,
+        "sampled_hit_at_10": 0.25,
+        "samples": 116,
+        "candidates": 65,
+        "denominator": "target plus fixed eligible random negatives; not full-catalog HitRate"
+      },
+      "seconds": 0.11061752100022204
+    },
+    {
+      "epoch": 2,
+      "loss": 4.26640510559082,
+      "valid": {
+        "loss": 4.12847795157597,
+        "sampled_hit_at_10": 0.3275862068965517,
+        "samples": 116,
+        "candidates": 65,
+        "denominator": "target plus fixed eligible random negatives; not full-catalog HitRate"
+      },
+      "seconds": 0.09857745299996168
+    },
+    {
+      "epoch": 3,
+      "loss": 4.111461162567139,
+      "valid": {
+        "loss": 4.016064610974542,
+        "sampled_hit_at_10": 0.4051724137931034,
+        "samples": 116,
+        "candidates": 65,
+        "denominator": "target plus fixed eligible random negatives; not full-catalog HitRate"
+      },
+      "seconds": 0.08480151200001274
+    }
+  ],
+  "best_epoch": 3,
+  "selected_valid": {
+    "loss": 4.016064610974542,
+    "sampled_hit_at_10": 0.4051724137931034,
+    "samples": 116,
+    "candidates": 65,
+    "denominator": "target plus fixed eligible random negatives; not full-catalog HitRate"
+  },
+  "checkpoint_reload": "PASS",
+  "bundle": {
+    "version": "gru-session-v1",
+    "best_epoch": 3,
+    "selection_split": "valid",
+    "config_fingerprint": "c6e122a49913d96ec8bbf020659fa4b9c29ec857695a772442fe695979de1855",
+    "candidate_sha256": "e9573b587f7d738d2611b31ec7b4aee1497ccdd867cb72ceda43f2ea91e66fd8",
+    "data_fingerprint": "668ad75782c97c4c430bcdec756ce98095f9adaff6a63e9b338c35ad924bba9d",
+    "hashes": {
+      "session.pt": "d79ac77b1df7177d8a8472cdf5f0224371a2bc8b495c4297ed005809daba07ae",
+      "item_ids.json": "e60c9cd6f2e903342633c450aa4465c216a52c9c0a818a258b1c3017c151a39d"
+    }
+  },
+  "elapsed_seconds": 1.2295226100000036,
+  "train_samples": 962,
+  "strictly_preceding": true,
+  "semantics": "offline recorded session_id; live store inactivity TTL=30min; generator 4.2 uses minute-scale session steps",
+  "environment": {
+    "torch": "2.6.0+cpu",
+    "threads": 1,
+    "device": "cpu"
+  }
+}

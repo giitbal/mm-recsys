@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "scale": "dev",
+  "split": "test",
+  "classification": {
+    "ctr": {
+      "auc": 0.9359883421700879,
+      "auc_status": "MEASURED",
+      "logloss": 0.7309828482023947,
+      "samples": 22296,
+      "positives": 5574,
+      "denominator": "observed exposures"
+    },
+    "cvr": {
+      "auc": 0.5386091240703017,
+      "auc_status": "MEASURED",
+      "logloss": 0.0900395626655534,
+      "samples": 5574,
+      "positives": 19,
+      "denominator": "observed clicked exposures"
+    }
+  },
+  "labels": {
+    "version": "linked-view-last-view-v3",
+    "rows": 22296,
+    "clicks": 5574,
+    "conversions": 19,
+    "ctr_observed": 22296,
+    "cvr_observed": 5574,
+    "censored": 0,
+    "censored_cvr_negatives": 0,
+    "unassigned_purchases": 0,
+    "window_seconds": 1800,
+    "start": "2025-12-28T15:46:52.275000+00:00",
+    "end": "2025-12-31T22:14:34.143000+00:00",
+    "ctr_proxy": "linked view; generator timestamps equal exposure timestamps",
+    "cvr_denominator": "observed linked clicked exposures only",
+    "same_timestamp_view_exposure": 59039,
+    "excluded_inputs": [
+      "position",
+      "impression_id",
+      "request_id",
+      "event_type",
+      "persona"
+    ]
+  },
+  "metrics": {
+    "two_tower": {
+      "hit_rate_at_50": 0.7735849056603774,
+      "ndcg_at_50": 0.4354109109651667,
+      "coverage": 0.9593333333333334,
+      "unique_recommended_items": 2878
+    },
+    "deepfm": {
+      "hit_rate_at_50": 0.7735849056603774,
+      "ndcg_at_50": 0.4209233838890771,
+      "coverage": 0.8953333333333333,
+      "unique_recommended_items": 2686
+    }
+  },
+  "deepfm_absolute_lift": {
+    "hit_rate_at_50": 0.0,
+    "ndcg_at_50": -0.014487527076089635,
+    "coverage": -0.06400000000000006
+  },
+  "truth_users": 106,
+  "coverage_users": 1000,
+  "cold_users": 30,
+  "catalog_items": 3000,
+  "data_counts": {
+    "products": 3000,
+    "users": 1000,
+    "events": 100000,
+    "impressions": 236156
+  },
+  "cutoff": "2025-12-28T15:46:42.990000+00:00",
+  "contract": "fixed origin; nonempty unique cart/purchase truth; unavailable truth retained; coverage denominator full catalog",
+  "session_evaluation": "no within-evaluation session clicks in fixed-origin metrics; live adaptation tested separately",
+  "b5_constraint_violations": 0,
+  "data_fingerprint": "d600fbb31b1bdf94cf763635a0ec1a1aa354fbcb3b507f99a8c119b43733faf1",
+  "b5_infeasible_candidate_pools": 0,
+  "b5_feasible_pool_violations": 0,
+  "b5_violation_types": {},
+  "b5_violation_examples": [],
+  "scoring": {
+    "strategy": "ctr"
+  },
+  "config_fingerprint": "c2f5a334b863b7d2c067de4986b4aefe45869566770d3db3f60a79099ec028d5",
+  "ranking_model_sha256": "0445cd02205d21c0d9c3d4cd6bc08efa899cb961ef34eaf35448c37f6fb9de98",
+  "candidate_model_sha256": "ce7d1c9ff046fc4e74fdeea13d1dd1fb2f81cc49228f5eda81d071d6f339c63b",
+  "elapsed_seconds": 28.696417934000237,
+  "checks": {
+    "ctr_auc": true,
+    "hit_rate_at_50": true,
+    "ndcg_at_50": true,
+    "coverage": true
+  }
+}

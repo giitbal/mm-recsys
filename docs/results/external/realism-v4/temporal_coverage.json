@@ -1,0 +1,77 @@
+{
+  "runs": [
+    {
+      "run": "44-price",
+      "first": "2025-12-04 00:00:00+00:00",
+      "last": "2025-12-31 22:13:47.613000+00:00",
+      "trailing_empty_days": 0.07375447916666666
+    },
+    {
+      "run": "44-behavior",
+      "first": "2025-12-04 00:00:22.354480660+00:00",
+      "last": "2025-12-29 20:57:05.711519340+00:00",
+      "trailing_empty_days": 2.1270172277777775
+    },
+    {
+      "run": "42-combined",
+      "first": "2025-12-04 00:00:44.708961320+00:00",
+      "last": "2025-12-29 20:55:58.648077360+00:00",
+      "trailing_empty_days": 2.1277934250231483
+    },
+    {
+      "run": "42-baseline",
+      "first": "2025-12-04 00:00:00+00:00",
+      "last": "2025-12-31 22:13:47.613000+00:00",
+      "trailing_empty_days": 0.07375447916666666
+    },
+    {
+      "run": "42-behavior",
+      "first": "2025-12-04 00:00:44.708961320+00:00",
+      "last": "2025-12-29 20:55:58.648077360+00:00",
+      "trailing_empty_days": 2.1277934250231483
+    },
+    {
+      "run": "43-combined",
+      "first": "2025-12-04 00:00:22.354480660+00:00",
+      "last": "2025-12-29 20:55:13.939116040+00:00",
+      "trailing_empty_days": 2.128310889849537
+    },
+    {
+      "run": "43-baseline",
+      "first": "2025-12-04 00:00:00+00:00",
+      "last": "2025-12-31 22:14:35.871000+00:00",
+      "trailing_empty_days": 0.0731959375
+    },
+    {
+      "run": "43-price",
+      "first": "2025-12-04 00:00:00+00:00",
+      "last": "2025-12-31 22:14:35.871000+00:00",
+      "trailing_empty_days": 0.0731959375
+    },
+    {
+      "run": "44-combined",
+      "first": "2025-12-04 00:00:22.354480660+00:00",
+      "last": "2025-12-29 20:55:36.293596700+00:00",
+      "trailing_empty_days": 2.1280521574421294
+    },
+    {
+      "run": "42-price",
+      "first": "2025-12-04 00:00:00+00:00",
+      "last": "2025-12-31 22:14:35.871000+00:00",
+      "trailing_empty_days": 0.0731959375
+    },
+    {
+      "run": "44-baseline",
+      "first": "2025-12-04 00:00:00+00:00",
+      "last": "2025-12-31 22:14:35.871000+00:00",
+      "trailing_empty_days": 0.0731959375
+    },
+    {
+      "run": "43-behavior",
+      "first": "2025-12-04 00:00:22.354480660+00:00",
+      "last": "2025-12-29 20:56:21.002558020+00:00",
+      "trailing_empty_days": 2.1275346926041667
+    }
+  ],
+  "limitation": "All measurements use fixed windows. Generator reserves time for ongoing sessions, leaving an empty tail; this remains a temporal-realism limitation, especially at higher density."
+}

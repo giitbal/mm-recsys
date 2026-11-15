@@ -1,0 +1,2 @@
+[2026-11-15T07:53:23+00:00] [데이터 준비] [성공] 상품 50,000개·사용자 10,000명·이벤트 1,000,000건 준비 완료 / 경로=.team/realism-full-20261115/reproduction
+{'status': 'PASS', 'checks': {'counts': True, 'generation_fingerprint': True, 'file_hashes': True, 'boundaries': True, 'split_counts': True}, 'elapsed_seconds': 85.5145845359998, 'scope': 'Independent full calibrated generation with unchanged seed42, separate directory; full image manifest and parquet hashes compared'}

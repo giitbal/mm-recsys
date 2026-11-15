@@ -1,4 +1,5 @@
 .venv/
+/학습 데이터셋 추천/
 __pycache__/
 *.pyc
 *.pdf
@@ -7,6 +8,8 @@ __pycache__/
 !.env.example
 .cache/
 *.log
+# Preserve the frozen full calibration experiment's A/B execution evidence.
+!docs/results/experiments/A/realism_full_20261115/ab_test.log
 data/*
 !data/.gitkeep
 models/*
@@ -25,3 +28,5 @@ docs/results/integration/runtime/
 docs/results/**/analysis/
 docs/results/docker/runtime-v*/
 docs/results/experiments/**/raw/
+# Transient training JSON is copied to the reviewed training_reports directory.
+docs/results/external/realism-v4/models/

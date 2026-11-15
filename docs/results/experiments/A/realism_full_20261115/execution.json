@@ -1,0 +1,134 @@
+[
+  {
+    "name": "simulator",
+    "command": [
+      "docker",
+      "logs",
+      "mm-recsys-realism-full-20261115-simulator-1"
+    ],
+    "exit_code": 0,
+    "seconds": 0.04486799240112305
+  },
+  {
+    "name": "stop_simulator",
+    "command": [
+      "docker",
+      "stop",
+      "mm-recsys-realism-full-20261115-simulator-1"
+    ],
+    "exit_code": 0,
+    "seconds": 0.27344536781311035
+  },
+  {
+    "name": "peer_review",
+    "command": [
+      "docker",
+      "exec",
+      "mm-recsys-realism-full-20261115-api-server-1",
+      "python",
+      "scripts/verify_peer_review.py",
+      "--api-url",
+      "http://127.0.0.1:8000",
+      "--output",
+      "docs/results/experiments/A/realism_full_20261115/peer_review.json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.9276502132415771
+  },
+  {
+    "name": "mab",
+    "command": [
+      "docker",
+      "exec",
+      "-e",
+      "CONFIG_PATH=models/full-realism-v4/.docker/config.yaml",
+      "mm-recsys-realism-full-20261115-api-server-1",
+      "python",
+      "scripts/verify_integration_mab.py",
+      "--output",
+      "docs/results/experiments/A/realism_full_20261115/mab.json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.46120214462280273
+  },
+  {
+    "name": "smoke",
+    "command": [
+      "docker",
+      "exec",
+      "mm-recsys-realism-full-20261115-api-server-1",
+      "python",
+      "scripts/smoke_test.py",
+      "--benchmark",
+      "--output",
+      "docs/results/experiments/A/realism_full_20261115/quality/smoke_full.json"
+    ],
+    "exit_code": 0,
+    "seconds": 38.38990616798401
+  },
+  {
+    "name": "quality_valid",
+    "command": [
+      "docker",
+      "exec",
+      "mm-recsys-realism-full-20261115-api-server-1",
+      "python",
+      "-m",
+      "docker.quality",
+      "--split",
+      "valid"
+    ],
+    "exit_code": 0,
+    "seconds": 423.52653312683105
+  },
+  {
+    "name": "quality_test",
+    "command": [
+      "docker",
+      "exec",
+      "mm-recsys-realism-full-20261115-api-server-1",
+      "python",
+      "-m",
+      "docker.quality",
+      "--split",
+      "test"
+    ],
+    "exit_code": 0,
+    "seconds": 390.86246395111084
+  },
+  {
+    "name": "ab_test",
+    "command": [
+      "docker",
+      "exec",
+      "mm-recsys-realism-full-20261115-api-server-1",
+      "python",
+      "scripts/demo.py",
+      "ab",
+      "--users-per-group",
+      "500",
+      "--days",
+      "7",
+      "--output",
+      "docs/results/experiments/A/realism_full_20261115/ab_test.json"
+    ],
+    "exit_code": 0,
+    "seconds": 88.25064015388489
+  },
+  {
+    "name": "ct_natural",
+    "command": [
+      "docker",
+      "exec",
+      "mm-recsys-realism-full-20261115-api-server-1",
+      "python",
+      "scripts/demo.py",
+      "ct",
+      "--json",
+      "--output",
+      "docs/results/experiments/A/realism_full_20261115/ct_natural.jsonl"
+    ],
+    "exit_code": 0,
+    "seconds": 0.465817928314209
+  }
+]

@@ -5,5 +5,9 @@
   "primary_acceptance": "합성 full 데이터로 개발과 필수 검증을 완료한다",
   "real_datasets_required": false,
   "real_datasets_use": "H&M, Retailrocket, DeepFashion은 개발 완료 후 추가적인 모델 검증에 사용한다",
-  "acquisition_performed": false
+  "acquisition_performed": true,
+  "acquisition_source": "사용자가 로컬에 다운로드",
+  "external_use_requested_date": "2026-11-14",
+  "external_use_report": "docs/external_datasets.md",
+  "external_full_acceptance": "UNMEASURED"
 }

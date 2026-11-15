@@ -1,0 +1,22 @@
+{
+  "html_url": "https://github.com/k-pang-2026/mm-recsys",
+  "private": false,
+  "default_branch": "main",
+  "updated_at": "2026-11-12T08:22:06Z",
+  "pushed_at": "2026-11-12T07:24:17Z",
+  "anonymous_access": "PASS",
+  "remote_main_sha": "b159ee27e5415a2d54a2eaa705c3ff35331d103d",
+  "head_comparison": {
+    "status": null,
+    "ahead_by": null,
+    "behind_by": null,
+    "error": "HTTP Error 404: Not Found"
+  },
+  "local_unpublished_commits": [
+    "378abbb",
+    "f342771",
+    "54e53c6",
+    "70de889"
+  ],
+  "scope": "Public repository exists; remote main differs from local audited HEAD; URL submission to grading system not observable"
+}

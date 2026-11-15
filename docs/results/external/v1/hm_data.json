@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "source_members": {
+    "articles.csv": {
+      "archive": "h-and-m-personalized-fashion-recommendations.zip",
+      "member": "articles.csv",
+      "crc32": 2751723454,
+      "bytes": 36127865,
+      "sha256": "25f21882053517f7684ea43f524225a9481a7bb9aab9cf0abfc7fe8c4576a72b"
+    },
+    "customers.csv": {
+      "archive": "h-and-m-personalized-fashion-recommendations.zip",
+      "member": "customers.csv",
+      "crc32": 2626546947,
+      "bytes": 207135859,
+      "sha256": "abf3450c37ee1c16124e0d3379371153f5371148742efdcfe44c97c0445df6b2"
+    },
+    "transactions_train.csv": {
+      "archive": "h-and-m-personalized-fashion-recommendations.zip",
+      "member": "transactions_train.csv",
+      "crc32": 3258739784,
+      "bytes": 3488002253,
+      "sha256": "fff5e3b35c1b26016aa0bf2231be9525bc766eed32c94f1653420b465aef84fa"
+    },
+    "sample_submission.csv": {
+      "archive": "h-and-m-personalized-fashion-recommendations.zip",
+      "member": "sample_submission.csv",
+      "crc32": 375330878,
+      "bytes": 270280083,
+      "sha256": "1b48d9fc42a290cc204f7a4f4b0c2af837bc4db8214d093b489e3767a93c89cd"
+    }
+  },
+  "total_source_transactions": 31788324,
+  "source_customers": 1371980,
+  "cohort": {
+    "products": 105542,
+    "users": 2000,
+    "events": 47923
+  },
+  "split_counts": {
+    "train": 38750,
+    "valid": 4634,
+    "test": 4539
+  },
+  "boundaries": {
+    "train": {
+      "start": "2018-09-20 00:00:00+00:00",
+      "end": "2020-05-06 23:59:59.999999999+00:00"
+    },
+    "valid": {
+      "start": "2020-05-07 00:00:00+00:00",
+      "end": "2020-07-04 23:59:59.999999999+00:00"
+    },
+    "test": {
+      "start": "2020-07-05 00:00:00+00:00",
+      "end": "2020-09-22 23:59:59.999999999+00:00"
+    }
+  },
+  "cohort_policy": "seed42 uniform sample from all customer IDs before observing outcomes; no activity/quality filtering",
+  "actual_source_split_counts": {
+    "train": 25448259,
+    "valid": 3166049,
+    "test": 3174016
+  },
+  "full_catalog": true,
+  "image_files": 105100,
+  "products_with_images": 105100,
+  "products_without_images": 442,
+  "proxy_policy": "created_at/signup_at = first observed purchase; daily session_id is not a click session; customer snapshot demographics unused",
+  "metadata_limitation": "static articles snapshot; historical attribute availability cannot be verified; train-only mean price with train-global fallback",
+  "missing_train_prices": 13615,
+  "calibration": {
+    "train_end": "2020-05-06",
+    "train_transactions": 25448259,
+    "mapped_train_transactions": 17331385,
+    "excluded_train_transactions": 8116874,
+    "category_purchase_shares": {
+      "accessories": 0.07542034292123798,
+      "bottoms": 0.29082442055265634,
+      "footwear": 0.03480108485271085,
+      "outerwear": 0.05737285277547063,
+      "tops": 0.5415812988979242
+    },
+    "relative_category_price": {
+      "accessories": 0.561377705131588,
+      "bottoms": 1.1964590504515356,
+      "footwear": 1.4191625227630322,
+      "outerwear": 2.3640824139388275,
+      "tops": 0.8307972823995486
+    },
+    "price_unit": "H&M normalized price; relative category ratios only, no KRW conversion",
+    "fit_scope": "all source transactions in train only; no valid/test outcomes",
+    "unidentified": [
+      "true registration dates",
+      "six persona membership",
+      "brand loyalty",
+      "causal price elasticity",
+      "impression CTR/CVR"
+    ]
+  }
+}

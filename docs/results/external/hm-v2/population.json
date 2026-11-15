@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "source_sha256": "fff5e3b35c1b26016aa0bf2231be9525bc766eed32c94f1653420b465aef84fa",
+  "train_cutoff": "2020-05-06 23:59:59.999999999+00:00",
+  "windows_days": [
+    0,
+    30,
+    90
+  ],
+  "transactions": [
+    25448259,
+    1221089,
+    3354462
+  ],
+  "products_observed": [
+    91927,
+    23235,
+    40095
+  ],
+  "counts_sha256": "eaae6d48d70c14b28991fc3a1b8149752ffb80f36f43d39dac7f6e717657db37",
+  "ids_fingerprint": "e07b20ce7189c550da60d9c193a359068517d97846a7c2b93896c7c94a6ff278",
+  "fit_scope": "all source customers, train only; no valid/test population statistics"
+}

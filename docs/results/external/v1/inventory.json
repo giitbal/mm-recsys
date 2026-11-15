@@ -1,0 +1,231 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "identity": "e308d82d47ef337254696b3620de3a733dda6897b2301aba4c7a207f90cb7871",
+  "files": [
+    {
+      "name": "G2-004.zip",
+      "bytes": 12663823404,
+      "entries": 1,
+      "uncompressed_bytes": 16822093720,
+      "encrypted_entries": 1,
+      "csv_members": [],
+      "directory_fingerprint": "0975bf34fcb0ab9e354a8afdf5f864bebf3f1bdd7f1973ec507578dcdf22d2b0"
+    },
+    {
+      "name": "category_tree.csv",
+      "bytes": 14454,
+      "sha256": "94e865eb0a3d48cbbfe3b79079018dd92509315c88f5fd8d00d0b4b5af434f5b"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-001.zip",
+      "bytes": 844535992,
+      "entries": 6,
+      "uncompressed_bytes": 904054276,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "57c780e24221db1e2280bc7c0248e5e36928509e347490d9b4f259dfc83ffd30"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-009.zip",
+      "bytes": 61696930,
+      "entries": 6,
+      "uncompressed_bytes": 297926941,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "6fa9eb92f035bb393f9abb2839f877ecc635e1f5102195f9cc2a9b0181266729"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-010.zip",
+      "bytes": 114065972,
+      "entries": 6,
+      "uncompressed_bytes": 517260980,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "bf2ac5a5c5c4bc410db2b89d12047fdbcfc5b612acc53446588694475eb1d962"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-011.zip",
+      "bytes": 495618,
+      "entries": 5,
+      "uncompressed_bytes": 5606057,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "eb8e2ba2aa4b2ddf3760bf50ba6ad81bdd863c95e9f47c3fd0d42e7054a150f4"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-012.zip",
+      "bytes": 8340732,
+      "entries": 5,
+      "uncompressed_bytes": 913501766,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "6137d4cf07f14c430c20d4997ee79633fbbb5e90db273ccd43ce13e034be66b7"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-013.zip",
+      "bytes": 817963,
+      "entries": 5,
+      "uncompressed_bytes": 16777565,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "6ee51a749fef20733d0cd5e60a15a7569e86b3b13d765acc7c80d47555861051"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-014.zip",
+      "bytes": 244119282,
+      "entries": 5,
+      "uncompressed_bytes": 1131350678,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "ff908db0d8660909513abfd38c5402c0e1004c2cec03047a4fbb1b9121cf21d5"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-015.zip",
+      "bytes": 1208554,
+      "entries": 5,
+      "uncompressed_bytes": 22286762,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "84ef0e8f16288670ec6c613d5749533ea980948d062b34e886a86e4b30e00036"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-016.zip",
+      "bytes": 2308440,
+      "entries": 5,
+      "uncompressed_bytes": 29764084,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "7bb2274fa1d9cd9fa11fce1da714da2931ade0d6c3582521dacaa95974fde6f8"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-017.zip",
+      "bytes": 3555820,
+      "entries": 5,
+      "uncompressed_bytes": 14238310,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "3f3400bab41a98d892b375d624d4ca40ddfb7c24694c89097ce2a7f706aa58ed"
+    },
+    {
+      "name": "drive-download-20261114T051047Z-1-018.zip",
+      "bytes": 1604247161,
+      "entries": 5,
+      "uncompressed_bytes": 1655546063,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "7be7e418564f6e5e42ad0f2537f6936b046faea84a5399094b782f075b29f3ff"
+    },
+    {
+      "name": "events.csv.zip",
+      "bytes": 33971694,
+      "entries": 1,
+      "uncompressed_bytes": 94237913,
+      "encrypted_entries": 0,
+      "csv_members": [
+        "events.csv"
+      ],
+      "directory_fingerprint": "3dbed1c5afc69c786efde944b8f5397d5df8481d3a7d10666f3ca10fd00864ad"
+    },
+    {
+      "name": "h-and-m-personalized-fashion-recommendations.zip",
+      "bytes": 30810293747,
+      "entries": 105104,
+      "uncompressed_bytes": 34558584597,
+      "encrypted_entries": 0,
+      "csv_members": [
+        "articles.csv",
+        "customers.csv",
+        "sample_submission.csv",
+        "transactions_train.csv"
+      ],
+      "directory_fingerprint": "9c7ecd4f624e7c0245ece3d55d907897950ad744b58120bced3ff4ff2e8e6172"
+    },
+    {
+      "name": "img-003.zip",
+      "bytes": 2501824616,
+      "entries": 123017,
+      "uncompressed_bytes": 2483125966,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "be81ab73c082ca5972e531fb200031a7291e17f991d9489f0d7c18165d89cd1b"
+    },
+    {
+      "name": "img-006.zip",
+      "bytes": 2693329304,
+      "entries": 275010,
+      "uncompressed_bytes": 2635359440,
+      "encrypted_entries": 239557,
+      "csv_members": [],
+      "directory_fingerprint": "fd0579e91316fe56a085a304e04c2c43a0804c18ef7d94b007af0343294a87ac"
+    },
+    {
+      "name": "img-008.zip",
+      "bytes": 2681199362,
+      "entries": 294852,
+      "uncompressed_bytes": 2735867558,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "2230f35a70b66dff4991e1c038d4df4ebec893637f8aaf76a87ea2924d82341c"
+    },
+    {
+      "name": "img_highres-002.zip",
+      "bytes": 8266270472,
+      "entries": 60820,
+      "uncompressed_bytes": 8470617310,
+      "encrypted_entries": 52713,
+      "csv_members": [],
+      "directory_fingerprint": "2dc4dc105732374d6f359b1dc9294a5fc3222ef79e54764f76734fd2c843915b"
+    },
+    {
+      "name": "img_highres-005.zip",
+      "bytes": 8757875857,
+      "entries": 275010,
+      "uncompressed_bytes": 8751095206,
+      "encrypted_entries": 239557,
+      "csv_members": [],
+      "directory_fingerprint": "340dde74f639c5c7f5042dc14757c61750c2957314d515394d02eafac1c614eb"
+    },
+    {
+      "name": "img_highres-007.zip",
+      "bytes": 30217142484,
+      "entries": 294834,
+      "uncompressed_bytes": 31221861060,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "f9044336cd1c10253b62d01cf015d2c5f217e821c7b32c6572b9a7c6d2a010f8"
+    },
+    {
+      "name": "img_highres_seg-019.zip",
+      "bytes": 8408994392,
+      "entries": 74572,
+      "uncompressed_bytes": 8640434545,
+      "encrypted_entries": 0,
+      "csv_members": [],
+      "directory_fingerprint": "2935edeedfc9992f833814375f9356742e8b17a4f7fdc5e22e23d224a70b3350"
+    },
+    {
+      "name": "item_properties_part1.csv.zip",
+      "bytes": 146828168,
+      "entries": 1,
+      "uncompressed_bytes": 484315749,
+      "encrypted_entries": 0,
+      "csv_members": [
+        "item_properties_part1.csv"
+      ],
+      "directory_fingerprint": "24344c0bd7aaa931090af95696df645e7ecf1d43a5839fb729fd53578ab637cc"
+    },
+    {
+      "name": "item_properties_part2.csv.zip",
+      "bytes": 123913624,
+      "entries": 1,
+      "uncompressed_bytes": 408929907,
+      "encrypted_entries": 0,
+      "csv_members": [
+        "item_properties_part2.csv"
+      ],
+      "directory_fingerprint": "91e0a174279eee5c469c77fa791e451bac3c81546ab2386e5e3ac9cd0581040e"
+    }
+  ],
+  "integrity": "ZIP central directories only; consumed CSV members checked by CRC and SHA256; images decoded when evaluated"
+}

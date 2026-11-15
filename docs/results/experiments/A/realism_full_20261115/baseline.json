@@ -1,0 +1,5 @@
+{
+  "source": "docs/results/experiments/A/pdf_audit_20261115/quality/quality_full_test.json",
+  "sha256": "bef0da97c1d4fd52eacaccafe8640ec89a059f64b3ed3f6eae79c678bd2f0b31",
+  "scope": "Previous full-v44 current-source audit. Different generated data/truth; comparison describes environments and does not establish causal real-user lift."
+}

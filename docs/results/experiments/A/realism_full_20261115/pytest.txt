@@ -1,0 +1,1070 @@
+........................................................................ [ 13%]
+........................................................................ [ 27%]
+........................................................................ [ 41%]
+........................................................................ [ 55%]
+........................................................................ [ 69%]
+........................................................................ [ 83%]
+........................................................................ [ 97%]
+...............                                                          [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/starlette/testclient.py:40
+  /home/peachpetal/ecommerce/mm-recsys/.venv/lib/python3.12/site-packages/starlette/testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+.venv/lib/python3.12/site-packages/faiss/loader.py:49
+  /home/peachpetal/ecommerce/mm-recsys/.venv/lib/python3.12/site-packages/faiss/loader.py:49: DeprecationWarning: numpy.core._multiarray_umath is deprecated and has been renamed to numpy._core._multiarray_umath. The numpy._core namespace contains private NumPy internals and its use is discouraged, as NumPy internals can change without warning in any release. In practice, most real-world usage of numpy.core is to access functionality in the public NumPy API. If that is the case, use the public NumPy API. If not, you are using NumPy internals. If you would still like to access an internal attribute, use numpy._core._multiarray_umath.__cpu_features__.
+    from numpy.core._multiarray_umath import __cpu_features__
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+___________ test_simulation_is_reproducible_causal_and_arm_isolated ____________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=1/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=2/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=3/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=1/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=2/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=3/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=1/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=2/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=3/3 / 그룹별 사용자=10명 / seed=42
+____________ test_no_hardcoded_treatment_uplift_and_price_response _____________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=1/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=2/3 / 그룹별 사용자=10명 / seed=42
+[2026-11-15T07:48:38+00:00] [A/B 실험] [진행] 진행 일수=3/3 / 그룹별 사용자=10명 / seed=42
+________ test_registered_model_restart_and_reload_keep_runtime_sorting _________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:39+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:39+00:00] [CT 초기화] [성공] 모델=v1.0
+[2026-11-15T07:48:39+00:00] [CT 서비스 모델 교체] [성공] 모델=v1.0
+______ test_docker_warmup_allows_sorting_but_rejects_model_config_changes ______
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:39+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:39+00:00] [CT 초기화] [성공] 모델=v1.0
+[2026-11-15T07:48:39+00:00] [Redis 준비] [성공] 사용자 프로필 적재 완료 / 결과={'status': 'PASS'}
+[2026-11-15T07:48:39+00:00] [Redis 준비] [성공] 사용자 프로필 적재 완료 / 결과={'status': 'PASS'}
+____________ test_ct_compares_models_under_the_same_runtime_policy _____________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:39+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:40+00:00] [CT 초기화] [성공] 모델=v1.0
+[2026-11-15T07:48:40+00:00] [CT 스냅샷] [진행] 관측 로그를 묶음 단위로 읽고 시간순 학습 스냅샷을 생성합니다.
+[2026-11-15T07:48:40+00:00] [CT 학습 준비] [진행] 스냅샷·관측 라벨 검사 통과; 세 모델 학습을 시작합니다.
+[2026-11-15T07:48:40+00:00] [CT 버전 등록] [성공] 모델=v1.1
+__________________ test_attribution_maturity_dedup_and_alert ___________________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:43+00:00] [CT 알림] [경고] CTR=0.5 / 기준=0.6 / HitRate@50=0.0 / 기준=0.5 / 성숙 요청=1 / 노출=2 / 성능 저하 감지. 다음 조치: 표본과 재학습 누적 로그를 확인하세요.
+______ test_degradation_triggers_below_log_threshold_once_per_observation ______
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:43+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:43+00:00] [CT 초기화] [성공] 모델=v1.0
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:43+00:00] [CT 재학습] [진행] 신규 로그 0건 누적 / 사유=performance_degradation / v1.0 → v1.1 / 재학습 시작
+[2026-11-15T07:48:43+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:48:43+00:00] [CT 판정] [유지] 검증 개선 조건을 충족하지 못해 기존 모델을 유지합니다. / 후보=v1.1 / 활성=v1.0 / 검증={'baseline': {'ctr_auc': 0.8}, 'candidate': {'ctr_auc': 0.7}, 'split': 'valid', 'validation_fingerprint': 'controlled-fixture-cohort'}
+[2026-11-15T07:48:43+00:00] [CT 학습 대기] [진행] 입력 변화·재시도 간격을 확인해 스냅샷을 다시 생성하지 않습니다.
+_ test_degradation_requires_current_mature_sufficient_enabled_evidence[old-model-10.0-1-True] _
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:43+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:43+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_degradation_requires_current_mature_sufficient_enabled_evidence[v1.0-25.0-1-True] _
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:43+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:43+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_degradation_requires_current_mature_sufficient_enabled_evidence[v1.0-10.0-2-True] _
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:43+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:43+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_degradation_requires_current_mature_sufficient_enabled_evidence[v1.0-10.0-1-False] _
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:43+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:43+00:00] [CT 초기화] [성공] 모델=v1.0
+____ test_ct_validation_labels_match_training_pipeline_without_train_labels ____
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:44+00:00] [데이터 준비] [성공] 상품 400개·사용자 24명·이벤트 6,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_ct_validation_labels_matc0/data
+______________ test_registry_increment_reject_rollback_and_tamper ______________
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:44+00:00] [CT 초기화] [성공] 모델=v1.0
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:48:44+00:00] [CT 판정] [승격] 검증 조건을 충족하여 새 모델을 승격합니다. / 후보=v1.1 / 활성=v1.1 / 검증={'baseline': {'ctr_auc': 0.5}, 'candidate': {'ctr_auc': 0.8}, 'split': 'valid', 'validation_fingerprint': 'controlled-fixture-cohort'}
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.2
+[2026-11-15T07:48:44+00:00] [CT 판정] [유지] 검증 개선 조건을 충족하지 못해 기존 모델을 유지합니다. / 후보=v1.2 / 활성=v1.1 / 검증={'baseline': {'ctr_auc': 0.8}, 'candidate': {'ctr_auc': 0.79}, 'split': 'valid', 'validation_fingerprint': 'controlled-fixture-cohort'}
+[2026-11-15T07:48:44+00:00] [CT 롤백] [성공] v1.1 → v1.0 / 사유=controlled fixture rollback
+_________ test_promotion_requires_finite_valid_improvement[nan-valid] __________
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:44+00:00] [CT 초기화] [성공] 모델=v1.0
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:48:44+00:00] [CT 판정] [유지] 검증 개선 조건을 충족하지 못해 기존 모델을 유지합니다. / 후보=v1.1 / 활성=v1.0 / 검증={'baseline': {'ctr_auc': 0.5}, 'candidate': {'ctr_auc': None}, 'split': 'valid', 'validation_fingerprint': 'controlled-fixture-cohort', 'rejection_reason': 'nonfinite or missing promotion metric'}
+__________ test_promotion_requires_finite_valid_improvement[0.9-test] __________
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:44+00:00] [CT 초기화] [성공] 모델=v1.0
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:48:44+00:00] [CT 판정] [유지] 검증 개선 조건을 충족하지 못해 기존 모델을 유지합니다. / 후보=v1.1 / 활성=v1.0 / 검증={'baseline': {'ctr_auc': 0.5}, 'candidate': {'ctr_auc': 0.9}, 'split': 'test', 'validation_fingerprint': 'controlled-fixture-cohort'}
+_________ test_promotion_requires_finite_valid_improvement[None-valid] _________
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:44+00:00] [CT 초기화] [성공] 모델=v1.0
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:48:44+00:00] [CT 판정] [유지] 검증 개선 조건을 충족하지 못해 기존 모델을 유지합니다. / 후보=v1.1 / 활성=v1.0 / 검증={'baseline': {'ctr_auc': 0.5}, 'candidate': {'ctr_auc': None}, 'split': 'valid', 'validation_fingerprint': 'controlled-fixture-cohort', 'rejection_reason': 'nonfinite or missing promotion metric'}
+________ test_promotion_requires_finite_valid_improvement[0.5001-valid] ________
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:44+00:00] [CT 초기화] [성공] 모델=v1.0
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:48:44+00:00] [CT 판정] [유지] 검증 개선 조건을 충족하지 못해 기존 모델을 유지합니다. / 후보=v1.1 / 활성=v1.0 / 검증={'baseline': {'ctr_auc': 0.5}, 'candidate': {'ctr_auc': 0.5001}, 'split': 'valid', 'validation_fingerprint': 'controlled-fixture-cohort'}
+_____ test_threshold_failures_retry_captured_watermark_and_concurrent_lock _____
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:44+00:00] [CT 초기화] [성공] 모델=v1.0
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:44+00:00] [CT 재학습] [진행] 신규 로그 3건 누적 / 사유=new_logs / v1.0 → v1.1 / 재학습 시작
+[2026-11-15T07:48:44+00:00] [CT 재학습] [실패] 원인: RuntimeError: training interrupted / 다음 조치: 원본 오류와 모델·API 상태를 확인한 뒤 재시도하세요.
+[2026-11-15T07:48:44+00:00] [CT 재학습] [진행] 신규 로그 3건 누적 / 사유=new_logs / v1.0 → v1.1 / 재학습 시작
+[2026-11-15T07:48:44+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:48:44+00:00] [CT 판정] [승격] 검증 조건을 충족하여 새 모델을 승격합니다. / 후보=v1.1 / 활성=v1.1 / 검증={'baseline': {'ctr_auc': 0.5}, 'candidate': {'ctr_auc': 0.8}, 'split': 'valid', 'validation_fingerprint': 'controlled-fixture-cohort'}
+________ test_reload_internal_only_and_failed_preload_preserves_pointer ________
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:45+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:45+00:00] [CT 초기화] [성공] 모델=v1.0
+------------------------------ Captured log call -------------------------------
+ERROR    src.serving.ct_admin:ct_admin.py:59 [2026-11-15T07:48:45+00:00] [CT 모델 교체] [실패] 모델 사전 로딩 실패로 기존 서비스 유지 / 다음 조치: 아래 원본 오류와 번들 호환성을 확인하세요.
+Traceback (most recent call last):
+  File "/home/peachpetal/ecommerce/mm-recsys/src/serving/ct_admin.py", line 43, in reload_model
+    replacement = load_record(registry, version, request.app.state.store,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/serving/model_loader.py", line 15, in load_record
+    record = registry.verify(version)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/ct/model_registry.py", line 66, in verify
+    raise ValueError('registered bundle has changed')
+ValueError: registered bundle has changed
+___________ test_atomic_reload_allows_old_inflight_request_to_finish ___________
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:48:45+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:45+00:00] [CT 초기화] [성공] 모델=v1.0
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:45+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:48:45+00:00] [CT 판정] [승격] 검증 조건을 충족하여 새 모델을 승격합니다. / 후보=v1.1 / 활성=v1.1 / 검증={'baseline': {'ctr_auc': 0.5}, 'candidate': {'ctr_auc': 0.8}, 'split': 'valid', 'validation_fingerprint': 'controlled-fixture-cohort'}
+[2026-11-15T07:48:45+00:00] [CT 서비스 모델 교체] [성공] 모델=v1.1
+[2026-11-15T07:48:45+00:00] [CT 롤백] [성공] v1.1 → v1.0 / 사유=test
+[2026-11-15T07:48:45+00:00] [CT 서비스 모델 교체] [성공] 모델=v1.0
+_________ test_partial_write_retry_preserves_event_id_and_attribution __________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:45+00:00] [CT 트래픽 재시도] [진행] event_id=ct-api-demo-test-run-1-view / 같은 요청으로 재시도합니다.
+________ test_docker_simulator_collects_attributed_outcomes_by_default _________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:45+00:00] [시뮬레이터 시작] [진행] API·대시보드 준비 완료; 배치=100건 / 주기=5.0초 / 합성 추천 흐름=3회 / 귀속 로그=/tmp/pytest-of-peachpetal/pytest-7/test_docker_simulator_collects0/results/ct_api_traffic_a3257e5da6a445a484c53304d23eef60.jsonl
+[2026-11-15T07:48:45+00:00] [시뮬레이터 생성] [성공] 행동 로그 100건 생성 / 0.0초 / 5,857건/초 / CT 신규 로그=70건 / 합성 추천 흐름=3회
+____ test_simulator_supervises_default_ct_worker_and_stops_its_group[False] ____
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:45+00:00] [시뮬레이터 시작] [진행] API·대시보드 준비 완료; 배치=100건 / 주기=5.0초 / 합성 추천 흐름=0회 / 귀속 로그=/tmp/pytest-of-peachpetal/pytest-7/test_simulator_supervises_defa0/results/ct_api_traffic_88a55f379b41456091015988e88354e4.jsonl
+[2026-11-15T07:48:45+00:00] [시뮬레이터 CT 연결] [성공] 주기적 모니터링·설정 임계치 기반 재학습을 함께 시작합니다.
+[2026-11-15T07:48:45+00:00] [시뮬레이터 생성] [성공] 행동 로그 100건 생성 / 0.0초 / 100,000건/초 / CT 신규 로그=70건 / 합성 추천 흐름=0회
+____ test_simulator_supervises_default_ct_worker_and_stops_its_group[True] _____
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:45+00:00] [시뮬레이터 시작] [진행] API·대시보드 준비 완료; 배치=100건 / 주기=5.0초 / 합성 추천 흐름=0회 / 귀속 로그=/tmp/pytest-of-peachpetal/pytest-7/test_simulator_supervises_defa1/results/ct_api_traffic_1c0bdcd2fce648bbbd0980e0be9d29d1.jsonl
+[2026-11-15T07:48:45+00:00] [시뮬레이터 CT 연결] [성공] 주기적 모니터링·설정 임계치 기반 재학습을 함께 시작합니다.
+________ test_deferred_training_never_consumes_events_or_replaces_model ________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:46+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:46+00:00] [CT 초기화] [성공] 모델=v1.0
+[2026-11-15T07:48:46+00:00] [CT 재학습] [진행] 신규 로그 1건 누적 / 사유=new_logs / v1.0 → v1.1 / 재학습 시작
+[2026-11-15T07:48:46+00:00] [CT 학습 대기] [경고] 재학습 조건을 감지했지만 train/valid의 실제 노출·클릭·구매 라벨이 부족합니다. 추천 request_id에 연결된 후속 행동을 수집하세요. 기존 모델과 미처리 로그는 유지합니다. / 상세=snapshot
+______ test_deferred_retry_survives_restart_and_throttles_changing_input _______
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:46+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:48:46+00:00] [CT 초기화] [성공] 모델=v1.0
+[2026-11-15T07:48:46+00:00] [CT 재학습] [진행] 신규 로그 1건 누적 / 사유=new_logs / v1.0 → v1.1 / 재학습 시작
+[2026-11-15T07:48:46+00:00] [CT 학습 대기] [경고] 재학습 조건을 감지했지만 train/valid의 실제 노출·클릭·구매 라벨이 부족합니다. 추천 request_id에 연결된 후속 행동을 수집하세요. 기존 모델과 미처리 로그는 유지합니다. / 상세=fixture-snapshot
+[2026-11-15T07:48:46+00:00] [CT 학습 대기] [진행] 입력 변화·재시도 간격을 확인해 스냅샷을 다시 생성하지 않습니다.
+[2026-11-15T07:48:46+00:00] [CT 재학습] [진행] 신규 로그 2건 누적 / 사유=new_logs / v1.0 → v1.1 / 재학습 시작
+[2026-11-15T07:48:46+00:00] [CT 학습 대기] [경고] 재학습 조건을 감지했지만 train/valid의 실제 노출·클릭·구매 라벨이 부족합니다. 추천 request_id에 연결된 후속 행동을 수집하세요. 기존 모델과 미처리 로그는 유지합니다. / 상세=fixture-snapshot
+[2026-11-15T07:48:46+00:00] [CT 학습 대기] [진행] 입력 변화·재시도 간격을 확인해 스냅샷을 다시 생성하지 않습니다.
+_______ test_test_report_is_preferred_and_integration_receipt_is_visible _______
+----------------------------- Captured stderr call -----------------------------
+2026-11-15 16:48:46.644 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+__________ test_missing_full_test_falls_back_to_full_valid_before_dev __________
+----------------------------- Captured stderr call -----------------------------
+2026-11-15 16:48:47.361 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+______________ test_four_tabs_charts_and_metric_tables_match_json ______________
+----------------------------- Captured stderr call -----------------------------
+2026-11-15 16:48:47.461 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+_________ test_absent_and_malformed_results_render_without_fake_values _________
+----------------------------- Captured stderr call -----------------------------
+2026-11-15 16:48:47.566 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-15 16:48:47.600 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-15 16:48:47.631 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+________ test_demos_use_shared_http_contract_and_empty_search_is_local _________
+----------------------------- Captured stderr call -----------------------------
+2026-11-15 16:48:47.669 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+_ test_live_model_version_and_nested_ct_logs_are_distinct_from_saved_measurement _
+----------------------------- Captured stderr call -----------------------------
+2026-11-15 16:48:48.418 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+___________ test_audit_purchase_ledger_and_stale_dashboard_identity ____________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:49+00:00] [데이터 준비] [성공] 상품 450개·사용자 120명·이벤트 6,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_audit_purchase_ledger_and0/data
+[2026-11-15T07:48:49+00:00] [데이터 EDA] [완료] 상품=450 / 사용자=120 / 이벤트=6,000 / 판정=FAIL / 결과=/tmp/pytest-of-peachpetal/pytest-7/test_audit_purchase_ledger_and0/results/data_audit.json
+_________________ test_install_preserves_existing_user_command _________________
+----------------------------- Captured stdout call -----------------------------
+demo 등록 완료: /tmp/pytest-of-peachpetal/pytest-7/test_install_preserves_existin0/.local/bin/demo
+현재 셸에서 export PATH="$HOME/.local/bin:$PATH"를 한 번 실행하세요.
+demo 등록 확인: /tmp/pytest-of-peachpetal/pytest-7/test_install_preserves_existin0/.local/bin/demo
+__________________ test_complete_clip_cache_needs_no_network ___________________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:50+00:00] [모델 준비] [성공] 고정 CLIP 다운로드 캐시 재사용 (오프라인)
+_______________ test_process_budget_applies_after_both_factories _______________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:50+00:00] [서버 메모리 정리] [완료] {'elapsed_ms': 101.08029699995313, 'at_ns': 1794728930737649193, 'frozen_objects': 375}
+[2026-11-15T07:48:50+00:00] [서버 실행 환경] [확인] {'torch_threads': 1, 'faiss_threads': 1, 'inference_worker_budget': True, 'parallel_hybrid': True, 'vision_optimization': {}, 'gc_enabled': True, 'gc_freeze_enabled': True, 'gc_frozen_objects': 365817, 'configured_search_threads': 1, 'configured_candidate_training_threads': 4, 'scope': 'one shared serving process; model weights and ranking policy unchanged'}
+[2026-11-15T07:48:50+00:00] [서버 메모리 정리] [완료] {'elapsed_ms': 97.86050499997145, 'at_ns': 1794728930857464234, 'frozen_objects': 375}
+____ test_opt_in_generator_preserves_causality_versions_and_reproducibility ____
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:56+00:00] [데이터 준비] [성공] 상품 450개·사용자 120명·이벤트 4,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_opt_in_generator_preserve0/first
+[2026-11-15T07:48:57+00:00] [데이터 준비] [성공] 상품 450개·사용자 120명·이벤트 4,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_opt_in_generator_preserve0/second
+________________ test_failed_replay_does_not_advance_checkpoint ________________
+------------------------------ Captured log call -------------------------------
+WARNING  src.serving.feature_store:feature_store.py:57 [2026-11-15T07:48:57+00:00] [Redis 연결] [경고] append_event 실패 / 원인: offline / 조회는 빈 특징값을 사용하며 쓰기는 실패를 반환합니다. 다음 조치: Redis 연결·상태를 확인하고 쓰기 재시도에는 동일 event_id를 사용하세요.
+_____ test_storage_failure_retries_without_skipping_or_duplicating_events ______
+------------------------------ Captured log call -------------------------------
+WARNING  src.serving.feature_store:feature_store.py:57 [2026-11-15T07:48:58+00:00] [Redis 연결] [경고] append_event 실패 / 원인: offline / 조회는 빈 특징값을 사용하며 쓰기는 실패를 반환합니다. 다음 조치: Redis 연결·상태를 확인하고 쓰기 재시도에는 동일 event_id를 사용하세요.
+WARNING  src.serving.feature_store:feature_store.py:57 [2026-11-15T07:48:58+00:00] [Redis 연결] [경고] update_reward 실패 / 원인: offline / 조회는 빈 특징값을 사용하며 쓰기는 실패를 반환합니다. 다음 조치: Redis 연결·상태를 확인하고 쓰기 재시도에는 동일 event_id를 사용하세요.
+______ test_simulator_retries_storage_and_log_archiving_without_skipping _______
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:58+00:00] [시뮬레이터 시작] [진행] API·대시보드 준비 완료; 배치=100건 / 주기=5.0초 / 합성 추천 흐름=0회 / 귀속 로그=/tmp/pytest-of-peachpetal/pytest-7/test_simulator_retries_storage0/results/ct_api_traffic_dcfdc7c82b304027aec2f34f6818f80e.jsonl
+[2026-11-15T07:48:58+00:00] [시뮬레이터 재시도] [실패] 원인: ConnectionError: temporary storage outage / 다음 조치: API·Redis와 귀속 로그의 intent·ack를 확인하세요. 미완료 Markov 배치는 보존됩니다.
+Traceback (most recent call last):
+  File "/home/peachpetal/ecommerce/mm-recsys/docker/simulator.py", line 139, in main
+    result = run_batch(cfg, store, products, users, rng, size)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/docker/simulator.py", line 75, in run_batch
+    store.append_event(event)
+  File "/home/peachpetal/ecommerce/mm-recsys/tests/test_ponytail_refactor.py", line 93, in append
+    raise RedisConnectionError('temporary storage outage')
+redis.exceptions.ConnectionError: temporary storage outage
+[2026-11-15T07:48:58+00:00] [시뮬레이터 재시도] [실패] 원인: OSError: archive temporarily unavailable / 다음 조치: API·Redis와 귀속 로그의 intent·ack를 확인하세요. 미완료 Markov 배치는 보존됩니다.
+Traceback (most recent call last):
+  File "/home/peachpetal/ecommerce/mm-recsys/docker/simulator.py", line 139, in main
+    result = run_batch(cfg, store, products, users, rng, size)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/docker/simulator.py", line 85, in run_batch
+    pending.rename(archive)
+  File "/home/peachpetal/ecommerce/mm-recsys/tests/test_ponytail_refactor.py", line 100, in rename
+    raise OSError('archive temporarily unavailable')
+OSError: archive temporarily unavailable
+[2026-11-15T07:48:58+00:00] [시뮬레이터 생성] [성공] 행동 로그 1건 생성 / 0.0초 / 234건/초 / CT 신규 로그=0건 / 합성 추천 흐름=0회
+______________ test_watch_recovers_pending_reload_before_training ______________
+----------------------------- Captured stdout call -----------------------------
+{"status": "PROMOTED", "active": "v1.1"}
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:48:58+00:00] [CT 시작] [진행] 모니터링 주기=1초 / 재학습 임계치=10000건 / 재학습 활성=True / 활성 모델=v1.0
+[2026-11-15T07:48:58+00:00] [CT 모델 재로딩] [실패] 원인: temporary HTTP 503 / 다음 조치: 원본 오류와 모델·API 상태를 확인한 뒤 재시도하세요.
+Traceback (most recent call last):
+  File "/home/peachpetal/ecommerce/mm-recsys/src/ct/retrain_trigger.py", line 203, in main
+    reload_api(args.reload_url, registry.read()['active'])
+  File "/home/peachpetal/ecommerce/mm-recsys/tests/test_ponytail_refactor.py", line 154, in reload
+    raise RuntimeError('temporary HTTP 503')
+RuntimeError: temporary HTTP 503
+_________ test_automatic_merge_updates_publication_and_clears_pending __________
+----------------------------- Captured stdout call -----------------------------
+AUTO MERGE VERIFIED: fixture bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+________________ test_automatic_merge_waits_for_ci_before_write ________________
+----------------------------- Captured stdout call -----------------------------
+AUTO MERGE WAIT: CI is pending; wait for the published commit
+AUTO MERGE VERIFIED: fixture bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+_ test_automatic_merge_preserves_retry_state_without_unsafe_write[ci_pending] __
+----------------------------- Captured stdout call -----------------------------
+AUTO MERGE DEFERRED: CI is pending; wait for the published commit
+__ test_automatic_merge_preserves_retry_state_without_unsafe_write[conflict] ___
+----------------------------- Captured stdout call -----------------------------
+AUTO MERGE DEFERRED: PR has merge conflicts; resolve and revalidate first
+________ test_cli_merge_uses_authorized_policy_without_new_confirmation ________
+----------------------------- Captured stdout call -----------------------------
+AUTO MERGE VERIFIED: fixture bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+{
+  "number": 1,
+  "merged": true,
+  "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "url": "fixture"
+}
+______ test_implementation_pass_does_not_mask_quality_failure_in_verifier ______
+----------------------------- Captured stdout call -----------------------------
+{
+  "status": "PASS",
+  "implementation": "PASS",
+  "recommendation_quality": "FAIL",
+  "environment": {
+    "asgi": "PASS",
+    "tcp": "UNMEASURED"
+  }
+}
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:01+00:00] [랭킹 검사] [완료] 구현=PASS / 품질=FAIL / 환경={'asgi': 'PASS', 'tcp': 'UNMEASURED'} / 통합=미측정(UNMEASURED)
+______________ test_profile_warmup_stops_after_configured_retries ______________
+------------------------------ Captured log call -------------------------------
+WARNING  src.serving.feature_store:feature_store.py:57 [2026-11-15T07:49:01+00:00] [Redis 연결] [경고] batch_load_profiles 실패 / 원인: offline / 조회는 빈 특징값을 사용하며 쓰기는 실패를 반환합니다. 다음 조치: Redis 연결·상태를 확인하고 쓰기 재시도에는 동일 event_id를 사용하세요.
+_________ test_failure_returns_empty_features_and_warning_and_recovers _________
+------------------------------ Captured log call -------------------------------
+WARNING  src.serving.feature_store:feature_store.py:57 [2026-11-15T07:49:01+00:00] [Redis 연결] [경고] get_features 실패 / 원인: offline / 조회는 빈 특징값을 사용하며 쓰기는 실패를 반환합니다. 다음 조치: Redis 연결·상태를 확인하고 쓰기 재시도에는 동일 event_id를 사용하세요.
+WARNING  src.serving.feature_store:feature_store.py:57 [2026-11-15T07:49:01+00:00] [Redis 연결] [경고] append_event 실패 / 원인: offline / 조회는 빈 특징값을 사용하며 쓰기는 실패를 반환합니다. 다음 조치: Redis 연결·상태를 확인하고 쓰기 재시도에는 동일 event_id를 사용하세요.
+WARNING  src.serving.feature_store:feature_store.py:57 [2026-11-15T07:49:01+00:00] [Redis 연결] [경고] update_reward 실패 / 원인: offline / 조회는 빈 특징값을 사용하며 쓰기는 실패를 반환합니다. 다음 조치: Redis 연결·상태를 확인하고 쓰기 재시도에는 동일 event_id를 사용하세요.
+___ test_recommendation_with_supplied_service_remains_200_when_redis_is_down ___
+------------------------------ Captured log call -------------------------------
+WARNING  src.serving.feature_store:feature_store.py:57 [2026-11-15T07:49:01+00:00] [Redis 연결] [경고] get_features 실패 / 원인: offline / 조회는 빈 특징값을 사용하며 쓰기는 실패를 반환합니다. 다음 조치: Redis 연결·상태를 확인하고 쓰기 재시도에는 동일 event_id를 사용하세요.
+______ test_selected_labels_match_original_and_do_not_build_unused_splits ______
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:02+00:00] [데이터 준비] [성공] 상품 400개·사용자 24명·이벤트 6,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_selected_labels_match_ori0/data
+__________________ test_content_cache_and_explicit_alignment ___________________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 2/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 3/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP image 임베딩 처리 중(중복 제거 콘텐츠): 2/2
+________________ test_interruption_reuses_only_receipted_chunks ________________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 2/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 2/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 3/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP image 임베딩 처리 중(중복 제거 콘텐츠): 2/2
+_________________ test_corrupted_completed_chunk_blocks_resume _________________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 2/3
+_________________ test_mismatched_resume_identity_is_rejected __________________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 2/3
+____________ test_final_checksum_and_reordered_mapping_are_rejected ____________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 2/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 3/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP image 임베딩 처리 중(중복 제거 콘텐츠): 2/2
+_______________ test_index_bundle_parity_and_stale_configuration _______________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 2/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP text 임베딩 처리 중(중복 제거 콘텐츠): 3/3
+[2026-11-15T07:49:05+00:00] [모델 준비] [진행] CLIP image 임베딩 처리 중(중복 제거 콘텐츠): 2/2
+[2026-11-15T07:49:05+00:00] [모델 준비] [성공] FAISS text: 벡터 3개 / IP HNSW
+[2026-11-15T07:49:05+00:00] [모델 준비] [성공] FAISS image: 벡터 2개 / IP HNSW
+[2026-11-15T07:49:05+00:00] [모델 준비] [성공] FAISS hybrid: 벡터 6개 / IP HNSW
+________________ test_generation_causality_and_reproducibility _________________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:15+00:00] [데이터 준비] [성공] 상품 450개·사용자 120명·이벤트 4,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_generation_causality_and_0/first
+[2026-11-15T07:49:16+00:00] [데이터 준비] [성공] 상품 450개·사용자 120명·이벤트 4,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_generation_causality_and_0/second
+[2026-11-15T07:49:16+00:00] [데이터 준비] [성공] 상품 450개·사용자 120명·이벤트 4,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_generation_causality_and_0/first
+__________________ test_stale_dataset_is_not_silently_reused ___________________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:16+00:00] [데이터 준비] [성공] 상품 450개·사용자 120명·이벤트 4,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_stale_dataset_is_not_sile0
+_____________ test_generation_publishes_within_mounted_filesystem ______________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:16+00:00] [데이터 준비] [성공] 상품 450개·사용자 120명·이벤트 4,000건 준비 완료 / 경로=/tmp/pytest-of-peachpetal/pytest-7/test_generation_publishes_with0/mounted-data
+________________ test_final_readiness_has_distinct_nonzero_exit ________________
+----------------------------- Captured stdout call -----------------------------
+{
+  "delivery_status": "PASS",
+  "readiness_status": "BLOCKED",
+  "blockers": [
+    "full CT unmeasured"
+  ]
+}
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:19+00:00] [동료 평가 요약] [완료] B11 / 제출물=통과(PASS) / 최종 준비=진행 불가(BLOCKED)
+[2026-11-15T07:49:19+00:00] [동료 평가 미충족 항목] [진행 불가] 원인(원문): full CT unmeasured / 다음 조치: 해당 검사 원본 로그와 제출 근거를 확인하고 다시 검사하세요.
+______ test_publish_validates_before_writing_and_preserves_quality[None] _______
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_publish_validates_before_writing_and_preserves_quality[changed_source] __
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+__ test_publish_validates_before_writing_and_preserves_quality[changed_model] __
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_publish_validates_before_writing_and_preserves_quality[changed_weights] _
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+__ test_publish_validates_before_writing_and_preserves_quality[changed_index] __
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_publish_validates_before_writing_and_preserves_quality[active_release] __
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_publish_validates_before_writing_and_preserves_quality[wrong_ab_dataset] _
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_publish_validates_before_writing_and_preserves_quality[wrong_ab_model] __
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+___ test_publish_validates_before_writing_and_preserves_quality[unmeasured] ____
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+_____ test_publish_validates_before_writing_and_preserves_quality[escape] ______
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_publish_validates_before_writing_and_preserves_quality[overwrite_quality] _
+---------------------------- Captured stderr setup -----------------------------
+[2026-11-15T07:49:19+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:49:19+00:00] [CT 초기화] [성공] 모델=v1.0
+_ test_prepare_uses_only_verified_dependencies_merged_through_main[PASS-True] __
+----------------------------- Captured stderr call -----------------------------
+Switched to a new branch 'feat/C/platform'
+From /tmp/pytest-of-peachpetal/pytest-7/test_prepare_uses_only_verifie0/origin
+   2ff0300..4271c29  main       -> origin/main
+Already on 'feat/C/platform'
+_ test_prepare_uses_only_verified_dependencies_merged_through_main[PASS-False] _
+----------------------------- Captured stderr call -----------------------------
+Switched to a new branch 'feat/C/platform'
+fatal: path 'docs/results/gates/B5.json' does not exist in 'origin/main'
+_ test_prepare_uses_only_verified_dependencies_merged_through_main[FAIL-True] __
+----------------------------- Captured stderr call -----------------------------
+Switched to a new branch 'feat/C/platform'
+From /tmp/pytest-of-peachpetal/pytest-7/test_prepare_uses_only_verifie2/origin
+   2559ee5..2cba114  main       -> origin/main
+___________ test_docker_and_submission_handoff_in_independent_clones ___________
+----------------------------- Captured stderr call -----------------------------
+Switched to a new branch 'feat/C/platform'
+From /tmp/pytest-of-peachpetal/pytest-7/test_docker_and_submission_han0/origin
+ * [new branch]      feat/C/platform -> origin/feat/C/platform
+fatal: path 'docs/results/gates/B9.json' does not exist in 'origin/main'
+From /tmp/pytest-of-peachpetal/pytest-7/test_docker_and_submission_han0/origin
+   c38a5b7..3805fef  main       -> origin/main
+Switched to a new branch 'feat/A/docker'
+fatal: path 'docs/results/gates/B10.json' exists on disk, but not in 'origin/main'
+From /tmp/pytest-of-peachpetal/pytest-7/test_docker_and_submission_han0/origin
+   3805fef..0c14d84  main       -> origin/main
+Switched to a new branch 'feat/A/submission'
+fatal: path 'docs/results/gates/B11.json' exists on disk, but not in 'origin/main'
+From /tmp/pytest-of-peachpetal/pytest-7/test_docker_and_submission_han0/origin
+   0c14d84..c49975c  main       -> origin/main
+Switched to a new branch 'feat/integration'
+________ test_commit_helper_enforces_stage_scope[B10-A-README.md-True] _________
+----------------------------- Captured stdout call -----------------------------
+{
+  "branch": "feat/A/docker",
+  "origin": "https://github.com/k-pang-2026/mm-recsys.git",
+  "files": [
+    "README.md",
+    "docs/results/gates/B10.json"
+  ],
+  "acceptance": "UNMEASURED"
+}
+CHECK ONLY
+_ test_commit_helper_enforces_stage_scope[WORKFLOW-A-config/team_workflow.yaml-True] _
+----------------------------- Captured stdout call -----------------------------
+{
+  "branch": "chore/team-workflow",
+  "origin": "https://github.com/k-pang-2026/mm-recsys.git",
+  "files": [
+    "config/team_workflow.yaml",
+    "docs/results/gates/WORKFLOW.json"
+  ],
+  "acceptance": "UNMEASURED"
+}
+CHECK ONLY
+________ test_commit_helper_enforces_stage_scope[B11-A-README.md-True] _________
+----------------------------- Captured stdout call -----------------------------
+{
+  "branch": "feat/A/submission",
+  "origin": "https://github.com/k-pang-2026/mm-recsys.git",
+  "files": [
+    "README.md",
+    "docs/results/gates/B11.json"
+  ],
+  "acceptance": "UNMEASURED"
+}
+CHECK ONLY
+_ test_commit_helper_enforces_stage_scope[B11-A-scripts/check_submission.py-True] _
+----------------------------- Captured stdout call -----------------------------
+{
+  "branch": "feat/A/submission",
+  "origin": "https://github.com/k-pang-2026/mm-recsys.git",
+  "files": [
+    "scripts/check_submission.py",
+    "docs/results/gates/B11.json"
+  ],
+  "acceptance": "UNMEASURED"
+}
+CHECK ONLY
+_____ test_pdf_examples_uses_live_clicks_and_separate_experiment_processes _____
+----------------------------- Captured stdout call -----------------------------
+{
+  "search_type": "text",
+  "results": [
+    {
+      "product_id": "actual-1",
+      "name": "검정 후드티",
+      "score": 0.7,
+      "price": 59000.0
+    },
+    {
+      "product_id": "actual-2",
+      "name": "검정 후드티",
+      "score": 0.7,
+      "price": 59000.0
+    }
+  ],
+  "latency_ms": 42.0,
+  "total_count": 50000
+}
+{
+  "user_id": "U000001",
+  "recommendations": [],
+  "pipeline_latency": {
+    "candidate_ms": 0,
+    "ranking_ms": 0,
+    "reranking_ms": 0,
+    "total_ms": 0
+  },
+  "session_context": {
+    "recent_clicks": [
+      "actual-1",
+      "actual-2"
+    ],
+    "session_interest": "hoodie"
+  }
+}
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:21+00:00] [PDF 시연 범위] [진행] 검색·추천·통계는 실제 결과이며, CT 승격·롤백은 별도 소규모 통제 시연입니다.
+[2026-11-15T07:49:21+00:00] [PDF 시연 완료] [성공] 원본 결과=/tmp/pytest-of-peachpetal/pytest-7/test_pdf_examples_uses_live_cl0/examples
+___________ test_ab_serializes_with_ct_and_releases_lock_on_failure ____________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:21+00:00] [A/B 실행 순서] [진행] 같은 배포의 CT 학습과 순차 실행합니다. 실행 중인 학습이 있으면 완료를 기다립니다.
+___________ test_ct_default_output_does_not_truncate_another_monitor ___________
+----------------------------- Captured stderr call -----------------------------
+[2026-11-15T07:49:21+00:00] [CT 기록] [진행] 원본 JSON: /tmp/pytest-of-peachpetal/pytest-7/test_ct_default_output_does_no0/results/ct-cli/6d0cde7df3e149bf8db8a7f013ae8949.jsonl
+[2026-11-15T07:49:21+00:00] [CT 기록] [진행] 원본 JSON: /tmp/pytest-of-peachpetal/pytest-7/test_ct_default_output_does_no0/results/ct-cli/1998dbca75e54d4385e8a67343678834.jsonl
+- generated xml file: /home/peachpetal/ecommerce/mm-recsys/docs/results/experiments/A/realism_full_20261115/pytest.xml -
+=========================== short test summary info ============================
+PASSED tests/test_ab.py::test_assignment_is_seeded_disjoint_balanced_order_independent
+PASSED tests/test_ab.py::test_known_binary_equal_and_different_rates
+PASSED tests/test_ab.py::test_boundary_counts_and_low_frequency_are_explicit[0]
+PASSED tests/test_ab.py::test_boundary_counts_and_low_frequency_are_explicit[10]
+PASSED tests/test_ab.py::test_clustered_rates_do_not_treat_repeat_exposures_as_new_users
+PASSED tests/test_ab.py::test_simulation_is_reproducible_causal_and_arm_isolated
+PASSED tests/test_ab.py::test_no_hardcoded_treatment_uplift_and_price_response
+PASSED tests/test_ab.py::test_invalid_state_or_future_inventory_is_rejected
+PASSED tests/test_ab.py::test_model_policy_factory_uses_separate_mutable_state
+PASSED tests/test_ab.py::test_two_tower_control_and_full_pipeline_use_real_fixture_bundles
+PASSED tests/test_ab.py::test_adaptive_learning_does_not_cross_user_clusters
+PASSED tests/test_candidate.py::test_ann_roundtrip_cutoff_and_exact_agreement
+PASSED tests/test_candidate.py::test_adaptive_refill_after_cutoff_and_purchase_exclusions
+PASSED tests/test_candidate.py::test_refill_ignores_negative_labels_and_deduplicates
+PASSED tests/test_candidate.py::test_index_tampering_and_stale_manifest_rejected
+PASSED tests/test_candidate.py::test_disconnected_ann_completes_from_same_vectors_without_changing_catalog
+PASSED tests/test_candidate.py::test_candidate_acceptance_refuses_dev_valid_and_stale_measurements
+PASSED tests/test_candidate.py::test_diagnosis_never_selects_on_test
+PASSED tests/test_candidate.py::test_hnsw_reads_exact_flat_storage_without_parallel_reconstruction
+PASSED tests/test_candidate.py::test_native_runtime_policy_is_limited_to_macos_arm
+PASSED tests/test_checklist_fixes.py::test_new_item_is_reserved_before_diversity_repair[0]
+PASSED tests/test_checklist_fixes.py::test_new_item_is_reserved_before_diversity_repair[20]
+PASSED tests/test_checklist_fixes.py::test_no_available_new_item_and_disabled_reranking_keep_honest_pools
+PASSED tests/test_checklist_fixes.py::test_newest_candidates_use_catalog_dates_and_observe_eligibility[0]
+PASSED tests/test_checklist_fixes.py::test_newest_candidates_use_catalog_dates_and_observe_eligibility[20]
+PASSED tests/test_checklist_fixes.py::test_newest_timestamps_ties_and_similarity_order
+PASSED tests/test_checklist_fixes.py::test_newest_diversity_refill_prefers_recent_alternative
+PASSED tests/test_checklist_fixes.py::test_newest_survives_cold_fallback_with_mab_and_diversity
+PASSED tests/test_checklist_fixes.py::test_api_accepts_configured_sorting_strategy[newest]
+PASSED tests/test_checklist_fixes.py::test_api_accepts_configured_sorting_strategy[similarity]
+PASSED tests/test_checklist_fixes.py::test_registered_model_restart_and_reload_keep_runtime_sorting
+PASSED tests/test_checklist_fixes.py::test_docker_warmup_allows_sorting_but_rejects_model_config_changes
+PASSED tests/test_checklist_fixes.py::test_ct_compares_models_under_the_same_runtime_policy
+PASSED tests/test_config.py::test_scale_and_environment
+PASSED tests/test_config.py::test_invalid_scale_and_port
+PASSED tests/test_config.py::test_load_isolation
+PASSED tests/test_console.py::test_utf8_overrides_legacy_encoding_without_polluting_json
+PASSED tests/test_console.py::test_search_raw_json_and_summary_save_utf8
+PASSED tests/test_console.py::test_session_sends_actual_event_and_preserves_before_after
+PASSED tests/test_console.py::test_http_failure_keeps_original_body_traceback_and_next_action
+PASSED tests/test_console.py::test_ct_monitor_reports_actual_values_and_preserves_jsonl
+PASSED tests/test_console.py::test_ct_one_shot_stdout_is_one_json_document
+PASSED tests/test_console.py::test_tcp_benchmark_cannot_report_success_when_transport_is_unmeasured
+PASSED tests/test_ct.py::test_attribution_maturity_dedup_and_alert
+PASSED tests/test_ct.py::test_top10_and_unlinked_events_never_fabricate_hitrate_or_clicks
+PASSED tests/test_ct.py::test_monitor_inclusive_threshold_and_minimum_sample[9-3-True]
+PASSED tests/test_ct.py::test_monitor_inclusive_threshold_and_minimum_sample[10-4-True]
+PASSED tests/test_ct.py::test_monitor_inclusive_threshold_and_minimum_sample[11-5-False]
+PASSED tests/test_ct.py::test_degradation_triggers_below_log_threshold_once_per_observation
+PASSED tests/test_ct.py::test_degradation_requires_current_mature_sufficient_enabled_evidence[old-model-10.0-1-True]
+PASSED tests/test_ct.py::test_degradation_requires_current_mature_sufficient_enabled_evidence[v1.0-25.0-1-True]
+PASSED tests/test_ct.py::test_degradation_requires_current_mature_sufficient_enabled_evidence[v1.0-10.0-2-True]
+PASSED tests/test_ct.py::test_degradation_requires_current_mature_sufficient_enabled_evidence[v1.0-10.0-1-False]
+PASSED tests/test_ct.py::test_monitor_queries_use_time_indexes_without_changing_boundary_counts
+PASSED tests/test_ct.py::test_ct_validation_labels_match_training_pipeline_without_train_labels
+PASSED tests/test_ct.py::test_registry_increment_reject_rollback_and_tamper
+PASSED tests/test_ct.py::test_promotion_requires_finite_valid_improvement[nan-valid]
+PASSED tests/test_ct.py::test_promotion_requires_finite_valid_improvement[0.9-test]
+PASSED tests/test_ct.py::test_promotion_requires_finite_valid_improvement[None-valid]
+PASSED tests/test_ct.py::test_promotion_requires_finite_valid_improvement[0.5001-valid]
+PASSED tests/test_ct.py::test_threshold_failures_retry_captured_watermark_and_concurrent_lock
+PASSED tests/test_ct.py::test_reload_internal_only_and_failed_preload_preserves_pointer
+PASSED tests/test_ct.py::test_atomic_reload_allows_old_inflight_request_to_finish
+PASSED tests/test_ct.py::test_fresh_snapshot_checks_hashes_and_keeps_timestamp_groups
+PASSED tests/test_ct.py::test_default_trigger_is_10000_and_empty_exposure_is_not_an_error
+PASSED tests/test_ct.py::test_reload_client_only_allows_direct_loopback_origin[https://example.com]
+PASSED tests/test_ct.py::test_reload_client_only_allows_direct_loopback_origin[http://api-server:8000]
+PASSED tests/test_ct.py::test_reload_client_only_allows_direct_loopback_origin[http://127.0.0.1.evil.test]
+PASSED tests/test_ct.py::test_reload_client_only_allows_direct_loopback_origin[http://127.0.0.1:8000/path]
+PASSED tests/test_ct.py::test_reload_client_only_allows_direct_loopback_origin[http://user:pass@127.0.0.1]
+PASSED tests/test_ct.py::test_reload_client_only_allows_direct_loopback_origin[http://127.0.0.1?x=y]
+PASSED tests/test_ct_api_traffic.py::test_visits_link_real_exposure_and_keep_session[0-0-0]
+PASSED tests/test_ct_api_traffic.py::test_visits_link_real_exposure_and_keep_session[1-1-0]
+PASSED tests/test_ct_api_traffic.py::test_visits_link_real_exposure_and_keep_session[2-1-1]
+PASSED tests/test_ct_api_traffic.py::test_partial_write_retry_preserves_event_id_and_attribution
+PASSED tests/test_ct_api_traffic.py::test_missing_request_header_never_sends_unattributed_outcome
+PASSED tests/test_ct_api_traffic.py::test_docker_simulator_collects_attributed_outcomes_by_default
+PASSED tests/test_ct_api_traffic.py::test_simulator_supervises_default_ct_worker_and_stops_its_group[False]
+PASSED tests/test_ct_api_traffic.py::test_simulator_supervises_default_ct_worker_and_stops_its_group[True]
+PASSED tests/test_ct_snapshot.py::test_journal_closes_connections_and_rolls_back_failed_transactions
+PASSED tests/test_ct_snapshot.py::test_journal_batches_preserve_rows_and_snapshot_split_contract
+PASSED tests/test_ct_snapshot.py::test_deferred_training_never_consumes_events_or_replaces_model
+PASSED tests/test_ct_snapshot.py::test_watch_does_not_rebuild_an_unchanged_deferred_snapshot
+PASSED tests/test_ct_snapshot.py::test_deferred_retry_survives_restart_and_throttles_changing_input
+PASSED tests/test_dashboard.py::test_display_conversion_handles_timezone_rollover_without_mutating_values
+PASSED tests/test_dashboard.py::test_large_ct_log_reads_latest_utf8_records_and_preserves_invalid_count
+PASSED tests/test_dashboard.py::test_browser_link_uses_public_address_without_changing_http_transport[http://api-server:8000--http://localhost:19000]
+PASSED tests/test_dashboard.py::test_browser_link_uses_public_address_without_changing_http_transport[http://api-server:8000-https://demo.example/api/-https://demo.example/api]
+PASSED tests/test_dashboard.py::test_browser_link_uses_public_address_without_changing_http_transport[http://localhost:18000--http://localhost:18000]
+PASSED tests/test_dashboard.py::test_test_report_is_preferred_and_integration_receipt_is_visible
+PASSED tests/test_dashboard.py::test_missing_full_test_falls_back_to_full_valid_before_dev
+PASSED tests/test_dashboard.py::test_four_tabs_charts_and_metric_tables_match_json
+PASSED tests/test_dashboard.py::test_absent_and_malformed_results_render_without_fake_values
+PASSED tests/test_dashboard.py::test_demos_use_shared_http_contract_and_empty_search_is_local
+PASSED tests/test_dashboard.py::test_dashboard_is_standalone_and_does_not_import_model_libraries
+PASSED tests/test_dashboard.py::test_result_path_safety_nonfinite_values_and_read_only_io
+PASSED tests/test_dashboard.py::test_api_unavailable_is_explicit
+PASSED tests/test_dashboard.py::test_live_model_version_and_nested_ct_logs_are_distinct_from_saved_measurement
+PASSED tests/test_data_exploration.py::test_dashboard_api_preserves_exposure_id
+PASSED tests/test_data_exploration.py::test_dashboard_click_uses_displayed_exposure_not_a_new_recommendation
+PASSED tests/test_data_exploration.py::test_persona_brand_override_changes_only_configured_behavior
+PASSED tests/test_data_exploration.py::test_audit_purchase_ledger_and_stale_dashboard_identity
+PASSED tests/test_data_exploration.py::test_yaml_persona_ratios_and_taxonomy_change_generated_assets
+PASSED tests/test_deepfm.py::test_attribution_latest_session_censor_and_boundary
+PASSED tests/test_deepfm.py::test_label_duplicate_and_window
+PASSED tests/test_deepfm.py::test_cvr_negative_waits_for_last_click_observation_window
+PASSED tests/test_deepfm.py::test_deepfm_fm_linear_dnn_and_conditional_gradients
+PASSED tests/test_deepfm.py::test_candidate_config_snapshot_fail_closed
+PASSED tests/test_deepfm.py::test_ranking_history_strict_timestamp_and_excluded_columns
+PASSED tests/test_deepfm.py::test_new_candidate_bundle_uses_separate_scope_hash
+PASSED tests/test_deepfm.py::test_measure_reports_single_class_cvr_without_claiming_auc
+PASSED tests/test_deepfm.py::test_classification_rejects_model_different_from_valid_selection
+PASSED tests/test_demo_host.py::test_command_placement_and_selected_runtime[search-arguments0-exec-api-server]
+PASSED tests/test_demo_host.py::test_command_placement_and_selected_runtime[recommend-arguments1-exec-api-server]
+PASSED tests/test_demo_host.py::test_command_placement_and_selected_runtime[ab-arguments2-run-api-server]
+PASSED tests/test_demo_host.py::test_command_placement_and_selected_runtime[examples-arguments3-run-api-server]
+PASSED tests/test_demo_host.py::test_command_placement_and_selected_runtime[ct-arguments4-exec-api-server]
+PASSED tests/test_demo_host.py::test_command_placement_and_selected_runtime[ct-arguments5-run-api-server]
+PASSED tests/test_demo_host.py::test_command_placement_and_selected_runtime[ct-arguments6-run-ct]
+PASSED tests/test_demo_host.py::test_command_placement_and_selected_runtime[ct-arguments7-run-ct]
+PASSED tests/test_demo_host.py::test_host_image_is_mounted_readonly_without_shell_interpolation[False]
+PASSED tests/test_demo_host.py::test_host_image_is_mounted_readonly_without_shell_interpolation[True]
+PASSED tests/test_demo_host.py::test_ambiguous_or_absent_deployment_is_never_guessed[]
+PASSED tests/test_demo_host.py::test_ambiguous_or_absent_deployment_is_never_guessed[one\ntwo\n]
+PASSED tests/test_demo_host.py::test_find_api_excludes_oneoff_jobs_and_other_checkouts
+PASSED tests/test_demo_host.py::test_results_cannot_disappear_with_temporary_container[--output]
+PASSED tests/test_demo_host.py::test_results_cannot_disappear_with_temporary_container[--output-dir]
+PASSED tests/test_demo_host.py::test_install_preserves_existing_user_command
+PASSED tests/test_docker.py::test_compose_defaults_to_full_and_simulator_waits_for_dashboard
+PASSED tests/test_docker.py::test_dashboard_connects_to_api_before_launch_and_announces_after_http
+PASSED tests/test_docker.py::test_dashboard_failure_never_announces_success
+PASSED tests/test_docker.py::test_parallel_hybrid_overlaps_towers_and_preserves_fusion
+PASSED tests/test_docker.py::test_parallel_failure_joins_image_job_before_request_cleanup
+PASSED tests/test_docker.py::test_preparation_health_is_live_but_not_ready
+PASSED tests/test_docker.py::test_runtime_does_not_mutate_role_configuration
+PASSED tests/test_docker.py::test_container_source_paths_map_only_inside_checkout
+PASSED tests/test_docker.py::test_complete_clip_cache_needs_no_network
+PASSED tests/test_docker.py::test_process_budget_applies_after_both_factories
+PASSED tests/test_docker.py::test_prepare_failure_stops_dependents_and_records_real_exit
+PASSED tests/test_docker.py::test_prepare_lock_prevents_two_initial_writers
+PASSED tests/test_docker.py::test_partial_recommendation_is_preserved_and_rejected
+PASSED tests/test_docker.py::test_live_generator_has_new_ids_and_preserves_configured_behavior
+PASSED tests/test_docker.py::test_live_batch_updates_redis_without_reading_or_posting_frozen_events
+PASSED tests/test_docker.py::test_failed_live_batch_preserves_pending_ids_and_retries_without_duplicate_rewards
+PASSED tests/test_docker.py::test_evidence_recomputes_latency_instead_of_trusting_pass
+PASSED tests/test_docker.py::test_evidence_rejects_short_samples_and_foreign_data
+PASSED tests/test_docker.py::test_v43_preparation_evidence_requires_all_six_ordered_stages
+PASSED tests/test_docker_vision.py::test_query_graph_is_input_dependent_fp32_and_nonstandard_batches_use_original
+PASSED tests/test_docker_vision.py::test_disabled_query_optimization_preserves_original_method
+PASSED tests/test_docker_vision.py::test_inference_budget_is_initialized_before_native_library_imports
+PASSED tests/test_docker_vision.py::test_late_pool_configuration_is_rejected_without_changing_environment
+PASSED tests/test_encoder.py::test_catalog_display_preserves_model_text_and_unknown_brand
+PASSED tests/test_encoder.py::test_aliases_are_shared_and_unknown_terms_are_reported
+PASSED tests/test_encoder.py::test_zero_nonfinite_and_wrong_shape_are_rejected[bad0]
+PASSED tests/test_encoder.py::test_zero_nonfinite_and_wrong_shape_are_rejected[bad1]
+PASSED tests/test_encoder.py::test_zero_nonfinite_and_wrong_shape_are_rejected[bad2]
+PASSED tests/test_encoder.py::test_decoding_loads_rgb_and_rejects_corrupt_images
+PASSED tests/test_encoder.py::test_encoder_uses_projected_inference_and_model_max_length
+PASSED tests/test_encoder.py::test_encoder_rejects_wrong_checkpoint_revision
+PASSED tests/test_evaluation_acceptance.py::test_final_acceptance_requires_actual_thresholds_and_evidence
+PASSED tests/test_evaluation_acceptance.py::test_incomplete_final_acceptance_cannot_publish[missing_metric]
+PASSED tests/test_evaluation_acceptance.py::test_incomplete_final_acceptance_cannot_publish[nan]
+PASSED tests/test_evaluation_acceptance.py::test_incomplete_final_acceptance_cannot_publish[dev]
+PASSED tests/test_evaluation_acceptance.py::test_incomplete_final_acceptance_cannot_publish[wrong_dataset]
+PASSED tests/test_evaluation_acceptance.py::test_incomplete_final_acceptance_cannot_publish[missing_docker]
+PASSED tests/test_evaluation_acceptance.py::test_incomplete_final_acceptance_cannot_publish[modified_evidence]
+PASSED tests/test_evaluation_dashboard.py::test_coverage_uses_all_fixed_users_while_quality_keeps_unavailable_truth
+PASSED tests/test_evaluation_dashboard.py::test_status_never_invents_zero_or_relaxes_target
+PASSED tests/test_evaluation_dashboard.py::test_search_latency_uses_worst_mode_not_average_and_missing_stays_unmeasured
+PASSED tests/test_evaluation_dashboard.py::test_test_recipe_rejects_changed_data_models_code_and_valid_evidence
+PASSED tests/test_evaluation_dashboard.py::test_b7_reuse_requires_same_dataset_models_and_experiment_scope
+PASSED tests/test_evaluation_dashboard.py::test_recommendation_evaluator_uses_real_loader_and_fixed_origin
+PASSED tests/test_external_data.py::test_markov_does_not_cross_users_sessions_ties_or_censor_boundary
+PASSED tests/test_external_data.py::test_chronological_days_stay_together_and_reject_empty_partitions
+PASSED tests/test_external_data.py::test_archive_copy_rejects_modified_cache_and_changed_member
+PASSED tests/test_external_data.py::test_annotation_parser_rejects_incomplete_data
+PASSED tests/test_external_data.py::test_calibration_reuses_existing_keys_and_preserves_original_recipe
+PASSED tests/test_external_data.py::test_hm_uses_train_prices_preserves_ids_and_does_not_invent_exposures
+PASSED tests/test_external_data.py::test_inventory_refuses_reusing_changed_source_version
+PASSED tests/test_external_data.py::test_hm_population_counts_exclude_cutoff_and_future_and_preserve_ids
+PASSED tests/test_external_data.py::test_hm_fusion_keeps_full_catalog_count_without_future_items
+PASSED tests/test_external_expansion.py::test_optional_linux_memory_metric_does_not_block_other_platforms
+PASSED tests/test_external_expansion.py::test_nested_cohorts_keep_original_and_ignore_outcomes
+PASSED tests/test_external_expansion.py::test_deduplicated_tower_preserves_padding_values_and_gradients
+PASSED tests/test_external_expansion.py::test_content_uses_distinct_features_and_retains_missing_images
+PASSED tests/test_external_expansion.py::test_category_join_never_uses_same_timestamp_or_future_values
+PASSED tests/test_external_expansion.py::test_conditional_pairs_keep_global_tie_and_censor_contract
+PASSED tests/test_external_expansion.py::test_unseen_markov_group_falls_back_without_deleting_observations
+PASSED tests/test_external_expansion.py::test_simulator_conditions_change_only_the_designated_parameters
+PASSED tests/test_external_expansion.py::test_deepfashion_nested_sample_keeps_all_previous_queries
+PASSED tests/test_external_expansion.py::test_image_retrieval_excludes_duplicates_and_retains_no_truth_query
+PASSED tests/test_external_expansion.py::test_content_projection_fits_only_train_available_nonmissing_products
+PASSED tests/test_external_realism.py::test_price_correction_removes_existing_skew_and_preserves_recipe
+PASSED tests/test_external_realism.py::test_price_denominator_uses_same_mapped_transaction_population
+PASSED tests/test_external_realism.py::test_purchase_same_day_duplicates_are_not_false_repeats
+PASSED tests/test_external_realism.py::test_sessions_censor_edges_and_exclude_ambiguous_gap_pairs
+PASSED tests/test_external_realism.py::test_conditional_transition_uses_prior_observable_activity
+PASSED tests/test_external_realism.py::test_opt_in_generator_preserves_causality_versions_and_reproducibility
+PASSED tests/test_external_realism.py::test_zero_transition_remains_zero_with_conditional_profile
+PASSED tests/test_external_realism.py::test_report_runner_only_recovers_documented_optional_density_failure
+PASSED tests/test_external_realism.py::test_public_training_reports_exclude_weights_and_preserve_frozen_results
+PASSED tests/test_feature_stream.py::test_stream_replay_is_idempotent_and_changed_chunks_are_rejected
+PASSED tests/test_feature_stream.py::test_failed_replay_does_not_advance_checkpoint
+PASSED tests/test_index.py::test_hnsw_explicit_ip_save_load_and_sentinel_filter
+PASSED tests/test_index.py::test_duplicate_vectors_use_equivalent_exact_scores
+PASSED tests/test_index.py::test_invalid_faiss_config_never_falls_back[mutation0-9984]
+PASSED tests/test_index.py::test_invalid_faiss_config_never_falls_back[mutation1-dimensions]
+PASSED tests/test_index.py::test_invalid_faiss_config_never_falls_back[mutation2-inner_product]
+PASSED tests/test_index.py::test_invalid_faiss_config_never_falls_back[mutation3-no silent fallback]
+PASSED tests/test_index.py::test_invalid_faiss_config_never_falls_back[mutation4-threads]
+PASSED tests/test_index.py::test_ivfpq_valid_training_uses_ip_and_preserves_count
+PASSED tests/test_index.py::test_invalid_queries_ids_and_fusion_are_rejected
+PASSED tests/test_integration_mab.py::test_cross_worker_latest_exposure_and_reward_cap[fake]
+PASSED tests/test_integration_mab.py::test_cross_worker_latest_exposure_and_reward_cap[redis]
+PASSED tests/test_integration_mab.py::test_feedback_cannot_cross_users_or_extend_attribution[fake]
+PASSED tests/test_integration_mab.py::test_feedback_cannot_cross_users_or_extend_attribution[redis]
+PASSED tests/test_integration_mab.py::test_concurrent_feedback_cannot_double_reward[fake]
+PASSED tests/test_integration_mab.py::test_concurrent_feedback_cannot_double_reward[redis]
+PASSED tests/test_integration_mab.py::test_category_arms_and_statistics_snapshot_are_shared[fake]
+PASSED tests/test_integration_mab.py::test_category_arms_and_statistics_snapshot_are_shared[redis]
+PASSED tests/test_integration_mab.py::test_ab_users_share_only_immutable_catalog_metadata
+PASSED tests/test_integration_redis.py::test_real_redis_session_expiry_and_atomic_deduplication
+PASSED tests/test_metrics.py::test_recall_uses_unique_truth_and_full_denominator
+PASSED tests/test_metrics.py::test_ndcg_does_not_double_count_duplicates
+PASSED tests/test_metrics.py::test_mrr_requires_matching_query_count
+PASSED tests/test_metrics.py::test_latency_percentiles_use_all_samples
+PASSED tests/test_metrics.py::test_latency_percentiles_reject_invalid_measurements[samples0]
+PASSED tests/test_metrics.py::test_latency_percentiles_reject_invalid_measurements[samples1]
+PASSED tests/test_metrics.py::test_latency_percentiles_reject_invalid_measurements[samples2]
+PASSED tests/test_metrics.py::test_latency_percentiles_reject_invalid_measurements[samples3]
+PASSED tests/test_metrics.py::test_latency_percentiles_reject_invalid_measurements[samples4]
+PASSED tests/test_ponytail_refactor.py::test_compressed_large_image_is_rejected_before_pixels_are_loaded[size0]
+PASSED tests/test_ponytail_refactor.py::test_compressed_large_image_is_rejected_before_pixels_are_loaded[size1]
+PASSED tests/test_ponytail_refactor.py::test_compressed_large_image_is_rejected_before_pixels_are_loaded[size2]
+PASSED tests/test_ponytail_refactor.py::test_non_ascii_content_type_returns_validation_response
+PASSED tests/test_ponytail_refactor.py::test_storage_failure_retries_without_skipping_or_duplicating_events
+PASSED tests/test_ponytail_refactor.py::test_simulator_retries_storage_and_log_archiving_without_skipping
+PASSED tests/test_ponytail_refactor.py::test_repeated_clicks_are_binary_ctr_and_purchase_uses_last_view
+PASSED tests/test_ponytail_refactor.py::test_watch_recovers_pending_reload_before_training
+PASSED tests/test_ponytail_refactor.py::test_cold_pool_is_bounded_diverse_and_excludes_future_and_purchases
+PASSED tests/test_ponytail_refactor.py::test_quality_cannot_hide_an_infeasible_pool_or_missing_candidates
+PASSED tests/test_ponytail_refactor.py::test_training_rejects_single_class_cvr_before_writing_models[train]
+PASSED tests/test_ponytail_refactor.py::test_training_rejects_single_class_cvr_before_writing_models[valid]
+PASSED tests/test_ponytail_refactor.py::test_generator_has_observed_conversions_and_distributed_cold_arrivals
+PASSED tests/test_ponytail_refactor.py::test_session_batching_keeps_same_timestamp_views_out_of_each_others_history
+PASSED tests/test_ponytail_refactor.py::test_vectorized_training_fetch_preserves_batches_and_shuffle_state
+PASSED tests/test_pull_request.py::test_creates_one_pr_and_keeps_multiline_korean_body
+PASSED tests/test_pull_request.py::test_updates_existing_pr_and_marks_completed_feature_ready
+PASSED tests/test_pull_request.py::test_pr_with_wrong_commit_is_not_reported_as_verified
+PASSED tests/test_pull_request.py::test_merge_checks_exact_reviewed_sha_ci_and_reviews_before_put
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[changed_sha]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[draft]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[failing_ci]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[pending_ci]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[review_changes]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[incomplete_stage]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[invalid_title]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[conflict]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[mergeable_unknown]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[protected]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[failed_quality]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[failed_gate]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[wrong_owner]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[moved_base]
+PASSED tests/test_pull_request.py::test_merge_refuses_unreviewed_head_or_incomplete_checks[moved_head]
+PASSED tests/test_pull_request.py::test_cli_merge_without_permission_or_policy_never_reads_credentials
+PASSED tests/test_pull_request.py::test_automatic_merge_updates_publication_and_clears_pending
+PASSED tests/test_pull_request.py::test_automatic_merge_waits_for_ci_before_write
+PASSED tests/test_pull_request.py::test_automatic_merge_preserves_retry_state_without_unsafe_write[ci_pending]
+PASSED tests/test_pull_request.py::test_automatic_merge_preserves_retry_state_without_unsafe_write[conflict]
+PASSED tests/test_pull_request.py::test_automatic_merge_requires_explicit_project_policy
+PASSED tests/test_pull_request.py::test_merge_retry_accepts_already_merged_same_commit_without_second_write
+PASSED tests/test_pull_request.py::test_merge_retry_verifies_graphql_when_rest_omits_merge_sha[valid]
+PASSED tests/test_pull_request.py::test_merge_retry_verifies_graphql_when_rest_omits_merge_sha[graphql_error]
+PASSED tests/test_pull_request.py::test_merge_retry_verifies_graphql_when_rest_omits_merge_sha[missing_sha]
+PASSED tests/test_pull_request.py::test_cli_merge_uses_authorized_policy_without_new_confirmation
+PASSED tests/test_pull_request.py::test_preview_is_local_and_contains_quality_limits
+PASSED tests/test_pull_request.py::test_handoff_prs_have_distinct_completed_feature_titles[B8-C-platform-True]
+PASSED tests/test_pull_request.py::test_handoff_prs_have_distinct_completed_feature_titles[B9-C-ct-False]
+PASSED tests/test_pull_request.py::test_handoff_prs_have_distinct_completed_feature_titles[B10-A-docker-False]
+PASSED tests/test_pull_request.py::test_handoff_prs_have_distinct_completed_feature_titles[B11-A-platform-False]
+PASSED tests/test_pull_request.py::test_handoff_prs_have_distinct_completed_feature_titles[WORKFLOW-A-shared-False]
+PASSED tests/test_ranking.py::test_missing_model_is_503_independent_of_local_files
+PASSED tests/test_ranking.py::test_ready_model_schema_unknown_user_and_factory_shared_app
+PASSED tests/test_ranking.py::test_present_corrupted_model_fails_startup[ranking/deepfm.pt]
+PASSED tests/test_ranking.py::test_present_corrupted_model_fails_startup[session/session.pt]
+PASSED tests/test_ranking.py::test_present_corrupted_model_fails_startup[two_tower.pt]
+PASSED tests/test_ranking.py::test_present_corrupted_model_fails_startup[item_index.faiss]
+PASSED tests/test_ranking.py::test_present_incomplete_bundle_fails
+PASSED tests/test_ranking.py::test_prepared_candidate_missing_index_is_startup_error
+PASSED tests/test_ranking_lookup.py::test_resident_lookup_matches_original_dataframe_path[u-recent0-0]
+PASSED tests/test_ranking_lookup.py::test_resident_lookup_matches_original_dataframe_path[unknown-recent1-0]
+PASSED tests/test_ranking_lookup.py::test_resident_lookup_matches_original_dataframe_path[u-recent2-3]
+PASSED tests/test_ranking_lookup.py::test_array_serving_matches_legacy_normalized_dataframe_features[u-recent0-0-False]
+PASSED tests/test_ranking_lookup.py::test_array_serving_matches_legacy_normalized_dataframe_features[u-recent0-0-True]
+PASSED tests/test_ranking_lookup.py::test_array_serving_matches_legacy_normalized_dataframe_features[unknown-recent1-0-False]
+PASSED tests/test_ranking_lookup.py::test_array_serving_matches_legacy_normalized_dataframe_features[unknown-recent1-0-True]
+PASSED tests/test_ranking_lookup.py::test_array_serving_matches_legacy_normalized_dataframe_features[u-recent2-3-False]
+PASSED tests/test_ranking_lookup.py::test_array_serving_matches_legacy_normalized_dataframe_features[u-recent2-3-True]
+PASSED tests/test_ranking_scoring.py::test_legacy_product_ctr_and_fusion_formula
+PASSED tests/test_ranking_scoring.py::test_empty_singleton_and_api_evaluation_agree[spec0]
+PASSED tests/test_ranking_scoring.py::test_empty_singleton_and_api_evaluation_agree[spec1]
+PASSED tests/test_ranking_scoring.py::test_empty_singleton_and_api_evaluation_agree[spec2]
+PASSED tests/test_ranking_scoring.py::test_invalid_values_rejected[nan]
+PASSED tests/test_ranking_scoring.py::test_invalid_values_rejected[inf]
+PASSED tests/test_ranking_scoring.py::test_invalid_values_rejected[-inf]
+PASSED tests/test_ranking_scoring.py::test_invalid_values_rejected[-0.1]
+PASSED tests/test_ranking_scoring.py::test_invalid_values_rejected[1.1]
+PASSED tests/test_ranking_scoring.py::test_invalid_policy_shape_duplicates
+PASSED tests/test_ranking_scoring.py::test_selection_eligibility_and_deterministic_ties
+PASSED tests/test_ranking_scoring.py::test_policy_stores_rng_and_configuration_are_independent
+PASSED tests/test_ranking_scoring.py::test_b5_api_and_offline_pipeline_same_input_and_state[epsilon_greedy]
+PASSED tests/test_ranking_scoring.py::test_b5_api_and_offline_pipeline_same_input_and_state[ucb]
+PASSED tests/test_ranking_scoring.py::test_models_are_loaded_once_at_lifespan
+PASSED tests/test_ranking_scoring.py::test_quality_requirement_cli_exits_nonzero[valid-result0]
+PASSED tests/test_ranking_scoring.py::test_quality_requirement_cli_exits_nonzero[test-result1]
+PASSED tests/test_ranking_scoring.py::test_feasible_constraint_miss_excludes_otherwise_eligible_policy
+PASSED tests/test_ranking_scoring.py::test_implementation_pass_does_not_mask_quality_failure_in_verifier
+PASSED tests/test_redis_features.py::test_profiles_history_cap_session_switch_and_duplicate
+PASSED tests/test_redis_features.py::test_session_expiration_and_profile_survival
+PASSED tests/test_redis_features.py::test_sliding_ttls_and_dedup_ttl_are_consistent
+PASSED tests/test_redis_features.py::test_rewards_are_atomic_idempotent_and_separate_from_events
+PASSED tests/test_redis_features.py::test_get_uses_one_pipeline_execute
+PASSED tests/test_redis_features.py::test_batch_profiles_are_chunked_and_replacements_remove_old_fields
+PASSED tests/test_redis_features.py::test_profile_warmup_retries_timeout_without_changing_session[False]
+PASSED tests/test_redis_features.py::test_profile_warmup_retries_timeout_without_changing_session[True]
+PASSED tests/test_redis_features.py::test_profile_warmup_stops_after_configured_retries
+PASSED tests/test_redis_features.py::test_failure_returns_empty_features_and_warning_and_recovers
+PASSED tests/test_redis_features.py::test_recommendation_with_supplied_service_remains_200_when_redis_is_down
+PASSED tests/test_redis_features.py::test_factory_uses_configured_connection_pool
+PASSED tests/test_refactor_resources.py::test_legacy_bundles_accept_only_original_clipping_value[candidate]
+PASSED tests/test_refactor_resources.py::test_legacy_bundles_accept_only_original_clipping_value[ranking]
+PASSED tests/test_refactor_resources.py::test_legacy_bundles_accept_only_original_clipping_value[session]
+PASSED tests/test_refactor_resources.py::test_invalid_gradient_clip_config_is_rejected[0]
+PASSED tests/test_refactor_resources.py::test_invalid_gradient_clip_config_is_rejected[-1]
+PASSED tests/test_refactor_resources.py::test_invalid_gradient_clip_config_is_rejected[inf]
+PASSED tests/test_refactor_resources.py::test_invalid_gradient_clip_config_is_rejected[nan]
+PASSED tests/test_refactor_resources.py::test_invalid_gradient_clip_config_is_rejected[True]
+PASSED tests/test_refactor_resources.py::test_invalid_gradient_clip_config_is_rejected[10]
+PASSED tests/test_refactor_resources.py::test_ab_loads_each_model_once_and_keeps_mutable_state_isolated
+PASSED tests/test_refactor_resources.py::test_selected_labels_match_original_and_do_not_build_unused_splits
+PASSED tests/test_reranking.py::test_100_randomized_cases_and_small_n[epsilon_greedy]
+PASSED tests/test_reranking.py::test_100_randomized_cases_and_small_n[ucb]
+PASSED tests/test_reranking.py::test_impossible_conditions_are_reported
+PASSED tests/test_reranking.py::test_reward_max_idempotent_recent_user_attribution_and_ttl
+PASSED tests/test_reranking.py::test_category_arm_and_session_reset
+PASSED tests/test_reranking.py::test_new_and_exploration_quota_overlap_keeps_feasible_diversity
+PASSED tests/test_reranking.py::test_bandit_feedback_changes_exploitation_and_ucb_unseen_arm
+PASSED tests/test_reranking.py::test_configured_pipeline_order_changes_bandit_candidate_order
+PASSED tests/test_reranking.py::test_rare_required_new_item_is_reserved_without_consuming_separator_early
+PASSED tests/test_reranking.py::test_completion_feasibility_matches_exhaustive_small_sequences
+PASSED tests/test_search_api.py::test_json_three_modes_share_response_contract
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload0]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload1]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload2]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload3]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload4]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload5]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload6]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload7]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload8]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload9]
+PASSED tests/test_search_api.py::test_invalid_json_fails_before_encoder_call[payload10]
+PASSED tests/test_search_api.py::test_multipart_image_hybrid_and_invalid_fields[create_app0]
+PASSED tests/test_search_api.py::test_multipart_image_hybrid_and_invalid_fields[create_app1]
+PASSED tests/test_search_api.py::test_all_entrypoints_reject_oversized_body_before_inference[create_app0]
+PASSED tests/test_search_api.py::test_all_entrypoints_reject_oversized_body_before_inference[create_app1]
+PASSED tests/test_search_api.py::test_factory_is_loaded_once_per_lifespan
+PASSED tests/test_search_api.py::test_missing_model_and_corrupt_model_have_different_behavior
+PASSED tests/test_search_api.py::test_total_count_means_catalog_not_response_length
+PASSED tests/test_search_artifacts.py::test_content_cache_and_explicit_alignment
+PASSED tests/test_search_artifacts.py::test_interruption_reuses_only_receipted_chunks
+PASSED tests/test_search_artifacts.py::test_corrupted_completed_chunk_blocks_resume
+PASSED tests/test_search_artifacts.py::test_mismatched_resume_identity_is_rejected
+PASSED tests/test_search_artifacts.py::test_image_and_catalog_hash_mismatches_are_rejected
+PASSED tests/test_search_artifacts.py::test_final_checksum_and_reordered_mapping_are_rejected
+PASSED tests/test_search_artifacts.py::test_index_bundle_parity_and_stale_configuration
+PASSED tests/test_search_artifacts.py::test_concurrent_writer_is_blocked_and_lock_can_be_reused
+PASSED tests/test_search_buckets.py::test_unique_vector_buckets_expand_without_losing_products
+PASSED tests/test_search_buckets.py::test_invalid_bucket_mapping_is_rejected[members0]
+PASSED tests/test_search_buckets.py::test_invalid_bucket_mapping_is_rejected[members1]
+PASSED tests/test_search_buckets.py::test_invalid_bucket_mapping_is_rejected[members2]
+PASSED tests/test_search_buckets.py::test_invalid_bucket_mapping_is_rejected[members3]
+PASSED tests/test_search_buckets.py::test_faiss_negative_one_is_filtered_not_mapped
+PASSED tests/test_search_evaluation.py::test_bm25_aliases_and_candidate_availability_match
+PASSED tests/test_search_evaluation.py::test_image_relevance_cannot_depend_on_unobservable_brand
+PASSED tests/test_search_finalize.py::test_aggregate_pass_preserves_global_unmeasured
+PASSED tests/test_search_finalize.py::test_inconsistent_summaries_cannot_be_declared_pass[p95-observed HTTP samples]
+PASSED tests/test_search_finalize.py::test_inconsistent_summaries_cannot_be_declared_pass[cohort-cohort size]
+PASSED tests/test_search_finalize.py::test_inconsistent_summaries_cannot_be_declared_pass[nan-quality value]
+PASSED tests/test_search_finalize.py::test_inconsistent_summaries_cannot_be_declared_pass[mode-three fixed query modes]
+PASSED tests/test_search_finalize.py::test_inconsistent_summaries_cannot_be_declared_pass[model-different model/data]
+PASSED tests/test_search_queries.py::test_frozen_queries_are_independent_augmented_and_immutable
+PASSED tests/test_search_queries.py::test_hybrid_really_uses_both_modalities_with_selected_weights[0.5]
+PASSED tests/test_search_queries.py::test_hybrid_really_uses_both_modalities_with_selected_weights[0.75]
+PASSED tests/test_search_queries.py::test_multi_relevant_ndcg_and_missing_truth_are_not_redefined
+PASSED tests/test_serving_contract.py::test_unimplemented_models_never_report_empty_success
+PASSED tests/test_serving_contract.py::test_store_session_reset_expiry_and_feedback_idempotence
+PASSED tests/test_serving_contract.py::test_search_plugin_receives_shared_model_and_preserves_api_schema
+PASSED tests/test_serving_contract.py::test_invalid_image_fails_validation_before_model_loading
+PASSED tests/test_serving_contract.py::test_owned_store_is_closed_when_model_startup_fails
+PASSED tests/test_session.py::test_shared_api_three_clicks_interest_recommendation_and_feedback
+PASSED tests/test_session.py::test_session_examples_strict_times_and_reload_fixture
+PASSED tests/test_setup_env.py::SetupTests::test_config_overrides_and_no_mutation
+PASSED tests/test_setup_env.py::SetupTests::test_conflicting_options_fail_before_writes
+PASSED tests/test_setup_env.py::SetupTests::test_default_existing_clone_has_no_nested_project
+PASSED tests/test_setup_env.py::SetupTests::test_install_failure_is_nonzero_without_success_banner
+PASSED tests/test_setup_env.py::SetupTests::test_nested_repository_is_rejected
+PASSED tests/test_setup_env.py::SetupTests::test_rerun_preserves_edits_and_explicitly_refreshes_prompts
+PASSED tests/test_setup_env.py::SetupTests::test_scaffold_files_and_pins
+PASSED tests/test_setup_env.py::GitHelperTests::test_approval_is_bound_to_the_reviewed_commit
+PASSED tests/test_setup_env.py::GitHelperTests::test_check_mode_never_commits_or_stages
+PASSED tests/test_setup_env.py::GitHelperTests::test_deleted_tracked_file_is_committed_and_described_in_korean
+PASSED tests/test_setup_env.py::GitHelperTests::test_docs_only_commit_uses_common_rule_and_korean_diff_summary
+PASSED tests/test_setup_env.py::GitHelperTests::test_invalid_commit_summary_is_rejected_before_staging
+PASSED tests/test_setup_env.py::GitHelperTests::test_invalid_gate_and_fake_dev_acceptance_rejected
+PASSED tests/test_setup_env.py::GitHelperTests::test_main_and_existing_staging_rejected
+PASSED tests/test_setup_env.py::GitHelperTests::test_main_is_rejected_even_when_workflow_assigns_it
+PASSED tests/test_setup_env.py::GitHelperTests::test_private_paths_and_symlinks_rejected
+PASSED tests/test_setup_env.py::GitHelperTests::test_publish_scopes_commit_and_reports_push_failure
+PASSED tests/test_setup_env.py::GitHelperTests::test_publish_without_approval_does_not_stage_commit_or_push
+PASSED tests/test_simulator.py::test_generation_causality_and_reproducibility
+PASSED tests/test_simulator.py::test_stale_dataset_is_not_silently_reused
+PASSED tests/test_simulator.py::test_timestamp_ties_remain_in_one_split
+PASSED tests/test_simulator.py::test_generation_publishes_within_mounted_filesystem
+PASSED tests/test_simulator_recipe.py::test_order_changing_yaml_gets_distinct_data_identity
+PASSED tests/test_simulator_recipe.py::test_preparation_roundtrip_preserves_catalog_and_data_identity
+PASSED tests/test_simulator_recipe.py::test_cart_transition_zero_and_one_are_respected[exit]
+PASSED tests/test_simulator_recipe.py::test_cart_transition_zero_and_one_are_respected[view]
+PASSED tests/test_simulator_recipe.py::test_cart_transition_zero_and_one_are_respected[purchase]
+PASSED tests/test_simulator_recipe.py::test_cart_reference_probability_is_validated[0]
+PASSED tests/test_simulator_recipe.py::test_cart_reference_probability_is_validated[-1]
+PASSED tests/test_simulator_recipe.py::test_cart_reference_probability_is_validated[nan]
+PASSED tests/test_simulator_recipe.py::test_cart_reference_probability_is_validated[inf]
+PASSED tests/test_smoke.py::test_hit_rate
+PASSED tests/test_smoke.py::test_mrr_single_and_set_truth
+PASSED tests/test_submission.py::test_altered_measurement_cannot_be_aggregated[row_value]
+PASSED tests/test_submission.py::test_altered_measurement_cannot_be_aggregated[below_target]
+PASSED tests/test_submission.py::test_altered_measurement_cannot_be_aggregated[raw_http]
+PASSED tests/test_submission.py::test_altered_measurement_cannot_be_aggregated[dev]
+PASSED tests/test_submission.py::test_altered_measurement_cannot_be_aggregated[source]
+PASSED tests/test_submission.py::test_altered_measurement_cannot_be_aggregated[freeze]
+PASSED tests/test_submission.py::test_altered_measurement_cannot_be_aggregated[coverage]
+PASSED tests/test_submission.py::test_dev_ab_and_fixture_ct_never_become_full_acceptance
+PASSED tests/test_submission.py::test_evidence_cannot_escape_checkout_by_path_or_symlink
+PASSED tests/test_submission.py::test_ast_audit_reports_untyped_args_constant_seed_and_config_seed
+PASSED tests/test_submission.py::test_unavailable_live_api_is_blocked
+PASSED tests/test_submission.py::test_final_readiness_has_distinct_nonzero_exit
+PASSED tests/test_submission.py::test_full_config_does_not_change_caller_scale
+PASSED tests/test_submission.py::test_pass_receipt_cannot_hide_incomplete_integration_execution[dev_ab]
+PASSED tests/test_submission.py::test_pass_receipt_cannot_hide_incomplete_integration_execution[small_ab]
+PASSED tests/test_submission.py::test_pass_receipt_cannot_hide_incomplete_integration_execution[reused_clone]
+PASSED tests/test_submission.py::test_pass_receipt_cannot_hide_incomplete_integration_execution[retained_ct]
+PASSED tests/test_submission.py::test_pass_receipt_cannot_hide_incomplete_integration_execution[missing_session]
+PASSED tests/test_submission.py::test_lossless_ab_archive_reconstructs_verified_bytes_and_rejects_tampering
+PASSED tests/test_submission.py::test_artifact_aliases_cannot_change_measured_model_or_generator_recipe
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[None]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[small]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[forced]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[guard]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[cohort]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[candidate]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[traffic]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[untrained]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[natural]
+PASSED tests/test_submission.py::test_separated_full_ct_never_hides_retention_or_fabricates_rollback[split_logs]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[None]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[changed_source]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[changed_model]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[changed_weights]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[changed_index]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[active_release]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[wrong_ab_dataset]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[wrong_ab_model]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[unmeasured]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[escape]
+PASSED tests/test_submission_publish.py::test_publish_validates_before_writing_and_preserves_quality[overwrite_quality]
+PASSED tests/test_team_workflow.py::test_parallel_start_and_dependencies_are_machine_readable
+PASSED tests/test_team_workflow.py::test_failed_gate_is_not_skipped
+PASSED tests/test_team_workflow.py::test_generated_prompt_includes_validation_and_requires_push_approval
+PASSED tests/test_team_workflow.py::test_owned_configuration_overlay_cannot_change_global_seed
+PASSED tests/test_team_workflow.py::test_prepare_uses_only_verified_dependencies_merged_through_main[PASS-True]
+PASSED tests/test_team_workflow.py::test_prepare_uses_only_verified_dependencies_merged_through_main[PASS-False]
+PASSED tests/test_team_workflow.py::test_prepare_uses_only_verified_dependencies_merged_through_main[FAIL-True]
+PASSED tests/test_team_workflow.py::test_common_and_integration_stages_never_use_main_directly
+PASSED tests/test_team_workflow.py::test_docker_handoff_requires_merged_platform_and_limits_file_ownership
+PASSED tests/test_team_workflow.py::test_docker_and_submission_handoff_in_independent_clones
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[B10-A-README.md-True]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[B10-A-src/serving/main.py-False]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[B9-C-docker-compose.yml-False]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[WORKFLOW-A-config/team_workflow.yaml-True]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[WORKFLOW-A-docker-compose.yml-False]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[B11-A-README.md-True]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[B11-A-scripts/check_submission.py-True]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[B11-A-docs/results/ab_test.json-False]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[B11-A-src/evaluation/run_all.py-False]
+PASSED tests/test_team_workflow.py::test_commit_helper_enforces_stage_scope[B9-C-docs/submission/checklist.md-False]
+PASSED tests/test_team_workflow.py::test_old_c_docker_or_submission_assignment_is_rejected_before_git_access[B10]
+PASSED tests/test_team_workflow.py::test_old_c_docker_or_submission_assignment_is_rejected_before_git_access[B11]
+PASSED tests/test_terminal_demo.py::test_pdf_examples_uses_live_clicks_and_separate_experiment_processes
+PASSED tests/test_terminal_demo.py::test_ab_serializes_with_ct_and_releases_lock_on_failure
+PASSED tests/test_terminal_demo.py::test_ct_batch_is_atomic_idempotent_and_keeps_attribution_checks
+PASSED tests/test_terminal_demo.py::test_ab_terminal_preserves_negative_lift_and_undefined_inference
+PASSED tests/test_terminal_demo.py::test_ct_human_monitor_does_not_invent_missing_measurements
+PASSED tests/test_terminal_demo.py::test_ct_default_output_does_not_truncate_another_monitor
+PASSED tests/test_terminal_demo.py::test_ct_watch_flushes_output_before_process_exit
+PASSED tests/test_two_tower.py::test_train_only_vocab_price_and_public_id_mapping
+PASSED tests/test_two_tower.py::test_no_latent_persona_or_future_labels_in_features
+PASSED tests/test_two_tower.py::test_tied_timestamp_history_and_purchase_profile
+PASSED tests/test_two_tower.py::test_negative_policy_excludes_only_past_and_current
+PASSED tests/test_two_tower.py::test_random_sample_repeatability
+PASSED tests/test_two_tower.py::test_shapes_unit_norm_padding_and_both_tower_gradients
+PASSED tests/test_two_tower.py::test_tiny_train_only_fit
+PASSED tests/test_two_tower.py::test_seeded_tower_repeatability
+PASSED tests/test_two_tower.py::test_exact_300_macro_unique_truth_and_unavailable_targets
+PASSED tests/test_two_tower.py::test_cutoff_is_strict_and_target_never_supplied_to_baseline
+PASSED tests/test_two_tower.py::test_cold_users_and_small_catalog_still_in_primary
+PASSED tests/test_two_tower.py::test_exact_dot_product_and_mapping
+PASSED tests/test_two_tower.py::test_bundle_roundtrip_and_checksum_rejection
+519 passed, 2 warnings in 47.42s

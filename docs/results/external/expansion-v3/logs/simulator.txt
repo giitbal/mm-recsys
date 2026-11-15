@@ -1,0 +1,179 @@
+[2026-11-14T08:46:41+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/42-original/data
+[2026-11-14T08:47:12+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.60717 / valid_recall@300=0.843722 / 갱신=114
+[2026-11-14T08:47:31+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.26885 / valid_recall@300=0.863821 / 갱신=114
+[2026-11-14T08:47:48+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.21378 / valid_recall@300=0.874661 / 갱신=114
+[2026-11-14T08:48:25+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.18249 / valid_recall@300=0.879404 / 갱신=114
+[2026-11-14T08:49:11+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.16070 / valid_recall@300=0.879178 / 갱신=114
+[2026-11-14T08:49:11+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=4 / valid_recall@300=0.879404 / 결과=docs/results/external/expansion-v3/simulator/42-original/candidate_training.json
+[2026-11-14T08:49:25+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=9.89086 / valid_ctr_auc=0.932464 / cvr_auc=0.520835334579918
+[2026-11-14T08:49:30+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=3.47046 / valid_ctr_auc=0.939674 / cvr_auc=0.5173151144230554
+[2026-11-14T08:49:38+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=2.19859 / valid_ctr_auc=0.943948 / cvr_auc=0.5029489053784297
+[2026-11-14T08:50:15+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T08:50:15+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/42-original/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8238482384823849, 'ndcg_at_50': 0.4859342977200924, 'coverage': 0.9553333333333334, 'unique_recommended_items': 2866}, 'deepfm': {'hit_rate_at_50': 0.8292682926829268, 'ndcg_at_50': 0.40266413867771006, 'coverage': 0.9076666666666666, 'unique_recommended_items': 2723}}
+[2026-11-14T08:50:54+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T08:50:54+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/42-original/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8244604316546763, 'ndcg_at_50': 0.4992165787892485, 'coverage': 0.9696666666666667, 'unique_recommended_items': 2909}, 'deepfm': {'hit_rate_at_50': 0.8287769784172662, 'ndcg_at_50': 0.393321920364671, 'coverage': 0.902, 'unique_recommended_items': 2706}}
+Simulator condition complete 42-original
+[2026-11-14T08:50:58+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/42-hm/data
+[2026-11-14T08:51:27+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.60360 / valid_recall@300=0.870395 / 갱신=114
+[2026-11-14T08:51:57+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.26725 / valid_recall@300=0.867700 / 갱신=114
+[2026-11-14T08:52:23+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.21065 / valid_recall@300=0.871294 / 갱신=114
+[2026-11-14T08:52:53+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.17674 / valid_recall@300=0.868823 / 갱신=114
+[2026-11-14T08:53:03+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.15676 / valid_recall@300=0.878706 / 갱신=114
+[2026-11-14T08:53:04+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=5 / valid_recall@300=0.878706 / 결과=docs/results/external/expansion-v3/simulator/42-hm/candidate_training.json
+[2026-11-14T08:53:15+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=9.92916 / valid_ctr_auc=0.928805 / cvr_auc=0.5129023842371503
+[2026-11-14T08:53:22+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=3.40352 / valid_ctr_auc=0.937716 / cvr_auc=0.5048854310375323
+[2026-11-14T08:53:30+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=2.10331 / valid_ctr_auc=0.938644 / cvr_auc=0.4986643938589975
+[2026-11-14T08:54:04+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T08:54:04+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/42-hm/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8517520215633423, 'ndcg_at_50': 0.49548120181297894, 'coverage': 0.9503333333333334, 'unique_recommended_items': 2851}, 'deepfm': {'hit_rate_at_50': 0.8274932614555256, 'ndcg_at_50': 0.32731588627944036, 'coverage': 0.8303333333333334, 'unique_recommended_items': 2491}}
+[2026-11-14T08:54:42+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T08:54:42+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/42-hm/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8333333333333334, 'ndcg_at_50': 0.4797347693880547, 'coverage': 0.963, 'unique_recommended_items': 2889}, 'deepfm': {'hit_rate_at_50': 0.8071625344352618, 'ndcg_at_50': 0.351084931379153, 'coverage': 0.8746666666666667, 'unique_recommended_items': 2624}}
+Simulator condition complete 42-hm
+[2026-11-14T08:54:47+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/42-retailrocket/data
+[2026-11-14T08:55:21+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.77797 / valid_recall@300=0.878261 / 갱신=96
+[2026-11-14T08:55:48+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.36560 / valid_recall@300=0.913043 / 갱신=96
+[2026-11-14T08:56:04+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.30141 / valid_recall@300=0.913043 / 갱신=96
+[2026-11-14T08:56:24+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.27303 / valid_recall@300=0.913043 / 갱신=96
+[2026-11-14T08:56:42+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.25262 / valid_recall@300=0.939130 / 갱신=96
+[2026-11-14T08:56:42+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=5 / valid_recall@300=0.939130 / 결과=docs/results/external/expansion-v3/simulator/42-retailrocket/candidate_training.json
+[2026-11-14T08:56:56+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=7.79676 / valid_ctr_auc=0.922286 / cvr_auc=0.579920581622821
+[2026-11-14T08:57:07+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.60009 / valid_ctr_auc=0.942869 / cvr_auc=0.5845601331425735
+[2026-11-14T08:57:16+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.18279 / valid_ctr_auc=0.944394 / cvr_auc=0.5740897544453852
+[2026-11-14T08:57:51+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T08:57:51+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/42-retailrocket/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8260869565217391, 'ndcg_at_50': 0.5156091712283207, 'coverage': 0.9506666666666667, 'unique_recommended_items': 2852}, 'deepfm': {'hit_rate_at_50': 0.8347826086956521, 'ndcg_at_50': 0.44424329731738343, 'coverage': 0.9066666666666666, 'unique_recommended_items': 2720}}
+[2026-11-14T08:58:33+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T08:58:33+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/42-retailrocket/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.6972477064220184, 'ndcg_at_50': 0.3944441323094545, 'coverage': 0.9643333333333334, 'unique_recommended_items': 2893}, 'deepfm': {'hit_rate_at_50': 0.7339449541284404, 'ndcg_at_50': 0.3431397528408032, 'coverage': 0.9043333333333333, 'unique_recommended_items': 2713}}
+Simulator condition complete 42-retailrocket
+[2026-11-14T08:58:38+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/42-both/data
+[2026-11-14T08:59:05+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.79254 / valid_recall@300=0.844340 / 갱신=96
+[2026-11-14T08:59:25+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.36435 / valid_recall@300=0.849057 / 갱신=96
+[2026-11-14T08:59:37+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.30308 / valid_recall@300=0.863208 / 갱신=96
+[2026-11-14T08:59:49+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.27137 / valid_recall@300=0.872642 / 갱신=96
+[2026-11-14T09:00:06+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.24816 / valid_recall@300=0.882075 / 갱신=96
+[2026-11-14T09:00:07+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=5 / valid_recall@300=0.882075 / 결과=docs/results/external/expansion-v3/simulator/42-both/candidate_training.json
+[2026-11-14T09:00:20+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=7.77561 / valid_ctr_auc=0.921468 / cvr_auc=0.45687531849838625
+[2026-11-14T09:00:28+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.60023 / valid_ctr_auc=0.937781 / cvr_auc=0.4498258875488364
+[2026-11-14T09:00:35+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.18371 / valid_ctr_auc=0.941622 / cvr_auc=0.44218495959620474
+[2026-11-14T09:01:12+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:01:12+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/42-both/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8018867924528302, 'ndcg_at_50': 0.4696568509256664, 'coverage': 0.9433333333333334, 'unique_recommended_items': 2830}, 'deepfm': {'hit_rate_at_50': 0.7830188679245284, 'ndcg_at_50': 0.35958506770630544, 'coverage': 0.89, 'unique_recommended_items': 2670}}
+[2026-11-14T09:01:50+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:01:50+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/42-both/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8157894736842105, 'ndcg_at_50': 0.49470964691095315, 'coverage': 0.9593333333333334, 'unique_recommended_items': 2878}, 'deepfm': {'hit_rate_at_50': 0.7982456140350878, 'ndcg_at_50': 0.35067254065258835, 'coverage': 0.8936666666666667, 'unique_recommended_items': 2681}}
+Simulator condition complete 42-both
+[2026-11-14T09:01:55+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/43-original/data
+[2026-11-14T09:02:24+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.69316 / valid_recall@300=0.854984 / 갱신=114
+[2026-11-14T09:02:37+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.27203 / valid_recall@300=0.866261 / 갱신=114
+[2026-11-14T09:02:53+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.21534 / valid_recall@300=0.867839 / 갱신=114
+[2026-11-14T09:03:12+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.18754 / valid_recall@300=0.869418 / 갱신=114
+[2026-11-14T09:03:32+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.16729 / valid_recall@300=0.865584 / 갱신=114
+[2026-11-14T09:03:33+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=4 / valid_recall@300=0.869418 / 결과=docs/results/external/expansion-v3/simulator/43-original/candidate_training.json
+[2026-11-14T09:03:45+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=7.56771 / valid_ctr_auc=0.931227 / cvr_auc=0.4812086072186531
+[2026-11-14T09:03:52+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=3.23149 / valid_ctr_auc=0.934628 / cvr_auc=0.48348088542454126
+[2026-11-14T09:03:58+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=2.05613 / valid_ctr_auc=0.939347 / cvr_auc=0.4797484854811782
+[2026-11-14T09:04:36+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:04:36+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/43-original/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8308525033829499, 'ndcg_at_50': 0.4934629781350084, 'coverage': 0.9533333333333334, 'unique_recommended_items': 2860}, 'deepfm': {'hit_rate_at_50': 0.8267929634641408, 'ndcg_at_50': 0.4023694940357544, 'coverage': 0.9, 'unique_recommended_items': 2700}}
+[2026-11-14T09:05:16+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:05:16+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/43-original/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.832378223495702, 'ndcg_at_50': 0.48230534498794836, 'coverage': 0.973, 'unique_recommended_items': 2919}, 'deepfm': {'hit_rate_at_50': 0.8495702005730659, 'ndcg_at_50': 0.402511478006166, 'coverage': 0.9073333333333333, 'unique_recommended_items': 2722}}
+Simulator condition complete 43-original
+[2026-11-14T09:05:21+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/43-hm/data
+[2026-11-14T09:05:56+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.67855 / valid_recall@300=0.841781 / 갱신=114
+[2026-11-14T09:06:17+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.26004 / valid_recall@300=0.853653 / 갱신=114
+[2026-11-14T09:06:33+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.20945 / valid_recall@300=0.852055 / 갱신=114
+[2026-11-14T09:06:55+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.17918 / valid_recall@300=0.863014 / 갱신=114
+[2026-11-14T09:07:10+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.15760 / valid_recall@300=0.865982 / 갱신=114
+[2026-11-14T09:07:11+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=5 / valid_recall@300=0.865982 / 결과=docs/results/external/expansion-v3/simulator/43-hm/candidate_training.json
+[2026-11-14T09:07:24+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=7.44584 / valid_ctr_auc=0.938076 / cvr_auc=0.5180669586613341
+[2026-11-14T09:07:32+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=3.14939 / valid_ctr_auc=0.942484 / cvr_auc=0.519797153897537
+[2026-11-14T09:07:40+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.96208 / valid_ctr_auc=0.944849 / cvr_auc=0.5184495675040375
+[2026-11-14T09:08:18+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:08:18+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/43-hm/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8315068493150685, 'ndcg_at_50': 0.4920563978817293, 'coverage': 0.951, 'unique_recommended_items': 2853}, 'deepfm': {'hit_rate_at_50': 0.8342465753424657, 'ndcg_at_50': 0.36781679431739783, 'coverage': 0.872, 'unique_recommended_items': 2616}}
+[2026-11-14T09:08:57+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:08:57+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/43-hm/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8278335724533716, 'ndcg_at_50': 0.4839589766332571, 'coverage': 0.972, 'unique_recommended_items': 2916}, 'deepfm': {'hit_rate_at_50': 0.8421807747489239, 'ndcg_at_50': 0.3965160144311306, 'coverage': 0.9043333333333333, 'unique_recommended_items': 2713}}
+Simulator condition complete 43-hm
+[2026-11-14T09:09:02+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/43-retailrocket/data
+[2026-11-14T09:09:31+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.85779 / valid_recall@300=0.865546 / 갱신=96
+[2026-11-14T09:09:48+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.35986 / valid_recall@300=0.882353 / 갱신=96
+[2026-11-14T09:10:08+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.29792 / valid_recall@300=0.882353 / 갱신=96
+[2026-11-14T09:10:20+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.26983 / valid_recall@300=0.894958 / 갱신=96
+[2026-11-14T09:10:35+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.25002 / valid_recall@300=0.869748 / 갱신=96
+[2026-11-14T09:10:35+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=4 / valid_recall@300=0.894958 / 결과=docs/results/external/expansion-v3/simulator/43-retailrocket/candidate_training.json
+[2026-11-14T09:10:49+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=5.38754 / valid_ctr_auc=0.928955 / cvr_auc=0.4097387063488759
+[2026-11-14T09:10:57+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.59510 / valid_ctr_auc=0.937862 / cvr_auc=0.4149164572893387
+[2026-11-14T09:11:04+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.21213 / valid_ctr_auc=0.940923 / cvr_auc=0.41991837754549616
+[2026-11-14T09:11:36+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:11:36+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/43-retailrocket/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.7899159663865546, 'ndcg_at_50': 0.46826554662736514, 'coverage': 0.951, 'unique_recommended_items': 2853}, 'deepfm': {'hit_rate_at_50': 0.773109243697479, 'ndcg_at_50': 0.337722808841834, 'coverage': 0.9123333333333333, 'unique_recommended_items': 2737}}
+[2026-11-14T09:12:10+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:12:10+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/43-retailrocket/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.7722772277227723, 'ndcg_at_50': 0.4966337953977471, 'coverage': 0.97, 'unique_recommended_items': 2910}, 'deepfm': {'hit_rate_at_50': 0.7623762376237624, 'ndcg_at_50': 0.3485535877059352, 'coverage': 0.9186666666666666, 'unique_recommended_items': 2756}}
+Simulator condition complete 43-retailrocket
+[2026-11-14T09:12:15+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/43-both/data
+[2026-11-14T09:12:34+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.86700 / valid_recall@300=0.800926 / 갱신=96
+[2026-11-14T09:12:48+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.34544 / valid_recall@300=0.800926 / 갱신=96
+[2026-11-14T09:13:07+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.29253 / valid_recall@300=0.800926 / 갱신=96
+[2026-11-14T09:13:20+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.26228 / valid_recall@300=0.800926 / 갱신=96
+[2026-11-14T09:13:20+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=1 / valid_recall@300=0.800926 / 결과=docs/results/external/expansion-v3/simulator/43-both/candidate_training.json
+[2026-11-14T09:13:33+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=5.28140 / valid_ctr_auc=0.934324 / cvr_auc=0.37802986552264667
+[2026-11-14T09:13:38+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.57093 / valid_ctr_auc=0.942452 / cvr_auc=0.37055798476473334
+[2026-11-14T09:13:44+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.20038 / valid_ctr_auc=0.944611 / cvr_auc=0.36490388581800187
+[2026-11-14T09:14:17+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:14:17+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/43-both/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.7129629629629629, 'ndcg_at_50': 0.40670118505879665, 'coverage': 0.9326666666666666, 'unique_recommended_items': 2798}, 'deepfm': {'hit_rate_at_50': 0.7685185185185185, 'ndcg_at_50': 0.41899611305057255, 'coverage': 0.9013333333333333, 'unique_recommended_items': 2704}}
+[2026-11-14T09:14:47+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:14:47+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/43-both/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.7029702970297029, 'ndcg_at_50': 0.35344360456225976, 'coverage': 0.9516666666666667, 'unique_recommended_items': 2855}, 'deepfm': {'hit_rate_at_50': 0.801980198019802, 'ndcg_at_50': 0.39755256791970267, 'coverage': 0.9056666666666666, 'unique_recommended_items': 2717}}
+Simulator condition complete 43-both
+[2026-11-14T09:14:52+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/44-original/data
+[2026-11-14T09:15:15+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.62402 / valid_recall@300=0.871447 / 갱신=114
+[2026-11-14T09:15:28+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.27297 / valid_recall@300=0.878122 / 갱신=114
+[2026-11-14T09:15:44+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.21405 / valid_recall@300=0.885228 / 갱신=114
+[2026-11-14T09:15:53+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.18063 / valid_recall@300=0.880706 / 갱신=114
+[2026-11-14T09:16:06+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.15935 / valid_recall@300=0.877046 / 갱신=114
+[2026-11-14T09:16:06+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=3 / valid_recall@300=0.885228 / 결과=docs/results/external/expansion-v3/simulator/44-original/candidate_training.json
+[2026-11-14T09:16:19+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=7.69736 / valid_ctr_auc=0.940608 / cvr_auc=0.5208219266923506
+[2026-11-14T09:16:27+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=3.09555 / valid_ctr_auc=0.945991 / cvr_auc=0.5124944032107799
+[2026-11-14T09:16:36+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.95768 / valid_ctr_auc=0.942896 / cvr_auc=0.5120969636197268
+[2026-11-14T09:17:07+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:17:07+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/44-original/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8333333333333334, 'ndcg_at_50': 0.4836379691103437, 'coverage': 0.955, 'unique_recommended_items': 2865}, 'deepfm': {'hit_rate_at_50': 0.838501291989664, 'ndcg_at_50': 0.35271311076281375, 'coverage': 0.889, 'unique_recommended_items': 2667}}
+[2026-11-14T09:17:40+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:17:40+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/44-original/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8102710413694721, 'ndcg_at_50': 0.47640817924118384, 'coverage': 0.9696666666666667, 'unique_recommended_items': 2909}, 'deepfm': {'hit_rate_at_50': 0.8231098430813124, 'ndcg_at_50': 0.40104570497302255, 'coverage': 0.9086666666666666, 'unique_recommended_items': 2726}}
+Simulator condition complete 44-original
+[2026-11-14T09:17:45+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/44-hm/data
+[2026-11-14T09:18:09+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.60187 / valid_recall@300=0.877912 / 갱신=114
+[2026-11-14T09:18:23+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.25863 / valid_recall@300=0.887097 / 갱신=114
+[2026-11-14T09:18:36+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.20615 / valid_recall@300=0.888217 / 갱신=114
+[2026-11-14T09:18:52+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.17426 / valid_recall@300=0.892697 / 갱신=114
+[2026-11-14T09:19:04+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.15550 / valid_recall@300=0.896057 / 갱신=114
+[2026-11-14T09:19:04+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=5 / valid_recall@300=0.896057 / 결과=docs/results/external/expansion-v3/simulator/44-hm/candidate_training.json
+[2026-11-14T09:19:17+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=7.77875 / valid_ctr_auc=0.938648 / cvr_auc=0.5248845557640531
+[2026-11-14T09:19:24+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=3.09833 / valid_ctr_auc=0.946304 / cvr_auc=0.5323084767887738
+[2026-11-14T09:19:32+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.92931 / valid_ctr_auc=0.946156 / cvr_auc=0.5462068613853308
+[2026-11-14T09:20:01+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:20:01+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/44-hm/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8629032258064516, 'ndcg_at_50': 0.5114125937679226, 'coverage': 0.9423333333333334, 'unique_recommended_items': 2827}, 'deepfm': {'hit_rate_at_50': 0.864247311827957, 'ndcg_at_50': 0.36815076444731576, 'coverage': 0.874, 'unique_recommended_items': 2622}}
+[2026-11-14T09:20:34+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:20:34+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/44-hm/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8189655172413793, 'ndcg_at_50': 0.4771497781547264, 'coverage': 0.957, 'unique_recommended_items': 2871}, 'deepfm': {'hit_rate_at_50': 0.8247126436781609, 'ndcg_at_50': 0.3890513440477934, 'coverage': 0.892, 'unique_recommended_items': 2676}}
+Simulator condition complete 44-hm
+[2026-11-14T09:20:39+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/44-retailrocket/data
+[2026-11-14T09:21:01+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.79076 / valid_recall@300=0.872727 / 갱신=96
+[2026-11-14T09:21:18+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.35180 / valid_recall@300=0.890909 / 갱신=96
+[2026-11-14T09:21:34+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.29507 / valid_recall@300=0.890909 / 갱신=96
+[2026-11-14T09:21:45+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.26755 / valid_recall@300=0.890909 / 갱신=96
+[2026-11-14T09:21:56+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.24835 / valid_recall@300=0.881818 / 갱신=96
+[2026-11-14T09:21:56+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=2 / valid_recall@300=0.890909 / 결과=docs/results/external/expansion-v3/simulator/44-retailrocket/candidate_training.json
+[2026-11-14T09:22:10+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=5.65696 / valid_ctr_auc=0.927550 / cvr_auc=0.4800520566649598
+[2026-11-14T09:22:18+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.53247 / valid_ctr_auc=0.939859 / cvr_auc=0.4827707068490478
+[2026-11-14T09:22:26+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.14823 / valid_ctr_auc=0.942872 / cvr_auc=0.47871711408577766
+[2026-11-14T09:23:01+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:23:01+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/44-retailrocket/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8, 'ndcg_at_50': 0.48459938890572846, 'coverage': 0.9503333333333334, 'unique_recommended_items': 2851}, 'deepfm': {'hit_rate_at_50': 0.8272727272727273, 'ndcg_at_50': 0.4022220910279991, 'coverage': 0.9023333333333333, 'unique_recommended_items': 2707}}
+[2026-11-14T09:23:30+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:23:30+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/44-retailrocket/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.719626168224299, 'ndcg_at_50': 0.4330020920599022, 'coverage': 0.965, 'unique_recommended_items': 2895}, 'deepfm': {'hit_rate_at_50': 0.7570093457943925, 'ndcg_at_50': 0.413335182195233, 'coverage': 0.9186666666666666, 'unique_recommended_items': 2756}}
+Simulator condition complete 44-retailrocket
+[2026-11-14T09:23:35+00:00] [데이터 준비] [성공] 상품 3,000개·사용자 1,000명·이벤트 100,000건 준비 완료 / 경로=.team/external-expansion-v3/simulator/44-both/data
+[2026-11-14T09:23:50+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.81332 / valid_recall@300=0.754630 / 갱신=96
+[2026-11-14T09:23:59+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.35090 / valid_recall@300=0.777778 / 갱신=96
+[2026-11-14T09:24:09+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.29498 / valid_recall@300=0.824074 / 갱신=96
+[2026-11-14T09:24:19+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.26720 / valid_recall@300=0.805556 / 갱신=96
+[2026-11-14T09:24:28+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.24704 / valid_recall@300=0.805556 / 갱신=96
+[2026-11-14T09:24:28+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=3 / valid_recall@300=0.824074 / 결과=docs/results/external/expansion-v3/simulator/44-both/candidate_training.json
+[2026-11-14T09:24:37+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=5.55983 / valid_ctr_auc=0.929357 / cvr_auc=0.4847892851049309
+[2026-11-14T09:24:41+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.53995 / valid_ctr_auc=0.939791 / cvr_auc=0.4840101234146619
+[2026-11-14T09:24:42+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.14495 / valid_ctr_auc=0.941496 / cvr_auc=0.4850338395040664
+[2026-11-14T09:25:08+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-14T09:25:08+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/44-both/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.7037037037037037, 'ndcg_at_50': 0.4246796779964725, 'coverage': 0.9463333333333334, 'unique_recommended_items': 2839}, 'deepfm': {'hit_rate_at_50': 0.7685185185185185, 'ndcg_at_50': 0.33190748013546334, 'coverage': 0.879, 'unique_recommended_items': 2637}}
+[2026-11-14T09:25:37+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-14T09:25:37+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/expansion-v3/simulator/44-both/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.7735849056603774, 'ndcg_at_50': 0.4354109109651667, 'coverage': 0.9593333333333334, 'unique_recommended_items': 2878}, 'deepfm': {'hit_rate_at_50': 0.7735849056603774, 'ndcg_at_50': 0.4209233838890771, 'coverage': 0.8953333333333333, 'unique_recommended_items': 2686}}
+Simulator condition complete 44-both

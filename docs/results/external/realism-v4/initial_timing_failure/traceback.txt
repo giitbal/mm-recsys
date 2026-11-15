@@ -1,0 +1,29 @@
+baseline {'price_mae': 0.4837883879179792, 'price_quantile_mae': 0.4806022731252536, 'category_tv': 0.26182424709558333, 'activity_top10_error': 0.270159411399326, 'session_purchase_error': 0.0009414448911127605, 'session_length_error': 0.3, 'gap_error': 1.3749183100182676, 'behavior_objective': 0.4865047915771766}
+price-0 {'price_mae': 0.4837883879179792, 'price_quantile_mae': 0.4806022731252536, 'category_tv': 0.26182424709558333, 'activity_top10_error': 0.270159411399326, 'session_purchase_error': 0.0009414448911127605, 'session_length_error': 0.3, 'gap_error': 1.3749183100182676, 'behavior_objective': 0.4865047915771766}
+price-1 {'price_mae': 0.15388268054983495, 'price_quantile_mae': 0.21090393226575105, 'category_tv': 0.26182424709558333, 'activity_top10_error': 0.270159411399326, 'session_purchase_error': 0.0009414448911127605, 'session_length_error': 0.3, 'gap_error': 1.3749183100182676, 'behavior_objective': 0.4865047915771766}
+price-2 {'price_mae': 0.0927200692348518, 'price_quantile_mae': 0.15166522578051791, 'category_tv': 0.26182424709558333, 'activity_top10_error': 0.270159411399326, 'session_purchase_error': 0.0009414448911127605, 'session_length_error': 0.3, 'gap_error': 1.3749183100182676, 'behavior_objective': 0.4865047915771766}
+price-3 {'price_mae': 0.10162619512855717, 'price_quantile_mae': 0.14141998478249357, 'category_tv': 0.26182424709558333, 'activity_top10_error': 0.270159411399326, 'session_purchase_error': 0.0009414448911127605, 'session_length_error': 0.3, 'gap_error': 1.3749183100182676, 'behavior_objective': 0.4865047915771766}
+price-4 {'price_mae': 0.10804945613816404, 'price_quantile_mae': 0.13892843469334631, 'category_tv': 0.26182424709558333, 'activity_top10_error': 0.270159411399326, 'session_purchase_error': 0.0009414448911127605, 'session_length_error': 0.3, 'gap_error': 1.3749183100182676, 'behavior_objective': 0.4865047915771766}
+activity {'price_mae': 0.4499407139679179, 'price_quantile_mae': 0.4631889806070896, 'category_tv': 0.2672863480990856, 'activity_top10_error': 0.03397912061852759, 'session_purchase_error': 0.0005796226439678635, 'session_length_error': 0.3, 'gap_error': 1.3749183100182676, 'behavior_objective': 0.42736926332019076}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/peachpetal/ecommerce/mm-recsys/src/external_data/realism_run.py", line 209, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/external_data/realism_run.py", line 206, in main
+    if task in [name,'all']: fn()
+                             ^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/external_data/realism_run.py", line 107, in tune
+    record = pilot(trial['name'], cfg, targets, work, output)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/external_data/realism_run.py", line 70, in pilot
+    actual = measure(cfg, *simulate(cfg))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/external_data/realism_run.py", line 62, in measure
+    transitions=probabilities(counts, 0), transition_diagnostics=audit,
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/external_data/retailrocket.py", line 41, in probabilities
+    if denominator <= 0: raise ValueError('unobserved transition row without smoothing')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: unobserved transition row without smoothing

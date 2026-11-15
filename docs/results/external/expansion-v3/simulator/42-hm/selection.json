@@ -1,0 +1,9 @@
+{
+  "status": "FROZEN",
+  "config_fingerprint": "b6b9fb90c7ffee3b79fef9334900df03a71792129f0fd49edc11b435e4fa066e",
+  "model_hashes": {
+    ".team/external-expansion-v3/simulator/42-hm/models/v1.0/two_tower.pt": "eedc8768ea9b371036822fef09a7b13eff37b794a51bae9de545fbf60f60499e",
+    ".team/external-expansion-v3/simulator/42-hm/models/v1.0/ranking/deepfm.pt": "3f71ca28892af43cf4f132fc4efde0066ed343ac3fc81da598b7d0f025eb656c"
+  },
+  "data_fingerprint": "6d34a5ef6476c545b49aab6c04bf5b638653a7e2d5a78e99759c13a5c31d9f33"
+}

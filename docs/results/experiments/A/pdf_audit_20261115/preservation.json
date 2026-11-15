@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checks": {
+    "/home/peachpetal/ecommerce/mm-recsys/config.yaml": true,
+    "/home/peachpetal/ecommerce/mm-recsys/docker-compose.yml": true,
+    "/home/peachpetal/ecommerce/mm-recsys/docs/results/final_acceptance.json": true,
+    "models/full-v44/registry.json": true
+  },
+  "original_registry_sha256": "a6ae824aaf71e67009daed013d905211991cb8d5672345411b856101d6f83125",
+  "original_model_files_equal_to_audited_copy": "PASS",
+  "model_files_compared": 48
+}

@@ -1,0 +1,18 @@
+{
+  "semantic_examples": {
+    "command": ".venv/bin/python .team/realism-full-20261115/semantic.py",
+    "exit_code": 0
+  },
+  "browser": {
+    "command": "FONTCONFIG_FILE=.team/pdf-audit-20261115/fontconfig.xml PLAYWRIGHT_BROWSERS_PATH=.team/pdf-audit-20261115/browsers node .team/realism-full-20261115/browser.js",
+    "exit_code": 0
+  },
+  "ct_trigger": {
+    "command": "docker exec mm-recsys-realism-full-20261115-api-server-1 python scripts/demo.py ct --train --json --output docs/results/experiments/A/realism_full_20261115/ct_trigger.jsonl",
+    "exit_code": 0
+  },
+  "compose_config": {
+    "command": "API_PORT=18010 DASHBOARD_PORT=18511 REDIS_PORT=16389 docker compose -p mm-recsys-realism-full-20261115 -f docker-compose.yml -f docker/compose.realism-full.yaml config --quiet",
+    "exit_code": 0
+  }
+}

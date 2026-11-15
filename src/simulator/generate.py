@@ -29,7 +29,8 @@ def ordered_recipe(value: object) -> object:
 
 def generation_identity(cfg: dict) -> dict:
     return {'seed': cfg['seed'], 'simulator': cfg['simulator'], 'split': cfg['split'],
-            'ordered_simulator': ordered_recipe(cfg['simulator']), 'generator': GENERATOR_VERSION}
+            'ordered_simulator': ordered_recipe(cfg['simulator']),
+            'generator': '4.5.0-realism' if cfg['simulator'].get('realism') else GENERATOR_VERSION}
 
 
 def generate(cfg: dict, data_dir: Path | None = None) -> dict:
@@ -65,7 +66,7 @@ def generate(cfg: dict, data_dir: Path | None = None) -> dict:
         splits=chronological_split(events,cfg['split'])
         for name,frame in splits.items():frame.to_parquet(temporary/f'split/{name}.parquet',index=False)
         files=['products.parquet','users.parquet','events.parquet','impressions.parquet','image_manifest.json',*[f'split/{name}.parquet' for name in splits]]
-        manifest={'generator_version':GENERATOR_VERSION,'generation_fingerprint':expected,'scale':cfg['scale'],'seed':cfg['seed'],
+        manifest={'generator_version':generation_identity(cfg)['generator'],'generation_fingerprint':expected,'scale':cfg['scale'],'seed':cfg['seed'],
                   'reference_time':cfg['simulator']['reference_time'],
                   'counts':{'products':len(products),'users':len(users),'events':len(events),'impressions':len(impressions)},
                   'split_counts':{name:len(frame) for name,frame in splits.items()},

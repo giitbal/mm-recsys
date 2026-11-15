@@ -1,0 +1,46 @@
+{
+  "required_files": {
+    "meta.json": true,
+    "two_tower.pt": true,
+    "feature_vocab_scalers.json": true,
+    "item_ids.json": true,
+    "item_index.faiss": true,
+    "index_manifest.json": true,
+    "ranking/meta.json": true,
+    "ranking/deepfm.pt": true,
+    "ranking/features.json": true,
+    "session/meta.json": true,
+    "session/session.pt": true,
+    "session/item_ids.json": true
+  },
+  "required_count": 12,
+  "hashes": {
+    "meta.json": "b56dba6b42d7e3c25021b1f368f948c166cfa2e9b27575482ef290271ea1c4fe",
+    "two_tower.pt": "9f6b7e6c2c24424cdcc4cbeaf2fc970d01c86a0c76a5726f5ac5447fab23ca3e",
+    "feature_vocab_scalers.json": "ac916dd441dc1019551dcc3598b00a81e0e36e100c4364b2323f75646fe79c77",
+    "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+    "item_index.faiss": "381c1e654083b4608b5bd8a5bab69bb078ab69c3870d2eedb747f9faf42c6760",
+    "index_manifest.json": "442f97f6435d055df6ee336c5911598469257bd8cff698de189f85932cace057",
+    "ranking/meta.json": "89492f3b5eddb558df86dc5c6b451bd0efa2050f7f825653ca38c1518e39420a",
+    "ranking/deepfm.pt": "27e2f9cba6977c493c274fb7e0e29742e6286a7f909587548eeee39d42f16a8a",
+    "ranking/features.json": "4f00d9ec2ec11acdaed7a846c4ca581e46c0059d58bf99e60c4d3af96e35e7d5",
+    "session/meta.json": "560a8515e4ecf03372537badbf55467895988a7eadc5f2b89f0f0437f3b31317",
+    "session/session.pt": "a10966947c1588b10f76aceccb5b75b28fdecee9072aa3a83fed51946fd8e32a",
+    "session/item_ids.json": "1597417f43fb70984d90a935c4202cbc73d84eaff15d274e3329fbb0ec93f953"
+  },
+  "data_fingerprint": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+  "model_data_fingerprints": {
+    "meta.json": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+    "ranking/meta.json": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+    "session/meta.json": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f"
+  },
+  "search_pointers": {
+    "embeddings_current.json": {
+      "fingerprint": "abaa886395c767b56f1ccaf2f39cb52e5b2c729f9e4fb04b03edb38248e82210"
+    },
+    "indexes_current.json": {
+      "fingerprint": "6d50707601a6f8560d3ee81bd6b54726dc041a071ca2892471a7658a8485a85c"
+    }
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,19 @@
+ Network mm-recsys-realism-full-20261115_default Creating 
+ Volume mm-recsys-realism-full-20261115_redis_data Creating 
+ Volume mm-recsys-realism-full-20261115_redis_data Creating 
+ Network mm-recsys-realism-full-20261115_default Creating 
+ Volume mm-recsys-realism-full-20261115_redis_data Created 
+ Volume mm-recsys-realism-full-20261115_redis_data Created 
+ Network mm-recsys-realism-full-20261115_default Created 
+ Network mm-recsys-realism-full-20261115_default Created 
+ Container mm-recsys-realism-full-20261115-redis-1 Creating 
+ Container mm-recsys-realism-full-20261115-redis-1 Created 
+ Container mm-recsys-realism-full-20261115-api-server-1 Creating 
+ Container mm-recsys-realism-full-20261115-api-server-1 Created 
+ Container mm-recsys-realism-full-20261115-redis-1 Starting 
+ Container mm-recsys-realism-full-20261115-redis-1 Started 
+ Container mm-recsys-realism-full-20261115-redis-1 Waiting 
+ Container mm-recsys-realism-full-20261115-redis-1 Healthy 
+ Container mm-recsys-realism-full-20261115-api-server-1 Starting 
+ Container mm-recsys-realism-full-20261115-api-server-1 Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/run/desktop/mnt/host/wsl/docker-desktop-bind-mounts/Ubuntu/708e55b89e3735a5ae12c9d7408795cacd884e6010a3d3b779dee136afc5b927" to rootfs at "/app/data/full-realism-v4": create mountpoint for /app/data/full-realism-v4 mount: make mountpoint "/app/data/full-realism-v4": mkdirat /var/lib/docker/rootfs/overlayfs/2e4ba13b80aac8b2a8dc621c24d58a8a05ab9a5027c6e05b24ab70fb7f90ab09/app/data/full-realism-v4: read-only file system 
+Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/run/desktop/mnt/host/wsl/docker-desktop-bind-mounts/Ubuntu/708e55b89e3735a5ae12c9d7408795cacd884e6010a3d3b779dee136afc5b927" to rootfs at "/app/data/full-realism-v4": create mountpoint for /app/data/full-realism-v4 mount: make mountpoint "/app/data/full-realism-v4": mkdirat /var/lib/docker/rootfs/overlayfs/2e4ba13b80aac8b2a8dc621c24d58a8a05ab9a5027c6e05b24ab70fb7f90ab09/app/data/full-realism-v4: read-only file system

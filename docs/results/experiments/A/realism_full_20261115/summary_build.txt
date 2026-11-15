@@ -1,0 +1,131 @@
+{
+  "status": "COMPLETED",
+  "quality_status": "PASS",
+  "checks": {
+    "data_audit": "PASS",
+    "data_reproduction": "PASS",
+    "model_provenance": "PASS",
+    "peer_review": "PASS",
+    "mab": "PASS",
+    "semantic_examples": "PASS",
+    "browser": "PASS",
+    "ct_drill": "PASS",
+    "container_source_check": "PASS",
+    "ab_test_verification": "PASS",
+    "execution_integrity": "PASS",
+    "live_final": "PASS",
+    "pytest": "PASS"
+  },
+  "metrics": [
+    {
+      "name": "mrr",
+      "value": 0.9383333333333334,
+      "target": 0.55,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "search.primary",
+      "reason": null
+    },
+    {
+      "name": "ndcg_at_10",
+      "value": 0.9383333333333334,
+      "target": 0.5,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "search.primary",
+      "reason": null
+    },
+    {
+      "name": "recall_at_300",
+      "value": 0.7442328042328041,
+      "target": 0.3,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.candidate.ann_two_tower",
+      "reason": null
+    },
+    {
+      "name": "auc",
+      "value": 0.9684651857718339,
+      "target": 0.7,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.classification.ctr",
+      "reason": null
+    },
+    {
+      "name": "hit_rate_at_50",
+      "value": 0.635978835978836,
+      "target": 0.2,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.metrics.full_pipeline",
+      "reason": null
+    },
+    {
+      "name": "ndcg_at_50",
+      "value": 0.3169740727364583,
+      "target": 0.08,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.metrics.full_pipeline",
+      "reason": null
+    },
+    {
+      "name": "coverage",
+      "value": 0.32872,
+      "target": 0.2,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.metrics.full_pipeline",
+      "reason": null
+    },
+    {
+      "name": "search_p95_ms",
+      "value": 103.9526056997147,
+      "target": 200,
+      "direction": "max",
+      "status": "PASS",
+      "split": "benchmark",
+      "source": "api.modes; worst-mode HTTP p95",
+      "reason": null
+    },
+    {
+      "name": "recommend_p95_ms",
+      "value": 24.164433099758753,
+      "target": 200,
+      "direction": "max",
+      "status": "PASS",
+      "split": "benchmark",
+      "source": "api.modes.recommendation.http",
+      "reason": null
+    },
+    {
+      "name": "candidate_p95_ms",
+      "value": 4.329208749868485,
+      "target": 100,
+      "direction": "max",
+      "status": "PASS",
+      "split": "benchmark",
+      "source": "candidate_latency",
+      "reason": null
+    },
+    {
+      "name": "feature_p95_ms",
+      "value": 0.2778115001547121,
+      "target": 10,
+      "direction": "max",
+      "status": "PASS",
+      "split": "benchmark",
+      "source": "feature_store",
+      "reason": null
+    }
+  ]
+}

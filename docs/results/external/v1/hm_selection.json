@@ -1,0 +1,68 @@
+{
+  "status": "FROZEN",
+  "candidate_model_sha256": "e07ba26bea34bc716ded018770fc110191030a8fc23738bf975b2c638c4d6c34",
+  "purchase_model_sha256": "7dbf8adc5a8ef3aa65273a2dccb716f158ab663ef7207f8e14efaa3bf59e48a6",
+  "best_ranking_epoch": 1,
+  "selection_metric": "valid NDCG@50",
+  "config_fingerprint": "50463b190cf89a025f59316fd1499c2859a695af1725867e4807b198d7b1e602",
+  "data_fingerprint": "156ddd999aca1afd0e3f41e9e15d26f3d2d326c89f747f287fbfc51542f0b6b4",
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 2.3162488458621118,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.03732503888024884,
+        "ndcg_at_50": 0.0032243727165556435,
+        "coverage_at_50": 0.01213734816471168
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 0.7957390146310868,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.03421461897356143,
+        "ndcg_at_50": 0.0026568299348086705,
+        "coverage_at_50": 0.011834151333118569
+      }
+    },
+    {
+      "epoch": 3,
+      "loss": 0.5421530537116143,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.038880248833592534,
+        "ndcg_at_50": 0.0026609035947870183,
+        "coverage_at_50": 0.011265657273881489
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 0.4568346000173015,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.04043545878693624,
+        "ndcg_at_50": 0.002868185698379954,
+        "coverage_at_50": 0.011483579996589036
+      }
+    },
+    {
+      "epoch": 5,
+      "loss": 0.4177160664992179,
+      "valid": {
+        "users": 643,
+        "empty_target_users": 1357,
+        "hit_rate_at_50": 0.04043545878693624,
+        "ndcg_at_50": 0.00289659622855301,
+        "coverage_at_50": 0.011246707471906918
+      }
+    }
+  ],
+  "runner_sha256": "85977f76999be5d9ecf312517d52a7228418eee6837ed254627baf8ff26709be",
+  "objective": "purchase vs random unobserved 1:4, not CTR/CVR; unused second DeepFM output"
+}

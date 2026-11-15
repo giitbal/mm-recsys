@@ -90,6 +90,30 @@ def test_index_tampering_and_stale_manifest_rejected(fixture, tmp_path):
     with pytest.raises(ValueError, match='manifest checksum'): load_index(tmp_path, table, meta)
 
 
+def test_disconnected_ann_completes_from_same_vectors_without_changing_catalog(fixture, tmp_path, monkeypatch):
+    from src.recommendation.candidate import dot_scores, top_indices
+    from src.recommendation.index import stored_vectors
+    cfg, data, encoder, table, model, index, _, _ = setup_index(fixture, tmp_path)
+    evaluation = Evaluation(data, encoder, table, cfg)
+    excluded = frozenset(evaluation.eligible[:10])
+    candidate = FaissCandidate(model, table, evaluation.eligible, index)
+    vectors = candidate.user_vectors(evaluation.contexts[:1])
+    # Simulate a disconnected graph that can only visit one future product.
+    def disconnected(query, k):
+        labels = np.full((len(query), k), -1, np.int64)
+        labels[:, 0] = 400
+        return np.zeros_like(labels, dtype=np.float32), labels
+    monkeypatch.setattr(index, 'search', disconnected)
+    actual = candidate.search(vectors, excluded=excluded)[0]
+    eligible = np.array(sorted(set(evaluation.eligible) - excluded))
+    scores = dot_scores(vectors, stored_vectors(index)[eligible - 1])[0]
+    expected = table.public_ids(top_indices(scores, eligible))
+    assert actual == expected and len(actual) == 300
+    assert candidate.exact_refill_queries == 1
+    assert 'P0400' not in actual
+    assert not set(actual) & set(table.public_ids(list(excluded)))
+
+
 def test_candidate_acceptance_refuses_dev_valid_and_stale_measurements():
     from src.recommendation.bench_candidate import metrics
     score = {'recall_at_300': 0.5, 'candidate_count_min': 300}

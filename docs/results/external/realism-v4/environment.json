@@ -1,0 +1,8 @@
+{
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-aarch64-with-glibc2.39",
+  "python": "3.12.3",
+  "cpu_count": 8,
+  "training_threads": 4,
+  "device": "CPU",
+  "scope": "Concurrent tests and CPU experiments; elapsed times are not isolated latency benchmarks"
+}

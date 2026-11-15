@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "rows": {
+    "text": {
+      "products": 105542,
+      "nonzero_vectors": 105542,
+      "missing_vectors": 0,
+      "max_norm_error": 1.7881393432617188e-07
+    },
+    "image": {
+      "products": 105542,
+      "nonzero_vectors": 105100,
+      "missing_vectors": 442,
+      "max_norm_error": 1.7881393432617188e-07
+    }
+  },
+  "hashes": {
+    ".team/external-expansion-v3/hm_embeddings/text.npy": "0b40a1b79f81f353b18239737f950a5e539e7c079ac8c43485e26d1adaa06d2d",
+    ".team/external-expansion-v3/hm_embeddings/image.npy": "787445047c248bf99aed6c37f0c33544eaebccf80caa85d93f7031dac6db444a"
+  },
+  "ids_sha256": "ad86ffbd3ea764e6002b61522746b026a227b86060be825f0a71a006e4b2bfb1",
+  "scope": "Every original 512D H&M vector checked; missing images retained as zeros; IDs unique and PAD aligned"
+}

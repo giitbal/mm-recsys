@@ -1,0 +1,84 @@
+[2026-11-15T06:59:50+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.79032 / valid_recall@300=0.862832 / 갱신=96
+[2026-11-15T06:59:55+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.37034 / valid_recall@300=0.902655 / 갱신=96
+[2026-11-15T07:00:01+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.30423 / valid_recall@300=0.907080 / 갱신=96
+[2026-11-15T07:00:06+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.27218 / valid_recall@300=0.893805 / 갱신=96
+[2026-11-15T07:00:13+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.25134 / valid_recall@300=0.911504 / 갱신=96
+[2026-11-15T07:00:13+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=5 / valid_recall@300=0.911504 / 결과=docs/results/external/realism-v4/models/42-baseline/candidate_training.json
+[2026-11-15T07:00:20+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=7.60208 / valid_ctr_auc=0.927273 / cvr_auc=0.39825581395348836
+[2026-11-15T07:00:21+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.60687 / valid_ctr_auc=0.944049 / cvr_auc=0.4178559303538084
+[2026-11-15T07:00:23+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.18091 / valid_ctr_auc=0.946452 / cvr_auc=0.4335699735674273
+[2026-11-15T07:00:38+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-15T07:00:38+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/42-baseline/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.831858407079646, 'ndcg_at_50': 0.48022600428416023, 'coverage': 0.9513333333333334, 'unique_recommended_items': 2854}, 'deepfm': {'hit_rate_at_50': 0.7876106194690266, 'ndcg_at_50': 0.4001775089656798, 'coverage': 0.9126666666666666, 'unique_recommended_items': 2738}}
+[2026-11-15T07:00:59+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-15T07:00:59+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/42-baseline/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.680327868852459, 'ndcg_at_50': 0.3978284521214455, 'coverage': 0.9616666666666667, 'unique_recommended_items': 2885}, 'deepfm': {'hit_rate_at_50': 0.7459016393442623, 'ndcg_at_50': 0.3208607551295248, 'coverage': 0.903, 'unique_recommended_items': 2709}}
+Model evaluation complete 42 baseline
+[2026-11-15T07:01:08+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.73512 / valid_recall@300=0.813008 / 갱신=96
+[2026-11-15T07:01:15+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.34510 / valid_recall@300=0.841463 / 갱신=96
+[2026-11-15T07:01:23+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.28786 / valid_recall@300=0.833333 / 갱신=96
+[2026-11-15T07:01:30+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.25561 / valid_recall@300=0.850949 / 갱신=96
+[2026-11-15T07:01:36+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.23416 / valid_recall@300=0.840108 / 갱신=96
+[2026-11-15T07:01:37+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=4 / valid_recall@300=0.850949 / 결과=docs/results/external/realism-v4/models/42-combined/candidate_training.json
+[2026-11-15T07:01:45+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=7.50966 / valid_ctr_auc=0.926610 / cvr_auc=0.47277476127245405
+[2026-11-15T07:01:47+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.62039 / valid_ctr_auc=0.940310 / cvr_auc=0.4661179986765357
+[2026-11-15T07:01:49+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.18714 / valid_ctr_auc=0.943154 / cvr_auc=0.4587140484423
+[2026-11-15T07:02:10+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-15T07:02:10+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/42-combined/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.7804878048780488, 'ndcg_at_50': 0.46273538849578744, 'coverage': 0.9393333333333334, 'unique_recommended_items': 2818}, 'deepfm': {'hit_rate_at_50': 0.7642276422764228, 'ndcg_at_50': 0.33368931614949093, 'coverage': 0.8936666666666667, 'unique_recommended_items': 2681}}
+[2026-11-15T07:02:30+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-15T07:02:30+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/42-combined/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8333333333333334, 'ndcg_at_50': 0.532596445242629, 'coverage': 0.948, 'unique_recommended_items': 2844}, 'deepfm': {'hit_rate_at_50': 0.8333333333333334, 'ndcg_at_50': 0.3369229734650976, 'coverage': 0.8846666666666667, 'unique_recommended_items': 2654}}
+Model evaluation complete 42 combined
+[2026-11-15T07:02:39+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.87862 / valid_recall@300=0.857143 / 갱신=96
+[2026-11-15T07:02:47+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.35443 / valid_recall@300=0.901786 / 갱신=96
+[2026-11-15T07:02:54+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.29434 / valid_recall@300=0.892857 / 갱신=96
+[2026-11-15T07:02:59+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.26425 / valid_recall@300=0.919643 / 갱신=96
+[2026-11-15T07:03:05+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.24366 / valid_recall@300=0.910714 / 갱신=96
+[2026-11-15T07:03:05+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=4 / valid_recall@300=0.919643 / 결과=docs/results/external/realism-v4/models/43-baseline/candidate_training.json
+[2026-11-15T07:03:13+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=5.31564 / valid_ctr_auc=0.935169 / cvr_auc=0.5299091754020635
+[2026-11-15T07:03:15+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.56957 / valid_ctr_auc=0.943752 / cvr_auc=0.5269091401075308
+[2026-11-15T07:03:16+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.20745 / valid_ctr_auc=0.944750 / cvr_auc=0.518732573324392
+[2026-11-15T07:03:31+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-15T07:03:31+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/43-baseline/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8035714285714286, 'ndcg_at_50': 0.4558361761765658, 'coverage': 0.947, 'unique_recommended_items': 2841}, 'deepfm': {'hit_rate_at_50': 0.8035714285714286, 'ndcg_at_50': 0.4178204939561061, 'coverage': 0.8853333333333333, 'unique_recommended_items': 2656}}
+[2026-11-15T07:03:49+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-15T07:03:49+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/43-baseline/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8333333333333334, 'ndcg_at_50': 0.5030335662389769, 'coverage': 0.9623333333333334, 'unique_recommended_items': 2887}, 'deepfm': {'hit_rate_at_50': 0.8020833333333334, 'ndcg_at_50': 0.38994827453466585, 'coverage': 0.9026666666666666, 'unique_recommended_items': 2708}}
+Model evaluation complete 43 baseline
+[2026-11-15T07:03:56+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.83223 / valid_recall@300=0.848485 / 갱신=96
+[2026-11-15T07:04:00+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.33815 / valid_recall@300=0.904040 / 갱신=96
+[2026-11-15T07:04:05+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.28391 / valid_recall@300=0.888889 / 갱신=96
+[2026-11-15T07:04:09+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.25645 / valid_recall@300=0.909091 / 갱신=96
+[2026-11-15T07:04:14+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.23906 / valid_recall@300=0.895623 / 갱신=96
+[2026-11-15T07:04:14+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=4 / valid_recall@300=0.909091 / 결과=docs/results/external/realism-v4/models/43-combined/candidate_training.json
+[2026-11-15T07:04:21+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=5.31529 / valid_ctr_auc=0.927736 / cvr_auc=0.5271305965317102
+[2026-11-15T07:04:22+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.56990 / valid_ctr_auc=0.936690 / cvr_auc=0.5204730342237553
+[2026-11-15T07:04:23+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.20310 / valid_ctr_auc=0.939294 / cvr_auc=0.513609446557022
+[2026-11-15T07:04:39+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-15T07:04:39+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/43-combined/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.7878787878787878, 'ndcg_at_50': 0.5143161100811581, 'coverage': 0.9463333333333334, 'unique_recommended_items': 2839}, 'deepfm': {'hit_rate_at_50': 0.8282828282828283, 'ndcg_at_50': 0.39264785448121836, 'coverage': 0.8866666666666667, 'unique_recommended_items': 2660}}
+[2026-11-15T07:04:56+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-15T07:04:56+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/43-combined/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.7857142857142857, 'ndcg_at_50': 0.504673422119714, 'coverage': 0.9603333333333334, 'unique_recommended_items': 2881}, 'deepfm': {'hit_rate_at_50': 0.7976190476190477, 'ndcg_at_50': 0.37139531893824074, 'coverage': 0.914, 'unique_recommended_items': 2742}}
+Model evaluation complete 43 combined
+[2026-11-15T07:05:03+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.81022 / valid_recall@300=0.814815 / 갱신=96
+[2026-11-15T07:05:07+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.35302 / valid_recall@300=0.842593 / 갱신=96
+[2026-11-15T07:05:11+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.29694 / valid_recall@300=0.842593 / 갱신=96
+[2026-11-15T07:05:15+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.26721 / valid_recall@300=0.884259 / 갱신=96
+[2026-11-15T07:05:20+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.24590 / valid_recall@300=0.851852 / 갱신=96
+[2026-11-15T07:05:20+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=4 / valid_recall@300=0.884259 / 결과=docs/results/external/realism-v4/models/44-baseline/candidate_training.json
+[2026-11-15T07:05:27+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=5.54737 / valid_ctr_auc=0.929140 / cvr_auc=0.47406136311959984
+[2026-11-15T07:05:28+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.53897 / valid_ctr_auc=0.939449 / cvr_auc=0.4697270065939063
+[2026-11-15T07:05:29+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.14569 / valid_ctr_auc=0.942505 / cvr_auc=0.46684217257844474
+[2026-11-15T07:05:43+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-15T07:05:43+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/44-baseline/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.75, 'ndcg_at_50': 0.4224647857447473, 'coverage': 0.948, 'unique_recommended_items': 2844}, 'deepfm': {'hit_rate_at_50': 0.6574074074074074, 'ndcg_at_50': 0.28843953479083784, 'coverage': 0.873, 'unique_recommended_items': 2619}}
+[2026-11-15T07:05:57+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-15T07:05:57+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/44-baseline/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.7272727272727273, 'ndcg_at_50': 0.4406149160748487, 'coverage': 0.9593333333333334, 'unique_recommended_items': 2878}, 'deepfm': {'hit_rate_at_50': 0.7454545454545455, 'ndcg_at_50': 0.36871948464103954, 'coverage': 0.8883333333333333, 'unique_recommended_items': 2665}}
+Model evaluation complete 44 baseline
+[2026-11-15T07:06:05+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=0.76703 / valid_recall@300=0.866972 / 갱신=96
+[2026-11-15T07:06:09+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.35602 / valid_recall@300=0.871560 / 갱신=96
+[2026-11-15T07:06:14+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.29831 / valid_recall@300=0.862385 / 갱신=96
+[2026-11-15T07:06:18+00:00] [모델 학습] [진행] Two-Tower epoch=4 / loss=0.27202 / valid_recall@300=0.871560 / 갱신=96
+[2026-11-15T07:06:23+00:00] [모델 학습] [진행] Two-Tower epoch=5 / loss=0.25324 / valid_recall@300=0.880734 / 갱신=96
+[2026-11-15T07:06:23+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=5 / valid_recall@300=0.880734 / 결과=docs/results/external/realism-v4/models/44-combined/candidate_training.json
+[2026-11-15T07:06:29+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=5.55664 / valid_ctr_auc=0.927978 / cvr_auc=0.5140310474240873
+[2026-11-15T07:06:30+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=1.56480 / valid_ctr_auc=0.941544 / cvr_auc=0.502846013874673
+[2026-11-15T07:06:31+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=1.16398 / valid_ctr_auc=0.944615 / cvr_auc=0.486952689639486
+[2026-11-15T07:06:47+00:00] [랭킹 평가] [진행] valid: 사용자 1,000명 평가
+[2026-11-15T07:06:47+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/44-combined/ranking_valid.json / 지표={'two_tower': {'hit_rate_at_50': 0.8165137614678899, 'ndcg_at_50': 0.46452699490300203, 'coverage': 0.941, 'unique_recommended_items': 2823}, 'deepfm': {'hit_rate_at_50': 0.8165137614678899, 'ndcg_at_50': 0.3418152562342582, 'coverage': 0.8906666666666667, 'unique_recommended_items': 2672}}
+[2026-11-15T07:07:02+00:00] [랭킹 평가] [진행] test: 사용자 1,000명 평가
+[2026-11-15T07:07:02+00:00] [랭킹 평가] [측정 완료] 결과=docs/results/external/realism-v4/models/44-combined/ranking_test.json / 지표={'two_tower': {'hit_rate_at_50': 0.8024691358024691, 'ndcg_at_50': 0.4722666159094381, 'coverage': 0.9503333333333334, 'unique_recommended_items': 2851}, 'deepfm': {'hit_rate_at_50': 0.8148148148148148, 'ndcg_at_50': 0.3086233818631088, 'coverage': 0.9093333333333333, 'unique_recommended_items': 2728}}
+Model evaluation complete 44 combined

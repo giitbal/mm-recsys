@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "selected_users": 2000,
+      "active_train_users": 1808,
+      "observed_products": 18274,
+      "valid_unobserved_truth_pairs": 2308,
+      "valid_unavailable_truth_pairs": 630,
+      "valid_eligible_unobserved_truth_pairs": 1678,
+      "valid_total_truth_pairs": 4062,
+      "valid_unobserved_macro_fraction": 0.5540138379291405
+    },
+    {
+      "selected_users": 20000,
+      "active_train_users": 18024,
+      "observed_products": 49531,
+      "valid_unobserved_truth_pairs": 1078,
+      "valid_unavailable_truth_pairs": 630,
+      "valid_eligible_unobserved_truth_pairs": 448,
+      "valid_total_truth_pairs": 4062,
+      "valid_unobserved_macro_fraction": 0.2534457876929082
+    },
+    {
+      "selected_users": 100000,
+      "active_train_users": 90362,
+      "observed_products": 71520,
+      "valid_unobserved_truth_pairs": 773,
+      "valid_unavailable_truth_pairs": 630,
+      "valid_eligible_unobserved_truth_pairs": 143,
+      "valid_total_truth_pairs": 4062,
+      "valid_unobserved_macro_fraction": 0.1807707339559489
+    }
+  ],
+  "scope": "diagnostic only; no users or truth filtered"
+}

@@ -1,0 +1,86 @@
+{
+  "name": "combined",
+  "seed": 44,
+  "candidate": {
+    "recall_at_300": 0.8858024691358025,
+    "macro_users": 81,
+    "empty_target_users": 919,
+    "average_truth_size": 1.1111111111111112,
+    "candidate_count_min": 300,
+    "candidate_count_max": 300,
+    "eligible_catalog": 2910,
+    "unavailable_truth_items": 1,
+    "rare_truth_items": 5,
+    "new_truth_items": 1,
+    "repeated_purchase_truth_items": 9,
+    "average_recall_upper_bound": 1.0,
+    "cohorts": {
+      "all": {
+        "users": 81,
+        "recall_at_300": 0.8858024691358025
+      },
+      "cold": {
+        "users": 0,
+        "recall_at_300": null
+      },
+      "warm": {
+        "users": 81,
+        "recall_at_300": 0.8858024691358025
+      },
+      "no_history": {
+        "users": 0,
+        "recall_at_300": null
+      },
+      "rare_target": {
+        "users": 5,
+        "recall_at_300": 0.5
+      },
+      "new_target": {
+        "users": 1,
+        "recall_at_300": 0.5
+      },
+      "unavailable_target": {
+        "users": 1,
+        "recall_at_300": 0.5
+      },
+      "repeat_purchase": {
+        "users": 9,
+        "recall_at_300": 0.9722222222222222
+      }
+    }
+  },
+  "ranking": {
+    "two_tower": {
+      "hit_rate_at_50": 0.8024691358024691,
+      "ndcg_at_50": 0.4722666159094381,
+      "coverage": 0.9503333333333334,
+      "unique_recommended_items": 2851
+    },
+    "deepfm": {
+      "hit_rate_at_50": 0.8148148148148148,
+      "ndcg_at_50": 0.3086233818631088,
+      "coverage": 0.9093333333333333,
+      "unique_recommended_items": 2728
+    }
+  },
+  "classification": {
+    "ctr": {
+      "auc": 0.9404400577930782,
+      "auc_status": "MEASURED",
+      "logloss": 0.8073120593477643,
+      "samples": 22564,
+      "positives": 5641,
+      "denominator": "observed exposures"
+    },
+    "cvr": {
+      "auc": 0.5843208438934173,
+      "auc_status": "MEASURED",
+      "logloss": 0.08677518081135498,
+      "samples": 5641,
+      "positives": 26,
+      "denominator": "observed clicked exposures"
+    }
+  },
+  "scope": "Fresh train/valid-selected models on each generated dataset. Synthetic truths differ: score change is not real-world uplift.",
+  "acceptance": "UNMEASURED"
+}
