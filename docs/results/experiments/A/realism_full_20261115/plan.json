@@ -1,0 +1,46 @@
+{
+  "status": "COMPLETED",
+  "calibration_source": ".team/external-realism-v4/runs/42-combined/config.yaml",
+  "calibration_sha256": "b4c35eb800c0d5d8b961070597070684be50421d1280b7c9d7d97594994258f4",
+  "selection_source": "docs/results/external/realism-v4/selection.json",
+  "selection_sha256": "4f2db636858e0e38314568b2a33bec150aa00a52123ddb797ab33908196b3741",
+  "config": "config/full_realism_v4.yaml",
+  "config_sha256": "aef7a5a58936ab7add5f155e5bf2b25db72533f9cc6e9b35ba14204bec8e80fc",
+  "counts": {
+    "n_products": 50000,
+    "n_users": 10000,
+    "n_events": 1000000
+  },
+  "seed": 42,
+  "preserved_calibration_fields": [
+    "reference_time",
+    "image_size",
+    "choice_model",
+    "event_types",
+    "personas",
+    "window_days",
+    "event_interval_seconds",
+    "cart_reference_cvr",
+    "new_item_ratio",
+    "cold_user_ratio",
+    "cold_max_events",
+    "impressions_per_view",
+    "image_variants",
+    "transitions",
+    "taxonomy",
+    "brands",
+    "colors",
+    "styles",
+    "category_price_ranges",
+    "realism"
+  ],
+  "training_epochs": {
+    "candidate": 20,
+    "ranking": 20,
+    "session": 20
+  },
+  "scope": "Apply frozen calibration at full scale; train all data-dependent models afresh, no test-based recipe selection, thresholds unchanged",
+  "quality_status": "PASS",
+  "acceptance": "UNMEASURED",
+  "summary": "summary.json"
+}

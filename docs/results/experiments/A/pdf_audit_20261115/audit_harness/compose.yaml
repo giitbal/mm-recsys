@@ -1,0 +1,34 @@
+services:
+  api-server:
+    volumes: &id001
+    - /home/peachpetal/ecommerce/mm-recsys/data:/app/data:ro
+    - /home/peachpetal/ecommerce/mm-recsys/models:/app/models:ro
+    - /home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/serving_models:/app/models/full-v44
+    - /home/peachpetal/ecommerce/mm-recsys/docs/results:/app/docs/results
+    - /home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115:/app/.team/pdf-audit-20261115
+    - /home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/stream:/app/data/full-v44/stream
+    - hf_cache:/app/.cache/huggingface
+    environment:
+      SCALE: full
+      RUNTIME_RESULTS_DIR: .team/pdf-audit-20261115/runtime
+      QUALITY_RESULTS_DIR: docs/results/experiments/A/pdf_audit_20261115/quality
+      CT_AUTO_TRAIN: '0'
+  simulator:
+    volumes: *id001
+    environment:
+      SCALE: full
+      RUNTIME_RESULTS_DIR: .team/pdf-audit-20261115/runtime
+      QUALITY_RESULTS_DIR: docs/results/experiments/A/pdf_audit_20261115/quality
+      CT_AUTO_TRAIN: '0'
+      SIMULATOR_BATCH_SIZE: '20'
+      SIMULATOR_INTERVAL_SECONDS: '10'
+  dashboard:
+    volumes:
+    - /home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115:/app/.team/pdf-audit-20261115:ro
+    - /home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/serving_models:/app/models/full-v44:ro
+    environment:
+      RESULTS_DIR: .team/pdf-audit-20261115/runtime/full
+volumes:
+  hf_cache:
+    external: true
+    name: mm-recsys_hf_cache

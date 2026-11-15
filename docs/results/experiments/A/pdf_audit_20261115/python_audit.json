@@ -1,0 +1,696 @@
+{
+  "files": 145,
+  "public_functions": 522,
+  "missing_annotations": [
+    {
+      "file": "src/external_data/expansion_retail.py",
+      "line": 13,
+      "function": "observed_pairs",
+      "missing": [
+        "events",
+        "end",
+        "seconds",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_retail.py",
+      "line": 25,
+      "function": "categories_asof",
+      "missing": [
+        "events",
+        "properties",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_retail.py",
+      "line": 36,
+      "function": "keys",
+      "missing": [
+        "frame",
+        "kind",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_retail.py",
+      "line": 43,
+      "function": "fit",
+      "missing": [
+        "frame",
+        "kind",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_retail.py",
+      "line": 48,
+      "function": "predict",
+      "missing": [
+        "frame",
+        "kind",
+        "counts",
+        "global_probs",
+        "alpha",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_retail.py",
+      "line": 59,
+      "function": "score",
+      "missing": [
+        "frame",
+        "probabilities",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_retail.py",
+      "line": 67,
+      "function": "run",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/hm_evaluate.py",
+      "line": 41,
+      "function": "candidate_lists",
+      "missing": [
+        "model",
+        "table",
+        "index"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_deepfashion.py",
+      "line": 17,
+      "function": "nested_selection",
+      "missing": [
+        "partitions",
+        "old",
+        "limits",
+        "seed",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_deepfashion.py",
+      "line": 26,
+      "function": "retrieval",
+      "missing": [
+        "scores",
+        "labels",
+        "truth",
+        "duplicate",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_deepfashion.py",
+      "line": 36,
+      "function": "run",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_data.py",
+      "line": 11,
+      "function": "nested_users",
+      "missing": [
+        "original",
+        "all_ids",
+        "sizes",
+        "seed",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_data.py",
+      "line": 19,
+      "function": "run",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_embeddings.py",
+      "line": 14,
+      "function": "run",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/realism_metrics.py",
+      "line": 10,
+      "function": "quantiles",
+      "missing": [
+        "values"
+      ]
+    },
+    {
+      "file": "src/external_data/realism_metrics.py",
+      "line": 38,
+      "function": "purchase_stats",
+      "missing": [
+        "users"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_common.py",
+      "line": 8,
+      "function": "plan",
+      "missing": [
+        "path",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_common.py",
+      "line": 18,
+      "function": "frozen_sources",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_simulator.py",
+      "line": 21,
+      "function": "conditions",
+      "missing": [
+        "base",
+        "hm",
+        "retail",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_simulator.py",
+      "line": 29,
+      "function": "distribution",
+      "missing": [
+        "cfg",
+        "hm",
+        "retail",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_simulator.py",
+      "line": 44,
+      "function": "run",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_run.py",
+      "line": 8,
+      "function": "training_coverage",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_run.py",
+      "line": 31,
+      "function": "verify",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_run.py",
+      "line": 68,
+      "function": "report",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_run.py",
+      "line": 155,
+      "function": "main",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/hm_revisit.py",
+      "line": 35,
+      "function": "counts_before",
+      "missing": [
+        "chunks"
+      ]
+    },
+    {
+      "file": "src/external_data/hm_revisit.py",
+      "line": 69,
+      "function": "population",
+      "missing": [
+        "table"
+      ]
+    },
+    {
+      "file": "src/external_data/hm_revisit.py",
+      "line": 77,
+      "function": "exact_lists",
+      "missing": [
+        "model",
+        "table"
+      ]
+    },
+    {
+      "file": "src/external_data/hm_revisit.py",
+      "line": 124,
+      "function": "load_ranker",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/hm_revisit.py",
+      "line": 135,
+      "function": "diagnostic",
+      "missing": [
+        "table"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 44,
+      "function": "peak_rss_mib",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 51,
+      "function": "context",
+      "missing": [
+        "spec",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 61,
+      "function": "shards",
+      "missing": [
+        "spec",
+        "results",
+        "size",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 65,
+      "function": "training_users",
+      "missing": [
+        "frame",
+        "ids",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 72,
+      "function": "prepare_tensors",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 93,
+      "function": "tensor_records",
+      "missing": [
+        "spec",
+        "results",
+        "size",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 101,
+      "function": "content_projection",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 133,
+      "function": "train_candidate",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "size",
+        "variant",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 178,
+      "function": "item_times",
+      "missing": [
+        "spec",
+        "results",
+        "size",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 184,
+      "function": "ranking_features",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "size",
+        "encoder",
+        "table",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 210,
+      "function": "evaluation_inputs",
+      "missing": [
+        "data",
+        "evaluation",
+        "table",
+        "encoder",
+        "candidates",
+        "times",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 217,
+      "function": "train_ranker",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "size",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 252,
+      "function": "stage_metrics",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "size",
+        "variant",
+        "split",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 278,
+      "function": "fit_feature",
+      "missing": [
+        "spec",
+        "work",
+        "results",
+        "size",
+        "variant",
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 283,
+      "function": "main",
+      "missing": [
+        "return"
+      ]
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 34,
+      "function": "encode_items",
+      "missing": [
+        "indices",
+        "return"
+      ]
+    }
+  ],
+  "seed_calls": [
+    {
+      "file": "src/search/verify.py",
+      "line": 100,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/search/build_embeddings.py",
+      "line": 180,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/search/eval_search.py",
+      "line": 152,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/search/build_index.py",
+      "line": 102,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/evaluation/ab_test.py",
+      "line": 284,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/evaluation/run_all.py",
+      "line": 92,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/ct/training.py",
+      "line": 21,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/external_data/hm_evaluate.py",
+      "line": 94,
+      "call": "set_seed(spec['seed'])"
+    },
+    {
+      "file": "src/external_data/hm_evaluate.py",
+      "line": 109,
+      "call": "set_seed(spec['seed'] + 100)"
+    },
+    {
+      "file": "src/external_data/hm_evaluate.py",
+      "line": 123,
+      "call": "torch.Generator().manual_seed(spec['seed'])"
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 142,
+      "call": "set_seed(spec['seed'])"
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 227,
+      "call": "set_seed(spec['seed'] + 100)"
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 151,
+      "call": "torch.Generator().manual_seed(spec['seed'] + epoch * 1000 + int(j))"
+    },
+    {
+      "file": "src/external_data/expansion_hm.py",
+      "line": 234,
+      "call": "torch.Generator().manual_seed(spec['seed'] + epoch * 1000 + int(j))"
+    },
+    {
+      "file": "src/common/seed.py",
+      "line": 11,
+      "call": "random.seed(seed)"
+    },
+    {
+      "file": "src/common/seed.py",
+      "line": 12,
+      "call": "np.random.seed(seed)"
+    },
+    {
+      "file": "src/common/seed.py",
+      "line": 13,
+      "call": "torch.manual_seed(seed)"
+    },
+    {
+      "file": "src/recommendation/testing.py",
+      "line": 38,
+      "call": "torch.manual_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/recommendation/train_two_tower.py",
+      "line": 34,
+      "call": "np.random.seed(seed)"
+    },
+    {
+      "file": "src/recommendation/train_two_tower.py",
+      "line": 34,
+      "call": "random.seed(seed)"
+    },
+    {
+      "file": "src/recommendation/train_two_tower.py",
+      "line": 149,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/recommendation/train_two_tower.py",
+      "line": 160,
+      "call": "torch.Generator().manual_seed(cfg['seed'] + 2)"
+    },
+    {
+      "file": "src/recommendation/train_deepfm.py",
+      "line": 95,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/recommendation/train_deepfm.py",
+      "line": 112,
+      "call": "torch.Generator().manual_seed(cfg['seed'] + 4)"
+    },
+    {
+      "file": "src/recommendation/train_session.py",
+      "line": 87,
+      "call": "set_seed(cfg['seed'])"
+    },
+    {
+      "file": "src/recommendation/train_session.py",
+      "line": 99,
+      "call": "torch.Generator().manual_seed(cfg['seed'] + 12)"
+    },
+    {
+      "file": "docker/quality.py",
+      "line": 42,
+      "call": "set_seed(cfg['seed'])"
+    }
+  ],
+  "suspected_settings": [
+    {
+      "file": "src/evaluation/api_benchmark.py",
+      "line": 98,
+      "name": "top_n",
+      "value": 10
+    },
+    {
+      "file": "src/ct/verify_ct.py",
+      "line": 42,
+      "name": "n_products",
+      "value": 400
+    },
+    {
+      "file": "src/ct/verify_ct.py",
+      "line": 42,
+      "name": "n_users",
+      "value": 24
+    },
+    {
+      "file": "src/ct/verify_ct.py",
+      "line": 42,
+      "name": "n_events",
+      "value": 6000
+    },
+    {
+      "file": "src/ct/verify_ct.py",
+      "line": 43,
+      "name": "epochs",
+      "value": 3
+    },
+    {
+      "file": "src/ct/verify_ct.py",
+      "line": 44,
+      "name": "epochs",
+      "value": 20
+    },
+    {
+      "file": "src/ct/verify_ct.py",
+      "line": 44,
+      "name": "batch_size",
+      "value": 128
+    },
+    {
+      "file": "src/ct/verify_ct.py",
+      "line": 171,
+      "name": "seed",
+      "value": 42
+    },
+    {
+      "file": "src/recommendation/bench_ranking.py",
+      "line": 85,
+      "name": "top_n",
+      "value": 50
+    },
+    {
+      "file": "src/recommendation/train_two_tower.py",
+      "line": 162,
+      "name": "batch_size",
+      "value": null
+    },
+    {
+      "file": "src/recommendation/bench_tcp.py",
+      "line": 25,
+      "name": "top_n",
+      "value": 50
+    },
+    {
+      "file": "src/recommendation/bench_tcp.py",
+      "line": 54,
+      "name": "top_n",
+      "value": 50
+    },
+    {
+      "file": "docker/simulator.py",
+      "line": 37,
+      "name": "n_users",
+      "value": 1
+    },
+    {
+      "file": "docker/simulator.py",
+      "line": 133,
+      "name": "top_n",
+      "value": 50
+    }
+  ],
+  "scope": "AST inventory; absence of findings does not prove complete typing or determinism"
+}

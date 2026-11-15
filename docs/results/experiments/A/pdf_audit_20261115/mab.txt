@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/app/scripts/verify_integration_mab.py", line 87, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/app/scripts/verify_integration_mab.py", line 81, in main
+    result = verify(args.api_url.rstrip('/'), args.output)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/scripts/verify_integration_mab.py", line 37, in verify
+    before = store.arm_statistics([product])[store.arm_for(product)]
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'P000423'

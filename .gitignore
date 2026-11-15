@@ -8,6 +8,8 @@ __pycache__/
 !.env.example
 .cache/
 *.log
+# Preserve the frozen full calibration experiment's A/B execution evidence.
+!docs/results/experiments/A/realism_full_20261115/ab_test.log
 data/*
 !data/.gitkeep
 models/*

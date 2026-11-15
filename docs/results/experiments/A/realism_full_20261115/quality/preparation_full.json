@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "scale": "full",
+  "data_fingerprint": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+  "manifest_sha256": "26cf00b8fc30d4341a3c29b7bb6d2752c7b18659f9921aa0918febbe494fd0d9",
+  "config_fingerprint": "84205ac7b37dbb35ada7846158e1881ebcfb0d66f13fa8c40b63a50cbd716d68",
+  "stages": [
+    {
+      "stage": "data",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "data"
+      ],
+      "exit_code": 0,
+      "seconds": 63.46073354700002,
+      "log": ".team/realism-full-20261115/runtime/full/logs/prepare-data-1794728911820801067.log"
+    },
+    {
+      "stage": "audit",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "audit"
+      ],
+      "exit_code": 0,
+      "seconds": 12.410055344000284,
+      "log": ".team/realism-full-20261115/runtime/full/logs/prepare-audit-1794728976001445041.log"
+    },
+    {
+      "stage": "embeddings",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "embeddings"
+      ],
+      "exit_code": 0,
+      "seconds": 71.41151450100006,
+      "log": ".team/realism-full-20261115/runtime/full/logs/prepare-embeddings-1794728989198419920.log"
+    },
+    {
+      "stage": "indexes",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "indexes"
+      ],
+      "exit_code": 0,
+      "seconds": 2.521659837000243,
+      "log": ".team/realism-full-20261115/runtime/full/logs/prepare-indexes-1794729062099456911.log"
+    },
+    {
+      "stage": "recommendation",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "recommendation"
+      ],
+      "exit_code": 0,
+      "seconds": 1633.2357489019996,
+      "log": ".team/realism-full-20261115/runtime/full/logs/prepare-recommendation-1794729064621091426.log"
+    },
+    {
+      "stage": "warmup",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "warmup"
+      ],
+      "exit_code": 0,
+      "seconds": 74.77274257699992,
+      "log": ".team/realism-full-20261115/runtime/full/logs/prepare-warmup-1794730743173023338.log"
+    }
+  ],
+  "artifact_state_before": {
+    "data_manifest": false,
+    "search_indexes": false,
+    "recommendation": false
+  },
+  "elapsed_seconds": 1857.9107873820003,
+  "scope": "artifact readiness; no full-test quality claim"
+}

@@ -1,0 +1,366 @@
+{
+  "status": "COMPLETED",
+  "quality_status": "PASS",
+  "acceptance": "UNMEASURED",
+  "timestamp": "2026-11-15T08:38:48.306735+00:00",
+  "data_fingerprint": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+  "data_counts": {
+    "products": 50000,
+    "users": 10000,
+    "events": 1000000,
+    "impressions": 2364208
+  },
+  "checks": {
+    "data_audit": "PASS",
+    "data_reproduction": "PASS",
+    "model_provenance": "PASS",
+    "peer_review": "PASS",
+    "mab": "PASS",
+    "semantic_examples": "PASS",
+    "browser": "PASS",
+    "ct_drill": "PASS",
+    "container_source_check": "PASS",
+    "ab_test_verification": "PASS",
+    "execution_integrity": "PASS",
+    "live_final": "PASS",
+    "pytest": "PASS"
+  },
+  "pytest": {
+    "tests": 519,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "valid_quality": "PASS",
+  "test_metrics": [
+    {
+      "name": "mrr",
+      "value": 0.9383333333333334,
+      "target": 0.55,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "search.primary",
+      "reason": null
+    },
+    {
+      "name": "ndcg_at_10",
+      "value": 0.9383333333333334,
+      "target": 0.5,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "search.primary",
+      "reason": null
+    },
+    {
+      "name": "recall_at_300",
+      "value": 0.7442328042328041,
+      "target": 0.3,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.candidate.ann_two_tower",
+      "reason": null
+    },
+    {
+      "name": "auc",
+      "value": 0.9684651857718339,
+      "target": 0.7,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.classification.ctr",
+      "reason": null
+    },
+    {
+      "name": "hit_rate_at_50",
+      "value": 0.635978835978836,
+      "target": 0.2,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.metrics.full_pipeline",
+      "reason": null
+    },
+    {
+      "name": "ndcg_at_50",
+      "value": 0.3169740727364583,
+      "target": 0.08,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.metrics.full_pipeline",
+      "reason": null
+    },
+    {
+      "name": "coverage",
+      "value": 0.32872,
+      "target": 0.2,
+      "direction": "min",
+      "status": "PASS",
+      "split": "test",
+      "source": "recommendation.metrics.full_pipeline",
+      "reason": null
+    },
+    {
+      "name": "search_p95_ms",
+      "value": 103.9526056997147,
+      "target": 200,
+      "direction": "max",
+      "status": "PASS",
+      "split": "benchmark",
+      "source": "api.modes; worst-mode HTTP p95",
+      "reason": null
+    },
+    {
+      "name": "recommend_p95_ms",
+      "value": 24.164433099758753,
+      "target": 200,
+      "direction": "max",
+      "status": "PASS",
+      "split": "benchmark",
+      "source": "api.modes.recommendation.http",
+      "reason": null
+    },
+    {
+      "name": "candidate_p95_ms",
+      "value": 4.329208749868485,
+      "target": 100,
+      "direction": "max",
+      "status": "PASS",
+      "split": "benchmark",
+      "source": "candidate_latency",
+      "reason": null
+    },
+    {
+      "name": "feature_p95_ms",
+      "value": 0.2778115001547121,
+      "target": 10,
+      "direction": "max",
+      "status": "PASS",
+      "split": "benchmark",
+      "source": "feature_store",
+      "reason": null
+    }
+  ],
+  "classification": {
+    "ctr": {
+      "auc": 0.9684651857718339,
+      "auc_status": "MEASURED",
+      "logloss": 0.13680603516250578,
+      "samples": 224704,
+      "positives": 56176,
+      "denominator": "observed exposures"
+    },
+    "cvr": {
+      "auc": 0.5052481229273986,
+      "auc_status": "MEASURED",
+      "logloss": 0.02981738921398321,
+      "samples": 56176,
+      "positives": 247,
+      "denominator": "observed clicked exposures"
+    }
+  },
+  "pipeline_metrics": {
+    "train_popularity": {
+      "hit_rate_at_50": 0.09841269841269841,
+      "ndcg_at_50": 0.026034875918508574,
+      "coverage": 0.001,
+      "unique_recommended_items": 50,
+      "truth_users": 945,
+      "coverage_users": 10000,
+      "catalog_items": 50000
+    },
+    "two_tower": {
+      "hit_rate_at_50": 0.5079365079365079,
+      "ndcg_at_50": 0.17091389109998065,
+      "coverage": 0.46534,
+      "unique_recommended_items": 23267,
+      "truth_users": 945,
+      "coverage_users": 10000,
+      "catalog_items": 50000
+    },
+    "deepfm": {
+      "hit_rate_at_50": 0.6656084656084656,
+      "ndcg_at_50": 0.36238079448611227,
+      "coverage": 0.415,
+      "unique_recommended_items": 20750,
+      "truth_users": 945,
+      "coverage_users": 10000,
+      "catalog_items": 50000
+    },
+    "full_pipeline": {
+      "hit_rate_at_50": 0.635978835978836,
+      "ndcg_at_50": 0.3169740727364583,
+      "coverage": 0.32872,
+      "unique_recommended_items": 16436,
+      "truth_users": 945,
+      "coverage_users": 10000,
+      "catalog_items": 50000
+    }
+  },
+  "cohort": {
+    "warm": 9700,
+    "warm_truth": 945,
+    "cold": 300,
+    "cold_truth": 0,
+    "user_ids_sha256": "d29078a72539255c5bbb1abd3aff36f14089fe9286705daf831195b1ba986fa8",
+    "total_users": 10000,
+    "truth_users": 945,
+    "all_truth_users": 945,
+    "empty_truth_users": 9055,
+    "eligible_catalog": 48574,
+    "unavailable_truth_items": 10
+  },
+  "ab": {
+    "status": "PASS",
+    "days": 7,
+    "strategies": {
+      "control": "popularity",
+      "treatment": "full_pipeline"
+    },
+    "inference": {
+      "experimental_unit": "randomized user; repeated exposures clustered within user",
+      "independent_user_risks": {
+        "any_click": {
+          "control": 1.0,
+          "treatment": 1.0,
+          "difference": 0.0,
+          "relative_lift": 0.0,
+          "z_statistic": 0.0,
+          "z_p_value": 1.0,
+          "chi_square": 0.0,
+          "chi_square_p_value": 1.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "ci_method": "unpooled user-risk Wald; degenerate at boundary counts",
+          "low_expected_counts": true,
+          "asymptotic_reliable": false,
+          "fisher_p_value": 1.0,
+          "experimental_unit": "one independent randomized user"
+        },
+        "any_purchase": {
+          "control": 0.842,
+          "treatment": 0.578,
+          "difference": -0.264,
+          "relative_lift": -0.3135391923990499,
+          "z_statistic": -9.199108853096162,
+          "z_p_value": 3.609305315436967e-20,
+          "chi_square": 84.62360369111218,
+          "chi_square_p_value": 3.60930531543697e-20,
+          "difference_ci95": [
+            -0.3178153432652491,
+            -0.21018465673475098
+          ],
+          "ci_method": "unpooled user-risk Wald; degenerate at boundary counts",
+          "low_expected_counts": false,
+          "asymptotic_reliable": true,
+          "fisher_p_value": null,
+          "experimental_unit": "one independent randomized user"
+        }
+      },
+      "ctr": {
+        "status": "PASS",
+        "control": 0.42765714285714285,
+        "treatment": 0.25845714285714283,
+        "difference": -0.16920000000000002,
+        "relative_lift": -0.39564404061998937,
+        "difference_ci95": [
+          -0.18040312109701093,
+          -0.1579968789029891
+        ],
+        "z_p_value": 1.4417629354583143e-192,
+        "method": "independent-user cluster delta variance; descriptive simulated effect"
+      },
+      "cvr": {
+        "status": "PASS",
+        "control": 0.03528571428571429,
+        "treatment": 0.015914285714285714,
+        "difference": -0.019371428571428574,
+        "relative_lift": -0.5489878542510123,
+        "difference_ci95": [
+          -0.022298689834210923,
+          -0.016444167308646226
+        ],
+        "z_p_value": 1.8044734566130518e-38,
+        "method": "independent-user cluster delta variance; descriptive simulated effect"
+      }
+    }
+  },
+  "submission": {
+    "status": "FAIL",
+    "reason": "evidence changed or missing: docs/submission/dataset_scope.json",
+    "scope": "Current submission files/hash check; does not replace runtime measurements"
+  },
+  "natural_ct_monitor": {
+    "event": "monitor",
+    "status": "UNMEASURED",
+    "model_version": "v1.0",
+    "ctr": null,
+    "hit_rate_at_50": null,
+    "clicks": 0,
+    "exposures": 0,
+    "mature_requests": 0,
+    "top50_requests": 0,
+    "hit_requests": 0,
+    "alerts": [],
+    "window_start": 1794645431.5292623,
+    "observed_through": 1794731831.5292623,
+    "attribution_seconds": 3600,
+    "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+    "thresholds": {
+      "ctr_threshold": 0.01,
+      "hitrate_threshold": 0.2,
+      "min_mature_requests": 20
+    }
+  },
+  "natural_ct_trigger": {
+    "status": "WAITING",
+    "new_events": 37,
+    "threshold": 10000
+  },
+  "realism_distances": {
+    "train": {
+      "price_mae": 0.14533021397355936,
+      "price_quantile_mae": 0.19666101033481678,
+      "category_tv": 0.267506831150139,
+      "activity_top10_error": 0.029023242146310302,
+      "session_purchase_error": 0.00027145765187655806,
+      "session_length_error": 0.3,
+      "gap_error": 0.15354600160082316,
+      "behavior_objective": 0.12071017534975251
+    },
+    "valid": {
+      "price_mae": 0.12924441801526115,
+      "price_quantile_mae": 0.15424296007656876,
+      "category_tv": 0.25759348831481815,
+      "activity_top10_error": 0.027936051311860943,
+      "session_purchase_error": 0.001126321669721611,
+      "session_length_error": 0.3,
+      "gap_error": 0.13119317734298913,
+      "behavior_objective": 0.11506388758114292
+    },
+    "test": {
+      "price_mae": 0.16698853273216324,
+      "price_quantile_mae": 0.18801720462461435,
+      "category_tv": 0.23300002377490103,
+      "activity_top10_error": 0.026595576689999234,
+      "session_purchase_error": 0.0002704635127344056,
+      "session_length_error": 0.3,
+      "gap_error": 0.1484319789521345,
+      "behavior_objective": 0.11882450478871703
+    }
+  },
+  "limitations": [
+    "Single full seed42; different generated truth from previous full-v44; not a causal real-user lift comparison",
+    "A/B uses calibrated full catalog/models with 500 users per arm and 7 simulated days, not 5000 per arm and 30 days or real customers",
+    "CT lifecycle drill uses 400 products/24 users/6000 events; natural full CT promotion is separate",
+    "Unit tests use standard repository fixtures; calibrated full integration/quality is measured separately",
+    "Existing submission hash mismatch remains; no final B11 acceptance or default deployment promotion",
+    "DeepFashion reference validation and CLIP fixed weights reused; no new external dataset retraining",
+    "Session length and repeated purchase realism gaps remain; combined cross-service population not validated"
+  ]
+}

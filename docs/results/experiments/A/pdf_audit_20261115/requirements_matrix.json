@@ -1,0 +1,350 @@
+{
+  "pdf": {
+    "path": "멀티모달_검색_및_Multi-Stage_추천_시스템_구축.pdf",
+    "sha256": "b333d4fdab2127c380b7750f7d8e491141ec15db97c15389f8c9a0ae1b983c7d",
+    "pages": 14
+  },
+  "measured_at": "2026-11-15T07:44:09.808875+00:00",
+  "source_commit": "70de88958340037b50b702f1f314d08e2e283e13",
+  "overall": "NOT_FULLY_SATISFIED",
+  "mandatory_runtime_quality": "PASS",
+  "rows": [
+    {
+      "page": "1–2",
+      "requirement": "검색·추천·평가·시뮬레이터의 단일 시스템",
+      "status": "PASS",
+      "evidence": "quality/smoke_full.json; browser.json; auto_ct_simulator.txt",
+      "scope": "기존 full-v44 데이터/모델, 현재 코드, 격리 Compose"
+    },
+    {
+      "page": "1,6,9",
+      "requirement": "GitHub URL와 평가자 접근",
+      "status": "PARTIAL",
+      "evidence": "github.json",
+      "scope": "공개 접근 PASS. main에는 이번 데이터 활용 4개 커밋 미반영. 제출 사이트의 URL 제출 여부는 미검증"
+    },
+    {
+      "page": "2",
+      "requirement": "검색 POST, 세 가지 입력, 기본 top10, 필수 응답 필드",
+      "status": "PASS",
+      "evidence": "quality/smoke_full.json; semantic_examples.json",
+      "scope": "JSON·multipart·422 검사 포함"
+    },
+    {
+      "page": "2",
+      "requirement": "추천 GET, 기본 top10, reason·탐색·단계별 시간·세션 필드",
+      "status": "PASS",
+      "evidence": "quality/smoke_full.json; peer_review.json; pytest.xml",
+      "scope": "실제 HTTP + 기본값 단위 검사"
+    },
+    {
+      "page": "2,5",
+      "requirement": "독립 API/대시보드/Redis/시뮬레이터 Compose 실행",
+      "status": "PASS",
+      "evidence": "quality/preparation_full.json; docker_final_state.json; auto_ct_simulator.txt",
+      "scope": "포트와 쓰기 경로 격리. 현재 소스로 이미지 새 빌드; 기존 모델 재사용"
+    },
+    {
+      "page": "2,5",
+      "requirement": "검색·추천·A/B 지표와 차트",
+      "status": "PASS",
+      "evidence": "browser.json; browser_tab_1.png; browser_tab_2.png; browser_tab_3.png",
+      "scope": "실제 Chromium 렌더링; HTTP health만으로 판정하지 않음"
+    },
+    {
+      "page": "3",
+      "requirement": "50,000개 상품과 텍스트·이미지·3단계 카테고리",
+      "status": "PASS",
+      "evidence": "data_audit.json; data_reproduction.json",
+      "scope": "실제 상품 50,000개, 이미지 생성 및 manifest 검증"
+    },
+    {
+      "page": "3",
+      "requirement": "10,000명 고객과 여섯 페르소나",
+      "status": "PASS",
+      "evidence": "data_audit.json",
+      "scope": "카테고리 선호·가격 민감도·전환 차이 및 브랜드 충성 검증"
+    },
+    {
+      "page": "3",
+      "requirement": "1,000,000개 search/view/cart/purchase 이벤트",
+      "status": "PASS",
+      "evidence": "data_audit.json",
+      "scope": "중복·참조·시간분할 검사. 노출 2,254,172개 별도"
+    },
+    {
+      "page": "3,13",
+      "requirement": "페르소나 비율·전이·카테고리의 config 변경 반영",
+      "status": "PASS",
+      "evidence": "pytest.xml; data_audit.json",
+      "scope": "실제 생성 함수로 설정 변경 테스트. full-v44 동일 seed 재생성도 일치"
+    },
+    {
+      "page": "3,6",
+      "requirement": "seed42 및 시간순 80/10/10 재현성",
+      "status": "PASS",
+      "evidence": "data_reproduction.json; data_audit.json",
+      "scope": "빈 경로에서 현재 소스로 full 데이터 재생성. 모델 전체 재학습은 이번 범위 아님"
+    },
+    {
+      "page": "3–4,14",
+      "requirement": "실제 CLIP 텍스트/이미지 임베딩과 FAISS HNSW",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json; quality/preparation_full.json; semantic_examples.json",
+      "scope": "기존 full CLIP/인덱스 무결성 검사 후 실제 추론. mock encoder 측정 아님"
+    },
+    {
+      "page": "4",
+      "requirement": "검색 MRR≥0.55와 NDCG@10≥0.50",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json",
+      "scope": "현재 코드의 test 재측정; valid 먼저 동결, test로 선택하지 않음"
+    },
+    {
+      "page": "4,10",
+      "requirement": "검색 p95≤200ms",
+      "status": "PASS",
+      "evidence": "quality/smoke_full.json",
+      "scope": "모드별 warmup10 + 순차100; CPU 오차 완화 없이 원래 기준 적용"
+    },
+    {
+      "page": "4,14",
+      "requirement": "Two-Tower 사용자 이력/프로필·상품 속성/가격·offline FAISS",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json; pytest.xml",
+      "scope": "모델/특징/인덱스 로딩 및 미래 정보 차단 테스트"
+    },
+    {
+      "page": "4",
+      "requirement": "후보 300개 이상·100ms 이내·Recall@300≥0.30",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json; quality/smoke_full.json",
+      "scope": "full catalog macro-user Recall; 정답·K·사용자 집합 변경 없음"
+    },
+    {
+      "page": "4,14",
+      "requirement": "DeepFM CTR/CVR와 user/item/cross/context 특징",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json; pytest.xml",
+      "scope": "기존 full 학습 모델로 재평가; CVR을 별도 보고"
+    },
+    {
+      "page": "4",
+      "requirement": "Ranking AUC≥0.70",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json",
+      "scope": "docs/contracts.md의 사용자 확인에 따라 CTR AUC에 적용"
+    },
+    {
+      "page": "4,13",
+      "requirement": "동일 카테고리 3연속 방지·샘플 3사용자 이상",
+      "status": "PASS",
+      "evidence": "peer_review.json; quality/quality_full_test.json",
+      "scope": "실제 3사용자 top10 및 offline 전체 평가 top50 제약 검사"
+    },
+    {
+      "page": "4,12",
+      "requirement": "이력 5개 미만 인기+트렌딩 폴백",
+      "status": "PASS",
+      "evidence": "peer_review.json",
+      "scope": "이력 0개·4개 실제 API 검증"
+    },
+    {
+      "page": "4,13–14",
+      "requirement": "MAB 1–2슬롯·신상품 7일 노출",
+      "status": "PASS",
+      "evidence": "peer_review.json; mab_runtime_config.json",
+      "scope": "슬롯과 신상품 검사 + 실제 Redis 보상 귀속/최대 보상/중복 방지"
+    },
+    {
+      "page": "4–5,14",
+      "requirement": "GRU와 장기 선호 결합·실시간 클릭 반영",
+      "status": "PASS",
+      "evidence": "peer_review.json; mab_runtime_config.json; browser.json; pytest.xml",
+      "scope": "GRU 모델 실제 로딩; Redis·API·브라우저 클릭 전후 응답 검사"
+    },
+    {
+      "page": "5",
+      "requirement": "HitRate@50≥0.20·NDCG@50≥0.08·Coverage≥0.20",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json",
+      "scope": "fixed-origin full test. 실데이터 H&M 수치와 혼합하지 않음"
+    },
+    {
+      "page": "5,10",
+      "requirement": "추천 API p95≤200ms",
+      "status": "PASS",
+      "evidence": "quality/smoke_full.json",
+      "scope": "기본 top10 HTTP; 품질 평가는 top50"
+    },
+    {
+      "page": "5",
+      "requirement": "Redis 최근 조회·클릭 수 및 p95≤10ms",
+      "status": "PASS",
+      "evidence": "peer_review.json; mab_runtime_config.json; quality/smoke_full.json",
+      "scope": "실제 별도 Redis 클라이언트 관측"
+    },
+    {
+      "page": "5,14",
+      "requirement": "두 전략 A/B 시뮬레이션",
+      "status": "PASS",
+      "evidence": "ab_test.json; ab_verification.json",
+      "scope": "popularity/full_pipeline, 500명/군×7일, 기존 full 데이터/모델. 실제 서비스 온라인 실험 아님"
+    },
+    {
+      "page": "5,14",
+      "requirement": "Chi-square/Z-test·p-value·95% CI",
+      "status": "PASS",
+      "evidence": "ab_verification.json; browser.json",
+      "scope": "사용자 단위 군 배정과 반복 노출의 군집 분산 재계산; 양의 lift는 필수 요건 아님"
+    },
+    {
+      "page": "5,12,14",
+      "requirement": "CT 주기적 HitRate/CTR 모니터와 저하 알림",
+      "status": "PASS",
+      "evidence": "auto_ct_simulator.txt; ct_natural.jsonl; ct_drill.json",
+      "scope": "60초 반복 실행 확인. 자연 관측은 성숙 표본 0; 임계치 알림은 통제된 fixture에서 실측"
+    },
+    {
+      "page": "5,12,14",
+      "requirement": "누적 로그 CT 트리거·학습·모델 버전 관리",
+      "status": "PASS",
+      "evidence": "auto_ct_simulator.txt; ct_drill.json; pytest.xml",
+      "scope": "실제 기본 임계치 10,000; drill 임계치200. 학습/승격/유지/reload/롤백 검증. 자연 운영 모델 개선은 미측정"
+    },
+    {
+      "page": "5–6,9,13",
+      "requirement": "README 개요·아키텍처·실행, 실험 리포트",
+      "status": "PARTIAL",
+      "evidence": "submission_files.json; ../../../../submission/requirements.md",
+      "scope": "필수 문서 존재. 외부 데이터 범위의 기록 해시 불일치로 제출 검사 FAIL"
+    },
+    {
+      "page": "6",
+      "requirement": "Two-Tower random negative 1:4, Ranking 노출 비클릭",
+      "status": "PASS",
+      "evidence": "pytest.xml; quality/quality_full_test.json",
+      "scope": "train-only sampling/label 및 cutoff 테스트, 기존 모델 metadata 확인. H&M 구매 proxy와 구분"
+    },
+    {
+      "page": "6",
+      "requirement": "BM25·Two-Tower-only·인기순 baseline",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json",
+      "scope": "동일 정답·사용자·카탈로그에서 비교, 개선/악화 수치 모두 보존"
+    },
+    {
+      "page": "6",
+      "requirement": "metrics.py 및 검색K10/추천K50, 정의·설정·개선율 보고",
+      "status": "PASS",
+      "evidence": "quality/quality_full_test.json; ../../../../contracts.md; ../../../../submission/report.md",
+      "scope": "정의/계산식/seed42/분할/비교 근거 존재"
+    },
+    {
+      "page": "6–7",
+      "requirement": "속성 자동 추출·MMR·ONNX·Thompson Sampling",
+      "status": "OPTIONAL",
+      "evidence": "../../../../../config/recommend.yaml; ../../../../../src/search/text.py",
+      "scope": "보너스. 전체 구현 완료를 주장하지 않으며 필수 실패로 계산하지 않음"
+    },
+    {
+      "page": "7–8",
+      "requirement": "H&M: 다단계 추천 검증과 교정",
+      "status": "VERIFIED_EXISTING",
+      "evidence": "../../../external/expansion-v3/report.md; realism_verification.json",
+      "scope": "10만 고객 학습·105,542개 상품 평가와 12개 교정 실험 존재. 이번에는 v4 입력/모델/데이터 해시 재검증; 전부 재학습하지 않음"
+    },
+    {
+      "page": "7–8",
+      "requirement": "Retailrocket: Markov 전이 확률 추정",
+      "status": "VERIFIED_EXISTING",
+      "evidence": "../../../external/expansion-v3/retail_conditional.json; realism_verification.json",
+      "scope": "전역/조건부 추정과 train/valid 선택 근거 존재. 조건부 프로필의 생성기 적용은 v4 valid에서 기각된 결과를 보존"
+    },
+    {
+      "page": "7–8",
+      "requirement": "DeepFashion: CLIP 품질 검증",
+      "status": "VERIFIED_EXISTING",
+      "evidence": "../../../external/expansion-v3/deepfashion_expanded.json",
+      "scope": "공식 분할 gallery10k·valid/test각5k, 카테고리/속성 평가. 이번에 CLIP 전체 재인코딩하지 않음"
+    },
+    {
+      "page": "8–9",
+      "requirement": "Python/PyTorch/FastAPI/Streamlit/FAISS/transformers/redis-py/Compose",
+      "status": "PASS",
+      "evidence": "quality/smoke_full.json; pip_check.txt; browser.json",
+      "scope": "CPU에서 실제 실행. GPU 필수 아님"
+    },
+    {
+      "page": "9",
+      "requirement": "외부 클라우드 추론 API 없이 로컬 서비스",
+      "status": "PASS",
+      "evidence": "scope.json; quality/smoke_full.json",
+      "scope": "현재 캐시된 CLIP을 로컬 실행. 초기 의존성/모델 다운로드와 감사 중 공개 GitHub 조회는 별개"
+    },
+    {
+      "page": "9",
+      "requirement": "인증은 ID, 결제·배송·재고·Kafka는 범위 밖",
+      "status": "PASS",
+      "evidence": "../../../../../src/serving/main.py; pytest.xml",
+      "scope": "요구 범위에 맞는 API/모듈 경계"
+    },
+    {
+      "page": "9",
+      "requirement": "하이퍼파라미터·경로 config 분리",
+      "status": "PARTIAL",
+      "evidence": "hardcoded_report_paths.json; scope.json; pytest.xml",
+      "scope": "주요 운영 설정은 분리. realism_data.py의 과거 입력 보고서 경로2개는 고정값이며 이전 경로를 없애면 재현 오류"
+    },
+    {
+      "page": "9",
+      "requirement": "주요 함수 타입 힌트",
+      "status": "FAIL",
+      "evidence": "python_audit.json; mypy.txt",
+      "scope": "외부 데이터 11개 파일의 공개 함수46개에서 인자/반환 일부 누락. mypy 기본 설정 PASS와 별개"
+    },
+    {
+      "page": "9–10",
+      "requirement": "CPU 및 측정 하드웨어 조건 보고",
+      "status": "MEASURED",
+      "evidence": "quality/smoke_full.json; docker_environment.json",
+      "scope": "Docker8CPU, 약11.66GiB 메모리, API4CPU/4GiB 제한. PDF 최소 RAM16GB 환경과 완전히 같지는 않음"
+    },
+    {
+      "page": "10–12",
+      "requirement": "PDF 검색/추천/CT/A/B 예시의 실제 동작",
+      "status": "PASS",
+      "evidence": "semantic_examples.json; peer_review.json; ct_drill.json; ab_test.json",
+      "scope": "예시의 ID/문구/시간/+28%/p=.003 값 자체를 정답으로 요구하지 않음"
+    },
+    {
+      "page": "13",
+      "requirement": "similarity→newest 전략 설정 변경",
+      "status": "PASS",
+      "evidence": "pytest.xml",
+      "scope": "test_checklist_fixes에서 API·등록 모델 restart/reload·newest 후보 순서·cold fallback 검증; 이번 full Docker 정책 자체는 변경하지 않음"
+    },
+    {
+      "page": "13–14",
+      "requirement": "모듈 역할 분리·팀원 기여도 문서",
+      "status": "PASS",
+      "evidence": "../../../../submission/contributions.json; ../../../../../README.md",
+      "scope": "A/B/C 담당과 PR 문서 확인. 팀원의 설명 능력/최신 PR 상태 전체 재심사는 범위 밖"
+    },
+    {
+      "page": "사용자 추가 조건",
+      "requirement": "외부 데이터 교정 결과를 full 로컬 서비스에 반영",
+      "status": "NOT_INTEGRATED",
+      "evidence": "scope.json; deployment.json; realism_verification.json",
+      "scope": "기본 full-v44는 realism 비활성. v4는 3k/1k/100k 별도 실험이며 session·search serving bundle 없음"
+    },
+    {
+      "page": "사용자 추가 목표",
+      "requirement": "실제 사용자 추천 우위·운영 CT 개선",
+      "status": "UNMEASURED",
+      "evidence": "ab_test.json; ct_natural.jsonl; ../../../external/realism-v4/report.md",
+      "scope": "실데이터 offline 진단/분포 교정과 실제 서비스 성과는 별개. 이번 합성 A/B는 음의 효과"
+    }
+  ],
+  "warning": "PASS is limited to each row scope. Existing external reports and controlled drills are not fresh full realism acceptance."
+}

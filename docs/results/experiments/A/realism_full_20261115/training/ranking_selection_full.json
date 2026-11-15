@@ -1,0 +1,24 @@
+{
+  "selection_split": "valid",
+  "best_epoch": 9,
+  "model_sha256": "27e2f9cba6977c493c274fb7e0e29742e6286a7f909587548eeee39d42f16a8a",
+  "config_fingerprint": "13723c72a4b9d0ee62057bd36e4307444e3ad7cb2351243d8cbc0bca66dfcd29",
+  "selected_valid": {
+    "ctr": {
+      "auc": 0.9662965285134733,
+      "auc_status": "MEASURED",
+      "logloss": 0.14168252891438468,
+      "samples": 236421,
+      "positives": 59472,
+      "denominator": "observed exposures"
+    },
+    "cvr": {
+      "auc": 0.5085049628841496,
+      "auc_status": "MEASURED",
+      "logloss": 0.03330483314495829,
+      "samples": 58986,
+      "positives": 298,
+      "denominator": "observed clicked exposures"
+    }
+  }
+}

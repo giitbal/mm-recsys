@@ -1,0 +1,7 @@
+{
+  "scope": "Read-only source logic probe: relocate prior input reports and set all available source/work/output paths; no original files modified",
+  "relocated_reports": "/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/relocated_paths/relocated_reports",
+  "reproduced": true,
+  "error": "[Errno 2] No such file or directory: 'docs/results/external/v1/hm_data.json'",
+  "requested_file": "docs/results/external/v1/hm_data.json"
+}

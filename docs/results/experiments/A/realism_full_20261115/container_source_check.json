@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "files": 169,
+  "scope": "Cached Docker image service source matches current local files; standalone calibrated config is mounted read-only"
+}

@@ -173,3 +173,23 @@ docker compose up -d
 H&M 구매 추천·시뮬레이터 교정, Retailrocket Markov 전이 추정, DeepFashion CLIP 검증은
 [실제 데이터 활용·재현 절차](docs/external_datasets.md)를 따른다. 원자료는 `학습 데이터셋 추천/`에 두며
 기존 합성 full 결과와 별도 경로에서 실행한다. 고객·이미지 표본 실험을 전체 데이터 품질로 해석하지 않는다.
+
+**교정 full 검증 완료 — 2026-11-15.** PDF의 실제 데이터 활용 목적에 맞춰 H&M의
+카테고리·상대 거래가격, Retailrocket의 Markov 전이·활동량·행동 간격을 시뮬레이터에
+반영했다. DeepFashion은 고정 CLIP의 실제 의류 사진 표현 품질 검증에 사용했다.
+가격·활동량 집중도·행동 간격의 분포 오차가 줄었으며, 세션 길이·반복 구매에는 차이가 남는다.
+
+동결한 교정 레시피로 상품 5만·사용자 1만·이벤트 100만 건을 새로 생성하고
+Two-Tower·DeepFM·GRU 및 CLIP 임베딩·FAISS 인덱스를 준비했다.
+교정 full test의 품질·지연 기준 **11/11 통과**, 회귀 테스트 **519개 통과**다.
+이는 추천 효과 향상이나 PDF 전체 최종 합격을 뜻하지 않는다. CVR AUC는 0.5052이며,
+500명/군×7일 합성 A/B는 인기순 대비 CTR −39.56%, CVR −54.90%였다.
+자연 운영 CT 승격과 제출 문서 정합성 문제는 별도 미완료 항목으로 보존한다.
+
+[현실성 개선 내용과 한계](docs/external_datasets.md#교정-레시피의-full-통합-검증--2026-11-15) ·
+[full 측정 보고서](docs/results/experiments/A/realism_full_20261115/report.md) ·
+[별도 Docker 실행 명령](docs/results/experiments/A/realism_full_20261115/README.md)
+
+기본 배포는 유지하며 `config/full_realism_v4.yaml`과 `docker/compose.realism-full.yaml`로
+교정 환경을 별도 실행한다. 원본 데이터·이미지·임베딩·모델은 저장소에 포함하지 않는다.
+아래 수치는 앞서 수행한 H&M 및 expansion-v3 실험 기록이며, 교정 full 측정과 구분한다.

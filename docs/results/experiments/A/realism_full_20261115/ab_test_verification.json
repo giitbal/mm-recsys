@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "acceptance": "UNMEASURED",
+  "source": "docs/results/experiments/A/realism_full_20261115/ab_test.json",
+  "sha256": "70a49109952c03666fa0276b36affacd38f8260fc973a96402854d03a31e8865",
+  "run_id": "21a8663e2ff1f92a7bd33fa646dd5ba1dbfd354ff737dbd6007e339b50d4e955",
+  "data_fingerprint": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+  "checks": "assignment, causal counts, denominators, MAB exposure/feedback accounting, independent-user tests, cluster confidence intervals, config/data/source hashes",
+  "seeded_rerun": "UNMEASURED",
+  "repeat_sha256": null
+}

@@ -1,0 +1,32 @@
+# Use with the root docker-compose.yml and a separate Compose project.
+# The frozen recipe is validated separately from the default full-v44 deployment.
+services:
+  api-server:
+    environment: &realism_environment
+      SCALE: full
+      CONFIG_PATH: config/full_realism_v4.yaml
+      RUNTIME_RESULTS_DIR: .team/realism-full-20261115/runtime
+      QUALITY_RESULTS_DIR: docs/results/experiments/A/realism_full_20261115/quality
+    volumes: &realism_volumes
+      - ./.team/realism-full-20261115/data:/app/data
+      - ./.team/realism-full-20261115/models:/app/models
+      - ./.team/realism-full-20261115:/app/.team/realism-full-20261115
+      - ./config/full_realism_v4.yaml:/app/config/full_realism_v4.yaml:ro
+  simulator:
+    environment:
+      <<: *realism_environment
+      CT_AUTO_TRAIN: '0'
+      SIMULATOR_BATCH_SIZE: '20'
+      SIMULATOR_INTERVAL_SECONDS: '10'
+    volumes: *realism_volumes
+  dashboard:
+    environment:
+      SCALE: full
+      CONFIG_PATH: config/full_realism_v4.yaml
+      RESULTS_DIR: .team/realism-full-20261115/runtime/full
+      PUBLIC_API_URL: http://localhost:${API_PORT:-8000}
+    volumes:
+      - ./.team/realism-full-20261115/data:/app/data:ro
+      - ./.team/realism-full-20261115/models:/app/models:ro
+      - ./.team/realism-full-20261115:/app/.team/realism-full-20261115:ro
+      - ./config/full_realism_v4.yaml:/app/config/full_realism_v4.yaml:ro

@@ -1,0 +1,58 @@
+[2026-11-15T07:53:04+00:00] [데이터 준비] [성공] 상품 400개·사용자 24명·이벤트 6,000건 준비 완료 / 경로=/home/peachpetal/ecommerce/mm-recsys/.team/realism-full-20261115/ct-drill/source
+[2026-11-15T07:53:10+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=1.25948 / valid_recall@300=0.909091 / 갱신=5
+[2026-11-15T07:53:11+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.64758 / valid_recall@300=0.909091 / 갱신=5
+[2026-11-15T07:53:12+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.49071 / valid_recall@300=0.909091 / 갱신=5
+[2026-11-15T07:53:12+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=1 / valid_recall@300=0.909091 / 결과=/home/peachpetal/ecommerce/mm-recsys/.team/realism-full-20261115/ct-drill/initial_training/results/candidate_training_dev.json
+[2026-11-15T07:53:13+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=14.83458 / valid_ctr_auc=0.651827 / cvr_auc=0.2857142857142857
+[2026-11-15T07:53:13+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=3.63384 / valid_ctr_auc=0.901472 / cvr_auc=0.08503401360544216
+[2026-11-15T07:53:13+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=2.26743 / valid_ctr_auc=0.910647 / cvr_auc=0.09523809523809523
+[2026-11-15T07:53:13+00:00] [모델 학습] [진행] DeepFM epoch=4 / loss=1.89798 / valid_ctr_auc=0.916312 / cvr_auc=0.1054421768707483
+[2026-11-15T07:53:14+00:00] [모델 학습] [진행] DeepFM epoch=5 / loss=1.60168 / valid_ctr_auc=0.918825 / cvr_auc=0.12244897959183676
+[2026-11-15T07:53:14+00:00] [모델 학습] [진행] DeepFM epoch=6 / loss=1.37099 / valid_ctr_auc=0.918148 / cvr_auc=0.14965986394557823
+[2026-11-15T07:53:14+00:00] [모델 학습] [진행] DeepFM epoch=7 / loss=1.16958 / valid_ctr_auc=0.916985 / cvr_auc=0.15986394557823125
+[2026-11-15T07:53:14+00:00] [모델 학습] [진행] DeepFM epoch=8 / loss=0.99247 / valid_ctr_auc=0.913767 / cvr_auc=0.18367346938775508
+[2026-11-15T07:53:16+00:00] [모델 학습] [진행] 세션 epoch=1 / valid_loss=4.21724 / sampled_hit@10=0.30275
+[2026-11-15T07:53:16+00:00] [모델 학습] [진행] 세션 epoch=2 / valid_loss=4.06653 / sampled_hit@10=0.33945
+[2026-11-15T07:53:16+00:00] [모델 학습] [진행] 세션 epoch=3 / valid_loss=3.92913 / sampled_hit@10=0.39450
+[2026-11-15T07:53:16+00:00] [CT 버전 등록] [성공] 모델=v1.0
+[2026-11-15T07:53:16+00:00] [CT 초기화] [성공] 모델=v1.0
+[2026-11-15T07:53:23+00:00] [CT 알림] [경고] CTR=0.0 / 기준=0.01 / HitRate@50=0.0 / 기준=0.2 / 성숙 요청=1 / 노출=50 / 성능 저하 감지. 다음 조치: 표본과 재학습 누적 로그를 확인하세요.
+[2026-11-15T07:53:23+00:00] [CT 재학습] [진행] 신규 로그 603건 누적 / 사유=new_logs / v1.0 → v1.1 / 재학습 시작
+[2026-11-15T07:53:23+00:00] [CT 스냅샷] [진행] 관측 로그를 묶음 단위로 읽고 시간순 학습 스냅샷을 생성합니다.
+[2026-11-15T07:53:23+00:00] [CT 학습 준비] [진행] 스냅샷·관측 라벨 검사 통과; 세 모델 학습을 시작합니다.
+[2026-11-15T07:53:25+00:00] [모델 학습] [진행] Two-Tower epoch=1 / loss=1.19499 / valid_recall@300=1.000000 / 갱신=6
+[2026-11-15T07:53:26+00:00] [모델 학습] [진행] Two-Tower epoch=2 / loss=0.60971 / valid_recall@300=0.800000 / 갱신=6
+[2026-11-15T07:53:26+00:00] [모델 학습] [진행] Two-Tower epoch=3 / loss=0.45569 / valid_recall@300=0.800000 / 갱신=6
+[2026-11-15T07:53:26+00:00] [모델 학습] [성공] Two-Tower 선택 epoch=1 / valid_recall@300=1.000000 / 결과=/home/peachpetal/ecommerce/mm-recsys/.team/realism-full-20261115/ct-drill/models/.ct/runs/v1.1-93b7c71a/results/candidate_training_dev.json
+[2026-11-15T07:53:27+00:00] [모델 학습] [진행] DeepFM epoch=1 / loss=13.87145 / valid_ctr_auc=0.634438 / cvr_auc=0.9911242603550297
+[2026-11-15T07:53:27+00:00] [모델 학습] [진행] DeepFM epoch=2 / loss=3.30255 / valid_ctr_auc=0.869346 / cvr_auc=0.9911242603550297
+[2026-11-15T07:53:28+00:00] [모델 학습] [진행] DeepFM epoch=3 / loss=2.13336 / valid_ctr_auc=0.890277 / cvr_auc=0.9852071005917159
+[2026-11-15T07:53:28+00:00] [모델 학습] [진행] DeepFM epoch=4 / loss=1.79430 / valid_ctr_auc=0.895163 / cvr_auc=0.985207100591716
+[2026-11-15T07:53:28+00:00] [모델 학습] [진행] DeepFM epoch=5 / loss=1.53215 / valid_ctr_auc=0.894569 / cvr_auc=0.9792899408284024
+[2026-11-15T07:53:28+00:00] [모델 학습] [진행] DeepFM epoch=6 / loss=1.30067 / valid_ctr_auc=0.901325 / cvr_auc=0.9763313609467456
+[2026-11-15T07:53:30+00:00] [모델 학습] [진행] DeepFM epoch=7 / loss=1.11024 / valid_ctr_auc=0.899651 / cvr_auc=0.9763313609467456
+[2026-11-15T07:53:30+00:00] [모델 학습] [진행] DeepFM epoch=8 / loss=0.93598 / valid_ctr_auc=0.906721 / cvr_auc=0.9674556213017751
+[2026-11-15T07:53:30+00:00] [모델 학습] [진행] DeepFM epoch=9 / loss=0.80298 / valid_ctr_auc=0.905333 / cvr_auc=0.970414201183432
+[2026-11-15T07:53:30+00:00] [모델 학습] [진행] DeepFM epoch=10 / loss=0.68252 / valid_ctr_auc=0.907890 / cvr_auc=0.9763313609467454
+[2026-11-15T07:53:31+00:00] [모델 학습] [진행] DeepFM epoch=11 / loss=0.59382 / valid_ctr_auc=0.912120 / cvr_auc=0.9733727810650887
+[2026-11-15T07:53:31+00:00] [모델 학습] [진행] DeepFM epoch=12 / loss=0.52294 / valid_ctr_auc=0.912841 / cvr_auc=0.9733727810650888
+[2026-11-15T07:53:31+00:00] [모델 학습] [진행] DeepFM epoch=13 / loss=0.44983 / valid_ctr_auc=0.912429 / cvr_auc=0.9763313609467456
+[2026-11-15T07:53:32+00:00] [모델 학습] [진행] DeepFM epoch=14 / loss=0.40181 / valid_ctr_auc=0.914004 / cvr_auc=0.9674556213017751
+[2026-11-15T07:53:32+00:00] [모델 학습] [진행] DeepFM epoch=15 / loss=0.35358 / valid_ctr_auc=0.909732 / cvr_auc=0.9497041420118343
+[2026-11-15T07:53:32+00:00] [모델 학습] [진행] DeepFM epoch=16 / loss=0.32376 / valid_ctr_auc=0.917575 / cvr_auc=0.9585798816568047
+[2026-11-15T07:53:32+00:00] [모델 학습] [진행] DeepFM epoch=17 / loss=0.27592 / valid_ctr_auc=0.918265 / cvr_auc=0.9733727810650887
+[2026-11-15T07:53:33+00:00] [모델 학습] [진행] DeepFM epoch=18 / loss=0.25503 / valid_ctr_auc=0.911932 / cvr_auc=0.9585798816568047
+[2026-11-15T07:53:33+00:00] [모델 학습] [진행] DeepFM epoch=19 / loss=0.22580 / valid_ctr_auc=0.919402 / cvr_auc=0.9733727810650887
+[2026-11-15T07:53:33+00:00] [모델 학습] [진행] DeepFM epoch=20 / loss=0.20496 / valid_ctr_auc=0.920001 / cvr_auc=0.9585798816568046
+[2026-11-15T07:53:34+00:00] [모델 학습] [진행] 세션 epoch=1 / valid_loss=4.25106 / sampled_hit@10=0.25000
+[2026-11-15T07:53:34+00:00] [모델 학습] [진행] 세션 epoch=2 / valid_loss=4.12848 / sampled_hit@10=0.32759
+[2026-11-15T07:53:34+00:00] [모델 학습] [진행] 세션 epoch=3 / valid_loss=4.01606 / sampled_hit@10=0.40517
+[2026-11-15T07:53:34+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:53:36+00:00] [CT 버전 등록] [성공] 모델=v1.1
+[2026-11-15T07:53:36+00:00] [CT 판정] [승격] 검증 조건을 충족하여 새 모델을 승격합니다. / 후보=v1.1 / 활성=v1.1 / 검증={'split': 'valid', 'validation_fingerprint': '7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4', 'baseline': {'ctr_auc': 0.5, 'ctr_logloss': 0.6931471805599453, 'hit_rate_at_50': 0.2, 'truth_users': 5, 'ctr_samples': 1362, 'validation_fingerprint': '7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4'}, 'candidate': {'ctr_auc': 0.9200005700198082, 'ctr_logloss': 0.46253475628841656, 'hit_rate_at_50': 0.6, 'truth_users': 5, 'ctr_samples': 1362, 'validation_fingerprint': '7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4'}, 'training_reports': {'candidate': 'e6fcb64cfcae92b15203a9980f2f455c13bbb89c02b0b35ed7056257edf9a1c2', 'ranking': 'f62d6a776b65085bdf8841818ec897e5a2f77a02607614d3401c17d7a586323a', 'session': '0087dd0f115462e8783d8540841297f2936ff213fc758bbbf3670b83d71276dc'}}
+[2026-11-15T07:53:36+00:00] [CT 서비스 모델 교체] [성공] 모델=v1.1
+[2026-11-15T07:53:37+00:00] [CT 버전 등록] [성공] 모델=v1.2
+[2026-11-15T07:53:37+00:00] [CT 판정] [유지] 검증 개선 조건을 충족하지 못해 기존 모델을 유지합니다. / 후보=v1.2 / 활성=v1.1 / 검증={'split': 'valid', 'validation_fingerprint': '7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4', 'baseline': {'ctr_auc': 0.9200005700198082, 'ctr_logloss': 0.46253475628841656, 'hit_rate_at_50': 0.6, 'truth_users': 5, 'ctr_samples': 1362, 'validation_fingerprint': '7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4'}, 'candidate': {'ctr_auc': 0.9200005700198082, 'ctr_logloss': 0.46253475628841656, 'hit_rate_at_50': 0.6, 'truth_users': 5, 'ctr_samples': 1362, 'validation_fingerprint': '7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4'}, 'training_reports': {'candidate': 'e6fcb64cfcae92b15203a9980f2f455c13bbb89c02b0b35ed7056257edf9a1c2', 'ranking': 'f62d6a776b65085bdf8841818ec897e5a2f77a02607614d3401c17d7a586323a', 'session': '0087dd0f115462e8783d8540841297f2936ff213fc758bbbf3670b83d71276dc'}}
+[2026-11-15T07:53:37+00:00] [CT 롤백] [성공] v1.1 → v1.0 / 사유=controlled rollback drill after measured promotion
+[2026-11-15T07:53:37+00:00] [CT 서비스 모델 교체] [성공] 모델=v1.0
+{"status": "PASS", "new_events": 603, "comparison": {"split": "valid", "validation_fingerprint": "7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4", "baseline": {"ctr_auc": 0.5, "ctr_logloss": 0.6931471805599453, "hit_rate_at_50": 0.2, "truth_users": 5, "ctr_samples": 1362, "validation_fingerprint": "7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4"}, "candidate": {"ctr_auc": 0.9200005700198082, "ctr_logloss": 0.46253475628841656, "hit_rate_at_50": 0.6, "truth_users": 5, "ctr_samples": 1362, "validation_fingerprint": "7d29b0710c5cad38865721c8fb9a6931fc0cb75296578420d27461cd37592fa4"}, "training_reports": {"candidate": "e6fcb64cfcae92b15203a9980f2f455c13bbb89c02b0b35ed7056257edf9a1c2", "ranking": "f62d6a776b65085bdf8841818ec897e5a2f77a02607614d3401c17d7a586323a", "session": "0087dd0f115462e8783d8540841297f2936ff213fc758bbbf3670b83d71276dc"}}, "output": "docs/results/experiments/A/realism_full_20261115/ct_drill.json"}

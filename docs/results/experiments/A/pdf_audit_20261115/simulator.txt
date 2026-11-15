@@ -1,0 +1,18 @@
+[시뮬레이터 시작] API·대시보드 준비 완료; 배치=20건 / 주기=10.0초 / 합성 추천 흐름=1회 / 귀속 로그=.team/pdf-audit-20261115/runtime/full/ct_api_traffic_a0f3c64420914055a9f0a3af63dbba6b.jsonl
+[시뮬레이터 생성] 행동 로그 20건 생성 / 0.1초 / 134건/초 / CT 신규 로그=13건 / 합성 추천 흐름=1회
+[시뮬레이터 생성] 행동 로그 20건 생성 / 0.1초 / 179건/초 / CT 신규 로그=15건 / 합성 추천 흐름=1회
+[시뮬레이터 생성] 행동 로그 20건 생성 / 0.1초 / 151건/초 / CT 신규 로그=11건 / 합성 추천 흐름=1회
+[시뮬레이터 생성] 행동 로그 20건 생성 / 0.1초 / 215건/초 / CT 신규 로그=14건 / 합성 추천 흐름=1회
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/docker/simulator.py", line 172, in <module>
+    run_cli(main, '시뮬레이터', 'API·Redis 연결과 배치 크기·주기 설정을 확인하세요.')
+  File "/app/src/common/console.py", line 52, in run_cli
+    return main()
+           ^^^^^^
+  File "/app/docker/simulator.py", line 155, in main
+    time.sleep(delay)
+  File "/app/docker/simulator.py", line 120, in stop
+    raise KeyboardInterrupt
+KeyboardInterrupt

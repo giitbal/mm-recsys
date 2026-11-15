@@ -462,3 +462,11 @@ test를 확인하기 전에 소스·모델·특징 해시와 선택을 고정했
 - 조건별 전이의 세션 악화와 50만 이벤트/1천 사용자/28일 고밀도 시간 범위 초과를 실패로 보존했다. 25만 이벤트와 상품 수 통제 진단을 별도로 수행했다.
 - 기존 설정 이벤트 10만 건의 완전 일치와 과거 결과 보존을 확인했다. 기본 운영 데이터/모델을 교체하지 않고 별도 경로에서 후보·랭커를 재학습했다.
 - 실제 측정·검증·잔여 한계: [realism-v4 보고서](../results/external/realism-v4/report.md). 전체 품질 acceptance와 운영 승격은 미측정이다.
+
+## 2026-11-15 교정 full 검증과 실제 데이터 활용 결과 공개
+
+- PDF의 실제 데이터 활용 목적에 맞춰 H&M의 상대가격·카테고리, Retailrocket의 전이·활동량·시간 간격 교정과 DeepFashion 고정 CLIP 검증의 역할을 문서화했다.
+- 동결한 realism-v4 설정으로 5만 상품·1만 사용자·100만 이벤트를 생성하고 Two-Tower·DeepFM·GRU와 검색 임베딩·인덱스를 새로 준비했다. 기존 full-v44 데이터·모델은 보존했다.
+- valid/test의 품질·지연 기준 11개, 실제 Redis 포함 회귀 519개, HTTP·MAB·검색 예제·Chromium 6개 탭 검증을 통과했다.
+- CVR AUC 0.505248, 음수 합성 A/B, 자연 CT 학습 대기, 제출 해시 불일치를 함께 공개했다. 최종 acceptance는 UNMEASURED이며 기본 배포를 교체하지 않았다.
+- [교정 full 보고서](../results/experiments/A/realism_full_20261115/report.md)와 [별도 Compose 재현 절차](../results/experiments/A/realism_full_20261115/README.md)를 제공한다. 원본 데이터·이미지·임베딩·모델은 공개 범위에서 제외한다.

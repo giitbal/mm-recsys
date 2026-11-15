@@ -1,0 +1,120 @@
+[2026-11-15T07:29:31+00:00] [A/B 준비] [진행] 규모=full / seed=42 / 데이터·실제 추천 전략 로딩 시작
+[2026-11-15T07:30:09+00:00] [A/B 준비] [성공] 전략=popularity·full_pipeline / 준비 완료
+[2026-11-15T07:30:19+00:00] [A/B 실험] [진행] 진행 일수=1/7 / 그룹별 사용자=500명 / seed=42
+[2026-11-15T07:30:27+00:00] [A/B 실험] [진행] 진행 일수=2/7 / 그룹별 사용자=500명 / seed=42
+[2026-11-15T07:30:36+00:00] [A/B 실험] [진행] 진행 일수=3/7 / 그룹별 사용자=500명 / seed=42
+[2026-11-15T07:30:45+00:00] [A/B 실험] [진행] 진행 일수=4/7 / 그룹별 사용자=500명 / seed=42
+[2026-11-15T07:30:55+00:00] [A/B 실험] [진행] 진행 일수=5/7 / 그룹별 사용자=500명 / seed=42
+[2026-11-15T07:31:04+00:00] [A/B 실험] [진행] 진행 일수=6/7 / 그룹별 사용자=500명 / seed=42
+[2026-11-15T07:31:14+00:00] [A/B 실험] [진행] 진행 일수=7/7 / 그룹별 사용자=500명 / seed=42
+[2026-11-15T07:31:14+00:00] [A/B 결과] [통과] 클릭률 상대 변화=-16.81% / p-value=2.620963765311062e-27 / 차이의 95% CI=[-0.04957073888347915, -0.034372118259378005] / 분모=노출 수 / 통계 단위=사용자 / 합성 실험 / 결과=docs/results/experiments/A/pdf_audit_20261115/ab_test.json
+[2026-11-15T07:31:14+00:00] [A/B 결과] [통과] 구매 전환율 상대 변화=-23.36% / p-value=0.00046439688056037446 / 차이의 95% CI=[-0.0044568877135270375, -0.0012573980007586762] / 분모=노출 수 / 통계 단위=사용자 / 합성 실험 / 결과=docs/results/experiments/A/pdf_audit_20261115/ab_test.json
+{
+  "output": "docs/results/experiments/A/pdf_audit_20261115/ab_test.json",
+  "arms": {
+    "control": {
+      "users": 500,
+      "impressions": 35000,
+      "clicks": 8741,
+      "purchases": 428,
+      "explorations": 0,
+      "ctr": 0.24974285714285716,
+      "cvr": 0.012228571428571429,
+      "purchase_given_click": 0.04896464935362087,
+      "exploration_rate": 0.0,
+      "users_clicked": 500,
+      "users_purchased": 279,
+      "unattributed_feedback": 0
+    },
+    "treatment": {
+      "users": 500,
+      "impressions": 35000,
+      "clicks": 7272,
+      "purchases": 328,
+      "explorations": 7000,
+      "ctr": 0.20777142857142858,
+      "cvr": 0.009371428571428572,
+      "purchase_given_click": 0.045104510451045104,
+      "exploration_rate": 0.2,
+      "users_clicked": 500,
+      "users_purchased": 229,
+      "unattributed_feedback": 0
+    }
+  },
+  "inference": {
+    "experimental_unit": "randomized user; repeated exposures clustered within user",
+    "independent_user_risks": {
+      "any_click": {
+        "control": 1.0,
+        "treatment": 1.0,
+        "difference": 0.0,
+        "relative_lift": 0.0,
+        "z_statistic": 0.0,
+        "z_p_value": 1.0,
+        "chi_square": 0.0,
+        "chi_square_p_value": 1.0,
+        "difference_ci95": [
+          0.0,
+          0.0
+        ],
+        "ci_method": "unpooled user-risk Wald; degenerate at boundary counts",
+        "low_expected_counts": true,
+        "asymptotic_reliable": false,
+        "fisher_p_value": 1.0,
+        "experimental_unit": "one independent randomized user"
+      },
+      "any_purchase": {
+        "control": 0.558,
+        "treatment": 0.458,
+        "difference": -0.10000000000000003,
+        "relative_lift": -0.1792114695340502,
+        "z_statistic": -3.162682509441601,
+        "z_p_value": 0.0015632271389531775,
+        "chi_square": 10.002560655527816,
+        "chi_square_p_value": 0.0015632271389531868,
+        "difference_ci95": [
+          -0.16166085321359971,
+          -0.038339146786400345
+        ],
+        "ci_method": "unpooled user-risk Wald; degenerate at boundary counts",
+        "low_expected_counts": false,
+        "asymptotic_reliable": true,
+        "fisher_p_value": null,
+        "experimental_unit": "one independent randomized user"
+      }
+    },
+    "ctr": {
+      "status": "PASS",
+      "control": 0.24974285714285716,
+      "treatment": 0.20777142857142858,
+      "difference": -0.041971428571428576,
+      "relative_lift": -0.16805857453380624,
+      "difference_ci95": [
+        -0.04957073888347915,
+        -0.034372118259378005
+      ],
+      "z_p_value": 2.620963765311062e-27,
+      "method": "independent-user cluster delta variance; descriptive simulated effect"
+    },
+    "cvr": {
+      "status": "PASS",
+      "control": 0.012228571428571429,
+      "treatment": 0.009371428571428572,
+      "difference": -0.0028571428571428567,
+      "relative_lift": -0.23364485981308403,
+      "difference_ci95": [
+        -0.0044568877135270375,
+        -0.0012573980007586762
+      ],
+      "z_p_value": 0.00046439688056037446,
+      "method": "independent-user cluster delta variance; descriptive simulated effect"
+    }
+  }
+}
+Traceback (most recent call last):
+  File "/home/peachpetal/ecommerce/mm-recsys/.team/pdf-audit-20261115/ab.py", line 15, in <module>
+    shutil.copyfile(out, Path(cfg['paths']['results_dir'])/'ab_test.json')
+  File "/usr/lib/python3.12/shutil.py", line 262, in copyfile
+    with open(dst, 'wb') as fdst:
+         ^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '.team/pdf-audit-20261115/runtime/full/ab_test.json'

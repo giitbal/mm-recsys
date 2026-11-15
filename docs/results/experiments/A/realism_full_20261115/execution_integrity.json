@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checks": {
+    "valid_test_identity": true,
+    "valid_snapshot_sha256": true,
+    "valid_only_selection": true,
+    "original_baseline_preserved": true,
+    "calibrated_config_preserved": true,
+    "compose_preserved": true,
+    "model_files_preserved": true,
+    "container_sources_match_current": true
+  }
+}

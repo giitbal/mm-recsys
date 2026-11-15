@@ -1,0 +1,14 @@
+{
+  "source_commit": "70de88958340037b50b702f1f314d08e2e283e13",
+  "audit_only": true,
+  "default_realism": false,
+  "default_full_data": "data/full-v44",
+  "default_full_models": "models/full-v44",
+  "runtime_running_initially": false,
+  "original_registry_sha256": "a6ae824aaf71e67009daed013d905211991cb8d5672345411b856101d6f83125",
+  "preserved_files": {
+    "/home/peachpetal/ecommerce/mm-recsys/config.yaml": "3844f7daeeb9bca45049815ee80f05a613291a1dd2b98db5e774ca76cc627458",
+    "/home/peachpetal/ecommerce/mm-recsys/docker-compose.yml": "90316c602a12813dca2cedcf3f6628709db631877e855a07fcab1c79cb1216c7",
+    "/home/peachpetal/ecommerce/mm-recsys/docs/results/final_acceptance.json": "f21388c7afa4837caa9357ce1dfa708d4abcdf81ac10c3996281ce690b57d06b"
+  }
+}

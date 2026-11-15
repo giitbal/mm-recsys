@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "scope": "Original realism-v4 source/config/target/recipe hashes preserved; no recalibration or test-based tuning",
+  "config_sha256": "aef7a5a58936ab7add5f155e5bf2b25db72533f9cc6e9b35ba14204bec8e80fc",
+  "compose_sha256": "44026560371bb91792cccc0bf85adfd530b28b7ce823f0f50e24d0ff641d1c1e",
+  "original_selection_sha256": "4f2db636858e0e38314568b2a33bec150aa00a52123ddb797ab33908196b3741"
+}

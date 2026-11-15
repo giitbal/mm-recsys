@@ -1,0 +1,25 @@
+[CT 시작] 모니터링 주기=60초 / 재학습 임계치=10000건 / 재학습 활성=False / 활성 모델=v1.0
+[CT 모니터링] CTR=None / 기준=0.01 / HitRate@50=None / 기준=0.2 / 성숙 요청=0 / 노출=0 / 관측 완료. null은 관측 표본 부족으로 미측정입니다.
+[CT 누적 로그] 신규 로그=67건 / 임계치=10,000건 / 모니터링만 수행
+{
+  "event": "monitor",
+  "status": "UNMEASURED",
+  "model_version": "v1.0",
+  "ctr": null,
+  "hit_rate_at_50": null,
+  "clicks": 0,
+  "exposures": 0,
+  "mature_requests": 0,
+  "top50_requests": 0,
+  "hit_requests": 0,
+  "alerts": [],
+  "window_start": 1794641270.2959657,
+  "observed_through": 1794727670.2959657,
+  "attribution_seconds": 3600,
+  "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+  "thresholds": {
+    "ctr_threshold": 0.01,
+    "hitrate_threshold": 0.2,
+    "min_mature_requests": 20
+  }
+}

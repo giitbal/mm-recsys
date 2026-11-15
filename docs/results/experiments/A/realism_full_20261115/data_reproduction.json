@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checks": {
+    "counts": true,
+    "generation_fingerprint": true,
+    "file_hashes": true,
+    "boundaries": true,
+    "split_counts": true
+  },
+  "elapsed_seconds": 85.5145845359998,
+  "scope": "Independent full calibrated generation with unchanged seed42, separate directory; full image manifest and parquet hashes compared"
+}

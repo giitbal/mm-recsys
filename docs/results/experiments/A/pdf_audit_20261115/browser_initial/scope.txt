@@ -1,0 +1,1 @@
+Initial UI interaction run passed; screenshot capture raced asynchronous chart rendering, and host headless browser lacked CJK font. Retained as initial evidence. Follow-up waits for chart rendering and uses locally available Malgun font in private fontconfig; no application changes.

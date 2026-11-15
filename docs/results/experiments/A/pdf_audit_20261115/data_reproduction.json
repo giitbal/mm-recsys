@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "elapsed_seconds": 60.470941050999954,
+  "counts": {
+    "products": 50000,
+    "users": 10000,
+    "events": 1000000,
+    "impressions": 2254172
+  },
+  "checks": {
+    "products.parquet": true,
+    "users.parquet": true,
+    "events.parquet": true,
+    "impressions.parquet": true,
+    "image_manifest.json": true,
+    "split/train.parquet": true,
+    "split/valid.parquet": true,
+    "split/test.parquet": true
+  },
+  "fingerprint": "2df9b64e07e3b2aad48c967c4c8d3d8b04883dd19279896bb374c4f9926ad7d8",
+  "source_sha256": "2da143aa4cae492ffdfa3c28aa539415b18c77aae28cd02961cbaad336ef7714",
+  "scope": "Independent regeneration from empty audit directory, current source, original full recipe; no model retraining"
+}

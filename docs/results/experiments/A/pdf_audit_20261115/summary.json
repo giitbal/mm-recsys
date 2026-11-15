@@ -1,0 +1,22 @@
+{
+  "status": "NOT_FULLY_SATISFIED",
+  "completed_at": "2026-11-15T07:44:54.027145+00:00",
+  "pdf_pages": 14,
+  "matrix_rows": 48,
+  "source_commit": "70de88958340037b50b702f1f314d08e2e283e13",
+  "current_source_files_unchanged": 182,
+  "pytest_passed": 519,
+  "mypy_files": 157,
+  "full_test_quality": "PASS",
+  "quality_latency_targets_passed": 11,
+  "browser": "PASS",
+  "ct_controlled_drill": "PASS",
+  "natural_ct_improvement": "UNMEASURED",
+  "realism_full_runtime": "NOT_INTEGRATED",
+  "submission_files": "FAIL",
+  "audit_services_stopped": true,
+  "original_artifacts_preserved": true,
+  "source_changes": false,
+  "commit_created": false,
+  "push_performed": false
+}

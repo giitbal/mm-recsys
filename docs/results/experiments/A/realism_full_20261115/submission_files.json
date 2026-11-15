@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "reason": "evidence changed or missing: docs/submission/dataset_scope.json",
+  "scope": "Current submission files/hash check; does not replace runtime measurements"
+}

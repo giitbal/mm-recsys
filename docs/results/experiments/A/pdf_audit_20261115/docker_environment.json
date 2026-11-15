@@ -1,0 +1,8 @@
+{
+  "ServerVersion": "29.9.3",
+  "NCPU": 8,
+  "MemTotal": 12520095744,
+  "OSType": "linux",
+  "Architecture": "aarch64",
+  "OperatingSystem": "Docker Desktop"
+}
