@@ -102,9 +102,10 @@ def test_test_report_is_preferred_and_integration_receipt_is_visible(tmp_path, m
     monkeypatch.setattr(data, 'api_call', offline)
     app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
     assert not app.exception
-    assert app.selectbox[0].value.name == 'evaluation_dev_test.json'
+    bundle = app.radio(key='bundle')
+    assert bundle.options[bundle.value] == '실행 결과 · 테스트 분할 (개발용 데이터)'
     assert any(item.label == '최종 통합 검사 근거' for item in app.expander)
-    assert next(m.value for m in app.metric if m.label == '최종 종합 품질') == 'UNMEASURED'
+    assert next(m.value for m in app.metric if m.label == '최종 종합 품질') == '미측정'
 
 
 def test_missing_full_test_falls_back_to_full_valid_before_dev(tmp_path, monkeypatch, report):
@@ -115,37 +116,53 @@ def test_missing_full_test_falls_back_to_full_valid_before_dev(tmp_path, monkeyp
     monkeypatch.setattr(data, 'api_call', offline)
     app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
     assert not app.exception
-    assert app.selectbox[0].value.name == 'evaluation_full_valid.json'
+    bundle = app.radio(key='bundle')
+    assert bundle.options[bundle.value] == '실행 결과 · 검증 분할 (full)'
 
 
-def test_four_tabs_charts_and_metric_tables_match_json(tmp_path, monkeypatch, report):
+def test_published_bundles_come_first_and_side_evidence_stays_inside_results(tmp_path, report):
+    label, path, folder = data.PUBLISHED[0]
+    (tmp_path / path).parent.mkdir(parents=True)
+    (tmp_path / path).write_text(json.dumps(dict(report, scale='full', split='test')))
+    (tmp_path / 'evaluation_dev_valid.json').write_text(json.dumps(report))
+    items, default = data.bundles(tmp_path, 'dev')
+    assert [item['label'] for item in items] == [label, '실행 결과 · 검증 분할 (개발용 데이터)']
+    assert default == 0 and items[0]['folder'] == tmp_path / folder
+    assert data.read_json(tmp_path / folder / 'data_audit.json', tmp_path) is None
+    outside = tmp_path.parent / 'outside_evidence.json'
+    outside.write_text('{}')
+    with pytest.raises(ValueError, match='경로'):
+        data.read_json(outside, tmp_path)
+
+
+def test_six_tabs_charts_and_metric_tables_match_json(tmp_path, monkeypatch, report):
     path = tmp_path / 'evaluation_dev_valid.json'
     path.write_text(json.dumps(report))
     monkeypatch.setenv('RESULTS_DIR', str(tmp_path))
     monkeypatch.setattr(data, 'api_call', offline)
     app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
     assert not app.exception
-    assert [tab.label for tab in app.tabs] == ['검색', '추천', 'A/B 실험', '시스템', 'EDA·구매 이력', '상품·CLIP']
-    assert len(app.get('plotly_chart')) == 5
+    from dashboard.app import LABELS, STATUS, TABS, fmt
+    assert app.radio(key='tab').options == TABS == ['개요', '데이터', '검색', '추천', 'A/B', '시스템']
     metrics = {m.label: m.value for m in app.metric}
-    assert metrics['측정 기준 판정'] == 'FAIL' and metrics['최종 종합 품질'] == 'UNMEASURED'
-    assert metrics['CVR 상대 lift'] == '-50.0%' and metrics['API 연결'] == '연결 안 됨'
-    observed = {}
-    for frame in app.dataframe:
-        df = frame.value
-        if '측정값' in df:
-            observed.update({row['지표']: (row['측정값'], row['판정']) for row in df.to_dict('records')})
-    from dashboard.app import LABELS
+    assert metrics['측정 기준 판정'] == '미달' and metrics['최종 종합 품질'] == '미측정'
+    assert metrics['MRR'] == '0.600' and metrics['검색 HTTP p95'] == '250.0ms'
+    table = next(frame.value for frame in app.dataframe if '측정값' in frame.value)
+    observed = {row['지표']: (row['측정값'], row['판정']) for row in table.to_dict('records')}
     assert len(observed) == len(report['metrics'])
     for row in report['metrics']:
-        assert observed[LABELS[row['name']]] == (row['value'], row['status'])
+        assert observed[LABELS[row['name']]] == (fmt(row['name'], row['value']), STATUS[row['status']])
+    app.radio(key='tab').set_value('검색').run()
+    assert not app.exception and len(app.get('plotly_chart')) == 2 + 1  # MRR, NDCG@10, ANN (no HTTP samples)
     spec = json.loads(app.get('plotly_chart')[0].proto.spec)
     assert spec['data'][0]['y'] == [.6, .6, .6]
     assert spec['data'][1]['y'] == [.4, None, .4]
-    assert spec['layout']['yaxis']['tickformat'] == '.1f'
-    assert spec['layout']['yaxis']['hoverformat'] == '.1f'
-    shown = pa.ipc.open_stream(app.dataframe[0].proto.styler.display_values).read_all().to_pandas()
-    assert shown['측정값'].tolist() == ['0.6', '0.5']
+    assert spec['data'][1]['text'][1] == 'BM25 해당 없음'
+    app.radio(key='tab').set_value('A/B').run()
+    assert not app.exception
+    assert any('상대 -50.0%' in item.value for item in app.markdown)
+    app.radio(key='tab').set_value('시스템').run()
+    assert not app.exception and any('연결 안 됨' in caption.value for caption in app.caption)
 
 
 def test_absent_and_malformed_results_render_without_fake_values(tmp_path, monkeypatch):
@@ -155,9 +172,11 @@ def test_absent_and_malformed_results_render_without_fake_values(tmp_path, monke
         if content is not None:
             (tmp_path / 'evaluation_dev_valid.json').write_text(content)
         app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
-        assert not app.exception and len(app.tabs) == 6
-        assert not app.get('plotly_chart')
-        assert all(m.label not in ('측정 기준 판정', 'Control CVR') for m in app.metric)
+        for tab in ('개요', '데이터', '검색', '추천', 'A/B', '시스템'):
+            app.radio(key='tab').set_value(tab).run()
+            assert not app.exception and len(app.radio(key='tab').options) == 6
+            assert not app.get('plotly_chart')
+            assert all(m.label not in ('측정 기준 판정', 'Control CVR', 'CTR 상대 변화') for m in app.metric)
 
 
 def test_demos_use_shared_http_contract_and_empty_search_is_local(tmp_path, monkeypatch):
@@ -174,11 +193,15 @@ def test_demos_use_shared_http_contract_and_empty_search_is_local(tmp_path, monk
         return offline()
     monkeypatch.setattr(data, 'api_call', api)
     app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
+    app.radio(key='tab').set_value('검색').run()
+    app.radio(key='search_view').set_value('직접 해보기').run()
     next(b for b in app.button if b.label == '검색 실행').click().run()
     assert not any(route == '/api/search' for _, route, _ in calls)
     app.text_input(key='query_text').set_value(' black shirt ')
     next(b for b in app.button if b.label == '검색 실행').click().run()
     assert next(kwargs['payload'] for _, route, kwargs in calls if route == '/api/search') == dict(query_text='black shirt', top_k=10)
+    app.radio(key='tab').set_value('추천').run()
+    app.radio(key='recommend_view').set_value('직접 해보기').run()
     next(b for b in app.button if b.label == '추천 실행').click().run()
     assert next(kwargs['params'] for _, route, kwargs in calls if route == '/api/recommend') == dict(user_id='U000001', top_n=10)
     assert not app.exception
@@ -240,10 +263,14 @@ def test_live_model_version_and_nested_ct_logs_are_distinct_from_saved_measureme
         return dict(ok=True, data=dict(status='ok' if route == '/health' else 'ready', model_version='v1.1'))
     monkeypatch.setattr(data, 'api_call', api)
     app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
+    app.radio(key='tab').set_value('시스템').run()
     assert not app.exception
-    assert {m.label: m.value for m in app.metric}['현재 모델 버전'] == 'v1.1'
-    assert any('fixture-v1' in caption.value for caption in app.caption)
+    status = next(caption.value for caption in app.caption if caption.value.startswith('지금 API 상태'))
+    assert '현재 모델 버전 v1.1' in status and '모델 버전은 fixture-v1' in status
     assert any('controlled_fixture' in caption.value for caption in app.caption)
+    curated = next(df for df in app.dataframe if '이벤트' in df.value)
+    assert curated.value['이벤트'].tolist() == ['promoted', 'rollback']
+    assert pa.ipc.open_stream(curated.proto.styler.display_values).read_all().to_pandas()['시각'].iloc[0] == '2026-11-12 03:07:08 KST'
     frame = next(df.value for df in app.dataframe if 'event' in df.value)
     assert frame['comparison.candidate.ctr_auc'].iloc[0] == .9
     assert frame['at'].iloc[0] == '2026-11-11T18:07:08.123Z'

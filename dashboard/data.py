@@ -27,15 +27,61 @@ def settings(root: Path) -> dict:
     if not public_api_url:
         port = os.getenv('API_PORT') or defaults.get('API_PORT') or '8000'
         public_api_url = f'http://localhost:{port}' if urlsplit(api_url).hostname == 'api-server' else api_url
+    serving_path = root / 'config' / 'serving.yaml'
+    serving = yaml.safe_load(serving_path.read_text(encoding='utf-8')) if serving_path.is_file() else {}
+    serving_ct: dict = next((v['ct'] for v in (serving or {}).values() if isinstance(v, dict) and isinstance(v.get('ct'), dict)), {})
     return dict(results_dir=configured if configured.is_absolute() else root / configured,
                 api_url=api_url, public_api_url=public_api_url.rstrip('/'),
                 api_timeout=float(os.getenv('DASHBOARD_API_TIMEOUT', '10')),
-                scale=os.getenv('SCALE', cfg.get('scale', 'dev')))
+                scale=os.getenv('SCALE', cfg.get('scale', 'dev')),
+                taxonomy=cfg.get('simulator', {}).get('taxonomy', {}),
+                ct={**cfg.get('ct', {}), **serving_ct})
 
 
 def available_reports(root: Path) -> list[Path]:
     return sorted((p for p in root.glob('evaluation_*_*.json')
                    if re.fullmatch(r'evaluation_(dev|full)_(valid|test)\.json', p.name)), key=lambda p: p.name)
+
+
+# Published result bundles (relative to results_dir). The folder holds the bundle's side evidence
+# (data_audit, latency_conditions, CT records); missing bundles are skipped.
+PUBLISHED = (
+    ('제출 기준 · 테스트 분할', 'experiments/A/final_validation_20261112/published/evaluation_full_test.json',
+     'experiments/A/final_validation_20261112'),
+    ('제출 기준 · 검증 분할', 'experiments/A/final_validation_20261112/quality_full_valid.json',
+     'experiments/A/final_validation_20261112'),
+    ('교정 실험 · 테스트 분할 (다른 데이터)', 'experiments/A/realism_full_20261115/quality/quality_full_test.json',
+     'experiments/A/realism_full_20261115'),
+)
+REQUIREMENTS = 'integration/20261107_requirements/requirements.json'
+REALISM = 'experiments/A/realism_full_20261115/realism_distance.json'
+DEEPFASHION = 'external/expansion-v3/deepfashion_expanded.json'
+SPLIT_LABEL = dict(test='테스트', valid='검증')
+
+
+def bundles(root: Path, scale: str) -> tuple[list[dict], int]:
+    """Published bundles first, then runtime reports; returns the list and the default index."""
+    items = [dict(label=label, path=root / path, folder=root / folder)
+             for label, path, folder in PUBLISHED if (root / path).is_file()]
+    runtime = available_reports(root)
+    for path in runtime:
+        size, split = path.stem.split('_')[1:]
+        data_label = '개발용 데이터' if size == 'dev' else 'full'
+        items.append(dict(label=f'실행 결과 · {SPLIT_LABEL[split]} 분할 ({data_label})', path=path, folder=root))
+    if len(items) > len(runtime):
+        return items, 0
+    preferred = next((i for split in ('test', 'valid') for i, path in enumerate(runtime)
+                      if path.name == f'evaluation_{scale}_{split}.json'), 0)
+    return items, preferred
+
+
+def read_json(path: Path, root: Path, limit: int = 20_000_000):
+    """Read side evidence inside results_dir; None when the file is absent."""
+    if not path.is_file():
+        return None
+    if not path.resolve().is_relative_to(root.resolve()) or path.stat().st_size > limit:
+        raise ValueError('결과 파일 경로 또는 크기를 확인하세요.')
+    return json.loads(path.read_text(encoding='utf-8'))
 
 
 def read_report(path: Path, root: Path) -> dict:
@@ -79,10 +125,10 @@ def search_payload(text: str, image: bytes | None, top_k: int) -> dict:
     return payload
 
 
-def ct_log(root: Path, limit: int = 100) -> dict:
+def ct_log(root: Path, limit: int = 100, name: str = 'ct_log.jsonl') -> dict:
     if limit < 1:
         raise ValueError('CT log limit must be positive')
-    path = root / 'ct_log.jsonl'
+    path = root / name
     if not path.is_file():
         return dict(status='UNMEASURED', rows=[], invalid_lines=0)
     with path.open('rb') as stream:
