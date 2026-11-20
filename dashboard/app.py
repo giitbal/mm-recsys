@@ -795,7 +795,6 @@ def main() -> None:
     bundle: dict | None = None
     error: Exception | None = None
     with st.sidebar:
-        st.markdown('<div class="toc-label">목차</div>', unsafe_allow_html=True)
         st.button('평가 결과', key='nav_results', type='tertiary', icon=':material/expand_more:')
         if items:
             choice = st.radio('평가 결과', range(len(items)), index=default, format_func=lambda i: items[i]['label'],
