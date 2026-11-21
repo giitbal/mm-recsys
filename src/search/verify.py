@@ -99,7 +99,7 @@ def main() -> None:
     parser.add_argument('--output', type=Path); args = parser.parse_args()
     cfg = load_config(); set_seed(cfg['seed'])
     result = verify(cfg)
-    output = args.output or Path(f'docs/results/search_b2a_{cfg["scale"]}.json')
+    output = args.output or Path(cfg['paths']['results_dir']) / f'search_b2a_{cfg["scale"]}.json'
     write_json(output, result)
     log('검색 번들 검사', '결과', f"규모={result.get('scale', '설정 참조')} / 판정={result.get('status', '원본 JSON 참조')}", status='완료')
     print(json.dumps({key: result[key] for key in ('status', 'scale', 'count', 'projection_dim', 'ann_diagnostics',

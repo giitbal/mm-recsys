@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-11-21T09:18:55.404711+00:00",
+  "reproduction": {
+    "delete": "database is locked",
+    "wal": "committed"
+  },
+  "production_failure": {
+    "service": "simulator",
+    "exit_code": 1,
+    "candidate": "v1.4",
+    "first_attempt_new_events": 63664,
+    "where": "docker/simulator.py run_batch -> src/ct/storage.py Journal.events -> connection commit",
+    "error": "sqlite3.OperationalError: database is locked"
+  },
+  "regression_test": "tests/test_ct.py::test_live_ingestion_commits_during_ct_read_snapshot",
+  "scope": "Fresh two-connection SQLite reproduction and original production failure observed before rebuilding the simulator."
+}

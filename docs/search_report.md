@@ -1,17 +1,25 @@
-# 검색 구현 보고서 — A B2a / B2b
+# 멀티모달 검색 실험 보고서
 
-<!-- current-v44 -->
-현재 구현·새 full valid/test·실행 조건은 [v4.4 보고서](submission/report.md)를 따른다.
-2026-11-12 리팩터링 소스로 full valid/test와 지연을 다시 측정해 11개 기준이 모두 통과했다.
-검색의 과거 단계 기록과 현재 결과를 구분한다. 현재 전체 시연·CT·최종 통합 상태는
-[최종 실행 집계](results/experiments/A/final_validation_20261112/submission/checks.json)를 따른다.
+## 2026-11-21 기본 도안 full test
+
+시드 42로 생성한 상품 50,000개의 이미지와 텍스트를 사용했다. 행동 100만 건은 시간순 80만/10만/10만 건으로 분할했다. 검색 품질은 독립적으로 생성한 속성 정답 질의로 평가했다. valid에서 설정을 고정한 뒤 test에서 모드별 200개 질의의 상위 10개 결과를 채점했다. [데이터와 분할](results/experiments/A/illustrations_v1/integration_current/cold_data_audit.json) · [동결 설정](results/experiments/A/illustrations_v1/integration_current/release_quality/configuration_full.json)
+
+| test 입력 | MRR | nDCG@10 | 텍스트 BM25 대비 MRR / nDCG 변화 | HTTP p95 |
+|---|---:|---:|---:|---:|
+| 텍스트 | 0.94000 | 0.94000 | −6.00% / −6.00% | 26.48ms |
+| 이미지 | 0.89717 | 0.88188 | 텍스트 입력 없음 | 105.13ms |
+| 텍스트+이미지 | 0.97000 | 0.97000 | −3.00% / −3.00% | 119.31ms |
+| 전체 600개 | **0.93572** | **0.93063** | | |
+
+MRR은 각 질의에서 첫 정답 순위의 역수를 평균한다. 상위 10개 안에 정답이 없으면 0이다. nDCG@10은 각 정답에 `1/log2(순위+1)`을 더한 뒤 이상적인 상위 10개의 합으로 나누고 질의별로 평균한다. PDF의 하한은 각각 0.55와 0.50이다. BM25는 비교 가능한 같은 질의의 텍스트로 두 지표 모두 1.00000을 기록했다. 상대 변화는 `100 × (측정값/기준값 − 1)`이다. HTTP p95는 CPU Docker에서 모드별 10회 예열 후 100회 직렬 호출로 측정했다. [test 원본](results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_test.json) · [원시 지연과 환경](results/experiments/A/illustrations_v1/integration_current/release_quality/smoke_full.json)
+
+CLIP은 `openai/clip-vit-base-patch32`, FAISS는 내적 HNSW(`M=32`, `efConstruction=200`, `efSearch=32`)를 사용했다. 복합 질의는 텍스트와 이미지 벡터를 0.5씩 결합해 상품 텍스트 인덱스에서 검색했다. valid의 텍스트 질의에서 `efSearch`를 32에서 256으로 높였을 때 MRR은 두 설정 모두 0.965였고, 벡터 검색 p95는 0.194ms에서 0.716ms로 늘었다. [valid 탐색 폭 실험](results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_valid.json) · [실행 명령](submission/reproduction.md)
 
 ## 이전 실행 기록 보존
 
-현재 최신 단계는 B2b다. full 상품 50,000개에서 고정 test 600개의 MRR/NDCG@10은
+아래는 B2a·B2b 단계 당시의 측정이다. 당시 full 상품 50,000개에서 고정 test 600개의 MRR/NDCG@10은
 0.931667이며 실제 HTTP의 최대 모드 p95는 178.251ms다. 검색 단계 기준은 통과했고,
-추천 모델과 전체 Docker 재현을 포함한 최종 종합 acceptance는 아직 UNMEASURED다.
-아래 B2a 내용은 이전 단계의 기록이며 최신 설정/평가는 뒤의 B2b 절을 따른다.
+추천 모델과 전체 Docker 재현을 포함한 당시 종합 판정은 UNMEASURED였다. [현재 최종 판정](results/final_acceptance.json)
 
 ## 완료 범위
 

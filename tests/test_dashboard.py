@@ -142,10 +142,12 @@ def test_four_tabs_charts_and_metric_tables_match_json(tmp_path, monkeypatch, re
     spec = json.loads(app.get('plotly_chart')[0].proto.spec)
     assert spec['data'][0]['y'] == [.6, .6, .6]
     assert spec['data'][1]['y'] == [.4, None, .4]
+    assert spec['layout']['annotations'][0]['text'] == '기준 0.55'
     assert spec['layout']['yaxis']['tickformat'] == '.1f'
     assert spec['layout']['yaxis']['hoverformat'] == '.1f'
     shown = pa.ipc.open_stream(app.dataframe[0].proto.styler.display_values).read_all().to_pandas()
     assert shown['측정값'].tolist() == ['0.6', '0.5']
+    assert shown['기준'].tolist() == ['0.55', '0.5']
 
 
 def test_absent_and_malformed_results_render_without_fake_values(tmp_path, monkeypatch):
@@ -251,3 +253,119 @@ def test_live_model_version_and_nested_ct_logs_are_distinct_from_saved_measureme
     shown = pa.ipc.open_stream(element.proto.styler.display_values).read_all().to_pandas()
     assert shown['at'].iloc[0] == '2026-11-12 03:07:08 KST'
     assert shown['comparison.candidate.ctr_auc'].iloc[0] == '0.9'
+
+
+def test_packaged_report_renders_charts_then_prefers_new_runtime_measurement(tmp_path, monkeypatch, report):
+    reference = Path('docs/submission/dashboard/evaluation_full_test.json').resolve()
+    monkeypatch.setenv('DASHBOARD_REFERENCE_REPORT', str(reference))
+    monkeypatch.setenv('RESULTS_DIR', str(tmp_path))
+    monkeypatch.setenv('SCALE', 'full')
+    monkeypatch.setattr(data, 'api_call', offline)
+    app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
+    assert not app.exception and app.selectbox[0].value == reference
+    assert all(tab.get('plotly_chart') for tab in app.tabs[:3])
+    assert any('새 도안 카탈로그에서 측정한' in item.value for item in app.info)
+    archived = json.loads(reference.read_text())
+    chart = json.loads(app.tabs[2].get('plotly_chart')[1].proto.spec)
+    for trace in chart['data']:
+        estimate = archived['ab']['inference'][trace['x'][0].lower()]
+        assert trace['y'] == pytest.approx([100 * estimate['difference']])
+        assert trace['customdata'][0] == pytest.approx([100 * bound for bound in estimate['difference_ci95']])
+        p_value = estimate['z_p_value']
+        assert trace['text'] == ['p < 0.001' if p_value < .001 else f'p = {p_value:.3f}']
+
+    report.update(scale='full', ab={'status': 'UNMEASURED'})
+    live = tmp_path / 'evaluation_full_valid.json'
+    live.write_text(json.dumps(report))
+    with pytest.raises(ValueError, match='제출 보고서'):
+        data.read_reference(live)
+    app.run()
+    assert not app.exception and app.selectbox[0].value == live
+    assert next(metric.value for metric in app.metric if metric.label == '측정 기준 판정') == 'FAIL'
+    assert not app.tabs[2].get('plotly_chart')
+    report.update(data_fingerprint=archived['data_fingerprint'])
+    report['recommendation']['models'] = archived['recommendation']['models']
+    live.write_text(json.dumps(report))
+    app.run()
+    assert any('현재 배포의 A/B 측정 전' in item.value for item in app.tabs[2].caption)
+
+
+def test_reference_compares_data_search_and_active_recommender(tmp_path):
+    from dashboard.assets import reference_identity
+    from src.common.artifacts import file_hash, write_json
+    models, results = tmp_path / 'models', tmp_path / 'results'
+    write_json(tmp_path / 'split_manifest.json', {'generation_fingerprint': 'same'})
+    write_json(results / 'deployment.json', dict(data_fingerprint='same', data_dir=str(tmp_path),
+                                                model_dir=str(models), search_subdir='search'))
+    write_json(models / 'registry.json', {'active': 'v1.0'})
+    bundles = {}
+    for kind, folder in [('candidate', ''), ('ranking', 'ranking'), ('session', 'session')]:
+        bundles[kind] = {'hashes': {'weights': kind}}
+        write_json(models / 'v1.0' / folder / 'meta.json', bundles[kind])
+    search = {'embeddings': {'fingerprint': 'e', 'files': {'text.npy': 'vector-hash'}},
+              'index': {'fingerprint': 'i', 'files': {'text.faiss': 'index-hash'}}}
+    for key, directory in [('embeddings', 'embeddings'), ('index', 'indexes')]:
+        identity = search[key]['fingerprint']
+        write_json(models / 'search' / f'{directory}_current.json', {'fingerprint': identity})
+        write_json(models / 'search' / directory / identity / 'manifest.json', search[key])
+    report = dict(model_version='v1.0', data_fingerprint='same', search={'models': search},
+                  identity={'data_manifest_sha256': file_hash(tmp_path / 'split_manifest.json')},
+                  recommendation={'models': bundles})
+    assert '일치합니다' in reference_identity(report, results)
+    index_manifest = models / 'search/indexes/i/manifest.json'
+    write_json(index_manifest, {'fingerprint': 'i', 'files': {'text.faiss': 'rebuilt-index-hash'}})
+    assert '검색 파일 해시는 제출 기준과 다릅니다' in reference_identity(report, results)
+    write_json(index_manifest, search['index'])
+    from src.common.artifacts import fingerprint
+    recipe = {'candidate': {'max_grad_norm': 10.0}}
+    expected_index = {'config_fingerprint': fingerprint({'candidate': {}}), 'index_sha256': 'same-index'}
+    report['recommendation']['models']['index'] = expected_index
+    bundles['candidate']['hashes']['index_manifest.json'] = 'legacy-manifest'
+    write_json(models / 'registry.json', {'active': 'v1.0', 'versions': {'v1.0': {'config': {'recommend': recipe}}}})
+    index_path = models / 'v1.0/index_manifest.json'
+    active_index = dict(expected_index, config_fingerprint=fingerprint(recipe))
+    for digest, expected_text in [('different-index', '추천 모델 산출물은 제출 기준과 다릅니다'), ('same-index', '일치합니다')]:
+        write_json(index_path, dict(active_index, index_sha256=digest))
+        write_json(models / 'v1.0/meta.json', {'hashes': {**bundles['candidate']['hashes'], 'index_manifest.json': file_hash(index_path)}})
+        assert expected_text in reference_identity(report, results)
+    write_json(models / 'search/indexes_current.json', {'fingerprint': 'other'})
+    assert '검색 번들은 제출 기준과 다릅니다' in reference_identity(report, results)
+    write_json(models / 'registry.json', {'active': 'v2.0'})
+    assert '활성 모델 버전' in reference_identity(report, results)
+    report['data_fingerprint'] = 'other'
+    assert '다른 데이터' in reference_identity(report, results)
+
+def test_changed_reranking_policy_marks_old_measurements(tmp_path):
+    from dashboard.assets import different_recommendation_policy
+    from src.common.artifacts import write_json
+    sources = {'src/recommendation/reranking.py':'new'}
+    report = {'identity':{'source_hashes':dict(sources)}}
+    write_json(tmp_path/'deployment.json', {'recommendation_policy_sources':sources})
+    assert not different_recommendation_policy(report, tmp_path)
+    report['identity']['source_hashes']['src/recommendation/reranking.py'] = 'old'
+    assert different_recommendation_policy(report, tmp_path)
+
+
+def test_ab_display_requires_the_deployed_reranking_policy(tmp_path):
+    from dashboard.assets import ab_result
+    from src.common.artifacts import write_json
+
+    data = tmp_path / 'data'
+    models = tmp_path / 'models'
+    policy = {'src/recommendation/reranking.py': 'current'}
+    write_json(data / 'split_manifest.json', {'generation_fingerprint': 'same'})
+    write_json(tmp_path / 'deployment.json', dict(data_dir=str(data), model_dir=str(models),
+               data_fingerprint='same', recommendation_policy_sources=policy))
+    bundles = {k: {'hashes': {'weights': k}} for k in ('candidate', 'ranking', 'session')}
+    for kind, subdir in [('candidate', ''), ('ranking', 'ranking'), ('session', 'session')]:
+        write_json(models / 'v1.0' / subdir / 'meta.json', bundles[kind])
+    write_json(tmp_path / 'ab_test.json', dict(status='PASS', identity=dict(
+        data_fingerprint='same', bundle_metadata=bundles, source_hashes={next(iter(policy)): 'old'})))
+    assert ab_result(tmp_path) is None
+    report = dict(ab=dict(status='MEASURED', run_id='current-run'), data_fingerprint='same',
+                  identity=dict(source_hashes=policy), recommendation=dict(models=bundles))
+    write_json(tmp_path / 'evaluation_full_test.json', report)
+    assert ab_result(tmp_path)['run_id'] == 'current-run'
+    report['recommendation']['models']['ranking'] = {'hashes': {'weights': 'other'}}
+    write_json(tmp_path / 'evaluation_full_test.json', report)
+    assert ab_result(tmp_path) is None

@@ -1,0 +1,106 @@
+import type { Metadata } from "next"
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { ProductGrid } from "@/components/products/product-grid"
+
+import { PLACEHOLDER_IMAGE } from "@/lib/constants"
+import { productRepository, categoryRepository } from "@/lib/repositories"
+
+export const metadata: Metadata = {title: "MM Shop · 나를 위한 발견"}
+
+export default async function HomePage() {
+  const categories = await categoryRepository.list()
+  const featuredProducts = await productRepository.getFeatured(4)
+
+
+  return (
+    <div className="flex flex-col">
+      {/* Hero */}
+      <section className="relative flex min-h-[440px] py-16 items-center justify-center bg-neutral-50">
+        <div className="mx-auto max-w-3xl px-4 text-center">
+          <Badge variant="secondary" className="mb-4">
+            취향으로 이어지는 새로운 발견
+          </Badge>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            오늘의 취향을 만나보세요
+          </h1>
+          <p className="mt-6 text-lg text-muted-foreground">
+            마음에 드는 상품을 검색하고, 나를 위한 추천을 만나보세요.
+            이미지 한 장으로도 원하는 스타일을 찾을 수 있습니다.
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <Button size="lg" asChild>
+              <Link href="/shop">
+                상품 둘러보기
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/recommend">
+                나를 위한 추천
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold tracking-tight">
+            카테고리로 둘러보기
+          </h2>
+          <Link
+            href="/shop"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground"
+          >
+            전체 보기
+          </Link>
+        </div>
+        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          {categories.map((category) => (
+            <Link key={category.id} href={`/shop?category=${encodeURIComponent(category.slug)}`} className="group">
+              <div className="relative aspect-square overflow-hidden rounded-lg bg-neutral-100">
+                <Image
+                  src={category.image?.url ?? PLACEHOLDER_IMAGE}
+                  alt={category.image?.alt ?? category.name}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 16vw"
+                />
+              </div>
+              <div className="mt-3 text-center">
+                <h3 className="text-sm font-medium group-hover:underline">
+                  {category.name}
+                </h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 새롭게 만나는 상품 */}
+      <section className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold tracking-tight">
+            새롭게 만나는 상품
+          </h2>
+          <Link
+            href="/shop"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground"
+          >
+            전체 보기
+          </Link>
+        </div>
+        <div className="mt-8">
+          <ProductGrid products={featuredProducts} />
+        </div>
+      </section>
+
+      <section className="bg-neutral-900 text-white"><div className="mx-auto max-w-[1440px] px-6 py-16"><h2 className="text-2xl font-bold">말로도, 사진으로도. 더 가까운 발견.</h2><p className="my-4 text-neutral-400">텍스트와 이미지를 함께 사용해 원하는 상품을 찾아보세요.</p><Link href="/search" className="inline-flex rounded-md bg-white px-5 py-3 text-sm font-medium text-black">멀티모달 검색 시작 →</Link></div></section>
+    </div>
+  )
+}

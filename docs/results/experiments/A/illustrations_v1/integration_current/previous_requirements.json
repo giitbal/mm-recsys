@@ -1,0 +1,283 @@
+{
+  "page_basis": "Original 14-page PDF read locally; sha256 b333d4fdab2127c380b7750f7d8e491141ec15db97c15389f8c9a0ae1b983c7d; pp.10-12 are reference output examples",
+  "entries": [
+    {
+      "requirement": "데이터 규모·6페르소나·이미지/텍스트",
+      "pages": "pp.3,6",
+      "files": [
+        "src/simulator/generate.py",
+        "config.yaml"
+      ],
+      "tests": [
+        "tests/test_simulator.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/data_audit.json",
+      "sha256": "6136fb7db7cbe0e52f517fefd3ada75620e98b84b8047ebec6a4cc8a882ff8b7",
+      "status": "PASS",
+      "scope": "새 도안 full 상품 50,000개, 사용자 10,000명, 이벤트 1,000,000건과 6페르소나 무결성 검사"
+    },
+    {
+      "requirement": "seed·시간분할·관측 cutoff·학습 분리",
+      "pages": "pp.3,6,9",
+      "files": [
+        "src/common/seed.py",
+        "src/recommendation/datasets.py",
+        "docs/contracts.md"
+      ],
+      "tests": [
+        "tests/test_simulator.py",
+        "tests/test_candidate.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/reproduction_full.json",
+      "sha256": "1bc7ab1a79b79d93be4fa71a85616629301394839d4e079ae1d86dbf7e702850",
+      "status": "PASS",
+      "scope": "빈 폴더에서 재생성한 이미지·메타데이터·시간 분할 파일과 원본 manifest의 해시 일치"
+    },
+    {
+      "requirement": "CLIP 3모드·FAISS ANN·검색 품질",
+      "pages": "pp.3–4",
+      "files": [
+        "src/search/encoder.py",
+        "src/search/index.py",
+        "src/search/api.py"
+      ],
+      "tests": [
+        "tests/test_encoder.py",
+        "tests/test_index.py",
+        "tests/test_search_api.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+      "sha256": "3336264c075de96db621b04cad25d68aaff8882570ffb0704d8d87529b3f41dc",
+      "status": "PASS",
+      "scope": "텍스트·이미지·복합 검색. 같은 도안 생성기의 독립 쿼리로 valid 동결 후 test 측정"
+    },
+    {
+      "requirement": "Two Tower·full catalog top300",
+      "pages": "p.4",
+      "files": [
+        "src/recommendation/two_tower.py",
+        "src/recommendation/candidate.py"
+      ],
+      "tests": [
+        "tests/test_two_tower.py",
+        "tests/test_candidate.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+      "sha256": "3336264c075de96db621b04cad25d68aaff8882570ffb0704d8d87529b3f41dc",
+      "status": "PASS",
+      "scope": "전체 후보 카탈로그와 전체 사용자 cohort에서 Recall@300 측정"
+    },
+    {
+      "requirement": "DeepFM·CTR/CVR",
+      "pages": "p.4",
+      "files": [
+        "src/recommendation/deepfm.py",
+        "src/recommendation/ranking_labels.py"
+      ],
+      "tests": [
+        "tests/test_deepfm.py",
+        "tests/test_ranking.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+      "sha256": "3336264c075de96db621b04cad25d68aaff8882570ffb0704d8d87529b3f41dc",
+      "status": "PASS",
+      "scope": "CTR AUC와 CVR에 대한 측정값·표본 수는 원본 분류 결과 참조"
+    },
+    {
+      "requirement": "다양성·cold-start·신규·MAB·세션",
+      "pages": "pp.4–5",
+      "files": [
+        "src/recommendation/reranking.py",
+        "src/recommendation/mab.py",
+        "src/recommendation/session.py"
+      ],
+      "tests": [
+        "tests/test_reranking.py",
+        "tests/test_session.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+      "sha256": "3336264c075de96db621b04cad25d68aaff8882570ffb0704d8d87529b3f41dc",
+      "status": "PASS",
+      "scope": "고정 사용자 cohort의 full pipeline 지표와 제약 위반 검사. 실제 Redis 귀속은 별도 항목 참조"
+    },
+    {
+      "requirement": "최종 추천 품질·Coverage",
+      "pages": "p.5",
+      "files": [
+        "src/evaluation/recommendation.py"
+      ],
+      "tests": [
+        "tests/test_evaluation_dashboard.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+      "sha256": "3336264c075de96db621b04cad25d68aaff8882570ffb0704d8d87529b3f41dc",
+      "status": "PASS",
+      "scope": "최종 추천 HitRate@50, nDCG@50 및 Coverage 측정"
+    },
+    {
+      "requirement": "API 스키마·세션 이벤트 응답",
+      "pages": "pp.4–5",
+      "files": [
+        "src/common/schemas.py",
+        "src/serving/main.py"
+      ],
+      "tests": [
+        "tests/test_search_api.py",
+        "tests/test_session.py",
+        "tests/test_serving_contract.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/live/smoke_full.json",
+      "sha256": "576322f73a7d87192a4a8d0d4712d4efdffab86d34f9615c97443fb892b89992",
+      "status": "PASS",
+      "scope": "실제 기본 API의 검색·추천·세션, 대시보드·쇼핑몰 HTTP 검증"
+    },
+    {
+      "requirement": "Redis 및 API 지연",
+      "pages": "p.5; pp.9–10",
+      "files": [
+        "src/serving/feature_store.py",
+        "scripts/smoke_test.py"
+      ],
+      "tests": [
+        "tests/test_integration_redis.py",
+        "tests/test_docker.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/smoke_full.json",
+      "sha256": "548abfe86a7622a6e6e541bbe20cda725f81b4bc684bd3d3940156e1db0db16c",
+      "status": "PASS",
+      "scope": "단일 배포에서 모드별 10회 예열 후 100회 직렬 HTTP 요청 및 Redis·후보 지연 측정"
+    },
+    {
+      "requirement": "Compose 네 서비스 재현",
+      "pages": "p.5",
+      "files": [
+        "docker-compose.yml",
+        "scripts/prepare_all.py"
+      ],
+      "tests": [
+        "tests/test_docker.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/final_integration/fresh_reproduction_full.json",
+      "sha256": "a8b4f49f8804998ecf9f773318890f75ab0832ed684b01b52ffde420c1ef2216",
+      "status": "PASS",
+      "scope": "빈 데이터·모델·결과 디렉터리에서 full 생성과 세 모델 학습, 네 기본 서비스 기동, 이미지 50,000장·추천 번들 대조 및 독립 HNSW 검색 test 통과"
+    },
+    {
+      "requirement": "A/B 두 전략·통계·CI",
+      "pages": "p.5",
+      "files": [
+        "src/evaluation/ab_test.py",
+        "src/evaluation/ab_statistics.py",
+        "docs/ab_test_report.md"
+      ],
+      "tests": [
+        "tests/test_ab.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ab_acceptance_full.json",
+      "sha256": "871ba216159da81d8f9020db7860ad4a23a68440800ee4c65b7774d73f34462a",
+      "status": "PASS",
+      "scope": "5,000명/군·30일 합성 A/B와 통계 검산 완료. 개인화의 인기순 대비 CTR -17.37%, CVR -27.72%"
+    },
+    {
+      "requirement": "Streamlit 시각화",
+      "pages": "p.5",
+      "files": [
+        "dashboard/app.py",
+        "dashboard/data.py"
+      ],
+      "tests": [
+        "tests/test_dashboard.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/browser_checks.json",
+      "sha256": "c82ed995a13700f8724a57da090d2606e755f3a46d1ecb92b58699e8e042c0ef",
+      "status": "PASS",
+      "scope": "Chromium에서 대시보드 여섯 탭과 검색·추천·A/B 차트, 실제 세션 및 쇼핑몰 동작 검증"
+    },
+    {
+      "requirement": "CT 모니터·재학습·버전·롤백",
+      "pages": "p.5",
+      "files": [
+        "src/ct/monitor.py",
+        "src/ct/training.py",
+        "src/ct/model_registry.py"
+      ],
+      "tests": [
+        "tests/test_ct.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_acceptance_full.json",
+      "sha256": "03e49c967fb8bbc294973c63f030f5c17a6d8616ada41a2d6a899a70ce18f969",
+      "status": "PASS",
+      "scope": "운영 로그 10,054건으로 세 모델 재학습·동일 valid 비교. RETAINED, API v1.0 유지. 동일 후보의 full 통제 승격·HTTP 교체·롤백 통과"
+    },
+    {
+      "requirement": "README·리포트·기여·제출 검사",
+      "pages": "pp.1,5–6,9,13–14",
+      "files": [
+        "README.md",
+        "docs/submission/contributions.json",
+        "scripts/check_submission.py"
+      ],
+      "tests": [
+        "tests/test_submission.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/final_integration/preflight/evidence.json",
+      "sha256": "c6bf534dc13bfe2be02c0a7a37a2a9b615c3b084b56b840b2d166002a931ca94",
+      "status": "PASS",
+      "scope": "필수 파일·공개 저장소와 기여 PR, 실제 HTTP·Redis 및 전체 테스트·타입·의존성 검사. 최종 집계는 상단 판정 참조"
+    },
+    {
+      "requirement": "외부 데이터 요구 해석",
+      "pages": "p.7",
+      "files": [
+        "docs/data_sources.md"
+      ],
+      "tests": [
+        "tests/test_submission.py"
+      ],
+      "source": "docs/submission/dataset_scope.json",
+      "sha256": "116b7fd0fea633cb6943437fc117851bc727ce447d7136de9f9d56dc045ef434",
+      "status": "RESOLVED_OPTIONAL",
+      "scope": "실제 외부 자료 활용에 대한 기존 판정. 현재 합성 카탈로그의 품질은 새 full test 결과를 사용한다"
+    },
+    {
+      "requirement": "라이브 Redis MAB 귀속",
+      "pages": "pp.4–5",
+      "files": [
+        "src/serving/feature_store.py",
+        "scripts/verify_integration_mab.py"
+      ],
+      "tests": [
+        "tests/test_integration_mab.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/mab.json",
+      "sha256": "5837ad523cc2490866be14efa1186521126f141e6ed315153f7e9ef6431607cd",
+      "status": "PASS",
+      "scope": "새 기본 API와 Redis에서 실제 노출·보상·중복 방지·세션 변화를 확인"
+    },
+    {
+      "requirement": "demo 명령만으로 PDF API·A/B·CT 전체 시연",
+      "pages": "pp.10–12",
+      "files": [
+        "scripts/demo.py",
+        "scripts/demo_host.py",
+        "docker/simulator.py"
+      ],
+      "tests": [
+        "tests/test_terminal_demo.py",
+        "tests/test_demo_host.py",
+        "tests/test_ct_api_traffic.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/demo_examples.json",
+      "sha256": "57466557e78c06435c769a9c321ddf5deb279a3df6a832c28df1e27530e8beac",
+      "status": "PASS",
+      "scope": "새 기본 API에서 한 명령으로 검색·클릭·추천·20명/군 2일 합성 A/B·통제 CT를 완료"
+    }
+  ],
+  "dataset_scope": {
+    "image_recipe": "illustrations-v1",
+    "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+    "current_quality": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+    "current_acceptance": "docs/results/final_acceptance.json",
+    "previous_matrix": "docs/results/experiments/A/illustrations_v1/default_regression/legacy_requirements.json"
+  }
+}

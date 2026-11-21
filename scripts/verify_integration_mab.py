@@ -76,8 +76,9 @@ def verify(url: str, output: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--api-url', default='http://127.0.0.1:8000')
-    parser.add_argument('--output', type=Path, default=Path('docs/results/integration/mab_full.json'))
+    parser.add_argument('--output', type=Path, default=None)
     args = parser.parse_args()
+    args.output = args.output or Path(load_config()['paths']['results_dir']) / 'integration/mab_full.json'
     result = verify(args.api_url.rstrip('/'), args.output)
     print(f"HTTP/Redis MAB {result['status']}: {args.output}")
     return 0

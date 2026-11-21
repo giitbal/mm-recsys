@@ -1,0 +1,33 @@
+{
+  "status": "RETAINED",
+  "version": "v1.1",
+  "active": "v1.0",
+  "new_events": 10054,
+  "through_seq": 10057,
+  "trigger_reason": "new_logs",
+  "comparison": {
+    "split": "valid",
+    "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185",
+    "baseline": {
+      "ctr_auc": 0.9661336950476113,
+      "ctr_logloss": 0.14420887853373487,
+      "hit_rate_at_50": 0.6927396710790212,
+      "truth_users": 7479,
+      "ctr_samples": 227686,
+      "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185"
+    },
+    "candidate": {
+      "ctr_auc": 0.9658397898822869,
+      "ctr_logloss": 0.14300948136969108,
+      "hit_rate_at_50": 0.6932745019387618,
+      "truth_users": 7479,
+      "ctr_samples": 227686,
+      "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185"
+    },
+    "training_reports": {
+      "candidate": "fc92efc98fd89db824a5b6a5b8fc6ae28505d72cc86b66b6d7a2e1305c6cde48",
+      "ranking": "0ef3adeef25488ce8fd9733882297aacf1717aea17fcafd893c8ed5aee8d25bd",
+      "session": "3881a546d56f1285471fa5d8ecd01013ffc2142ec64777189d6e6fe52363d159"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "source_head": "03af3758f24fcdb8cfc20aad2138bb73b2a7eb17",
+  "submission_sha256": "d10a6370bb04e7d6bd3200e1b3dd75f25a744fb03a03c2305399a7a33d633303",
+  "metrics": 12,
+  "integrated_checks": 6,
+  "final_sha256": "46fde468cbaec17f8742a0ae46beddea6b1c96f7409d57d4f16d4b43198a317e",
+  "trained_models_absent": true,
+  "mutable_runtime_absent": true,
+  "scope": "Separate checkout with the submission working files and immutable results. Verified without generated models or Docker runtime output."
+}

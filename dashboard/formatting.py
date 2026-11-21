@@ -37,4 +37,7 @@ def display_value(value: Any) -> Any:
 
 
 def display_frame(frame: pd.DataFrame) -> Styler:
-    return frame.style.format(display_value, na_rep='—')
+    styled = frame.style.format(display_value, na_rep='—')
+    if '기준' in frame:
+        styled.format('{:g}', subset=['기준'], na_rep='—')
+    return styled

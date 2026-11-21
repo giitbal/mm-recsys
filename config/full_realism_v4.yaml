@@ -8,10 +8,10 @@ scales:
     n_users: 10000
     n_events: 1000000
 paths:
-  data_dir: data/full-realism-v4
-  model_dir: models/full-realism-v4
-  results_dir: docs/results/experiments/A/realism_full_20261115/runtime/full
-  split_dir: data/full-realism-v4/split
+  data_dir: data/full-realism-v4-illustrations-v1
+  model_dir: models/full-realism-v4-illustrations-v1
+  results_dir: docs/results/experiments/A/realism_v4_illustrations_v1/runtime/full
+  split_dir: data/full-realism-v4-illustrations-v1/split
 simulator:
   n_products: 50000
   n_users: 10000
@@ -97,7 +97,7 @@ simulator:
   cold_user_ratio: 0.03
   cold_max_events: 3
   impressions_per_view: 4
-  image_variants: 8
+  image_variants: 24
   transitions:
     search:
       view: 1.0
@@ -489,6 +489,7 @@ simulator:
     timing: true
     transition: false
     version: realism-v4
+  image_recipe: illustrations-v1
 search:
   clip_model: openai/clip-vit-base-patch32
   batch_size: 32

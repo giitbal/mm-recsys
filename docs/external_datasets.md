@@ -1,5 +1,8 @@
 # 실제 데이터셋 활용과 재현
 
+현재 설정은 `illustrations-v1`으로 합성 카탈로그를 생성한다. 외부 데이터 실험의 새 작업·결과 폴더는 각 YAML의 `work_dir`·`results_dir`을 따른다. 아래 과거 측정의 수치와 경로는 측정 당시 도안 기준이다. H&M, Retailrocket, DeepFashion 원자료의 입력 위치는 `source_dir`이다.
+
+
 PDF 7쪽의 용도에 따라 H&M은 Multi-Stage 추천 검증과 시뮬레이터 파라미터 교정,
 Retailrocket은 Markov Chain 전이 확률 추정, DeepFashion은 CLIP 임베딩 품질 검증에 사용한다.
 사용자가 2026-11-14 로컬에 추가한 원자료를 사용하며 외부 클라우드 추론 API는 호출하지 않는다.
@@ -22,6 +25,8 @@ PYTHONHASHSEED=42 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 \
 각 단계는 `--task inventory`, `prepare-hm`, `retailrocket`, `deepfashion`, `hm`, `calibrate`, `verify`로
 실행할 수 있다. `hm`은 `prepare-hm` 이후, `calibrate`는 H&M 준비와 Retailrocket 분석 이후 실행한다.
 표준 출력은 JSON 요약이며 진행 로그는 stderr다. 원자료·설정이 바뀌면 새 work_dir/results_dir를 사용한다.
+realism 교정에서 H&M·Retailrocket 보고서는 v1 설정의 `results_dir`를 따른다. 보고서가 다른 곳에 있으면 새 교정 실험의 `source_results`에 그 디렉터리를 지정한다.
+DeepFashion 확장 실험은 공식 속성 주석 두 개를 포함하는 ZIP을 찾는다. 사본이 여럿이면 확장 설정의 `deepfashion.attributes_archive`에 사용할 파일명을 지정한다.
 첫 실행은 압축 해제, 전체 거래 CSV 두 번 순회, CLIP CPU 인코딩과 모델 학습 때문에 시간이 걸린다.
 중단된 CSV 추출은 다시 수행하며 완료된 추출은 SHA256을 확인해 재사용한다.
 

@@ -15,7 +15,8 @@ from src.evaluation.reporting import VERSION, environment, identity, metric, sou
 
 MEASUREMENT_SOURCES = ['src/evaluation/run_all.py', 'src/evaluation/reporting.py',
     'src/evaluation/search.py', 'src/evaluation/recommendation.py', 'src/evaluation/api_benchmark.py',
-    'src/evaluation/metrics.py', 'src/evaluation/bench_latency.py']
+    'src/evaluation/metrics.py', 'src/evaluation/bench_latency.py',
+    'src/simulator/generate.py', 'src/simulator/catalog.py', 'src/simulator/illustrations.py']
 
 
 def input_identity(cfg: dict) -> dict:

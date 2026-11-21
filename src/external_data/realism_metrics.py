@@ -1,13 +1,15 @@
 """Comparable observable statistics; no synthetic persona labels or hidden tastes."""
 from __future__ import annotations
 
+from collections.abc import Iterable
+
 import numpy as np
 import pandas as pd
 
 QUANTILES = [.1, .25, .5, .75, .9]
 
 
-def quantiles(values) -> list[float] | None:
+def quantiles(values: np.ndarray | pd.Series) -> list[float] | None:
     values = np.asarray(values, dtype=float)
     return np.quantile(values, QUANTILES).tolist() if len(values) else None
 
@@ -35,7 +37,7 @@ def price_stats(frame: pd.DataFrame) -> dict:
                 relative_quantiles={str(k): quantiles(v.price / mean) for k, v in groups})
 
 
-def purchase_stats(frame: pd.DataFrame, start: pd.Timestamp, end: pd.Timestamp, users=None) -> dict:
+def purchase_stats(frame: pd.DataFrame, start: pd.Timestamp, end: pd.Timestamp, users: Iterable[str] | None = None) -> dict:
     f = frame[(frame.timestamp >= start) & (frame.timestamp < end)].copy()
     f['day'] = f.timestamp.dt.floor('D')
     # H&M has date resolution and quantity-like duplicate rows: use the same unit on both sides.

@@ -1,0 +1,44 @@
+{
+  "dashboard": {
+    "status": "PASS",
+    "started_at": "2026-11-21T04:39:24.146Z",
+    "completed_at": "2026-11-21T04:39:41.985Z",
+    "checks": {
+      "api_docs_link": true,
+      "tab_검색": true,
+      "charts_검색": 1,
+      "tab_추천": true,
+      "charts_추천": 1,
+      "tab_A/B 실험": true,
+      "charts_A/B 실험": 2,
+      "tab_시스템": true,
+      "tab_EDA·구매 이력": true,
+      "tab_상품·CLIP": true,
+      "search_images": true,
+      "actual_click_comparison": true
+    },
+    "errors": []
+  },
+  "shop": {
+    "status": "PASS",
+    "started_at": "2026-11-21T04:39:42.494Z",
+    "completed_at": "2026-11-21T04:39:48.660Z",
+    "checks": {
+      "catalog_images": true,
+      "catalog_sort": true,
+      "text_search": true,
+      "hybrid_search": true,
+      "image_search": true,
+      "attributed_shopping": true,
+      "operations": true,
+      "proxy_boundary": true,
+      "mobile": true
+    },
+    "errors": [],
+    "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+    "ab_status": "MEASURED",
+    "users_per_arm": 200,
+    "days": 3,
+    "ct_active": "v1.0"
+  }
+}

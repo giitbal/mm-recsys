@@ -113,6 +113,32 @@ def test_ct_default_output_does_not_truncate_another_monitor(tmp_path, monkeypat
     assert sorted(json.loads(p.read_text())['sequence'] for p in paths) == [1, 2]
 
 
+def test_ct_drill_uses_configured_model_directory_and_respects_override(tmp_path, monkeypatch):
+    import argparse
+    import io
+    from pathlib import Path
+    from types import SimpleNamespace
+    from scripts import demo
+    from src.common.config import load_config
+    cfg = load_config()
+    cfg['paths'].update(model_dir=str(tmp_path / 'models'), results_dir=str(tmp_path / 'results'))
+    monkeypatch.setattr('docker.runtime.runtime_config', lambda: cfg)
+    workdirs = []
+
+    def process(command, **kwargs):
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--work-dir', type=Path)
+        options, _ = parser.parse_known_args(command[3:])
+        workdirs.append(options.work_dir)
+        return SimpleNamespace(stdout=io.BytesIO(), wait=lambda: 0, poll=lambda: 0)
+
+    monkeypatch.setattr(demo.subprocess, 'Popen', process)
+    assert demo.operational(['ct', '--drill']) == 0
+    assert demo.operational(['ct', '--drill', '--work-dir', str(tmp_path / 'custom')]) == 0
+    assert workdirs[0].parent == tmp_path / 'models/.ct/verification'
+    assert workdirs[1] == tmp_path / 'custom'
+
+
 def test_ct_watch_flushes_output_before_process_exit(tmp_path):
     import os
     import signal

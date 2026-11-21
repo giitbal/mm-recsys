@@ -1,0 +1,47 @@
+{
+  "category_l1": {
+    "users_with_3_or_more": 24,
+    "maximum": 10,
+    "first_counterexample": {
+      "user": "U006437",
+      "categories": [
+        "tops",
+        "tops",
+        "footwear",
+        "tops",
+        "tops",
+        "tops",
+        "tops",
+        "tops",
+        "bottoms",
+        "tops"
+      ],
+      "maximum": 5
+    }
+  },
+  "category_l2": {
+    "users_with_3_or_more": 18,
+    "maximum": 10,
+    "first_counterexample": {
+      "user": "U006437",
+      "categories": [
+        "shirts",
+        "shirts",
+        "outdoor",
+        "shirts",
+        "shirts",
+        "shirts",
+        "shirts",
+        "shirts",
+        "shorts",
+        "shirts"
+      ],
+      "maximum": 5
+    }
+  },
+  "category_l3": {
+    "users_with_3_or_more": 0,
+    "maximum": 2,
+    "first_counterexample": null
+  }
+}

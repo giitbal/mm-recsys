@@ -24,7 +24,7 @@ def configure_process_environment() -> dict[str, str]:
 
 def runtime_config(cfg: dict | None = None) -> dict:
     value = copy.deepcopy(cfg if cfg is not None else load_config())
-    base = os.getenv('RUNTIME_RESULTS_DIR', 'docs/results/docker/runtime-v44')
+    base = os.getenv('RUNTIME_RESULTS_DIR', 'docs/results/docker/runtime-illustrations-v1')
     value['paths']['results_dir'] = str(Path(base) / value['scale'])
     # Separate observed state when regenerating a catalog with the same product IDs.
     from src.common.artifacts import fingerprint
@@ -35,3 +35,7 @@ def runtime_config(cfg: dict | None = None) -> dict:
 
 def config_path(cfg: dict) -> Path:
     return Path(cfg['paths']['model_dir']) / '.docker' / 'config.yaml'
+
+
+def quality_dir(cfg: dict) -> Path:
+    return Path(os.getenv('QUALITY_RESULTS_DIR') or Path(cfg['paths']['results_dir']) / 'quality')

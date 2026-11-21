@@ -18,7 +18,7 @@ from src.common.schemas import RecommendResponse,RecommendationItem,PipelineLate
 from src.recommendation.candidate import FaissCandidate
 from src.recommendation.datasets import context_for,padded_history
 from src.recommendation.ranking_features import HistoryIndex
-from src.recommendation.reranking import Reranker,RankedItem,diversity_capacity
+from src.recommendation.reranking import Reranker,RankedItem
 from src.recommendation.session import sequence_for
 from src.recommendation.scoring import score_items, policy
 from src.common.schemas import FeatureReader
@@ -87,7 +87,6 @@ class Recommender:
             products=self.candidate.search(vector,k,user_context.purchased if self.cfg['recommend']['exclude_purchased'] else frozenset())[0]
         # Repair the serving pool within K; the separately measured ANN Top300 is unchanged.
         if self.cfg['recommend'].get('enable_reranking',True):
-            categories=self.reranker.categories
             cutoff=self.at-pd.Timedelta(days=self.cfg['recommend']['new_item_days'])
             new=next((p for p in products if cutoff<=self.reranker.created[p]<=self.at),None)
             if new is None:
@@ -99,23 +98,63 @@ class Recommender:
                         if len(products)<k: products.append(product)
                         else: products[-1]=product
                         break
-            counts=Counter(categories[p] for p in products)
-            limit=self.cfg['recommend']['max_consecutive_same_category']
-            target=min(top_n,len(products)); selected=set(products)
-            if diversity_capacity(counts,limit)<target:
-                for product in (self.catalog_by_recency if self.scoring['strategy']=='newest' else self.fallback_sorted):
-                    index=self.table.id_to_index[product]; category=categories[product]
-                    dominant=max(counts,key=lambda c:counts[c])
-                    if (product in selected or index not in allowed or index in excluded
-                            or counts[category]>=counts[dominant]-1):
+            target = min(top_n, len(products))
+            # Each run of limit+1 needs at least one separator in every category column.
+            separators = target // (self.cfg['recommend']['max_consecutive_same_category'] + 1)
+            max_count = len(products) - separators
+            paths = self.reranker.paths
+            counts = [Counter(paths[p][i] for p in products) for i in range(len(self.reranker.diversity_fields))]
+            catalog = self.catalog_by_recency if self.scoring['strategy'] == 'newest' else self.fallback_sorted
+            if separators and len(counts) > 1:
+                dominant = tuple(c.most_common(1)[0][0] for c in counts)
+
+                def separates(path: tuple) -> bool:
+                    return all(label != mode for label, mode in zip(path, dominant))
+
+                # A tops/knitwear item and a footwear/casual item each break one
+                # constraint but neither can follow two tops/casual items.
+                # Leave room for the new item and the fixed exploration slots.
+                anchors = min(2, self.cfg['recommend']['mab']['exploration_slots']) or int(new is not None)
+                shortage = separators + anchors - sum(separates(paths[p]) for p in products)
+                if shortage > 0:
+                    selected = set(products)
+                    replaceable = (i for i in reversed(range(len(products)))
+                                   if products[i] != new and paths[products[i]] == dominant)
+                    incoming = (p for p in catalog if p not in selected and separates(paths[p])
+                                and self.table.id_to_index[p] in allowed and self.table.id_to_index[p] not in excluded)
+                    for pos, product in islice(zip(replaceable, incoming), shortage):
+                        products[pos] = product
+                        selected.add(product)
+                        for c, old, label in zip(counts, dominant, paths[product]):
+                            c[old] -= 1
+                            c[label] += 1
+            if any(max(c.values(), default=0) > max_count for c in counts):
+                selected = set(products)
+                for product in catalog:
+                    index = self.table.id_to_index[product]
+                    if product in selected or index not in allowed or index in excluded:
                         continue
-                    position=next((i for i in range(len(products)-1,-1,-1)
-                        if categories[products[i]]==dominant and products[i]!=new),None)
-                    if position is None: continue
-                    selected.remove(products[position]); selected.add(product)
-                    products[position]=product
-                    counts[dominant]-=1; counts[category]+=1
-                    if diversity_capacity(counts,limit)>=target:
+                    incoming = paths[product]
+                    if not any(max(c.values()) > max_count and c[label] < max_count
+                               for c, label in zip(counts, incoming)):
+                        continue
+                    for pos in range(len(products)-1, -1, -1):
+                        previous = products[pos]
+                        if previous == new:
+                            continue
+                        changes = [(c, old, label) for c, old, label in zip(counts, paths[previous], incoming)
+                                   if old != label]
+                        if (any(c[label] >= max_count for c, _, label in changes)
+                                or not any(c[old] > max_count for c, old, _ in changes)):
+                            continue
+                        products[pos] = product
+                        selected.remove(previous)
+                        selected.add(product)
+                        for c, old, label in changes:
+                            c[old] -= 1
+                            c[label] += 1
+                        break
+                    if all(max(c.values()) <= max_count for c in counts):
                         break
         return products
 

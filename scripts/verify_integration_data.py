@@ -17,8 +17,8 @@ from src.simulator.generate import generate, GENERATOR_VERSION
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--repeat-dir', type=Path, default=Path('data/reproduction-full-v41'))
-    parser.add_argument('--output', type=Path, default=Path('docs/results/integration/data_reproduction_full.json'))
+    parser.add_argument('--repeat-dir', type=Path, default=Path('data/reproduction-full-illustrations-v1'))
+    parser.add_argument('--output', type=Path, default=Path('docs/results/illustrations-v1/full/data_reproduction_full.json'))
     args = parser.parse_args()
     cfg = load_config()
     assert cfg['scale'] == 'full'

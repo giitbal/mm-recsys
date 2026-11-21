@@ -1,0 +1,10 @@
+{
+  "initial_data_files": 0,
+  "initial_model_files": 0,
+  "initial_runtime_files": 0,
+  "paths": [
+    ".team/pdf-completion-20261121/data",
+    ".team/pdf-completion-20261121/models",
+    ".team/pdf-completion-20261121/runtime"
+  ]
+}

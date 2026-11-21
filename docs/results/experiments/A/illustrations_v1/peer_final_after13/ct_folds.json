@@ -1,0 +1,10 @@
+{
+  "trigger_events": 35669,
+  "in_snapshot": 35669,
+  "folds": {
+    "train": 0,
+    "valid": 0,
+    "test": 35669
+  },
+  "test_count_by_subtraction": true
+}

@@ -1,9 +1,7 @@
 # 실행과 재현
 
-현재 기본 생성기는 v4.4이며 `data/full-v44`, `models/full-v44`를 사용한다.
-v4.3 이전 산출물은 덮어쓰지 않는다. 검증 근거는
-`docs/results/experiments/A/final_validation_20261112/`에 저장한다.
-2026-10-20 v4.2의 [과거 실행 기록](../results/integration/20261020_full/report.md)은 별도로 보존한다.
+현재 기본 상품 도안은 illustrations-v1이며 `data/full-illustrations-v1`, `models/full-illustrations-v1`를 사용한다.
+2026-11-21 최신 동결 품질과 통합 제출 근거는 [integration_current](../results/experiments/A/illustrations_v1/integration_current/)에 있다. 동일 정책의 A/B 원자료는 [peer_final_after13](../results/experiments/A/illustrations_v1/peer_final_after13/)에 보존했다. [같은 날 앞선 검증](../results/experiments/A/pdf_completion_20261121/) · [11월 12일 측정](../results/experiments/A/final_validation_20261112/) · [10월 v4.2 측정](../results/integration/20261020_full/report.md)
 
 ## 시작
 
@@ -19,7 +17,7 @@ docker compose up --build
 API 단일 writer가 데이터 → EDA → CLIP 임베딩 → FAISS → Two Tower·DeepFM·GRU → Redis를 준비한다.
 첫 실행은 학습 때문에 시간이 걸린다. 기존 호환 산출물은 검사 후 재사용한다.
 다운로드한 CLIP 캐시와 Docker 의존성 레이어는 재사용할 수 있다.
-API 8000, 대시보드 8501, Redis 6379를 사용한다.
+API 8000, 대시보드 8501, Redis 6379를 사용한다. 모델이 준비되는 동안에도 8501에서 제출 검증의 검색·추천·A/B 차트를 볼 수 있다. 쇼핑몰은 별도 명령 `docker compose --profile storefront up -d --build --no-deps storefront`로 3000에 추가한다.
 
 다른 터미널에서 준비 상태를 확인한다.
 
@@ -52,14 +50,43 @@ CT 통제 시연은 약한 초기 모델에서 실제 세 모델 학습·승격�
 
 ```bash
 docker compose stop simulator
-docker compose exec api-server python scripts/smoke_test.py --benchmark --output docs/results/docker/runtime-v44/full/quality/smoke_full.json
+docker compose exec api-server python scripts/smoke_test.py --benchmark --output docs/results/docker/runtime-illustrations-v1/full/quality/smoke_full.json
 demo evaluate --split valid
 demo evaluate --split test
+docker compose start simulator
 ```
 
 valid 통과 후 config·소스·데이터·모델을 동결해야 test가 실행된다.
 전체 catalog Recall@300·전체 사용자 cohort·원래 품질/지연 기준을 그대로 적용한다.
 CPU 허용 오차로 기준을 완화하거나 test 정답을 튜닝하지 않는다.
+
+## 최종 통합 판정 재검산
+
+아래 명령은 저장소 루트의 프로젝트 Python 환경에서 실행한다. Linux/WSL에서 `.venv`가 없으면 [개발 환경 준비](../codex_quickstart.md)를 먼저 따른다. 검사기는 동결한 valid·test, 단건 지연 원본, 실행된 다섯 통합 항목, 제출 검사의 소스 해시를 다시 대조한다. `--require-ready`는 미충족 항목이 있으면 0이 아닌 코드로 종료한다.
+
+```bash
+r=docs/results/experiments/A/illustrations_v1/integration_current
+.venv/bin/python scripts/check_submission.py --output-dir "$r/submission" --verify-existing --require-ready
+```
+
+현재의 공개 저장소 접근 기록을 확인한 상태에서 Redis와 기본 API를 실행하면 전체 제출 검사를 다시 수행할 수 있다. 두 번째 명령은 실측한 동일 모델의 통합 결과를 대시보드에 포함한다.
+
+```bash
+.venv/bin/python scripts/check_submission.py --output-dir "$r/submission" --evidence-dir "$r/release_quality" --integration-checks "$r/integration_checks.json" --api-url http://127.0.0.1:8000 --require-ready
+.venv/bin/python scripts/publish_integration_dashboard.py --submission "$r/submission/checks.json" --output docs/submission/dashboard/evaluation_full_test.json
+docker compose up -d --no-deps --build dashboard
+```
+
+대시보드 왼쪽의 **결과 파일**에서 **기준 측정 · full test**를 고르면 방금 이미지에 포함한 제출 기록이 표시된다. 같은 목록의 `evaluation_full_test.json`은 해당 배포 경로에서 생성된 평가다.
+
+현재 기본 시뮬레이터는 같은 SQLite WAL 저널에서 수집과 CT 읽기를 병행한다. 이번 운영 재학습의 신규 이벤트 수, 실제 분할과 판정은 [운영 CT 기록](../results/experiments/A/illustrations_v1/integration_current/ct_full.json)에 있다.
+
+
+쇼핑몰 개발 의존성과 Playwright의 Chromium을 설치한 호스트에서는 화면에 그려진 두 군의 CTR·CVR, 차이, 95% 신뢰구간과 p값 표기를 제출 보고서와 대조할 수 있다.
+
+```bash
+PLAYWRIGHT_MODULE="$PWD/storefront/node_modules/playwright" EXPECTED_EVALUATION=docs/submission/dashboard/evaluation_full_test.json node scripts/verify_dashboard_browser.cjs
+```
 
 ## 실제 CT 수집과 실행
 
@@ -82,11 +109,25 @@ docker compose stop simulator
 valid 개선 기준을 통과한 후보만 승격한다. 미달이면 기존 모델과 이유를 표시한다.
 데이터 수집이 중단된 상태에서 시계만 기다려도 분할 종료 시점이 바뀌지는 않는다.
 
-Python 로컬 검사는 `.venv/bin/python`을 사용한다. 전체 회귀 검사는 실제 Redis와 프로젝트 테스트 플러그인을 연결한다.
+이전 정책의 수동 재학습 측정에서는 A/B를 실행하는 동안 배포 원장에 신규 이벤트가 10,000건 이상 쌓인 시점에 시뮬레이터를 일시 정지했다. A/B가 끝난 후 동일 API 이미지의 CT 워커(4 CPU, 메모리 6 GiB)에서 한 차례 재학습했다. 다음 명령은 기본 프로젝트 이름의 배포에서 같은 조건으로 판정을 실행한다. 완료 후 시뮬레이터를 다시 시작한다.
 
 ```bash
-PYTHONHASHSEED=42 RUN_REDIS_TESTS=1 REDIS_HOST=127.0.0.1 REDIS_PORT=6379 .venv/bin/python -m pytest -q -p src.serving.pytest_support tests
-.venv/bin/python -m mypy --explicit-package-bases src scripts dashboard docker
+docker compose -f docker-compose.yml -f docker/compose.ct.yml -f - --profile ct run --rm -T --no-deps --pull never ct demo ct --train --reload-url http://127.0.0.1:8000 --json <<'YAML'
+services:
+  ct:
+    image: mm-recsys-api-server:latest
+    mem_limit: 6g
+YAML
+docker compose start simulator
+```
+
+당시 판정에 사용한 이벤트 수, 시간순 분할과 운영 모델 버전은 [재학습 기록](../results/experiments/A/illustrations_v1/full_ab_ct/ct_full.json)에 있다.
+
+Python 로컬 검사는 `.venv/bin/python`을 사용한다. 전체 회귀 및 타입 검사를 개별 실행할 때는 공식 제출 검사와 같은 테스트 설정·Redis·검사 범위를 사용한다.
+
+```bash
+SCALE=dev CONFIG_PATH="$PWD/config.yaml" PYTHONHASHSEED=42 RUN_REDIS_TESTS=1 REDIS_HOST=127.0.0.1 REDIS_PORT=6379 .venv/bin/python -m pytest -q -p src.serving.pytest_support tests
+.venv/bin/python -m mypy --ignore-missing-imports src dashboard docker
 ```
 
 H&M·Retailrocket·DeepFashion의 추가 검증 범위는 [사용자 전달 강사 결정](dataset_scope.json)을 따른다.

@@ -1,0 +1,87 @@
+{
+  "split": "valid",
+  "status": "PASS",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "per_mode": {
+    "text": {
+      "gallery": "text",
+      "queries": 200,
+      "mrr": 0.965,
+      "ndcg_at_10": 0.965,
+      "mean_relevant_items": 81.62,
+      "ann_vs_exact": {
+        "k": 10,
+        "queries": 200,
+        "label_overlap_recall": 1.0,
+        "exact_score_tie_aware_agreement": 1.0,
+        "max_reported_score_error": 2.980232238769531e-07,
+        "interpretation": "ANN vs exact vector search; not relevance MRR/NDCG"
+      },
+      "bm25_relative_lift": {
+        "mrr": -0.03500000000000003,
+        "ndcg_at_10": -0.03500000000000003
+      }
+    },
+    "image": {
+      "gallery": "image",
+      "queries": 200,
+      "mrr": 0.9005555555555556,
+      "ndcg_at_10": 0.8835694991114338,
+      "mean_relevant_items": 1204.735,
+      "ann_vs_exact": {
+        "k": 10,
+        "queries": 200,
+        "label_overlap_recall": 0.9690000000000001,
+        "exact_score_tie_aware_agreement": 1.0,
+        "max_reported_score_error": 5.364418029785156e-07,
+        "interpretation": "ANN vs exact vector search; not relevance MRR/NDCG"
+      }
+    },
+    "hybrid": {
+      "gallery": "text",
+      "queries": 200,
+      "mrr": 0.955,
+      "ndcg_at_10": 0.955,
+      "mean_relevant_items": 88.05,
+      "ann_vs_exact": {
+        "k": 10,
+        "queries": 200,
+        "label_overlap_recall": 1.0,
+        "exact_score_tie_aware_agreement": 1.0,
+        "max_reported_score_error": 2.384185791015625e-07,
+        "interpretation": "ANN vs exact vector search; not relevance MRR/NDCG"
+      },
+      "bm25_relative_lift": {
+        "mrr": -0.04500000000000004,
+        "ndcg_at_10": -0.04500000000000004
+      }
+    }
+  },
+  "bm25": {
+    "text": {
+      "queries": 200,
+      "mrr": 1.0,
+      "ndcg_at_10": 1.0,
+      "mean_relevant_items": 81.62
+    },
+    "image": {
+      "status": "UNMEASURED",
+      "reason": "BM25 is not applicable to image-only queries"
+    },
+    "hybrid": {
+      "queries": 200,
+      "mrr": 1.0,
+      "ndcg_at_10": 1.0,
+      "mean_relevant_items": 88.05
+    }
+  },
+  "primary": {
+    "queries": 600,
+    "mrr": 0.9401851851851851,
+    "ndcg_at_10": 0.9345231663704779,
+    "mean_relevant_items": 458.135
+  },
+  "evaluation": "observable attributes; independent augmented queries; no exact duplicate quality queries; labels never passed to the searcher",
+  "query_fingerprint": "bec8120756df389ada3686be3a4f51813c7209a3b46f2674d37ddd8b4aab6d12",
+  "test_used_for_selection": false
+}

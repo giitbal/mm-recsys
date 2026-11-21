@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "charts": {
+    "검색": 1,
+    "추천": 1,
+    "A/B 실험": 2
+  },
+  "ab_run": "f869b758128d6bb2fae535561f1e2156d6bdf201586f107d6c2bd1f88ba1716c",
+  "empty_runtime": true,
+  "mounts": 0,
+  "isolated_api": true,
+  "errors": [],
+  "browser": "141.0.7390.37",
+  "image_id": "sha256:d78762f1d5e2bbd265a686ce9e33134d1f381272ceba6f2037402c6f49914f39",
+  "source": "docs/submission/dashboard/evaluation_full_test.json",
+  "sha256": "fc2d0b59eb103e0b8f01ae361ab5a453ae44b763475dc2e09deda1971fa2fa89"
+}

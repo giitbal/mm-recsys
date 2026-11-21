@@ -19,7 +19,7 @@ from src.common.config import load_config
 from src.search.locking import writer_lock
 
 
-def test_compose_defaults_to_full_and_simulator_waits_for_dashboard():
+def test_compose_defaults_to_dashboard_and_storefront_is_optional():
     import yaml
     from dotenv import dotenv_values
     cfg = yaml.safe_load(Path('docker-compose.yml').read_text())
@@ -30,12 +30,15 @@ def test_compose_defaults_to_full_and_simulator_waits_for_dashboard():
         assert service.get('pull_policy') != 'build'  # Rebuild explicitly after a source change.
     dashboard = cfg['services']['dashboard']
     assert dashboard['healthcheck']['start_period'] == '${READY_TIMEOUT_SECONDS:-21600}s'
+    assert 'profiles' not in dashboard
+    assert cfg['services']['storefront']['profiles'] == ['storefront']
     assert cfg['services']['simulator']['depends_on']['dashboard']['condition'] == 'service_healthy'
+    assert cfg['services']['storefront']['depends_on']['api-server']['condition'] == 'service_healthy'
     assert cfg['services']['simulator']['build'] == cfg['services']['api-server']['build']
     assert cfg['services']['simulator']['command'] == ['python', '-m', 'docker.simulator']
 
 
-def test_dashboard_connects_to_api_before_launch_and_announces_after_http(monkeypatch, capsys):
+def test_dashboard_serves_charts_during_model_preparation_and_announces_after_http(monkeypatch, capsys):
     from docker import dashboard_entrypoint as entry
     events = []
     process = SimpleNamespace(returncode=None, stdout=None, poll=lambda: process.returncode)
@@ -43,10 +46,8 @@ def test_dashboard_connects_to_api_before_launch_and_announces_after_http(monkey
         process.returncode = 0
         return 0
     process.wait = finished
-    def connected(*args):
-        events.append('api_ready')
     def launched(argv, **kwargs):
-        assert events == ['api_ready']
+        assert not events
         events.append('launch')
         return process
     class Health:
@@ -55,19 +56,17 @@ def test_dashboard_connects_to_api_before_launch_and_announces_after_http(monkey
             return SimpleNamespace(status=200)
         def __exit__(self, *args):
             pass
-    monkeypatch.setattr(entry, 'wait_ready', connected)
     monkeypatch.setattr(entry.subprocess, 'Popen', launched)
     monkeypatch.setattr(entry.urllib.request, 'build_opener', lambda *args: SimpleNamespace(open=lambda *a, **kw: Health()))
     monkeypatch.setenv('PUBLIC_DASHBOARD_URL', 'http://localhost:18501')
     assert entry.main() == 0
-    assert events == ['api_ready', 'launch', 'http_ready']
+    assert events == ['launch', 'http_ready']
     assert 'http://localhost:18501 에서 대시보드 시작' in capsys.readouterr().err
 
 
 def test_dashboard_failure_never_announces_success(monkeypatch, capsys):
     from docker import dashboard_entrypoint as entry
     process = SimpleNamespace(returncode=1, stdout=None, poll=lambda: 1)
-    monkeypatch.setattr(entry, 'wait_ready', lambda *args: None)
     monkeypatch.setattr(entry.subprocess, 'Popen', lambda *args, **kwargs: process)
     with pytest.raises(RuntimeError, match='준비 전에 종료'):
         entry.main()
@@ -139,8 +138,8 @@ def test_preparation_health_is_live_but_not_ready():
 def test_runtime_does_not_mutate_role_configuration():
     original = load_config()
     runtime = runtime_config(original)
-    assert original['paths']['results_dir'] == 'docs/results'
-    assert runtime['paths']['results_dir'] == 'docs/results/docker/runtime-v44/dev'
+    assert original['paths']['results_dir'] == 'docs/results/illustrations-v1/dev'
+    assert runtime['paths']['results_dir'] == 'docs/results/docker/runtime-illustrations-v1/dev'
     assert runtime['recommend'] == original['recommend'] and runtime['targets'] == original['targets']
 
 
@@ -210,6 +209,7 @@ def test_process_budget_applies_after_both_factories(tmp_path):
 def test_prepare_failure_stops_dependents_and_records_real_exit(tmp_path, monkeypatch, capsys):
     cfg = runtime_config()
     cfg['paths'].update(model_dir=str(tmp_path / 'models'), results_dir=str(tmp_path / 'results'))
+    cfg['paths'].setdefault('by_scale', {})[cfg['scale']] = {'results_dir': str(tmp_path / 'native')}
     called = []
     def child(command, **kwargs):
         called.append(command[-1])
@@ -218,6 +218,8 @@ def test_prepare_failure_stops_dependents_and_records_real_exit(tmp_path, monkey
     monkeypatch.setattr(prepare_all.subprocess, 'run', child)
     with pytest.raises(RuntimeError, match='embeddings: exit 9'):
         prepare_all.prepare(cfg)
+    prepared = load_config(str(prepare_all.config_path(cfg)))
+    assert prepared['paths']['results_dir'] == cfg['paths']['results_dir']
     assert called == ['data', 'audit', 'embeddings']
     result = json.loads((tmp_path / 'results/preparation.json').read_text())
     assert result['status'] == 'FAIL' and result['stages'][-1]['exit_code'] == 9
@@ -357,6 +359,14 @@ def test_evidence_recomputes_latency_instead_of_trusting_pass(measurement_fixtur
     verify(cfg, smoke, prep, manifest)
     smoke['benchmark']['modes']['hybrid']['http_samples_ms'] = [999.] * 100
     with pytest.raises(ValueError, match='latency mismatch'):
+        verify(cfg, smoke, prep, manifest)
+
+
+def test_evidence_requires_dashboard_even_when_storefront_passes(measurement_fixture):
+    from docker.verify_evidence import verify
+    cfg, smoke, prep, manifest = measurement_fixture
+    smoke['checks'].update(dashboard_http='UNMEASURED', storefront_http='PASS')
+    with pytest.raises(ValueError, match='dashboard HTTP'):
         verify(cfg, smoke, prep, manifest)
 
 

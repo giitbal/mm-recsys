@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "manifest_sha256": "6305f4a33a7e0c41903659613cc2f1cd538b95bc9cbae277ef60c1f03e9d884b",
+  "config_fingerprint": "7aef1bae65d27f7d8b815f1d74e584bc6cab1695c2af16eed0078f60159d1474",
+  "stages": [
+    {
+      "stage": "data",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "data"
+      ],
+      "exit_code": 0,
+      "seconds": 4.930591155000002,
+      "log": "docs/results/docker/runtime-illustrations-v1/full/logs/prepare-data-1795234519722658721.log"
+    },
+    {
+      "stage": "audit",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "audit"
+      ],
+      "exit_code": 0,
+      "seconds": 11.833221688000776,
+      "log": "docs/results/docker/runtime-illustrations-v1/full/logs/prepare-audit-1795234524653298278.log"
+    },
+    {
+      "stage": "embeddings",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "embeddings"
+      ],
+      "exit_code": 0,
+      "seconds": 9.892345472999295,
+      "log": "docs/results/docker/runtime-illustrations-v1/full/logs/prepare-embeddings-1795234536486570961.log"
+    },
+    {
+      "stage": "indexes",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "indexes"
+      ],
+      "exit_code": 0,
+      "seconds": 1.869426155999463,
+      "log": "docs/results/docker/runtime-illustrations-v1/full/logs/prepare-indexes-1795234546378982641.log"
+    },
+    {
+      "stage": "recommendation",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "recommendation"
+      ],
+      "exit_code": 0,
+      "seconds": 32.44918982500167,
+      "log": "docs/results/docker/runtime-illustrations-v1/full/logs/prepare-recommendation-1795234548248500801.log"
+    },
+    {
+      "stage": "warmup",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "warmup"
+      ],
+      "exit_code": 0,
+      "seconds": 31.197308254000745,
+      "log": "docs/results/docker/runtime-illustrations-v1/full/logs/prepare-warmup-1795234580697803320.log"
+    }
+  ],
+  "artifact_state_before": {
+    "data_manifest": true,
+    "search_indexes": true,
+    "recommendation": true
+  },
+  "elapsed_seconds": 92.1817457019988,
+  "scope": "artifact readiness; no full-test quality claim"
+}

@@ -1,0 +1,40 @@
+{
+  "wait_started": "2026-11-21T07:38:55.710733+00:00",
+  "initial_active": "v1.0",
+  "training_lock_acquired": "2026-11-21T07:43:15.232335+00:00",
+  "health": {
+    "status": "ok",
+    "search_ready": true,
+    "recommend_ready": true,
+    "scale": "full",
+    "model_version": "v1.0"
+  },
+  "ready_at": "2026-11-21T07:46:02.335123+00:00",
+  "services": [
+    {
+      "service": "api-server",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "dashboard",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "redis",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "simulator",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "storefront",
+      "state": "running",
+      "health": "healthy"
+    }
+  ]
+}

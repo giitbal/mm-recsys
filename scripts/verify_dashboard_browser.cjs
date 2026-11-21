@@ -3,7 +3,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 (async () => {
-  const out = process.env.BROWSER_RESULTS || 'docs/results/integration/20261107_requirements';
+  const results = process.env.RESULTS_DIR || path.join(process.env.RUNTIME_RESULTS_DIR || 'docs/results/docker/runtime-illustrations-v1', process.env.SCALE || 'full');
+  const out = process.env.BROWSER_RESULTS || path.join(results, 'browser', 'dashboard');
   fs.mkdirSync(out, {recursive: true});
   const browser = await chromium.launch({headless: true});
   const page = await browser.newPage({viewport: {width: 1440, height: 1100}});
@@ -34,6 +35,38 @@ const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       await page.getByRole('tab', {name, exact: true}).click(); await settled(); await shot(`tab_${index}`);
       report.checks[`tab_${name}`] = true;
       const content = await page.locator('[role="tabpanel"]:visible').innerText();
+      if (index < 3) {
+        const charts = page.locator('[role="tabpanel"]:visible [data-testid="stPlotlyChart"] .js-plotly-plot');
+        await charts.nth(index === 2 ? 1 : 0).waitFor({timeout: 60000});
+        report.checks[`charts_${name}`] = await charts.count();
+        if (index === 2 && !content.includes('95% 신뢰구간과 양측 p-value')) {
+          throw new Error('A/B 효과 크기와 신뢰구간 차트가 없습니다.');
+        }
+        if (index === 2 && process.env.EXPECTED_EVALUATION) {
+          const ab = JSON.parse(fs.readFileSync(process.env.EXPECTED_EVALUATION, 'utf8')).ab;
+          const rates = await charts.nth(0).evaluate(plot => plot.data.map(t => Array.from(t.y)));
+          const effects = await charts.nth(1).evaluate(plot => plot.data.map(t =>
+            ({metric: t.x[0].toLowerCase(), delta: t.y[0], ci: t.customdata[0], p: t.text[0]})));
+          function check(actual, expected) {
+            if (!Number.isFinite(actual) || Math.abs(actual - expected) > 1e-9) throw new Error('A/B 차트 값이 지정한 보고서와 다릅니다.');
+          }
+          if (rates.length !== 2 || effects.length !== 2) throw new Error('A/B 두 군과 CTR/CVR 효과가 모두 필요합니다.');
+          for (const [i, arm] of ['control', 'treatment'].entries()) {
+            check(rates[i][0], ab.arms[arm].ctr);
+            check(rates[i][1], ab.arms[arm].cvr);
+          }
+          for (const [i, metric] of ['ctr', 'cvr'].entries()) {
+            const effect = effects[i], expected = ab.inference[metric];
+            if (effect.metric !== metric) throw new Error('A/B 차트 지표가 다릅니다.');
+            check(effect.delta, 100 * expected.difference);
+            expected.difference_ci95.forEach((value, j) => check(effect.ci[j], 100 * value));
+            const p = expected.z_p_value;
+            const label = p == null ? 'p 미측정' : p < .001 ? 'p < 0.001' : `p = ${p.toFixed(3)}`;
+            if (effect.p !== label) throw new Error('A/B 차트의 양측 p값 표기가 다릅니다.');
+          }
+          report.ab_comparison = {run_id: ab.run_id, rates, effects};
+        }
+      }
       if (/EDA 읽기 실패|상품·CLIP 조회 실패|배포 데이터 확인 실패/.test(content)) throw new Error(content);
       if (index === 4) {
         await page.getByRole('textbox', {name: '구매 원장 사용자 ID', exact: true}).scrollIntoViewIfNeeded();

@@ -10,7 +10,7 @@ from src.external_data.retailrocket import transition_counts
 STATES=['view','cart','purchase','exit']
 
 
-def observed_pairs(events,end,seconds):
+def observed_pairs(events: pd.DataFrame, end: pd.Timestamp, seconds: int) -> pd.DataFrame:
     frame=events.sort_values(['visitorid','timestamp','row_id'],kind='stable').copy()
     group=frame.groupby('visitorid',sort=False);nxt=group.timestamp.shift(-1)
     gap=nxt-frame.timestamp;window=pd.Timedelta(seconds=seconds)
@@ -22,7 +22,7 @@ def observed_pairs(events,end,seconds):
     return frame.loc[linked|exited].copy()
 
 
-def categories_asof(events,properties):
+def categories_asof(events: pd.DataFrame, properties: pd.DataFrame) -> pd.Series:
     if properties.duplicated(['itemid','timestamp']).any():
         conflicts=properties.groupby(['itemid','timestamp']).value.nunique()
         if (conflicts>1).any():raise ValueError('ambiguous property timestamps')
@@ -33,19 +33,19 @@ def categories_asof(events,properties):
     return merged.set_index('row_id').value.fillna('unknown')
 
 
-def keys(frame,kind):
+def keys(frame: pd.DataFrame, kind: str) -> pd.Series:
     if kind=='global':return pd.Series('all',index=frame.index)
     if kind=='category':return frame.category.astype(str)
     if kind=='activity':return frame.activity.astype(str)
     return frame.category.astype(str)+'/'+frame.activity.astype(str)
 
 
-def fit(frame,kind):
+def fit(frame: pd.DataFrame, kind: str) -> pd.Series:
     counts=frame.assign(key=keys(frame,kind)).groupby(['key','event','next']).size()
     return counts
 
 
-def predict(frame,kind,counts,global_probs,alpha):
+def predict(frame: pd.DataFrame, kind: str, counts: pd.Series, global_probs: np.ndarray, alpha: float) -> np.ndarray:
     group_key=keys(frame,kind).to_numpy();origin=frame.event.map(dict(zip(STATES,range(4)))).to_numpy()
     unique,inverse=np.unique(np.array([f'{k}|{o}' for k,o in zip(group_key,frame.event)]),return_inverse=True)
     matrices=np.empty((len(unique),4))
@@ -56,7 +56,7 @@ def predict(frame,kind,counts,global_probs,alpha):
     return matrices[inverse]
 
 
-def score(frame,probabilities):
+def score(frame: pd.DataFrame, probabilities: np.ndarray) -> dict:
     target=frame.next.map(dict(zip(STATES,range(4)))).to_numpy()
     if not np.isfinite(probabilities).all() or not np.allclose(probabilities.sum(axis=1),1):raise ValueError('invalid Markov probabilities')
     p=probabilities[np.arange(len(frame)),target]
@@ -64,7 +64,7 @@ def score(frame,probabilities):
         brier=float(((probabilities-np.eye(4)[target])**2).sum(axis=1).mean()))
 
 
-def run():
+def run() -> None:
     spec,work,results=plan();root=Path(spec['source_work'])/'retailrocket_raw'
     old=json.loads((Path(spec['source_results'])/'retailrocket.json').read_text())
     for name,record in old['source_members'].items():
@@ -74,11 +74,11 @@ def run():
     events['row_id']=np.arange(len(events));events=events.sort_values(['visitorid','timestamp','row_id'],kind='stable')
     previous=events.groupby('visitorid').cumcount()-events.groupby(['visitorid','timestamp']).cumcount()
     events['activity']=np.digitize(previous,spec['retailrocket']['activity_thresholds'])
-    properties=[]
+    property_frames=[]
     for name in ['item_properties_part1.csv','item_properties_part2.csv']:
         for chunk in pd.read_csv(root/name,dtype={'property':str,'value':str},chunksize=500000):
-            properties.append(chunk.loc[chunk.property=='categoryid',['timestamp','itemid','value']])
-    properties=pd.concat(properties,ignore_index=True);properties.timestamp=pd.to_datetime(properties.timestamp,unit='ms',utc=True)
+            property_frames.append(chunk.loc[chunk.property=='categoryid',['timestamp','itemid','value']])
+    properties=pd.concat(property_frames,ignore_index=True);properties.timestamp=pd.to_datetime(properties.timestamp,unit='ms',utc=True)
     category=categories_asof(events[['row_id','timestamp','itemid']],properties)
     events['category']=events.row_id.map(category)
     tree=pd.read_csv(Path(spec['source_dir'])/'category_tree.csv');known=set(tree.categoryid.astype(str))
@@ -95,7 +95,7 @@ def run():
     train_counts=pairs['train'].groupby(['event','next']).size()
     matrix=np.array([[train_counts.get((s,d),0)+1 for d in STATES] for s in STATES[:3]],float);matrix/=matrix.sum(axis=1,keepdims=True)
     methods=['global','category','activity','category_activity'];models={k:fit(pairs['train'],k) for k in methods}
-    trials=[]
+    trials: list[dict] = []
     origins=pairs['valid'].event.map(dict(zip(STATES,range(4)))).to_numpy()
     trials.append(dict(method='global',alpha=0,valid=score(pairs['valid'],matrix[origins])))
     for method in methods[1:]:

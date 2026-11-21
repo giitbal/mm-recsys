@@ -1,0 +1,373 @@
+{
+  "status": "PASS",
+  "passed": 27,
+  "total": 27,
+  "measured_at": "2026-11-21T08:59:16.235928+00:00",
+  "pdf": "멀티모달_검색_및_Multi-Stage_추천_시스템_구축.pdf",
+  "pdf_sha256": "b333d4fdab2127c380b7750f7d8e491141ec15db97c15389f8c9a0ae1b983c7d",
+  "base_git_sha": "03af3758f24fcdb8cfc20aad2138bb73b2a7eb17",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "identity_sha256": "b6fe54068e9b48a130c42564a0592aaec94cfd5334a1288f0a13fb8df09950dc",
+  "questions": [
+    {
+      "number": 1,
+      "page": 12,
+      "question": "docker-compose up 명령으로 모든 컨테이너가 정상 시작되는가?",
+      "status": "PASS",
+      "observation": "기본 Compose 기동 명령이 성공했고 Redis·API·대시보드·시뮬레이터가 실행 중이었다. 쇼핑몰은 별도 프로필이다.",
+      "evidence": [
+        "runtime.json"
+      ]
+    },
+    {
+      "number": 2,
+      "page": 12,
+      "question": "검색 API, 추천 API, 대시보드가 각각 응답하는가?",
+      "status": "PASS",
+      "observation": "검색 3모드·추천 HTTP 응답, Chromium 대시보드의 검색·추천·A/B 차트와 실제 클릭 후 비교를 확인했다.",
+      "evidence": [
+        "smoke.json",
+        "browser.json",
+        "browser_session.png"
+      ]
+    },
+    {
+      "number": 3,
+      "page": 12,
+      "question": "신규 사용자 요청 시 적절한 폴백 결과가 반환되는가?",
+      "status": "PASS",
+      "observation": "신규 사용자 일반 추천 8개의 점수가 학습 로그로 다시 계산한 인기·최근 상승 점수와 일치했다.",
+      "evidence": [
+        "cold_session.json"
+      ]
+    },
+    {
+      "number": 4,
+      "page": 13,
+      "question": "추천 결과에 MAB Exploration 슬롯(is_exploration=true)이 포함되어 있는가?",
+      "status": "PASS",
+      "observation": "서로 다른 30명의 Top 10 모두 is_exploration=true인 상품이 2개였다.",
+      "evidence": [
+        "sample_30.json",
+        "measurement.json"
+      ]
+    },
+    {
+      "number": 5,
+      "page": 13,
+      "question": "검색 API 응답 시간이 200ms 이내인가?",
+      "status": "PASS",
+      "observation": "PDF 10쪽의 10회 워밍업·100회 직렬 기준으로 HTTP p95는 텍스트 48.05, 이미지 122.07, 복합 135.91ms였다. 검색 요청 총 300건 중 200ms 초과 1건, 전체 최대 226.19ms였다.",
+      "evidence": [
+        "measurement.json",
+        "smoke.json"
+      ]
+    },
+    {
+      "number": 6,
+      "page": 13,
+      "question": "추천 API 응답 시간이 200ms 이내인가?",
+      "status": "PASS",
+      "observation": "추천 HTTP 왕복 p95 59.54ms, 100회 중 최대 85.36ms였다.",
+      "evidence": [
+        "measurement.json",
+        "smoke.json"
+      ]
+    },
+    {
+      "number": 7,
+      "page": 13,
+      "question": "리포트에 데이터 분할 방식(train/valid/test 비율)이 명시되어 있는가?",
+      "status": "PASS",
+      "observation": "제출 보고서에 시간순 80/10/10이 명시됐다. 실제 80만·10만·10만 행, 파일 해시, 정렬과 시간 경계의 비중첩을 재검산했다.",
+      "evidence": [
+        "../../../../../submission/report.md",
+        "measurement.json"
+      ]
+    },
+    {
+      "number": 8,
+      "page": 13,
+      "question": "검색 성능: MRR ≥ 0.55, NDCG@10 ≥ 0.50 달성 여부가 수치로 보고되었는가?",
+      "status": "PASS",
+      "observation": "모드별 200개, 총 600개의 동결 test 질의에서 MRR 0.93572와 nDCG@10 0.93063를 재측정했다.",
+      "evidence": [
+        "search/cold_search_test.json",
+        "search/cold_search_freeze.json"
+      ]
+    },
+    {
+      "number": 9,
+      "page": 13,
+      "question": "추천 성능: Recall@300 ≥ 0.30, HitRate@50 ≥ 0.20, NDCG@50 ≥ 0.08 달성 여부가 보고되었는가?",
+      "status": "PASS",
+      "observation": "현재 배포와 동결 지문이 일치한 13번 수정 후 full test에서 Recall@300 0.74579, HitRate@50 0.66443, nDCG@50 0.32928였다. 미래 정답이 있는 사용자는 7,012명이다.",
+      "evidence": [
+        "../peer13_all_levels/full_test.json",
+        "input_identity.json",
+        "measurement.json"
+      ]
+    },
+    {
+      "number": 10,
+      "page": 13,
+      "question": "Ranking 모델: AUC ≥ 0.70 달성 여부가 보고되었는가?",
+      "status": "PASS",
+      "observation": "사전 확정한 CTR AUC 기준에서 0.96578였다. 별도로 계산한 CVR AUC는 0.53041였다.",
+      "evidence": [
+        "../peer13_all_levels/full_test.json",
+        "../../../../../contracts.md"
+      ]
+    },
+    {
+      "number": 11,
+      "page": 13,
+      "question": "Coverage ≥ 0.20 달성 여부가 보고되었는가?",
+      "status": "PASS",
+      "observation": "전체 사용자 1만 명의 Top 50에 등장한 고유 상품 19,158개 / 전체 50,000개 = 0.38316.",
+      "evidence": [
+        "../peer13_all_levels/full_test.json",
+        "measurement.json"
+      ]
+    },
+    {
+      "number": 12,
+      "page": 13,
+      "question": "Feature Store 피처 조회 시간이 10ms 이내인지 확인되었는가?",
+      "status": "PASS",
+      "observation": "배포 Redis의 프로필·이력 조회 100회 모두 적중했고 p95는 0.436ms였다.",
+      "evidence": [
+        "smoke.json",
+        "measurement.json"
+      ]
+    },
+    {
+      "number": 13,
+      "page": 13,
+      "question": "동일 카테고리 상품이 연속 3개 이상 노출되지 않는가? (샘플 3건 이상 확인)",
+      "status": "PASS",
+      "observation": "실제 Top 10 표본 30명에서 대·중·소분류 모두 위반 0명. 동결 test 1만 명의 Top 50에서도 위반과 수량 부족이 각각 0건이었다.",
+      "evidence": [
+        "measurement.json",
+        "native_peer.json",
+        "../peer13_all_levels/full_test.json",
+        "../peer13_all_levels/report.md"
+      ]
+    },
+    {
+      "number": 14,
+      "page": 13,
+      "question": "신규 상품(등록 7일 이내)이 추천 결과에 포함되는가?",
+      "status": "PASS",
+      "observation": "실제 30명 전원과 test 1만 명 전원에게 각 기준일 당시 등록 7일 이내 상품이 포함됐다.",
+      "evidence": [
+        "sample_30.json",
+        "measurement.json",
+        "../peer13_all_levels/full_test.json"
+      ]
+    },
+    {
+      "number": 15,
+      "page": 13,
+      "question": "전체 코드를 수정하지 않고, config나 전략 패턴으로 로직을 교체할 수 있는가?",
+      "status": "PASS",
+      "observation": "같은 모델·사용자에서 YAML의 scoring.strategy만 바꾸자 결과가 바뀌었다. 최신순 Top 10 모두 실제 최종 등록일 상품이었다.",
+      "evidence": [
+        "strategies.json"
+      ]
+    },
+    {
+      "number": 16,
+      "page": 13,
+      "question": "config 파일 수정만으로 시뮬레이터가 변경된 설정을 반영하는가?",
+      "status": "PASS",
+      "observation": "시뮬레이터 정식 CLI를 임시 YAML 두 개로 실행했다. 각 450개 상품·120명에서 trendsetter가 18→30명, 새 카테고리 상품이 0→11개가 됐다.",
+      "evidence": [
+        "simulator_yaml.json"
+      ]
+    },
+    {
+      "number": 17,
+      "page": 13,
+      "question": "역할 분리: simulator, search, recommendation, serving 모듈이 폴더로 분리되어 있는가?",
+      "status": "PASS",
+      "observation": "시뮬레이터·검색·추천·서빙 모듈의 독립 패키지와 진입점을 확인했다.",
+      "evidence": [
+        "../../../../../../src/simulator/generate.py",
+        "../../../../../../src/search/service.py",
+        "../../../../../../src/recommendation/service.py",
+        "../../../../../../src/serving/main.py"
+      ]
+    },
+    {
+      "number": 18,
+      "page": 13,
+      "question": "문서화: README.md에 실행 방법과 아키텍처가 설명되어 있는가?",
+      "status": "PASS",
+      "observation": "README에 아키텍처 흐름도, 기본 실행 명령과 접속 주소가 있다.",
+      "evidence": [
+        "../../../../../../README.md"
+      ]
+    },
+    {
+      "number": 19,
+      "page": 13,
+      "question": "README 또는 기획서에 팀원별 역할 분담이 명시되어 있는가?",
+      "status": "PASS",
+      "observation": "README 역할 표와 기여 목록에 팀원 3명의 이름·담당 영역이 있다.",
+      "evidence": [
+        "../../../../../../README.md",
+        "../../../../../submission/contributions.json"
+      ]
+    },
+    {
+      "number": 20,
+      "page": 14,
+      "question": "개인별 주요 기여 영역(구현 모듈, 문서 작성 등)이 요약되어 있는가?",
+      "status": "PASS",
+      "observation": "A·B·C별 구현 모듈, 문서, 연결된 PR 목록과 개별 기여 문서를 확인했다.",
+      "evidence": [
+        "../../../../../submission/contributions.json",
+        "../../../../../contributions/A.md",
+        "../../../../../contributions/B.md",
+        "../../../../../contributions/C.md"
+      ]
+    },
+    {
+      "number": 21,
+      "page": 14,
+      "question": "멀티모달 임베딩: CLIP으로 텍스트/이미지가 동일 벡터로 변환되어 검색에 사용되는가?",
+      "status": "PASS",
+      "observation": "8개 상품의 두 모달리티를 재인코딩했다. 512차원 공통 공간의 저장 벡터와 일치했다. 후드티 텍스트·갈색 가방 이미지·가방 복합 검색은 각 Top 10 모두 요청 속성에 맞았다.",
+      "evidence": [
+        "clip.json",
+        "semantic_examples.json"
+      ]
+    },
+    {
+      "number": 22,
+      "page": 14,
+      "question": "Two-Tower 구조: User/Item Tower가 분리되고, Item 임베딩이 FAISS에 저장되어 있는가?",
+      "status": "PASS",
+      "observation": "Two-Tower의 분리된 인코더와 5만 상품 FAISS를 확인했다. 표본 32개의 실제 Item Tower 출력과 인덱스 복원 벡터 최대 절대 차이는 0이었다.",
+      "evidence": [
+        "trained_models.json"
+      ]
+    },
+    {
+      "number": 23,
+      "page": 14,
+      "question": "Ranking 모델: DeepFM 또는 Wide&Deep으로 Feature Interaction이 학습되는가?",
+      "status": "PASS",
+      "observation": "DeepFM의 학습된 FM 계수와 해당 항을 비활성화한 로짓 차이를 관측했다. 모든 필드 쌍의 상호작용을 손으로 합산한 값과 일치했다.",
+      "evidence": [
+        "trained_models.json"
+      ]
+    },
+    {
+      "number": 24,
+      "page": 14,
+      "question": "MAB 탐색: Exploration 슬롯이 추천 결과에 포함되어 있는가?",
+      "status": "PASS",
+      "observation": "실제 탐색 상품의 request ID로 피드백을 보냈다. Redis 보상이 클릭·중복 클릭·구매 순으로 4.0→4.2→4.2→5.0로 바뀌었다.",
+      "evidence": [
+        "mab_arm.json",
+        "sample_30.json"
+      ]
+    },
+    {
+      "number": 25,
+      "page": 14,
+      "question": "세션 기반 추천: 현재 세션 클릭이 추천에 실시간 반영되는가?",
+      "status": "PASS",
+      "observation": "추가 클릭 없는 재요청에서 일반 추천 ID·점수는 같았다. 백팩 3회 클릭 후 관심이 hoodie→backpack으로 바뀌고 일반 추천 8개 중 7개가 교체됐다.",
+      "evidence": [
+        "cold_session.json",
+        "browser.json",
+        "trained_models.json"
+      ]
+    },
+    {
+      "number": 26,
+      "page": 14,
+      "question": "A/B 테스트: 통계적 유의성 검정(p-value, 신뢰구간)이 구현되었는가?",
+      "status": "PASS",
+      "observation": "인기순 대조군과 새 추천 정책군을 각각 5,000명씩 30일간 시뮬레이션했다. 1만 명의 사용자별 원자료에서 양측 p값과 사용자 군집 95% 신뢰구간을 독립 검산했다.",
+      "evidence": [
+        "ab_statistics.json",
+        "ab_acceptance_full.json",
+        "ab_full_archive.json"
+      ]
+    },
+    {
+      "number": 27,
+      "page": 14,
+      "question": "CT 파이프라인: 성능 저하 시 재학습 트리거 로직이 구현되었는가?",
+      "status": "PASS",
+      "observation": "성숙한 Top 50 요청 19건에서 대기했다. 20건째 실제 CTR·HitRate 경보가 발동했고 신규 로그가 0건인 상태에서 재학습 진입점을 1회 호출했다. 같은 상태의 재호출은 억제됐다. 별도 400상품 시험에서 성능 저하만으로 실제 세 모델의 학습·체크포인트 복원·버전 판정까지 완료했다.",
+      "evidence": [
+        "ct_degradation.json",
+        "ct_degraded_retraining.json",
+        "ct_full.json",
+        "ct_candidate_training_full.json",
+        "ct_ranking_training_full.json",
+        "ct_session_training_full.json"
+      ]
+    }
+  ],
+  "evidence_sha256": {
+    "runtime.json": "13bee7a5c3893005d8ca866cfbbeeb72d31256b22a755b6ed95c825d3f341cc5",
+    "smoke.json": "dca027fba4bf6bf726141453f501a21c1e6718419bd76832232b88d0a2bfd14f",
+    "browser.json": "2118d75138f11241de77dd9b47b816ab24001c3d4a1e7bbc5ced3646ff9973ff",
+    "browser_session.png": "f314ea01521c5dee66cac2a1edd4d6b1d37d7cc85662136735b85529fe4f6236",
+    "cold_session.json": "28efcb0f2cd9d2b7baf0f71f23d8c9e8fc54af1b0f52f2f74bc7eb4026765652",
+    "sample_30.json": "feb44e92fa75460f1ba6e217542cdc893f1681e6842644eafc7aeb2285b0ba13",
+    "measurement.json": "174c6862d53510ce4bd99f8373853bb675b2a34b86745ffb40356df73de5e057",
+    "../../../../../submission/report.md": "873f4848260f54d5e40286d26cd12666d4ace353dedfafda19a09cd251ac111e",
+    "search/cold_search_test.json": "e0364b169c5f838a29a5c98396fbbbaf18a5ead76e67ed2bbe6ea65532699fb8",
+    "search/cold_search_freeze.json": "2d24c365dc60723a16b865ff6101ec9a78a1a21b1d88da618bdd1731296d29c6",
+    "../peer13_all_levels/full_test.json": "b82e595a5acb10408cbbfb68a13e56f6b2ad70fd94f26129091362fbbade22ef",
+    "input_identity.json": "a0c0d707f67781999ef51de6e17b6f481780d674a7b8372224d8efc80c5d5723",
+    "../../../../../contracts.md": "52b87b174eb3d0df0945cd98afe3cbca18ea930c289b5c9e48f6c476bc043344",
+    "native_peer.json": "dd4b2d63fe79a85289eb54951c47f0f31ee5dbd0d3a0b2add7bddca8769e8d9a",
+    "../peer13_all_levels/report.md": "5bf47b4641adcf1955e2349f451753590e7146eab53c1fd59e5a1a95fdd784cc",
+    "strategies.json": "4452cba3e40cd5329accc6d6368774a18cae5117b0d91cba988569bebeb4283d",
+    "simulator_yaml.json": "0e70de6ebf94577ba2aa92163316d7d7b9c15d0e661d2472c8435f48981ea979",
+    "../../../../../../src/simulator/generate.py": "55fa51385f15d8eb8f3a8a1c417986dd0a3057085c5c7d02e4325ebdb78ba2a0",
+    "../../../../../../src/search/service.py": "31b21c7ccd85f73209f9f1aabff3be0571891e6881a2fa8498f986eb0fdf0686",
+    "../../../../../../src/recommendation/service.py": "3919fd50b45901bdd0a91eb468e987b740165ccda7d59d3d07124bee71b5d40f",
+    "../../../../../../src/serving/main.py": "c0916a6a1e1db2875305d871a08f084a6a4b260c459759f9de47923e3c741359",
+    "../../../../../../README.md": "4a041ab4f6ec5d6e03ff89d7f8d4c19b3ba7060619dc223400429548db31a6a2",
+    "../../../../../submission/contributions.json": "72f46a9fdd26498efa55329f7f428d61a212c2740e88cc7bd79c726ee2871248",
+    "../../../../../contributions/A.md": "167b3b1039321c754d754ba35ab74df8a604f7be0846ca27bfbd45ab1ecb1fc8",
+    "../../../../../contributions/B.md": "eaaad6c802fd154a1ad5e44ca34c920c894a24926d1b03521fb03546fe0f36d1",
+    "../../../../../contributions/C.md": "2ecfa69ad1b42518bc48cccfb22fef17a55da91704b6a0372eadda60fcba0a44",
+    "clip.json": "03853ee9b2613e65e8aa5ccb640ee90b59cf35e80e5d8d61d4d9906eb2972941",
+    "semantic_examples.json": "28314056f6f8550fd530f4e35990f0d4c97eadff43b4f05a1834211128f3c940",
+    "trained_models.json": "b3fd24e197ddf6e91691ee8dd7fca01f37724838b1ae15eec53e0bdeb783140b",
+    "mab_arm.json": "3d9dc77045027f93d607a203316920b63064f682a675bd82c744a04d3bcc3ee7",
+    "ab_statistics.json": "f1831bf37f65360361ecd4e9b8fe28be37423165b6b775bbb05e52b8398caf74",
+    "ab_acceptance_full.json": "899ad1c659b9d7046df4ce19565dc8e2f929ac3297e7f778f3b74442c44236da",
+    "ab_full_archive.json": "76bae29f80f7d864d278b36796d193093d5217b9c60dad61e5a34e6824f91dba",
+    "ct_degradation.json": "84c47fedb89605f1231b0591ab7101da73fecaf514259f4bc3a5049c45580803",
+    "ct_degraded_retraining.json": "609891d6b2a4eb84613004c112ef768c3909cb824a9db800453cabf6d935542f",
+    "ct_full.json": "bf6b821d7f114954b14d316b3e585a26f4da41f73791138cec2c0df3e3b36fc0",
+    "ct_candidate_training_full.json": "4b81387aa93ea6b6aeeb5d67035bc350137a470019aa7ed099ae7aeb08a30692",
+    "ct_ranking_training_full.json": "30489d88fa03a501db168d6eec7e44020fb59ee4dcc348913677ba5c02ac2f87",
+    "ct_session_training_full.json": "da1ad4fa4f1b302952af15cc8bdbc3365b94a3914e4179a52771179823c6c829",
+    "ct_controlled_lifecycle_full.json": "8ffd562aa19639e22c5e221f95176241a31ba6aac142f31a7080922e9f72a986"
+  },
+  "ab_run": "f869b758128d6bb2fae535561f1e2156d6bdf201586f107d6c2bd1f88ba1716c",
+  "natural_ct": "RETAINED",
+  "formal_submission_check": {
+    "verified": false,
+    "changed_inputs": [
+      "dashboard/app.py",
+      "dashboard/assets.py",
+      "scripts/prepare_all.py",
+      "src/recommendation/recommender.py",
+      "src/recommendation/reranking.py"
+    ],
+    "first_failure": "ValueError: evidence changed or missing: dashboard/app.py"
+  }
+}

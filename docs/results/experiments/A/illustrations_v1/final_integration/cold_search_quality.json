@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "targets": {
+    "mrr": 0.55,
+    "ndcg_at_10": 0.5
+  },
+  "splits": {
+    "valid": {
+      "reference": {
+        "queries": 600,
+        "mrr": 0.9401851851851851,
+        "ndcg_at_10": 0.9345231663704779,
+        "mean_relevant_items": 458.135
+      },
+      "cold": {
+        "queries": 600,
+        "mrr": 0.9401851851851851,
+        "ndcg_at_10": 0.9345231663704779,
+        "mean_relevant_items": 458.135
+      },
+      "cutoff": "2025-12-25T10:07:46.606500+00:00",
+      "query_fingerprint": "bec8120756df389ada3686be3a4f51813c7209a3b46f2674d37ddd8b4aab6d12",
+      "file": {
+        "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_search_valid.json",
+        "sha256": "42b48899427b124b698900046c4228b146704890791d2c74a2404e13a507669b"
+      }
+    },
+    "test": {
+      "reference": {
+        "queries": 600,
+        "mrr": 0.9357222222222223,
+        "ndcg_at_10": 0.9306251710641011,
+        "mean_relevant_items": 465.47833333333335
+      },
+      "cold": {
+        "queries": 600,
+        "mrr": 0.9357222222222223,
+        "ndcg_at_10": 0.9306251710641011,
+        "mean_relevant_items": 465.47833333333335
+      },
+      "cutoff": "2025-12-28T09:52:12.492900+00:00",
+      "query_fingerprint": "bec8120756df389ada3686be3a4f51813c7209a3b46f2674d37ddd8b4aab6d12",
+      "file": {
+        "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_search_test.json",
+        "sha256": "4d49bb0c9fd20ca0df12a36e421f32ce3bb7e62b24d71799c3bf7cc63468c358"
+      }
+    }
+  },
+  "valid_freeze": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_search_freeze.json",
+    "sha256": "9b221677378d5d4d74e6e62ef83ca37f3e8c4bdffccca6b3ad365d2ce392c0e9"
+  },
+  "hash_comparison": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_search_files.json",
+    "sha256": "7036a9ad871d4c789c1f1c29f2c267a98299c30910b2a58f7708525b67905ac0"
+  },
+  "graph_comparison": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/hnsw_graph_comparison.json",
+    "sha256": "7651bcac8776abcc1f87862ab03b1c985ec5d8023db772a0fe4756135d06fb1f"
+  },
+  "scope": "Same frozen query protocol and targets, verified both validation and test on newly built 4-thread HNSW indexes. Vector, data and query identities matched; graph neighbor sets differed. Parallel cold build times are not latency gate evidence."
+}

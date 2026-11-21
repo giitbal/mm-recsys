@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "checks": {
+    "status": "ready"
+  },
+  "engine": {
+    "server_version": "29.9.3",
+    "architecture": "aarch64",
+    "cpus": 8,
+    "memory_bytes": 12520095744
+  },
+  "services": {
+    "simulator": {
+      "status": "running",
+      "health": null
+    },
+    "redis": {
+      "status": "running",
+      "health": "healthy"
+    },
+    "dashboard": {
+      "status": "running",
+      "health": "healthy"
+    },
+    "api-server": {
+      "status": "running",
+      "health": "healthy"
+    }
+  },
+  "simulator_log": [
+    "[시뮬레이터 시작] API·대시보드 준비 완료; 배치=100건 / 주기=5.0초 / 합성 추천 흐름=1회 / 귀속 로그=audit/runtime/full/ct_api_traffic_c8bf149b6f2c43ef958991c3189ab082.jsonl",
+    "[시뮬레이터 CT 연결] 주기적 모니터링·설정 임계치 기반 재학습을 함께 시작합니다.",
+    "[CT 준비] API 준비 대기 / URL=http://127.0.0.1:8000",
+    "[CT 시작] API 준비 완료 / 모니터링 및 임계치 기반 재학습 작업자를 시작합니다.",
+    "[시뮬레이터 생성] 행동 로그 100건 생성 / 0.2초 / 503건/초 / CT 신규 로그=71건 / 합성 추천 흐름=1회",
+    "[CT 기록] 원본 JSON: audit/runtime/full/ct-cli/9840ca5648684ef18e29116e98b21ff0.jsonl",
+    "[CT 시작] 모니터링 주기=60초 / 재학습 임계치=10000건 / 재학습 활성=True / 활성 모델=v1.0",
+    "[CT Monitor ] 현재 HitRate@50: 미측정 (성숙한 관측 표본 부족) (임계값: 0.2) / CTR: 미측정 (성숙한 관측 표본 부족)",
+    "[CT 대기] 신규 로그=71건 / 임계치=10,000건",
+    "[시뮬레이터 생성] 행동 로그 100건 생성 / 0.2초 / 592건/초 / CT 신규 로그=70건 / 합성 추천 흐름=1회"
+  ]
+}

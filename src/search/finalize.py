@@ -14,11 +14,12 @@ from src.search.build_embeddings import current_bundle
 
 
 def finalize(cfg: dict) -> dict:
-    sources = {'quality': Path(f'docs/results/search_test_{cfg["scale"]}.json'),
-               'latency': Path(f'docs/results/search_latency_{cfg["scale"]}.json'),
-               'valid_selection': Path(f'docs/results/search_valid_{cfg["scale"]}.json')}
+    results = Path(cfg['paths']['results_dir'])
+    sources = {'quality': results / f'search_test_{cfg["scale"]}.json',
+               'latency': results / f'search_latency_{cfg["scale"]}.json',
+               'valid_selection': results / f'search_valid_{cfg["scale"]}.json'}
     quality = json.loads(sources['quality'].read_text()); latency = json.loads(sources['latency'].read_text())
-    recheck = Path('docs/results/experiments/A/search_http_recheck_full.json')
+    recheck = results / 'search_http_recheck_full.json'
     if cfg['scale'] == 'full' and recheck.exists():
         observed = json.loads(recheck.read_text())
         for key in ('data_fingerprint', 'model_fingerprint', 'query_manifest_sha256', 'config_fingerprint'):
@@ -97,8 +98,8 @@ def finalize(cfg: dict) -> dict:
                               'BM25 performs better on synthetic text/hybrid queries; negative changes are retained',
                               'image BM25 is not applicable', 'full recommendation and four-service Docker reproduction remain unmeasured']}
     if cfg['scale'] == 'full':
-        write_json(Path('docs/results/search_metrics.json'), result)
-    write_json(Path(f'docs/results/search_metrics_{cfg["scale"]}.json'), result)
+        write_json(results / 'search_metrics.json', result)
+    write_json(results / f'search_metrics_{cfg["scale"]}.json', result)
     return result
 
 

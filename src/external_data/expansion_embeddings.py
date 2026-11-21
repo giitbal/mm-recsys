@@ -11,7 +11,7 @@ from src.recommendation.datasets import read_data
 from src.search.encoder import CLIPEncoder
 
 
-def run():
+def run() -> None:
     spec,work,results=plan(); root=work/'hm_embeddings';root.mkdir(exist_ok=True)
     products=read_data(Path(spec['source_work'])/'hm')['products'].sort_values('product_id').reset_index(drop=True)
     cfg=load_config();cfg['search'].update(batch_size=spec['clip_batch_size'],torch_threads=spec['clip_threads'])

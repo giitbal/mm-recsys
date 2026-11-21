@@ -1,0 +1,12 @@
+{
+  "command": "bash setup_env.sh <empty target> --scaffold-only --skip-docker-check",
+  "exit_code": 0,
+  "copied_files": {
+    "docker-compose.yml": true,
+    "docker/Dockerfile.storefront": true,
+    "storefront/package.json": false,
+    "storefront/package-lock.json": false,
+    "storefront/app/page.tsx": false,
+    "src/serving/storefront.py": true
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "status": "PARTIAL",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "observed_new_events": 10054,
+  "threshold": 10000,
+  "retraining": {
+    "status": "RETAINED",
+    "version": "v1.1",
+    "active": "v1.0",
+    "new_events": 10054,
+    "through_seq": 10057,
+    "trigger_reason": "new_logs",
+    "comparison": {
+      "split": "valid",
+      "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185",
+      "baseline": {
+        "ctr_auc": 0.9661336950476113,
+        "ctr_logloss": 0.14420887853373487,
+        "hit_rate_at_50": 0.6927396710790212,
+        "truth_users": 7479,
+        "ctr_samples": 227686,
+        "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185"
+      },
+      "candidate": {
+        "ctr_auc": 0.9658397898822869,
+        "ctr_logloss": 0.14300948136969108,
+        "hit_rate_at_50": 0.6932745019387618,
+        "truth_users": 7479,
+        "ctr_samples": 227686,
+        "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185"
+      },
+      "training_reports": {
+        "candidate": "fc92efc98fd89db824a5b6a5b8fc6ae28505d72cc86b66b6d7a2e1305c6cde48",
+        "ranking": "0ef3adeef25488ce8fd9733882297aacf1717aea17fcafd893c8ed5aee8d25bd",
+        "session": "3881a546d56f1285471fa5d8ecd01013ffc2142ec64777189d6e6fe52363d159"
+      }
+    }
+  },
+  "repeated_trigger": {
+    "status": "WAITING",
+    "new_events": 0,
+    "threshold": 10000
+  },
+  "real_reload_and_rollback": false,
+  "monitor": {
+    "at": "2026-11-21T05:14:06.334074+00:00",
+    "event": "monitor",
+    "status": "UNMEASURED",
+    "model_version": "v1.0",
+    "ctr": null,
+    "hit_rate_at_50": null,
+    "clicks": 0,
+    "exposures": 0,
+    "mature_requests": 0,
+    "top50_requests": 0,
+    "hit_requests": 0,
+    "alerts": [],
+    "window_start": 1795151646.3328137,
+    "observed_through": 1795238046.3328137,
+    "attribution_seconds": 3600,
+    "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+    "thresholds": {
+      "ctr_threshold": 0.01,
+      "hitrate_threshold": 0.2,
+      "min_mature_requests": 20
+    }
+  },
+  "guard": {
+    "enabled": true,
+    "poll_seconds": 60,
+    "retry_seconds": 300,
+    "retrain_on_degradation": true,
+    "recent_seconds": 86400,
+    "attribution_seconds": 3600,
+    "min_mature_requests": 20,
+    "ctr_threshold": 0.01,
+    "promotion_metric": "ctr_auc",
+    "min_improvement": 0.001,
+    "promotion_floor": 0.7,
+    "hitrate_threshold": 0.2,
+    "retrain_log_threshold": 10000
+  },
+  "ctr_auc_difference": -0.0002939051653243485,
+  "actual_http": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_http_after.json",
+    "sha256": "d1e690017e93ddaf1968c70833d2546430b4c4a793a82322eb35c76bf25c3729"
+  },
+  "observation": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_before_stdout.json",
+    "sha256": "a59bf327fe41675de162291a57e600043c49daf434b133b292240a565ad01aa3"
+  },
+  "training": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_training_sources_full.json",
+    "sha256": "48935056dd69ba40937011b866283055ace739faec540764f6d235cb0e6a228b"
+  },
+  "eligibility": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_eligibility.json",
+    "sha256": "5dd73828a9d87b48416ed7117d4d75029e95868743a28c6013d173f1da73410f"
+  },
+  "snapshot": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_snapshot_manifest.json",
+    "sha256": "8514a0e4fabeade28faf646ca9ef032a4d58488c28932f277ef3fbb521413c77"
+  },
+  "deployment_events": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_deployment_events.jsonl",
+    "sha256": "4e451f3920ffd1d6b0dd490032513f4a47c6d25549ae23741172aee5de73e820"
+  },
+  "new_event_folds": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_new_event_folds.json",
+    "sha256": "3b3f369c1640aeab7a83fe0ccd4f9edbbce55c36e4aa66fa7926d04ed715a5f4"
+  },
+  "checks": {
+    "full_three_model_retraining": true,
+    "threshold": true,
+    "event_watermark": true,
+    "paired_valid": true,
+    "real_reload_and_rollback": false
+  },
+  "source_hashes": {
+    "src/ct/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ct/bootstrap.py": "841307aa2f7ae7357856f4ea1db9b17fbe77b5e4cfc006598e7e72bda0497e1e",
+    "src/ct/model_registry.py": "9d823820a981b975e0e134fffd600974ac1d4adb4be1f055b0befbad1a14e222",
+    "src/ct/monitor.py": "5d5ec0e8324ff2d632383f8a19291e5f20475736c102cee0dca3de6165f80047",
+    "src/ct/retrain_trigger.py": "d430bf4703d1d95b50892b4107810154c1376e4a9bd88f98bedcdba666fd3f05",
+    "src/ct/snapshot.py": "60c5ac8995445d9a469192518cf64e57686a40108e5cb987d8f5a886baa3e745",
+    "src/ct/storage.py": "0b9cb09a3ba5a0fe79d573c97485954123a1ab09b302ac1c7bbca23e672fdb6c",
+    "src/ct/training.py": "8b1bf9118664191595c8b2b530f373ef2866edb4749ce7b1a897fd1b8b7483aa",
+    "src/ct/verify_ct.py": "866bea9b030871015b265a4e98f8b92bb90f77fadc73df762a1f35554fbd37a7",
+    "src/ct/verify_serving.py": "3a3d3b7b21cdf5a839a2f4612a5d263682de9d91ab7cca86fa8f0425e68c6c45"
+  },
+  "scope": "Observed default deployment simulator and HTTP journal; threshold captured before one-shot training. Paired chronological valid, unchanged production guard. No test evaluation or production rollback. Dedicated worker used the deployed API image, 4 CPUs and 6 GiB memory limit."
+}

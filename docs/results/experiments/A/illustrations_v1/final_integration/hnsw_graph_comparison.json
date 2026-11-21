@@ -1,0 +1,76 @@
+{
+  "status": "MEASURED",
+  "reference": {
+    "text": {
+      "count": 1440,
+      "dimensions": 512,
+      "vectors_sha256": "6e7930af99234c0c133b1915ae15c84b7813c60f5d1c2f3c28fc8610c9971ed4",
+      "levels_sha256": "c57e70945df448c642aaaf0676ed9cf4e13f8d3adae418e6bcf4b9fcc169c808",
+      "offsets_sha256": "40c01ba834a96f9ec88ad47443f78199d0618a82c79a12b52599eedb439da556",
+      "neighbor_order_sha256": "f1eebabfd5d799ce110c2929a254dc67bfdf02b80959b04f41827cfb2f2d8b34",
+      "neighbors_per_node_sha256": "de13576d052f642281d4d08263fe9e5fb48f8be6e9e5156482f39d24cc58aaff"
+    },
+    "image": {
+      "count": 3134,
+      "dimensions": 512,
+      "vectors_sha256": "efb0dd7d5cebc87d173523986c3ebd0e33e94d64eae1e1977e260d2bc77bbddc",
+      "levels_sha256": "ae73bd61f0ee6a1cf54f7549329cdb48b063b0b408bf45ecb25c959be221d204",
+      "offsets_sha256": "79f8a5a8a7ae49088e925d0943675600fea2a76306a62e61e44c62bf48d06595",
+      "neighbor_order_sha256": "f66b608dabe7a5c04b265b642097a840aaf5c87a3b8850130f5b59c3221e8582",
+      "neighbors_per_node_sha256": "ed986e5899ba4c93d4ee877083bc76d3347283ecaaa30ba403900f452dab67a2"
+    },
+    "hybrid": {
+      "count": 7840,
+      "dimensions": 512,
+      "vectors_sha256": "4c8218c0ceb53aa4123db67412ba8d23841c139df8d8df63e83e60151e503ca7",
+      "levels_sha256": "fed7a028ff322d3b4409c1e6074b4eaf9f619b395eadde8caef89568c30440a7",
+      "offsets_sha256": "95630cbebdd941801b64d0b788519fe98582e3ef5fb4b21beb8ab3d29c3cc13e",
+      "neighbor_order_sha256": "0c65f036d48240789dc9f56d5eb64470f9e4479ae9b54f05da8653e1cb2341d4",
+      "neighbors_per_node_sha256": "da13985569906a0046c69ac21b105846b00c800daa044edb4c41643ef8e83adc"
+    }
+  },
+  "cold": {
+    "text": {
+      "count": 1440,
+      "dimensions": 512,
+      "vectors_sha256": "6e7930af99234c0c133b1915ae15c84b7813c60f5d1c2f3c28fc8610c9971ed4",
+      "levels_sha256": "c57e70945df448c642aaaf0676ed9cf4e13f8d3adae418e6bcf4b9fcc169c808",
+      "offsets_sha256": "40c01ba834a96f9ec88ad47443f78199d0618a82c79a12b52599eedb439da556",
+      "neighbor_order_sha256": "b14578c1ae0e3a29f846950ada23a385dae616ca0bbba0d6e0743f427adc8cb1",
+      "neighbors_per_node_sha256": "b5aab5d7e9320e9e7bb320cefc3d8f1a112b3c3721b14654aa7b815851bea281"
+    },
+    "image": {
+      "count": 3134,
+      "dimensions": 512,
+      "vectors_sha256": "efb0dd7d5cebc87d173523986c3ebd0e33e94d64eae1e1977e260d2bc77bbddc",
+      "levels_sha256": "ae73bd61f0ee6a1cf54f7549329cdb48b063b0b408bf45ecb25c959be221d204",
+      "offsets_sha256": "79f8a5a8a7ae49088e925d0943675600fea2a76306a62e61e44c62bf48d06595",
+      "neighbor_order_sha256": "7673de758287cab6db9ba55758e72aae78f439f7abfe2a2b7a326f52b1820609",
+      "neighbors_per_node_sha256": "78c409d4216862e70018f1bd2a0cdad31c7864ab291da1d6c6a6ef46a0686d1d"
+    },
+    "hybrid": {
+      "count": 7840,
+      "dimensions": 512,
+      "vectors_sha256": "4c8218c0ceb53aa4123db67412ba8d23841c139df8d8df63e83e60151e503ca7",
+      "levels_sha256": "fed7a028ff322d3b4409c1e6074b4eaf9f619b395eadde8caef89568c30440a7",
+      "offsets_sha256": "95630cbebdd941801b64d0b788519fe98582e3ef5fb4b21beb8ab3d29c3cc13e",
+      "neighbor_order_sha256": "c0591e4783413306582312a78bea7a5439ca1d1599f0bf608e5284268f198b12",
+      "neighbors_per_node_sha256": "6dc259ad8d3227de053f4616eaae7979900862a5ac52aa4f2135246b2c1f3da7"
+    }
+  },
+  "differences": {
+    "text": [
+      "neighbor_order_sha256",
+      "neighbors_per_node_sha256"
+    ],
+    "image": [
+      "neighbor_order_sha256",
+      "neighbors_per_node_sha256"
+    ],
+    "hybrid": [
+      "neighbor_order_sha256",
+      "neighbors_per_node_sha256"
+    ]
+  },
+  "scope": "Same vectors in original order, dimensions and node count. Hashed neighbor lists both as serialized and sorted within each node to distinguish a graph difference from serialization order."
+}

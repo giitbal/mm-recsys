@@ -1,0 +1,1136 @@
+{
+  "status": "PASS",
+  "started_at": "2026-11-21T07:46:14.047286+00:00",
+  "health_before": {
+    "status": "ok",
+    "search_ready": true,
+    "recommend_ready": true,
+    "scale": "full",
+    "model_version": "v1.0"
+  },
+  "health_after": {
+    "status": "ok",
+    "search_ready": true,
+    "recommend_ready": true,
+    "scale": "full",
+    "model_version": "v1.0"
+  },
+  "warmup": 10,
+  "requests": 100,
+  "concurrency": 1,
+  "target_p95_ms": 200,
+  "http": {
+    "p50_ms": 22.204962000000002,
+    "p95_ms": 28.64734995,
+    "p99_ms": 31.386653860000038
+  },
+  "service": {
+    "p50_ms": 14.390875001481618,
+    "p95_ms": 17.801968997446238,
+    "p99_ms": 21.297557969701312
+  },
+  "over_200_ms": 0,
+  "maximum_ms": 38.980732,
+  "samples": [
+    {
+      "user": "U001280",
+      "http_ms": 20.494864,
+      "stages": {
+        "candidate_ms": 5.037990998971509,
+        "ranking_ms": 3.188995000527939,
+        "reranking_ms": 5.974588999379193,
+        "total_ms": 14.201574998878641
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U002011",
+      "http_ms": 21.316563,
+      "stages": {
+        "candidate_ms": 5.29659099993296,
+        "ranking_ms": 3.328593997139251,
+        "reranking_ms": 5.073291002190672,
+        "total_ms": 13.698475999262882
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U009739",
+      "http_ms": 21.504963,
+      "stages": {
+        "candidate_ms": 4.994691000320017,
+        "ranking_ms": 3.886693000822561,
+        "reranking_ms": 5.603091001830762,
+        "total_ms": 14.48447500297334
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005126",
+      "http_ms": 20.380365,
+      "stages": {
+        "candidate_ms": 4.998290998628363,
+        "ranking_ms": 3.158295003231615,
+        "reranking_ms": 5.244989999482641,
+        "total_ms": 13.401576001342619
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008389",
+      "http_ms": 21.789063,
+      "stages": {
+        "candidate_ms": 5.108290999487508,
+        "ranking_ms": 4.377992001536768,
+        "reranking_ms": 5.093490999570349,
+        "total_ms": 14.579774000594625
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007812",
+      "http_ms": 19.424966,
+      "stages": {
+        "candidate_ms": 2.328096001292579,
+        "ranking_ms": 4.708390999439871,
+        "reranking_ms": 5.6640910006535705,
+        "total_ms": 12.70057800138602
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U003706",
+      "http_ms": 23.16696,
+      "stages": {
+        "candidate_ms": 5.410789999586996,
+        "ranking_ms": 3.6604939996323083,
+        "reranking_ms": 4.924492001009639,
+        "total_ms": 13.995776000228943
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007346",
+      "http_ms": 20.197565,
+      "stages": {
+        "candidate_ms": 5.1221920002717525,
+        "ranking_ms": 3.3526939987496007,
+        "reranking_ms": 4.2877920022874605,
+        "total_ms": 12.762678001308814
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004023",
+      "http_ms": 21.901662,
+      "stages": {
+        "candidate_ms": 5.734689999371767,
+        "ranking_ms": 3.5669940007210243,
+        "reranking_ms": 4.4363919987517875,
+        "total_ms": 13.738075998844579
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004378",
+      "http_ms": 22.291062,
+      "stages": {
+        "candidate_ms": 5.00869099778356,
+        "ranking_ms": 3.877494000334991,
+        "reranking_ms": 5.630089999613119,
+        "total_ms": 14.51627499773167
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004435",
+      "http_ms": 19.803066,
+      "stages": {
+        "candidate_ms": 5.4001910029910505,
+        "ranking_ms": 3.2985939978971146,
+        "reranking_ms": 4.500593000557274,
+        "total_ms": 13.199378001445439
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005454",
+      "http_ms": 20.745364,
+      "stages": {
+        "candidate_ms": 4.861792000156129,
+        "ranking_ms": 3.789992999372771,
+        "reranking_ms": 4.70919199869968,
+        "total_ms": 13.36097699822858
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004500",
+      "http_ms": 28.62885,
+      "stages": {
+        "candidate_ms": 5.182490996958222,
+        "ranking_ms": 3.2638940028846264,
+        "reranking_ms": 8.826584999042097,
+        "total_ms": 17.272969998884946
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005000",
+      "http_ms": 31.309946,
+      "stages": {
+        "candidate_ms": 5.856390002008993,
+        "ranking_ms": 4.254692998074461,
+        "reranking_ms": 7.6442870013124775,
+        "total_ms": 17.75537000139593
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007718",
+      "http_ms": 26.948054,
+      "stages": {
+        "candidate_ms": 4.946392000420019,
+        "ranking_ms": 3.157793998980196,
+        "reranking_ms": 8.015286002773792,
+        "total_ms": 16.119472002174007
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U009263",
+      "http_ms": 24.304758,
+      "stages": {
+        "candidate_ms": 5.826690001413226,
+        "ranking_ms": 4.413491999002872,
+        "reranking_ms": 6.078290000004927,
+        "total_ms": 16.318472000421025
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007165",
+      "http_ms": 21.918662,
+      "stages": {
+        "candidate_ms": 5.168292002053931,
+        "ranking_ms": 4.666191998694558,
+        "reranking_ms": 5.3455900015251245,
+        "total_ms": 15.180074002273614
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006529",
+      "http_ms": 23.34036,
+      "stages": {
+        "candidate_ms": 4.959791000146652,
+        "ranking_ms": 4.999991000659065,
+        "reranking_ms": 6.281890000536805,
+        "total_ms": 16.241672001342522
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000858",
+      "http_ms": 24.498158,
+      "stages": {
+        "candidate_ms": 5.141590998391621,
+        "ranking_ms": 3.260294000938302,
+        "reranking_ms": 6.394689000444487,
+        "total_ms": 14.79657399977441
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007600",
+      "http_ms": 21.749562,
+      "stages": {
+        "candidate_ms": 6.0167900010128506,
+        "ranking_ms": 3.9572929999849293,
+        "reranking_ms": 5.049191000580322,
+        "total_ms": 15.023274001578102
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006437",
+      "http_ms": 20.533965,
+      "stages": {
+        "candidate_ms": 4.660292001062771,
+        "ranking_ms": 3.4374940005363896,
+        "reranking_ms": 4.415991999849211,
+        "total_ms": 12.513778001448372
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005255",
+      "http_ms": 20.473465,
+      "stages": {
+        "candidate_ms": 4.984491002687719,
+        "ranking_ms": 3.6003940003865864,
+        "reranking_ms": 4.723491998447571,
+        "total_ms": 13.308377001521876
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004320",
+      "http_ms": 22.96146,
+      "stages": {
+        "candidate_ms": 5.010091001167893,
+        "ranking_ms": 3.4411939996061847,
+        "reranking_ms": 5.067690999567276,
+        "total_ms": 13.518976000341354
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008566",
+      "http_ms": 19.616666,
+      "stages": {
+        "candidate_ms": 5.094390999147436,
+        "ranking_ms": 4.103692997887265,
+        "reranking_ms": 4.501491999690188,
+        "total_ms": 13.699575996724889
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000890",
+      "http_ms": 21.987262,
+      "stages": {
+        "candidate_ms": 5.273289996694075,
+        "ranking_ms": 3.296095001132926,
+        "reranking_ms": 6.072889002098236,
+        "total_ms": 14.642273999925237
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000940",
+      "http_ms": 20.678465,
+      "stages": {
+        "candidate_ms": 4.94869199974346,
+        "ranking_ms": 3.2534940000914503,
+        "reranking_ms": 5.981289999908768,
+        "total_ms": 14.183475999743678
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U001825",
+      "http_ms": 24.525358,
+      "stages": {
+        "candidate_ms": 5.1123910016031004,
+        "ranking_ms": 5.014192000089679,
+        "reranking_ms": 6.432889000279829,
+        "total_ms": 16.55947200197261
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008226",
+      "http_ms": 20.736665,
+      "stages": {
+        "candidate_ms": 4.83489199905307,
+        "ranking_ms": 3.1904940005915705,
+        "reranking_ms": 5.1038919991697185,
+        "total_ms": 13.12927799881436
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007850",
+      "http_ms": 23.730259,
+      "stages": {
+        "candidate_ms": 5.848090000654338,
+        "ranking_ms": 5.026891998568317,
+        "reranking_ms": 4.950991002260707,
+        "total_ms": 15.825973001483362
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006959",
+      "http_ms": 22.177362,
+      "stages": {
+        "candidate_ms": 4.853591999562923,
+        "ranking_ms": 4.240992999257287,
+        "reranking_ms": 5.69759000063641,
+        "total_ms": 14.79217499945662
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U001280",
+      "http_ms": 22.474061,
+      "stages": {
+        "candidate_ms": 5.2080910027143545,
+        "ranking_ms": 4.047792997880606,
+        "reranking_ms": 6.378289002896054,
+        "total_ms": 15.634173003491014
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U002011",
+      "http_ms": 21.663462,
+      "stages": {
+        "candidate_ms": 5.3908900008536875,
+        "ranking_ms": 3.583593999792356,
+        "reranking_ms": 4.76479200005997,
+        "total_ms": 13.739276000706013
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U009739",
+      "http_ms": 22.724161,
+      "stages": {
+        "candidate_ms": 5.498391001310665,
+        "ranking_ms": 4.272092999599408,
+        "reranking_ms": 5.845289000717457,
+        "total_ms": 15.615773001627531
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005126",
+      "http_ms": 25.685855,
+      "stages": {
+        "candidate_ms": 6.210289000591729,
+        "ranking_ms": 7.0840879998286255,
+        "reranking_ms": 4.739391999464715,
+        "total_ms": 18.03376899988507
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008389",
+      "http_ms": 25.153956,
+      "stages": {
+        "candidate_ms": 6.262589002290042,
+        "ranking_ms": 4.140192999329884,
+        "reranking_ms": 5.101890998048475,
+        "total_ms": 15.5046729996684
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007812",
+      "http_ms": 18.860467,
+      "stages": {
+        "candidate_ms": 2.7332949975971133,
+        "ranking_ms": 3.3065940006054007,
+        "reranking_ms": 5.619089999527205,
+        "total_ms": 11.658978997729719
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U003706",
+      "http_ms": 25.087056,
+      "stages": {
+        "candidate_ms": 5.654590000631288,
+        "ranking_ms": 4.215593002300011,
+        "reranking_ms": 6.501288000436034,
+        "total_ms": 16.371471003367333
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007346",
+      "http_ms": 26.390254,
+      "stages": {
+        "candidate_ms": 4.937691999657545,
+        "ranking_ms": 5.571390000113752,
+        "reranking_ms": 6.6794880003726576,
+        "total_ms": 17.188570000143955
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004023",
+      "http_ms": 21.641062,
+      "stages": {
+        "candidate_ms": 5.207190999499289,
+        "ranking_ms": 3.376394000952132,
+        "reranking_ms": 4.417492000357015,
+        "total_ms": 13.001077000808436
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004378",
+      "http_ms": 23.753858,
+      "stages": {
+        "candidate_ms": 6.776887999876635,
+        "ranking_ms": 3.626294001151109,
+        "reranking_ms": 5.414691000623861,
+        "total_ms": 15.817873001651606
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004435",
+      "http_ms": 21.800462,
+      "stages": {
+        "candidate_ms": 5.229089998465497,
+        "ranking_ms": 3.357295001478633,
+        "reranking_ms": 5.478490002133185,
+        "total_ms": 14.064875002077315
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005454",
+      "http_ms": 21.572363,
+      "stages": {
+        "candidate_ms": 5.289389999234118,
+        "ranking_ms": 3.3046950011339504,
+        "reranking_ms": 5.450990000099409,
+        "total_ms": 14.045075000467477
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004500",
+      "http_ms": 21.955262,
+      "stages": {
+        "candidate_ms": 4.996692001441261,
+        "ranking_ms": 3.6282930013840087,
+        "reranking_ms": 5.619190997094847,
+        "total_ms": 14.244175999920117
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005000",
+      "http_ms": 24.377957,
+      "stages": {
+        "candidate_ms": 4.948892001266358,
+        "ranking_ms": 4.556091997073963,
+        "reranking_ms": 7.339987001614645,
+        "total_ms": 16.844970999954967
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007718",
+      "http_ms": 24.865456,
+      "stages": {
+        "candidate_ms": 5.408390999946278,
+        "ranking_ms": 6.850387999293162,
+        "reranking_ms": 5.109091001941124,
+        "total_ms": 17.367870001180563
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U009263",
+      "http_ms": 22.348861,
+      "stages": {
+        "candidate_ms": 5.583190999459475,
+        "ranking_ms": 3.5958929984190036,
+        "reranking_ms": 4.713392001576722,
+        "total_ms": 13.8924759994552
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007165",
+      "http_ms": 21.733863,
+      "stages": {
+        "candidate_ms": 6.113390001701191,
+        "ranking_ms": 3.6011929987580515,
+        "reranking_ms": 4.3971929990220815,
+        "total_ms": 14.111775999481324
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006529",
+      "http_ms": 22.78916,
+      "stages": {
+        "candidate_ms": 5.4061899973021355,
+        "ranking_ms": 3.3830950014817063,
+        "reranking_ms": 6.340389001707081,
+        "total_ms": 15.129674000490922
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000858",
+      "http_ms": 25.485256,
+      "stages": {
+        "candidate_ms": 4.805492000741651,
+        "ranking_ms": 3.140493998216698,
+        "reranking_ms": 7.443987000442576,
+        "total_ms": 15.389972999400925
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007600",
+      "http_ms": 22.445461,
+      "stages": {
+        "candidate_ms": 5.727889998524915,
+        "ranking_ms": 3.254194001783617,
+        "reranking_ms": 5.0405910005792975,
+        "total_ms": 14.02267500088783
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006437",
+      "http_ms": 38.980732,
+      "stages": {
+        "candidate_ms": 12.185378996946383,
+        "ranking_ms": 4.601792003086302,
+        "reranking_ms": 6.668088997685118,
+        "total_ms": 23.455259997717803
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005255",
+      "http_ms": 25.783955,
+      "stages": {
+        "candidate_ms": 5.428991000371752,
+        "ranking_ms": 4.4986920001974795,
+        "reranking_ms": 5.2220910001778975,
+        "total_ms": 15.14977400074713
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004320",
+      "http_ms": 23.21626,
+      "stages": {
+        "candidate_ms": 5.642989999614656,
+        "ranking_ms": 3.639194001152646,
+        "reranking_ms": 5.479291001392994,
+        "total_ms": 14.761475002160296
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008566",
+      "http_ms": 24.670757,
+      "stages": {
+        "candidate_ms": 5.610890999378171,
+        "ranking_ms": 4.67989200114971,
+        "reranking_ms": 6.230489001609385,
+        "total_ms": 16.521272002137266
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000890",
+      "http_ms": 30.259747,
+      "stages": {
+        "candidate_ms": 5.125290997966658,
+        "ranking_ms": 4.374192001705524,
+        "reranking_ms": 8.290285997645697,
+        "total_ms": 17.78976899731788
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000940",
+      "http_ms": 27.165653,
+      "stages": {
+        "candidate_ms": 5.729489999794168,
+        "ranking_ms": 3.697193998959847,
+        "reranking_ms": 9.57258299968089,
+        "total_ms": 18.999266998434905
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U001825",
+      "http_ms": 31.223846,
+      "stages": {
+        "candidate_ms": 9.138084002188407,
+        "ranking_ms": 6.563789000210818,
+        "reranking_ms": 5.573889997322112,
+        "total_ms": 21.275762999721337
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008226",
+      "http_ms": 28.998849,
+      "stages": {
+        "candidate_ms": 5.527391000214266,
+        "ranking_ms": 7.431286998325959,
+        "reranking_ms": 6.963388001167914,
+        "total_ms": 19.92206599970814
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007850",
+      "http_ms": 23.31976,
+      "stages": {
+        "candidate_ms": 7.662387000891613,
+        "ranking_ms": 3.738594001333695,
+        "reranking_ms": 4.571392000798369,
+        "total_ms": 15.972373003023677
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006959",
+      "http_ms": 22.735061,
+      "stages": {
+        "candidate_ms": 5.866390001756372,
+        "ranking_ms": 4.061792998982128,
+        "reranking_ms": 4.812192000827054,
+        "total_ms": 14.740375001565553
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U001280",
+      "http_ms": 22.074962,
+      "stages": {
+        "candidate_ms": 4.8656920007488225,
+        "ranking_ms": 3.387794000445865,
+        "reranking_ms": 5.6454899968230166,
+        "total_ms": 13.898975998017704
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U002011",
+      "http_ms": 21.061863,
+      "stages": {
+        "candidate_ms": 4.558591997920303,
+        "ranking_ms": 3.39149399951566,
+        "reranking_ms": 5.534490002901293,
+        "total_ms": 13.484576000337256
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U009739",
+      "http_ms": 18.641868,
+      "stages": {
+        "candidate_ms": 4.56189300166443,
+        "ranking_ms": 3.017293998709647,
+        "reranking_ms": 4.402593000122579,
+        "total_ms": 11.981780000496656
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005126",
+      "http_ms": 20.920564,
+      "stages": {
+        "candidate_ms": 4.7233920013241,
+        "ranking_ms": 2.9848949998267926,
+        "reranking_ms": 5.5590899974049535,
+        "total_ms": 13.267376998555847
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008389",
+      "http_ms": 22.232562,
+      "stages": {
+        "candidate_ms": 4.677092001657002,
+        "ranking_ms": 4.843991999223363,
+        "reranking_ms": 5.5344899992633145,
+        "total_ms": 15.055574000143679
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007812",
+      "http_ms": 18.182469,
+      "stages": {
+        "candidate_ms": 2.1976960015308578,
+        "ranking_ms": 3.1714950018795207,
+        "reranking_ms": 5.878789997950662,
+        "total_ms": 11.24798100136104
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U003706",
+      "http_ms": 27.502152,
+      "stages": {
+        "candidate_ms": 4.911192001600284,
+        "ranking_ms": 4.050593001011293,
+        "reranking_ms": 4.847490999964066,
+        "total_ms": 13.809276002575643
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007346",
+      "http_ms": 24.897857,
+      "stages": {
+        "candidate_ms": 5.203291002544574,
+        "ranking_ms": 3.6427939994609915,
+        "reranking_ms": 5.139190998306731,
+        "total_ms": 13.985276000312297
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004023",
+      "http_ms": 22.60306,
+      "stages": {
+        "candidate_ms": 4.841091002163012,
+        "ranking_ms": 3.5797939999611117,
+        "reranking_ms": 6.24158899881877,
+        "total_ms": 14.662474000942893
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004378",
+      "http_ms": 24.359858,
+      "stages": {
+        "candidate_ms": 5.702189999283291,
+        "ranking_ms": 4.681392001657514,
+        "reranking_ms": 5.273590999422595,
+        "total_ms": 15.6571730003634
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004435",
+      "http_ms": 22.381861,
+      "stages": {
+        "candidate_ms": 5.561391000810545,
+        "ranking_ms": 3.418993997911457,
+        "reranking_ms": 4.933991000143578,
+        "total_ms": 13.91437599886558
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005454",
+      "http_ms": 25.004556,
+      "stages": {
+        "candidate_ms": 5.390491001890041,
+        "ranking_ms": 3.432493998843711,
+        "reranking_ms": 6.608288000279572,
+        "total_ms": 15.431273001013324
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004500",
+      "http_ms": 24.471357,
+      "stages": {
+        "candidate_ms": 5.275791001622565,
+        "ranking_ms": 4.485991998080863,
+        "reranking_ms": 5.751890003011795,
+        "total_ms": 15.513673002715223
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005000",
+      "http_ms": 23.210459,
+      "stages": {
+        "candidate_ms": 6.4499879990762565,
+        "ranking_ms": 3.620694002165692,
+        "reranking_ms": 5.103691000840627,
+        "total_ms": 15.174373002082575
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007718",
+      "http_ms": 21.720662,
+      "stages": {
+        "candidate_ms": 5.042392000177642,
+        "ranking_ms": 3.264494000177365,
+        "reranking_ms": 5.4125899987411685,
+        "total_ms": 13.719475999096176
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U009263",
+      "http_ms": 21.488063,
+      "stages": {
+        "candidate_ms": 4.976890999387251,
+        "ranking_ms": 3.3144940025522374,
+        "reranking_ms": 5.6473900003766175,
+        "total_ms": 13.938775002316106
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007165",
+      "http_ms": 23.521259,
+      "stages": {
+        "candidate_ms": 5.206391000683652,
+        "ranking_ms": 3.3693939985823818,
+        "reranking_ms": 6.229989001440117,
+        "total_ms": 14.805774000706151
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006529",
+      "http_ms": 25.700955,
+      "stages": {
+        "candidate_ms": 5.81558900012169,
+        "ranking_ms": 4.274392998922849,
+        "reranking_ms": 7.588387001305819,
+        "total_ms": 17.678369000350358
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000858",
+      "http_ms": 25.483855,
+      "stages": {
+        "candidate_ms": 5.351490999601083,
+        "ranking_ms": 4.675791999034118,
+        "reranking_ms": 6.548388002556749,
+        "total_ms": 16.57567100119195
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007600",
+      "http_ms": 25.413756,
+      "stages": {
+        "candidate_ms": 5.6616900001245085,
+        "ranking_ms": 5.513391002750723,
+        "reranking_ms": 5.491689997143112,
+        "total_ms": 16.666771000018343
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006437",
+      "http_ms": 21.376663,
+      "stages": {
+        "candidate_ms": 5.0524910002422985,
+        "ranking_ms": 3.3513939997646958,
+        "reranking_ms": 5.5421910001314245,
+        "total_ms": 13.946076000138419
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005255",
+      "http_ms": 20.178865,
+      "stages": {
+        "candidate_ms": 4.708791002485668,
+        "ranking_ms": 3.4037939985864796,
+        "reranking_ms": 4.929392001940869,
+        "total_ms": 13.041977003013017
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004320",
+      "http_ms": 20.623364,
+      "stages": {
+        "candidate_ms": 4.946690998622216,
+        "ranking_ms": 3.6469939987000544,
+        "reranking_ms": 5.983089002256747,
+        "total_ms": 14.576773999579018
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008566",
+      "http_ms": 22.588561,
+      "stages": {
+        "candidate_ms": 4.80519100165111,
+        "ranking_ms": 3.516294000291964,
+        "reranking_ms": 5.767890001152409,
+        "total_ms": 14.089375003095483
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000890",
+      "http_ms": 19.282067,
+      "stages": {
+        "candidate_ms": 4.457991999515798,
+        "ranking_ms": 3.240893998736283,
+        "reranking_ms": 4.616191999957664,
+        "total_ms": 12.315077998209745
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U000940",
+      "http_ms": 22.040361,
+      "stages": {
+        "candidate_ms": 4.581992001476465,
+        "ranking_ms": 3.0290949980553705,
+        "reranking_ms": 4.88759099971503,
+        "total_ms": 12.498677999246866
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U001825",
+      "http_ms": 21.413963,
+      "stages": {
+        "candidate_ms": 4.770291998283938,
+        "ranking_ms": 3.630993000115268,
+        "reranking_ms": 4.813991999981226,
+        "total_ms": 13.215276998380432
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008226",
+      "http_ms": 19.582965,
+      "stages": {
+        "candidate_ms": 4.446892002306413,
+        "ranking_ms": 2.984995000588242,
+        "reranking_ms": 4.9925909988814965,
+        "total_ms": 12.424478001776151
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007850",
+      "http_ms": 21.600862,
+      "stages": {
+        "candidate_ms": 4.632792002666974,
+        "ranking_ms": 4.3815930002892856,
+        "reranking_ms": 5.282889997033635,
+        "total_ms": 14.297274999989895
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U006959",
+      "http_ms": 24.607657,
+      "stages": {
+        "candidate_ms": 4.837490996578708,
+        "ranking_ms": 3.977894000854576,
+        "reranking_ms": 5.156990002433304,
+        "total_ms": 13.972374999866588
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U001280",
+      "http_ms": 20.051464,
+      "stages": {
+        "candidate_ms": 4.9154919979628175,
+        "ranking_ms": 3.0847939997329377,
+        "reranking_ms": 4.857992000324884,
+        "total_ms": 12.85827799802064
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U002011",
+      "http_ms": 22.081461,
+      "stages": {
+        "candidate_ms": 4.6019919973332435,
+        "ranking_ms": 3.8285930022539105,
+        "reranking_ms": 5.294990998663707,
+        "total_ms": 13.72557599825086
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U009739",
+      "http_ms": 21.804162,
+      "stages": {
+        "candidate_ms": 4.816491000383394,
+        "ranking_ms": 3.7135940001462586,
+        "reranking_ms": 5.974388997856295,
+        "total_ms": 14.504473998385947
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U005126",
+      "http_ms": 21.039964,
+      "stages": {
+        "candidate_ms": 4.999790999136167,
+        "ranking_ms": 3.2219950007856824,
+        "reranking_ms": 5.022391000238713,
+        "total_ms": 13.244177000160562
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U008389",
+      "http_ms": 22.78066,
+      "stages": {
+        "candidate_ms": 5.0940910005010664,
+        "ranking_ms": 4.077692999999272,
+        "reranking_ms": 5.630589999782387,
+        "total_ms": 14.802374000282725
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007812",
+      "http_ms": 18.182868,
+      "stages": {
+        "candidate_ms": 2.1257959997456055,
+        "ranking_ms": 3.2840940002643038,
+        "reranking_ms": 5.876290000742301,
+        "total_ms": 11.28618000075221
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U003706",
+      "http_ms": 21.133763,
+      "stages": {
+        "candidate_ms": 4.517592002230231,
+        "ranking_ms": 3.8952930008235853,
+        "reranking_ms": 5.491489999258192,
+        "total_ms": 13.904375002312008
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U007346",
+      "http_ms": 21.434163,
+      "stages": {
+        "candidate_ms": 4.3364919984014705,
+        "ranking_ms": 4.299492000427563,
+        "reranking_ms": 5.901989999983925,
+        "total_ms": 14.537973998812959
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004023",
+      "http_ms": 20.027665,
+      "stages": {
+        "candidate_ms": 4.572091998852557,
+        "ranking_ms": 3.1663950030633714,
+        "reranking_ms": 5.762490000051912,
+        "total_ms": 13.50097700196784
+      },
+      "max_run": 2
+    },
+    {
+      "user": "U004378",
+      "http_ms": 20.476064,
+      "stages": {
+        "candidate_ms": 4.502592000790173,
+        "ranking_ms": 3.5834939990309067,
+        "reranking_ms": 5.400690002716146,
+        "total_ms": 13.486776002537226
+      },
+      "max_run": 2
+    }
+  ]
+}

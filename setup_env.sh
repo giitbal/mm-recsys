@@ -45,20 +45,27 @@ else
 fi
 # New target gets the actual committed common implementation, never source stubs.
 "$PY" - "$SCRIPT_DIR" "$PROJECT_ROOT" "$REFRESH_PROMPTS" <<'PY'
-import shutil,sys
+import os,shutil,sys
 from pathlib import Path
 source,target=map(Path,sys.argv[1:3]);refresh=sys.argv[3]=='1'
-roots=['src','tests','scripts','config','docs','dashboard','.github','.vscode','docker','skills']
+roots=['src','tests','scripts','config','docs','dashboard','.github','.vscode','docker','skills','storefront']
 files=['setup_env.sh','config.yaml','README.md','AGENTS.md','ai_step_prompts_optimized.md',
        'requirements.txt','requirements-torch.txt','requirements-dashboard.txt','requirements-dev.txt',
        'pytest.ini','mypy.ini','.gitignore','.dockerignore','.env','docker-compose.yml']
 if source!=target:
     for folder in roots:
-        for path in (source/folder).rglob('*'):
-            if not path.is_file() or '__pycache__' in path.parts or path.suffix=='.pyc':continue
-            relative=path.relative_to(source);destination=target/relative
-            if not destination.exists():
-                destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(path,destination)
+        for directory, children, names in os.walk(source/folder):
+            parent = Path(directory)
+            children[:] = [name for name in children if name not in
+                           {'__pycache__', 'node_modules', '.next', '.git'} and parent/name != target]
+            for name in names:
+                path = parent/name
+                if path.suffix in ('.pyc', '.tsbuildinfo') or (folder == 'storefront' and name.startswith('.env')):
+                    continue
+                destination = target/path.relative_to(source)
+                if not destination.exists():
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(path, destination)
     for name in files:
         if not (target/name).exists():shutil.copyfile(source/name,target/name)
 canonical=source/'ai_step_prompts_optimized.md';alias=target/'docs/ai_step_prompts.md'

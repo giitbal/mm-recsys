@@ -130,3 +130,18 @@ def test_content_projection_fits_only_train_available_nonmissing_products(fixtur
     source['hashes'][str(root/'image.npy')]=file_hash(root/'image.npy');write_json(results/'hm_embeddings.json',source)
     with pytest.raises(ValueError,match='projection source changed'):
         expansion_hm.content_projection({'seed':42},tmp_path,results)
+
+
+def test_attribute_archive_follows_annotation_members_after_rename(tmp_path):
+    from zipfile import ZipFile
+    from src.external_data.expansion_deepfashion import PREFIX, attribute_archive
+    import pytest
+    for name in ('first.zip', 'renamed.zip'):
+        with ZipFile(tmp_path / name, 'w') as archive:
+            archive.writestr(PREFIX + 'Anno_coarse/list_attr_cloth.txt', '')
+            archive.writestr(PREFIX + 'Anno_coarse/list_attr_img.txt', '')
+        if name == 'first.zip':
+            assert attribute_archive(tmp_path) == tmp_path / name
+    with pytest.raises(ValueError, match='attributes_archive'):
+        attribute_archive(tmp_path)
+    assert attribute_archive(tmp_path, 'renamed.zip') == tmp_path / 'renamed.zip'

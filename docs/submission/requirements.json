@@ -11,10 +11,10 @@
       "tests": [
         "tests/test_simulator.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/data_audit.json",
-      "sha256": "4d08f459a361c4bfe881b5844a7a2d4783e5c9ba996086699acbf26a2e77414e",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_data_audit.json",
+      "sha256": "08bc74f616715d0cc22e7d8e3c857641074da4b94ee48b1a9518350124f45bce",
       "status": "PASS",
-      "scope": "full v4.4 50K/10K/1M과 6페르소나·원장·무결성 실제 검사"
+      "scope": "full 상품·사용자·이벤트 수, 3단계 카테고리, 6가지 페르소나별 가격·카테고리·전환율, 4개 이벤트 및 참조 무결성 검증"
     },
     {
       "requirement": "seed·시간분할·관측 cutoff·학습 분리",
@@ -28,10 +28,10 @@
         "tests/test_simulator.py",
         "tests/test_candidate.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/data_reproduction_full.json",
-      "sha256": "7d7b6ad56a7f92af90421dd67fdcb0ba44901354cded2a8f1226277a89700ac2",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/fresh_reproduction_full.json",
+      "sha256": "af16616e47eb335c114424591d5d677c81d3fa063e1cdc12d35a0f89de6577d1",
       "status": "PASS",
-      "scope": "동일 seed/config 독립 전체 재생성의 모든 파일 해시 일치; 80/10/10 유지"
+      "scope": "seed 42, 독립 빈 경로에서 재생성한 manifest와 50,000개 상품 이미지 해시 대조"
     },
     {
       "requirement": "CLIP 3모드·FAISS ANN·검색 품질",
@@ -46,10 +46,10 @@
         "tests/test_index.py",
         "tests/test_search_api.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/quality_full_test.json",
-      "sha256": "16ab47078a6ad7f3e0cc7d39e6bc89fa8911d874b932a528b5407b232af43fbb",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_test.json",
+      "sha256": "6c9d08a552084dd8b27c9c91338e6a09e76129bd54b17f0a8e39f63f0be96543",
       "status": "PASS",
-      "scope": "리팩터링·Redis 복구 소스에서 같은 full 데이터/활성 v1.0을 valid 동결 후 test 재측정; 빈 경로 재학습도 별도 검증"
+      "scope": "600개 쿼리, text/image/hybrid 각각 200개. CLIP·HNSW 및 BM25 텍스트 기준선"
     },
     {
       "requirement": "Two Tower·full catalog top300",
@@ -62,10 +62,10 @@
         "tests/test_two_tower.py",
         "tests/test_candidate.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/quality_full_test.json",
-      "sha256": "16ab47078a6ad7f3e0cc7d39e6bc89fa8911d874b932a528b5407b232af43fbb",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_test.json",
+      "sha256": "6c9d08a552084dd8b27c9c91338e6a09e76129bd54b17f0a8e39f63f0be96543",
       "status": "PASS",
-      "scope": "리팩터링·Redis 복구 소스에서 같은 full 데이터/활성 v1.0을 valid 동결 후 test 재측정; 빈 경로 재학습도 별도 검증"
+      "scope": "Two-Tower의 전체 카탈로그 후보 300개, 정답을 가진 사용자 전체의 macro Recall@300"
     },
     {
       "requirement": "DeepFM·CTR/CVR",
@@ -78,10 +78,10 @@
         "tests/test_deepfm.py",
         "tests/test_ranking.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/quality_full_test.json",
-      "sha256": "16ab47078a6ad7f3e0cc7d39e6bc89fa8911d874b932a528b5407b232af43fbb",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_test.json",
+      "sha256": "6c9d08a552084dd8b27c9c91338e6a09e76129bd54b17f0a8e39f63f0be96543",
       "status": "PASS",
-      "scope": "리팩터링·Redis 복구 소스에서 같은 full 데이터/활성 v1.0을 valid 동결 후 test 재측정; 빈 경로 재학습도 별도 검증"
+      "scope": "4가지 피처군을 사용하는 DeepFM의 CTR AUC와 별도 CVR AUC·라벨 표본 수"
     },
     {
       "requirement": "다양성·cold-start·신규·MAB·세션",
@@ -95,10 +95,10 @@
         "tests/test_reranking.py",
         "tests/test_session.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/quality_full_test.json",
-      "sha256": "16ab47078a6ad7f3e0cc7d39e6bc89fa8911d874b932a528b5407b232af43fbb",
+      "source": "docs/results/experiments/A/illustrations_v1/peer13_all_levels/full_test.json",
+      "sha256": "b82e595a5acb10408cbbfb68a13e56f6b2ad70fd94f26129091362fbbade22ef",
       "status": "PASS",
-      "scope": "리팩터링·Redis 복구 소스에서 같은 full 데이터/활성 v1.0을 valid 동결 후 test 재측정; 빈 경로 재학습도 별도 검증"
+      "scope": "전체 사용자 10,000명의 Top-50에서 세 카테고리 레벨의 3연속과 MAB 슬롯 검사. 전체 모델·재랭킹 정책 동일"
     },
     {
       "requirement": "최종 추천 품질·Coverage",
@@ -109,10 +109,10 @@
       "tests": [
         "tests/test_evaluation_dashboard.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/quality_full_test.json",
-      "sha256": "16ab47078a6ad7f3e0cc7d39e6bc89fa8911d874b932a528b5407b232af43fbb",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_test.json",
+      "sha256": "6c9d08a552084dd8b27c9c91338e6a09e76129bd54b17f0a8e39f63f0be96543",
       "status": "PASS",
-      "scope": "리팩터링·Redis 복구 소스에서 같은 full 데이터/활성 v1.0을 valid 동결 후 test 재측정; 빈 경로 재학습도 별도 검증"
+      "scope": "HitRate@50·nDCG@50, 전체 50,000개 상품을 분모로 한 Coverage 및 세 가지 추천 기준선"
     },
     {
       "requirement": "API 스키마·세션 이벤트 응답",
@@ -126,10 +126,10 @@
         "tests/test_session.py",
         "tests/test_serving_contract.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/api_full.json",
-      "sha256": "b9276e092a98ca02a1de2be86b8fdb3f51f05c690ad00faf9bd97b96bf1ed89e",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/default_api_contract.json",
+      "sha256": "6022ba52aa8ae9dbdef75a4648f7362de53bb5dcb2a7bd6acc82747392ae7969",
       "status": "PASS",
-      "scope": "실제 HTTP JSON/multipart·검색 의미·세션 스키마 검증"
+      "scope": "실제 HTTP에서 K·N을 생략하고 3가지 검색과 추천 결과 10개 및 모든 필수 키를 확인"
     },
     {
       "requirement": "Redis 및 API 지연",
@@ -142,10 +142,10 @@
         "tests/test_integration_redis.py",
         "tests/test_docker.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/smoke_full.json",
-      "sha256": "b9276e092a98ca02a1de2be86b8fdb3f51f05c690ad00faf9bd97b96bf1ed89e",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/smoke_full.json",
+      "sha256": "835bc2881618d707f5d269559a4d9b96c81211e538e38bb31082b8221b90bd9e",
       "status": "PASS",
-      "scope": "한 배포·CT 정지·10 warmup+100 serial 실제 지연; raw 측정 보존"
+      "scope": "CPU Docker에서 각 모드·후보·Redis 10회 예열 후 100회 단건 호출의 원시 지연과 p95"
     },
     {
       "requirement": "Compose 네 서비스 재현",
@@ -157,10 +157,10 @@
       "tests": [
         "tests/test_docker.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/fresh_reproduction_full.json",
-      "sha256": "c7c65e3a0d247e81aeb34c67320136cbdda917206da4e7856b30731298c4a709",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/fresh_reproduction_full.json",
+      "sha256": "af16616e47eb335c114424591d5d677c81d3fa063e1cdc12d35a0f89de6577d1",
       "status": "PASS",
-      "scope": "빈 v4.4 산출물에서 실제 생성·세 모델 학습 및 기본 네 서비스; 원격 clone과 구별"
+      "scope": "빈 데이터·모델·결과에서 기본 Compose 네 서비스의 생성·학습·HTTP·라이브 로그 검증"
     },
     {
       "requirement": "A/B 두 전략·통계·CI",
@@ -173,10 +173,10 @@
       "tests": [
         "tests/test_ab.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/ab_acceptance_full.json",
-      "sha256": "a1917af5f532680256eb132bac7c18382f7e293600fb0ecd982c5666670f8866",
+      "source": "docs/results/experiments/A/illustrations_v1/peer_final_after13/ab_acceptance_full.json",
+      "sha256": "899ad1c659b9d7046df4ce19565dc8e2f929ac3297e7f778f3b74442c44236da",
       "status": "PASS",
-      "scope": "5000명/군·30일 합성 A/B 통계 재검산; 성능 개선을 합격 조건으로 하지 않음"
+      "scope": "동일 데이터·모델·재랭킹 정책에서 5,000명/군, 30일. 사용자 단위 양측 검정과 95% 신뢰구간"
     },
     {
       "requirement": "Streamlit 시각화",
@@ -188,10 +188,10 @@
       "tests": [
         "tests/test_dashboard.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/browser_basic/browser.json",
-      "sha256": "6bc3aa3986a882d7ac9aa27a9fe93a40ec6f3d973b303da72f114b4272ac4440",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser.json",
+      "sha256": "48fa71de5a7c9b4a9963099d9763b64ddc6e1be1e5ab81dda206fd0bd62fde16",
       "status": "PASS",
-      "scope": "실제 Chromium 여섯 탭·한글·검색·추천 동작; 최종 판정 게시 화면은 별도 browser_final 확인"
+      "scope": "실제 8501에서 검색·추천 차트 각 1개, A/B 차트 2개, API 검색·클릭/세션 및 화면 오류 검사"
     },
     {
       "requirement": "CT 모니터·재학습·버전·롤백",
@@ -204,10 +204,10 @@
       "tests": [
         "tests/test_ct.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/ct_acceptance_full.json",
-      "sha256": "6c4a906ef2ec9f368bda7c7021d5951ccc4f13de83d5bb68029484510929616c",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/ct_acceptance_full.json",
+      "sha256": "e88404c681fe7f9bfb84136e51702a7046218eeb0cc8eb1e3d66cbca14ab289c",
       "status": "PASS",
-      "scope": "실제 로그 13,404건의 1회 감시·full 재학습·valid 유지 판정; 자동 worker 기동 및 통제 승격·롤백은 별도 확인"
+      "scope": "운영 신규 63,812건, v1.4 RETAINED, 활성 v1.0. 동일 후보의 별도 실제 HTTP 승격·교체·복구"
     },
     {
       "requirement": "README·리포트·기여·제출 검사",
@@ -220,10 +220,10 @@
       "tests": [
         "tests/test_submission.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/local_checks.json",
-      "sha256": "61f54ee2ac75504e70ffdbf36003c9aab44b835033da6b985260d4c062ec3087",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/preflight/evidence.json",
+      "sha256": "e648b017f976765184954c29099fe2887ebc73ab74a26eaeeab46893f65fec77",
       "status": "PASS",
-      "scope": "현재 타입·공개 함수 annotation 사전검사; 전체 회귀·의존성·최종 판정은 submission/checks.json"
+      "scope": "기본 파일·공개 URL·기여 PR, pytest·실제 Redis·HTTP·mypy·pip 검사. 원격 최신본 게시 상태는 별도 행"
     },
     {
       "requirement": "외부 데이터 요구 해석",
@@ -235,9 +235,9 @@
         "tests/test_submission.py"
       ],
       "source": "docs/submission/dataset_scope.json",
-      "sha256": "a767f33f65eca2fe25820ddb69ffe3af07bc6e8b5cb83016916b9b105bd1d673",
+      "sha256": "116b7fd0fea633cb6943437fc117851bc727ce447d7136de9f9d56dc045ef434",
       "status": "RESOLVED_OPTIONAL",
-      "scope": "사용자가 전달한 강사 결정: 합성 데이터 개발 완료 후 실제 데이터셋을 추가 모델 검증에 사용; 미획득"
+      "scope": "실제 외부 자료 활용에 대한 기존 판정. 현재 합성 카탈로그의 품질은 새 full test 결과를 사용한다"
     },
     {
       "requirement": "라이브 Redis MAB 귀속",
@@ -249,10 +249,10 @@
       "tests": [
         "tests/test_integration_mab.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/mab_full.json",
-      "sha256": "82291bfa7cabc6afeac8d1e2b1a62e35b38cc074bcf033cf5fbbe0f909efd6a0",
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/mab_full.json",
+      "sha256": "71bf3ca16b744c7e6a7b94a9c7127e98ebf06875c568c420c0a6f8b102ad0728",
       "status": "PASS",
-      "scope": "실제 HTTP/Redis 노출 귀속·최대 보상·중복 방지·세션 변화"
+      "scope": "독립 기본 API와 Redis에서 탐색·세션·노출 귀속 및 보상 중복 방지를 검사"
     },
     {
       "requirement": "demo 명령만으로 PDF API·A/B·CT 전체 시연",
@@ -267,10 +267,118 @@
         "tests/test_demo_host.py",
         "tests/test_ct_api_traffic.py"
       ],
-      "source": "docs/results/experiments/A/final_validation_20261112/demo_examples_verified.json",
-      "sha256": "40fcd621348adc4f23e5e4f8892a66144090b73eaadaf8d29cc66ba3c552d449",
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/demo_examples.json",
+      "sha256": "57466557e78c06435c769a9c321ddf5deb279a3df6a832c28df1e27530e8beac",
       "status": "PASS",
-      "scope": "20명/군·2일로 한 명령 API/A-B/CT 연결 확인; 기본 5000명/군·30일 A/B는 별도 재측정"
+      "scope": "같은 도안의 기존 CLI 시연 기록. 현재 API의 기본값·귀속 및 A/B·CT는 위 각 항목 참조"
+    },
+    {
+      "requirement": "모델 학습용 라벨·네거티브·기준선",
+      "pages": "pp.5–6",
+      "files": [
+        "src/evaluation/metrics.py",
+        "src/recommendation/train_two_tower.py",
+        "src/recommendation/train_deepfm.py"
+      ],
+      "tests": [
+        "tests/test_candidate.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_candidate_training.json",
+      "sha256": "84f6933ec2cd1e8e0df31d6f6cb5177febba0e6114d85b73082651470b85e2c7",
+      "status": "PASS",
+      "scope": "Two-Tower 랜덤 네거티브 1:4, 랭킹의 노출 후 비클릭 라벨과 BM25·인기·Two-Tower 개선율은 보고서 참조"
+    },
+    {
+      "requirement": "라이브러리·CPU·로컬 Compose·지연 측정 조건",
+      "pages": "pp.8–10",
+      "files": [
+        "requirements.txt",
+        "requirements-torch.txt",
+        "docker-compose.yml",
+        "src/search/encoder.py"
+      ],
+      "tests": [
+        "tests/test_docker.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/hardware.json",
+      "sha256": "04e7d21dbbd48f97ceb703801e9cffbdb871ad90d5e70e234ecb5b90ce6027af",
+      "status": "PASS",
+      "scope": "FAISS CPU·transformers CLIP·PyTorch·redis-py, GPU 미사용, 물리 8코어·16GB급 호스트, API 4 CPU 제한"
+    },
+    {
+      "requirement": "기능 범위와 ID 기반 데모",
+      "pages": "p.9",
+      "files": [
+        "src/serving/main.py",
+        "src/serving/storefront.py",
+        "storefront/src/app/(store)/checkout/page.tsx"
+      ],
+      "tests": [
+        "tests/test_storefront.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/storefront/browser.json",
+      "sha256": "0b9877712729303e004484bd50fe0708d7314f60a9b21b86ade5e311366de6bd",
+      "status": "PASS",
+      "scope": "사용자 ID와 구매 이벤트를 사용한다. 결제·배송·재고 관리 서비스, 인증 및 Kafka 의존성이 없다"
+    },
+    {
+      "requirement": "설정 분리와 주요 함수 타입",
+      "pages": "p.9",
+      "files": [
+        "config.yaml",
+        "config/search.yaml",
+        "config/recommend.yaml",
+        "config/serving.yaml"
+      ],
+      "tests": [
+        "tests/test_submission.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/preflight/evidence.json",
+      "sha256": "e648b017f976765184954c29099fe2887ebc73ab74a26eaeeab46893f65fec77",
+      "status": "PASS",
+      "scope": "설정·모델 경로·seed의 실제 호출부와 전체 mypy, 공개 Python 함수 주석 누락 수를 확인"
+    },
+    {
+      "requirement": "공개 저장소 접근과 이번 변경 게시",
+      "pages": "pp.1,5–6,9",
+      "files": [
+        "README.md",
+        "docker-compose.yml"
+      ],
+      "tests": [
+        "tests/test_submission.py"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/submission/publication.json",
+      "sha256": "dee66f9bc61cc49faa00ac9bc29d9e4bb18f4a7fc9960726270300e38b99e571",
+      "status": "PENDING_PUBLICATION",
+      "scope": "공개 URL은 익명 접근 가능. 이번 로컬 변경과 공개 main의 파일 해시 차이를 확인. 외부 제출은 미확인"
     }
-  ]
+  ],
+  "dataset_scope": {
+    "image_recipe": "illustrations-v1",
+    "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+    "current_quality": "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_test.json",
+    "current_acceptance": "docs/results/final_acceptance.json",
+    "previous_matrix": "docs/results/experiments/A/illustrations_v1/integration_current/previous_requirements.json"
+  },
+  "pdf_sections": {
+    "2": {
+      "local_deliverables": "PASS",
+      "publication": "PENDING_PUBLICATION"
+    },
+    "4": {
+      "local_functional_and_evaluation": "PASS",
+      "publication": "PENDING_PUBLICATION"
+    },
+    "7": {
+      "local_constraints": "PASS",
+      "public_url_access": "PASS",
+      "current_revision_submission": "PENDING_PUBLICATION"
+    }
+  },
+  "publication_snapshot": {
+    "scope": "Pre-PR audit of the public tree. The publication fields below reflect that audit timestamp.",
+    "observed_at": "2026-11-21T09:25:59.918884+00:00",
+    "integration_prs": "https://github.com/k-pang-2026/mm-recsys/pulls?q=is%3Apr+head%3Afeat%2Fintegration+sort%3Aupdated-desc"
+  }
 }

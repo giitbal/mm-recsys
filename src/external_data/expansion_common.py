@@ -5,7 +5,7 @@ import yaml
 from src.common.artifacts import file_hash, fingerprint, write_json
 
 
-def plan(path='config/external_expansion.yaml'):
+def plan(path: str | Path = 'config/external_expansion.yaml') -> tuple[dict, Path, Path]:
     spec=yaml.safe_load(Path(path).read_text())
     work, results=Path(spec['work_dir']),Path(spec['results_dir'])
     work.mkdir(parents=True,exist_ok=True);results.mkdir(parents=True,exist_ok=True)
@@ -15,5 +15,5 @@ def plan(path='config/external_expansion.yaml'):
     return spec,work,results
 
 
-def frozen_sources():
+def frozen_sources() -> dict[str, str]:
     return {str(p):file_hash(p) for p in sorted(Path('src').rglob('*.py'))}

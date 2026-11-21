@@ -1,0 +1,75 @@
+{
+  "started_at": "2026-11-21T09:33:51.248Z",
+  "browser": "141.0.7390.37",
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_tab_0.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_tab_1.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_tab_2.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_tab_3.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_tab_4.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_purchase_ledger.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_tab_5.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_clip_vectors.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_search.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_recommend.png",
+    "docs/results/experiments/A/illustrations_v1/integration_current/dashboard/browser_session.png"
+  ],
+  "checks": {
+    "api_docs_link": true,
+    "tab_검색": true,
+    "charts_검색": 1,
+    "tab_추천": true,
+    "charts_추천": 1,
+    "tab_A/B 실험": true,
+    "charts_A/B 실험": 2,
+    "tab_시스템": true,
+    "tab_EDA·구매 이력": true,
+    "tab_상품·CLIP": true,
+    "search_images": true,
+    "actual_click_comparison": true
+  },
+  "api_docs": {
+    "url": "http://localhost:8000/docs",
+    "status": 200
+  },
+  "ab_comparison": {
+    "run_id": "f869b758128d6bb2fae535561f1e2156d6bdf201586f107d6c2bd1f88ba1716c",
+    "rates": [
+      [
+        0.25004866666666664,
+        0.012253333333333333,
+        0
+      ],
+      [
+        0.20759933333333333,
+        0.008886666666666666,
+        0.2
+      ]
+    ],
+    "effects": [
+      {
+        "metric": "ctr",
+        "delta": -4.244933333333331,
+        "ci": [
+          -4.403593457165156,
+          -4.086273209501505
+        ],
+        "p": "p < 0.001"
+      },
+      {
+        "metric": "cvr",
+        "delta": -0.3366666666666667,
+        "ci": [
+          -0.3668798032406934,
+          -0.30645353009264004
+        ],
+        "p": "p < 0.001"
+      }
+    ]
+  },
+  "comparison_rendered_text": "미래 행동에 대한 추천 품질\n\n고정 사용자 10,000명 · 정답 사용자 7,012명 · 콜드스타트 300명 · top50\n\n추천 비교 지표\n\nHitRate@50\n\nNDCG@50\n\nCoverage\n\n인기순\nTwo Tower\nDeepFM\n전체 파이프라인\n0.0\n0.2\n0.4\n0.6\n동일 사용자·정답·카탈로그 기준\nHitRate@50\n기준 0.2\n\nCVR AUC: 0.5 · 클릭 노출 54,375개 · 구매 양성 3,506개\n\n사용자가 확인한 기존 계약에 따라 AUC ≥ 0.7은 CTR에 적용하고, CVR AUC는 별도로 보고합니다.\n\n사용자 추천 데모\n\n사용자 ID\n\n추천 결과 수\n\n추천 실행\n\n노란색 오버핏 슬립온 · P000376 · 62,000.0원\n\n신발 / casual / 슬립온 · Daily · MAB 탐색\n\n이 상품 클릭 후 추천 비교\n\n빨간색 슬림핏 폴로 셔츠 · P000628 · 19,000.0원\n\n상의 / shirts / 폴로 셔츠 · Studio · MAB 탐색\n\n이 상품 클릭 후 추천 비교\n\n갈색 레귤러핏 샌들 · P000022 · 48,000.0원\n\n신발 / outdoor / 샌들 · Studio · 인기·최근 상승 상품\n\n이 상품 클릭 후 추천 비교\n\n갈색 릴랙스핏 티셔츠 · P001816 · 26,000.0원\n\n상의 / casual / 티셔츠 · Classic · 인기·최근 상승 상품\n\n이 상품 클릭 후 추천 비교\n\n노란색 슬림핏 치노 · P000229 · 33,000.0원\n\n하의 / trousers / 치노 · Muse · 인기·최근 상승 상품\n\n이 상품 클릭 후 추천 비교\n\n빨간색 릴랙스핏 니트 조끼 · P000255 · 41,000.0원\n\n상의 / knitwear / 니트 조끼 · Studio · 인기·최근 상승 상품\n\n이 상품 클릭 후 추천 비교\n\n빨간색 오버핏 가디건 · P000068 · 29,000.0원\n\n상의 / knitwear / 가디건 · Value · 인기·최근 상승 상품\n\n이 상품 클릭 후 추천 비교\n\n파란색 오버핏 데님 반바지 · P000044 · 36,000.0원\n\n하의 / shorts / 데님 반바지 · Field · 인기·최근 상승 상품\n\n이 상품 클릭 후 추천 비교\n\n빨간색 슬림핏 스웨터 · P000462 · 29,000.0원\n\n상의 / knitwear / 스웨터 · Muse · 인기·최근 상승 상품\n\n이 상품 클릭 후 추천 비교\n\n흰색 레귤러핏 니트 조끼 · P000301 · 32,000.0원\n\n상의 / knitwear / 니트 조끼 · Muse · 인기·최근 상승 상품\n\n이 상품 클릭 후 추천 비교\n\n실제 클릭 전후 비교\n\n클릭 전후 추천 API 응답을 모두 받았습니다.\n\n{\n\"before\":{\n\"ok\":true\n\"status_code\":200\n\"data\":{\n\"user_id\":\"browser-1795253638585\"\n\"recommendations\":[\n0:{\n\"product_id\":\"P000376\"\n\"score\":\"0.4\"\n\"reason\":\"MAB 탐색\"\n\"is_exploration\":true\n}\n1:{\n\"product_id\":\"P000628\"\n\"score\":\"0.0\"\n\"reason\":\"MAB 탐색\"\n\"is_exploration\":true\n}\n2:{\n\"product_id\":\"P000022\"\n\"score\":\"1.0\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n3:{\n\"product_id\":\"P001816\"\n\"score\":\"1.0\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n4:{\n\"product_id\":\"P000229\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n5:{\n\"product_id\":\"P000255\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n6:{\n\"product_id\":\"P000068\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n7:{\n\"product_id\":\"P000044\"\n\"score\":\"0.8\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n8:{\n\"product_id\":\"P000462\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n9:{\n\"product_id\":\"P000301\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n]\n\"pipeline_latency\":{\n\"candidate_ms\":\"5.2\"\n\"ranking_ms\":\"7.1\"\n\"reranking_ms\":\"6.8\"\n\"total_ms\":\"19.1\"\n}\n\"session_context\":{\n\"recent_clicks\":[]\n\"session_interest\":NULL\n}\n}\n\"request_id\":\"be228da3145842c8a8f81f6fdfe9093e\"\n\"error\":NULL\n}\n\"event\":{\n\"event_id\":\"da0158d4ecc34c3cba4bc87177df38d7\"\n\"user_id\":\"browser-1795253638585\"\n\"product_id\":\"P000376\"\n\"category\":\"slip-on shoes\"\n\"event_type\":\"view\"\n\"session_id\":\"dashboard-demo\"\n}\n\"response\":{\n\"ok\":true\n\"status_code\":200\n\"data\":{\n\"applied\":true\n\"features\":{\n\"recent_clicks\":[\n0:\"P000376\"\n]\n\"session_clicks\":1\n\"session_interest\":\"slip-on shoes\"\n\"profile\":{}\n}\n}\n\"request_id\":NULL\n\"error\":NULL\n}\n\"after\":{\n\"ok\":true\n\"status_code\":200\n\"data\":{\n\"user_id\":\"browser-1795253638585\"\n\"recommendations\":[\n0:{\n\"product_id\":\"P000376\"\n\"score\":\"0.4\"\n\"reason\":\"MAB 탐색\"\n\"is_exploration\":true\n}\n1:{\n\"product_id\":\"P000628\"\n\"score\":\"0.0\"\n\"reason\":\"MAB 탐색\"\n\"is_exploration\":true\n}\n2:{\n\"product_id\":\"P000022\"\n\"score\":\"1.0\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n3:{\n\"product_id\":\"P001816\"\n\"score\":\"1.0\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n4:{\n\"product_id\":\"P000229\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n5:{\n\"product_id\":\"P000255\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n6:{\n\"product_id\":\"P000068\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n7:{\n\"product_id\":\"P000044\"\n\"score\":\"0.8\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n8:{\n\"product_id\":\"P000462\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n9:{\n\"product_id\":\"P000301\"\n\"score\":\"0.9\"\n\"reason\":\"인기·최근 상승 상품\"\n\"is_exploration\":false\n}\n]\n\"pipeline_latency\":{\n\"candidate_ms\":\"3.6\"\n\"ranking_ms\":\"6.3\"\n\"reranking_ms\":\"5.9\"\n\"total_ms\":\"15.8\"\n}\n\"session_context\":{\n\"recent_clicks\":[\n0:\"P000376\"\n]\n\"session_interest\":\"slip-on shoes\"\n}\n}\n\"request_id\":\"4f3b290852514840ab79c3a46f7388f5\"\n\"error\":NULL\n}\n}",
+  "status": "PASS",
+  "completed_at": "2026-11-21T09:34:01.368Z"
+}

@@ -136,7 +136,7 @@ def evaluate(cfg: dict, split: str, sweep: bool=False) -> dict:
               'test_scores_used_for_selection': False, 'http_p95_ms': None,
               'targets': {'mrr': cfg['targets']['mrr'], 'ndcg_at_10': cfg['targets']['ndcg_at_10']},
               'relevance_labels_passed_to_searcher': False, 'exact_duplicate_quality_queries': 0}
-    output = Path(f'docs/results/search_{split}_{cfg["scale"]}.json'); write_json(output, result)
+    output = Path(cfg['paths']['results_dir']) / f'search_{split}_{cfg["scale"]}.json'; write_json(output, result)
     if sweep:
         selection = {'scale': cfg['scale'], 'data_fingerprint': result['data_fingerprint'],
                      'query_fingerprint': query_manifest['fingerprint'], 'selected_on': 'valid',

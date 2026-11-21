@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "scale": "isolated-dev",
+  "counts": {
+    "products": 400,
+    "users": 24,
+    "events": 6000,
+    "impressions": 13632
+  },
+  "initial": "v1.0",
+  "before": {
+    "status": "WAITING",
+    "new_events": 0,
+    "threshold": 10000
+  },
+  "monitor": {
+    "event": "monitor",
+    "status": "ALERT",
+    "model_version": "v1.0",
+    "ctr": 0.0,
+    "hit_rate_at_50": 0.0,
+    "clicks": 0,
+    "exposures": 1000,
+    "mature_requests": 20,
+    "top50_requests": 20,
+    "hit_requests": 0,
+    "alerts": [
+      "ctr_below_threshold",
+      "hitrate_below_threshold"
+    ],
+    "window_start": 1795161959.4125369,
+    "observed_through": 1795248359.4125369,
+    "attribution_seconds": 3600,
+    "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+    "thresholds": {
+      "ctr_threshold": 0.01,
+      "hitrate_threshold": 0.2,
+      "min_mature_requests": 20
+    }
+  },
+  "trigger": {
+    "status": "RETAINED",
+    "version": "v1.1",
+    "active": "v1.0",
+    "new_events": 0,
+    "through_seq": 0,
+    "trigger_reason": "performance_degradation",
+    "comparison": {
+      "split": "valid",
+      "validation_fingerprint": "d47428381ac90e7e49f1a32f5c6211481d588864dd2a82a9071d452e72058b19",
+      "baseline": {
+        "ctr_auc": 0.8897220710094961,
+        "ctr_logloss": 1.1446137532941472,
+        "hit_rate_at_50": 1.0,
+        "truth_users": 23,
+        "ctr_samples": 1324,
+        "validation_fingerprint": "d47428381ac90e7e49f1a32f5c6211481d588864dd2a82a9071d452e72058b19"
+      },
+      "candidate": {
+        "ctr_auc": 0.8897220710094961,
+        "ctr_logloss": 1.1446137532941472,
+        "hit_rate_at_50": 1.0,
+        "truth_users": 23,
+        "ctr_samples": 1324,
+        "validation_fingerprint": "d47428381ac90e7e49f1a32f5c6211481d588864dd2a82a9071d452e72058b19"
+      },
+      "training_reports": {
+        "candidate": "bd437d53c69150999e4198934e53dd99b7e4819d1f0b062a826bdd6c33b59dc6",
+        "ranking": "ba4fcc003094cd716c0f65f11088216de7de1d15a5f66f0bd32a167341294eb8",
+        "session": "9b01b601e8f7e70394504ada6e25b0a4721a76840e1922aaee6b72fc4f28ca99"
+      }
+    }
+  },
+  "new_events_threshold": 10000,
+  "training": {
+    "candidate": {
+      "sha256": "bd437d53c69150999e4198934e53dd99b7e4819d1f0b062a826bdd6c33b59dc6",
+      "status": "PASS",
+      "checkpoint_reload": "PASS"
+    },
+    "ranking": {
+      "sha256": "ba4fcc003094cd716c0f65f11088216de7de1d15a5f66f0bd32a167341294eb8",
+      "status": "PASS",
+      "checkpoint_reload": "PASS"
+    },
+    "session": {
+      "sha256": "9b01b601e8f7e70394504ada6e25b0a4721a76840e1922aaee6b72fc4f28ca99",
+      "status": "PASS",
+      "checkpoint_reload": "PASS"
+    }
+  },
+  "original_source_hashes": {
+    "src/ct/retrain_trigger.py": "d430bf4703d1d95b50892b4107810154c1376e4a9bd88f98bedcdba666fd3f05",
+    "src/ct/monitor.py": "5d5ec0e8324ff2d632383f8a19291e5f20475736c102cee0dca3de6165f80047",
+    "src/ct/training.py": "8b1bf9118664191595c8b2b530f373ef2866edb4749ce7b1a897fd1b8b7483aa",
+    "src/recommendation/reranking.py": "85d31eb0c3e911811b009f2319c9c4fa3c506482d7574ba42ac7d6fab77b1c56"
+  },
+  "scope": "Real trainers and registry, regular unmodified initial model, 20 intentionally degraded mature requests, 0 new events. Memory service and SQLite isolated from production."
+}

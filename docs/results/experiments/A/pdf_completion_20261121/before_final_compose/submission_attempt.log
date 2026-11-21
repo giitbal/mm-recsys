@@ -1,0 +1,24 @@
+[2026-11-21T02:23:59+00:00] [동료 평가 검사] [진행] 검사=mypy_submission / 실행 시작
+[2026-11-21T02:24:25+00:00] [동료 평가 검사] [통과(PASS)] 검사=mypy_submission / 종료 코드=0 / 소요 시간=26.5초 / 원본 로그=/home/peachpetal/ecommerce/mm-recsys/docs/results/experiments/A/pdf_completion_20261121/submission/mypy_submission.txt
+[2026-11-21T02:24:25+00:00] [동료 평가 검사] [진행] 검사=mypy_repository / 실행 시작
+[2026-11-21T02:25:09+00:00] [동료 평가 검사] [통과(PASS)] 검사=mypy_repository / 종료 코드=0 / 소요 시간=44.4초 / 원본 로그=/home/peachpetal/ecommerce/mm-recsys/docs/results/experiments/A/pdf_completion_20261121/submission/mypy_repository.txt
+[2026-11-21T02:25:09+00:00] [동료 평가 검사] [진행] 검사=pip_check / 실행 시작
+[2026-11-21T02:25:10+00:00] [동료 평가 검사] [통과(PASS)] 검사=pip_check / 종료 코드=0 / 소요 시간=0.5초 / 원본 로그=/home/peachpetal/ecommerce/mm-recsys/docs/results/experiments/A/pdf_completion_20261121/submission/pip_check.txt
+[2026-11-21T02:25:10+00:00] [동료 평가 검사] [진행] 검사=pytest / 실행 시작
+[2026-11-21T02:26:00+00:00] [동료 평가 검사] [통과(PASS)] 검사=pytest / 종료 코드=0 / 소요 시간=50.1초 / 원본 로그=/home/peachpetal/ecommerce/mm-recsys/docs/results/experiments/A/pdf_completion_20261121/submission/pytest.txt
+[2026-11-21T02:26:02+00:00] [동료 평가 실행] [실패] 원인: ValueError: evidence changed or missing: docker-compose.yml / 다음 조치: 제출 근거·실행 로그와 현재 소스 해시를 확인하세요. 과거 결과를 현재 측정으로 사용하지 마세요.
+Traceback (most recent call last):
+  File "/home/peachpetal/ecommerce/mm-recsys/scripts/check_submission.py", line 273, in <module>
+    raise SystemExit(run_cli(main, '동료 평가', '제출 근거·실행 로그와 현재 소스 해시를 확인하세요. 과거 결과를 현재 측정으로 사용하지 마세요.'))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/src/common/console.py", line 52, in run_cli
+    return main()
+           ^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/scripts/check_submission.py", line 215, in main
+    _, quality = collect_quality(ROOT, cfg, args.evidence_dir)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/peachpetal/ecommerce/mm-recsys/scripts/check_submission_evidence.py", line 114, in collect_quality
+    check_hashes(root, {frozen['source']: frozen['sha256'], **quality['identity']['source_hashes'],
+  File "/home/peachpetal/ecommerce/mm-recsys/scripts/check_submission_evidence.py", line 37, in check_hashes
+    raise ValueError(f'evidence changed or missing: {name}')
+ValueError: evidence changed or missing: docker-compose.yml

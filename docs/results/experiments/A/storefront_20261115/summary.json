@@ -1,0 +1,27 @@
+{
+  "implementation": "PASS",
+  "runtime_integration": "PASS",
+  "acceptance": "UNMEASURED",
+  "python_unique_tests": 109,
+  "frontend_event_tests": 2,
+  "browser_checks": {
+    "catalog_images": true,
+    "catalog_sort": true,
+    "text_search": true,
+    "hybrid_search": true,
+    "image_search": true,
+    "attributed_shopping": true,
+    "operations": true,
+    "proxy_boundary": true,
+    "mobile": true
+  },
+  "browser_errors": [],
+  "attributed_events": 3,
+  "data_fingerprint": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+  "ab_scope": "stored synthetic experiment",
+  "ct_scope": "live registry/journal/logs; no retraining or promotion",
+  "template_commit": "8618a0080492b157c5609ddd8b18c48440728e2d",
+  "storefront_url": "http://localhost:13000",
+  "commit": "NOT_CREATED",
+  "push": "NOT_PERFORMED"
+}

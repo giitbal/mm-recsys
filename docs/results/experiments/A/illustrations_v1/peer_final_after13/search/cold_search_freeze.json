@@ -1,0 +1,7 @@
+{
+  "recipe": "7aef1bae65d27f7d8b815f1d74e584bc6cab1695c2af16eed0078f60159d1474",
+  "selected_on": "valid",
+  "valid_sha256": "9c4b477198e5ad19be00375bdcaa3b988406cccf463fd8fdd5bc9f9a5d91de17",
+  "query_fingerprint": "bec8120756df389ada3686be3a4f51813c7209a3b46f2674d37ddd8b4aab6d12",
+  "scope": "Replayed existing frozen settings and query split on the deployed catalog and index."
+}

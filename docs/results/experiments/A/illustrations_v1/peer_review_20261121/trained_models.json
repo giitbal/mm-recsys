@@ -1,0 +1,50 @@
+{
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "sampled_items": 32,
+  "item_vector_max_abs_difference": 0.0,
+  "index_type": "IndexHNSWFlat",
+  "catalog": 50000,
+  "item_dimension": 64,
+  "user_dimension": 64,
+  "user_tower": "Sequential(\n  (0): Linear(in_features=155, out_features=128, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=128, out_features=64, bias=True)\n)",
+  "item_tower": "Sequential(\n  (0): Linear(in_features=97, out_features=128, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=128, out_features=64, bias=True)\n)",
+  "user_top10_labels": [
+    17192,
+    22102,
+    39855,
+    49254,
+    18637,
+    17683,
+    20699,
+    48074,
+    19526,
+    31346
+  ],
+  "fm_trained_scale": [
+    0.04014185070991516,
+    0.021870292723178864
+  ],
+  "fm_initial_scale": [
+    1,
+    1
+  ],
+  "fm_logit_contribution": [
+    [
+      -0.43835902214050293,
+      -0.23882901668548584
+    ]
+  ],
+  "fm_pairwise_expected": [
+    [
+      -0.4383593797683716,
+      -0.23882925510406494
+    ]
+  ],
+  "session_gru_delta_l2": 0.4082460105419159,
+  "model_hashes": {
+    "models/full-illustrations-v1/v1.0/item_index.faiss": "b96e79e08fbb96cea504723075752462fcf1ddc5bec29ff9860948496947c484",
+    "models/full-illustrations-v1/v1.0/two_tower.pt": "3f942f08bdb4cdda4fe5a8bf20b2e56c0985a4abf3d94f59ef86e2011ac85a16",
+    "models/full-illustrations-v1/v1.0/ranking/deepfm.pt": "c410ae300ebf265392d458afac29ab1fe4147ad62764f879e60be198d888cf8a",
+    "models/full-illustrations-v1/v1.0/session/session.pt": "de24632b15101ee04893c4d68842a347013358f188729d4ea8506c798819057a"
+  }
+}

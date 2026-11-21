@@ -1,0 +1,11 @@
+{
+  "active_inference_stacks": 1,
+  "isolated_stack_paused": [
+    "mm-pdf-completion-simulator-1",
+    "mm-pdf-completion-api-server-1"
+  ],
+  "simulator_running": false,
+  "warmup": 10,
+  "requests": 100,
+  "concurrency": 1
+}

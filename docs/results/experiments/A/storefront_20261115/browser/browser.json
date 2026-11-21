@@ -1,0 +1,289 @@
+{
+  "started_at": "2026-11-15T10:03:54.027Z",
+  "origin": "http://localhost:13000",
+  "checks": {
+    "catalog_images": true,
+    "catalog_sort": true,
+    "text_search": true,
+    "hybrid_search": true,
+    "image_search": true,
+    "attributed_shopping": true,
+    "operations": true,
+    "proxy_boundary": true,
+    "mobile": true
+  },
+  "errors": [],
+  "events": [
+    {
+      "payload": {
+        "event_id": "5740bae2-5702-4fb1-b007-4c5b3bb78dac",
+        "user_id": "storefront-browser-1794737040001",
+        "product_id": "P000003",
+        "event_type": "view",
+        "session_id": "shop-ad6758f4-b858-4368-9c9f-293ba530f927"
+      },
+      "request_id": "2fff6b1a378742a59a6df2439225d8f2"
+    },
+    {
+      "payload": {
+        "event_id": "33e64d5f-3ea8-4641-a526-531fd4bb3def",
+        "user_id": "storefront-browser-1794737040001",
+        "product_id": "P000003",
+        "event_type": "cart",
+        "session_id": "shop-ad6758f4-b858-4368-9c9f-293ba530f927"
+      },
+      "request_id": "2fff6b1a378742a59a6df2439225d8f2"
+    },
+    {
+      "payload": {
+        "event_id": "7164bfb7-a665-44c1-aba5-aa49c1420c15",
+        "user_id": "storefront-browser-1794737040001",
+        "product_id": "P000003",
+        "event_type": "purchase",
+        "session_id": "shop-ad6758f4-b858-4368-9c9f-293ba530f927"
+      },
+      "request_id": "2fff6b1a378742a59a6df2439225d8f2"
+    }
+  ],
+  "captures": [
+    "docs/results/experiments/A/storefront_20261115/browser/home.png",
+    "docs/results/experiments/A/storefront_20261115/browser/catalog.png",
+    "docs/results/experiments/A/storefront_20261115/browser/text-search.png",
+    "docs/results/experiments/A/storefront_20261115/browser/hybrid-search.png",
+    "docs/results/experiments/A/storefront_20261115/browser/recommend.png",
+    "docs/results/experiments/A/storefront_20261115/browser/product.png",
+    "docs/results/experiments/A/storefront_20261115/browser/cart.png",
+    "docs/results/experiments/A/storefront_20261115/browser/purchase.png",
+    "docs/results/experiments/A/storefront_20261115/browser/operations.png",
+    "docs/results/experiments/A/storefront_20261115/browser/mobile.png"
+  ],
+  "user_id": "storefront-browser-1794737040001",
+  "recommendation_link": "/product/P000003?rid=2fff6b1a378742a59a6df2439225d8f2&uid=storefront-browser-1794737040001",
+  "operations": {
+    "data_fingerprint": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+    "ab": {
+      "status": "MEASURED",
+      "source": "docs/results/experiments/A/storefront_20261115/runtime/full/ab_test.json",
+      "days": 7,
+      "seed": 42,
+      "strategies": {
+        "control": "popularity",
+        "treatment": "full_pipeline"
+      },
+      "denominators": {
+        "ctr": "clicks / impressions",
+        "cvr": "purchases / impressions",
+        "purchase_given_click": "purchases / clicks",
+        "exploration_rate": "marked exploration slots / impressions",
+        "independent_user_risks": "users with >=1 outcome / randomized users"
+      },
+      "inference": {
+        "experimental_unit": "randomized user; repeated exposures clustered within user",
+        "independent_user_risks": {
+          "any_click": {
+            "control": 1,
+            "treatment": 1,
+            "difference": 0,
+            "relative_lift": 0,
+            "z_statistic": 0,
+            "z_p_value": 1,
+            "chi_square": 0,
+            "chi_square_p_value": 1,
+            "difference_ci95": [
+              0,
+              0
+            ],
+            "ci_method": "unpooled user-risk Wald; degenerate at boundary counts",
+            "low_expected_counts": true,
+            "asymptotic_reliable": false,
+            "fisher_p_value": 1,
+            "experimental_unit": "one independent randomized user"
+          },
+          "any_purchase": {
+            "control": 0.842,
+            "treatment": 0.578,
+            "difference": -0.264,
+            "relative_lift": -0.3135391923990499,
+            "z_statistic": -9.199108853096162,
+            "z_p_value": 3.609305315436967e-20,
+            "chi_square": 84.62360369111218,
+            "chi_square_p_value": 3.60930531543697e-20,
+            "difference_ci95": [
+              -0.3178153432652491,
+              -0.21018465673475098
+            ],
+            "ci_method": "unpooled user-risk Wald; degenerate at boundary counts",
+            "low_expected_counts": false,
+            "asymptotic_reliable": true,
+            "fisher_p_value": null,
+            "experimental_unit": "one independent randomized user"
+          }
+        },
+        "ctr": {
+          "status": "PASS",
+          "control": 0.42765714285714285,
+          "treatment": 0.25845714285714283,
+          "difference": -0.16920000000000002,
+          "relative_lift": -0.39564404061998937,
+          "difference_ci95": [
+            -0.18040312109701093,
+            -0.1579968789029891
+          ],
+          "z_p_value": 1.4417629354583143e-192,
+          "method": "independent-user cluster delta variance; descriptive simulated effect"
+        },
+        "cvr": {
+          "status": "PASS",
+          "control": 0.03528571428571429,
+          "treatment": 0.015914285714285714,
+          "difference": -0.019371428571428574,
+          "relative_lift": -0.5489878542510123,
+          "difference_ci95": [
+            -0.022298689834210923,
+            -0.016444167308646226
+          ],
+          "z_p_value": 1.8044734566130518e-38,
+          "method": "independent-user cluster delta variance; descriptive simulated effect"
+        }
+      },
+      "arms": {
+        "control": {
+          "users": 500,
+          "impressions": 35000,
+          "clicks": 14968,
+          "purchases": 1235,
+          "explorations": 0,
+          "ctr": 0.42765714285714285,
+          "cvr": 0.03528571428571429,
+          "purchase_given_click": 0.0825093532870123,
+          "exploration_rate": 0,
+          "users_clicked": 500,
+          "users_purchased": 421,
+          "unattributed_feedback": 0
+        },
+        "treatment": {
+          "users": 500,
+          "impressions": 35000,
+          "clicks": 9046,
+          "purchases": 557,
+          "explorations": 7000,
+          "ctr": 0.25845714285714283,
+          "cvr": 0.015914285714285714,
+          "purchase_given_click": 0.06157417643157197,
+          "exploration_rate": 0.2,
+          "users_clicked": 500,
+          "users_purchased": 289,
+          "unattributed_feedback": 0
+        }
+      },
+      "limitations": [
+        "synthetic randomized simulation; no guarantee of positive or significant lift",
+        "static catalog and train+valid history; no test outcomes read",
+        "MAB exposure/feedback uses B5 in-memory adapter; live Redis attribution is verified separately",
+        "per-user adaptive bandits preserve independent user clusters; this is not a shared cross-user live-bandit experiment",
+        "dev result is not full acceptance"
+      ]
+    },
+    "ct": {
+      "enabled": true,
+      "serving_version": "v1.0",
+      "active": "v1.0",
+      "new_events": 41,
+      "threshold": 10000,
+      "logs": {
+        "status": "MEASURED",
+        "rows": [
+          {
+            "at": "2026-11-15T08:19:06.552470+00:00",
+            "event": "registered",
+            "version": "v1.0",
+            "parent": null,
+            "hashes": {
+              "meta.json": "b56dba6b42d7e3c25021b1f368f948c166cfa2e9b27575482ef290271ea1c4fe",
+              "two_tower.pt": "9f6b7e6c2c24424cdcc4cbeaf2fc970d01c86a0c76a5726f5ac5447fab23ca3e",
+              "feature_vocab_scalers.json": "ac916dd441dc1019551dcc3598b00a81e0e36e100c4364b2323f75646fe79c77",
+              "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+              "item_index.faiss": "381c1e654083b4608b5bd8a5bab69bb078ab69c3870d2eedb747f9faf42c6760",
+              "index_manifest.json": "442f97f6435d055df6ee336c5911598469257bd8cff698de189f85932cace057",
+              "ranking/meta.json": "89492f3b5eddb558df86dc5c6b451bd0efa2050f7f825653ca38c1518e39420a",
+              "ranking/deepfm.pt": "27e2f9cba6977c493c274fb7e0e29742e6286a7f909587548eeee39d42f16a8a",
+              "ranking/features.json": "4f00d9ec2ec11acdaed7a846c4ca581e46c0059d58bf99e60c4d3af96e35e7d5",
+              "session/meta.json": "560a8515e4ecf03372537badbf55467895988a7eadc5f2b89f0f0437f3b31317",
+              "session/session.pt": "a10966947c1588b10f76aceccb5b75b28fdecee9072aa3a83fed51946fd8e32a",
+              "session/item_ids.json": "1597417f43fb70984d90a935c4202cbc73d84eaff15d274e3329fbb0ec93f953"
+            }
+          },
+          {
+            "at": "2026-11-15T08:19:43.031733+00:00",
+            "event": "initialized",
+            "version": "v1.0"
+          },
+          {
+            "at": "2026-11-15T08:37:11.532264+00:00",
+            "event": "monitor",
+            "status": "UNMEASURED",
+            "model_version": "v1.0",
+            "ctr": null,
+            "hit_rate_at_50": null,
+            "clicks": 0,
+            "exposures": 0,
+            "mature_requests": 0,
+            "top50_requests": 0,
+            "hit_requests": 0,
+            "alerts": [],
+            "window_start": 1794645431.5292623,
+            "observed_through": 1794731831.5292623,
+            "attribution_seconds": 3600,
+            "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+            "thresholds": {
+              "ctr_threshold": 0.01,
+              "hitrate_threshold": 0.2,
+              "min_mature_requests": 20
+            }
+          },
+          {
+            "at": "2026-11-15T08:37:36.605245+00:00",
+            "event": "monitor",
+            "status": "UNMEASURED",
+            "model_version": "v1.0",
+            "ctr": null,
+            "hit_rate_at_50": null,
+            "clicks": 0,
+            "exposures": 0,
+            "mature_requests": 0,
+            "top50_requests": 0,
+            "hit_requests": 0,
+            "alerts": [],
+            "window_start": 1794645456.60428,
+            "observed_through": 1794731856.60428,
+            "attribution_seconds": 3600,
+            "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+            "thresholds": {
+              "ctr_threshold": 0.01,
+              "hitrate_threshold": 0.2,
+              "min_mature_requests": 20
+            }
+          }
+        ],
+        "invalid_lines": 0,
+        "truncated": false
+      },
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-11-15T08:19:06.549697+00:00",
+          "parent": null,
+          "status": "ACTIVE",
+          "metrics": {
+            "status": "UNMEASURED",
+            "reason": "initial existing bundle; no invented validation"
+          }
+        }
+      ]
+    },
+    "search_ready": true,
+    "recommend_ready": true
+  },
+  "status": "PASS",
+  "completed_at": "2026-11-15T10:04:01.970Z"
+}

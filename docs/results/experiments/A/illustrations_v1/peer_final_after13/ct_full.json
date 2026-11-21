@@ -1,0 +1,144 @@
+{
+  "status": "PARTIAL",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "retraining": {
+    "status": "RETAINED",
+    "version": "v1.3",
+    "active": "v1.0",
+    "new_events": 35669,
+    "through_seq": 56407,
+    "trigger_reason": "new_logs",
+    "comparison": {
+      "split": "valid",
+      "validation_fingerprint": "f6f2f832c192c4888a71d578cd020880cfd105e07e55ee41957c455d2391c240",
+      "baseline": {
+        "ctr_auc": 0.9656421535396064,
+        "ctr_logloss": 0.1439961785379206,
+        "hit_rate_at_50": 0.6889062296787619,
+        "truth_users": 7689,
+        "ctr_samples": 237724,
+        "validation_fingerprint": "f6f2f832c192c4888a71d578cd020880cfd105e07e55ee41957c455d2391c240"
+      },
+      "candidate": {
+        "ctr_auc": 0.9652772261950854,
+        "ctr_logloss": 0.14346869032600337,
+        "hit_rate_at_50": 0.6921576277799454,
+        "truth_users": 7689,
+        "ctr_samples": 237724,
+        "validation_fingerprint": "f6f2f832c192c4888a71d578cd020880cfd105e07e55ee41957c455d2391c240"
+      },
+      "training_reports": {
+        "candidate": "4b81387aa93ea6b6aeeb5d67035bc350137a470019aa7ed099ae7aeb08a30692",
+        "ranking": "30489d88fa03a501db168d6eec7e44020fb59ee4dcc348913677ba5c02ac2f87",
+        "session": "da1ad4fa4f1b302952af15cc8bdbc3365b94a3914e4179a52771179823c6c829"
+      }
+    }
+  },
+  "real_reload_and_rollback": false,
+  "start": {
+    "at": "2026-11-21T07:46:04.247384+00:00",
+    "event": "training_started",
+    "parent": "v1.0",
+    "version": "v1.3",
+    "new_events": 35669,
+    "through_seq": 56407,
+    "trigger_reason": "new_logs",
+    "alerts": []
+  },
+  "monitor_before": {
+    "at": "2026-11-21T07:46:04.125810+00:00",
+    "event": "monitor",
+    "status": "MEASURED",
+    "model_version": "v1.0",
+    "ctr": 0.012096774193548387,
+    "hit_rate_at_50": 0.3315508021390374,
+    "clicks": 129,
+    "exposures": 10664,
+    "mature_requests": 318,
+    "top50_requests": 187,
+    "hit_requests": 62,
+    "alerts": [],
+    "window_start": 1795160763.9334009,
+    "observed_through": 1795247163.9334009,
+    "attribution_seconds": 3600,
+    "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+    "thresholds": {
+      "ctr_threshold": 0.01,
+      "hitrate_threshold": 0.2,
+      "min_mature_requests": 20
+    }
+  },
+  "terminal": {
+    "at": "2026-11-21T08:24:47.067933+00:00",
+    "event": "retained",
+    "version": "v1.3",
+    "active": "v1.0",
+    "comparison": {
+      "split": "valid",
+      "validation_fingerprint": "f6f2f832c192c4888a71d578cd020880cfd105e07e55ee41957c455d2391c240",
+      "baseline": {
+        "ctr_auc": 0.9656421535396064,
+        "ctr_logloss": 0.1439961785379206,
+        "hit_rate_at_50": 0.6889062296787619,
+        "truth_users": 7689,
+        "ctr_samples": 237724,
+        "validation_fingerprint": "f6f2f832c192c4888a71d578cd020880cfd105e07e55ee41957c455d2391c240"
+      },
+      "candidate": {
+        "ctr_auc": 0.9652772261950854,
+        "ctr_logloss": 0.14346869032600337,
+        "hit_rate_at_50": 0.6921576277799454,
+        "truth_users": 7689,
+        "ctr_samples": 237724,
+        "validation_fingerprint": "f6f2f832c192c4888a71d578cd020880cfd105e07e55ee41957c455d2391c240"
+      },
+      "training_reports": {
+        "candidate": "4b81387aa93ea6b6aeeb5d67035bc350137a470019aa7ed099ae7aeb08a30692",
+        "ranking": "30489d88fa03a501db168d6eec7e44020fb59ee4dcc348913677ba5c02ac2f87",
+        "session": "da1ad4fa4f1b302952af15cc8bdbc3365b94a3914e4179a52771179823c6c829"
+      }
+    }
+  },
+  "guard": {
+    "retrain_log_threshold": 10000,
+    "min_improvement": 0.001,
+    "promotion_floor": 0.7,
+    "promotion_metric": "ctr_auc"
+  },
+  "folds": {
+    "trigger_events": 35669,
+    "in_snapshot": 35669,
+    "folds": {
+      "train": 0,
+      "valid": 0,
+      "test": 35669
+    },
+    "test_count_by_subtraction": true
+  },
+  "api_health": {
+    "status": "ok",
+    "search_ready": true,
+    "recommend_ready": true,
+    "scale": "full",
+    "model_version": "v1.0"
+  },
+  "request_id": "854beb13c824415da018ab7af859e3dc",
+  "deployed_worker_sources": {
+    "config.yaml": "dc84ee24c4020aba32ee78265b5dd9f632f027dff7b75d089c07740ec1a2dfc4",
+    "config/recommend.yaml": "c9ac3d0d7d3d3fe7bd1ec5eb4ceca0b06f66482e700ee82c7184eaad2327c138",
+    "config/search.yaml": "49ac7ce80935191f2eaadd3d013479f05b98084fe1d69c6917a6471c5b5935b6",
+    "config/serving.yaml": "2e01ebeff33e92962af3cc8cebfd2a2685f7d16275e5b8cd8966843d1bfddd11",
+    "docker/ct_worker.py": "9feaf6486ed500e4be54c9c80e3a7634b79a4253d5184279d44d1d0da8bfa258",
+    "docker/simulator.py": "3df5e278f78ddc6dc3e883aaf0aecef8d538ebddbbcf1b5cce82bb674afa2105",
+    "src/ct/monitor.py": "5d5ec0e8324ff2d632383f8a19291e5f20475736c102cee0dca3de6165f80047",
+    "src/ct/retrain_trigger.py": "d430bf4703d1d95b50892b4107810154c1376e4a9bd88f98bedcdba666fd3f05",
+    "src/recommendation/recommender.py": "ca5cb1c56877fa47f4e988e6f26c8168dbf5c2089b2e4109b7926c1646e0cd54",
+    "src/recommendation/reranking.py": "85d31eb0c3e911811b009f2319c9c4fa3c506482d7574ba42ac7d6fab77b1c56",
+    "src/simulator/catalog.py": "40796896716fa6d211280670cd675edf4452fed4ce83316479c8f382a08c0067",
+    "src/simulator/events.py": "f1cf9745a6a405da6e66e2019a9d049dd77b2af458bfd6836a8a72cd4c7fda85",
+    "src/simulator/generate.py": "55fa51385f15d8eb8f3a8a1c417986dd0a3057085c5c7d02e4325ebdb78ba2a0",
+    "src/simulator/illustrations.py": "90bce835a84b946a599ad034b7abb53b5364aad0f76a876028a841c98de4667a"
+  },
+  "scope": "Natural full CT after policy deployment. Logs at the watermark can include observations captured before deployment. The training decision uses chronological paired validation."
+}

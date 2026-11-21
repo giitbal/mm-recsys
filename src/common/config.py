@@ -6,6 +6,14 @@ from pathlib import Path
 from typing import Any
 import yaml
 
+IMAGE_RECIPE = 'illustrations-v1'
+
+
+def require_image_recipe(simulator: dict) -> None:
+    if simulator.get('image_recipe') != IMAGE_RECIPE:
+        raise ValueError(f'simulator.image_recipe must be {IMAGE_RECIPE}; select the current dataset config')
+
+
 def load_config(path: str | None = None) -> dict[str, Any]:
     p = Path(path or os.getenv("CONFIG_PATH") or "config.yaml")
     with p.open(encoding="utf-8") as f:
@@ -46,6 +54,7 @@ def load_config(path: str | None = None) -> dict[str, Any]:
     if any(x <= 0 for x in fractions) or abs(sum(fractions) - 1.0) > 1e-9:
         raise ValueError("split fractions must sum to 1")
     sim = cfg["simulator"]
+    require_image_recipe(sim)
     if sim['event_interval_seconds'] <= 0:
         raise ValueError('event_interval_seconds must be positive')
     if not 0 < sim['cart_reference_cvr'] <= 1:

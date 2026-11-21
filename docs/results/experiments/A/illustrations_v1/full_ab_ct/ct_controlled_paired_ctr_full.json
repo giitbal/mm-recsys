@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "comparison": {
+    "split": "valid",
+    "validation_fingerprint": "6afe696a976042e9c8374e03693f1a427bbf113e8c9268a979922a69f2a5bb21",
+    "baseline": {
+      "ctr_auc": 0.5,
+      "ctr_logloss": 0.6931471805599451,
+      "ctr_samples": 227686,
+      "ctr_positives": 57208,
+      "validation_fingerprint": "6afe696a976042e9c8374e03693f1a427bbf113e8c9268a979922a69f2a5bb21"
+    },
+    "candidate": {
+      "ctr_auc": 0.9658397898822869,
+      "ctr_logloss": 0.14300948136969108,
+      "ctr_samples": 227686,
+      "ctr_positives": 57208,
+      "validation_fingerprint": "6afe696a976042e9c8374e03693f1a427bbf113e8c9268a979922a69f2a5bb21"
+    }
+  },
+  "counts": {
+    "products": 50000,
+    "users": 10000,
+    "events": 1010054,
+    "impressions": 2262326
+  },
+  "scope": "identical full valid CTR labels; deliberately constant INITIAL fixture vs exact naturally trained candidate; no test"
+}

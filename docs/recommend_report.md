@@ -1,15 +1,23 @@
-# B4 추천 API·B5 재랭킹·MAB·세션 최종 검증 v2
+# 개인화 추천 실험 보고서
 
-<!-- current-v44 -->
-현재 구현·새 full valid/test·실행 조건은 [v4.4 보고서](submission/report.md)를 따른다.
-2026-11-12 리팩터링 소스로 full valid/test와 지연을 다시 측정해 11개 기준이 모두 통과했다.
-추천의 과거 단계 기록과 현재 결과를 구분한다. 현재 전체 시연·CT·최종 통합 상태는
-[최종 실행 집계](results/experiments/A/final_validation_20261112/submission/checks.json)를 따른다.
+## 2026-11-21 기본 도안 full test
+
+시드 42, 상품 50,000개·사용자 10,000명·행동 100만 건을 사용했다. 시간순 train/valid/test는 80만/10만/10만 건이다. train으로 학습하고 valid에서 선택한 설정을 고정했다. test 시작 시점까지의 이력을 사용해 전체 후보 카탈로그에서 Two-Tower 후보 300개를 검색했다. 후보 학습은 양성당 무작위 음성 4개, DeepFM의 CTR 음성은 관측 기간이 지난 비클릭 노출이다. 서빙 점수는 CTR이며, GRU 단기 벡터 0.3과 장기 벡터 0.7을 결합한다. 기본 탐색은 ε-greedy(ε=0.1), 탐색 슬롯은 2개다. [학습·서빙 설정](results/experiments/A/illustrations_v1/integration_current/release_quality/configuration_full.json) · [데이터 분할](results/experiments/A/illustrations_v1/integration_current/cold_data_audit.json)
+
+| test 전략 | HitRate@50 | nDCG@50 | Coverage | 전체 파이프라인의 상대 변화¹ |
+|---|---:|---:|---:|---|
+| train 인기순 | 0.06788 | 0.01517 | 0.00100 | +878.78% / +2070.62% / +38216.00% |
+| Two-Tower 단독 | 0.53080 | 0.16507 | 0.54210 | +25.17% / +99.48% / −29.32% |
+| DeepFM까지 | 0.68896 | 0.38181 | 0.42494 | −3.56% / −13.76% / −9.83% |
+| 전체 파이프라인 | **0.66443** | **0.32928** | **0.38316** | 기준 ≥0.20 / ≥0.08 / ≥0.20 |
+
+¹ 왼쪽 전략에 대한 `100 × (전체/기준 − 1)`을 세 지표 순서로 표시했다. 정답이 있는 7,012명에 대해 Recall@300은 후보 안에 든 정답 수/사용자의 정답 수를 평균한 **0.74579**(기준 0.30), HitRate@50은 정답을 하나 이상 포함한 사용자 비율이다. nDCG@50은 순위 할인 `1/log2(순위+1)`을 적용한 정답 점수의 합을 이상적인 순위의 합으로 나눈 사용자별 평균이다. Coverage는 10,000명에게 추천된 서로 다른 상품 19,158개/50,000개다. [기준선·사용자 수·측정 원본](results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_test.json) · [평가 코드](../src/evaluation/metrics.py)
+
+AUC는 임의의 양성이 음성보다 높은 점수를 받을 확률이며 동점은 0.5로 센다. DeepFM CTR AUC는 **0.96578**(노출 217,500건, 클릭 54,375건)으로 기준 0.70을 통과했다. 클릭 노출 54,375건 중 구매 3,506건에 대한 CVR AUC는 **0.53041**이었다. CPU Docker에서 10회 예열 후 100회 직렬 호출의 p95는 추천 31.93ms, 후보 생성 14.46ms, Redis 피처 조회 0.35ms였다. [측정 환경·원시 지연](results/experiments/A/illustrations_v1/integration_current/release_quality/smoke_full.json) · [재현 절차](submission/reproduction.md)
 
 ## 이전 실행 기록 보존
 
-B 소유 구현과 B 메모리 주입 환경, 동결 CTR 정책의 full test 추천 품질은 **PASS**다.
-공통 서버/Redis/Docker와 전체 회귀는 완료되지 않았으며 전체 acceptance는 **UNMEASURED**다.
+아래는 B4·B5 단계의 기록이다. 당시 B의 메모리 피처 저장소에서 동결 CTR 정책의 full test 품질은 **PASS**였고, 공통 서버·Redis·Docker를 포함한 전체 판정은 **UNMEASURED**였다. [현재 최종 판정](results/final_acceptance.json)
 
 ## 점수 정책과 valid 선택
 

@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "command": "demo examples --users-per-group 20 --days 2",
+  "checks": {
+    "search": true,
+    "real_clicks": true,
+    "session_response": true,
+    "ab_statistics": true,
+    "controlled_ct_lifecycle": true
+  },
+  "ct_checks": {
+    "alert": true,
+    "threshold": true,
+    "duplicate_trigger_blocked": true,
+    "real_three_model_retraining": true,
+    "fresh_chronological_split": true,
+    "increment": true,
+    "paired_valid_improvement": true,
+    "no_improvement_retained": true,
+    "atomic_http_reload": true,
+    "rollback": true,
+    "corrupt_bundle_rejected": true,
+    "new_events_consumed_once": true
+  },
+  "sources": {
+    "docs/results/experiments/A/pdf_completion_20261121/demo_examples_retry/ct_drill.json": "9f247faa65de454e2827397955bfa249c1573fe684b794f16c77f861f7478b83",
+    "docs/results/experiments/A/pdf_completion_20261121/demo_examples_retry/search.json": "8c2187cd2c63a012729c04fcb20a4d5a8affd48a0a31f46510e53b3c1f65a7cb",
+    "docs/results/experiments/A/pdf_completion_20261121/demo_examples_retry/recommendation.json": "5fcb63898b25a8748cae3d4ec073672fb9bc483d914646d24c1d3c009a12259e",
+    "docs/results/experiments/A/pdf_completion_20261121/demo_examples_retry/ab_test.json": "f88e4e781bc5720f2574d6baae68c6945e49841b804803bb51de151c8ff1c627",
+    "docs/results/experiments/A/pdf_completion_20261121/demo_examples_retry/session_events.json": "e7abc3741c6fdcebe8f1ae9996d3f630a534233eef3372d3272ee7029ae1dd59",
+    "docs/results/experiments/A/pdf_completion_20261121/demo_examples_retry/ab_test_verification.json": "a270344843294604387b5d465176940d18f3ef2cbc6cb754fe063cbd60cd30df"
+  },
+  "scope": "Current combined experiment with 20 users per arm for 2 days. Small fault-initialized controlled CT, separate from recorded full lifecycle."
+}

@@ -1,0 +1,185 @@
+{
+  "query": "검정 가방",
+  "top_k": 24,
+  "mode": "text",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "storefront_sha256_matches": 24,
+  "embedding_manifest": ".team/illustrations-v1/full/models/search/embeddings/a9c7dd3da8af8414bc842253392e78988773d5b10239588fb971194a1646d0e0/manifest.json",
+  "embedding_manifest_sha256": "53fb6fb8616e1cfa1425626b35790c8f8220dd0b600a48fb7000d8a8072ceedb",
+  "embedding_image_content_fingerprint": "6080b0327f5ef87e91701d74d6389295950e53e053894486e8991e4c7b377a21",
+  "distinct_old_jpegs_for_same_ids": 2,
+  "distinct_served_jpegs": 14,
+  "items": [
+    {
+      "product_id": "P000695",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "2bee93d97f14ad21db66fced862dc7815ad7cea9712e60174061a6f47e19e7a7"
+    },
+    {
+      "product_id": "P001942",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "3c987eab94143460a421b01b454fcd379f0907bc749ce4072d2c0d94411daf7b"
+    },
+    {
+      "product_id": "P002680",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c44089893ee9a2367bd2cf78b141d2144fb082b6bdfe9c974f3d25f3abc3a09",
+      "sha256": "3cda6b3838063a375421d8184ac6f5b7f48847292a8cc4c5565090b87b62641d"
+    },
+    {
+      "product_id": "P004668",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "ab19325c6adcd00b295dd16fc305de270132531128dd0fd85940596817ebb9a9"
+    },
+    {
+      "product_id": "P004921",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "01c62f15506f25610afde7181fdb3ce56843bed463c26760432f491fe8b85eb8"
+    },
+    {
+      "product_id": "P005112",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c44089893ee9a2367bd2cf78b141d2144fb082b6bdfe9c974f3d25f3abc3a09",
+      "sha256": "b91bacc74ba33b4e0b73184ef9602833fa8ffb529a4278952c86466b950fd4bf"
+    },
+    {
+      "product_id": "P007105",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "01c62f15506f25610afde7181fdb3ce56843bed463c26760432f491fe8b85eb8"
+    },
+    {
+      "product_id": "P007586",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c44089893ee9a2367bd2cf78b141d2144fb082b6bdfe9c974f3d25f3abc3a09",
+      "sha256": "306649fe1a97e02e130eef41acdc5075db8d5f4188db6d2c476d169f83d34fad"
+    },
+    {
+      "product_id": "P008056",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c44089893ee9a2367bd2cf78b141d2144fb082b6bdfe9c974f3d25f3abc3a09",
+      "sha256": "3cda6b3838063a375421d8184ac6f5b7f48847292a8cc4c5565090b87b62641d"
+    },
+    {
+      "product_id": "P010751",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "2bee93d97f14ad21db66fced862dc7815ad7cea9712e60174061a6f47e19e7a7"
+    },
+    {
+      "product_id": "P010799",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "2bee93d97f14ad21db66fced862dc7815ad7cea9712e60174061a6f47e19e7a7"
+    },
+    {
+      "product_id": "P011179",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "8678ff871f8bb8cb8acca2eb6b672376fbc81c0de144873cf4094a6659170608"
+    },
+    {
+      "product_id": "P012470",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "0bd1704e443ad17ef16bde08b55f3b6e772fc976bd8e4ea0de1e12080a44a4ae"
+    },
+    {
+      "product_id": "P013511",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "2bee93d97f14ad21db66fced862dc7815ad7cea9712e60174061a6f47e19e7a7"
+    },
+    {
+      "product_id": "P014704",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c44089893ee9a2367bd2cf78b141d2144fb082b6bdfe9c974f3d25f3abc3a09",
+      "sha256": "3cda6b3838063a375421d8184ac6f5b7f48847292a8cc4c5565090b87b62641d"
+    },
+    {
+      "product_id": "P015018",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c44089893ee9a2367bd2cf78b141d2144fb082b6bdfe9c974f3d25f3abc3a09",
+      "sha256": "59fde882ba56523d947ab02d16d8dcfb20a70fcc3290082be54dcb6f3417e839"
+    },
+    {
+      "product_id": "P016532",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "afda5dc4a7e90ad1a058cfd3e505425f5f10e53055b25ebb290b28ee963cc6d1"
+    },
+    {
+      "product_id": "P017367",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "04d1f06492572ca55ceeb2ecd0db35c30a1ae317445aaee1092f68dc970135e9"
+    },
+    {
+      "product_id": "P017822",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "0bd1704e443ad17ef16bde08b55f3b6e772fc976bd8e4ea0de1e12080a44a4ae"
+    },
+    {
+      "product_id": "P017972",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "afda5dc4a7e90ad1a058cfd3e505425f5f10e53055b25ebb290b28ee963cc6d1"
+    },
+    {
+      "product_id": "P019050",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c44089893ee9a2367bd2cf78b141d2144fb082b6bdfe9c974f3d25f3abc3a09",
+      "sha256": "59fde882ba56523d947ab02d16d8dcfb20a70fcc3290082be54dcb6f3417e839"
+    },
+    {
+      "product_id": "P019305",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "3bcf93b21ec6d0164a4b6c420e1a35cd37d46f533403bf4b6ffe7bcee1c45cb1"
+    },
+    {
+      "product_id": "P019508",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "afda5dc4a7e90ad1a058cfd3e505425f5f10e53055b25ebb290b28ee963cc6d1"
+    },
+    {
+      "product_id": "P019878",
+      "leaf": "tote bag",
+      "name": "검정 레귤러핏 토트백",
+      "old_sha256": "3c5b105614ad60b0b4d17fd4f77a0e7b2682fca06aa24054ca4ef83c1e265e3f",
+      "sha256": "bb122f1577f59d1b7a42c67edc69b5f7377f5b31a2241fdef17074d2efaaa03e"
+    }
+  ],
+  "same_ranked_ids_as_live_default": true,
+  "distinct_default_served_jpegs": 2,
+  "after_standard_restart": true
+}

@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "run_id": "f869b758128d6bb2fae535561f1e2156d6bdf201586f107d6c2bd1f88ba1716c",
+  "sha256": "fc2d0b59eb103e0b8f01ae361ab5a453ae44b763475dc2e09deda1971fa2fa89",
+  "runtime_report_sha256": "fc2d0b59eb103e0b8f01ae361ab5a453ae44b763475dc2e09deda1971fa2fa89",
+  "final_acceptance_sha256": "46fde468cbaec17f8742a0ae46beddea6b1c96f7409d57d4f16d4b43198a317e",
+  "dashboard_url": "http://localhost:8501",
+  "storefront_url": "http://localhost:3000",
+  "matched_operational_ab": {
+    "control": {
+      "users": 5000,
+      "impressions": 1500000,
+      "clicks": 375073,
+      "purchases": 18380,
+      "explorations": 0,
+      "ctr": 0.25004866666666664,
+      "cvr": 0.012253333333333333,
+      "purchase_given_click": 0.049003793928115325,
+      "exploration_rate": 0.0,
+      "users_clicked": 5000,
+      "users_purchased": 4621,
+      "unattributed_feedback": 0
+    },
+    "treatment": {
+      "users": 5000,
+      "impressions": 1500000,
+      "clicks": 311399,
+      "purchases": 13330,
+      "explorations": 300000,
+      "ctr": 0.20759933333333333,
+      "cvr": 0.008886666666666666,
+      "purchase_given_click": 0.04280681697757539,
+      "exploration_rate": 0.2,
+      "users_clicked": 5000,
+      "users_purchased": 4300,
+      "unattributed_feedback": 0
+    }
+  },
+  "dashboard_checks": {
+    "api_docs_link": true,
+    "tab_검색": true,
+    "charts_검색": 1,
+    "tab_추천": true,
+    "charts_추천": 1,
+    "tab_A/B 실험": true,
+    "charts_A/B 실험": 2,
+    "tab_시스템": true,
+    "tab_EDA·구매 이력": true,
+    "tab_상품·CLIP": true,
+    "search_images": true,
+    "actual_click_comparison": true
+  }
+}

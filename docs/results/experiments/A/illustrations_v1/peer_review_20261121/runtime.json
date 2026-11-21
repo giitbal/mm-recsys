@@ -1,0 +1,59 @@
+{
+  "windows_host": {
+    "installed_ram": 17179869184,
+    "host_usable_ram": 16758542336,
+    "cores": 8
+  },
+  "docker": {
+    "cpu": 8,
+    "memory_bytes": 12520095744
+  },
+  "default_services": [
+    "redis",
+    "api-server",
+    "dashboard",
+    "simulator"
+  ],
+  "services": [
+    {
+      "service": "api-server",
+      "state": "running",
+      "health": "healthy",
+      "name": "mm-recsys-api-server-1"
+    },
+    {
+      "service": "dashboard",
+      "state": "running",
+      "health": "healthy",
+      "name": "mm-recsys-dashboard-1"
+    },
+    {
+      "service": "redis",
+      "state": "running",
+      "health": "healthy",
+      "name": "mm-recsys-redis-1"
+    },
+    {
+      "service": "simulator",
+      "state": "running",
+      "health": "",
+      "name": "mm-recsys-simulator-1"
+    },
+    {
+      "service": "storefront",
+      "state": "running",
+      "health": "healthy",
+      "name": "mm-recsys-storefront-1"
+    }
+  ],
+  "start_command": "docker compose up -d --no-recreate",
+  "start_exit_code": 0,
+  "benchmark_running_containers": [
+    "mm-recsys-api-server-1",
+    "mm-recsys-redis-1",
+    "mm-recsys-dashboard-1",
+    "mm-recsys-simulator-1",
+    "mm-recsys-storefront-1"
+  ],
+  "note": "Single default API deployment at measurement. The optional storefront was already running. Model probe container started after the latency measurement."
+}

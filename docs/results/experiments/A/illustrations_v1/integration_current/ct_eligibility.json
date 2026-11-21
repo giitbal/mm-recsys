@@ -1,0 +1,58 @@
+{
+  "ready": true,
+  "splits": {
+    "train": {
+      "version": "linked-view-last-view-v3",
+      "rows": 2027952,
+      "clicks": 506988,
+      "conversions": 41372,
+      "ctr_observed": 2026740,
+      "cvr_observed": 506609,
+      "censored": 1616,
+      "censored_cvr_negatives": 379,
+      "unassigned_purchases": 0,
+      "window_seconds": 1800,
+      "start": "2025-12-02T00:00:00+00:00",
+      "end": "2025-12-28T07:08:26.832900+00:00",
+      "ctr_proxy": "linked view; generator timestamps equal exposure timestamps",
+      "cvr_denominator": "observed linked clicked exposures only",
+      "same_timestamp_view_exposure": 506988,
+      "excluded_inputs": [
+        "position",
+        "impression_id",
+        "request_id",
+        "event_type",
+        "persona"
+      ],
+      "ctr_classes": 2,
+      "cvr_classes": 2
+    },
+    "valid": {
+      "version": "linked-view-last-view-v3",
+      "rows": 233074,
+      "clicks": 56634,
+      "conversions": 3724,
+      "ctr_observed": 227459,
+      "cvr_observed": 56596,
+      "censored": 5692,
+      "censored_cvr_negatives": 38,
+      "unassigned_purchases": 519,
+      "window_seconds": 1800,
+      "start": "2025-12-28T07:08:28.889700+00:00",
+      "end": "2026-11-21T04:48:41.083389997+00:00",
+      "ctr_proxy": "linked view; generator timestamps equal exposure timestamps",
+      "cvr_denominator": "observed linked clicked exposures only",
+      "same_timestamp_view_exposure": 563543,
+      "excluded_inputs": [
+        "position",
+        "impression_id",
+        "request_id",
+        "event_type",
+        "persona"
+      ],
+      "ctr_classes": 2,
+      "cvr_classes": 2
+    }
+  },
+  "reason": "train/valid require observed positive and negative CTR/CVR labels"
+}

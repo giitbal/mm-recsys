@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-11-21T09:25:59.918884+00:00",
+  "public_url": "https://github.com/k-pang-2026/mm-recsys",
+  "branch": "main",
+  "public_head": "53e3e5448751404edd318322953a65687afb0cee",
+  "local_base": "03af3758f24fcdb8cfc20aad2138bb73b2a7eb17",
+  "status": "PENDING_PUBLICATION",
+  "samples": {
+    "src/ct/storage.py": {
+      "local_git_blob": "ad206735d549f0d77f283741baaf7ba6efc996e5",
+      "remote_git_blob": "c9cfe4f98207a5149786af5087e7efa75796b59f",
+      "matches": false
+    },
+    "src/recommendation/reranking.py": {
+      "local_git_blob": "336ea8fb83c10b9a6f4bf4b19aad55b7c0304e2b",
+      "remote_git_blob": "bb0bfcc4756c910434c1e2e04bf1a4c232afdfc8",
+      "matches": false
+    },
+    "dashboard/app.py": {
+      "local_git_blob": "ad78853727b1fedf2daae57e53b94408a136a96a",
+      "remote_git_blob": "982b5f2ba85e45cfb60f655c628e6f4628cdda57",
+      "matches": false
+    },
+    "storefront/package.json": {
+      "local_git_blob": "4c7a6bb1143532e03ee663b6d5125cc4a9f66b93",
+      "remote_git_blob": null,
+      "matches": false
+    }
+  },
+  "scope": "Anonymous GitHub API. Current working tree has changes outside the public main tree; no remote mutation or course-platform submission."
+}

@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-21T06:04:48.829658+00:00",
+  "base_commit": "03af3758f24fcdb8cfc20aad2138bb73b2a7eb17",
+  "project": "mm-illustrations-final",
+  "initial_data_files": 0,
+  "initial_model_files": 0,
+  "initial_results_files": 0,
+  "source_scope": "Local clone of HEAD plus current unpublished serving, training, UI and configuration files. Empty independent data/model/result mounts; pinned pretrained CLIP and Docker dependency layers may be reused.",
+  "mounts": {
+    "data": ".team/illustrations-v1-final/data",
+    "models": ".team/illustrations-v1-final/models",
+    "results": ".team/illustrations-v1-final/results"
+  }
+}

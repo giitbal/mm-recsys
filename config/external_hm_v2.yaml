@@ -1,9 +1,9 @@
 # Declared before valid comparison; original v1 cohort/catalog/splits remain fixed.
 seed: 42
-source_work: .team/external-data-v1
-source_results: docs/results/external/v1
-work_dir: .team/external-hm-v2
-results_dir: docs/results/external/hm-v2
+source_work: .team/external-data-v1-illustrations-v1
+source_results: docs/results/external/v1-illustrations-v1
+work_dir: .team/external-hm-v2-illustrations-v1
+results_dir: docs/results/external/hm-v2-illustrations-v1
 candidate_epochs: 20
 candidate_patience: 5
 popularity_windows_days: [0, 30, 90]

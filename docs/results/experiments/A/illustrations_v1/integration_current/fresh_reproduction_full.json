@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "initial_data_files": 0,
+  "initial_model_files": 0,
+  "prepared_data_and_models_from_empty": true,
+  "initial": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/initial.json",
+    "sha256": "d4424c851a64ded53d84193cc0a3dcd00f7e7302884e5850935367f1d0a55721"
+  },
+  "preparation": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_preparation.json",
+    "sha256": "0d2d20e363140b1c7fcdc5cded2a825dc8c5f2805b32dcbfabe841be3721c9e8"
+  },
+  "runtime_sources": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_final_runtime_sources.json",
+    "sha256": "5c6641023ee45c7ab352db4104ac823d63435fa2c1ef40d5a1781d98e433aced"
+  },
+  "services": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_services.json",
+    "sha256": "8b60cecbba55264fdb53c1032a9f5b05d5ec6f7c5db13d7e4fefa2489caecc7c"
+  },
+  "data_audit": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_data_audit.json",
+    "sha256": "08bc74f616715d0cc22e7d8e3c857641074da4b94ee48b1a9518350124f45bce"
+  },
+  "training": {
+    "candidate": {
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_candidate_training.json",
+      "sha256": "84f6933ec2cd1e8e0df31d6f6cb5177febba0e6114d85b73082651470b85e2c7"
+    },
+    "ranking": {
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_ranking_training.json",
+      "sha256": "1839edfe898912bb0052bd28c34993216ac2a7ffff1661db0bdc8f9529717719"
+    },
+    "session": {
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_session_training.json",
+      "sha256": "7114610f00cf654176f84adc9e5d39ef644a53d8dbc6d7a64e2377f3b1c0ef1c"
+    }
+  },
+  "independent_search_test": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_search_test.json",
+    "sha256": "ea22202fb40cb1deab52a68bb08502056501ff65e815a233becfcaa1789c792b"
+  },
+  "image_hashes_checked": 50000,
+  "manifest_sha256": "6305f4a33a7e0c41903659613cc2f1cd538b95bc9cbae277ef60c1f03e9d884b",
+  "scope": "Local clone of HEAD plus current working sources. Independent full run from empty data, models and results, pinned CLIP cache and Docker dependency layers reused; seed 42.",
+  "post_training_startup": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_bootstrap_recheck.json",
+    "sha256": "fd628c4196b1c57ce951077a1c1cc7a28b3abb4eadd3be0ff832fcf632dcfbed"
+  }
+}

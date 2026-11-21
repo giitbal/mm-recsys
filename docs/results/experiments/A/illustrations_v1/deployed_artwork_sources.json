@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "src/simulator/catalog.py": "e27e3639f439a1c99ca12a9e9dba3e03eec20d91dc081486eafc339087361755",
+    "src/simulator/illustrations.py": "b97f2efa39de004c0e9574f54b8034545d6634811825f482d05ae95d836ea66c",
+    "config/catalog_illustrations_v1.yaml": "63b1539317cbcbc38d32c89fe11d94d43c34c6abddec6534af12a98deffaef15",
+    "docker/compose.illustrations.yaml": "d472e3ab27924f92d3b7d01d3fd1e7750ef333b93dfeb968de9e99645e2a7d0b"
+  },
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40"
+}

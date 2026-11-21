@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "former_sha256": "841307aa2f7ae7357856f4ea1db9b17fbe77b5e4cfc006598e7e72bda0497e1e",
+  "current_sha256": "ed424da224501774d6c4c8b72a50510587589a32a39370ec1fd8873e06fb8b19",
+  "source": "src/ct/bootstrap.py",
+  "verified_running_sources": {
+    "api-server": "ed424da224501774d6c4c8b72a50510587589a32a39370ec1fd8873e06fb8b19",
+    "simulator": "ed424da224501774d6c4c8b72a50510587589a32a39370ec1fd8873e06fb8b19"
+  },
+  "cold_models_reused": true,
+  "training_lock_held_through_http_ready": true,
+  "four_services": [
+    {
+      "Service": "api-server",
+      "Image": "mm-illustrations-current-api-server",
+      "State": "running",
+      "Health": "healthy"
+    },
+    {
+      "Service": "dashboard",
+      "Image": "mm-illustrations-current-dashboard",
+      "State": "running",
+      "Health": "healthy"
+    },
+    {
+      "Service": "redis",
+      "Image": "redis:7",
+      "State": "running",
+      "Health": "healthy"
+    },
+    {
+      "Service": "simulator",
+      "Image": "mm-illustrations-current-simulator",
+      "State": "running",
+      "Health": ""
+    }
+  ],
+  "scope": "After the independent empty-mount training and search test, rolled the bootstrap fix into the same independent checkout and checked live HTTP readiness while holding its trainer lock. The simulator resumed afterwards. Training and evaluation code were unchanged."
+}

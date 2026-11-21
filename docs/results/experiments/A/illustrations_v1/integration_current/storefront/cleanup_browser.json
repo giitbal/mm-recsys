@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "url": "/shop?q=검정 가방",
+  "search_type": "text",
+  "count": 24,
+  "first_product": "P000695",
+  "fallback_decoded_dimensions": [
+    150,
+    150
+  ],
+  "page_errors": []
+}

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "ct_fixture_fingerprint": "90ebb67453b2b70627af356d4765afb8e6bc24f4ab08f39b8c80fffb64112922",
+  "session_events": 2,
+  "users_per_arm": 20,
+  "days": 2,
+  "source_hashes": {
+    "docs/results/experiments/A/illustrations_v1/default_full/examples/ct_drill.json": "9b2f6b980fecc60d7f8df9dd3df4174ec9fa07cefd882859a6f3c9838826d865",
+    "docs/results/experiments/A/illustrations_v1/default_full/examples/search.json": "7f4835f606b4cc8b32c09bae940af2552f816feee6f4af824bab5d85f6bb8bbe",
+    "docs/results/experiments/A/illustrations_v1/default_full/examples/recommendation.json": "9822d195c1cff121185414032aeacc792821d9071b5c09d1a4c239aacffc2940",
+    "docs/results/experiments/A/illustrations_v1/default_full/examples/ab_test.json": "14f1a95e48f5ae237cdf67af614f9cfc85b962eca3bab03925a30881546fad74",
+    "docs/results/experiments/A/illustrations_v1/default_full/examples/session_events.json": "94fe30023adaae1c9753818533f8be2e200b88d4a707aa21c51bb4fbd221bd1e",
+    "docs/results/experiments/A/illustrations_v1/default_full/examples/ab_test_verification.json": "c9b5d32b8ff2d05aabb31d83567ab8cbc9b3eb95045094ebf6e791a9f3392d6e"
+  }
+}

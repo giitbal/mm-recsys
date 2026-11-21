@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-11-21T04:50:51.221117+00:00",
+  "new_events": 10054,
+  "high_watermark": 10057,
+  "threshold": 10000,
+  "registry": {
+    "active": "v1.0",
+    "last_success_seq": 0
+  },
+  "event_counts": {
+    "cart": 1536,
+    "purchase": 676,
+    "view": 7842
+  },
+  "request_linked_event_counts": {
+    "cart": 2,
+    "purchase": 49,
+    "view": 98
+  },
+  "requests": 263,
+  "exposures": 8154
+}

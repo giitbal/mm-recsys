@@ -1,0 +1,19 @@
+{
+  "removed": {
+    "product_jpegs": 792000,
+    "query_pngs": 8000
+  },
+  "verified_directories": 82,
+  "remaining_legacy_images_in_these_directories": 0,
+  "active_catalogs": {
+    "dev": {
+      "jpegs": 10000,
+      "distinct_jpegs": 2696
+    },
+    "full": {
+      "jpegs": 50000,
+      "distinct_jpegs": 3134
+    }
+  },
+  "verified_using": "Legacy generator JPEG hash at native 224px and CT 32px, catalog and frozen query manifests, per-file SHA-256 before unlink. External original data excluded."
+}

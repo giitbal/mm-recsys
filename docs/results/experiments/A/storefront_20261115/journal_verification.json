@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "scope": "actual CT SQLite journal and follow-up recommendation, no training/promotion",
+  "events": [
+    {
+      "id": "33e64d5f-3ea8-4641-a526-531fd4bb3def",
+      "user_id": "storefront-browser-1794737040001",
+      "product_id": "P000003",
+      "kind": "cart",
+      "request_id": "2fff6b1a378742a59a6df2439225d8f2"
+    },
+    {
+      "id": "5740bae2-5702-4fb1-b007-4c5b3bb78dac",
+      "user_id": "storefront-browser-1794737040001",
+      "product_id": "P000003",
+      "kind": "view",
+      "request_id": "2fff6b1a378742a59a6df2439225d8f2"
+    },
+    {
+      "id": "7164bfb7-a665-44c1-aba5-aa49c1420c15",
+      "user_id": "storefront-browser-1794737040001",
+      "product_id": "P000003",
+      "kind": "purchase",
+      "request_id": "2fff6b1a378742a59a6df2439225d8f2"
+    }
+  ],
+  "session_context": {
+    "recent_clicks": [
+      "P000003"
+    ],
+    "session_interest": "sweatshirt"
+  }
+}

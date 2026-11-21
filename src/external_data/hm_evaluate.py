@@ -9,6 +9,7 @@ import copy
 import json
 import platform
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import numpy as np
 import pandas as pd
@@ -24,9 +25,14 @@ from src.recommendation.datasets import TrainingDataset, read_data
 from src.recommendation.deepfm import DeepFM
 from src.recommendation.eval_candidate import Evaluation
 from src.recommendation.index import load_index
+from src.recommendation.features import ItemTable
 from src.recommendation.ranking_features import DENSE_FIELDS, HistoryIndex, RankingEncoder
 from src.recommendation.reranking import RankedItem, Reranker
 from src.recommendation.train_two_tower import train, load_bundle
+from src.recommendation.two_tower import TwoTower
+
+if TYPE_CHECKING:
+    import faiss
 
 
 def metrics(ranked: list[list[str]], evaluation: Evaluation) -> dict:
@@ -38,7 +44,7 @@ def metrics(ranked: list[list[str]], evaluation: Evaluation) -> dict:
         coverage_at_50=len({p for row in ranked for p in row[:50]}) / (len(evaluation.table.ids) - 1))
 
 
-def candidate_lists(model, table, index, evaluation: Evaluation, batch_size: int, diagnostics: dict) -> list[list[str]]:
+def candidate_lists(model: TwoTower, table: ItemTable, index: faiss.Index, evaluation: Evaluation, batch_size: int, diagnostics: dict) -> list[list[str]]:
     retriever = FaissCandidate(model, table, evaluation.eligible, index)
     ranked = []
     for start in range(0, len(evaluation.contexts), batch_size):

@@ -1,0 +1,44 @@
+{
+  "scale": "full",
+  "stage": "INTEGRATE",
+  "status": "UNMEASURED",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "data_counts": {
+    "products": 50000,
+    "users": 10000,
+    "events": 1000000,
+    "impressions": 2254172
+  },
+  "quality": {
+    "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+    "sha256": "3336264c075de96db621b04cad25d68aaff8882570ffb0704d8d87529b3f41dc"
+  },
+  "ab": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ab_full_archive.json",
+    "sha256": "88a396331299234d8c88629b1636077ce34dd9978d9c5b3ea500b6eb6083a091"
+  },
+  "previous_acceptance": {
+    "source": "docs/results/experiments/A/illustrations_v1/default_regression/legacy_final_acceptance.json",
+    "sha256": "a8d9e87745bca51ba654e04121dfedb76c2c1452f25b1c301ede9e487401d397"
+  },
+  "limitations": [
+    "Full synthetic A/B and observed deployment CT were measured. Overall submission acceptance requires its remaining integration checks."
+  ],
+  "image_recipe": "illustrations-v1",
+  "controlled_ct": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_controlled_lifecycle_full.json",
+    "sha256": "772e53b42732588db313f4d90733092f3c72a053875c95b07cc8f24dd346ca8e"
+  },
+  "observed_ct": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_full.json",
+    "sha256": "c49faa9f2deefaa44fcb7e48987a187fdc114922ad4d69571901dad58bd9d562"
+  },
+  "ab_verification": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ab_acceptance_full.json",
+    "sha256": "871ba216159da81d8f9020db7860ad4a23a68440800ee4c65b7774d73f34462a"
+  },
+  "ct_verification": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_acceptance_full.json",
+    "sha256": "03e49c967fb8bbc294973c63f030f5c17a6d8616ada41a2d6a899a70ce18f969"
+  }
+}

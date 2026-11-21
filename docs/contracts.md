@@ -40,6 +40,7 @@ ID 문자열을 DataFrame 행 번호/FAISS 정수 label과 혼용하지 않는�
 평가 전까지 미측정이다. CVR 학습은 train/valid의 관측 가능한 구매·비구매가 모두 있어야 한다.
 
 서빙용 후보는 기본 ANN Top300과 별도로, 필요한 다른 카테고리를 보충하되 최대 300개를 유지한다.
+대·중·소분류 각각에서 같은 이름의 연속 노출은 최대 2개다. 서로 다른 대분류가 같은 중·소분류 이름을 써도 이 제한을 적용한다. 후보 보충과 최종 재정렬에 같은 기준을 사용하며, 실제 카탈로그에서 다양성을 확보할 수 없으면 허용되는 개수만 반환하고 평가에 부족분을 기록한다. 세션 관심과 카테고리 MAB의 분류 기준은 `reranking.category_field`를 사용한다.
 등록 시점·구매 제외 정책을 만족하는 7일 신상품이 있으면 서빙 후보에 최소 1개를 확보하고 다양성 보정에서도 보존한다.
 선택 전략 `newest`는 등록일순 후보·점수를 사용하며 신규 사용자에게도 적용한다. MAB·다양성 제약은 후속 적용한다.
 전체 카탈로그 Recall@300의 후보·정답·K는 바꾸지 않는다. 재정렬 위반 또는 다양성 불가능 후보 풀은
@@ -82,8 +83,8 @@ FeatureStore는 src/common/schemas.py에 정의되어 있다. C가 Redis를 추�
 `/health`는 liveness, `/ready`는 두 모델 readiness다. 모델이 없으면 해당 API는 503이다.
 속성 변경은 역할별 config overlay로 적용하고 data generator fingerprint에는 search/추천 설정을 넣지 않는다.
 
-현재 생성기 v4.4의 dev 데이터는 `data/dev-v44/`, full은 `data/full-v44/`에 분리한다.
-모델은 각각 `models/dev-v44/`, `models/full-v44/`를 사용한다. `SCALE=full`이면
+이벤트 생성기 v4.4와 상품 도안 `illustrations-v1`을 공유하며 dev 데이터는 `data/dev-illustrations-v1/`, full은 `data/full-illustrations-v1/`에 분리한다.
+모델은 각각 `models/dev-illustrations-v1/`, `models/full-illustrations-v1/`를 사용한다. `SCALE=full`이면
 load_config가 data/split/model 경로까지 전환한다. 과거 `data/`, `data/full/`의 산출물은
 보존하며 새 데이터로 덮어쓰지 않는다. v4.4는 장바구니 전이의 설정 확률 0·1을 정확히 유지하며, 중간 확률에는 persona CVR /
 `simulator.cart_reference_cvr`로 구매 오즈만 조정한다. v4.3의 [통합 검증](requirements_completion.md)은 과거 근거로 보존한다.
