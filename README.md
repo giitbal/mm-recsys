@@ -3,6 +3,13 @@
 텍스트·이미지로 상품을 검색하고, 사용자 행동과 현재 세션을 반영해 상품을 추천하는 시스템입니다.
 합성 고객 행동 데이터로 모델을 학습하며, 검색·추천 API, 평가 대시보드, A/B 실험과 자동 재학습을 로컬 Docker에서 실행합니다.
 
+**온라인 평가 대시보드: https://kpang-mm-recsys.streamlit.app**
+
+저장된 평가 결과(`docs/results`)를 Streamlit Community Cloud에서 보여 주는 읽기 전용 화면입니다.
+검색·추천 「직접 해보기」와 실시간 API 상태는 API 서버가 필요하므로 [Docker로 로컬 결과 확인](#docker로-로컬-결과-확인)에서 실행합니다.
+무료 앱이라 한동안 접속이 없으면 잠들며, 그때는 화면의 깨우기 버튼을 누르면 1분 안팎으로 다시 열립니다.
+배포 원본은 `giitbal/mm-recsys` 포크의 `feat/dashboard-redesign` 브랜치입니다.
+
 ## PDF 요구사항 구현
 
 | 요구사항 | 구현 방식 | 주요 코드 |
@@ -84,7 +91,7 @@ curl --fail http://localhost:8000/ready
 | API 문서와 요청 실행 | http://localhost:8000/docs |
 | 모델 준비 상태 | http://localhost:8000/ready |
 
-대시보드에서 검색·추천을 직접 실행하고, EDA·구매 이력 및 상품·CLIP 탭에서 데이터를 확인할 수 있습니다.
+대시보드의 검색·추천 탭에서 「직접 해보기」로 검색·추천을 실행하고, 데이터 탭에서 EDA·페르소나·구매 원장을, 검색 탭에서 상품·CLIP 벡터를 확인할 수 있습니다.
 
 ### 2. PDF 결과 예시 전체 시연
 
@@ -150,7 +157,7 @@ docker compose run --rm --no-deps --pull never api-server demo evaluate --split 
 docker compose start simulator
 ```
 
-valid 평가가 통과한 후 test를 실행합니다. 대시보드에서 **결과 새로고침**을 누르고 `evaluation_full_test.json`을 선택합니다.
+valid 평가가 통과한 후 test를 실행합니다. 대시보드에서 **결과 새로고침**을 누르고 왼쪽 「평가 결과」에서 「실행 결과 · 테스트 분할 (full)」(`evaluation_full_test.json`)을 선택합니다.
 지연은 10회 준비 호출 후 100회 단건 요청의 p95로 측정합니다.
 이 평가는 검색·추천 품질을 확인하며, 최종 종합 판정은 별도 통합 검증 결과를 사용합니다.
 
