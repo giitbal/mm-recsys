@@ -1,0 +1,37 @@
+{
+  "user": "pdf-mab-e695dca8b7d14326ae445239516f359c",
+  "tagged": [
+    {
+      "product_id": "P000130",
+      "score": 0.40734989648033126,
+      "reason": "MAB 탐색",
+      "is_exploration": true
+    },
+    {
+      "product_id": "P000628",
+      "score": 0.0,
+      "reason": "MAB 탐색",
+      "is_exploration": true
+    }
+  ],
+  "chosen_arm": "P000130",
+  "request_id": "9d6042e36c4e4d2e8509bcf8a38320f1",
+  "algorithm": "epsilon_greedy",
+  "epsilon": 0.1,
+  "before": {
+    "exposures": 7.0,
+    "reward": 2.0
+  },
+  "clicked": {
+    "exposures": 7.0,
+    "reward": 2.2
+  },
+  "duplicate": {
+    "exposures": 7.0,
+    "reward": 2.2
+  },
+  "purchased": {
+    "exposures": 7.0,
+    "reward": 3.0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "services": {
+    "api-server": "running",
+    "dashboard": "running",
+    "redis": "running",
+    "simulator": "running"
+  },
+  "optional_storefront_started": false
+}

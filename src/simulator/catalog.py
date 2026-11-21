@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-from typing import Any
-
 import json
 import hashlib
 from pathlib import Path
 import numpy as np
 import pandas as pd
-from PIL import Image, ImageDraw
+from PIL import Image
+from src.common.config import require_image_recipe
+from src.simulator.illustrations import illustration
 
 
 def leaves(cfg: dict) -> list[tuple[str, str, str]]:
@@ -16,44 +16,8 @@ def leaves(cfg: dict) -> list[tuple[str, str, str]]:
 
 
 def render_product(row: dict, cfg: dict, variant: int = 0) -> Image.Image:
-    size = cfg['simulator']['image_size']
-    image = Image.new('RGB', (size, size), '#f4f1ed')
-    draw = ImageDraw.Draw(image)
-    color = cfg['simulator']['colors'][row['color']]
-    # Category-specific silhouettes, kept away from crop edges; no text/ID/brand watermark.
-    x = size / 224
-    def points(values: Any) -> Any:
-        return [(int(a*x), int(b*x)) for a,b in values]
-    kind = row['category_l1']
-    if kind in ('tops', 'outerwear'):
-        draw.polygon(points([(76,40),(94,50),(130,50),(148,40),(184,80),(163,108),
-                             (148,94),(148,190),(76,190),(76,94),(60,108),(40,80)]), fill=color)
-        draw.ellipse((94*x,35*x,130*x,61*x),fill='#f4f1ed')
-        if kind == 'outerwear':
-            draw.line(points([(112,58),(112,190)]),fill='#999999',width=max(1,int(3*x)))
-    elif kind == 'bottoms':
-        if 'skirt' in row['category_l3']:
-            draw.polygon(points([(80,48),(144,48),(176,185),(48,185)]),fill=color)
-        else:
-            draw.polygon(points([(73,44),(151,44),(158,190),(124,190),(112,112),(100,190),(66,190)]),fill=color)
-    elif kind == 'footwear':
-        draw.polygon(points([(53,115),(103,105),(126,140),(173,155),(183,179),(48,179)]),fill=color)
-        draw.line(points([(50,180),(181,180)]),fill='#dddddd',width=max(1,int(8*x)))
-        for j in range(4):
-            draw.line(points([(105+j*8,133+j*3),(127+j*8,131+j*3)]),fill='#cccccc',width=max(1,int(2*x)))
-    elif row['category_l2'] == 'bags':
-        draw.rounded_rectangle((64*x,86*x,160*x,184*x),radius=12*x,fill=color)
-        draw.arc((83*x,49*x,141*x,125*x),180,360,fill=color,width=max(1,int(9*x)))
-    elif row['category_l2'] == 'headwear':
-        draw.pieslice((62*x,62*x,162*x,168*x),180,360,fill=color)
-        draw.ellipse((45*x,113*x,178*x,139*x),fill=color)
-    else:
-        draw.polygon(points([(70,54),(96,57),(154,179),(121,186)]),fill=color)
-    if variant % 3 == 1:
-        draw.line(points([(85,95),(141,95)]), fill='#999999',width=max(1,int(2*x)))
-    if row['style'] == 'oversized':
-        image = image.resize((size-8,size-8)).resize((size,size))
-    return image
+    require_image_recipe(cfg['simulator'])
+    return illustration(row, cfg, variant)
 
 
 def make_catalog(cfg: dict, rng: np.random.Generator) -> pd.DataFrame:

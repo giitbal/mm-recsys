@@ -20,12 +20,12 @@ from src.serving.model_loader import load_record
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output-dir', type=Path, default=Path('docs/results/integration'))
+    parser.add_argument('--output-dir', type=Path)
     parser.add_argument('--observed-journal', action='store_true', help='실제 관측 로그의 ct_before_stdout.json을 기준으로 중단된 검증을 재개')
     args = parser.parse_args()
     cfg = load_config()
     spec, journal, registry = components(cfg)
-    out = args.output_dir
+    out = args.output_dir or Path(cfg['paths']['results_dir']) / 'integration'
     running = json.loads((out / ('ct_before_stdout.json' if args.observed_journal else 'ct_full_running.json')).read_text())
     assert cfg['scale'] == 'full'
     if args.observed_journal:

@@ -1,0 +1,148 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "scenario": "controlled_initial_constant_ranker",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "counts": {
+    "products": 50000,
+    "users": 10000,
+    "events": 1056400,
+    "impressions": 2295676
+  },
+  "natural_retraining": "RETAINED",
+  "comparison": {
+    "split": "valid",
+    "validation_fingerprint": "7d8e2ece87e16ec34bb822cecae0344fb27274ae4c1deb85432f5755ec18a392",
+    "baseline": {
+      "ctr_auc": 0.5,
+      "ctr_logloss": 0.693147180559945,
+      "ctr_samples": 237724,
+      "ctr_positives": 59704,
+      "validation_fingerprint": "7d8e2ece87e16ec34bb822cecae0344fb27274ae4c1deb85432f5755ec18a392"
+    },
+    "candidate": {
+      "ctr_auc": 0.9652772261950854,
+      "ctr_logloss": 0.14346869032600337,
+      "ctr_samples": 237724,
+      "ctr_positives": 59704,
+      "validation_fingerprint": "7d8e2ece87e16ec34bb822cecae0344fb27274ae4c1deb85432f5755ec18a392"
+    }
+  },
+  "guard": {
+    "enabled": true,
+    "poll_seconds": 60,
+    "retry_seconds": 300,
+    "retrain_on_degradation": true,
+    "recent_seconds": 86400,
+    "attribution_seconds": 3600,
+    "min_mature_requests": 20,
+    "ctr_threshold": 0.01,
+    "promotion_metric": "ctr_auc",
+    "min_improvement": 0.001,
+    "promotion_floor": 0.7,
+    "hitrate_threshold": 0.2,
+    "retrain_log_threshold": 10000
+  },
+  "real_reload_and_rollback": true,
+  "http": [
+    {
+      "version": "v1.0",
+      "user_id": "U000001",
+      "status": 200
+    },
+    {
+      "version": "v1.0",
+      "user_id": "unknown-full-lifecycle",
+      "status": 200
+    },
+    {
+      "version": "v1.1",
+      "user_id": "U000001",
+      "status": 200
+    },
+    {
+      "version": "v1.1",
+      "user_id": "unknown-full-lifecycle",
+      "status": 200
+    },
+    {
+      "version": "v1.0",
+      "user_id": "U000001",
+      "status": 200
+    },
+    {
+      "version": "v1.0",
+      "user_id": "unknown-full-lifecycle",
+      "status": 200
+    }
+  ],
+  "reloads": [
+    {
+      "status": "reloaded",
+      "version": "v1.1"
+    },
+    {
+      "status": "reloaded",
+      "version": "v1.0"
+    }
+  ],
+  "original_candidate_hashes": {
+    "meta.json": "a659067678c128ac986c2ff4bae233cec7a9a5c9fee4398c50f58767726f722b",
+    "two_tower.pt": "214b0e91b16dc21eab3a517c059a2de514da74498ba43305dcfd4f8f604d6804",
+    "feature_vocab_scalers.json": "c9c2027a030cc39cd85b0ab0183f01851dc0d2ac5718703be7f0c66754a01fe7",
+    "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+    "item_index.faiss": "b1463888793d53266bc104c48fc8049ae3cee372b0000c9735c303d1dbe51fa2",
+    "index_manifest.json": "e67ff32f482aa5174a2634e0d7263fd59187f05dc6a49db530c60554531b954f",
+    "ranking/meta.json": "88e5f65f3697d9df87e6e9b8d391b353b3688eebd50fe854b9bbbc9029b201b6",
+    "ranking/deepfm.pt": "7409a2941e0e9d5ddac8420d425816177f560abf060ec80a8032d474e79b76f5",
+    "ranking/features.json": "8fa419e0607e35b883c065c58bd463b6b1175dc428ef0ef5ace0f0ddda921f24",
+    "session/meta.json": "9e2069eb6f8e3b926deddfc8dd10e3d68756c7fa98404573e05a850ec3a3d69c",
+    "session/session.pt": "a60cef726c92c73cfb7c00a1aa0d4056a1285c09bd6861922592d17ef2eef251",
+    "session/item_ids.json": "1597417f43fb70984d90a935c4202cbc73d84eaff15d274e3329fbb0ec93f953"
+  },
+  "candidate_hashes": {
+    "meta.json": "a659067678c128ac986c2ff4bae233cec7a9a5c9fee4398c50f58767726f722b",
+    "two_tower.pt": "214b0e91b16dc21eab3a517c059a2de514da74498ba43305dcfd4f8f604d6804",
+    "feature_vocab_scalers.json": "c9c2027a030cc39cd85b0ab0183f01851dc0d2ac5718703be7f0c66754a01fe7",
+    "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+    "item_index.faiss": "b1463888793d53266bc104c48fc8049ae3cee372b0000c9735c303d1dbe51fa2",
+    "index_manifest.json": "e67ff32f482aa5174a2634e0d7263fd59187f05dc6a49db530c60554531b954f",
+    "ranking/meta.json": "88e5f65f3697d9df87e6e9b8d391b353b3688eebd50fe854b9bbbc9029b201b6",
+    "ranking/deepfm.pt": "7409a2941e0e9d5ddac8420d425816177f560abf060ec80a8032d474e79b76f5",
+    "ranking/features.json": "8fa419e0607e35b883c065c58bd463b6b1175dc428ef0ef5ace0f0ddda921f24",
+    "session/meta.json": "9e2069eb6f8e3b926deddfc8dd10e3d68756c7fa98404573e05a850ec3a3d69c",
+    "session/session.pt": "a60cef726c92c73cfb7c00a1aa0d4056a1285c09bd6861922592d17ef2eef251",
+    "session/item_ids.json": "1597417f43fb70984d90a935c4202cbc73d84eaff15d274e3329fbb0ec93f953"
+  },
+  "production_unchanged": true,
+  "fixture_active": "v1.0",
+  "redis_namespace": "mm-recsys:full:ct-lifecycle-full-lifecycle-98ae0443f4",
+  "natural": {
+    "source": "docs/results/experiments/A/illustrations_v1/peer_final_after13/ct_full.json",
+    "sha256": "bf6b821d7f114954b14d316b3e585a26f4da41f73791138cec2c0df3e3b36fc0"
+  },
+  "lifecycle": {
+    "source": "docs/results/experiments/A/illustrations_v1/peer_final_after13/ct_controlled_lifecycle_full.jsonl",
+    "sha256": "acfb0fc7c8279a7a3c8058e5ffa409795f851d002469aa8e5f56b8d1219a644d"
+  },
+  "source_hashes": {
+    "src/ct/monitor.py": "5d5ec0e8324ff2d632383f8a19291e5f20475736c102cee0dca3de6165f80047",
+    "src/ct/verify_serving.py": "3a3d3b7b21cdf5a839a2f4612a5d263682de9d91ab7cca86fa8f0425e68c6c45",
+    "src/ct/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ct/model_registry.py": "9d823820a981b975e0e134fffd600974ac1d4adb4be1f055b0befbad1a14e222",
+    "src/ct/storage.py": "0b9cb09a3ba5a0fe79d573c97485954123a1ab09b302ac1c7bbca23e672fdb6c",
+    "src/ct/snapshot.py": "60c5ac8995445d9a469192518cf64e57686a40108e5cb987d8f5a886baa3e745",
+    "src/ct/retrain_trigger.py": "d430bf4703d1d95b50892b4107810154c1376e4a9bd88f98bedcdba666fd3f05",
+    "src/ct/training.py": "8b1bf9118664191595c8b2b530f373ef2866edb4749ce7b1a897fd1b8b7483aa",
+    "src/ct/verify_ct.py": "866bea9b030871015b265a4e98f8b92bb90f77fadc73df762a1f35554fbd37a7",
+    "src/ct/bootstrap.py": "841307aa2f7ae7357856f4ea1db9b17fbe77b5e4cfc006598e7e72bda0497e1e",
+    "scripts/verify_integration_ct_lifecycle.py": "89afecf5076c5babd71ccd5572efc5fa41e62086db7a5a5e0669bba5de497a86"
+  },
+  "scope": "full-size independent functional promotion/reload/rollback, deliberately weak INITIAL fixture, exact naturally retrained candidate and original guard; production remains naturally RETAINED",
+  "limitations": [
+    "controlled fault injection does not measure production improvement",
+    "CTR paired valid comparison; no new test evaluation",
+    "not a second training run; exact actual full three-model candidate reused",
+    "production initial bundle and registry pointer remain unchanged"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "tabs": [
+    "검색",
+    "추천",
+    "A/B 실험",
+    "시스템",
+    "EDA·구매 이력",
+    "상품·CLIP"
+  ],
+  "panels": {
+    "검색": {
+      "charts": 1,
+      "text": "같은 쿼리로 비교한 검색 품질\n\n검색 지표\n\nMRR\n\nNDCG@10\n\n텍스트\n이미지\n하이브리드\n0.0\n0.2\n0.4\n0.6\n0.8\n1.0\nCLIP\nBM25\nCLIP · BM25\nMRR\n기준 0.6\n\n이미지 전용 입력에는 BM25가 적용되지 않습니다. ANN/exact 벡터 일치율은 relevance 품질과 별개입니다.\n\ntest 결과에서는 설정 탐색을 실행하지 않습니다.\n\n검색 데모\n\n검색 실행"
+    },
+    "추천": {
+      "charts": 1,
+      "text": "미래 행동에 대한 추천 품질\n\n고정 사용자 10,000명 · 정답 사용자 7,012명 · 콜드스타트 300명 · top50\n\n추천 비교 지표\n\nHitRate@50\n\nNDCG@50\n\nCoverage\n\n인기순\nTwo Tower\nDeepFM\n전체 파이프라인\n0.0\n0.2\n0.4\n0.6\n동일 사용자·정답·카탈로그 기준\nHitRate@50\n기준 0.2\n\nCVR AUC: 0.5 · 클릭 노출 54,375개 · 구매 양성 3,506개\n\n사용자가 확인한 기존 계약에 따라 AUC ≥ 0.7은 CTR에 적용하고, CVR AUC는 별도로 보고합니다."
+    },
+    "A/B 실험": {
+      "charts": 2,
+      "text": "현재 배포의 초기 모델 합성 A/B · /app/audit/runtime/full/ab_test.json\n\n사용자 단위 A/B 실험\n\n합성 실험 · 100명/군 · 7일 · seed=42 · 사용자별 적응 학습 상태 분리\n\n{\n\"control\":\"popularity\"\n\"treatment\":\"full_pipeline\"\n}\n\nControl CVR\n\n1.3%\n\nTreatment CVR\n\n1.0%\n\nCVR 상대 lift\n\n-24.7%\n\nCTR = 클릭/노출 · CVR = 구매/노출. control이 0이면 상대 lift는 정의되지 않습니다.\n\nCTR\nCVR\n탐색 슬롯 비율\n0.0%\n5.0%\n10.0%\n15.0%\n20.0%\n25.0%\nControl\nTreatment\n관측 비율\n비율\np < 0.001\np = 0.103\nCTR\nCVR\n−6.0\n−5.0\n−4.0\n−3.0\n−2.0\n−1.0\n0.0\nTreatment − Control · 사용자 단위 95% 신뢰구간과 양측 p-value\n차이 (%p)\n\n사용자 cluster CVR 차이 95% CI: [-0.7, +0.1]%p\n\n양측 cluster Z p-value: 0.1\n\n반복 노출을 독립 표본으로 세지 않습니다. 양의 lift나 유의성은 보장되지 않으며 실제 서비스 효과로 해석할 수 없습니다."
+    }
+  },
+  "sidebar": "평가 결과\n\n결과 파일\n\nevaluation_full_test.json\n\n결과 새로고침\n\nAPI 문서 열기"
+}

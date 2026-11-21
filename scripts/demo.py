@@ -241,20 +241,22 @@ def operational(argv: list[str]) -> int:
             return subprocess.call([sys.executable, '-m', module, '--help'])
         # Exec children need the same resolved runtime config as the API process.
         from docker.runtime import runtime_config, config_path
+        cfg = runtime_config()
         if args.drill:
-            args.output = args.output or (Path(runtime_config()['paths']['results_dir']) /
-                                         'ct-drills' / (uuid.uuid4().hex + '.json'))
-            remaining += ['--output', str(args.output)]
+            run_id = uuid.uuid4().hex
+            args.output = args.output or Path(cfg['paths']['results_dir']) / 'ct-drills' / (run_id + '.json')
+            work = Path(cfg['paths']['model_dir']) / '.ct' / 'verification' / run_id
+            remaining = ['--work-dir', str(work), *remaining, '--output', str(args.output)]
         env = dict(os.environ)
         if not args.json:
             env['CT_OUTPUT'] = 'human'
         if args.drill:
             log('CT', '격리 시연', '작은 별도 데이터로 실제 학습·승격·롤백을 검사합니다. 운영 모델 개선 측정과 구분합니다.')
-        runtime = config_path(runtime_config())
+        runtime = config_path(cfg)
         if runtime.is_file() and not args.drill:
             env['CONFIG_PATH'] = str(runtime)
         if not args.output and not args.drill and not args.json:
-            args.output = (Path(runtime_config()['paths']['results_dir']) /
+            args.output = (Path(cfg['paths']['results_dir']) /
                            'ct-cli' / (uuid.uuid4().hex + '.jsonl'))
             log('CT', '기록', f'원본 JSON: {args.output}')
         if args.output:
@@ -264,7 +266,7 @@ def operational(argv: list[str]) -> int:
             if args.drill:
                 from src.ct.storage import file_lock
                 log('CT', '실행 순서', '같은 배포의 자동 CT·A/B 실행이 끝난 뒤 격리 시연을 시작합니다.')
-                stack.enter_context(file_lock(Path(runtime_config()['paths']['model_dir']) / '.ct' / 'training.lock'))
+                stack.enter_context(file_lock(Path(cfg['paths']['model_dir']) / '.ct' / 'training.lock'))
             saved = stack.enter_context(args.output.open('wb')) if args.output and not args.drill else None
             process = subprocess.Popen([sys.executable, '-m', module, *remaining], env=env, stdout=subprocess.PIPE)
             try:

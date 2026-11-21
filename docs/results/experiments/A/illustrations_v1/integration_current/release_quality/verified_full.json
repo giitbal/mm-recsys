@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "acceptance": "UNMEASURED",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "sources": {
+    "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/smoke_full.json": "835bc2881618d707f5d269559a4d9b96c81211e538e38bb31082b8221b90bd9e",
+    "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/preparation_full.json": "2b6d9bee774833c47987ea8db3ac3803dd11231f485cd70f01183e4ba72454d8",
+    "data/full-illustrations-v1/split_manifest.json": "6305f4a33a7e0c41903659613cc2f1cd538b95bc9cbae277ef60c1f03e9d884b"
+  },
+  "scope": "Docker preparation, API/store/candidate latency and smoke only; full-test quality separate"
+}

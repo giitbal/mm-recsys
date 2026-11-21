@@ -1,0 +1,117 @@
+{
+  "next_route_sources": 11,
+  "removed": {
+    "storefront/src/components/cart/cart-summary.tsx": "5751867258ce15783089a388f9582bc989f6c4c31b5b788a3e9c9f3ab3e79b72",
+    "storefront/src/components/ui/accordion.tsx": "38fec90a34d857fff15ca47b4fab0f12171dbb44cb55a37d1f65f63a4eaf0c20",
+    "storefront/src/components/ui/alert.tsx": "d883a841c7f78d33447334a9ee1e5536e89a24d4b197327b9c5ff27bc7a088f0",
+    "storefront/src/components/ui/avatar.tsx": "357b2f9aac0192c071cb2ed65cb6e4c8ec01fa02fc15cf50d889b85731b75666",
+    "storefront/src/components/ui/breadcrumb.tsx": "26f83fc8ed302d710851a71b705f5f8f28c805561c1fb6945370617267c5a4a9",
+    "storefront/src/components/ui/dialog.tsx": "9a4a72828d3b12d8834e4fd2c19c8b682dcf148cdbede27f3d943cacb9bea819",
+    "storefront/src/components/ui/dropdown-menu.tsx": "1c1ae4ec02de9778286f84e0d15a1b74cc610c13c5b6a13c1ada2e6770eeb4e1",
+    "storefront/src/components/ui/empty-state.tsx": "5b8e3490ea364f035b93e482ce06bb8462b0c5d9d7d3fd9fa4b3daaff3bd8e73",
+    "storefront/src/components/ui/label.tsx": "7f19b8476658d25ff197c84030e58cd7395059d876a54630e025951e474ebdae",
+    "storefront/src/components/ui/navigation-menu.tsx": "076ba62c2d4292970470455ab9719badec7fedd74aaaaa40a7955cc366128e97",
+    "storefront/src/components/ui/order-status-badge.tsx": "3b1f45998a5367ea7b9305b59fc819ccb2f86a660fe60e59a451302296d54542",
+    "storefront/src/components/ui/page-header.tsx": "b871e0340c73120b2d0144050172aa1be8c4eadf645084647ccb38d93365a184",
+    "storefront/src/components/ui/product-image.tsx": "1e2b5ddeeb2a6ad4d066a7c165cb499948164409e9a51a7794a5ce6b7fb52ce9",
+    "storefront/src/components/ui/select.tsx": "ca3bd1b370ea67b84632d435c22d8270752fa6013c06c365162af265e4a0e87e",
+    "storefront/src/components/ui/skeleton.tsx": "8110bba70d0cb9fe968c0b7bd092ad12258caef40b028b4a87f402bdab907faf",
+    "storefront/src/components/ui/table.tsx": "a13f55a7c1406197608f223006cf16f211a257b213362caaef0d2abf3a389c8f",
+    "storefront/src/components/ui/tabs.tsx": "8bf9ee3935ab86c268a2a71cb5b4b67d3d5587ca9f2e0bf25f37ffdb1980434c",
+    "storefront/src/components/ui/textarea.tsx": "58b58d84fc54ba5f4ca46937870c619349fd9eccc4d494250ac7bc73a94e05e9",
+    "storefront/src/components/products/star-rating.tsx": "02100896fb0958e6fd25554d3f19b3743d094e27413e31b7cd543cb245df9fb2"
+  },
+  "method": "TypeScript resolution from every app route, layout and error boundary including static and literal dynamic imports; removed two never-used cart imports first; cross-checked scripts, Docker, tests, submission docs and demo README. Upstream provenance retained.",
+  "direct_dependencies_removed": [
+    "next-intl",
+    "zod"
+  ],
+  "other_removed": [
+    "docs/results/gates/.gitkeep"
+  ],
+  "kept": [
+    "models/.gitkeep (empty checkout path contract)",
+    "storefront/UPSTREAM_README.md and upstream.json (license and provenance)",
+    "src/recommendation/testing.py (imported by regression tests)",
+    "historical model, A/B, CT and failure reports (audit history)"
+  ],
+  "python_review": {
+    "python_modules_examined": 171,
+    "empty_bodies": "8 typing Protocol methods for A/B, FeatureStore, search, recommendation and MAB plus one deliberate BaseHTTPRequestHandler.log_message override. All have callers or concrete implementations."
+  },
+  "removed_template_types": [
+    "Address",
+    "AddressType",
+    "ApiError",
+    "ApiResponse",
+    "BlogPost",
+    "Brand",
+    "Cart",
+    "CategoryRepository",
+    "CheckoutProvider",
+    "CheckoutSession",
+    "CmsPage",
+    "Order",
+    "OrderLineItem",
+    "OrderRepository",
+    "OrderStatus",
+    "Payment",
+    "PaymentMethod",
+    "PaymentStatus",
+    "PriceRange",
+    "ProductFilters",
+    "ProductRepository",
+    "Review",
+    "User",
+    "UserRole",
+    "WebhookResult"
+  ],
+  "removed_product_repository_methods": [
+    "getById",
+    "getBySlug",
+    "getByCategory",
+    "search"
+  ],
+  "removed_unreferenced_formatters": [
+    "formatDate",
+    "truncate",
+    "slugify"
+  ],
+  "simulator_image_entrypoint": {
+    "src/simulator/catalog.py": "40796896716fa6d211280670cd675edf4452fed4ce83316479c8f382a08c0067",
+    "src/simulator/illustrations.py": "90bce835a84b946a599ad034b7abb53b5364aad0f76a876028a841c98de4667a",
+    "src/common/config.py": "cbc1b54198756bfb6e1a49762d0759ef3433015ed33373e758fd291bd228915e"
+  },
+  "unused_import_followup": {
+    "ProductCard": "only imported StarRating and never rendered it; hooks now run consistently for empty and nonempty variants",
+    "QuantitySelector": "unused Button import, real shared Button retained",
+    "removed_style_tokens": [
+      "--color-rating",
+      "--rating"
+    ],
+    "public_contract": "Existing product and variant response properties retained for external clients."
+  },
+  "post_cleanup": {
+    "next_roots": 11,
+    "unreachable_modules": [],
+    "commands": {
+      "npm run lint -- --max-warnings 0": {
+        "exit_code": 0,
+        "output": "> mm-recsys-storefront@1.0.0 lint\n> eslint --max-warnings 0"
+      },
+      "npm run typecheck -- --noUnusedLocals --noUnusedParameters --incremental false": {
+        "exit_code": 0,
+        "output": "> mm-recsys-storefront@1.0.0 typecheck\n> tsc --noEmit --noUnusedLocals --noUnusedParameters --incremental false"
+      },
+      "node --test tests/events.test.mjs": {
+        "exit_code": 0,
+        "output": "✔ tests/events.test.mjs (115.884813ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 122.892432"
+      }
+    },
+    "source_sha256": {
+      "storefront/eslint.config.mjs": "c11e3803b93c2ec30b5b523634d09e4370e30b3b1a5bcb1c41aebe5ac5127b34",
+      "storefront/src/app/globals.css": "f2d2970b8071b3bd52b7f47184198c4bfaf9631b24407d4d01c68b760594bb17",
+      "storefront/src/lib/use-hydrated.ts": "65972e65030b7e399b95464ea0177efd2710c7546969ac3a7aa3f6583c77542b"
+    }
+  }
+}

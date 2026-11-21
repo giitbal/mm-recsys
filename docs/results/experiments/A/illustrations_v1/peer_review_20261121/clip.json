@@ -1,0 +1,80 @@
+{
+  "selected": [
+    "P004298",
+    "P034869",
+    "P042929",
+    "P032726",
+    "P021650",
+    "P021943",
+    "P004462",
+    "P038694"
+  ],
+  "model": {
+    "model": "openai/clip-vit-base-patch32",
+    "model_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "processor_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "projection_dim": 512,
+    "normalization": "L2",
+    "dtype": "float32",
+    "max_text_length": 77,
+    "preprocess_version": "observable-alias-v1",
+    "alias_fingerprint": "4839d249f340369c7e1c913f5755f452c6264f0a4242f5806e6b4126f266be29",
+    "transformers": "4.46.3",
+    "torch": "2.6.0+cpu",
+    "device": "cpu"
+  },
+  "modes": {
+    "text": {
+      "dim": 512,
+      "ntotal": 1440,
+      "norms": [
+        1.0,
+        0.9999999403953552,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "max_embedding_difference": 1.1920928955078125e-07,
+      "min_self_content_score": 0.9999998807907104,
+      "search_hits": [
+        789,
+        1222,
+        555,
+        1100,
+        684,
+        1113,
+        933,
+        175
+      ]
+    },
+    "image": {
+      "dim": 512,
+      "ntotal": 3134,
+      "norms": [
+        0.9999998807907104,
+        1.0,
+        0.9999999403953552,
+        1.0,
+        0.9999999403953552,
+        0.9999999403953552,
+        0.9999999403953552,
+        1.0000001192092896
+      ],
+      "max_embedding_difference": 0.0,
+      "min_self_content_score": 0.9999996423721313,
+      "search_hits": [
+        1009,
+        1624,
+        1345,
+        1302,
+        959,
+        1827,
+        713,
+        2480
+      ]
+    }
+  }
+}

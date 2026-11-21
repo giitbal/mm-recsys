@@ -1,0 +1,142 @@
+{
+  "source": "멀티모달_검색_및_Multi-Stage_추천_시스템_구축.pdf",
+  "sha256": "b333d4fdab2127c380b7750f7d8e491141ec15db97c15389f8c9a0ae1b983c7d",
+  "pages": 14,
+  "questions": [
+    {
+      "number": 1,
+      "page": 12,
+      "question": "docker-compose up 명령으로 모든 컨테이너가 정상 시작되는가?"
+    },
+    {
+      "number": 2,
+      "page": 12,
+      "question": "검색 API, 추천 API, 대시보드가 각각 응답하는가?"
+    },
+    {
+      "number": 3,
+      "page": 12,
+      "question": "신규 사용자 요청 시 적절한 폴백 결과가 반환되는가?"
+    },
+    {
+      "number": 4,
+      "page": 13,
+      "question": "추천 결과에 MAB Exploration 슬롯(is_exploration=true)이 포함되어 있는가?"
+    },
+    {
+      "number": 5,
+      "page": 13,
+      "question": "검색 API 응답 시간이 200ms 이내인가?"
+    },
+    {
+      "number": 6,
+      "page": 13,
+      "question": "추천 API 응답 시간이 200ms 이내인가?"
+    },
+    {
+      "number": 7,
+      "page": 13,
+      "question": "리포트에 데이터 분할 방식(train/valid/test 비율)이 명시되어 있는가?"
+    },
+    {
+      "number": 8,
+      "page": 13,
+      "question": "검색 성능: MRR ≥ 0.55, NDCG@10 ≥ 0.50 달성 여부가 수치로 보고되었는가?"
+    },
+    {
+      "number": 9,
+      "page": 13,
+      "question": "추천 성능: Recall@300 ≥ 0.30, HitRate@50 ≥ 0.20, NDCG@50 ≥ 0.08 달성 여부가 보고되었는가?"
+    },
+    {
+      "number": 10,
+      "page": 13,
+      "question": "Ranking 모델: AUC ≥ 0.70 달성 여부가 보고되었는가?"
+    },
+    {
+      "number": 11,
+      "page": 13,
+      "question": "Coverage ≥ 0.20 달성 여부가 보고되었는가?"
+    },
+    {
+      "number": 12,
+      "page": 13,
+      "question": "Feature Store 피처 조회 시간이 10ms 이내인지 확인되었는가?"
+    },
+    {
+      "number": 13,
+      "page": 13,
+      "question": "동일 카테고리 상품이 연속 3개 이상 노출되지 않는가? (샘플 3건 이상 확인)"
+    },
+    {
+      "number": 14,
+      "page": 13,
+      "question": "신규 상품(등록 7일 이내)이 추천 결과에 포함되는가?"
+    },
+    {
+      "number": 15,
+      "page": 13,
+      "question": "전체 코드를 수정하지 않고, config나 전략 패턴으로 로직을 교체할 수 있는가?"
+    },
+    {
+      "number": 16,
+      "page": 13,
+      "question": "config 파일 수정만으로 시뮬레이터가 변경된 설정을 반영하는가?"
+    },
+    {
+      "number": 17,
+      "page": 13,
+      "question": "역할 분리: simulator, search, recommendation, serving 모듈이 폴더로 분리되어 있는가?"
+    },
+    {
+      "number": 18,
+      "page": 13,
+      "question": "문서화: README.md에 실행 방법과 아키텍처가 설명되어 있는가?"
+    },
+    {
+      "number": 19,
+      "page": 13,
+      "question": "README 또는 기획서에 팀원별 역할 분담이 명시되어 있는가?"
+    },
+    {
+      "number": 20,
+      "page": 14,
+      "question": "개인별 주요 기여 영역(구현 모듈, 문서 작성 등)이 요약되어 있는가?"
+    },
+    {
+      "number": 21,
+      "page": 14,
+      "question": "멀티모달 임베딩: CLIP으로 텍스트/이미지가 동일 벡터로 변환되어 검색에 사용되는가?"
+    },
+    {
+      "number": 22,
+      "page": 14,
+      "question": "Two-Tower 구조: User/Item Tower가 분리되고, Item 임베딩이 FAISS에 저장되어 있는가?"
+    },
+    {
+      "number": 23,
+      "page": 14,
+      "question": "Ranking 모델: DeepFM 또는 Wide&Deep으로 Feature Interaction이 학습되는가?"
+    },
+    {
+      "number": 24,
+      "page": 14,
+      "question": "MAB 탐색: Exploration 슬롯이 추천 결과에 포함되어 있는가?"
+    },
+    {
+      "number": 25,
+      "page": 14,
+      "question": "세션 기반 추천: 현재 세션 클릭이 추천에 실시간 반영되는가?"
+    },
+    {
+      "number": 26,
+      "page": 14,
+      "question": "A/B 테스트: 통계적 유의성 검정(p-value, 신뢰구간)이 구현되었는가?"
+    },
+    {
+      "number": 27,
+      "page": 14,
+      "question": "CT 파이프라인: 성능 저하 시 재학습 트리거 로직이 구현되었는가?"
+    }
+  ]
+}

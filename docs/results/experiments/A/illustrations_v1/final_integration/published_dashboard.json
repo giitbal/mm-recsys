@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "browser": "141.0.7390.37",
+  "checked_at": "2026-11-21T06:52:59.844Z",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "views": [
+    {
+      "kind": "deployment",
+      "url": "http://127.0.0.1:8501",
+      "acceptance": "PASS",
+      "charts": {
+        "검색": 1,
+        "추천": 1,
+        "A/B 실험": 2
+      },
+      "errors": []
+    },
+    {
+      "kind": "cold",
+      "url": "http://127.0.0.1:18541",
+      "acceptance": "PASS",
+      "charts": {
+        "검색": 1,
+        "추천": 1,
+        "A/B 실험": 2
+      },
+      "errors": []
+    }
+  ],
+  "verified_submission_sha256": "59475e9c5e042dd4b41e93eb424af11507a6df2d5e2dd8e70e08c548ec403834"
+}

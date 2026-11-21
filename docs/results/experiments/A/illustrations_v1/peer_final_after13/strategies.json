@@ -1,0 +1,132 @@
+{
+  "user": "U000001",
+  "reranking_enabled": true,
+  "changed_setting": "recommend.scoring.strategy",
+  "catalog_max_date": "2026-01-01T00:00:00+00:00",
+  "policies": {
+    "similarity": [
+      {
+        "product": "P017193",
+        "at": "2025-10-16T00:00:00+00:00",
+        "reason": "MAB 탐색",
+        "explore": true
+      },
+      {
+        "product": "P031159",
+        "at": "2025-12-26T00:00:00+00:00",
+        "reason": "MAB 탐색",
+        "explore": true
+      },
+      {
+        "product": "P021962",
+        "at": "2025-11-27T00:00:00+00:00",
+        "reason": "후보 유사도순",
+        "explore": false
+      },
+      {
+        "product": "P022103",
+        "at": "2025-09-18T00:00:00+00:00",
+        "reason": "후보 유사도순",
+        "explore": false
+      },
+      {
+        "product": "P039856",
+        "at": "2025-11-21T00:00:00+00:00",
+        "reason": "후보 유사도순",
+        "explore": false
+      },
+      {
+        "product": "P020509",
+        "at": "2025-11-23T00:00:00+00:00",
+        "reason": "후보 유사도순",
+        "explore": false
+      },
+      {
+        "product": "P049255",
+        "at": "2025-10-03T00:00:00+00:00",
+        "reason": "후보 유사도순",
+        "explore": false
+      },
+      {
+        "product": "P018638",
+        "at": "2025-10-15T00:00:00+00:00",
+        "reason": "후보 유사도순",
+        "explore": false
+      },
+      {
+        "product": "P048144",
+        "at": "2025-10-28T00:00:00+00:00",
+        "reason": "후보 유사도순",
+        "explore": false
+      },
+      {
+        "product": "P017684",
+        "at": "2025-11-24T00:00:00+00:00",
+        "reason": "후보 유사도순",
+        "explore": false
+      }
+    ],
+    "newest": [
+      {
+        "product": "P000628",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "MAB 탐색",
+        "explore": true
+      },
+      {
+        "product": "P000653",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "MAB 탐색",
+        "explore": true
+      },
+      {
+        "product": "P000982",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "등록일 최신순",
+        "explore": false
+      },
+      {
+        "product": "P000991",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "등록일 최신순",
+        "explore": false
+      },
+      {
+        "product": "P001497",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "등록일 최신순",
+        "explore": false
+      },
+      {
+        "product": "P001557",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "등록일 최신순",
+        "explore": false
+      },
+      {
+        "product": "P001663",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "등록일 최신순",
+        "explore": false
+      },
+      {
+        "product": "P001799",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "등록일 최신순",
+        "explore": false
+      },
+      {
+        "product": "P002322",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "등록일 최신순",
+        "explore": false
+      },
+      {
+        "product": "P002539",
+        "at": "2026-01-01T00:00:00+00:00",
+        "reason": "등록일 최신순",
+        "explore": false
+      }
+    ]
+  }
+}

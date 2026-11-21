@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import os
 from pathlib import Path
@@ -116,7 +117,12 @@ def prepare(cfg: dict) -> dict:
     with writer_lock(folder / 'prepare.lock'):
         runtime = config_path(cfg)
         temporary = runtime.with_suffix('.tmp')
-        temporary.write_text(yaml.safe_dump(cfg, allow_unicode=True, sort_keys=False), encoding='utf-8')
+        # API and CT reload this file through load_config(), which reapplies scale overrides.
+        prepared = copy.deepcopy(cfg)
+        overrides = prepared['paths'].get('by_scale', {}).get(cfg['scale'], {})
+        for name in overrides:
+            overrides[name] = cfg['paths'][name]
+        temporary.write_text(yaml.safe_dump(prepared, allow_unicode=True, sort_keys=False), encoding='utf-8')
         temporary.replace(runtime)
         env = {**os.environ, 'CONFIG_PATH': str(runtime), 'SCALE': cfg['scale'],
                'PYTHONHASHSEED': str(cfg['seed'])}
@@ -154,7 +160,9 @@ def prepare(cfg: dict) -> dict:
         write_json(output, report)
         write_json(output.with_name('deployment.json'), dict(data_dir=cfg['paths']['data_dir'],
             model_dir=cfg['paths']['model_dir'], search_subdir=cfg['search']['artifact_subdir'],
-            data_fingerprint=report['data_fingerprint']))
+            data_fingerprint=report['data_fingerprint'],
+            recommendation_policy_sources={name: file_hash(Path(name)) for name in (
+                'src/recommendation/recommender.py', 'src/recommendation/reranking.py')}))
         return report
 
 

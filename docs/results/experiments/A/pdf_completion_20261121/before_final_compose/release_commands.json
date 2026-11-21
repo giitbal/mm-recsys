@@ -1,0 +1,10 @@
+[
+  {
+    "step": "assemble",
+    "exit_code": 0
+  },
+  {
+    "step": "submission",
+    "exit_code": 1
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "measured_at": "2026-11-21T08:47:27.411758+00:00",
+  "policy_ready": 1795247162.335123,
+  "requests_since_ready": 1044,
+  "thresholds": {
+    "attribution_seconds": 3600,
+    "min_mature_requests": 20,
+    "ctr_threshold": 0.01,
+    "hitrate_threshold": 0.2
+  },
+  "monitor": {
+    "event": "monitor",
+    "status": "ALERT",
+    "model_version": "v1.0",
+    "ctr": 0.004195270785659802,
+    "hit_rate_at_50": 0.2631578947368421,
+    "clicks": 11,
+    "exposures": 2622,
+    "mature_requests": 173,
+    "top50_requests": 19,
+    "hit_requests": 5,
+    "alerts": [
+      "ctr_below_threshold"
+    ],
+    "window_start": 1795247162.3900368,
+    "observed_through": 1795250847.3900368,
+    "attribution_seconds": 3600,
+    "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+    "thresholds": {
+      "ctr_threshold": 0.01,
+      "hitrate_threshold": 0.2,
+      "min_mature_requests": 20
+    }
+  },
+  "scope": "Descriptive local simulator and API verification traffic after deployment; excludes earlier policy requests even with the same v1.0 weights. Real wall clock and 3600-second attribution. No writes, model changes or human experiment."
+}

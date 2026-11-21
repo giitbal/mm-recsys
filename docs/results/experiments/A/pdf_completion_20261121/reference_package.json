@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "source": "docs/submission/dashboard/evaluation_full_test.json",
+  "sha256": "9f4f51ea8b9d38fcc41732f8786886041c75e386c6bce961c175e9101fede9e0",
+  "scope": "Packaged report identical in the local checkout, dashboard image and clean scaffold. Dashboard and optional storefront images built from scaffold."
+}

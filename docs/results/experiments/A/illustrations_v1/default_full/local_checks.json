@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "pytest": {
+    "command": "SCALE=dev CONFIG_PATH=config.yaml REDIS_HOST=127.0.0.1 REDIS_PORT=6379 RUN_REDIS_TESTS=1 PYTHONHASHSEED=42 .venv/bin/python -m pytest -p src.serving.pytest_support -q tests",
+    "passed": 533,
+    "warnings": 2,
+    "elapsed_seconds": 125.88
+  },
+  "mypy": "Success: no issues found in 156 source files",
+  "browser_sha256": "c82ed995a13700f8724a57da090d2606e755f3a46d1ecb92b58699e8e042c0ef",
+  "live_smoke_sha256": "576322f73a7d87192a4a8d0d4712d4efdffab86d34f9615c97443fb892b89992"
+}

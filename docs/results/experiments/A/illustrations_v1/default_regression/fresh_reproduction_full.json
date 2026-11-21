@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "2df9b64e07e3b2aad48c967c4c8d3d8b04883dd19279896bb374c4f9926ad7d8",
+  "initial_data_files": 0,
+  "initial_model_files": 0,
+  "prepared_data_and_models_from_empty": true,
+  "initial_state": {
+    "source": "docs/results/experiments/A/illustrations_v1/default_regression/initial.json",
+    "sha256": "3e10d7efa7d4036923267467ef1f23e737581ff0644d06d3044db29c71cd8258"
+  },
+  "preparation": {
+    "source": "docs/results/experiments/A/illustrations_v1/default_regression/preparation.json",
+    "sha256": "edc62a1898575a0c716994316eb0dd368df9c0ea9245e2c60c3df74d35b86e5e"
+  },
+  "runtime_sources": {
+    "source": "docs/results/experiments/A/illustrations_v1/default_regression/runtime_sources.json",
+    "sha256": "091de519b6fe1d441ef7420024a00131cd7b299fb2e7b8073d640b0f60d8f6dc"
+  },
+  "services": {
+    "source": "docs/results/experiments/A/illustrations_v1/default_regression/services.json",
+    "sha256": "ebdc52b5f68b7f725f04773b3700d30895a4d816d9cad1086f8d0861d3f12b51"
+  },
+  "reproduced_data": {
+    "source": "docs/results/experiments/A/illustrations_v1/default_regression/data_reproduction.json",
+    "sha256": "4d0b36ec335e74f41025e2ff0d2d1aa6fc57bd346ec17f739049b0095be8b5ad"
+  },
+  "scope": "New full default run from empty data, models and runtime. Shared pinned CLIP download and Docker dependency layers."
+}

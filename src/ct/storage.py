@@ -101,6 +101,8 @@ class Journal:
         self.path = path
         path.parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as db:
+            # CT scans and live ingestion share this local database across processes.
+            db.execute('PRAGMA journal_mode=WAL').fetchone()
             db.executescript('''
                 CREATE TABLE IF NOT EXISTS requests (
                     id TEXT PRIMARY KEY, user_id TEXT NOT NULL, at REAL NOT NULL,

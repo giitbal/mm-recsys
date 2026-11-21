@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-21T05:53:11.560413+00:00",
+  "model_version": "v1.0",
+  "health": {
+    "status": "ok",
+    "search_ready": true,
+    "recommend_ready": true,
+    "scale": "full",
+    "model_version": "v1.0"
+  },
+  "ready": {
+    "status": "ready"
+  },
+  "recommendations": [
+    {
+      "user_id": "U000001",
+      "http": 200,
+      "count": 10,
+      "request_id": "ec4d5e36adcd4681b0a7aade2b540826"
+    },
+    {
+      "user_id": "unknown-illustrations-ct-validation",
+      "http": 200,
+      "count": 10,
+      "request_id": "a0f20e96299d4e0ca4013bc8c17423f0"
+    }
+  ]
+}

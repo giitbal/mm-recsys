@@ -15,15 +15,16 @@
     }
   },
   "paths": {
-    "data_dir": "data/full-v44",
-    "model_dir": "models/full-v44",
-    "results_dir": "docs/results/experiments/A/resource_refactor_20261112/runtime/full",
-    "split_dir": "data/full-v44/split",
+    "data_dir": "data/full-illustrations-v1",
+    "model_dir": "models/full-illustrations-v1",
+    "results_dir": "docs/results/docker/runtime-illustrations-v1/full",
+    "split_dir": "data/full-illustrations-v1/split",
     "by_scale": {
       "full": {
-        "data_dir": "data/full-v44",
-        "split_dir": "data/full-v44/split",
-        "model_dir": "models/full-v44"
+        "data_dir": "data/full-illustrations-v1",
+        "split_dir": "data/full-illustrations-v1/split",
+        "results_dir": "docs/results/illustrations-v1/full",
+        "model_dir": "models/full-illustrations-v1"
       }
     }
   },
@@ -127,7 +128,7 @@
     "cold_user_ratio": 0.03,
     "cold_max_events": 3,
     "impressions_per_view": 4,
-    "image_variants": 8,
+    "image_variants": 24,
     "transitions": {
       "search": {
         "view": 1.0
@@ -283,7 +284,8 @@
         10000,
         180000
       ]
-    }
+    },
+    "image_recipe": "illustrations-v1"
   },
   "search": {
     "clip_model": "openai/clip-vit-base-patch32",
@@ -518,7 +520,7 @@
       "max_connections": 32,
       "write_retries": 8,
       "db": 0,
-      "namespace": "mm-recsys:full:8d2a27b521f7"
+      "namespace": "mm-recsys:full:33afdda4152a"
     },
     "ab_test": {
       "control": "popularity",

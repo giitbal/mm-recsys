@@ -1,0 +1,70 @@
+{
+  "queued": "2026-11-21T09:22:02.494787+00:00",
+  "training_completed": "REJECTED",
+  "consumed_through": 120223,
+  "locked_at": "2026-11-21T09:58:44.613715+00:00",
+  "ready": {
+    "status": "ready"
+  },
+  "isolated_redis_api": true,
+  "running_during_benchmark": [
+    "mm-recsys-api-server-1: Up 2 minutes (healthy)",
+    "mm-illustrations-current-dashboard-1: Up 6 minutes (Paused)",
+    "mm-illustrations-current-api-server-1: Up 6 minutes (Paused)",
+    "mm-recsys-dashboard-1: Up 38 minutes (healthy)",
+    "mm-recsys-storefront-1: Up 47 minutes (healthy)",
+    "mm-illustrations-current-redis-1: Up 50 minutes (Paused)",
+    "mm-recsys-redis-1: Up 6 hours (healthy)"
+  ],
+  "measured_at": "2026-11-21T10:03:59.610365+00:00",
+  "restored_at": "2026-11-21T10:04:40.520017+00:00",
+  "services": [
+    {
+      "Service": "api-server",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "mm-recsys-api-server"
+    },
+    {
+      "Service": "dashboard",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "mm-recsys-dashboard"
+    },
+    {
+      "Service": "redis",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "redis:7"
+    },
+    {
+      "Service": "simulator",
+      "State": "running",
+      "Health": "",
+      "Image": "mm-recsys-simulator"
+    },
+    {
+      "Service": "storefront",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "mm-recsys-storefront"
+    }
+  ],
+  "deployed": {
+    "api-server": {
+      "src/ct/storage.py": "5f03cb409e4e9ec971821f1de1a20633475bac00e9bc7df2fa02c4953420a49f",
+      "src/recommendation/recommender.py": "ca5cb1c56877fa47f4e988e6f26c8168dbf5c2089b2e4109b7926c1646e0cd54",
+      "src/recommendation/reranking.py": "85d31eb0c3e911811b009f2319c9c4fa3c506482d7574ba42ac7d6fab77b1c56",
+      "docker/simulator.py": "3df5e278f78ddc6dc3e883aaf0aecef8d538ebddbbcf1b5cce82bb674afa2105",
+      "scripts/prepare_all.py": "7926f42aec07f6116705b222111c33485300cb94e14408ec1df7ed9a587c90d2"
+    },
+    "simulator": {
+      "src/ct/storage.py": "5f03cb409e4e9ec971821f1de1a20633475bac00e9bc7df2fa02c4953420a49f",
+      "src/recommendation/recommender.py": "ca5cb1c56877fa47f4e988e6f26c8168dbf5c2089b2e4109b7926c1646e0cd54",
+      "src/recommendation/reranking.py": "85d31eb0c3e911811b009f2319c9c4fa3c506482d7574ba42ac7d6fab77b1c56",
+      "docker/simulator.py": "3df5e278f78ddc6dc3e883aaf0aecef8d538ebddbbcf1b5cce82bb674afa2105",
+      "scripts/prepare_all.py": "7926f42aec07f6116705b222111c33485300cb94e14408ec1df7ed9a587c90d2"
+    }
+  },
+  "status": "PASS"
+}

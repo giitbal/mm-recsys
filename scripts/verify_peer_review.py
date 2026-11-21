@@ -36,8 +36,12 @@ def verify(cfg: dict, api: str) -> dict:
         for uid in users:
             body = request(api + '/api/recommend?' + urlencode(dict(user_id=uid, top_n=10)))
             rows = RecommendResponse.model_validate(body).recommendations
-            cats = [products.loc[r.product_id, cfg['recommend']['reranking']['category_field']] for r in rows]
-            checks[f'diversity_{uid}'] = all(not cats[i] == cats[i+1] == cats[i+2] for i in range(len(cats)-2))
+            ids = [r.product_id for r in rows]
+            for level in ('category_l1', 'category_l2', 'category_l3'):
+                cats = products.loc[ids, level].tolist()
+                checks[f'diversity_{uid}_{level}'] = len(ids) == len(set(ids)) == 10 and all(
+                    a != b or b != c for a, b, c in zip(cats, cats[1:], cats[2:])
+                )
             checks[f'exploration_{uid}'] = 1 <= sum(r.is_exploration for r in rows) <= 2
             checks[f'new_item_{uid}'] = any(now-pd.Timedelta(days=7) <= products.loc[r.product_id, 'created_at'] <= now for r in rows)
             responses[uid] = body

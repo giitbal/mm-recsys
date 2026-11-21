@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT))
 def main() -> int:
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--api-only',type=Path)
-    parser.add_argument('--output-dir',type=Path,default=Path('docs/results/integration'))
+    parser.add_argument('--output-dir',type=Path)
     args=parser.parse_args()
     import requests
     import torch
@@ -36,7 +36,7 @@ def main() -> int:
     from src.serving.main import create_app
     from src.serving.memory_store import MemoryFeatureStore
     from src.serving.model_loader import load_record
-    cfg=load_config();out=args.output_dir
+    cfg=load_config();out=args.output_dir or Path(cfg['paths']['results_dir']) / 'integration'
     natural=json.loads((out/'ct_full.json').read_text())
     assert cfg['scale']=='full' and natural['status']=='PARTIAL'
     assert natural['retraining']['status']=='RETAINED' and not natural['real_reload_and_rollback']

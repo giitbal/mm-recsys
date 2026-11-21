@@ -1,0 +1,28 @@
+# Launch as a separate project for isolated experiments with the same illustration recipe.
+services:
+  redis:
+    ports: !reset []
+  api-server:
+    ports: !override ["127.0.0.1:${DESIGN_API_PORT:-18000}:8000"]
+    environment: &design_env
+      CONFIG_PATH: config/catalog_illustrations_v1.yaml
+      RUNTIME_RESULTS_DIR: .team/illustrations-v1/runtime
+      QUALITY_RESULTS_DIR: docs/results/experiments/A/illustrations_v1
+      PUBLIC_API_URL: http://localhost:${DESIGN_API_PORT:-18000}
+    volumes: &design_mounts
+      - ./.team/illustrations-v1:/app/.team/illustrations-v1
+  storefront:
+    ports: !override ["127.0.0.1:${DESIGN_SHOP_PORT:-13000}:3000"]
+  dashboard:
+    ports: !override ["127.0.0.1:${DESIGN_DASHBOARD_PORT:-18501}:8501"]
+    environment:
+      CONFIG_PATH: config/catalog_illustrations_v1.yaml
+      RESULTS_DIR: .team/illustrations-v1/runtime/${SCALE:-full}
+      PUBLIC_API_URL: http://localhost:${DESIGN_API_PORT:-18000}
+      PUBLIC_DASHBOARD_URL: http://localhost:${DESIGN_DASHBOARD_PORT:-18501}
+    volumes:
+      - ./.team/illustrations-v1:/app/.team/illustrations-v1:ro
+      - ./config/catalog_illustrations_v1.yaml:/app/config/catalog_illustrations_v1.yaml:ro
+  simulator:
+    environment: *design_env
+    volumes: *design_mounts

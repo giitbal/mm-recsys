@@ -1,0 +1,251 @@
+{
+  "status": "PASS",
+  "scope": "Local submission documentation and recorded numerical results. Historical results retained. Public availability and publication checked independently.",
+  "reviewed_at": "2026-11-21T10:57:14.580882+00:00",
+  "pdf": {
+    "file": "멀티모달_검색_및_Multi-Stage_추천_시스템_구축.pdf",
+    "sha256": "b333d4fdab2127c380b7750f7d8e491141ec15db97c15389f8c9a0ae1b983c7d",
+    "pages": 14,
+    "documentation_pages": [
+      5,
+      6,
+      9,
+      10,
+      13,
+      14
+    ]
+  },
+  "document_hashes": {
+    "README.md": "b06021f2551c0d6768747602bf67b775f3fe32c2f54b3cfed991fbbce7ad1008",
+    "docs/contracts.md": "52b87b174eb3d0df0945cd98afe3cbca18ea930c289b5c9e48f6c476bc043344",
+    "docs/search_report.md": "560984645b079c461f9ecdd253fa267649dafd71e11f5091dd69bf9b32d7c5b1",
+    "docs/recommend_report.md": "70b0a30330781907af753a0ad728916282e09a37c7694f781cf4f9d4ca0d6098",
+    "docs/ab_test_report.md": "65c39a56d128f71bee9d906c5c9bd6b8d288ceb168c13b5dc75976724bf937de",
+    "docs/data_sources.md": "7c6caec8883db0cb167644504faac2dbdda49609345763ebcdc7f5988708b56f",
+    "docs/requirements_completion.md": "bf196ff137eca17ba8ccc54d79d03e2bca803005bdb1a64f441b4d7e34d7b9a0",
+    "storefront/README.md": "9d7351046f0675e0d44de63ba896d46731400c10dba1d40438fc5d89832228fc",
+    "docs/contributions/A.md": "04299e42ab3a68c8e6e22081a53c419790fd75f09aaca614a1a4337221708f0b",
+    "docs/contributions/B.md": "a62241ba8b81ff66485ada7c4e83ef85022fc6dc1fb53c9f7dfc6b5710f59caf",
+    "docs/contributions/C.md": "51cb4ad0bf52e097fbb4e9639da4f0f75dc15b022111ef5a22c1471e9149cefa",
+    "docs/submission/audit_review.md": "299a33b7794eaf5fe2ab6bf9b6de7091dc44f1101923138d710f045383c50db1",
+    "docs/submission/b6_runbook.md": "70f378da3e06c6ad007d6ffe298604c8fd173c274de87d51f7a4c9b248a5efde",
+    "docs/submission/checklist.md": "c76f953c2ad3f4de10fa1abade3c434b5abddf2c5be654f8b9a6855a2b9f8c6b",
+    "docs/submission/report.md": "78bf98be71801a778df578a531c1c6d3d1505fe32879a3c678da79423bc95403",
+    "docs/submission/reproduction.md": "a66a92c65759f6be094fed451dd718b04eb45c84faaa926d0588cb72102d5a94",
+    "docs/submission/requirements.md": "36487d0b0f1c341a578f8cf8474291bd1288c93e8093e3cc77f21c610f56e698"
+  },
+  "relative_links_and_anchors": {
+    "total": 410,
+    "by_file": {
+      "README.md": 28,
+      "docs/contracts.md": 1,
+      "docs/search_report.md": 22,
+      "docs/recommend_report.md": 7,
+      "docs/ab_test_report.md": 16,
+      "docs/data_sources.md": 3,
+      "docs/requirements_completion.md": 4,
+      "storefront/README.md": 5,
+      "docs/contributions/A.md": 46,
+      "docs/contributions/B.md": 1,
+      "docs/contributions/C.md": 18,
+      "docs/submission/audit_review.md": 26,
+      "docs/submission/checklist.md": 27,
+      "docs/submission/report.md": 85,
+      "docs/submission/reproduction.md": 9,
+      "docs/submission/requirements.md": 112
+    },
+    "broken": []
+  },
+  "shell_syntax": {
+    "README.md": 10,
+    "docs/submission/reproduction.md": 10,
+    "storefront/README.md": 4
+  },
+  "numerical_and_content_checks": [
+    "search_table_text",
+    "search_table_image",
+    "search_table_hybrid",
+    "search_overall",
+    "search_configuration",
+    "valid_vector_latency_32",
+    "valid_vector_latency_256",
+    "recommend_table_train_popularity",
+    "recommend_table_two_tower",
+    "recommend_table_deepfm",
+    "recommend_table_full_pipeline",
+    "ranking_ctr",
+    "ranking_cvr",
+    "recommend_denominators_and_recall",
+    "recommend_p95",
+    "ab_ctr",
+    "ab_cvr",
+    "readme_architecture_and_roles",
+    "protocol"
+  ],
+  "raw_inputs": {
+    "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_test.json": "6c9d08a552084dd8b27c9c91338e6a09e76129bd54b17f0a8e39f63f0be96543",
+    "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/quality_full_valid.json": "5b17a68f567c190d9bb3538e5eed89bed784a00081cf0905c2248c1518883baf",
+    "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/configuration_full.json": "9c1a954b3329d5243217e5da4a84301f933980bf9e2d477d8180e7a6fccdceea",
+    "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/smoke_full.json": "835bc2881618d707f5d269559a4d9b96c81211e538e38bb31082b8221b90bd9e",
+    "docs/results/experiments/A/illustrations_v1/integration_current/cold_data_audit.json": "08bc74f616715d0cc22e7d8e3c857641074da4b94ee48b1a9518350124f45bce",
+    "docs/results/experiments/A/illustrations_v1/peer_final_after13/ab_statistics.json": "f1831bf37f65360361ecd4e9b8fe28be37423165b6b775bbb05e52b8398caf74"
+  },
+  "live_commands": {
+    "status": "PASS",
+    "ready": "ready",
+    "base_services": [
+      "redis",
+      "api-server",
+      "dashboard",
+      "simulator"
+    ],
+    "with_storefront": [
+      "redis",
+      "api-server",
+      "dashboard",
+      "simulator",
+      "storefront"
+    ],
+    "documented_cli_subcommands": [
+      "search",
+      "recommend",
+      "evaluate",
+      "ab",
+      "ct",
+      "examples"
+    ],
+    "http": {
+      "text": {
+        "items": 10,
+        "first": "P000780",
+        "fields": [
+          "latency_ms",
+          "results",
+          "search_type",
+          "total_count"
+        ]
+      },
+      "image": {
+        "items": 10,
+        "first": "P000001",
+        "fields": [
+          "latency_ms",
+          "results",
+          "search_type",
+          "total_count"
+        ]
+      },
+      "hybrid": {
+        "items": 10,
+        "first": "P000001",
+        "fields": [
+          "latency_ms",
+          "results",
+          "search_type",
+          "total_count"
+        ]
+      },
+      "recommend": {
+        "items": 10,
+        "user_id": "U000001",
+        "fields": [
+          "pipeline_latency",
+          "recommendations",
+          "session_context",
+          "user_id"
+        ]
+      }
+    },
+    "ct_operations_fields": [
+      "active",
+      "enabled",
+      "logs",
+      "new_events",
+      "serving_version",
+      "threshold",
+      "versions"
+    ]
+  },
+  "publication": {
+    "checked_at": "2026-11-21T10:57:13.517176+00:00",
+    "url": "https://github.com/k-pang-2026/mm-recsys",
+    "public": true,
+    "public_main": "45dc1ad55d1fd3fc2aac859a7655e397dd4b8fcb",
+    "files": {
+      "README.md": {
+        "present": true,
+        "remote_blob": "5c15618de26902433076a35912dfb20088fea27f",
+        "local_blob_at_audit_start": "b0656dbb8800aea159ac777b2d20fa29bf5e94ad",
+        "reviewed_local_blob": "b0656dbb8800aea159ac777b2d20fa29bf5e94ad",
+        "matches_public_main": false
+      },
+      "docker-compose.yml": {
+        "present": true,
+        "remote_blob": "79366b44af22ba46c4d472ad79a877b4fbf3395f",
+        "local_blob_at_audit_start": "45dab76913204fd78a6d7b4854c7a3e6074af0ca",
+        "reviewed_local_blob": "45dab76913204fd78a6d7b4854c7a3e6074af0ca",
+        "matches_public_main": false
+      },
+      "docs/search_report.md": {
+        "present": true,
+        "remote_blob": "30040f16fbb2928b9bb1491aa8a19633fe8abaa0",
+        "local_blob_at_audit_start": "fadacc20e9e32df876f7f2be7621f863de0e4aae",
+        "reviewed_local_blob": "fadacc20e9e32df876f7f2be7621f863de0e4aae",
+        "matches_public_main": false
+      },
+      "docs/recommend_report.md": {
+        "present": true,
+        "remote_blob": "3851717da5981c07769004307390de59c637d37d",
+        "local_blob_at_audit_start": "7fee2cb2ab0a206a70868915a6ff2b2b2f793b77",
+        "reviewed_local_blob": "7fee2cb2ab0a206a70868915a6ff2b2b2f793b77",
+        "matches_public_main": false
+      },
+      "docs/ab_test_report.md": {
+        "present": true,
+        "remote_blob": "2725b157d15ac72bdadcaf03c5c9656b305e319d",
+        "local_blob_at_audit_start": "36cb4949d0a0630c03377127f0a197ea7ac31faa",
+        "reviewed_local_blob": "36cb4949d0a0630c03377127f0a197ea7ac31faa",
+        "matches_public_main": false
+      },
+      "docs/submission/report.md": {
+        "present": true,
+        "remote_blob": "8768f4fa34c681da95915d9b75e6bce6de74303c",
+        "local_blob_at_audit_start": "597a803b0ab9daa305e678a9773edb865eea9fd0",
+        "reviewed_local_blob": "597a803b0ab9daa305e678a9773edb865eea9fd0",
+        "matches_public_main": false
+      }
+    },
+    "public_document_contents": {
+      "README.md": {
+        "title": "# 멀티모달 검색 및 Multi-Stage 추천 시스템",
+        "has_mermaid": true,
+        "has_compose_start": true,
+        "mentions_illustrations_v1": false
+      },
+      "docs/search_report.md": {
+        "title": "# 검색 구현 보고서 — A B2a / B2b",
+        "has_mermaid": false,
+        "has_compose_start": false,
+        "mentions_illustrations_v1": false
+      },
+      "docs/recommend_report.md": {
+        "title": "# B4 추천 API·B5 재랭킹·MAB·세션 최종 검증 v2",
+        "has_mermaid": false,
+        "has_compose_start": false,
+        "mentions_illustrations_v1": false
+      },
+      "docs/ab_test_report.md": {
+        "title": "# A/B 합성 모의실험 보고서",
+        "has_mermaid": false,
+        "has_compose_start": false,
+        "mentions_illustrations_v1": false
+      },
+      "docs/submission/report.md": {
+        "title": "# 리팩터링 후 PDF 요구사항 재현 보고서",
+        "has_mermaid": false,
+        "has_compose_start": true,
+        "mentions_illustrations_v1": false
+      }
+    }
+  }
+}

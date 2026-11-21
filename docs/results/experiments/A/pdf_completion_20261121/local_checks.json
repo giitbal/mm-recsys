@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "files": 146,
+  "public_functions": 533,
+  "missing_annotations": [],
+  "mypy_command": [
+    "/home/peachpetal/ecommerce/mm-recsys/.venv/bin/python",
+    "-m",
+    "mypy",
+    "--explicit-package-bases",
+    "src",
+    "scripts",
+    "dashboard",
+    "docker"
+  ],
+  "mypy": {
+    "source": "docs/results/experiments/A/pdf_completion_20261121/mypy_all.txt",
+    "sha256": "90acfc2dd8ef96aecf92af2c2eeb276f66cb63023d07bf19074f3c4ae4fca52e"
+  },
+  "scaffold": {
+    "source": "docs/results/experiments/A/pdf_completion_20261121/scaffold.json",
+    "sha256": "956a2201d27fab40275d91303003b2bd044c8e6d2a408abc8b15d5c471993532"
+  },
+  "scope": "AST inventory of public signatures in src/dashboard/docker and mypy including scripts. Full suite with live Redis via separate submission/checks.json."
+}

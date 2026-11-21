@@ -5,7 +5,7 @@ from src.common.artifacts import file_hash,fingerprint,write_json
 from src.external_data.expansion_common import plan
 
 
-def training_coverage(spec,work,results):
+def training_coverage(spec: dict, work: Path, results: Path) -> list[dict]:
     import pandas as pd
     from src.recommendation.datasets import read_data,cutoff_for
     data=read_data(Path(spec['source_work'])/'hm','valid')
@@ -28,7 +28,7 @@ def training_coverage(spec,work,results):
     return rows
 
 
-def verify(spec,work,results):
+def verify(spec: dict, work: Path, results: Path) -> None:
     selection=json.loads((results/'hm_selection.json').read_text())
     assert selection['spec_fingerprint']==fingerprint(spec)
     for group in ['source_hashes','report_hashes','model_hashes','embedding_hashes']:
@@ -65,7 +65,7 @@ def verify(spec,work,results):
     print('Verified all six requested experiments',flush=True)
 
 
-def report(spec,work,results):
+def report(spec: dict, work: Path, results: Path) -> None:
     read=lambda name:json.loads((results/name).read_text())
     selection=read('hm_selection.json');data=read('hm_data.json')
     variants=[(s,'metadata') for s in spec['training_sizes']]+[(selection['feature_training_size'],v) for v in ['text','multimodal']]
@@ -141,7 +141,7 @@ def report(spec,work,results):
         lines.append(f"- {r['attribute']}: AP {r['ap']:.6f}, 상수점수 AP {r['constant_score_ap']:.6f}, 양성 {r['positives']}장")
     lines+=['','위 목록은 표본 수를 함께 보여 주는 오류 분석이다. 전체 macro 지표에서는 희소 카테고리·속성을 성능에 따라 제외하지 않는다.']
     lines+=['','## 재현과 제한','',
-        '설정: `config/external_expansion.yaml`. 원자료·파생 데이터·모델·개별 기록은 `.team/external-expansion-v3/`에만 보관한다.',
+        f'설정: `config/external_expansion.yaml`. 파생 데이터·모델·개별 기록 경로는 `{work}/`이다.',
         'v1 입력 준비가 선행돼야 하며, 새 실험에는 설정의 work/results 경로를 함께 새 버전으로 지정한다. 동일 경로의 작업을 동시에 실행하지 않는다.','',
         '```bash','PYTHONHASHSEED=42 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 \\',
         '  ./.venv/bin/python -m src.external_data.expansion_run --task all','',
@@ -152,7 +152,7 @@ def report(spec,work,results):
     (results/'report.md').write_text('\n'.join(lines)+'\n')
 
 
-def main():
+def main() -> None:
     parser=argparse.ArgumentParser();parser.add_argument('--task',choices=['all','verify'],default='all');args=parser.parse_args()
     spec,work,results=plan()
     if args.task=='all':

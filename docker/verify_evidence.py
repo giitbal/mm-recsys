@@ -11,7 +11,7 @@ import numpy as np
 
 from src.common.artifacts import file_hash, write_json
 from src.common.config import load_config
-from docker.runtime import runtime_config
+from docker.runtime import quality_dir, runtime_config
 
 
 def local_path(name: str) -> Path:
@@ -37,8 +37,10 @@ def verify(cfg: dict, smoke: dict, preparation: dict, manifest: dict) -> None:
     if len(preparation['stages']) == 6 and [row.get('stage') for row in preparation['stages']] != ['data', 'audit', 'embeddings', 'indexes', 'recommendation', 'warmup']:
         raise ValueError('v4.3 preparation stage order mismatch')
     if any(smoke.get('checks', {}).get(k) != 'PASS' for k in
-           ('api_schemas', 'multipart', 'invalid_search', 'session_response', 'dashboard_http')):
+           ('api_schemas', 'multipart', 'invalid_search', 'session_response')):
         raise ValueError('missing smoke contract checks')
+    if smoke.get('checks', {}).get('dashboard_http') != 'PASS':
+        raise ValueError('missing dashboard HTTP smoke check')
     bench = smoke['benchmark']
     if not bench['environment']['docker']:
         raise ValueError('container measurements required')
@@ -70,7 +72,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--smoke', type=Path)
     args = parser.parse_args(); cfg = runtime_config(load_config())
-    smoke_path = args.smoke or Path(f"docs/results/docker/smoke_{cfg['scale']}.json")
+    smoke_path = args.smoke or quality_dir(cfg) / f"smoke_{cfg['scale']}.json"
     prep_path = smoke_path.parent / f"preparation_{cfg['scale']}.json"
     manifest_path = Path(cfg['paths']['data_dir']) / 'split_manifest.json'
     smoke, prep, manifest = [json.loads(path.read_text()) for path in (smoke_path, prep_path, manifest_path)]

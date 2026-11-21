@@ -1,6 +1,7 @@
 """Controlled H&M ablations on the unchanged v1 cohort, catalog and time splits."""
 from __future__ import annotations
 
+from collections.abc import Iterable
 import argparse
 import copy
 import json
@@ -17,7 +18,8 @@ from src.recommendation.candidate import ExactCandidate, dot_scores, top_indices
 from src.recommendation.datasets import read_data
 from src.recommendation.deepfm import DeepFM
 from src.recommendation.eval_candidate import Evaluation
-from src.recommendation.features import ITEM_FIELDS
+from src.recommendation.features import ITEM_FIELDS, ItemTable
+from src.recommendation.two_tower import TwoTower
 from src.recommendation.index import load_index
 from src.recommendation.ranking_features import RankingEncoder, DENSE_FIELDS
 from src.recommendation.reranking import RankedItem, Reranker
@@ -32,7 +34,7 @@ def configuration(spec: dict) -> dict:
     return cfg
 
 
-def counts_before(chunks, ids: list[str], cutoff: pd.Timestamp, windows: list[int]) -> np.ndarray:
+def counts_before(chunks: Iterable[pd.DataFrame], ids: list[str], cutoff: pd.Timestamp, windows: list[int]) -> np.ndarray:
     """Fit all popularity variants strictly on train; never update on valid/test."""
     result = np.zeros((len(windows), len(ids)), np.int64)
     positions = pd.Index(ids)
@@ -66,7 +68,7 @@ def prepare(spec: dict, cfg: dict) -> None:
         fit_scope='all source customers, train only; no valid/test population statistics'))
 
 
-def population(spec: dict, table) -> np.ndarray:
+def population(spec: dict, table: ItemTable) -> np.ndarray:
     work, results = Path(spec['work_dir']), Path(spec['results_dir'])
     record = json.loads((results / 'population.json').read_text())
     if file_hash(work / 'population_counts.npy') != record['counts_sha256'] or fingerprint(table.ids) != record['ids_fingerprint']:
@@ -74,7 +76,7 @@ def population(spec: dict, table) -> np.ndarray:
     return np.load(work / 'population_counts.npy')
 
 
-def exact_lists(model, table, evaluation: Evaluation) -> list[list[str]]:
+def exact_lists(model: TwoTower, table: ItemTable, evaluation: Evaluation) -> list[list[str]]:
     reference = ExactCandidate(model, table, evaluation.eligible, 512)
     ranked: list[list[str]] = []
     for start in range(0, len(evaluation.contexts), 64):
@@ -121,7 +123,7 @@ def rerank_blend(candidates: list[list[str]], learned: list[list[str]], weight: 
         infeasible_diversity_users=sum(not d['diversity_feasible_for_returned'] for d in details))
 
 
-def load_ranker(spec: dict, cfg: dict):
+def load_ranker(spec: dict, cfg: dict) -> tuple[DeepFM, RankingEncoder]:
     root = Path(spec['source_work']) / 'hm_models'
     original = json.loads((Path(spec['source_results']) / 'hm_recommendation.json').read_text())
     if file_hash(root / 'purchase_deepfm.pt') != original['model_hashes']['purchase_deepfm']:
@@ -132,7 +134,7 @@ def load_ranker(spec: dict, cfg: dict):
     return model.eval(), encoder
 
 
-def diagnostic(data: dict, evaluation: Evaluation, table) -> dict:
+def diagnostic(data: dict, evaluation: Evaluation, table: ItemTable) -> dict:
     eligible_ids = set(table.public_ids(evaluation.eligible))
     observed = set(data['train'].product_id)
     train_products = data['products'][data['products'].product_id.isin(eligible_ids)]

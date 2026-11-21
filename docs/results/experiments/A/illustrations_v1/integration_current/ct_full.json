@@ -1,0 +1,148 @@
+{
+  "status": "PARTIAL",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "observed_new_events": 63812,
+  "threshold": 10000,
+  "retraining": {
+    "status": "RETAINED",
+    "version": "v1.4",
+    "active": "v1.0",
+    "new_events": 63812,
+    "through_seq": 120223,
+    "trigger_reason": "new_logs",
+    "comparison": {
+      "split": "valid",
+      "validation_fingerprint": "3c2a4d367dac8fae6ec88d17b46ea0b0aa0bec2461c8bbaf723d090dbb75e725",
+      "baseline": {
+        "ctr_auc": 0.963034699286182,
+        "ctr_logloss": 0.16687713185426112,
+        "hit_rate_at_50": 0.6753788405394133,
+        "truth_users": 7193,
+        "ctr_samples": 227459,
+        "validation_fingerprint": "3c2a4d367dac8fae6ec88d17b46ea0b0aa0bec2461c8bbaf723d090dbb75e725"
+      },
+      "candidate": {
+        "ctr_auc": 0.9634307990114283,
+        "ctr_logloss": 0.1654741859471408,
+        "hit_rate_at_50": 0.6771861532045044,
+        "truth_users": 7193,
+        "ctr_samples": 227459,
+        "validation_fingerprint": "3c2a4d367dac8fae6ec88d17b46ea0b0aa0bec2461c8bbaf723d090dbb75e725"
+      },
+      "training_reports": {
+        "candidate": "1d8295990cd4f1aa47945b850dd4cb9ef426e0733e0d3a50a60fd04d6cd1510f",
+        "ranking": "9936770c72fff1883ad2ae6b78be81c61bbe10a419fb4bdc737067c3f69dd36d",
+        "session": "8d112bf60c3b9b640f87421aafaa5a36cb4f32334155355b59d338953a66be40"
+      }
+    }
+  },
+  "repeated_trigger": {
+    "status": "NEXT_WINDOW",
+    "training_started": {
+      "at": "2026-11-21T10:04:42.155641+00:00",
+      "event": "training_started",
+      "parent": "v1.0",
+      "version": "v1.5",
+      "new_events": 44786,
+      "through_seq": 165010,
+      "trigger_reason": "new_logs",
+      "alerts": []
+    }
+  },
+  "real_reload_and_rollback": false,
+  "start": {
+    "at": "2026-11-21T09:07:21.031581+00:00",
+    "event": "training_started",
+    "parent": "v1.0",
+    "version": "v1.4",
+    "new_events": 63812,
+    "through_seq": 120223,
+    "trigger_reason": "new_logs",
+    "alerts": []
+  },
+  "terminal": {
+    "at": "2026-11-21T09:58:44.480898+00:00",
+    "event": "retained",
+    "version": "v1.4",
+    "active": "v1.0",
+    "comparison": {
+      "split": "valid",
+      "validation_fingerprint": "3c2a4d367dac8fae6ec88d17b46ea0b0aa0bec2461c8bbaf723d090dbb75e725",
+      "baseline": {
+        "ctr_auc": 0.963034699286182,
+        "ctr_logloss": 0.16687713185426112,
+        "hit_rate_at_50": 0.6753788405394133,
+        "truth_users": 7193,
+        "ctr_samples": 227459,
+        "validation_fingerprint": "3c2a4d367dac8fae6ec88d17b46ea0b0aa0bec2461c8bbaf723d090dbb75e725"
+      },
+      "candidate": {
+        "ctr_auc": 0.9634307990114283,
+        "ctr_logloss": 0.1654741859471408,
+        "hit_rate_at_50": 0.6771861532045044,
+        "truth_users": 7193,
+        "ctr_samples": 227459,
+        "validation_fingerprint": "3c2a4d367dac8fae6ec88d17b46ea0b0aa0bec2461c8bbaf723d090dbb75e725"
+      },
+      "training_reports": {
+        "candidate": "1d8295990cd4f1aa47945b850dd4cb9ef426e0733e0d3a50a60fd04d6cd1510f",
+        "ranking": "9936770c72fff1883ad2ae6b78be81c61bbe10a419fb4bdc737067c3f69dd36d",
+        "session": "8d112bf60c3b9b640f87421aafaa5a36cb4f32334155355b59d338953a66be40"
+      }
+    }
+  },
+  "deployment_events": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/ct_deployment_events.jsonl",
+    "sha256": "b514206573dddb8fe97062761cc8f9762366839acf4ebd4aca8eff159249eaf2"
+  },
+  "guard": {
+    "enabled": true,
+    "poll_seconds": 60,
+    "retry_seconds": 300,
+    "retrain_on_degradation": true,
+    "recent_seconds": 86400,
+    "attribution_seconds": 3600,
+    "min_mature_requests": 20,
+    "ctr_threshold": 0.01,
+    "promotion_metric": "ctr_auc",
+    "min_improvement": 0.001,
+    "promotion_floor": 0.7,
+    "hitrate_threshold": 0.2,
+    "retrain_log_threshold": 10000
+  },
+  "folds": {
+    "train": 0,
+    "valid": 0,
+    "test": 63812
+  },
+  "production_health": {
+    "status": "ok",
+    "search_ready": true,
+    "recommend_ready": true,
+    "scale": "full",
+    "model_version": "v1.0"
+  },
+  "request_id": "66078cc883714ba08af805835432f211",
+  "checks": {
+    "full_three_model_retraining": true,
+    "threshold": true,
+    "event_watermark": true,
+    "paired_valid": true
+  },
+  "source_hashes": {
+    "src/ct/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ct/bootstrap.py": "ed424da224501774d6c4c8b72a50510587589a32a39370ec1fd8873e06fb8b19",
+    "src/ct/model_registry.py": "9d823820a981b975e0e134fffd600974ac1d4adb4be1f055b0befbad1a14e222",
+    "src/ct/monitor.py": "5d5ec0e8324ff2d632383f8a19291e5f20475736c102cee0dca3de6165f80047",
+    "src/ct/retrain_trigger.py": "d430bf4703d1d95b50892b4107810154c1376e4a9bd88f98bedcdba666fd3f05",
+    "src/ct/snapshot.py": "60c5ac8995445d9a469192518cf64e57686a40108e5cb987d8f5a886baa3e745",
+    "src/ct/storage.py": "5f03cb409e4e9ec971821f1de1a20633475bac00e9bc7df2fa02c4953420a49f",
+    "src/ct/training.py": "8b1bf9118664191595c8b2b530f373ef2866edb4749ce7b1a897fd1b8b7483aa",
+    "src/ct/verify_ct.py": "866bea9b030871015b265a4e98f8b92bb90f77fadc73df762a1f35554fbd37a7",
+    "src/ct/verify_serving.py": "3a3d3b7b21cdf5a839a2f4612a5d263682de9d91ab7cca86fa8f0425e68c6c45",
+    "docker/simulator.py": "3df5e278f78ddc6dc3e883aaf0aecef8d538ebddbbcf1b5cce82bb674afa2105",
+    "docker/ct_worker.py": "9feaf6486ed500e4be54c9c80e3a7634b79a4253d5184279d44d1d0da8bfa258"
+  },
+  "scope": "Live default simulator and CT. Original attempt exited on SQLite reader contention. Same persistent journal, post-fix run, through-sequence and new event count matched. Next production window independently crossed the configured threshold."
+}

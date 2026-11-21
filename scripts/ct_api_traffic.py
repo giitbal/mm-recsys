@@ -87,7 +87,7 @@ def main() -> int:
     if parse.urlsplit(api).scheme not in ('http', 'https') or not parse.urlsplit(api).netloc:
         parser.error('api-url은 http(s) URL이어야 합니다.')
     run_id = uuid.uuid4().hex
-    output = args.output or (Path(os.getenv('RUNTIME_RESULTS_DIR', 'docs/results/docker/runtime-v44')) /
+    output = args.output or (Path(os.getenv('RUNTIME_RESULTS_DIR', 'docs/results/docker/runtime-illustrations-v1')) /
                             os.getenv('SCALE', 'full') / f'ct_api_traffic_{run_id}.jsonl')
     output.parent.mkdir(parents=True, exist_ok=True)
     totals = dict(exposures=0, views=0, purchases=0)

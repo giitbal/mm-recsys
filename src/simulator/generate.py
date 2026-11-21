@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 import numpy as np
 from src.common.artifacts import file_hash,fingerprint,write_json
-from src.common.config import load_config
+from src.common.config import load_config, require_image_recipe
 from src.simulator.catalog import make_catalog,write_images
 from src.simulator.users import make_users
 from src.simulator.events import make_events
@@ -28,6 +28,7 @@ def ordered_recipe(value: object) -> object:
 
 
 def generation_identity(cfg: dict) -> dict:
+    require_image_recipe(cfg['simulator'])
     return {'seed': cfg['seed'], 'simulator': cfg['simulator'], 'split': cfg['split'],
             'ordered_simulator': ordered_recipe(cfg['simulator']),
             'generator': '4.5.0-realism' if cfg['simulator'].get('realism') else GENERATOR_VERSION}

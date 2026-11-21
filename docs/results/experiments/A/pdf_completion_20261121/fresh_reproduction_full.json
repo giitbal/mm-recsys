@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "2df9b64e07e3b2aad48c967c4c8d3d8b04883dd19279896bb374c4f9926ad7d8",
+  "initial_data_files": 0,
+  "initial_model_files": 0,
+  "prepared_data_and_models_from_empty": true,
+  "initial_state": {
+    "source": "docs/results/experiments/A/pdf_completion_20261121/initial.json",
+    "sha256": "ca751a536463c05f742df17ec053587cec8a14df87305145f33bb9813ae11233"
+  },
+  "preparation": {
+    "source": "docs/results/experiments/A/pdf_completion_20261121/fresh_preparation.json",
+    "sha256": "f62146e4d62558f6860e94dff36cbb80c6ee43f00569d5582c223ffef48cf180"
+  },
+  "runtime_sources": {
+    "source": "docs/results/experiments/A/pdf_completion_20261121/runtime_sources.json",
+    "sha256": "deadcb9451f903b1629d153c3fd6dbfb42dee9d723e3deefc917096013333e19"
+  },
+  "services": {
+    "source": "docs/results/experiments/A/pdf_completion_20261121/fresh_services.json",
+    "sha256": "b8193048f0967b592db31f23054c4d9de48d288b8f0429e71bd044e0ac38d903"
+  },
+  "reproduced_data": {
+    "source": "docs/results/experiments/A/pdf_completion_20261121/data_reproduction_full.json",
+    "sha256": "0aa7c75d15290b6f0822c4889037f3e2839cb60440fd8ebe3fc4cfb938f9e248"
+  },
+  "scope": "Isolated empty data/models/results, pinned CLIP cache and Docker dependency layers reused. First full preparation measured; after UI iteration, latest four-service images reused the resulting artifacts."
+}

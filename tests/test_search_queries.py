@@ -3,9 +3,10 @@ import threading
 import numpy as np
 import pytest
 
-from src.common.artifacts import file_hash, write_json
+from src.common.artifacts import file_hash, fingerprint, write_json
 from src.common.config import load_config
 from src.simulator.catalog import make_catalog, write_images
+from src.simulator.generate import generation_identity
 from src.search.queries import freeze_queries
 from src.search.searcher import Searcher
 from src.search.eval_search import score_rankings, evaluate
@@ -17,9 +18,13 @@ def test_frozen_queries_are_independent_augmented_and_immutable(tmp_path):
     cfg['search']['evaluation']['queries_per_mode'] = 3
     products = make_catalog(cfg, np.random.default_rng(cfg['seed']))
     write_images(products, cfg, tmp_path); products.to_parquet(tmp_path/'products.parquet', index=False)
-    write_json(tmp_path/'split_manifest.json', {'generation_fingerprint': 'fixture-frozen-data',
+    write_json(tmp_path/'split_manifest.json', {'generation_fingerprint': fingerprint(generation_identity(cfg)),
         'file_hashes': {'products.parquet': file_hash(tmp_path/'products.parquet')},
         'boundaries': {'train': {'end': '2025-12-25T00:00:00Z'}, 'valid': {'end': '2025-12-28T00:00:00Z'}}})
+    cfg['seed'] += 1
+    with pytest.raises(ValueError, match='dataset differs'):
+        freeze_queries(cfg)
+    cfg['seed'] -= 1
     folder = freeze_queries(cfg); digest = file_hash(folder/'manifest.json')
     assert freeze_queries(cfg) == folder and file_hash(folder/'manifest.json') == digest
     valid = json.loads((folder/'valid.json').read_text()); test = json.loads((folder/'test.json').read_text())

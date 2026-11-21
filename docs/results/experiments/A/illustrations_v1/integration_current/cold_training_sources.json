@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "verified_count": 168,
+  "cold_snapshot": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/cold_source_snapshot.json",
+    "sha256": "9f52772641ab92d45d2c5d876a5ea06b1ab4153ba7ef3421dbc4ad124df5bae9"
+  },
+  "changed_after_training": [
+    "dashboard/app.py",
+    "dashboard/assets.py"
+  ],
+  "scope": "Empty bootstrap image verified byte-for-byte. Two result-display modules were updated after training; serving, data, feature and training sources are identical."
+}

@@ -1,4 +1,4 @@
-> 과거 v4.3 실행 기록이다. 현재 v4.4 실행 절차와 결과는 [제출 재현 문서](submission/reproduction.md)와 [요구사항 대응표](submission/requirements.md)를 따른다. 이 문서의 PASS를 새 소스의 측정으로 사용하지 않는다.
+> 이 문서는 2026-11-07 v4.3 검증 이력이다. 현재 기본 도안 illustrations-v1의 결과와 실행 절차는 [제출 보고서](submission/report.md) · [재현 문서](submission/reproduction.md) · [요구사항 대응표](submission/requirements.md)에 있다.
 
 # PDF·첨부 요구사항 통합 검증 (2026-11-07)
 

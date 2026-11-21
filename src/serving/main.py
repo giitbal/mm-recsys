@@ -49,6 +49,8 @@ def create_app(cfg: dict | None = None, search_service: Any=None, recommend_serv
     app.add_middleware(SearchTransport)
 
     app.include_router(ct_router)
+    from src.serving.storefront import create_router as storefront_router
+    app.include_router(storefront_router(cfg))
 
     @app.get('/health')
     def health(request: Request) -> dict:

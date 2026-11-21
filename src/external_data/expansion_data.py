@@ -8,7 +8,7 @@ from src.external_data.expansion_common import plan
 from src.recommendation.datasets import read_data
 
 
-def nested_users(original, all_ids, sizes, seed):
+def nested_users(original: list[str], all_ids: list[str], sizes: list[int], seed: int) -> list[str]:
     first=sorted(original)
     if len(first)!=sizes[0] or sizes!=sorted(sizes) or sizes[-1]>len(all_ids):raise ValueError('invalid nested cohort sizes')
     rest=np.array(sorted(set(all_ids)-set(first)))
@@ -16,7 +16,7 @@ def nested_users(original, all_ids, sizes, seed):
     return first+chosen
 
 
-def run():
+def run() -> None:
     spec,work,results=plan();out=work/'hm_data';out.mkdir(exist_ok=True)
     if (results/'hm_data.json').exists():
         report=json.loads((results/'hm_data.json').read_text())
@@ -39,7 +39,8 @@ def run():
     tx=pd.concat(picked,ignore_index=True);del picked
     group_map={uid:i//spec['shard_users'] for i,uid in enumerate(ids)}
     tx['_shard']=tx.customer_id.map(group_map)
-    hashes={str(out/'users.json'):file_hash(out/'users.json')};shards=[]
+    hashes={str(out/'users.json'):file_hash(out/'users.json')}
+    shards: list[dict] = []
     for shard,frame in tx.groupby('_shard',sort=True):
         events=pd.DataFrame(dict(event_id=frame.event_id,user_id='HM-'+frame.customer_id,
             product_id='HM-'+frame.article_id,event_type='purchase',timestamp=pd.to_datetime(frame.t_dat,utc=True),

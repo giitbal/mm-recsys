@@ -1,7 +1,7 @@
 # C 기여 기록
 
 역할 C(박채영), 검토자 A(이제원). Git 작성자는 사용자가 지정한 chaezero03이다.
-브랜치는 feat/C/platform이며 이번 범위는 B6 Redis Feature Store다.
+feat/C/platform에서 B6 Redis Feature Store, B7 API 서빙, B8 평가·A/B·대시보드, B9 CT를 담당했다. 아래 기록은 단계별로 작성했다. [최신 통합 검증](../submission/report.md)
 
 ## B6 변경
 

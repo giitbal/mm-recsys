@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "run_id": "f869b758128d6bb2fae535561f1e2156d6bdf201586f107d6c2bd1f88ba1716c",
+  "quality_config_fingerprint": "7aef1bae65d27f7d8b815f1d74e584bc6cab1695c2af16eed0078f60159d1474",
+  "ab_config_fingerprint": "c2b60f23896559145f362450aff49c625b78d4de6710a588ceddc5e275079fc6",
+  "only_override": {
+    "paths.results_dir": "docs/results/experiments/A/illustrations_v1/peer_final_after13/full"
+  },
+  "quality_config": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/quality/configuration_full.json",
+    "sha256": "9c1a954b3329d5243217e5da4a84301f933980bf9e2d477d8180e7a6fccdceea"
+  },
+  "ab": {
+    "source": "docs/results/experiments/A/illustrations_v1/peer_final_after13/ab_acceptance_full.json",
+    "sha256": "899ad1c659b9d7046df4ce19565dc8e2f929ac3297e7f778f3b74442c44236da"
+  },
+  "scope": "Recomputed both original config identities; only the experiment output directory differs. Recommendation source, candidate, ranking and session hashes match."
+}

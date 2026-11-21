@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "mandatory_files_present": 55,
+  "tracked_forbidden": [],
+  "public_signature_omissions": 0,
+  "commands": {
+    "mypy_repository": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/home/peachpetal/ecommerce/mm-recsys/.venv/bin/python",
+        "-m",
+        "mypy",
+        "--explicit-package-bases",
+        "src",
+        "scripts",
+        "dashboard",
+        "docker"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/preflight/mypy_repository.txt",
+      "sha256": "5a5d18602ec811a5e8d5394689dedc469378e3dc613794f1897fef5a5de66523",
+      "elapsed_seconds": 1.0269959889992606
+    },
+    "pip_check": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/home/peachpetal/ecommerce/mm-recsys/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/preflight/pip_check.txt",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "elapsed_seconds": 0.5703160820012272
+    },
+    "pytest": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/home/peachpetal/ecommerce/mm-recsys/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "src.serving.pytest_support",
+        "tests",
+        "--junitxml=docs/results/experiments/A/illustrations_v1/integration_current/preflight/pytest.xml"
+      ],
+      "source": "docs/results/experiments/A/illustrations_v1/integration_current/preflight/pytest.txt",
+      "sha256": "3d5575845978ceb5dab648e861638ecc38e498285da8252a5e3bfa21373b827f",
+      "elapsed_seconds": 329.3172132780019
+    }
+  },
+  "live_api": {
+    "status": "PASS",
+    "url": "http://127.0.0.1:8000",
+    "readiness": {
+      "status": "ready"
+    },
+    "search_results": 10,
+    "recommendation_counts": {
+      "U000001": 10,
+      "submission-unknown-user": 10
+    },
+    "invalid_search_status": 422,
+    "scope": "new B11 live text and known/unknown recommendation schema checks; no quality/latency measurement"
+  },
+  "repository": {
+    "status": "PASS",
+    "access": {
+      "status": "PASS",
+      "method": "anonymous GitHub repository API and HTML page GET",
+      "http_status": 200
+    },
+    "checked_at": "2026-11-21T09:08:20.294739+00:00",
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/preflight/repository.json",
+    "sha256": "7e95b459c6fb666775ec315f348d2b4968e2f209b3c38fcb173fdfebc8b9354d",
+    "scope": "read-only remote snapshot of merged contribution PRs; current unpublished stage still requires approval"
+  },
+  "scope": "Independent local checks plus real Redis, HTTP and read-only GitHub access; final full integration requires separate full quality and five matched runtime checks."
+}

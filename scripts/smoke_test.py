@@ -19,7 +19,7 @@ from src.common.console import log, emit_json, run_cli, status_ko
 from src.common.artifacts import file_hash, fingerprint, write_json
 from src.common.schemas import RecommendResponse, SearchResponse
 from docker.http import request, wait_ready
-from docker.runtime import runtime_config
+from docker.runtime import quality_dir, runtime_config
 
 
 def multipart(url: str, text: str, image: bytes) -> dict:
@@ -36,7 +36,7 @@ def multipart(url: str, text: str, image: bytes) -> dict:
 from src.evaluation.metrics import latency_percentiles as quantiles
 
 
-def run(cfg: dict, api: str, dashboard: str, benchmark: bool) -> dict:
+def run(cfg: dict, api: str, dashboard: str | None, benchmark: bool, storefront: str | None = None) -> dict:
     import pandas as pd
     from src.search.queries import freeze_queries
     wait_ready(api, float(os.getenv('READY_TIMEOUT_SECONDS', '21600')))
@@ -93,10 +93,12 @@ def run(cfg: dict, api: str, dashboard: str, benchmark: bool) -> dict:
         raise ValueError('session context did not reflect the live Redis event')
     responses['session'] = body
     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
-    for path in ('/', '/_stcore/health'):
-        with opener.open(dashboard.rstrip('/') + path, timeout=10) as response:
-            if response.status != 200:
-                raise ValueError('dashboard must return HTTP 200')
+    for base, paths in ((dashboard, ('/', '/_stcore/health')), (storefront, ('/', '/api/live/ready'))):
+        if base:
+            for path in paths:
+                with opener.open(base.rstrip('/') + path, timeout=30) as response:
+                    if response.status != 200:
+                        raise ValueError('selected UI must return HTTP 200')
     manifest = root / 'split_manifest.json'
     model = Path(cfg['paths']['model_dir'])
     model_paths = [model / 'v1.0' / name for name in ('meta.json', 'index_manifest.json', 'ranking/meta.json', 'session/meta.json')]
@@ -114,8 +116,9 @@ def run(cfg: dict, api: str, dashboard: str, benchmark: bool) -> dict:
         models={str(p): file_hash(p) for p in model_paths},
         source_hashes={str(p): file_hash(p) for p in [Path(__file__), Path('docker/runtime.py'), Path('docker/http.py'), Path('docker/serve.py'), Path('docker/vision.py')]},
         health=health, responses=responses, checks=dict(api_schemas='PASS', multipart='PASS',
-            invalid_search='PASS', session_response='PASS', dashboard_http='PASS'),
-        scope='actual HTTP smoke; Streamlit HTTP health does not establish browser rendering')
+            invalid_search='PASS', session_response='PASS', dashboard_http='PASS' if dashboard else 'UNMEASURED',
+            storefront_http='PASS' if storefront else 'UNMEASURED'),
+        scope='actual HTTP smoke; UI HTTP health does not establish browser rendering')
     if benchmark:
         warmup, calls = cfg['benchmark']['warmup'], cfg['benchmark']['requests']
         if warmup < 10 or calls < 100 or cfg['benchmark']['concurrency'] != 1:
@@ -184,17 +187,18 @@ def run(cfg: dict, api: str, dashboard: str, benchmark: bool) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--api-url', default=os.getenv('API_URL', 'http://localhost:8000'))
-    parser.add_argument('--dashboard-url', default='http://dashboard:8501')
+    parser.add_argument('--dashboard-url', default='http://dashboard:8501', help='Streamlit URL')
+    parser.add_argument('--storefront-url', help='Optional URL when the storefront profile is running')
     parser.add_argument('--benchmark', action='store_true')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args(); cfg = runtime_config()
-    result = run(cfg, args.api_url.rstrip('/'), args.dashboard_url, args.benchmark)
-    output = args.output or Path(f"docs/results/docker/smoke_{cfg['scale']}.json")
+    result = run(cfg, args.api_url.rstrip('/'), args.dashboard_url, args.benchmark, args.storefront_url)
+    output = args.output or quality_dir(cfg) / f"smoke_{cfg['scale']}.json"
     preparation = Path(cfg['paths']['results_dir']) / 'preparation.json'
     write_json(output.parent / f"preparation_{cfg['scale']}.json", json.loads(preparation.read_text()))
     write_json(output, result)
     if args.benchmark:
-        write_json(output.parent / 'latency.json' if args.output else Path('docs/results/latency.json'), result)
+        write_json(output.parent / 'latency.json', result)
     log('평가', 'Docker 검사', f"결과={output}", status=status_ko(result['status']))
     emit_json(result)
     return 0 if result['status'] == 'PASS' else 1

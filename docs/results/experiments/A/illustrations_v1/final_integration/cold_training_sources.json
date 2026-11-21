@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "source_snapshot": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_source_snapshot.json",
+    "sha256": "3fa5c2aa700d91187cf2f90514928324de26e0bfc636701874e1f0156e0bee03"
+  },
+  "verified_services": [
+    "api-server",
+    "simulator"
+  ],
+  "updated_after_training": [
+    "dashboard/assets.py"
+  ],
+  "scope": "Original cold training image source bytes matched the recorded working-copy snapshot. Only dashboard bundle comparison changed afterwards."
+}

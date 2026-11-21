@@ -1,0 +1,6 @@
+{
+  "reproduced": true,
+  "case": "Use relocated source reports with configured work/results paths. Existing source reports are available under relocated-reports.",
+  "missing": "docs/results/external/v1/hm_data.json",
+  "error": "[Errno 2] No such file or directory: 'docs/results/external/v1/hm_data.json'"
+}

@@ -1,4 +1,4 @@
-"""Wait for the model API, then announce the dashboard only after HTTP readiness."""
+"""Serve measured charts during model preparation and announce HTTP readiness."""
 from __future__ import annotations
 
 from src.common.console import log, run_cli
@@ -10,8 +10,6 @@ import sys
 import threading
 import time
 import urllib.request
-
-from docker.http import wait_ready
 
 
 def wait_dashboard(process: subprocess.Popen, timeout: float) -> None:
@@ -31,10 +29,6 @@ def wait_dashboard(process: subprocess.Popen, timeout: float) -> None:
 
 
 def main() -> int:
-    api = os.getenv('API_URL', 'http://api-server:8000')
-    log('대시보드', '준비', '검색·추천 API 준비 완료를 기다립니다.')
-    wait_ready(api, float(os.getenv('READY_TIMEOUT_SECONDS', '21600')))
-    log('대시보드', '준비', '검색·추천 API 연결 완료', status='성공')
     process = subprocess.Popen([sys.executable, '-m', 'streamlit', 'run', 'dashboard/app.py',
                                 '--server.port=8501', '--server.address=0.0.0.0',
                                 '--browser.gatherUsageStats=false'], stdout=subprocess.PIPE)
@@ -66,4 +60,4 @@ def main() -> int:
 
 
 if __name__ == '__main__':
-    raise SystemExit(run_cli(main, '대시보드', 'API /ready와 Streamlit 원본 로그, 포트 설정을 확인하세요.'))
+    raise SystemExit(run_cli(main, '대시보드', 'Streamlit 원본 로그와 대시보드 포트 설정을 확인하세요.'))

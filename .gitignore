@@ -1,4 +1,7 @@
 .venv/
+storefront/node_modules/
+storefront/.next/
+storefront/*.tsbuildinfo
 /학습 데이터셋 추천/
 __pycache__/
 *.pyc
@@ -10,6 +13,9 @@ __pycache__/
 *.log
 # Preserve the frozen full calibration experiment's A/B execution evidence.
 !docs/results/experiments/A/realism_full_20261115/ab_test.log
+!docs/results/experiments/A/illustrations_v1/peer13_all_levels/mypy.log
+!docs/results/experiments/A/illustrations_v1/peer_review_20261121/verified_mechanisms.log
+!docs/results/experiments/A/pdf_completion_20261121/before_final_compose/submission_attempt.log
 data/*
 !data/.gitkeep
 models/*
@@ -26,7 +32,12 @@ docs/results/integration/raw/
 docs/results/integration/**/raw/
 docs/results/integration/runtime/
 docs/results/**/analysis/
-docs/results/docker/runtime-v*/
+docs/results/docker/runtime-*/
+docs/results/illustrations-v1/
 docs/results/experiments/**/raw/
 # Transient training JSON is copied to the reviewed training_reports directory.
 docs/results/external/realism-v4/models/
+
+# Storefront verification reuses runtime evidence locally; product data is never committed.
+docs/results/experiments/A/storefront_20261115/runtime/
+docs/results/experiments/A/storefront_20261115/browser/*.png

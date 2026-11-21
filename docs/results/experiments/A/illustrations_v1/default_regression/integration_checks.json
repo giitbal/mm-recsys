@@ -1,0 +1,41 @@
+{
+  "data_fingerprint": "2df9b64e07e3b2aad48c967c4c8d3d8b04883dd19279896bb374c4f9926ad7d8",
+  "checks": {
+    "docker_reproduction": {
+      "status": "PASS",
+      "exit_code": 0,
+      "source": "docs/results/experiments/A/illustrations_v1/default_regression/fresh_reproduction_full.json",
+      "sha256": "e3d824833cc3262ca534888bd9576b02f09dbfb20e7e469798783607cec6dc5d"
+    },
+    "api_schemas": {
+      "status": "PASS",
+      "exit_code": 0,
+      "source": "docs/results/experiments/A/pdf_completion_20261121/api_full.json",
+      "sha256": "b1c7b2cd76d78200ac3553e8e4b5d072bf8e1a964085bb2a5213153d45db8a0b"
+    },
+    "session_response": {
+      "status": "PASS",
+      "exit_code": 0,
+      "source": "docs/results/experiments/A/pdf_completion_20261121/mab_full.json",
+      "sha256": "fff9409eba54da3cace2a928610b75bf7d9be1446da1768f6ed6a9a7505ae6fe"
+    },
+    "ab_statistics": {
+      "status": "PASS",
+      "exit_code": 0,
+      "source": "docs/results/experiments/A/final_validation_20261112/ab_acceptance_full.json",
+      "sha256": "a1917af5f532680256eb132bac7c18382f7e293600fb0ecd982c5666670f8866"
+    },
+    "ct_retrain_and_rollback": {
+      "status": "PASS",
+      "exit_code": 0,
+      "source": "docs/results/experiments/A/final_validation_20261112/ct_acceptance_full.json",
+      "sha256": "6c4a906ef2ec9f368bda7c7021d5951ccc4f13de83d5bb68029484510929616c"
+    }
+  },
+  "limitations": [
+    "Fresh full valid/test and serial HTTP benchmark used the existing frozen v1.0 serving bundles. Independent full preparation regenerated data, indexes and models from empty paths using cached CLIP weights.",
+    "The full 5000 users per arm, 30-day A/B measurement and separated full CT lifecycle were executed on 2026-11-12. A/B model/data/source hashes and CT source/guard/drill evidence were revalidated. Natural CT retained v1.0.",
+    "Local integration including current working tree. The changes have not been published or submitted to the course platform. Online customer lift is unmeasured.",
+    "Current default cold reproduction and source/regression checks. Other measured default quality, A/B and CT use their linked original runs."
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "dataset": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "split": {
+    "train": {
+      "count": 800000,
+      "start": "2025-12-02T00:00:00+00:00",
+      "end": "2025-12-25T10:07:46.606500+00:00"
+    },
+    "valid": {
+      "count": 100000,
+      "start": "2025-12-25T10:07:47.605500+00:00",
+      "end": "2025-12-28T09:52:12.492900+00:00"
+    },
+    "test": {
+      "count": 100000,
+      "start": "2025-12-28T09:52:14.549700+00:00",
+      "end": "2025-12-31T22:14:57.414300+00:00"
+    }
+  },
+  "metrics": {
+    "recall_at_300": 0.7457929264118653,
+    "auc": 0.9657847659453032,
+    "hit_rate_at_50": 0.6644324015972618,
+    "ndcg_at_50": 0.32927500940186955,
+    "coverage": 0.38316
+  },
+  "cvr_auc": 0.5304082557977491,
+  "truth_users": 7012,
+  "users": 10000,
+  "covered_items": 19158,
+  "deployed_sources_verified": 82,
+  "model_manifests_verified": 5,
+  "timings": {
+    "text": {
+      "p95": 48.047008902722155,
+      "over_200_ms": 0,
+      "maximum": 60.46954200064647,
+      "target": 200
+    },
+    "image": {
+      "p95": 122.06556700220972,
+      "over_200_ms": 0,
+      "maximum": 167.66697599814506,
+      "target": 200
+    },
+    "hybrid": {
+      "p95": 135.9107527985543,
+      "over_200_ms": 1,
+      "maximum": 226.18608700213372,
+      "target": 200
+    },
+    "recommendation": {
+      "p95": 59.535705050075194,
+      "over_200_ms": 0,
+      "maximum": 85.36185800039675,
+      "target": 200
+    }
+  },
+  "feature_p95": 0.43645995156111894,
+  "sample": [
+    {
+      "user": "U006437",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U005255",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U004320",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U008566",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U000890",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U000940",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U001825",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U008226",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U007850",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U006959",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U001280",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U002011",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U009739",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U005126",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U008389",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U007812",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 1
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U003706",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 1
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U007346",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U004023",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U004378",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U004435",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U005454",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U004500",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U005000",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U007718",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U009263",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U007165",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U006529",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U000858",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    },
+    {
+      "user": "U007600",
+      "runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "explore": 2
+    }
+  ],
+  "source_quality": "docs/results/experiments/A/illustrations_v1/peer13_all_levels/full_test.json",
+  "quality_sha256": "b82e595a5acb10408cbbfb68a13e56f6b2ad70fd94f26129091362fbbade22ef",
+  "prior_submission": {
+    "verified": false,
+    "changed_inputs": [
+      "dashboard/app.py",
+      "dashboard/assets.py",
+      "scripts/prepare_all.py",
+      "src/recommendation/recommender.py",
+      "src/recommendation/reranking.py"
+    ],
+    "first_failure": "ValueError: evidence changed or missing: dashboard/app.py"
+  },
+  "regression": {
+    "tests": "538",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  }
+}

@@ -1,4 +1,5 @@
 """Larger nested official CLIP benchmark with category errors and attribute AP."""
+from collections.abc import Sequence
 import hashlib,io,json,time
 from pathlib import Path
 from zipfile import ZipFile
@@ -14,7 +15,7 @@ from src.external_data.io import member_text
 from src.search.encoder import CLIPEncoder
 
 
-def nested_selection(partitions,old,limits,seed):
+def nested_selection(partitions: Sequence[Sequence[str]], old: dict[str, list[str]], limits: dict[str, int], seed: int) -> dict[str, list[str]]:
     rng=np.random.default_rng(seed);selected={}
     for split,limit in limits.items():
         prefix=old[split]
@@ -23,7 +24,7 @@ def nested_selection(partitions,old,limits,seed):
     return selected
 
 
-def retrieval(scores,labels,truth,duplicate):
+def retrieval(scores: np.ndarray, labels: np.ndarray, truth: int, duplicate: np.ndarray) -> tuple[float, float, int]:
     allowed=np.flatnonzero(~duplicate);order=allowed[np.argsort(-scores[allowed],kind='stable')[:10]]
     hits=labels[order]==truth;positions=np.flatnonzero(hits)
     relevant=int((labels[allowed]==truth).sum())
@@ -33,7 +34,21 @@ def retrieval(scores,labels,truth,duplicate):
     return float(mrr),ndcg,relevant
 
 
-def run():
+def attribute_archive(source: Path, configured: str | None = None) -> Path:
+    if configured is not None:
+        return source / configured
+    members = {PREFIX + 'Anno_coarse/list_attr_cloth.txt', PREFIX + 'Anno_coarse/list_attr_img.txt'}
+    matches = []
+    for path in source.glob('*.zip'):
+        with ZipFile(path) as archive:
+            if members.issubset(archive.namelist()):
+                matches.append(path)
+    if len(matches) != 1:
+        raise ValueError('set deepfashion.attributes_archive to the ZIP containing the two attribute annotations')
+    return matches[0]
+
+
+def run() -> None:
     spec,work,results=plan();source=Path(spec['source_dir']);local=work/'deepfashion';local.mkdir(exist_ok=True)
     oldspec=yaml.safe_load(Path('config/external_data.yaml').read_text())['deepfashion']
     old=json.loads((Path(spec['source_work'])/'deepfashion/selection.json').read_text())
@@ -64,7 +79,7 @@ def run():
                 if state['counts'][split]%1024==0 or state['counts'][split]==len(names):
                     arrays[split].flush();write_json(marker,state);print('DeepFashion',split,state['counts'][split],flush=True)
     class_vectors=encoder.encode_texts([f'a photo of a {name}' for name in classes])
-    attr_archive=source/'drive-download-20261114T051047Z-1-012.zip'
+    attr_archive = attribute_archive(source, spec['deepfashion'].get('attributes_archive'))
     attribute_text=member_text(attr_archive,PREFIX+'Anno_coarse/list_attr_cloth.txt')
     attributes=[' '.join(r[:-1]).replace('_',' ') for r in annotation_rows(attribute_text)]
     attribute_vectors=encoder.encode_texts([f'a photo of clothing with {name}' for name in attributes])
@@ -72,9 +87,9 @@ def run():
     with ZipFile(attr_archive) as z,z.open(PREFIX+'Anno_coarse/list_attr_img.txt') as incoming:
         declared=int(incoming.readline());incoming.readline();seen=0
         for raw in incoming:
-            name,values=raw.decode().split(maxsplit=1);seen+=1
+            name,label_text_row=raw.decode().split(maxsplit=1);seen+=1
             if name in wanted:
-                values=np.fromstring(values,sep=' ',dtype=np.int8)
+                values=np.fromstring(label_text_row,sep=' ',dtype=np.int8)
                 if len(values)!=len(attributes) or not np.isin(values,[-1,0,1]).all():raise ValueError('invalid attribute labels')
                 attr_labels[name]=values
         assert seen==declared and set(attr_labels)==wanted
@@ -83,7 +98,7 @@ def run():
     for split in ['val','test']:
         truth=np.array([labels[n] for n in selected[split]]);scores=arrays[split]@class_vectors.T
         order=np.argsort(-scores,axis=1,kind='stable');pred=order[:,0];correct=pred==truth
-        confusion=[]
+        confusion: list[dict] = []
         for a in range(len(classes)):
             for b in range(len(classes)):
                 count=int(((truth==a)&(pred==b)).sum())
@@ -95,7 +110,7 @@ def run():
                 i=start+j;dup=gallery_hashes==state['hashes'][split][i];duplicates+=int(dup.sum())
                 retrieval_values.append(retrieval(row,gallery_labels,truth[i],dup))
         gold=np.stack([attr_labels[n] for n in selected[split]]);attribute_scores=arrays[split]@attribute_vectors.T
-        aps=[]
+        aps: list[dict] = []
         for j,name in enumerate(attributes):
             valid=gold[:,j]!=0;y=gold[valid,j]==1;positive=int(y.sum())
             if positive and positive<len(y):

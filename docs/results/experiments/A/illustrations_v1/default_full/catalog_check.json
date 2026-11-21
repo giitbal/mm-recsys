@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "products": 50000,
+  "distinct_jpegs": 3134,
+  "overlap_with_legacy": 0,
+  "frozen_query_pngs": 800,
+  "api": "http://127.0.0.1:8000",
+  "storefront": "http://127.0.0.1:3000",
+  "query": {
+    "query_text": "검정 가방",
+    "top_k": 24
+  },
+  "distinct_jpegs_in_results": 14,
+  "dashboard_api_shop_identical": 24,
+  "clip_image_content_fingerprint": "6080b0327f5ef87e91701d74d6389295950e53e053894486e8991e4c7b377a21"
+}

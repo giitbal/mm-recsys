@@ -1,0 +1,10 @@
+{
+  "trigger_events": 10054,
+  "in_snapshot": 10054,
+  "snapshot_folds": {
+    "train": 0,
+    "valid": 0,
+    "test": 10054
+  },
+  "scope": "Counts by observed journal event ID, train and valid ID columns only. Test count by subtraction. Test labels unopened."
+}

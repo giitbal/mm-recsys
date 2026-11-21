@@ -9,6 +9,8 @@ import base64
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from src.common.artifacts import file_hash
+
 import requests
 import yaml
 from dotenv import dotenv_values
@@ -20,17 +22,21 @@ def settings(root: Path) -> dict:
     path = Path(os.getenv('CONFIG_PATH', 'config.yaml'))
     path = path if path.is_absolute() else root / path
     cfg = yaml.safe_load(path.read_text(encoding='utf-8'))
-    configured = Path(os.getenv('RESULTS_DIR', cfg['paths']['results_dir']))
+    scale = os.getenv('SCALE', cfg.get('scale', 'dev'))
+    paths = {**cfg['paths'], **cfg['paths'].get('by_scale', {}).get(scale, {})}
+    configured = Path(os.getenv('RESULTS_DIR', paths['results_dir']))
     defaults = dotenv_values(root / '.env') if (root / '.env').is_file() else {}
     api_url = (os.getenv('API_URL') or defaults.get('API_URL') or 'http://localhost:8000').rstrip('/')
     public_api_url = os.getenv('PUBLIC_API_URL') or defaults.get('PUBLIC_API_URL')
     if not public_api_url:
         port = os.getenv('API_PORT') or defaults.get('API_PORT') or '8000'
         public_api_url = f'http://localhost:{port}' if urlsplit(api_url).hostname == 'api-server' else api_url
-    return dict(results_dir=configured if configured.is_absolute() else root / configured,
+    reference = os.getenv('DASHBOARD_REFERENCE_REPORT')
+    return dict(reference_report=root / reference if reference else None,
+                results_dir=configured if configured.is_absolute() else root / configured,
                 api_url=api_url, public_api_url=public_api_url.rstrip('/'),
                 api_timeout=float(os.getenv('DASHBOARD_API_TIMEOUT', '10')),
-                scale=os.getenv('SCALE', cfg.get('scale', 'dev')))
+                scale=scale)
 
 
 def available_reports(root: Path) -> list[Path]:
@@ -62,6 +68,24 @@ def read_report(path: Path, root: Path) -> dict:
     if any(type(counts.get(key)) is not int or counts[key] < 0 for key in ('products', 'users', 'events')):
         raise ValueError('평가 데이터 개수가 없습니다.')
     return value
+
+
+def read_reference(path: Path) -> dict:
+    report = read_report(path, path.parent)
+    integration = report.get('integration', {})
+    sources = report.get('measurement_sources') or {}
+    measured = (report['acceptance'] == 'UNMEASURED'
+                and all(sources.get(key, {}).get('sha256') for key in ('quality', 'ab'))
+                and report.get('test_used_for_selection') is False)
+    integrated = (integration.get('stage') == 'INTEGRATE'
+                  and integration.get('frozen_quality', {}).get('source')
+                  and integration.get('checks', {}).get('ab_statistics', {}).get('source'))
+    if (report['scale'] != 'full' or report['split'] != 'test'
+            or not (measured or integrated) or report.get('ab', {}).get('status') != 'MEASURED'):
+        raise ValueError('full test 평가와 A/B 근거가 연결된 제출 보고서가 필요합니다.')
+    if path.with_suffix('.sha256').read_text().split() != [file_hash(path), path.name]:
+        raise ValueError('기준 보고서의 체크섬이 다릅니다.')
+    return report
 
 
 def search_payload(text: str, image: bytes | None, top_k: int) -> dict:

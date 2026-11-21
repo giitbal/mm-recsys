@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "data_models": "현재 배포와 제출 기준의 데이터·검색 번들·추천 모델이 일치합니다.",
+  "quality_source": "품질 측정 근거 · docs/results/experiments/A/pdf_completion_20261121/quality_full_test.json",
+  "charts": {
+    "검색": 1,
+    "추천": 1,
+    "A/B 실험": 2
+  },
+  "api": "http://127.0.0.1:18122/ready",
+  "scope": "Freshly trained full deployment, no runtime evaluation or A/B report. Final submitted default image rendered in Chromium."
+}

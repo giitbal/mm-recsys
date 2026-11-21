@@ -9,9 +9,9 @@ import plotly.graph_objects as go
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from dashboard.data import api_call, available_reports, ct_log, read_report, settings, search_payload
+from dashboard.data import api_call, available_reports, ct_log, read_reference, read_report, settings, search_payload
 from dashboard.explore import product_cards, data_tab, catalog_tab
-from dashboard.assets import ab_result
+from dashboard.assets import ab_result, different_recommendation_policy, reference_identity
 from dashboard.formatting import display_frame, display_value
 
 COLORS = dict(primary='#2563eb', baseline='#94a3b8', treatment='#0f766e', target='#e35d42')
@@ -46,7 +46,7 @@ def search_tab(report: dict, config: dict) -> None:
         fig.add_bar(name='CLIP', x=labels, y=[search['per_mode'][mode][key] for mode in modes], marker_color=COLORS['primary'])
         fig.add_bar(name='BM25', x=labels, y=[search['bm25'][mode].get(key) for mode in modes], marker_color=COLORS['baseline'])
         target = next(row['target'] for row in report['metrics'] if row['name'] == key)
-        fig.add_hline(y=target, line_dash='dash', line_color=COLORS['target'], annotation_text=f'기준 {display_value(target)}')
+        fig.add_hline(y=target, line_dash='dash', line_color=COLORS['target'], annotation_text=f'기준 {target:g}')
         st.plotly_chart(layout(fig, 'CLIP · BM25', LABELS[key]), use_container_width=True)
         st.caption('이미지 전용 입력에는 BM25가 적용되지 않습니다. ANN/exact 벡터 일치율은 relevance 품질과 별개입니다.')
         st.dataframe(display_frame(metric_table(report, ('mrr', 'ndcg_at_10'))), hide_index=True, use_container_width=True)
@@ -101,7 +101,7 @@ def recommendation_tab(report: dict, config: dict) -> None:
         fig = go.Figure(go.Bar(x=list(labels.values()), y=[rec['metrics'][name][key] for name in labels],
             marker_color=[COLORS['baseline'], '#64748b', COLORS['primary'], COLORS['treatment']]))
         target = next(row['target'] for row in report['metrics'] if row['name'] == key)
-        fig.add_hline(y=target, line_dash='dash', line_color=COLORS['target'], annotation_text=f'기준 {display_value(target)}')
+        fig.add_hline(y=target, line_dash='dash', line_color=COLORS['target'], annotation_text=f'기준 {target:g}')
         st.plotly_chart(layout(fig, '동일 사용자·정답·카탈로그 기준', LABELS[key]), use_container_width=True)
         cvr = rec['classification']['cvr']
         st.write(f"CVR AUC: {display_value(cvr['auc']) or '미측정'} · 클릭 노출 {cvr['samples']:,}개 · 구매 양성 {cvr['positives']:,}개")
@@ -154,6 +154,27 @@ def ab_tab(report: dict) -> None:
     for name, values, color in [('Control', control, COLORS['baseline']), ('Treatment', treatment, COLORS['treatment'])]:
         fig.add_bar(name=name, x=['CTR', 'CVR', '탐색 슬롯 비율'], y=[values['ctr'], values['cvr'], values['exploration_rate']], marker_color=color)
     st.plotly_chart(layout(fig, '관측 비율', '비율').update_yaxes(tickformat='.1%', hoverformat='.1%'), use_container_width=True)
+    effects = go.Figure()
+    for metric in ('ctr', 'cvr'):
+        estimate = ab['inference'].get(metric, {})
+        delta, interval = estimate.get('difference'), estimate.get('difference_ci95')
+        if delta is None or interval is None:
+            continue
+        low, high = interval
+        p_value = estimate.get('z_p_value')
+        label = 'p 미측정' if p_value is None else ('p < 0.001' if p_value < .001 else f'p = {p_value:.3f}')
+        effects.add_scatter(
+            x=[metric.upper()], y=[100 * delta], mode='markers+text', text=[label],
+            textposition='middle right', cliponaxis=False, showlegend=False,
+            marker=dict(size=10, color=COLORS['treatment']),
+            error_y=dict(type='data', symmetric=False, array=[100 * (high - delta)],
+                         arrayminus=[100 * (delta - low)]),
+            customdata=[[100 * low, 100 * high]],
+            hovertemplate='%{x} 차이 %{y:.3f}%p<br>95% CI [%{customdata[0]:.3f}, %{customdata[1]:.3f}]%p<extra></extra>')
+    if effects.data:
+        effects.add_hline(y=0, line_dash='dot', line_color=COLORS['target'])
+        st.plotly_chart(layout(effects, 'Treatment − Control · 사용자 단위 95% 신뢰구간과 양측 p-value', '차이 (%p)'),
+                        use_container_width=True)
     ci = inference.get('difference_ci95')
     if ci is not None:
         st.write(f'사용자 cluster CVR 차이 95% CI: [{ci[0] * 100:+.1f}, {ci[1] * 100:+.1f}]%p')
@@ -208,18 +229,24 @@ def main() -> None:
     st.markdown('<style>.block-container{padding-top:2rem;max-width:1400px}h1{letter-spacing:-.04em}div[data-testid="stMetric"]{padding:1rem;border-radius:.75rem}</style>', unsafe_allow_html=True)
     st.title('검색·추천 평가실')
     st.caption('고정된 평가 기준으로 검색, 추천, 실험과 시스템 상태를 확인합니다.')
-    st.caption('시간은 KST(UTC+9), 소수는 한 자리로 표시합니다. 작은 값은 과학적 표기법을 사용하며 판정은 원본 정밀도를 따릅니다.')
+    st.caption('시간은 KST(UTC+9), 요약 지표는 소수 한 자리로 표시합니다. 작은 값은 과학적 표기법을 사용하며 판정은 원본 정밀도를 따릅니다.')
     config = settings(Path(__file__).resolve().parents[1])
     files = available_reports(config['results_dir'])
+    reference = config['reference_report']
+    if reference and reference not in files:
+        files.append(reference)
     report = {}
+    selected_reference = False
     with st.sidebar:
         st.subheader('평가 결과')
         if files:
             preferred = next((i for split in ('test', 'valid') for i, path in enumerate(files)
-                              if path.name == f'evaluation_{config["scale"]}_{split}.json'), 0)
-            path = st.selectbox('결과 파일', files, index=preferred, format_func=lambda p: p.name)
+                              if path != reference and path.name == f'evaluation_{config["scale"]}_{split}.json'), 0)
+            path = st.selectbox('결과 파일', files, index=preferred,
+                                format_func=lambda p: '기준 측정 · full test' if p == reference else p.name)
+            selected_reference = path == reference
             try:
-                report = read_report(path, config['results_dir'])
+                report = read_reference(path) if selected_reference else read_report(path, config['results_dir'])
             except (OSError, ValueError, KeyError, TypeError) as error:
                 st.error(f'결과를 읽을 수 없습니다: {error}')
         else:
@@ -227,12 +254,29 @@ def main() -> None:
         st.button('결과 새로고침')
         st.markdown(f'[API 문서 열기]({config["public_api_url"]}/docs)')
     if report:
+        try:
+            historical_policy = different_recommendation_policy(report, config['results_dir'])
+        except (OSError, ValueError, TypeError) as error:
+            historical_policy = False
+            st.warning(f'배포 추천 정책의 측정 시점을 확인할 수 없습니다. {error}')
+        if historical_policy:
+            st.warning('표시된 성능 지표는 이전 추천 정책에서 측정했습니다. API 검사는 현재 배포의 추천 정책을 사용합니다.')
+        if selected_reference:
+            st.info('새 도안 카탈로그에서 측정한 full test 결과입니다.')
+            quality_source = report.get('measurement_sources', {}).get('quality') or report['integration']['frozen_quality']
+            st.caption(f"품질 측정 근거 · {quality_source['source']}")
+            try:
+                st.caption(reference_identity(report, config['results_dir']))
+            except (OSError, ValueError, KeyError, TypeError) as error:
+                st.warning(f'현재 배포와의 비교를 완료할 수 없습니다. {error}')
+        else:
+            st.caption(f'이 실행 경로의 평가 파일 · {path.name}')
         counts = report['data_counts']
         st.caption(f'{report["scale"].upper()} · {report["split"]} · 상품 {counts["products"]:,} · 사용자 {counts["users"]:,} · 이벤트 {counts["events"]:,}')
         a, b, c = st.columns(3)
         a.metric('측정 기준 판정', report['quality_status'])
         b.metric('측정 지표', f'{sum(row["value"] is not None for row in report["metrics"])}/{len(report["metrics"])}')
-        c.metric('최종 종합 품질', report['acceptance'])
+        c.metric('이전 정책의 최종 종합 품질' if historical_policy else '최종 종합 품질', report['acceptance'])
         if report.get('integration'):
             st.caption('full test와 필수 통합 검사 결과를 연결한 판정입니다. A/B의 양의 효과나 CT 모델 교체를 뜻하지 않습니다.')
             with st.expander('최종 통합 검사 근거'):
@@ -247,7 +291,23 @@ def main() -> None:
         recommendation_tab(report, config)
     with tabs[2]:
         try:
-            actual_ab = ab_result(config['results_dir'])
+            paired = report.get('ab', {}).get('status') == 'MEASURED'
+            actual_ab = None if paired else ab_result(config['results_dir'])
+            if actual_ab:
+                st.caption(f'저장된 초기 모델 합성 A/B · {actual_ab["source"]}')
+            elif paired:
+                ab_source = (report.get('measurement_sources', {}).get('ab')
+                             or report.get('integration', {}).get('checks', {}).get('ab_statistics'))
+                if ab_source:
+                    st.caption(f"선택한 보고서의 A/B 실험 · {ab_source['source']}")
+            elif reference and not selected_reference and report and not different_recommendation_policy(report, config['results_dir']):
+                archived = read_reference(reference)
+                if (not different_recommendation_policy(archived, config['results_dir'])
+                        and archived.get('ab', {}).get('status') == 'MEASURED'
+                        and report.get('data_fingerprint') == archived['data_fingerprint']
+                        and archived['recommendation']['models'] == report['recommendation'].get('models')):
+                    actual_ab = archived['ab']
+                    st.caption('현재 배포의 A/B 측정 전입니다. 같은 데이터와 모델에서 측정한 기준 실험을 표시합니다.')
             ab_tab(dict(report, ab=actual_ab) if actual_ab else report)
         except (OSError, ValueError, KeyError) as error:
             st.error(f'A/B 데이터 확인 실패: {error}')

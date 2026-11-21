@@ -1,0 +1,52 @@
+[
+  {
+    "step": "default",
+    "exit_code": 0,
+    "seconds": 12.156191455000226
+  },
+  {
+    "step": "storefront",
+    "exit_code": 0,
+    "seconds": 41.22594150900022
+  },
+  {
+    "step": "stop-simulator",
+    "exit_code": 0,
+    "seconds": 0.528150418000223
+  },
+  {
+    "step": "pause-other-stack",
+    "exit_code": 0,
+    "seconds": 0.10339343899977393
+  },
+  {
+    "step": "smoke",
+    "exit_code": 0,
+    "seconds": 33.218922653000845
+  },
+  {
+    "step": "resume-other-stack",
+    "exit_code": 0,
+    "seconds": 0.057941300000493356
+  },
+  {
+    "step": "verify-smoke",
+    "exit_code": 0,
+    "seconds": 0.6283495019997645
+  },
+  {
+    "step": "valid",
+    "exit_code": 0,
+    "seconds": 452.8049338539995
+  },
+  {
+    "step": "test",
+    "exit_code": 0,
+    "seconds": 470.1758033870001
+  },
+  {
+    "step": "verify-test",
+    "exit_code": 0,
+    "seconds": 3.6917318340001657
+  }
+]

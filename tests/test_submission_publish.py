@@ -28,12 +28,14 @@ def publication(tmp_path, monkeypatch):
     (tmp_path / 'weights.bin').write_bytes(b'frozen model')
     write_json(tmp_path / 'model.json', dict(version='frozen', hashes={'weights.bin': file_hash(tmp_path / 'weights.bin')}))
     models = {kind: dict(hashes={}) for kind in ('candidate', 'ranking', 'session')}
+    policy = {f'src/recommendation/{name}.py': name for name in ('recommender', 'reranking')}
     quality = dict(data_fingerprint='dataset', acceptance='UNMEASURED', metrics=[dict(name='auc', value=.9)],
         identity=dict(data_manifest_sha256=file_hash(tmp_path / 'data/split_manifest.json'),
-                      models={'model.json': file_hash(tmp_path / 'model.json')}),
+                      models={'model.json': file_hash(tmp_path / 'model.json')}, source_hashes=policy),
         recommendation=dict(models=models))
     write_json(tmp_path / 'evidence/quality_full_test.json', quality)
-    experiment = dict(identity=dict(data_fingerprint='dataset', bundle_metadata=models), days=30, run_id='run',
+    experiment = dict(identity=dict(data_fingerprint='dataset', bundle_metadata=models, source_hashes=policy), days=30, run_id='run', seed=42,
+        strategies={'control': 'popularity', 'treatment': 'full_pipeline'}, denominators={'cvr': 'purchases/impressions'},
         arms={arm: dict(users=5000, cvr=.01, arm_statistics={}) for arm in ('control', 'treatment')},
         inference={}, limitations=['synthetic'])
     write_json(tmp_path / 'ab.json', experiment)
@@ -48,13 +50,13 @@ def publication(tmp_path, monkeypatch):
                  for name, value in [('auc', .9), ('candidate_count', 300)]})
     write_json(tmp_path / 'docs/results/final_acceptance.json', acceptance)
     write_json(tmp_path / 'submission.json', dict(input_hashes={}, commands={}, evidence_dir='evidence', integration_checks='checks.json'))
-    monkeypatch.setattr(publisher, 'load_config', lambda: cfg)
+    monkeypatch.setattr(publisher, 'full_config', lambda: cfg)
     # The aggregator's population/training/recipe contracts are tested in test_submission.py.
     monkeypatch.setattr(publisher, 'assemble_integration', lambda *args: copy.deepcopy(acceptance))
     return tmp_path
 
 
-@pytest.mark.parametrize('defect', [None, 'changed_source', 'changed_model', 'changed_weights', 'changed_index', 'active_release', 'wrong_ab_dataset', 'wrong_ab_model', 'unmeasured', 'escape', 'overwrite_quality'])
+@pytest.mark.parametrize('defect', [None, 'changed_source', 'changed_model', 'changed_weights', 'changed_index', 'active_release', 'wrong_ab_dataset', 'wrong_ab_model', 'wrong_ab_policy', 'unmeasured', 'escape', 'overwrite_quality'])
 def test_publish_validates_before_writing_and_preserves_quality(publication, defect):
     root = publication
     frozen = (root / 'evidence/quality_full_test.json').read_bytes()
@@ -69,10 +71,12 @@ def test_publish_validates_before_writing_and_preserves_quality(publication, def
         (root / 'v1.0/item_index.faiss').write_bytes(b'changed index')
     elif defect == 'active_release':
         write_json(root / 'registry.json', dict(active='v1.1'))
-    elif defect in ('wrong_ab_dataset', 'wrong_ab_model'):
+    elif defect in ('wrong_ab_dataset', 'wrong_ab_model', 'wrong_ab_policy'):
         ab = json.loads((root / 'ab.json').read_text())
         if defect == 'wrong_ab_dataset':
             ab['identity']['data_fingerprint'] = 'other'
+        elif defect == 'wrong_ab_policy':
+            ab['identity']['source_hashes']['src/recommendation/reranking.py'] = 'earlier-policy'
         else:
             ab['identity']['bundle_metadata']['ranking']['hashes'] = {'weights': 'other'}
         write_json(root / 'ab.json', ab)
@@ -92,6 +96,9 @@ def test_publish_validates_before_writing_and_preserves_quality(publication, def
     else:
         report = publisher.publish(root, 'submission.json', output)
         assert report['acceptance'] == 'PASS' and report['ab']['status'] == 'MEASURED'
+        experiment = json.loads((root / 'ab.json').read_text())
+        assert all(report['ab'][key] == experiment[key] for key in ('seed', 'strategies', 'denominators'))
+        assert output.with_suffix('.sha256').read_text() == f'{file_hash(output)}  {output.name}\n'
         assert report['metrics'] == json.loads(frozen)['metrics']
         assert report['integration']['checks']['ct_retrain_and_rollback']['sha256']
         assert report['integration']['ct']['retraining'] == 'RETAINED'

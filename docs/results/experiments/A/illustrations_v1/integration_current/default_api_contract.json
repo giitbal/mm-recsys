@@ -1,0 +1,291 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "omitted": [
+    "top_k",
+    "top_n"
+  ],
+  "image_sha256": "005654a92e9c2eea32280c9bb9a5eee6103de9c98c36f5c53957cd6994b69894",
+  "responses": {
+    "text": {
+      "search_type": "text",
+      "results": [
+        {
+          "product_id": "P000695",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 102000.0
+        },
+        {
+          "product_id": "P001942",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 22000.0
+        },
+        {
+          "product_id": "P002680",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 37000.0
+        },
+        {
+          "product_id": "P004668",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 34000.0
+        },
+        {
+          "product_id": "P004921",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 114000.0
+        },
+        {
+          "product_id": "P005112",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 37000.0
+        },
+        {
+          "product_id": "P007105",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 32000.0
+        },
+        {
+          "product_id": "P007586",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 179000.0
+        },
+        {
+          "product_id": "P008056",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 65000.0
+        },
+        {
+          "product_id": "P010751",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.8681219816207886,
+          "price": 101000.0
+        }
+      ],
+      "latency_ms": 129.5304519990168,
+      "total_count": 50000
+    },
+    "image": {
+      "search_type": "image",
+      "results": [
+        {
+          "product_id": "P000001",
+          "name": "갈색 레귤러핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 137000.0
+        },
+        {
+          "product_id": "P005833",
+          "name": "갈색 슬림핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 102000.0
+        },
+        {
+          "product_id": "P013633",
+          "name": "갈색 슬림핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 134000.0
+        },
+        {
+          "product_id": "P025105",
+          "name": "갈색 슬림핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 73000.0
+        },
+        {
+          "product_id": "P027937",
+          "name": "갈색 오버핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 171000.0
+        },
+        {
+          "product_id": "P028873",
+          "name": "갈색 릴랙스핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 98000.0
+        },
+        {
+          "product_id": "P043537",
+          "name": "갈색 오버핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 20000.0
+        },
+        {
+          "product_id": "P044089",
+          "name": "갈색 슬림핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 60000.0
+        },
+        {
+          "product_id": "P044281",
+          "name": "갈색 슬림핏 토트백",
+          "score": 0.9999998807907104,
+          "price": 122000.0
+        },
+        {
+          "product_id": "P017307",
+          "name": "갈색 릴랙스핏 토트백",
+          "score": 0.9897246360778809,
+          "price": 158000.0
+        }
+      ],
+      "latency_ms": 266.89490100034163,
+      "total_count": 50000
+    },
+    "hybrid": {
+      "search_type": "hybrid",
+      "results": [
+        {
+          "product_id": "P000695",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 102000.0
+        },
+        {
+          "product_id": "P001942",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 22000.0
+        },
+        {
+          "product_id": "P002680",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 37000.0
+        },
+        {
+          "product_id": "P004668",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 34000.0
+        },
+        {
+          "product_id": "P004921",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 114000.0
+        },
+        {
+          "product_id": "P005112",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 37000.0
+        },
+        {
+          "product_id": "P007105",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 32000.0
+        },
+        {
+          "product_id": "P007586",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 179000.0
+        },
+        {
+          "product_id": "P008056",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 65000.0
+        },
+        {
+          "product_id": "P010751",
+          "name": "검정 레귤러핏 토트백",
+          "score": 0.7390289902687073,
+          "price": 101000.0
+        }
+      ],
+      "latency_ms": 141.86174800124718,
+      "total_count": 50000
+    },
+    "recommendation": {
+      "user_id": "U1234",
+      "recommendations": [
+        {
+          "product_id": "P000376",
+          "score": 0.40217391304347827,
+          "reason": "MAB 탐색",
+          "is_exploration": true
+        },
+        {
+          "product_id": "P000628",
+          "score": 0.0,
+          "reason": "MAB 탐색",
+          "is_exploration": true
+        },
+        {
+          "product_id": "P000022",
+          "score": 1.0201863354037266,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P001816",
+          "score": 0.9906832298136645,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000229",
+          "score": 0.9301242236024845,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000255",
+          "score": 0.9078674948240165,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000068",
+          "score": 0.8928571428571429,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000044",
+          "score": 0.8084886128364389,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000462",
+          "score": 0.8856107660455487,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000301",
+          "score": 0.8561076604554865,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        }
+      ],
+      "pipeline_latency": {
+        "candidate_ms": 10.14119699902949,
+        "ranking_ms": 8.757996001804713,
+        "reranking_ms": 10.909495998930652,
+        "total_ms": 29.808688999764854
+      },
+      "session_context": {
+        "recent_clicks": [],
+        "session_interest": null
+      }
+    }
+  },
+  "checks": {
+    "api_schemas": "PASS"
+  }
+}

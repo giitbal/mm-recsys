@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/mm-complete-assemble.py", line 27, in <module>
+    collect_integration_checks(Path('.'),execution,test['data_fingerprint'])
+  File "/home/peachpetal/ecommerce/mm-recsys/scripts/check_submission_evidence.py", line 287, in collect_integration_checks
+    validate_separated_ct(root, measured, data_fingerprint)
+  File "/home/peachpetal/ecommerce/mm-recsys/scripts/check_submission_evidence.py", line 321, in validate_separated_ct
+    check_hashes(root, natural['source_hashes'])
+  File "/home/peachpetal/ecommerce/mm-recsys/scripts/check_submission_evidence.py", line 37, in check_hashes
+    raise ValueError(f'evidence changed or missing: {name}')
+ValueError: evidence changed or missing: docker/simulator.py

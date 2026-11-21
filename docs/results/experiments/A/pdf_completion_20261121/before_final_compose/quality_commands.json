@@ -1,0 +1,42 @@
+[
+  {
+    "step": "stop-simulator",
+    "exit_code": 0,
+    "seconds": 0.810816764831543
+  },
+  {
+    "step": "pause-isolated-training",
+    "exit_code": 0,
+    "seconds": 0.05922222137451172
+  },
+  {
+    "step": "smoke",
+    "exit_code": 0,
+    "seconds": 32.38364052772522
+  },
+  {
+    "step": "resume-isolated-training",
+    "exit_code": 0,
+    "seconds": 0.04720330238342285
+  },
+  {
+    "step": "verify-smoke",
+    "exit_code": 0,
+    "seconds": 0.5365681648254395
+  },
+  {
+    "step": "quality-valid",
+    "exit_code": 0,
+    "seconds": 533.6561584472656
+  },
+  {
+    "step": "quality-test",
+    "exit_code": 0,
+    "seconds": 460.8706111907959
+  },
+  {
+    "step": "verify-test",
+    "exit_code": 0,
+    "seconds": 2.6678619384765625
+  }
+]

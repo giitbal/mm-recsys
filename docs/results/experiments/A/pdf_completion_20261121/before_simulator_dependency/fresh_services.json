@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "services": {
+    "api-server": {
+      "State": "running",
+      "Health": "healthy"
+    },
+    "dashboard": {
+      "State": "running",
+      "Health": "healthy"
+    },
+    "redis": {
+      "State": "running",
+      "Health": "healthy"
+    },
+    "simulator": {
+      "State": "running",
+      "Health": ""
+    }
+  },
+  "ct_automatic_worker": true,
+  "recent_simulator_logs": [
+    "simulator-1  | [시뮬레이터 CT 연결] 주기적 모니터링·설정 임계치 기반 재학습을 함께 시작합니다.",
+    "simulator-1  | [CT 준비] API 준비 대기 / URL=http://127.0.0.1:8000",
+    "simulator-1  | [CT 시작] API 준비 완료 / 모니터링 및 임계치 기반 재학습 작업자를 시작합니다.",
+    "simulator-1  | [시뮬레이터 생성] 행동 로그 100건 생성 / 0.2초 / 597건/초 / CT 신규 로그=71건 / 합성 추천 흐름=1회",
+    "simulator-1  | [CT 기록] 원본 JSON: audit/runtime/full/ct-cli/a9cb1ef01d1b441d9223a9a8949fb086.jsonl",
+    "simulator-1  | [CT 시작] 모니터링 주기=60초 / 재학습 임계치=10000건 / 재학습 활성=True / 활성 모델=v1.0",
+    "simulator-1  | [CT Monitor ] 현재 HitRate@50: 미측정 (성숙한 관측 표본 부족) (임계값: 0.2) / CTR: 미측정 (성숙한 관측 표본 부족)",
+    "simulator-1  | [CT 대기] 신규 로그=213건 / 임계치=10,000건"
+  ]
+}

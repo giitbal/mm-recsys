@@ -14,6 +14,7 @@ from PIL import Image, ImageEnhance
 from src.common.artifacts import file_hash, fingerprint, write_json
 from src.common.config import load_config
 from src.simulator.catalog import render_product
+from src.simulator.generate import generation_identity
 from src.search.text import ALIASES, PREPROCESS_VERSION
 
 QUERY_VERSION = 'observable-query-v1'
@@ -24,6 +25,8 @@ AUGMENTATION = {'rotation_degrees': 6, 'translate_pixels': 4, 'brightness': [0.9
 def freeze_queries(cfg: dict) -> Path:
     root = Path(cfg['paths']['data_dir']); catalog = root/'products.parquet'
     dataset = json.loads((root/'split_manifest.json').read_text())
+    if dataset['generation_fingerprint'] != fingerprint(generation_identity(cfg)):
+        raise ValueError('query dataset differs from the configured simulator image recipe or seed')
     if file_hash(catalog) != dataset['file_hashes']['products.parquet']:
         raise ValueError('query catalog differs from frozen dataset')
     spec = cfg['search']['evaluation']
@@ -105,7 +108,7 @@ def main() -> None:
     summary = {'scope': 'frozen before quality evaluation', 'path': str(folder),
                'manifest_sha256': file_hash(folder/'manifest.json'),
                'fingerprint': manifest['fingerprint'], 'identity': manifest['identity'], 'counts': manifest['counts']}
-    write_json(Path(f'docs/results/search_queries_{cfg["scale"]}.json'), summary)
+    write_json(Path(cfg['paths']['results_dir']) / f'search_queries_{cfg["scale"]}.json', summary)
     log('검색 평가 쿼리', '결과', f"규모={summary.get('scale', '설정 참조')} / 판정={summary.get('status', '원본 JSON 참조')}", status='완료')
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 

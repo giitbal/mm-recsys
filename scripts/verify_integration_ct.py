@@ -127,8 +127,9 @@ def verify(url: str, output: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--api-url', default='http://127.0.0.1:8000')
-    parser.add_argument('--output', type=Path, default=Path('docs/results/integration/ct_full.json'))
+    parser.add_argument('--output', type=Path, default=None)
     args = parser.parse_args()
+    args.output = args.output or Path(load_config()['paths']['results_dir']) / 'integration/ct_full.json'
     report = verify(args.api_url.rstrip('/'), args.output)
     log('CT', 'full 검사', f"판정={report['status']} / 실제 재학습={report['retraining']['status']} / 결과={args.output}", status='완료')
     emit_json(report)

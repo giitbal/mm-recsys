@@ -11,15 +11,16 @@ scales:
     n_users: 10000
     n_events: 1000000
 paths:
-  data_dir: data/dev-v44
-  model_dir: models/dev-v44
-  results_dir: docs/results
-  split_dir: data/dev-v44/split
+  data_dir: data/dev-illustrations-v1
+  model_dir: models/dev-illustrations-v1
+  results_dir: docs/results/illustrations-v1/dev
+  split_dir: data/dev-illustrations-v1/split
   by_scale:
     full:
-      data_dir: data/full-v44
-      split_dir: data/full-v44/split
-      model_dir: models/full-v44
+      data_dir: data/full-illustrations-v1
+      split_dir: data/full-illustrations-v1/split
+      results_dir: docs/results/illustrations-v1/full
+      model_dir: models/full-illustrations-v1
 simulator:
   n_products: 50000
   n_users: 10000
@@ -106,7 +107,7 @@ simulator:
   cold_user_ratio: 0.03
   cold_max_events: 3
   impressions_per_view: 4
-  image_variants: 8
+  image_variants: 24
   transitions:
     search:
       view: 1.0
@@ -227,6 +228,7 @@ simulator:
     accessories:
     - 10000
     - 180000
+  image_recipe: illustrations-v1
 search:
   clip_model: openai/clip-vit-base-patch32
   batch_size: 32

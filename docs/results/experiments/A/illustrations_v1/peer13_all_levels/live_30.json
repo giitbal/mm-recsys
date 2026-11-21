@@ -1,0 +1,4946 @@
+{
+  "status": "PASS",
+  "recorded_at": "2026-11-21T07:46:07.847291+00:00",
+  "previous_sample": "docs/results/experiments/A/illustrations_v1/peer_review_20261121/sample_30.json",
+  "previous_sha256": "9f17608e3fcdafbcbd958ad4a387995a99aed289fd76b40354e02156118580f9",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "reference_time": "2026-01-01T00:00:00+00:00",
+  "api_sources": {
+    "src/recommendation/reranking.py": "85d31eb0c3e911811b009f2319c9c4fa3c506482d7574ba42ac7d6fab77b1c56",
+    "src/recommendation/recommender.py": "ca5cb1c56877fa47f4e988e6f26c8168dbf5c2089b2e4109b7926c1646e0cd54",
+    "scripts/verify_peer_review.py": "b5348e421afee8aa8fc2b02ec1f69855cfc54af564aa9ef85d11e8902b9da825"
+  },
+  "users": 30,
+  "before": {
+    "category_l1": 24,
+    "category_l2": 18,
+    "category_l3": 0
+  },
+  "after": {
+    "category_l1": 0,
+    "category_l2": 0,
+    "category_l3": 0
+  },
+  "sample": [
+    {
+      "user": "U006437",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "bottoms",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "outdoor",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shorts",
+            "shirts"
+          ],
+          "category_l3": [
+            "shirt",
+            "shirt",
+            "boots",
+            "shirt",
+            "shirt",
+            "polo shirt",
+            "shirt",
+            "shirt",
+            "bermuda shorts",
+            "shirt"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "bottoms",
+            "tops",
+            "tops",
+            "bottoms",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "outdoor",
+            "shirts",
+            "shirts",
+            "shorts",
+            "shirts",
+            "shirts",
+            "shorts",
+            "shirts"
+          ],
+          "category_l3": [
+            "shirt",
+            "shirt",
+            "boots",
+            "shirt",
+            "shirt",
+            "bermuda shorts",
+            "shirt",
+            "shirt",
+            "bermuda shorts",
+            "shirt"
+          ]
+        },
+        "ids": [
+          "P020867",
+          "P000165",
+          "P000898",
+          "P000084",
+          "P000465",
+          "P003089",
+          "P004271",
+          "P002760",
+          "P026760",
+          "P003922"
+        ],
+        "exploration": 2,
+        "request_id": "1af8b8f2e8a2450ba5bd54126bc57ede",
+        "pass": true
+      }
+    },
+    {
+      "user": "U005255",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 10,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "jackets",
+            "warm",
+            "jackets",
+            "jackets",
+            "warm",
+            "jackets",
+            "jackets",
+            "warm",
+            "jackets"
+          ],
+          "category_l3": [
+            "bomber jacket",
+            "bomber jacket",
+            "fleece jacket",
+            "bomber jacket",
+            "bomber jacket",
+            "puffer jacket",
+            "bomber jacket",
+            "bomber jacket",
+            "puffer jacket",
+            "bomber jacket"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "warm",
+            "casual",
+            "jackets",
+            "jackets",
+            "knitwear",
+            "jackets",
+            "jackets",
+            "outdoor",
+            "jackets"
+          ],
+          "category_l3": [
+            "bomber jacket",
+            "puffer jacket",
+            "t-shirt",
+            "bomber jacket",
+            "bomber jacket",
+            "cardigan",
+            "bomber jacket",
+            "bomber jacket",
+            "sandals",
+            "bomber jacket"
+          ]
+        },
+        "ids": [
+          "P044574",
+          "P012861",
+          "P001816",
+          "P001316",
+          "P001299",
+          "P000068",
+          "P000926",
+          "P001207",
+          "P000022",
+          "P002833"
+        ],
+        "exploration": 2,
+        "request_id": "2423802f03324ecab944689d7b8c4d18",
+        "pass": true
+      }
+    },
+    {
+      "user": "U004320",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "footwear",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts"
+          ],
+          "category_l3": [
+            "blouse",
+            "blouse",
+            "canvas shoes",
+            "blouse",
+            "blouse",
+            "polo shirt",
+            "blouse",
+            "blouse",
+            "canvas shoes",
+            "blouse"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts"
+          ],
+          "category_l3": [
+            "blouse",
+            "blouse",
+            "canvas shoes",
+            "blouse",
+            "blouse",
+            "canvas shoes",
+            "blouse",
+            "blouse",
+            "slip-on shoes",
+            "blouse"
+          ]
+        },
+        "ids": [
+          "P042433",
+          "P033482",
+          "P000167",
+          "P000893",
+          "P001257",
+          "P002839",
+          "P003015",
+          "P002884",
+          "P044545",
+          "P003124"
+        ],
+        "exploration": 2,
+        "request_id": "3e8a650c38d84d6ab9c555527e03a3f3",
+        "pass": true
+      }
+    },
+    {
+      "user": "U008566",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "bottoms",
+            "bottoms",
+            "bottoms",
+            "accessories",
+            "bottoms",
+            "bottoms",
+            "bottoms",
+            "bottoms"
+          ],
+          "category_l2": [
+            "skirts",
+            "skirts",
+            "skirts",
+            "skirts",
+            "skirts",
+            "bags",
+            "skirts",
+            "skirts",
+            "shorts",
+            "skirts"
+          ],
+          "category_l3": [
+            "mini skirt",
+            "mini skirt",
+            "long skirt",
+            "mini skirt",
+            "mini skirt",
+            "tote bag",
+            "mini skirt",
+            "mini skirt",
+            "denim shorts",
+            "mini skirt"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "accessories",
+            "bottoms",
+            "bottoms",
+            "accessories",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms"
+          ],
+          "category_l2": [
+            "skirts",
+            "skirts",
+            "bags",
+            "skirts",
+            "skirts",
+            "bags",
+            "skirts",
+            "skirts",
+            "knitwear",
+            "skirts"
+          ],
+          "category_l3": [
+            "mini skirt",
+            "mini skirt",
+            "tote bag",
+            "mini skirt",
+            "mini skirt",
+            "tote bag",
+            "mini skirt",
+            "mini skirt",
+            "sweater",
+            "mini skirt"
+          ]
+        },
+        "ids": [
+          "P006337",
+          "P015641",
+          "P001465",
+          "P000034",
+          "P000330",
+          "P005927",
+          "P002223",
+          "P001032",
+          "P005220",
+          "P006036"
+        ],
+        "exploration": 2,
+        "request_id": "15bfa8f2bc934646aeb4c3302dcfb318",
+        "pass": true
+      }
+    },
+    {
+      "user": "U000890",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "accessories",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms"
+          ],
+          "category_l2": [
+            "trousers",
+            "trousers",
+            "small",
+            "trousers",
+            "trousers",
+            "casual",
+            "trousers",
+            "trousers",
+            "casual",
+            "trousers"
+          ],
+          "category_l3": [
+            "cargo pants",
+            "cargo pants",
+            "belt",
+            "cargo pants",
+            "cargo pants",
+            "hoodie",
+            "cargo pants",
+            "cargo pants",
+            "hoodie",
+            "cargo pants"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "accessories",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms"
+          ],
+          "category_l2": [
+            "trousers",
+            "trousers",
+            "small",
+            "trousers",
+            "trousers",
+            "casual",
+            "trousers",
+            "trousers",
+            "casual",
+            "trousers"
+          ],
+          "category_l3": [
+            "cargo pants",
+            "cargo pants",
+            "belt",
+            "cargo pants",
+            "cargo pants",
+            "hoodie",
+            "cargo pants",
+            "cargo pants",
+            "hoodie",
+            "cargo pants"
+          ]
+        },
+        "ids": [
+          "P019325",
+          "P005631",
+          "P000033",
+          "P000239",
+          "P000095",
+          "P000625",
+          "P000256",
+          "P001082",
+          "P000627",
+          "P005831"
+        ],
+        "exploration": 2,
+        "request_id": "b38561dd5d7b48bdac72ed38a5c2011a",
+        "pass": true
+      }
+    },
+    {
+      "user": "U000940",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms"
+          ],
+          "category_l2": [
+            "shorts",
+            "shorts",
+            "knitwear",
+            "shorts",
+            "shorts",
+            "knitwear",
+            "shorts",
+            "shorts",
+            "knitwear",
+            "shorts"
+          ],
+          "category_l3": [
+            "bermuda shorts",
+            "bermuda shorts",
+            "cardigan",
+            "bermuda shorts",
+            "bermuda shorts",
+            "cardigan",
+            "bermuda shorts",
+            "bermuda shorts",
+            "cardigan",
+            "bermuda shorts"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms"
+          ],
+          "category_l2": [
+            "shorts",
+            "shorts",
+            "knitwear",
+            "shorts",
+            "shorts",
+            "knitwear",
+            "shorts",
+            "shorts",
+            "knitwear",
+            "shorts"
+          ],
+          "category_l3": [
+            "bermuda shorts",
+            "bermuda shorts",
+            "cardigan",
+            "bermuda shorts",
+            "bermuda shorts",
+            "cardigan",
+            "bermuda shorts",
+            "bermuda shorts",
+            "cardigan",
+            "bermuda shorts"
+          ]
+        },
+        "ids": [
+          "P022476",
+          "P000793",
+          "P000068",
+          "P001549",
+          "P001045",
+          "P000349",
+          "P002494",
+          "P003202",
+          "P000489",
+          "P002277"
+        ],
+        "exploration": 2,
+        "request_id": "11fb8f0785d84affbb36d696793ada34",
+        "pass": true
+      }
+    },
+    {
+      "user": "U001825",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 7,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "bottoms",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "knitwear",
+            "knitwear",
+            "shorts",
+            "knitwear",
+            "knitwear",
+            "knitwear",
+            "knitwear",
+            "knitwear",
+            "shirts",
+            "knitwear"
+          ],
+          "category_l3": [
+            "knitted vest",
+            "knitted vest",
+            "bermuda shorts",
+            "knitted vest",
+            "knitted vest",
+            "cardigan",
+            "knitted vest",
+            "knitted vest",
+            "polo shirt",
+            "knitted vest"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "bottoms",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "accessories",
+            "tops"
+          ],
+          "category_l2": [
+            "knitwear",
+            "shirts",
+            "shorts",
+            "knitwear",
+            "knitwear",
+            "formal",
+            "knitwear",
+            "knitwear",
+            "small",
+            "knitwear"
+          ],
+          "category_l3": [
+            "knitted vest",
+            "polo shirt",
+            "bermuda shorts",
+            "knitted vest",
+            "knitted vest",
+            "heels",
+            "knitted vest",
+            "knitted vest",
+            "belt",
+            "knitted vest"
+          ]
+        },
+        "ids": [
+          "P019762",
+          "P015466",
+          "P001549",
+          "P001692",
+          "P000624",
+          "P005629",
+          "P006135",
+          "P002574",
+          "P010354",
+          "P007167"
+        ],
+        "exploration": 2,
+        "request_id": "9b0a631187db45adafd7dcc707862605",
+        "pass": true
+      }
+    },
+    {
+      "user": "U008226",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "bottoms",
+            "outerwear"
+          ],
+          "category_l2": [
+            "warm",
+            "warm",
+            "outdoor",
+            "warm",
+            "warm",
+            "casual",
+            "warm",
+            "warm",
+            "trousers",
+            "warm"
+          ],
+          "category_l3": [
+            "padded vest",
+            "padded vest",
+            "sandals",
+            "padded vest",
+            "padded vest",
+            "t-shirt",
+            "padded vest",
+            "padded vest",
+            "chinos",
+            "padded vest"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear"
+          ],
+          "category_l2": [
+            "warm",
+            "warm",
+            "outdoor",
+            "warm",
+            "warm",
+            "casual",
+            "warm",
+            "warm",
+            "knitwear",
+            "warm"
+          ],
+          "category_l3": [
+            "padded vest",
+            "padded vest",
+            "sandals",
+            "padded vest",
+            "padded vest",
+            "t-shirt",
+            "padded vest",
+            "padded vest",
+            "knitted vest",
+            "padded vest"
+          ]
+        },
+        "ids": [
+          "P039596",
+          "P004728",
+          "P000022",
+          "P000551",
+          "P000823",
+          "P001816",
+          "P002166",
+          "P001962",
+          "P000255",
+          "P005100"
+        ],
+        "exploration": 2,
+        "request_id": "787e41a6410b4503967e959bc9ef36d3",
+        "pass": true
+      }
+    },
+    {
+      "user": "U007850",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "bottoms",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "jackets",
+            "outdoor",
+            "jackets",
+            "jackets",
+            "casual",
+            "jackets",
+            "jackets",
+            "trousers",
+            "jackets"
+          ],
+          "category_l3": [
+            "bomber jacket",
+            "bomber jacket",
+            "sandals",
+            "bomber jacket",
+            "bomber jacket",
+            "t-shirt",
+            "bomber jacket",
+            "bomber jacket",
+            "chinos",
+            "bomber jacket"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "knitwear",
+            "jackets",
+            "jackets",
+            "outdoor",
+            "jackets",
+            "jackets",
+            "knitwear",
+            "jackets",
+            "jackets"
+          ],
+          "category_l3": [
+            "bomber jacket",
+            "cardigan",
+            "bomber jacket",
+            "bomber jacket",
+            "sandals",
+            "bomber jacket",
+            "bomber jacket",
+            "knitted vest",
+            "bomber jacket",
+            "bomber jacket"
+          ]
+        },
+        "ids": [
+          "P004828",
+          "P000068",
+          "P002272",
+          "P002250",
+          "P000022",
+          "P000149",
+          "P003068",
+          "P000255",
+          "P000619",
+          "P001815"
+        ],
+        "exploration": 2,
+        "request_id": "d250d45353804ea79f999a9f282b476d",
+        "pass": true
+      }
+    },
+    {
+      "user": "U006959",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 10,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories"
+          ],
+          "category_l2": [
+            "bags",
+            "bags",
+            "small",
+            "bags",
+            "bags",
+            "small",
+            "bags",
+            "bags",
+            "small",
+            "bags"
+          ],
+          "category_l3": [
+            "crossbody bag",
+            "crossbody bag",
+            "belt",
+            "crossbody bag",
+            "crossbody bag",
+            "scarf",
+            "crossbody bag",
+            "crossbody bag",
+            "belt",
+            "crossbody bag"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "accessories",
+            "accessories",
+            "outerwear",
+            "accessories",
+            "accessories",
+            "bottoms",
+            "accessories",
+            "accessories",
+            "bottoms",
+            "accessories"
+          ],
+          "category_l2": [
+            "bags",
+            "small",
+            "coats",
+            "bags",
+            "bags",
+            "trousers",
+            "bags",
+            "bags",
+            "trousers",
+            "bags"
+          ],
+          "category_l3": [
+            "crossbody bag",
+            "scarf",
+            "long coat",
+            "crossbody bag",
+            "crossbody bag",
+            "jeans",
+            "crossbody bag",
+            "crossbody bag",
+            "jeans",
+            "crossbody bag"
+          ]
+        },
+        "ids": [
+          "P017588",
+          "P013781",
+          "P007928",
+          "P000051",
+          "P000029",
+          "P007090",
+          "P001734",
+          "P001550",
+          "P011872",
+          "P004754"
+        ],
+        "exploration": 2,
+        "request_id": "3c03459414634439a8b6f391ba31162b",
+        "pass": true
+      }
+    },
+    {
+      "user": "U001280",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear"
+          ],
+          "category_l2": [
+            "outdoor",
+            "outdoor",
+            "casual",
+            "outdoor",
+            "outdoor",
+            "shirts",
+            "outdoor",
+            "outdoor",
+            "casual",
+            "outdoor"
+          ],
+          "category_l3": [
+            "sandals",
+            "sandals",
+            "slip-on shoes",
+            "sandals",
+            "sandals",
+            "shirt",
+            "sandals",
+            "sandals",
+            "slip-on shoes",
+            "sandals"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "bottoms",
+            "footwear"
+          ],
+          "category_l2": [
+            "outdoor",
+            "outdoor",
+            "shirts",
+            "outdoor",
+            "outdoor",
+            "casual",
+            "outdoor",
+            "outdoor",
+            "trousers",
+            "outdoor"
+          ],
+          "category_l3": [
+            "sandals",
+            "sandals",
+            "shirt",
+            "sandals",
+            "sandals",
+            "t-shirt",
+            "sandals",
+            "sandals",
+            "cargo pants",
+            "sandals"
+          ]
+        },
+        "ids": [
+          "P010767",
+          "P033067",
+          "P003109",
+          "P001152",
+          "P001266",
+          "P001816",
+          "P001209",
+          "P003171",
+          "P024572",
+          "P000769"
+        ],
+        "exploration": 2,
+        "request_id": "dfd496c176dc47ab95f0d30cea61a8aa",
+        "pass": true
+      }
+    },
+    {
+      "user": "U002011",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 7,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "shirts",
+            "casual",
+            "casual",
+            "shirts",
+            "casual"
+          ],
+          "category_l3": [
+            "sweatshirt",
+            "sweatshirt",
+            "canvas shoes",
+            "sweatshirt",
+            "sweatshirt",
+            "shirt",
+            "sweatshirt",
+            "sweatshirt",
+            "shirt",
+            "sweatshirt"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "bottoms",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops"
+          ],
+          "category_l2": [
+            "casual",
+            "casual",
+            "trousers",
+            "casual",
+            "casual",
+            "outdoor",
+            "casual",
+            "casual",
+            "formal",
+            "casual"
+          ],
+          "category_l3": [
+            "sweatshirt",
+            "sweatshirt",
+            "chinos",
+            "sweatshirt",
+            "sweatshirt",
+            "sandals",
+            "sweatshirt",
+            "sweatshirt",
+            "heels",
+            "sweatshirt"
+          ]
+        },
+        "ids": [
+          "P039167",
+          "P038483",
+          "P000229",
+          "P000281",
+          "P000314",
+          "P000022",
+          "P000768",
+          "P000500",
+          "P000420",
+          "P002435"
+        ],
+        "exploration": 2,
+        "request_id": "9e29c4a73eec419d82fd1af674b8b2c9",
+        "pass": true
+      }
+    },
+    {
+      "user": "U009739",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "outdoor",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets"
+          ],
+          "category_l3": [
+            "bomber jacket",
+            "bomber jacket",
+            "blazer",
+            "bomber jacket",
+            "bomber jacket",
+            "sandals",
+            "bomber jacket",
+            "bomber jacket",
+            "blazer",
+            "bomber jacket"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "bottoms",
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "jackets",
+            "trousers",
+            "jackets",
+            "jackets",
+            "knitwear",
+            "jackets",
+            "jackets",
+            "outdoor",
+            "jackets"
+          ],
+          "category_l3": [
+            "bomber jacket",
+            "bomber jacket",
+            "chinos",
+            "bomber jacket",
+            "bomber jacket",
+            "cardigan",
+            "bomber jacket",
+            "bomber jacket",
+            "sandals",
+            "bomber jacket"
+          ]
+        },
+        "ids": [
+          "P010912",
+          "P045221",
+          "P000229",
+          "P000577",
+          "P000037",
+          "P000068",
+          "P000702",
+          "P002271",
+          "P000022",
+          "P001111"
+        ],
+        "exploration": 2,
+        "request_id": "96438ad3c65d401fa74766bf7b3d38e7",
+        "pass": true
+      }
+    },
+    {
+      "user": "U005126",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 7,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "accessories",
+            "accessories",
+            "outerwear",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories"
+          ],
+          "category_l2": [
+            "small",
+            "small",
+            "warm",
+            "small",
+            "small",
+            "bags",
+            "small",
+            "small",
+            "bags",
+            "small"
+          ],
+          "category_l3": [
+            "gloves",
+            "gloves",
+            "puffer jacket",
+            "gloves",
+            "gloves",
+            "tote bag",
+            "gloves",
+            "gloves",
+            "tote bag",
+            "gloves"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "accessories",
+            "accessories",
+            "outerwear",
+            "accessories",
+            "accessories",
+            "tops",
+            "accessories",
+            "accessories",
+            "bottoms",
+            "accessories"
+          ],
+          "category_l2": [
+            "small",
+            "small",
+            "warm",
+            "small",
+            "small",
+            "knitwear",
+            "small",
+            "small",
+            "skirts",
+            "small"
+          ],
+          "category_l3": [
+            "gloves",
+            "gloves",
+            "puffer jacket",
+            "gloves",
+            "gloves",
+            "cardigan",
+            "gloves",
+            "gloves",
+            "mini skirt",
+            "gloves"
+          ]
+        },
+        "ids": [
+          "P000475",
+          "P026723",
+          "P000242",
+          "P000371",
+          "P002019",
+          "P005257",
+          "P002867",
+          "P005851",
+          "P003853",
+          "P001116"
+        ],
+        "exploration": 2,
+        "request_id": "e3095d8b7c2e44d384d4edfe590c3b1c",
+        "pass": true
+      }
+    },
+    {
+      "user": "U008389",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 10,
+          "category_l2": 10,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets"
+          ],
+          "category_l3": [
+            "bomber jacket",
+            "bomber jacket",
+            "blazer",
+            "bomber jacket",
+            "bomber jacket",
+            "blazer",
+            "bomber jacket",
+            "bomber jacket",
+            "blazer",
+            "bomber jacket"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "tops",
+            "outerwear",
+            "outerwear",
+            "bottoms",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "jackets",
+            "knitwear",
+            "jackets",
+            "jackets",
+            "casual",
+            "jackets",
+            "jackets",
+            "trousers",
+            "jackets"
+          ],
+          "category_l3": [
+            "bomber jacket",
+            "bomber jacket",
+            "cardigan",
+            "bomber jacket",
+            "bomber jacket",
+            "t-shirt",
+            "bomber jacket",
+            "bomber jacket",
+            "chinos",
+            "bomber jacket"
+          ]
+        },
+        "ids": [
+          "P023084",
+          "P008671",
+          "P000068",
+          "P000076",
+          "P000973",
+          "P001816",
+          "P001842",
+          "P000829",
+          "P000229",
+          "P001363"
+        ],
+        "exploration": 2,
+        "request_id": "4f4018563ff749c1b6d233ed4d93d41d",
+        "pass": true
+      }
+    },
+    {
+      "user": "U007812",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 4,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "bottoms",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "outdoor",
+            "casual",
+            "trousers",
+            "knitwear",
+            "knitwear",
+            "knitwear",
+            "knitwear",
+            "shirts"
+          ],
+          "category_l3": [
+            "polo shirt",
+            "polo shirt",
+            "sandals",
+            "t-shirt",
+            "chinos",
+            "knitted vest",
+            "cardigan",
+            "sweater",
+            "knitted vest",
+            "polo shirt"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 1
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "accessories",
+            "tops",
+            "footwear",
+            "tops",
+            "bottoms",
+            "tops",
+            "tops",
+            "bottoms",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "headwear",
+            "shirts",
+            "outdoor",
+            "casual",
+            "trousers",
+            "knitwear",
+            "knitwear",
+            "shorts",
+            "knitwear",
+            "knitwear"
+          ],
+          "category_l3": [
+            "cap",
+            "polo shirt",
+            "sandals",
+            "t-shirt",
+            "chinos",
+            "knitted vest",
+            "cardigan",
+            "denim shorts",
+            "sweater",
+            "knitted vest"
+          ]
+        },
+        "ids": [
+          "P000423",
+          "P000628",
+          "P000022",
+          "P001816",
+          "P000229",
+          "P000255",
+          "P000068",
+          "P000044",
+          "P000462",
+          "P000301"
+        ],
+        "exploration": 2,
+        "request_id": "44b790e9c2494cb38f6920e6547933dd",
+        "pass": true
+      }
+    },
+    {
+      "user": "U003706",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 3,
+          "category_l2": 8,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "knitwear",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "shirts"
+          ],
+          "category_l3": [
+            "cardigan",
+            "sweatshirt",
+            "sweatshirt",
+            "canvas shoes",
+            "sweatshirt",
+            "sweatshirt",
+            "canvas shoes",
+            "sweatshirt",
+            "sweatshirt",
+            "blouse"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 1
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops"
+          ],
+          "category_l2": [
+            "knitwear",
+            "casual",
+            "casual",
+            "shirts",
+            "casual",
+            "casual",
+            "shirts",
+            "casual",
+            "casual",
+            "shirts"
+          ],
+          "category_l3": [
+            "cardigan",
+            "sweatshirt",
+            "canvas shoes",
+            "blouse",
+            "sweatshirt",
+            "canvas shoes",
+            "shirt",
+            "sweatshirt",
+            "canvas shoes",
+            "blouse"
+          ]
+        },
+        "ids": [
+          "P000068",
+          "P034675",
+          "P000329",
+          "P002002",
+          "P000355",
+          "P000941",
+          "P003109",
+          "P000225",
+          "P009276",
+          "P001561"
+        ],
+        "exploration": 2,
+        "request_id": "bdc4c75d131249b2a3256ba663d8fe0e",
+        "pass": true
+      }
+    },
+    {
+      "user": "U007346",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "outerwear",
+            "tops",
+            "tops",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts",
+            "jackets",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts"
+          ],
+          "category_l3": [
+            "blouse",
+            "blouse",
+            "polo shirt",
+            "blouse",
+            "blouse",
+            "bomber jacket",
+            "blouse",
+            "blouse",
+            "shirt",
+            "blouse"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "outerwear",
+            "tops",
+            "tops",
+            "accessories",
+            "tops",
+            "tops",
+            "outerwear",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "jackets",
+            "shirts",
+            "shirts",
+            "small",
+            "shirts",
+            "shirts",
+            "jackets",
+            "shirts"
+          ],
+          "category_l3": [
+            "blouse",
+            "blouse",
+            "bomber jacket",
+            "blouse",
+            "blouse",
+            "scarf",
+            "blouse",
+            "blouse",
+            "bomber jacket",
+            "blouse"
+          ]
+        },
+        "ids": [
+          "P001399",
+          "P030411",
+          "P002833",
+          "P001878",
+          "P001343",
+          "P004797",
+          "P003414",
+          "P002439",
+          "P005985",
+          "P004371"
+        ],
+        "exploration": 2,
+        "request_id": "6b1d47aa9e644ce78f2144da955f1619",
+        "pass": true
+      }
+    },
+    {
+      "user": "U004023",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 10,
+          "category_l2": 8,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories"
+          ],
+          "category_l2": [
+            "headwear",
+            "headwear",
+            "headwear",
+            "headwear",
+            "headwear",
+            "headwear",
+            "headwear",
+            "headwear",
+            "bags",
+            "headwear"
+          ],
+          "category_l3": [
+            "cap",
+            "cap",
+            "beanie",
+            "cap",
+            "cap",
+            "beanie",
+            "cap",
+            "cap",
+            "backpack",
+            "cap"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "accessories",
+            "accessories",
+            "outerwear",
+            "accessories",
+            "accessories",
+            "outerwear",
+            "accessories",
+            "accessories",
+            "outerwear",
+            "accessories"
+          ],
+          "category_l2": [
+            "headwear",
+            "headwear",
+            "warm",
+            "headwear",
+            "headwear",
+            "warm",
+            "headwear",
+            "headwear",
+            "warm",
+            "headwear"
+          ],
+          "category_l3": [
+            "cap",
+            "bucket hat",
+            "padded vest",
+            "cap",
+            "cap",
+            "padded vest",
+            "cap",
+            "cap",
+            "padded vest",
+            "cap"
+          ]
+        },
+        "ids": [
+          "P009615",
+          "P011993",
+          "P003423",
+          "P000514",
+          "P000665",
+          "P005054",
+          "P002665",
+          "P006849",
+          "P004124",
+          "P006475"
+        ],
+        "exploration": 2,
+        "request_id": "ef7d8e49d95040c28f126a1adc77cd85",
+        "pass": true
+      }
+    },
+    {
+      "user": "U004378",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "accessories",
+            "footwear"
+          ],
+          "category_l2": [
+            "formal",
+            "formal",
+            "formal",
+            "formal",
+            "formal",
+            "knitwear",
+            "formal",
+            "formal",
+            "small",
+            "formal"
+          ],
+          "category_l3": [
+            "heels",
+            "heels",
+            "loafers",
+            "heels",
+            "heels",
+            "knitted vest",
+            "heels",
+            "heels",
+            "gloves",
+            "heels"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "accessories",
+            "footwear",
+            "footwear",
+            "bottoms",
+            "footwear"
+          ],
+          "category_l2": [
+            "formal",
+            "formal",
+            "knitwear",
+            "formal",
+            "formal",
+            "small",
+            "formal",
+            "formal",
+            "shorts",
+            "formal"
+          ],
+          "category_l3": [
+            "heels",
+            "heels",
+            "knitted vest",
+            "heels",
+            "heels",
+            "gloves",
+            "heels",
+            "heels",
+            "athletic shorts",
+            "heels"
+          ]
+        },
+        "ids": [
+          "P036684",
+          "P011518",
+          "P000301",
+          "P000133",
+          "P000319",
+          "P000567",
+          "P003389",
+          "P002140",
+          "P000561",
+          "P000384"
+        ],
+        "exploration": 2,
+        "request_id": "1a46f720cf3743f8accebbbc63d12dd4",
+        "pass": true
+      }
+    },
+    {
+      "user": "U004435",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 10,
+          "category_l2": 10,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual",
+            "casual"
+          ],
+          "category_l3": [
+            "t-shirt",
+            "t-shirt",
+            "sweatshirt",
+            "t-shirt",
+            "t-shirt",
+            "hoodie",
+            "t-shirt",
+            "t-shirt",
+            "sweatshirt",
+            "t-shirt"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "bottoms",
+            "tops"
+          ],
+          "category_l2": [
+            "casual",
+            "casual",
+            "formal",
+            "casual",
+            "casual",
+            "formal",
+            "casual",
+            "casual",
+            "skirts",
+            "casual"
+          ],
+          "category_l3": [
+            "t-shirt",
+            "sweatshirt",
+            "heels",
+            "t-shirt",
+            "t-shirt",
+            "heels",
+            "t-shirt",
+            "t-shirt",
+            "long skirt",
+            "t-shirt"
+          ]
+        },
+        "ids": [
+          "P047783",
+          "P022655",
+          "P001314",
+          "P001536",
+          "P001590",
+          "P002351",
+          "P000121",
+          "P004964",
+          "P006732",
+          "P004476"
+        ],
+        "exploration": 2,
+        "request_id": "961049c87d014db2a023c3829913eae5",
+        "pass": true
+      }
+    },
+    {
+      "user": "U005454",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 5,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts",
+            "shirts",
+            "shirts",
+            "shirts"
+          ],
+          "category_l3": [
+            "polo shirt",
+            "polo shirt",
+            "shirt",
+            "polo shirt",
+            "polo shirt",
+            "sneakers",
+            "polo shirt",
+            "polo shirt",
+            "shirt",
+            "polo shirt"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops",
+            "tops",
+            "footwear",
+            "tops"
+          ],
+          "category_l2": [
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts",
+            "shirts",
+            "casual",
+            "shirts"
+          ],
+          "category_l3": [
+            "polo shirt",
+            "polo shirt",
+            "sneakers",
+            "polo shirt",
+            "polo shirt",
+            "sneakers",
+            "polo shirt",
+            "polo shirt",
+            "sneakers",
+            "polo shirt"
+          ]
+        },
+        "ids": [
+          "P000155",
+          "P028333",
+          "P004543",
+          "P000257",
+          "P001413",
+          "P006239",
+          "P000361",
+          "P000967",
+          "P048751",
+          "P002710"
+        ],
+        "exploration": 2,
+        "request_id": "6a353acd907448cf905485ced1ae7dde",
+        "pass": true
+      }
+    },
+    {
+      "user": "U004500",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 7,
+          "category_l2": 7,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "jackets",
+            "formal",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets",
+            "jackets"
+          ],
+          "category_l3": [
+            "denim jacket",
+            "denim jacket",
+            "oxford shoes",
+            "denim jacket",
+            "denim jacket",
+            "blazer",
+            "denim jacket",
+            "denim jacket",
+            "bomber jacket",
+            "denim jacket"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear",
+            "outerwear",
+            "footwear",
+            "outerwear"
+          ],
+          "category_l2": [
+            "jackets",
+            "jackets",
+            "formal",
+            "jackets",
+            "jackets",
+            "formal",
+            "jackets",
+            "jackets",
+            "formal",
+            "jackets"
+          ],
+          "category_l3": [
+            "denim jacket",
+            "bomber jacket",
+            "oxford shoes",
+            "denim jacket",
+            "denim jacket",
+            "oxford shoes",
+            "denim jacket",
+            "denim jacket",
+            "oxford shoes",
+            "denim jacket"
+          ]
+        },
+        "ids": [
+          "P020715",
+          "P010912",
+          "P000164",
+          "P002823",
+          "P001753",
+          "P017846",
+          "P001221",
+          "P001790",
+          "P007076",
+          "P004689"
+        ],
+        "exploration": 2,
+        "request_id": "35aa7a68fdd64c548ccae59340acefd6",
+        "pass": true
+      }
+    },
+    {
+      "user": "U005000",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 8,
+          "category_l2": 8,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "accessories",
+            "footwear"
+          ],
+          "category_l2": [
+            "formal",
+            "formal",
+            "formal",
+            "formal",
+            "formal",
+            "formal",
+            "formal",
+            "formal",
+            "small",
+            "formal"
+          ],
+          "category_l3": [
+            "loafers",
+            "loafers",
+            "heels",
+            "loafers",
+            "loafers",
+            "heels",
+            "loafers",
+            "loafers",
+            "scarf",
+            "loafers"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "accessories",
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "bottoms",
+            "footwear"
+          ],
+          "category_l2": [
+            "formal",
+            "formal",
+            "small",
+            "formal",
+            "formal",
+            "shirts",
+            "formal",
+            "formal",
+            "shorts",
+            "formal"
+          ],
+          "category_l3": [
+            "loafers",
+            "loafers",
+            "scarf",
+            "loafers",
+            "loafers",
+            "blouse",
+            "loafers",
+            "loafers",
+            "denim shorts",
+            "loafers"
+          ]
+        },
+        "ids": [
+          "P000610",
+          "P040023",
+          "P001859",
+          "P000340",
+          "P001302",
+          "P000893",
+          "P001361",
+          "P000407",
+          "P001406",
+          "P000467"
+        ],
+        "exploration": 2,
+        "request_id": "acde069b791544e2845098f05414033b",
+        "pass": true
+      }
+    },
+    {
+      "user": "U007718",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 9,
+          "category_l2": 3,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories",
+            "accessories"
+          ],
+          "category_l2": [
+            "formal",
+            "small",
+            "small",
+            "bags",
+            "small",
+            "small",
+            "bags",
+            "small",
+            "small",
+            "small"
+          ],
+          "category_l3": [
+            "heels",
+            "gloves",
+            "gloves",
+            "tote bag",
+            "gloves",
+            "gloves",
+            "tote bag",
+            "gloves",
+            "gloves",
+            "belt"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "accessories",
+            "accessories",
+            "bottoms",
+            "accessories",
+            "accessories",
+            "bottoms",
+            "accessories",
+            "accessories",
+            "bottoms"
+          ],
+          "category_l2": [
+            "formal",
+            "small",
+            "small",
+            "skirts",
+            "small",
+            "small",
+            "skirts",
+            "small",
+            "small",
+            "skirts"
+          ],
+          "category_l3": [
+            "heels",
+            "gloves",
+            "gloves",
+            "long skirt",
+            "gloves",
+            "gloves",
+            "long skirt",
+            "gloves",
+            "gloves",
+            "long skirt"
+          ]
+        },
+        "ids": [
+          "P000420",
+          "P004642",
+          "P000171",
+          "P007353",
+          "P000244",
+          "P001483",
+          "P032953",
+          "P010356",
+          "P006484",
+          "P021691"
+        ],
+        "exploration": 2,
+        "request_id": "a3e386fc516c490ebf52e24f8b95bbba",
+        "pass": true
+      }
+    },
+    {
+      "user": "U009263",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "footwear",
+            "bottoms",
+            "bottoms",
+            "outerwear",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms"
+          ],
+          "category_l2": [
+            "shorts",
+            "shorts",
+            "outdoor",
+            "shorts",
+            "shorts",
+            "jackets",
+            "shorts",
+            "shorts",
+            "casual",
+            "shorts"
+          ],
+          "category_l3": [
+            "bermuda shorts",
+            "bermuda shorts",
+            "boots",
+            "bermuda shorts",
+            "bermuda shorts",
+            "blazer",
+            "bermuda shorts",
+            "bermuda shorts",
+            "t-shirt",
+            "bermuda shorts"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "footwear",
+            "bottoms",
+            "bottoms",
+            "outerwear",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms"
+          ],
+          "category_l2": [
+            "shorts",
+            "shorts",
+            "outdoor",
+            "shorts",
+            "shorts",
+            "jackets",
+            "shorts",
+            "shorts",
+            "casual",
+            "shorts"
+          ],
+          "category_l3": [
+            "bermuda shorts",
+            "bermuda shorts",
+            "boots",
+            "bermuda shorts",
+            "bermuda shorts",
+            "blazer",
+            "bermuda shorts",
+            "bermuda shorts",
+            "t-shirt",
+            "bermuda shorts"
+          ]
+        },
+        "ids": [
+          "P028395",
+          "P015808",
+          "P000063",
+          "P001384",
+          "P001486",
+          "P001855",
+          "P000592",
+          "P005388",
+          "P001754",
+          "P000175"
+        ],
+        "exploration": 2,
+        "request_id": "0afdbf6bd9f848628bd5572c36b36cc9",
+        "pass": true
+      }
+    },
+    {
+      "user": "U007165",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 10,
+          "category_l2": 10,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear"
+          ],
+          "category_l2": [
+            "outdoor",
+            "outdoor",
+            "outdoor",
+            "outdoor",
+            "outdoor",
+            "outdoor",
+            "outdoor",
+            "outdoor",
+            "outdoor",
+            "outdoor"
+          ],
+          "category_l3": [
+            "hiking shoes",
+            "hiking shoes",
+            "boots",
+            "hiking shoes",
+            "hiking shoes",
+            "boots",
+            "hiking shoes",
+            "hiking shoes",
+            "boots",
+            "hiking shoes"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "bottoms",
+            "footwear"
+          ],
+          "category_l2": [
+            "outdoor",
+            "outdoor",
+            "casual",
+            "outdoor",
+            "outdoor",
+            "knitwear",
+            "outdoor",
+            "outdoor",
+            "trousers",
+            "outdoor"
+          ],
+          "category_l3": [
+            "hiking shoes",
+            "hiking shoes",
+            "t-shirt",
+            "hiking shoes",
+            "hiking shoes",
+            "sweater",
+            "hiking shoes",
+            "hiking shoes",
+            "chinos",
+            "hiking shoes"
+          ]
+        },
+        "ids": [
+          "P045501",
+          "P023943",
+          "P001816",
+          "P000259",
+          "P000667",
+          "P015620",
+          "P004118",
+          "P000100",
+          "P000229",
+          "P001073"
+        ],
+        "exploration": 2,
+        "request_id": "1c87c3d3b4dd48fd833c572ec6dce3fa",
+        "pass": true
+      }
+    },
+    {
+      "user": "U006529",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "footwear",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms",
+            "bottoms",
+            "accessories",
+            "bottoms"
+          ],
+          "category_l2": [
+            "shorts",
+            "shorts",
+            "outdoor",
+            "shorts",
+            "shorts",
+            "shirts",
+            "shorts",
+            "shorts",
+            "headwear",
+            "shorts"
+          ],
+          "category_l3": [
+            "bermuda shorts",
+            "bermuda shorts",
+            "boots",
+            "bermuda shorts",
+            "bermuda shorts",
+            "polo shirt",
+            "bermuda shorts",
+            "bermuda shorts",
+            "cap",
+            "bermuda shorts"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "bottoms",
+            "bottoms",
+            "footwear",
+            "bottoms",
+            "bottoms",
+            "tops",
+            "bottoms",
+            "bottoms",
+            "accessories",
+            "bottoms"
+          ],
+          "category_l2": [
+            "shorts",
+            "shorts",
+            "outdoor",
+            "shorts",
+            "shorts",
+            "shirts",
+            "shorts",
+            "shorts",
+            "headwear",
+            "shorts"
+          ],
+          "category_l3": [
+            "bermuda shorts",
+            "bermuda shorts",
+            "boots",
+            "bermuda shorts",
+            "bermuda shorts",
+            "polo shirt",
+            "bermuda shorts",
+            "bermuda shorts",
+            "cap",
+            "bermuda shorts"
+          ]
+        },
+        "ids": [
+          "P022476",
+          "P000793",
+          "P000546",
+          "P001549",
+          "P001045",
+          "P001108",
+          "P002494",
+          "P003202",
+          "P001593",
+          "P002277"
+        ],
+        "exploration": 2,
+        "request_id": "65b914f4f30243a2bf091d01c45a8d63",
+        "pass": true
+      }
+    },
+    {
+      "user": "U000858",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 5,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "footwear",
+            "outerwear",
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear"
+          ],
+          "category_l2": [
+            "formal",
+            "formal",
+            "casual",
+            "formal",
+            "formal",
+            "coats",
+            "formal",
+            "formal",
+            "shirts",
+            "formal"
+          ],
+          "category_l3": [
+            "loafers",
+            "loafers",
+            "canvas shoes",
+            "loafers",
+            "loafers",
+            "trench coat",
+            "loafers",
+            "loafers",
+            "blouse",
+            "loafers"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "footwear",
+            "footwear",
+            "outerwear",
+            "footwear",
+            "footwear",
+            "tops",
+            "footwear",
+            "footwear",
+            "bottoms",
+            "footwear"
+          ],
+          "category_l2": [
+            "formal",
+            "formal",
+            "coats",
+            "formal",
+            "formal",
+            "shirts",
+            "formal",
+            "formal",
+            "shorts",
+            "formal"
+          ],
+          "category_l3": [
+            "loafers",
+            "loafers",
+            "trench coat",
+            "loafers",
+            "loafers",
+            "blouse",
+            "loafers",
+            "loafers",
+            "denim shorts",
+            "loafers"
+          ]
+        },
+        "ids": [
+          "P000610",
+          "P040023",
+          "P000066",
+          "P000340",
+          "P001302",
+          "P000893",
+          "P001361",
+          "P000407",
+          "P001406",
+          "P000467"
+        ],
+        "exploration": 2,
+        "request_id": "ec548a6d33a445838101df986216fbb9",
+        "pass": true
+      }
+    },
+    {
+      "user": "U007600",
+      "before": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 7,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "outerwear",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops",
+            "tops"
+          ],
+          "category_l2": [
+            "casual",
+            "casual",
+            "warm",
+            "casual",
+            "casual",
+            "shirts",
+            "casual",
+            "casual",
+            "shirts",
+            "casual"
+          ],
+          "category_l3": [
+            "sweatshirt",
+            "sweatshirt",
+            "puffer jacket",
+            "sweatshirt",
+            "sweatshirt",
+            "shirt",
+            "sweatshirt",
+            "sweatshirt",
+            "shirt",
+            "sweatshirt"
+          ]
+        }
+      },
+      "after": {
+        "count": 10,
+        "distinct": 10,
+        "max_runs": {
+          "category_l1": 2,
+          "category_l2": 2,
+          "category_l3": 2
+        },
+        "new": 1,
+        "categories": {
+          "category_l1": [
+            "tops",
+            "tops",
+            "outerwear",
+            "tops",
+            "tops",
+            "outerwear",
+            "tops",
+            "tops",
+            "outerwear",
+            "tops"
+          ],
+          "category_l2": [
+            "casual",
+            "casual",
+            "warm",
+            "casual",
+            "casual",
+            "coats",
+            "casual",
+            "casual",
+            "warm",
+            "casual"
+          ],
+          "category_l3": [
+            "sweatshirt",
+            "sweatshirt",
+            "puffer jacket",
+            "sweatshirt",
+            "sweatshirt",
+            "trench coat",
+            "sweatshirt",
+            "sweatshirt",
+            "padded vest",
+            "sweatshirt"
+          ]
+        },
+        "ids": [
+          "P015106",
+          "P030786",
+          "P000242",
+          "P000512",
+          "P001044",
+          "P000818",
+          "P001091",
+          "P004405",
+          "P011572",
+          "P001352"
+        ],
+        "exploration": 2,
+        "request_id": "a8f42a33971c44d1b430b3b4ce621084",
+        "pass": true
+      }
+    }
+  ],
+  "extra": [
+    {
+      "user": "U006437",
+      "requested": 1,
+      "count": 1,
+      "distinct": 1,
+      "max_runs": {
+        "category_l1": 1,
+        "category_l2": 1,
+        "category_l3": 1
+      },
+      "new": 1,
+      "categories": {
+        "category_l1": [
+          "tops"
+        ],
+        "category_l2": [
+          "shirts"
+        ],
+        "category_l3": [
+          "shirt"
+        ]
+      },
+      "ids": [
+        "P000165"
+      ],
+      "exploration": 1,
+      "request_id": "c120f2ae19ea40ada302f0bc1d665143",
+      "pass": true
+    },
+    {
+      "user": "U006437",
+      "requested": 2,
+      "count": 2,
+      "distinct": 2,
+      "max_runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "categories": {
+        "category_l1": [
+          "tops",
+          "tops"
+        ],
+        "category_l2": [
+          "shirts",
+          "shirts"
+        ],
+        "category_l3": [
+          "shirt",
+          "shirt"
+        ]
+      },
+      "ids": [
+        "P020867",
+        "P000165"
+      ],
+      "exploration": 2,
+      "request_id": "ab359b304f2d4a61b4a10d8498587a60",
+      "pass": true
+    },
+    {
+      "user": "U006437",
+      "requested": 3,
+      "count": 3,
+      "distinct": 3,
+      "max_runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 1
+      },
+      "new": 1,
+      "categories": {
+        "category_l1": [
+          "tops",
+          "tops",
+          "footwear"
+        ],
+        "category_l2": [
+          "shirts",
+          "shirts",
+          "outdoor"
+        ],
+        "category_l3": [
+          "shirt",
+          "polo shirt",
+          "boots"
+        ]
+      },
+      "ids": [
+        "P000165",
+        "P011371",
+        "P000898"
+      ],
+      "exploration": 2,
+      "request_id": "699379d95be1452a9ccb5325fd9859b2",
+      "pass": true
+    },
+    {
+      "user": "U006437",
+      "requested": 50,
+      "count": 50,
+      "distinct": 50,
+      "max_runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 3,
+      "categories": {
+        "category_l1": [
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops"
+        ],
+        "category_l2": [
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts"
+        ],
+        "category_l3": [
+          "shirt",
+          "shirt",
+          "boots",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "boots",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt"
+        ]
+      },
+      "ids": [
+        "P020867",
+        "P000165",
+        "P000898",
+        "P000084",
+        "P000465",
+        "P003089",
+        "P004271",
+        "P002760",
+        "P026760",
+        "P003922",
+        "P006218",
+        "P007874",
+        "P001271",
+        "P005378",
+        "P016579",
+        "P001485",
+        "P000884",
+        "P024501",
+        "P005431",
+        "P001726",
+        "P047848",
+        "P004537",
+        "P008532",
+        "P007111",
+        "P015225",
+        "P007876",
+        "P041452",
+        "P013207",
+        "P017714",
+        "P006430",
+        "P011053",
+        "P009220",
+        "P009745",
+        "P027244",
+        "P026150",
+        "P005016",
+        "P007684",
+        "P015526",
+        "P035397",
+        "P020363",
+        "P014483",
+        "P039703",
+        "P023497",
+        "P020058",
+        "P010928",
+        "P013355",
+        "P033652",
+        "P034495",
+        "P025072",
+        "P023080"
+      ],
+      "exploration": 2,
+      "request_id": "e91da09169e249a2bc0e09534cfa77e1",
+      "pass": true
+    },
+    {
+      "user": "U006437",
+      "requested": 100,
+      "count": 100,
+      "distinct": 100,
+      "max_runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 3,
+      "categories": {
+        "category_l1": [
+          "tops",
+          "tops",
+          "accessories",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "outerwear",
+          "tops",
+          "tops",
+          "outerwear",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "outerwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops"
+        ],
+        "category_l2": [
+          "shirts",
+          "shirts",
+          "headwear",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "formal",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "warm",
+          "shirts",
+          "shirts",
+          "warm",
+          "shirts",
+          "shirts",
+          "skirts",
+          "shirts",
+          "shirts",
+          "skirts",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "casual",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "jackets",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "outdoor",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts",
+          "shirts",
+          "shorts",
+          "shirts"
+        ],
+        "category_l3": [
+          "shirt",
+          "shirt",
+          "cap",
+          "shirt",
+          "shirt",
+          "boots",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "bermuda shorts",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "boots",
+          "shirt",
+          "shirt",
+          "heels",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "padded vest",
+          "shirt",
+          "shirt",
+          "padded vest",
+          "shirt",
+          "shirt",
+          "pleated skirt",
+          "shirt",
+          "shirt",
+          "pleated skirt",
+          "shirt",
+          "shirt",
+          "sandals",
+          "shirt",
+          "shirt",
+          "canvas shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "boots",
+          "shirt",
+          "shirt",
+          "sandals",
+          "shirt",
+          "shirt",
+          "blazer",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "hiking shoes",
+          "shirt",
+          "shirt",
+          "denim shorts",
+          "shirt",
+          "shirt",
+          "denim shorts",
+          "shirt"
+        ]
+      },
+      "ids": [
+        "P020867",
+        "P000165",
+        "P000064",
+        "P000084",
+        "P000465",
+        "P000898",
+        "P004271",
+        "P002760",
+        "P003089",
+        "P003922",
+        "P006218",
+        "P026760",
+        "P001271",
+        "P005378",
+        "P007874",
+        "P001485",
+        "P000884",
+        "P016579",
+        "P005431",
+        "P001726",
+        "P024501",
+        "P004537",
+        "P008532",
+        "P047848",
+        "P015225",
+        "P007876",
+        "P007111",
+        "P013207",
+        "P017714",
+        "P041452",
+        "P011053",
+        "P009220",
+        "P006430",
+        "P027244",
+        "P026150",
+        "P009745",
+        "P007684",
+        "P015526",
+        "P005016",
+        "P020363",
+        "P014483",
+        "P000420",
+        "P023497",
+        "P020058",
+        "P035397",
+        "P013355",
+        "P033652",
+        "P000445",
+        "P025072",
+        "P023080",
+        "P000551",
+        "P046318",
+        "P019579",
+        "P000507",
+        "P046618",
+        "P009832",
+        "P000473",
+        "P030626",
+        "P003034",
+        "P000022",
+        "P008336",
+        "P009107",
+        "P000167",
+        "P026095",
+        "P039208",
+        "P039703",
+        "P045388",
+        "P022918",
+        "P010928",
+        "P043808",
+        "P044008",
+        "P034495",
+        "P030568",
+        "P003959",
+        "P043043",
+        "P026032",
+        "P006649",
+        "P000443",
+        "P010020",
+        "P033631",
+        "P000309",
+        "P009792",
+        "P011414",
+        "P025044",
+        "P007640",
+        "P047597",
+        "P045669",
+        "P046941",
+        "P034296",
+        "P030321",
+        "P021177",
+        "P030153",
+        "P030479",
+        "P043118",
+        "P003377",
+        "P000154",
+        "P016209",
+        "P025243",
+        "P000044",
+        "P042611"
+      ],
+      "exploration": 2,
+      "request_id": "e0ebfe266f964e489d6b5854797b9f12",
+      "pass": true
+    },
+    {
+      "user": "peer13-cold-90714736b8764e589a6acccc2eeffd17",
+      "requested": 1,
+      "count": 1,
+      "distinct": 1,
+      "max_runs": {
+        "category_l1": 1,
+        "category_l2": 1,
+        "category_l3": 1
+      },
+      "new": 1,
+      "categories": {
+        "category_l1": [
+          "tops"
+        ],
+        "category_l2": [
+          "shirts"
+        ],
+        "category_l3": [
+          "polo shirt"
+        ]
+      },
+      "ids": [
+        "P000628"
+      ],
+      "exploration": 1,
+      "request_id": "4d0a7e65a0b244898af72ce5d24b6706",
+      "pass": true
+    },
+    {
+      "user": "peer13-cold-90714736b8764e589a6acccc2eeffd17",
+      "requested": 2,
+      "count": 2,
+      "distinct": 2,
+      "max_runs": {
+        "category_l1": 1,
+        "category_l2": 1,
+        "category_l3": 1
+      },
+      "new": 1,
+      "categories": {
+        "category_l1": [
+          "bottoms",
+          "tops"
+        ],
+        "category_l2": [
+          "skirts",
+          "shirts"
+        ],
+        "category_l3": [
+          "mini skirt",
+          "polo shirt"
+        ]
+      },
+      "ids": [
+        "P001428",
+        "P000628"
+      ],
+      "exploration": 2,
+      "request_id": "b5dbfb0dea594540a064779866e1321f",
+      "pass": true
+    },
+    {
+      "user": "peer13-cold-90714736b8764e589a6acccc2eeffd17",
+      "requested": 3,
+      "count": 3,
+      "distinct": 3,
+      "max_runs": {
+        "category_l1": 1,
+        "category_l2": 1,
+        "category_l3": 1
+      },
+      "new": 1,
+      "categories": {
+        "category_l1": [
+          "accessories",
+          "tops",
+          "footwear"
+        ],
+        "category_l2": [
+          "small",
+          "shirts",
+          "outdoor"
+        ],
+        "category_l3": [
+          "gloves",
+          "polo shirt",
+          "sandals"
+        ]
+      },
+      "ids": [
+        "P000130",
+        "P000628",
+        "P000022"
+      ],
+      "exploration": 2,
+      "request_id": "00b0903c96514f1e846b8ca2d035e408",
+      "pass": true
+    },
+    {
+      "user": "peer13-cold-90714736b8764e589a6acccc2eeffd17",
+      "requested": 50,
+      "count": 50,
+      "distinct": 50,
+      "max_runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 1
+      },
+      "new": 1,
+      "categories": {
+        "category_l1": [
+          "accessories",
+          "tops",
+          "footwear",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "footwear",
+          "tops",
+          "bottoms",
+          "tops",
+          "outerwear",
+          "bottoms",
+          "accessories",
+          "bottoms",
+          "tops",
+          "outerwear",
+          "outerwear",
+          "tops",
+          "tops",
+          "outerwear",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "outerwear",
+          "outerwear",
+          "tops",
+          "footwear",
+          "bottoms",
+          "tops",
+          "outerwear",
+          "footwear",
+          "outerwear",
+          "bottoms",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "footwear",
+          "bottoms"
+        ],
+        "category_l2": [
+          "headwear",
+          "shirts",
+          "outdoor",
+          "casual",
+          "trousers",
+          "knitwear",
+          "knitwear",
+          "shorts",
+          "knitwear",
+          "knitwear",
+          "formal",
+          "shirts",
+          "shirts",
+          "casual",
+          "outdoor",
+          "casual",
+          "shorts",
+          "shirts",
+          "warm",
+          "skirts",
+          "headwear",
+          "skirts",
+          "casual",
+          "jackets",
+          "warm",
+          "casual",
+          "casual",
+          "coats",
+          "shirts",
+          "casual",
+          "knitwear",
+          "knitwear",
+          "outdoor",
+          "shirts",
+          "coats",
+          "warm",
+          "shirts",
+          "casual",
+          "trousers",
+          "knitwear",
+          "warm",
+          "outdoor",
+          "warm",
+          "trousers",
+          "outdoor",
+          "knitwear",
+          "casual",
+          "casual",
+          "formal",
+          "trousers"
+        ],
+        "category_l3": [
+          "cap",
+          "polo shirt",
+          "sandals",
+          "t-shirt",
+          "chinos",
+          "knitted vest",
+          "cardigan",
+          "denim shorts",
+          "sweater",
+          "knitted vest",
+          "heels",
+          "polo shirt",
+          "shirt",
+          "canvas shoes",
+          "sandals",
+          "hoodie",
+          "denim shorts",
+          "shirt",
+          "padded vest",
+          "pleated skirt",
+          "cap",
+          "pleated skirt",
+          "sweatshirt",
+          "blazer",
+          "padded vest",
+          "hoodie",
+          "t-shirt",
+          "pea coat",
+          "blouse",
+          "canvas shoes",
+          "knitted vest",
+          "cardigan",
+          "sandals",
+          "polo shirt",
+          "trench coat",
+          "fleece jacket",
+          "blouse",
+          "sneakers",
+          "chinos",
+          "cardigan",
+          "padded vest",
+          "boots",
+          "puffer jacket",
+          "chinos",
+          "hiking shoes",
+          "sweater",
+          "sweatshirt",
+          "slip-on shoes",
+          "oxford shoes",
+          "cargo pants"
+        ]
+      },
+      "ids": [
+        "P000423",
+        "P000628",
+        "P000022",
+        "P001816",
+        "P000229",
+        "P000255",
+        "P000068",
+        "P000044",
+        "P000462",
+        "P000301",
+        "P000420",
+        "P000104",
+        "P000084",
+        "P000167",
+        "P000443",
+        "P001079",
+        "P000154",
+        "P000094",
+        "P000445",
+        "P000507",
+        "P000064",
+        "P000473",
+        "P000512",
+        "P000309",
+        "P000551",
+        "P000576",
+        "P000236",
+        "P000031",
+        "P000775",
+        "P000018",
+        "P000345",
+        "P000971",
+        "P000005",
+        "P000257",
+        "P000952",
+        "P000102",
+        "P000012",
+        "P000043",
+        "P000312",
+        "P000122",
+        "P000040",
+        "P000063",
+        "P000242",
+        "P000190",
+        "P000372",
+        "P000071",
+        "P000003",
+        "P000197",
+        "P000078",
+        "P000320"
+      ],
+      "exploration": 2,
+      "request_id": "9b9c90bf83924d638cdd09cbc2753ddd",
+      "pass": true
+    },
+    {
+      "user": "peer13-cold-90714736b8764e589a6acccc2eeffd17",
+      "requested": 100,
+      "count": 100,
+      "distinct": 100,
+      "max_runs": {
+        "category_l1": 2,
+        "category_l2": 2,
+        "category_l3": 2
+      },
+      "new": 1,
+      "categories": {
+        "category_l1": [
+          "accessories",
+          "tops",
+          "footwear",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "bottoms",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "footwear",
+          "tops",
+          "bottoms",
+          "tops",
+          "outerwear",
+          "bottoms",
+          "accessories",
+          "bottoms",
+          "tops",
+          "outerwear",
+          "outerwear",
+          "tops",
+          "tops",
+          "outerwear",
+          "tops",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "outerwear",
+          "outerwear",
+          "tops",
+          "footwear",
+          "bottoms",
+          "tops",
+          "outerwear",
+          "footwear",
+          "outerwear",
+          "bottoms",
+          "footwear",
+          "tops",
+          "tops",
+          "footwear",
+          "footwear",
+          "bottoms",
+          "tops",
+          "tops",
+          "footwear",
+          "footwear",
+          "outerwear",
+          "tops",
+          "footwear",
+          "bottoms",
+          "bottoms",
+          "tops",
+          "outerwear",
+          "footwear",
+          "bottoms",
+          "bottoms",
+          "outerwear",
+          "bottoms",
+          "bottoms",
+          "footwear",
+          "bottoms",
+          "outerwear",
+          "footwear",
+          "footwear",
+          "tops",
+          "outerwear",
+          "outerwear",
+          "bottoms",
+          "footwear",
+          "outerwear",
+          "accessories",
+          "footwear",
+          "outerwear",
+          "tops",
+          "tops",
+          "outerwear",
+          "tops",
+          "tops",
+          "footwear",
+          "tops",
+          "accessories",
+          "footwear",
+          "outerwear",
+          "footwear",
+          "bottoms",
+          "bottoms",
+          "footwear",
+          "outerwear",
+          "footwear",
+          "tops",
+          "bottoms",
+          "accessories"
+        ],
+        "category_l2": [
+          "headwear",
+          "shirts",
+          "outdoor",
+          "casual",
+          "trousers",
+          "knitwear",
+          "knitwear",
+          "shorts",
+          "knitwear",
+          "knitwear",
+          "formal",
+          "shirts",
+          "shirts",
+          "casual",
+          "outdoor",
+          "casual",
+          "shorts",
+          "shirts",
+          "warm",
+          "skirts",
+          "headwear",
+          "skirts",
+          "casual",
+          "jackets",
+          "warm",
+          "casual",
+          "casual",
+          "coats",
+          "shirts",
+          "casual",
+          "knitwear",
+          "knitwear",
+          "outdoor",
+          "shirts",
+          "coats",
+          "warm",
+          "shirts",
+          "casual",
+          "trousers",
+          "knitwear",
+          "warm",
+          "outdoor",
+          "warm",
+          "trousers",
+          "outdoor",
+          "knitwear",
+          "casual",
+          "casual",
+          "formal",
+          "trousers",
+          "casual",
+          "casual",
+          "outdoor",
+          "formal",
+          "warm",
+          "shirts",
+          "formal",
+          "shorts",
+          "trousers",
+          "casual",
+          "coats",
+          "formal",
+          "trousers",
+          "skirts",
+          "warm",
+          "skirts",
+          "trousers",
+          "outdoor",
+          "skirts",
+          "coats",
+          "formal",
+          "casual",
+          "knitwear",
+          "jackets",
+          "jackets",
+          "shorts",
+          "casual",
+          "warm",
+          "small",
+          "outdoor",
+          "jackets",
+          "casual",
+          "knitwear",
+          "jackets",
+          "casual",
+          "shirts",
+          "formal",
+          "knitwear",
+          "small",
+          "formal",
+          "coats",
+          "formal",
+          "trousers",
+          "skirts",
+          "outdoor",
+          "jackets",
+          "casual",
+          "shirts",
+          "trousers",
+          "small"
+        ],
+        "category_l3": [
+          "cap",
+          "polo shirt",
+          "sandals",
+          "t-shirt",
+          "chinos",
+          "knitted vest",
+          "cardigan",
+          "denim shorts",
+          "sweater",
+          "knitted vest",
+          "heels",
+          "polo shirt",
+          "shirt",
+          "canvas shoes",
+          "sandals",
+          "hoodie",
+          "denim shorts",
+          "shirt",
+          "padded vest",
+          "pleated skirt",
+          "cap",
+          "pleated skirt",
+          "sweatshirt",
+          "blazer",
+          "padded vest",
+          "hoodie",
+          "t-shirt",
+          "pea coat",
+          "blouse",
+          "canvas shoes",
+          "knitted vest",
+          "cardigan",
+          "sandals",
+          "polo shirt",
+          "trench coat",
+          "fleece jacket",
+          "blouse",
+          "sneakers",
+          "chinos",
+          "cardigan",
+          "padded vest",
+          "boots",
+          "puffer jacket",
+          "chinos",
+          "hiking shoes",
+          "sweater",
+          "sweatshirt",
+          "slip-on shoes",
+          "oxford shoes",
+          "cargo pants",
+          "hoodie",
+          "t-shirt",
+          "boots",
+          "oxford shoes",
+          "puffer jacket",
+          "blouse",
+          "loafers",
+          "denim shorts",
+          "chinos",
+          "sweatshirt",
+          "pea coat",
+          "heels",
+          "cargo pants",
+          "mini skirt",
+          "fleece jacket",
+          "long skirt",
+          "cargo pants",
+          "hiking shoes",
+          "long skirt",
+          "trench coat",
+          "oxford shoes",
+          "slip-on shoes",
+          "knitted vest",
+          "blazer",
+          "blazer",
+          "denim shorts",
+          "slip-on shoes",
+          "puffer jacket",
+          "gloves",
+          "hiking shoes",
+          "blazer",
+          "hoodie",
+          "cardigan",
+          "bomber jacket",
+          "t-shirt",
+          "polo shirt",
+          "loafers",
+          "sweater",
+          "belt",
+          "loafers",
+          "long coat",
+          "oxford shoes",
+          "chinos",
+          "pleated skirt",
+          "boots",
+          "denim jacket",
+          "sneakers",
+          "blouse",
+          "chinos",
+          "gloves"
+        ]
+      },
+      "ids": [
+        "P000423",
+        "P000628",
+        "P000022",
+        "P001816",
+        "P000229",
+        "P000255",
+        "P000068",
+        "P000044",
+        "P000462",
+        "P000301",
+        "P000420",
+        "P000104",
+        "P000084",
+        "P000167",
+        "P000443",
+        "P001079",
+        "P000154",
+        "P000094",
+        "P000445",
+        "P000507",
+        "P000064",
+        "P000473",
+        "P000512",
+        "P000309",
+        "P000551",
+        "P000576",
+        "P000236",
+        "P000031",
+        "P000775",
+        "P000018",
+        "P000345",
+        "P000971",
+        "P000005",
+        "P000257",
+        "P000952",
+        "P000102",
+        "P000012",
+        "P000043",
+        "P000312",
+        "P000122",
+        "P000040",
+        "P000063",
+        "P000242",
+        "P000190",
+        "P000372",
+        "P000071",
+        "P000003",
+        "P000197",
+        "P000078",
+        "P000320",
+        "P000482",
+        "P000132",
+        "P000546",
+        "P000648",
+        "P000085",
+        "P000392",
+        "P000248",
+        "P000339",
+        "P000778",
+        "P000195",
+        "P000321",
+        "P000075",
+        "P001598",
+        "P000218",
+        "P000087",
+        "P000415",
+        "P000728",
+        "P000499",
+        "P000139",
+        "P000041",
+        "P000164",
+        "P000141",
+        "P000103",
+        "P000223",
+        "P000056",
+        "P001085",
+        "P000186",
+        "P000324",
+        "P000153",
+        "P000243",
+        "P000291",
+        "P001050",
+        "P000027",
+        "P000076",
+        "P000346",
+        "P000155",
+        "P000286",
+        "P000503",
+        "P002256",
+        "P001484",
+        "P000101",
+        "P000151",
+        "P001758",
+        "P000612",
+        "P000305",
+        "P000201",
+        "P000739",
+        "P000419",
+        "P000073",
+        "P000655"
+      ],
+      "exploration": 2,
+      "request_id": "0548311ab5e64c24a1062bcbf2afa89b",
+      "pass": true
+    }
+  ]
+}
