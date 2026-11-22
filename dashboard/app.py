@@ -1,6 +1,7 @@
 """Evaluation room (Figma design 2026-11-19): saved measurements by tab; demos call the HTTP API."""
 from __future__ import annotations
 
+from html import escape
 import math
 from pathlib import Path
 import statistics
@@ -16,11 +17,13 @@ from dashboard.data import (REQUIREMENTS, api_call, bundles, ct_log, evidence, l
                             read_reference, read_report, search_payload, settings)
 from dashboard.explore import catalog_section, data_tab, product_cards
 from dashboard.assets import ab_result, deployment, different_recommendation_policy, reference_identity
-from dashboard.formatting import display_frame, display_value
+from dashboard.formatting import CT_EVENTS, display_frame, display_value, korean
+from dashboard.home import HOME_SECTIONS, home_tab, steps
 from dashboard.style import BASE, CSS, GRAY, INDIGO, ORANGE, TEAL, baseline, chart
 
-TABS = ['개요', '데이터', '검색', '추천', 'A/B', '시스템']
+TABS = ['홈', '개요', '데이터', '검색', '추천', 'A/B', '시스템']
 SECTIONS = {
+    '홈': HOME_SECTIONS,
     '개요': [('과제 기능 4가지', 'features'), ('요구사항 50개', 'requirements'), ('동료 평가 질문 → 확인할 곳', 'peer-review'),
            ('한계', 'limits')],
     '데이터': [('평가 프로토콜: 시간 분할', 'protocol'), ('페르소나 6개 비교', 'personas'), ('카탈로그와 이벤트', 'catalog'),
@@ -84,6 +87,22 @@ def table(frame: pd.DataFrame, **kwargs) -> None:
     st.dataframe(frame, hide_index=True, use_container_width=True, **kwargs)
 
 
+def wrapped_table(frame: pd.DataFrame) -> None:
+    """Static table whose long cells wrap (st.dataframe cuts them off at the column edge) while short columns such as
+    판정 stay on one line. Uses the home tab's table style."""
+    short = [frame[column].astype(str).str.len().max() <= 12 for column in frame]
+    nowrap = ' class="nw"'
+    head = ''.join(f'<th{nowrap if keep else ""}>{escape(str(column))}</th>' for column, keep in zip(frame, short))
+    rows = ''.join('<tr>' + ''.join(f'<td{nowrap if keep else ""}>{escape(str(value))}</td>' for value, keep in zip(row, short))
+                   + '</tr>' for row in frame.itertuples(index=False))
+    st.markdown(f'<div><table class="terms"><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>', unsafe_allow_html=True)
+
+
+def file_name(path) -> str:
+    """Captions name the evidence file; the full path stays in the 근거 views."""
+    return Path(str(path)).name
+
+
 def section(tab: str, index: int, title: str | None = None) -> None:
     name, anchor = SECTIONS[tab][index]
     st.subheader(title or name, anchor=anchor)
@@ -142,7 +161,7 @@ def overview_tab(report: dict, bundle: dict | None, config: dict) -> None:
     requirement_sections(requirements)
     section('개요', 3)
     for line in report.get('limitations', []):
-        st.markdown(f'- {line}')
+        st.markdown(f'- {korean(line)}')
 
 
 def features(requirements: dict | None, integration: dict) -> None:
@@ -155,8 +174,8 @@ def features(requirements: dict | None, integration: dict) -> None:
     check = lambda name: STATUS.get(checks.get(name, {}).get('status'), '미측정') if checks else '미측정'
     rows = [('검색 API', ['S2'], check('api_schemas')), ('추천 API', ['R13'], check('api_schemas')),
             ('Streamlit 대시보드', ['A3', 'U4'], '해당 없음'), ('Docker Compose', ['F2', 'F3'], check('docker_reproduction'))]
-    table(pd.DataFrame([dict(기능=name, 요구ID=', '.join(ids), 요구사항판정=' / '.join(status.get(i, '미측정') for i in ids), 통합검사=result)
-                        for name, ids, result in rows]))
+    table(pd.DataFrame([{'기능': name, '요구 ID': ', '.join(ids), '요구사항 판정': ' / '.join(status.get(i, '미측정') for i in ids),
+                         '통합 검사': result} for name, ids, result in rows]))
     with st.expander('근거'):
         st.caption(f"요구사항 점검 {display_value(requirements.get('generated_at'))} 실행 기준 · 통합 검사는 이 결과 묶음의 integration.checks")
         st.json(display_value({key: requirements.get(key) for key in ('scope', 'interpretation', 'data_fingerprint')}))
@@ -175,8 +194,10 @@ def requirement_sections(requirements: dict | None) -> None:
     if review:
         section('개요', 2)
         text = {row['id']: row['requirement'] for row in items}
-        table(pd.DataFrame([dict(질문=question, 판정=STATUS.get(row['status'], row['status']), 요구ID=', '.join(row['requirements']),
-                                 확인할곳=' / '.join(text.get(i, i) for i in row['requirements'])) for question, row in review.items()]))
+        wrapped_table(pd.DataFrame([{'질문': question, '판정': STATUS.get(row['status'], row['status']),
+                                     '요구 ID': ', '.join(row['requirements']),
+                                     '확인할 곳': ' / '.join(text.get(i, i) for i in row['requirements'])}
+                                    for question, row in review.items()]))
 
 
 # ── 검색 ─────────────────────────────────────────────────────────────────────
@@ -215,8 +236,11 @@ def search_tab(report: dict, bundle: dict | None, config: dict) -> None:
         fig = go.Figure()
         fig.add_bar(name='CLIP', x=[label for _, label in MODES], y=clip, marker_color=INDIGO,
                     text=[f'{v:.3f}' for v in clip], textposition='outside')
+        # Short label at a fixed size: Plotly shrank "BM25 해당 없음" to the bar width (about 7px), and unshrunk it
+        # spilled onto the CLIP bar. The legend already says the gray slot is BM25.
         fig.add_bar(name='BM25', x=[label for _, label in MODES], y=bm25, marker_color=GRAY,
-                    text=[f'{v:.3f}' if v is not None else 'BM25 해당 없음' for v in bm25], textposition='outside')
+                    text=[f'{v:.3f}' if v is not None else '해당 없음' for v in bm25], textposition='outside',
+                    constraintext='none', textfont=dict(size=11))
         row = targets.get(key)
         primary = search.get('primary', {}).get(key)
         title = f'CLIP {LABELS[key]}' + (f' {primary:.3f}' if primary is not None else '')
@@ -230,12 +254,12 @@ def search_tab(report: dict, bundle: dict | None, config: dict) -> None:
         column.plotly_chart(fig, use_container_width=True)
         with column.expander('표로 보기'):
             table(pd.DataFrame(dict(모드=[label for _, label in MODES], CLIP=clip, BM25=bm25)))
-    st.caption('이미지 단독 질의에는 BM25가 적용되지 않습니다(“BM25 해당 없음”, 0이 아님).')
+    st.caption('이미지 단독 질의에는 BM25가 적용되지 않습니다(회색 자리의 “해당 없음”, 0이 아님).')
     agreement = {label: search['per_mode'][mode].get('ann_vs_exact') for mode, label in MODES}
     if any(agreement.values()):
         with st.expander('ANN 인덱스와 exact 검색의 일치(품질 지표와 별개)'):
-            table(pd.DataFrame([dict(모드=label, k=row.get('k'), 질의=row.get('queries'), 정답겹침=row.get('label_overlap_recall'),
-                                     점수일치=row.get('exact_score_tie_aware_agreement')) for label, row in agreement.items() if row]))
+            table(pd.DataFrame([{'모드': label, 'k': row.get('k'), '질의': row.get('queries'), '정답 겹침': row.get('label_overlap_recall'),
+                                 '점수 일치': row.get('exact_score_tie_aware_agreement')} for label, row in agreement.items() if row]))
     ann_section(search, bundle, config)
     http_section(report)
     st.divider()
@@ -271,8 +295,8 @@ def ann_section(search: dict, bundle: dict | None, config: dict) -> None:
     fig.update_layout(margin_b=80, legend_y=-0.32)
     st.plotly_chart(fig, use_container_width=True)
     with st.expander('표로 보기'):
-        table(pd.DataFrame([dict(모드=dict(MODES)[row['mode']], 설정=f"{row['parameter']}={row['requested_value']}",
-                                 MRR=row['mrr'], NDCG10=row['ndcg_at_10'], 벡터검색p95ms=row['vector_p95_ms']) for row in rows]))
+        table(pd.DataFrame([{'모드': dict(MODES)[row['mode']], '설정': f"{row['parameter']}={row['requested_value']}",
+                             'MRR': row['mrr'], 'NDCG@10': row['ndcg_at_10'], '벡터 검색 p95 (ms)': row['vector_p95_ms']} for row in rows]))
     st.caption('인코딩·HTTP 시간을 뺀 벡터 검색 시간이라 API 응답 시간 판정에는 쓰지 않습니다.')
 
 
@@ -298,8 +322,9 @@ def http_section(report: dict) -> None:
     chart(fig, title, 320).update_yaxes(range=[0, max(target or 0, worst[1]['http']['p95_ms']) * 1.12])
     st.plotly_chart(fig, use_container_width=True)
     with st.expander('표로 보기'):
-        table(pd.DataFrame([dict(모드=label, p50ms=row['http']['p50_ms'], p95ms=row['http']['p95_ms'], p99ms=row['http']['p99_ms'],
-                                 요청=row.get('requests'), 오류=row.get('errors')) for label, row in rows]))
+        table(pd.DataFrame([{'모드': label, 'p50 (ms)': row['http']['p50_ms'], 'p95 (ms)': row['http']['p95_ms'],
+                             'p99 (ms)': row['http']['p99_ms'], '요청': row.get('requests'), '오류': row.get('errors')}
+                            for label, row in rows]))
     st.caption('검색 HTTP p95 — 단건 요청 중 95번째로 느린 응답 시간(가장 느린 모드) · 원시 표본 분포는 시스템 탭에 있습니다.')
 
 
@@ -352,16 +377,16 @@ def recommendation_tab(report: dict, bundle: dict | None, config: dict) -> None:
     auc = rec.get('classification', {}).get('ctr', {}).get('auc')
     products = report.get('data_counts', {}).get('products')
     count = ann.get('candidate_count_max')
-    stages = [('카탈로그', f'{products:,}' if products else '—', '전체 상품'),
-              ('후보 생성', f'{count} ({count / products:.1%})' if count and products else '—',
-               f"놓치지 않기 · Recall@300 {ann['recall_at_300']:.1%}" if 'recall_at_300' in ann else '놓치지 않기'),
-              ('랭킹', f'{count}' if count else '—', f'순서만 바꿈 · CTR AUC {auc:.3f}' if auc is not None else '순서만 바꿈'),
-              ('최종', '50', f"재정렬 후 · HitRate@50 {full['hit_rate_at_50']:.1%}" if 'hit_rate_at_50' in full else '재정렬 후')]
-    for column, (title, value, note) in zip(st.columns(4), stages):
-        with column.container(border=True):
-            st.markdown(f'**{title}**')
-            st.markdown(f'### {value}')
-            st.markdown(f'<div class="stage-note">{note}</div>', unsafe_allow_html=True)
+    share = lambda n: f'전체의 {n / products:.1%}' if n and products else ''
+    # Same step card as the home tab (HIG: one look for one kind of content); measured values sit in each footer.
+    st.markdown(steps([(f'{products:,}' if products else '—', '전체', '카탈로그', '전체 상품', ''),
+                       (f'{count:,}' if count else '—', share(count), '후보 생성', '놓치지 않기',
+                        f"Recall@300 {ann['recall_at_300']:.1%}" if 'recall_at_300' in ann else ''),
+                       (f'{count:,}' if count else '—', '개수 그대로', '랭킹', '순서만 바꿈',
+                        f'CTR AUC {auc:.3f}' if auc is not None else ''),
+                       ('50', share(50), '최종', '재정렬 후',
+                        f"HitRate@50 {full['hit_rate_at_50']:.1%}" if 'hit_rate_at_50' in full else '')]),
+                unsafe_allow_html=True)
     st.caption('후보 생성은 넓은 그물(Recall), 랭킹은 위쪽 정밀도(AUC), 최종은 다양성·신상품 탐색 규칙을 적용한 결과입니다.')
     section('추천', 0)
     targets = {row['name']: row['target'] for row in report.get('metrics', [])}
@@ -406,7 +431,7 @@ def recall_section(rec: dict) -> None:
     with left:
         found = [(name, row) for name, row in rows if 'recall_at_300' in row]
         if found:
-            table(pd.DataFrame([dict(방법=name, Recall300=f"{row['recall_at_300']:.1%}", 사용자=f"{row.get('macro_users', users) or 0:,}")
+            table(pd.DataFrame([{'방법': name, 'Recall@300': f"{row['recall_at_300']:.1%}", '사용자': f"{row.get('macro_users', users) or 0:,}"}
                                 for name, row in found]))
         if candidate.get('ann_agreement_at_300') is not None:
             st.caption(f"ANN과 exact top300 일치율 {candidate['ann_agreement_at_300']:.1%} (분모: exact 결과, 정답 아님)")
@@ -428,19 +453,20 @@ def recall_section(rec: dict) -> None:
 def cohort_section(rec: dict) -> None:
     section('추천', 2)
     cohort = rec.get('cohort', {})
-    values = [('평가 사용자', cohort.get('total_users')), ('정답 있는 사용자', cohort.get('truth_users')),
-              ('이력 있음 (정답)', cohort.get('warm'), cohort.get('warm_truth')),
-              ('이력 적음 (정답)', cohort.get('cold'), cohort.get('cold_truth'))]
-    for column, item in zip(st.columns(4), values):
-        label, value, *truth = item
-        shown = '—' if value is None else f'{value:,}' + (f' ({truth[0]:,})' if truth and truth[0] is not None else '')
-        column.metric(label, shown)
+    # Two numbers in one value ("9,700 (7,004)") read as a typo; the truth count moves to a caption under the value.
+    values = [('평가 사용자', cohort.get('total_users'), None), ('정답 있는 사용자', cohort.get('truth_users'), None),
+              ('이력 있음 (warm)', cohort.get('warm'), cohort.get('warm_truth')),
+              ('이력 적음 (cold)', cohort.get('cold'), cohort.get('cold_truth'))]
+    for column, (label, value, truth) in zip(st.columns(4), values):
+        column.metric(label, '—' if value is None else f'{value:,}명')
+        if truth is not None:
+            column.caption(f'그중 정답 있는 사용자 {truth:,}명')
     groups = rec.get('candidate', {}).get('ann_two_tower', {}).get('cohorts', {})
     names = dict(all='전체', cold='이력 적음(cold)', warm='이력 있음(warm)', no_history='이력 없음', rare_target='드문 상품이 정답',
                  new_target='신상품이 정답', unavailable_target='정답이 카탈로그에 없음', repeat_purchase='재구매가 정답')
     if groups:
-        table(pd.DataFrame([dict(코호트=names.get(key, key), 사용자=f"{row['users']:,}",
-                                 Recall300=f"{row['recall_at_300']:.1%}" if row.get('recall_at_300') is not None else '미측정 (사용자 0)')
+        table(pd.DataFrame([{'코호트': names.get(key, key), '사용자': f"{row['users']:,}",
+                             'Recall@300': f"{row['recall_at_300']:.1%}" if row.get('recall_at_300') is not None else '미측정 (사용자 0)'}
                             for key, row in groups.items()]))
         st.caption('이력 적음·이력 없음처럼 사용자가 적은 코호트의 값은 변동이 큽니다.')
     if 'feasible_constraint_violations' in rec:
@@ -484,14 +510,14 @@ def ab_source(report: dict, bundle: dict | None, config: dict) -> tuple[dict, st
     if ab.get('status') == 'MEASURED':
         source = (report.get('measurement_sources', {}).get('ab')
                   or report.get('integration', {}).get('checks', {}).get('ab_statistics'))
-        return ab, f"선택한 결과의 A/B 실험 · {source['source']}" if source else None
+        return ab, f"선택한 결과의 A/B 실험 · {file_name(source['source'])}" if source else None
     try:
         paired = paired_ab(report, bundle)
         if paired:
             return paired
         actual = ab_result(config['results_dir'])
         if actual:
-            return actual, f"저장된 초기 모델 합성 A/B · {actual['source']}"
+            return actual, f"저장된 초기 모델 합성 A/B · {file_name(actual['source'])}"
         reference = config.get('reference_report')
         if reference and reference.is_file() and report and not different_recommendation_policy(report, config['results_dir']):
             archived = read_reference(reference)
@@ -556,8 +582,8 @@ def ab_tab(report: dict, bundle: dict | None, config: dict) -> None:
         fig.update_xaxes(range=[-span, span], ticksuffix='%', title='전체 파이프라인 − 인기순 (%p)')
         column.plotly_chart(fig, use_container_width=True)
         with column.expander('표로 보기'):
-            table(pd.DataFrame([dict(지표=label, 차이pp=difference * 100, 하한pp=ci[0] * 100, 상한pp=ci[1] * 100,
-                                     p=row.get('z_p_value'), 방법=row.get('method'))]))
+            table(pd.DataFrame([{'지표': label, '차이 (%p)': difference * 100, '하한 (%p)': ci[0] * 100, '상한 (%p)': ci[1] * 100,
+                                 'p': row.get('z_p_value'), '방법': korean(row.get('method'))}]))
         lift, p = row.get('relative_lift'), row.get('z_p_value')
         direction = '낮습니다' if difference < 0 else '높습니다'
         p_text = '계산 가능한 최솟값보다 작음(사실상 0)' if p == 0 else (f'{p:.1e}' if p is not None else '미측정')
@@ -611,16 +637,15 @@ def system_tab(report: dict, bundle: dict | None, config: dict) -> None:
     health = api_call(config['api_url'], 'GET', '/health', timeout=min(config['api_timeout'], 2))
     ready = api_call(config['api_url'], 'GET', '/ready', timeout=min(config['api_timeout'], 2))
     live = health['data'].get('model_version') if health['ok'] else None
-    st.caption(f"지금 API 상태 — 연결 {'정상' if health['ok'] else '연결 안 됨'} · 모델 {'준비됨' if ready['ok'] else '준비 안 됨'} · "
+    st.caption(f"지금 API 상태 — 연결 {'정상' if health['ok'] else '안 됨'} ·모델 {'준비됨' if ready['ok'] else '준비 안 됨'} · "
                f"현재 모델 버전 {live or '미측정'}. 아래는 저장된 측정이며 그때의 모델 버전은 {report.get('model_version', '미측정')}입니다."
                + (f" ({health['error']})" if not health['ok'] else ''))
     rows = [row for row in report.get('metrics', []) if row['name'].endswith('_ms')]
     if rows:
         inside = sum(row['status'] == 'PASS' for row in rows)
         section('시스템', 0, f"응답 시간 {len(rows)}개 {'모두 기준 안' if inside == len(rows) else f'중 {inside}개 기준 안'}")
-        st.markdown(' / '.join(f"{LABELS[row['name']].replace(' p95', '')} {fmt(row['name'], row['value'])}(기준 {row['target']:g}ms)"
-                               for row in rows) + ' · p95 기준')
-        table(pd.DataFrame([{'지표': LABELS[row['name']], '측정값': fmt(row['name'], row['value']), '기준': f"{row['target']:g}",
+        # The table below already lists every value with its target, so no one-line repeat of it above.
+        table(pd.DataFrame([{'지표': LABELS[row['name']], '측정값': fmt(row['name'], row['value']), '기준': target_text(row),
                              '판정': STATUS.get(row['status'], row['status']), '평가 구간': row['split'], '출처 필드': row.get('source') or '—'}
                             for row in rows]))
     samples_section(report)
@@ -671,6 +696,8 @@ def samples_section(report: dict) -> None:
     if not charts:
         return
     section('시스템', 1)
+    st.caption('상자 그림 읽는 법 — 상자는 가운데 50% 요청, 상자 안 선은 중앙값, 점은 유난히 느린 요청입니다. '
+               '보라 점선은 p95, 회색 점선은 기준입니다. 세로축은 10배마다 같은 간격(로그 눈금)입니다.')
     for start in range(0, len(charts), 2):
         for column, (name, groups, caption) in zip(st.columns(2), charts[start:start + 2]):
             row = rows.get(name, {})
@@ -718,7 +745,7 @@ def conditions_section(report: dict, bundle: dict | None, config: dict) -> None:
              if memory.isdigit() and len(cpu) == 2 and all(part.isdigit() for part in cpu) else None),
             ('torch / faiss 스레드', f"{environment['torch_threads']} / {environment['faiss_threads']}" if 'torch_threads' in environment else None),
             ('GPU 사용', ('예' if environment['gpu_used'] else '아니오') if 'gpu_used' in environment else None),
-            ('후보 캐시', report.get('candidate_latency', {}).get('cache')),
+            ('후보 캐시', korean(report.get('candidate_latency', {}).get('cache'))),
             ('측정 부하', conditions.get('workload'))]
     table(pd.DataFrame([dict(항목=name, 값=str(value)) for name, value in rows if value is not None]))
     with st.expander('근거'):
@@ -755,12 +782,12 @@ def ct_section(bundle: dict | None, config: dict) -> None:
             text = f"**실제 재학습 판정: {decision}** (후보 {retraining.get('version')}, 운영 {retraining.get('active')})"
             before, after = comparison.get('baseline', {}).get('ctr_auc'), comparison.get('candidate', {}).get('ctr_auc')
             if before is not None and after is not None:
-                text += f" — {comparison.get('split')} CTR_AUC {before:.3f} → {after:.3f}, 개선폭 {after - before:+.4f}"
+                text += f" — {comparison.get('split')} CTR AUC {before:.3f} → {after:.3f}, 개선폭 {after - before:+.4f}"
                 if 'min_improvement' in limits:
                     text += f" vs 승격 기준 {limits['min_improvement']:g}"
             st.markdown(text)
             st.caption('개선폭이 기준 이하이면 운영 모델을 유지합니다. 승격·HTTP 교체·롤백은 별도 통제 실험'
-                       '(integration.checks.ct_retrain_and_rollback)으로 확인했습니다.')
+                       '(통합 검사의 CT 재학습·롤백 항목)으로 확인했습니다.')
     name = 'ct_controlled_lifecycle_full.jsonl' if (folder / 'ct_controlled_lifecycle_full.jsonl').is_file() else 'ct_log.jsonl'
     logs = ct_log(folder, name=name)
     if logs['rows']:
@@ -772,8 +799,13 @@ def ct_section(bundle: dict | None, config: dict) -> None:
         frame = pd.json_normalize(logs['rows'], sep='.')
         columns = {'at': '시각', 'event': '이벤트', 'version': '버전', 'parent': '이전 버전', 'active': '운영 버전',
                    'comparison.split': '비교 분할', 'reason': '사유'}
-        shown = frame[[c for c in columns if c in frame]].rename(columns=columns)
-        st.dataframe(display_frame(shown), hide_index=True, use_container_width=True)
+        shown = frame[[c for c in columns if c in frame]].copy()
+        if 'event' in shown:
+            shown['event'] = shown['event'].map(lambda value: CT_EVENTS.get(value, value))
+        if 'reason' in shown:
+            shown['reason'] = shown['reason'].map(korean)
+        # st.dataframe prints empty cells as a gray "None"; the raw log stays unchanged in 「버전 이력 원본」.
+        st.dataframe(display_frame(shown.rename(columns=columns).fillna('—')), hide_index=True, use_container_width=True)
         with st.expander('버전 이력 원본'):
             st.dataframe(display_frame(frame), hide_index=True, use_container_width=True)
         if logs['invalid_lines']:
@@ -794,15 +826,16 @@ def ct_section(bundle: dict | None, config: dict) -> None:
 
 
 # ── 화면 틀 ──────────────────────────────────────────────────────────────────
-VIEWS = {'개요': overview_tab, '데이터': data_tab, '검색': search_tab, '추천': recommendation_tab, 'A/B': ab_tab, '시스템': system_tab}
+VIEWS = {'홈': home_tab, '개요': overview_tab, '데이터': data_tab, '검색': search_tab, '추천': recommendation_tab, 'A/B': ab_tab, '시스템': system_tab}
 
 
 def go_tab(name: str) -> None:
     st.session_state['tab'] = name
 
 
-def navigation(tab: str, config: dict, report: dict) -> None:
-    """Sidebar table of contents: the open tab lists its sections; other tabs switch the view."""
+def contents(tab: str) -> None:
+    """Sidebar table of contents, first so the home background leads: the open tab lists its sections; other tabs
+    switch the view."""
     with st.sidebar:
         for name in TABS:
             if name == tab:
@@ -811,6 +844,30 @@ def navigation(tab: str, config: dict, report: dict) -> None:
                                     for title, anchor in SECTIONS[name]), unsafe_allow_html=True)
             else:
                 st.button(name, key=f'nav_{name}', type='tertiary', icon=':material/chevron_right:', on_click=go_tab, args=(name,))
+
+
+def results(items: list[dict], default: int) -> tuple[dict, dict | None, Exception | None]:
+    """Sidebar group after the tab list: which saved result the measurement tabs show."""
+    report: dict = {}
+    bundle: dict | None = None
+    error: Exception | None = None
+    with st.sidebar:
+        st.button('평가 결과', key='nav_results', type='tertiary', icon=':material/expand_more:')
+        if items:
+            choice = st.radio('평가 결과', range(len(items)), index=default, format_func=lambda i: items[i]['label'],
+                              key='bundle', label_visibility='collapsed')
+            bundle = items[choice]
+            try:
+                report = load_bundle(bundle)
+            except (OSError, ValueError, KeyError, TypeError) as exc:
+                error = exc
+        else:
+            st.info('저장된 통합 평가 결과가 없습니다.')
+    return report, bundle, error
+
+
+def tools(config: dict, report: dict) -> None:
+    with st.sidebar:
         st.markdown('<div class="toc-label">도구</div>', unsafe_allow_html=True)
         with st.container(key='tools'):
             st.button('결과 새로고침', type='tertiary', icon=':material/refresh:')
@@ -840,7 +897,7 @@ def provenance(report: dict, bundle: dict, config: dict) -> None:
         quality = (report.get('measurement_sources', {}).get('quality')
                    or report.get('integration', {}).get('frozen_quality') or {})
         if quality.get('source'):
-            st.caption(f"새 도안 카탈로그에서 측정한 full test · 체크섬 확인 · 품질 측정 근거 {quality['source']}")
+            st.caption(f"새 도안 카탈로그에서 측정한 full test · 체크섬 확인 · 품질 측정 근거 {file_name(quality['source'])}")
         try:
             if deployment(config['results_dir']) is not None:  # only a running Docker deployment can be compared
                 st.caption(reference_identity(report, config['results_dir']))
@@ -854,31 +911,21 @@ def main() -> None:
     config = settings(ROOT)
     items, default = bundles(config)
     st.session_state.setdefault('tab', TABS[0])
-    report: dict = {}
-    bundle: dict | None = None
-    error: Exception | None = None
-    with st.sidebar:
-        st.button('평가 결과', key='nav_results', type='tertiary', icon=':material/expand_more:')
-        if items:
-            choice = st.radio('평가 결과', range(len(items)), index=default, format_func=lambda i: items[i]['label'],
-                              key='bundle', label_visibility='collapsed')
-            bundle = items[choice]
-            try:
-                report = load_bundle(bundle)
-            except (OSError, ValueError, KeyError, TypeError) as exc:
-                error = exc
-        else:
-            st.info('저장된 통합 평가 결과가 없습니다.')
+    # Sidebar order: contents (home first), then the result picker, then tools. The radio below renders after the
+    # sidebar, so the tab it holds is read from session state here.
+    contents(st.session_state['tab'])
+    report, bundle, error = results(items, default)
+    tools(config, report)
     st.title('멀티모달 검색 및 Multi-Stage 추천 시스템')
-    if report and bundle:
-        counts = report['data_counts']
-        st.caption(f"{bundle['label']} · 상품 {counts['products']:,} · 사용자 {counts['users']:,} · 이벤트 {counts['events']:,} · "
-                   '저장된 측정값을 보여주며 새로 측정하지 않습니다 · 시간 KST')
-        provenance(report, bundle, config)
-    else:
-        st.caption('저장된 측정값을 보여주며 새로 측정하지 않습니다 · 시간 KST')
     tab = st.radio('화면', TABS, key='tab', horizontal=True, label_visibility='collapsed')
-    navigation(tab, config, report)
+    if tab != TABS[0]:  # the home tab opens with background; which result is shown matters from 개요 on
+        if report and bundle:
+            counts = report['data_counts']
+            st.caption(f"{bundle['label']} · 상품 {counts['products']:,} · 사용자 {counts['users']:,} · 이벤트 {counts['events']:,} · "
+                       '저장된 측정값을 보여주며 새로 측정하지 않습니다 · 시간 KST')
+            provenance(report, bundle, config)
+        else:
+            st.caption('저장된 측정값을 보여주며 새로 측정하지 않습니다 · 시간 KST')
     if error:
         st.error(f'결과를 읽을 수 없습니다: {error}')
     if not report and tab in ('개요', 'A/B'):

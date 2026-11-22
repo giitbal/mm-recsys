@@ -19,13 +19,17 @@ CSS = """<style>
 [data-testid="stAppViewContainer"] h1{font-size:2.05rem;letter-spacing:-.025em;padding-bottom:0}
 [data-testid="stMain"] h2{font-size:1.5rem}
 [data-testid="stMain"] h3{font-size:1.375rem}
-/* tab bar: horizontal radio drawn as underline tabs */
-.st-key-tab [role="radiogroup"]{gap:1rem;border-bottom:2px solid light-dark(#e8e2f6, #3a3450);flex-wrap:wrap}
-.st-key-tab label[data-baseweb="radio"]{margin:0 0 -2px;padding:0 0 .5rem;border-bottom:2px solid transparent}
+/* the title now sits directly above the tab bar (result details moved below it), so give the bar room */
+.st-key-tab{margin-top:.75rem}
+/* tab bar: horizontal radio drawn as underline tabs; the selected tab's straight 2px line lies on the 1px baseline */
+.st-key-tab [role="radiogroup"]{gap:1.75rem;align-items:flex-end;border-bottom:1px solid light-dark(#e4e4e8, #2b2e38);flex-wrap:wrap}
+.st-key-tab label[data-baseweb="radio"]{margin:0 0 -1px;padding:.5rem 0 .625rem;border-bottom:2px solid transparent;border-radius:0}
 .st-key-tab label[data-baseweb="radio"] > div:first-child{display:none}
-.st-key-tab label[data-baseweb="radio"] p{font-size:15px}
-.st-key-tab label[data-baseweb="radio"]:has(input:checked){border-color:#7a4fe0}
-.st-key-tab label[data-baseweb="radio"]:has(input:checked) p{color:light-dark(#6a3fd4, #b9a4ff)}
+.st-key-tab label[data-baseweb="radio"] > div:last-child{padding-left:0}
+.st-key-tab label[data-baseweb="radio"] p{font-size:15px;color:light-dark(#6b6f7b, #9ea3b0)}
+.st-key-tab label[data-baseweb="radio"]:hover p{color:light-dark(#2a2c33, #e6e7eb)}
+.st-key-tab label[data-baseweb="radio"]:has(input:checked){border-color:light-dark(#7a4fe0, #9277f2)}
+.st-key-tab label[data-baseweb="radio"]:has(input:checked) p{color:light-dark(#1d1d22, #f5f5f7)}
 /* sidebar table of contents */
 .toc-label{font-size:13px;font-weight:500;margin:.4rem 0 .1rem}
 .st-key-bundle label[data-baseweb="radio"]{width:calc(100% - 22px);margin:0 0 2px 22px;padding:5px 8px;border-radius:6px}
@@ -38,28 +42,70 @@ CSS = """<style>
 .toc-item{display:block;margin-left:22px;padding:5px 8px;border-radius:6px;font-size:14.5px;color:inherit !important;
   opacity:.85;text-decoration:none !important;line-height:1.38}
 .toc-item:hover{background:light-dark(#e3dafa, rgba(122,79,224,.35));opacity:1}
-/* "측정 결과 / 직접 해보기": radio drawn as a segmented control, HIG blue accent */
+/* "측정 결과 / 직접 해보기": radio drawn as a segmented control, purple accent like the tab bar */
 :is(.st-key-search_view, .st-key-recommend_view) [role="radiogroup"]{gap:0}
 :is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]{margin:0;padding:4px 16px;border:1px solid light-dark(#d5d6d8, #4a4a4f)}
 :is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:first-child{border-radius:8px 0 0 8px}
 :is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:last-child{border-radius:0 8px 8px 0;border-left:none}
 :is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"] > div:first-child{display:none}
-:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:has(input:checked){border-color:#1e6ef4;background:light-dark(#e0f1ff, rgba(30,110,244,.25))}
-:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:has(input:checked) p{color:light-dark(#1e6ef4, #8ab8ff)}
+:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:has(input:checked){border-color:#7a4fe0;background:light-dark(#efe9fc, rgba(122,79,224,.25))}
+:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:has(input:checked) p{color:light-dark(#6a3fd4, #b9a4ff)}
 /* chart cards */
 [data-testid="stPlotlyChart"]{background:light-dark(#f2f2f7, #1c1c1e);border-radius:14px;overflow:hidden}
 .st-key-verdict [data-testid="stMetricValue"]{font-size:20px;font-weight:700}
 .st-key-verdict [data-testid="stMetricLabel"] p{font-size:14px}
 .stage-note{font-size:14px;opacity:.75}
+/* home: figures drawn in HTML so they read without any saved measurement; each sits in the chart-card gray */
+/* subgrid rows line up titles, bodies and footers across the columns */
+.steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;grid-template-rows:repeat(3,auto);gap:0 14px;
+  margin:.4rem 0 1rem;padding:18px 22px;
+  border-radius:14px;background:light-dark(#f2f2f7, #1c1c1e)}
+.steps.numbers{grid-template-rows:repeat(5,auto)}
+.step{display:grid;grid-row:1/-1;grid-template-rows:subgrid;min-width:0;font-size:14px;line-height:1.5}
+.step-num{font-size:34px;font-weight:700;line-height:1.15;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.step-num small{margin-left:2px;font-size:16px;font-weight:600}
+.step:last-child .step-num{color:light-dark(#6155f5, #8f87ff)}
+.step-sub{margin-bottom:10px;font-size:13px;opacity:.65}
+.step b{font-size:15px}
+.step > span{opacity:.8}
+.step em{padding-top:8px;font-style:normal;font-size:12.5px;opacity:.65}
+.step-arrow{grid-row:1;align-self:start;font-size:22px;line-height:1.1;opacity:.35}
+.steps.numbers .step-arrow{font-size:30px;line-height:1.2}
+.figure{margin:.4rem 0 1rem;padding:18px 22px;border-radius:14px;background:light-dark(#f2f2f7, #1c1c1e)}
+.figure svg{display:block;width:100%;max-width:720px;height:auto;margin:0 auto}
+.split-bar{display:flex;gap:3px;height:14px}
+.split-bar i{border-radius:4px}
+.split-axis{display:flex;justify-content:space-between;margin:6px 0 14px;font-size:12.5px;opacity:.6}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;margin:.2rem 0 .8rem;font-size:14px;line-height:1.5}
+.figure .legend{margin:0}
+.legend > span b{margin-right:6px}
+.sw{display:inline-block;width:12px;height:12px;margin-right:7px;border-radius:3px;vertical-align:-1px}
+.sw-line{display:inline-block;width:22px;margin-right:7px;border-top:2px dashed;vertical-align:middle}
+.terms{width:100%;border-collapse:collapse;margin:.4rem 0 .6rem;font-size:15px;line-height:1.5}
+.terms th,.terms td{padding:8px 12px;border:1px solid light-dark(#e4e4e8, #34343a);text-align:left;vertical-align:middle}
+.terms th{font-weight:600;background:light-dark(#f7f7f9, #1c1c1e)}
+.terms td.cat{font-weight:600}
+.terms td.read{opacity:.75}
+.terms .nw{white-space:nowrap}
+.steps-box{container-type:inline-size}
+@container (max-width:720px){.steps,.steps.numbers{grid-template-columns:1fr;grid-template-rows:none;gap:0}
+  .step{display:flex;flex-direction:column;grid-row:auto;padding:12px 0;border-top:1px solid rgba(128,128,128,.25)}
+  .step:first-child{padding-top:0;border-top:none}.step:last-child{padding-bottom:0}.step-arrow{display:none}}
 </style>"""
 
 
 def chart(fig: go.Figure, title: str, height: int = 320, legend: bool = False) -> go.Figure:
-    """Chart card: bold title on the card background (CSS), gridlines only where values are read."""
+    """Chart card: bold title on the card background (CSS), gridlines only where values are read.
+
+    A second line after <br> becomes a subtitle: a multi-line title anchored at the top overflowed the card."""
+    head, _, rest = title.partition('<br>')
     fig.update_layout(
-        title=dict(text=f'<b>{title}</b>', x=0.02, xanchor='left', y=0.97, yanchor='top', font=dict(size=15)),
+        title=dict(text=f'<b>{head}</b>', x=0.02, xanchor='left', y=0.97, yanchor='top', font=dict(size=15),
+                   subtitle=dict(text=rest, font=dict(size=13)) if rest else None),
         height=height, paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(size=12),
-        margin=dict(l=16, r=24, t=64 + 22 * title.count('<br>'), b=16 if not legend else 40), showlegend=legend, bargap=0.35,
+        # Keep a wider right margin set earlier by baseline() for its label beside the plot.
+        margin=dict(l=16, r=max(24, fig.layout.margin.r or 0), t=64 + 22 * bool(rest), b=16 if not legend else 40),
+        showlegend=legend, bargap=0.35,
         legend=dict(orientation='h', x=0.5, xanchor='center', y=-0.18, bgcolor='rgba(0,0,0,0)'))
     fig.update_xaxes(gridcolor=GRID, zeroline=False, linecolor=GRID)
     fig.update_yaxes(gridcolor=GRID, zeroline=False)

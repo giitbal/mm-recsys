@@ -111,6 +111,7 @@ def test_test_report_is_preferred_and_integration_receipt_is_visible(tmp_path, m
     assert not app.exception
     bundle = app.radio(key='bundle')
     assert bundle.options[bundle.value] == '실행 결과 · 테스트 분할 (개발용 데이터)'
+    app.radio(key='tab').set_value('개요').run()
     assert any(item.label == '최종 통합 검사 근거' for item in app.expander)
     assert next(m.value for m in app.metric if m.label == '최종 종합 품질') == '미측정'
 
@@ -151,7 +152,7 @@ def test_published_bundles_come_first_and_side_evidence_stays_inside_results(tmp
         data.read_json(outside, tmp_path)
 
 
-def test_six_tabs_charts_and_metric_tables_match_json(tmp_path, monkeypatch, report):
+def test_tabs_charts_and_metric_tables_match_json(tmp_path, monkeypatch, report):
     path = tmp_path / 'evaluation_dev_valid.json'
     path.write_text(json.dumps(report))
     monkeypatch.setenv('RESULTS_DIR', str(tmp_path))
@@ -159,7 +160,9 @@ def test_six_tabs_charts_and_metric_tables_match_json(tmp_path, monkeypatch, rep
     app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
     assert not app.exception
     from dashboard.app import LABELS, STATUS, TABS, fmt
-    assert app.radio(key='tab').options == TABS == ['개요', '데이터', '검색', '추천', 'A/B', '시스템']
+    assert app.radio(key='tab').options == TABS == ['홈', '개요', '데이터', '검색', '추천', 'A/B', '시스템']
+    assert app.radio(key='tab').value == '홈' and any('상품 1,000개' in item.value for item in app.markdown)  # selected counts
+    app.radio(key='tab').set_value('개요').run()
     metrics = {m.label: m.value for m in app.metric}
     assert metrics['측정 기준 판정'] == '미달' and metrics['최종 종합 품질'] == '미측정'
     assert metrics['MRR'] == '0.600' and metrics['검색 HTTP p95'] == '250.0ms'
@@ -173,7 +176,7 @@ def test_six_tabs_charts_and_metric_tables_match_json(tmp_path, monkeypatch, rep
     spec = json.loads(app.get('plotly_chart')[0].proto.spec)
     assert spec['data'][0]['y'] == [.6, .6, .6]
     assert spec['data'][1]['y'] == [.4, None, .4]
-    assert spec['data'][1]['text'][1] == 'BM25 해당 없음'
+    assert spec['data'][1]['text'][1] == '해당 없음'  # image mode has no BM25 (not a zero score)
     app.radio(key='tab').set_value('A/B').run()
     assert not app.exception
     assert any('상대 -50.0%' in item.value for item in app.markdown)
@@ -188,11 +191,25 @@ def test_absent_and_malformed_results_render_without_fake_values(tmp_path, monke
         if content is not None:
             (tmp_path / 'evaluation_dev_valid.json').write_text(content)
         app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
-        for tab in ('개요', '데이터', '검색', '추천', 'A/B', '시스템'):
+        for tab in ('홈', '개요', '데이터', '검색', '추천', 'A/B', '시스템'):
             app.radio(key='tab').set_value(tab).run()
-            assert not app.exception and len(app.radio(key='tab').options) == 6
+            assert not app.exception and len(app.radio(key='tab').options) == 7
             assert not app.get('plotly_chart')
             assert all(m.label not in ('측정 기준 판정', 'Control CVR', 'CTR 상대 변화') for m in app.metric)
+
+
+def test_home_explains_background_without_results(tmp_path, monkeypatch):
+    monkeypatch.setenv('RESULTS_DIR', str(tmp_path))
+    monkeypatch.setattr(data, 'api_call', offline)
+    app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
+    from dashboard.home import HOME_SECTIONS
+    assert not app.exception and not app.error and app.radio(key='tab').value == '홈'
+    assert [item.value for item in app.subheader] == [title for title, _ in HOME_SECTIONS]  # sidebar table of contents
+    assert not app.get('plotly_chart')
+    text = ' '.join(item.value for item in app.markdown)
+    assert '상품 50,000개' in text and '기준을 넘는지' in text
+    for word in ('MRR', 'Recall@300', 'AUC', 'HitRate@50', 'Coverage', 'p95', 'CTR', 'p값'):  # every 개요 metric is explained
+        assert word in text, word
 
 
 def test_demos_use_shared_http_contract_and_empty_search_is_local(tmp_path, monkeypatch):
@@ -285,7 +302,7 @@ def test_live_model_version_and_nested_ct_logs_are_distinct_from_saved_measureme
     assert '현재 모델 버전 v1.1' in status and '모델 버전은 fixture-v1' in status
     assert any('controlled_fixture' in caption.value for caption in app.caption)
     curated = next(df for df in app.dataframe if '이벤트' in df.value)
-    assert curated.value['이벤트'].tolist() == ['promoted', 'rollback']
+    assert curated.value['이벤트'].tolist() == ['승격', '롤백']  # event codes shown in Korean
     assert pa.ipc.open_stream(curated.proto.styler.display_values).read_all().to_pandas()['시각'].iloc[0] == '2026-11-12 03:07:08 KST'
     frame = next(df.value for df in app.dataframe if 'event' in df.value)
     assert frame['comparison.candidate.ctr_auc'].iloc[0] == .9
@@ -305,6 +322,8 @@ def test_packaged_report_renders_charts_then_prefers_new_runtime_measurement(tmp
     app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
     bundle = app.radio(key='bundle')
     assert not app.exception and bundle.options[bundle.value] == '제출 기준 · 테스트 분할 (패키지)'
+    assert not any('새 도안 카탈로그에서 측정한' in item.value for item in app.caption)  # home opens with background
+    app.radio(key='tab').set_value('개요').run()
     assert any('새 도안 카탈로그에서 측정한' in item.value for item in app.caption)
     for tab in ('검색', '추천', 'A/B'):
         app.radio(key='tab').set_value(tab).run()
@@ -326,6 +345,7 @@ def test_packaged_report_renders_charts_then_prefers_new_runtime_measurement(tmp
     app = AppTest.from_file('dashboard/app.py', default_timeout=20).run()
     bundle = app.radio(key='bundle')
     assert not app.exception and bundle.options[bundle.value] == '실행 결과 · 검증 분할 (full)'
+    app.radio(key='tab').set_value('개요').run()
     assert next(metric.value for metric in app.metric if metric.label == '측정 기준 판정') == '미달'
     app.radio(key='tab').set_value('A/B').run()
     assert not app.exception and not app.get('plotly_chart')
@@ -344,7 +364,7 @@ def test_repository_default_is_the_new_catalog_submission(monkeypatch):
     app = AppTest.from_file('dashboard/app.py', default_timeout=30).run()
     bundle = app.radio(key='bundle')
     assert not app.exception and bundle.options[bundle.value] == '제출 기준 · 테스트 분할 (새 도안 · 11/21)'
-    for tab in ('개요', '데이터', '검색', '추천', 'A/B', '시스템'):
+    for tab in ('홈', '개요', '데이터', '검색', '추천', 'A/B', '시스템'):
         app.radio(key='tab').set_value(tab).run()
         assert not app.exception and not app.error, (tab, [item.value for item in app.error])
 

@@ -11,7 +11,7 @@ import streamlit as st
 
 from dashboard.assets import catalog, clip_item, deployment, image_path
 from dashboard.data import DEEPFASHION, REALISM, api_call, evidence, read_json
-from dashboard.formatting import display_frame, display_value
+from dashboard.formatting import display_frame, display_value, korean
 from dashboard.style import GRAY, INDIGO, chart
 from src.common.artifacts import file_hash
 from src.search.text import display_text
@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PERSONAS = dict(bargain='가성비', brand_loyal='브랜드 충성', careful='신중형', impulsive='충동형', pragmatist='실용형', trendsetter='트렌드형')
 CATEGORIES = dict(tops='상의', bottoms='하의', outerwear='아우터', footwear='신발', accessories='액세서리')
 EVENTS = dict(view='조회', search='검색', cart='장바구니', purchase='구매')
+SPLITS = dict(train='학습 (train)', valid='검증 (valid)', val='검증 (val)', test='시험 (test)')
 REALISM_LABELS = dict(price_mae='가격 평균 오차', price_quantile_mae='가격 분위수 오차', category_tv='카테고리 분포 차이(TV)',
                       activity_top10_error='상위 10% 활동량 비중 오차', session_purchase_error='세션 구매율 오차',
                       session_length_error='세션 길이 오차', gap_error='행동 간격 오차', behavior_objective='행동 종합 목표')
@@ -110,7 +111,7 @@ def audit_sections(audit: dict, config: dict) -> None:
                 f" · 노출 {counts.get('impressions', 0):,}, 시간순 {split} 분할**")
     st.subheader('평가 프로토콜: 시간 분할', anchor='protocol')
     boundaries, split_counts = audit.get('boundaries', {}), audit.get('split_counts', {})
-    st.dataframe(pd.DataFrame([{'분할': name, '비율': f'{ratios.get(name, 0):.1%}', '이벤트': f'{split_counts.get(name, 0):,}',
+    st.dataframe(pd.DataFrame([{'분할': SPLITS.get(name, name), '비율': f'{ratios.get(name, 0):.1%}', '이벤트': f'{split_counts.get(name, 0):,}',
                                 '시작': display_value(row['start']), '끝': display_value(row['end'])} for name, row in boundaries.items()]),
                  hide_index=True, use_container_width=True)
     st.caption(f"seed={audit.get('seed')} · 생성기={audit.get('generator_version')} · 분석 시각={display_value(audit.get('generated_at'))}")
@@ -233,9 +234,10 @@ def external_section(root: Path) -> None:
         splits = list(distances)
         st.markdown('**H&M·Retailrocket 실제 통계와의 거리** (작을수록 가까움, 교정 적용 후 분할별)')
         keys = list(distances[splits[0]])
-        st.dataframe(pd.DataFrame([{'지표': REALISM_LABELS.get(key, key), **{name: f'{distances[name][key]:.4f}' for name in splits}}
+        st.dataframe(pd.DataFrame([{'지표': REALISM_LABELS.get(key, key),
+                                    **{SPLITS.get(name, name): f'{distances[name][key]:.4f}' for name in splits}}
                                    for key in keys]), hide_index=True, use_container_width=True)
-        st.caption(f"지표마다 정의와 단위가 달라 한 축에 그리지 않습니다. {realism.get('scope', '')}")
+        st.caption(f"지표마다 정의와 단위가 달라 한 축에 그리지 않습니다. {korean(realism.get('scope', ''))}")
     deepfashion = read_json(root / DEEPFASHION, root)
     metrics = (deepfashion or {}).get('metrics', {})
     splits = [name for name in ('val', 'test') if name in metrics]
@@ -243,20 +245,22 @@ def external_section(root: Path) -> None:
         top1 = [metrics[name]['zero_shot_top1'] for name in splits]
         top5 = [metrics[name]['zero_shot_top5'] for name in splits]
         majority = [metrics[name]['majority_accuracy'] for name in splits]
+        names = [SPLITS.get(name, name) for name in splits]
         fig = go.Figure()
-        fig.add_bar(name='CLIP zero-shot top1', x=splits, y=top1, marker_color=INDIGO, text=[f'{v:.1%}' for v in top1], textposition='outside')
-        fig.add_bar(name='CLIP zero-shot top5', x=splits, y=top5, marker=dict(color=INDIGO, pattern=dict(shape='/')),
+        fig.add_bar(name='CLIP 1순위 정답률 (zero-shot)', x=names, y=top1, marker_color=INDIGO, text=[f'{v:.1%}' for v in top1], textposition='outside')
+        fig.add_bar(name='CLIP 5순위 안 정답률 (zero-shot)', x=names, y=top5, marker=dict(color=INDIGO, pattern=dict(shape='/')),
                     text=[f'{v:.1%}' for v in top5], textposition='outside')
-        fig.add_bar(name='최빈 카테고리 기준선', x=splits, y=majority, marker_color=GRAY, text=[f'{v:.1%}' for v in majority],
+        fig.add_bar(name='최빈 카테고리 기준선', x=names, y=majority, marker_color=GRAY, text=[f'{v:.1%}' for v in majority],
                     textposition='outside')
         higher = all(a > b for a, b in zip(top1, majority))
         title = ('DeepFashion 카테고리 분류: 사전학습 CLIP이 최빈값 기준선보다 높습니다' if higher
-                 else 'DeepFashion 카테고리 분류: 사전학습 CLIP과 최빈값 기준선') + f" ({'·'.join(splits)} 분할)"
+                 else 'DeepFashion 카테고리 분류: 사전학습 CLIP과 최빈값 기준선') + ' (검증·시험 분할)'
         chart(fig, title, 340, legend=True).update_yaxes(tickformat='.0%', range=[0, 1.05])
         st.plotly_chart(fig, use_container_width=True)
         with st.expander('표로 보기'):
-            st.dataframe(pd.DataFrame(dict(분할=splits, top1=top1, top5=top5, 최빈기준선=majority)), hide_index=True, use_container_width=True)
-        st.caption('질의 수: ' + ', '.join(f"{name} {metrics[name].get('queries', 0):,}" for name in splits))
+            st.dataframe(pd.DataFrame({'분할': names, '1순위 정답률': top1, '5순위 안 정답률': top5, '최빈 기준선': majority}),
+                         hide_index=True, use_container_width=True)
+        st.caption('질의 수: ' + ', '.join(f"{SPLITS.get(name, name)} {metrics[name].get('queries', 0):,}" for name in splits))
         with st.expander('근거'):
             st.json(display_value({key: deepfashion.get(key) for key in ('scope', 'model', 'limitations')}))
     if not realism and not splits:
