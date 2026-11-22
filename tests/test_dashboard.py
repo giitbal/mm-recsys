@@ -329,6 +329,7 @@ def test_packaged_report_renders_charts_then_prefers_new_runtime_measurement(tmp
     assert next(metric.value for metric in app.metric if metric.label == '측정 기준 판정') == '미달'
     app.radio(key='tab').set_value('A/B').run()
     assert not app.exception and not app.get('plotly_chart')
+    assert any('A/B는 테스트 통합 실행에서 측정' in item.value for item in app.info)
     report.update(data_fingerprint=archived['data_fingerprint'])
     report['recommendation']['models'] = archived['recommendation']['models']
     live.write_text(json.dumps(report))
@@ -346,6 +347,42 @@ def test_repository_default_is_the_new_catalog_submission(monkeypatch):
     for tab in ('개요', '데이터', '검색', '추천', 'A/B', '시스템'):
         app.radio(key='tab').set_value(tab).run()
         assert not app.exception and not app.error, (tab, [item.value for item in app.error])
+
+
+def test_every_published_bundle_shows_an_ab_with_its_source(monkeypatch):
+    monkeypatch.delenv('PUBLISHED_RESULTS_DIR')
+    monkeypatch.setattr(data, 'api_call', offline)
+    labels = [entry['label'] for entry in data.PUBLISHED]
+    for index, label in enumerate(labels):
+        app = AppTest.from_file('dashboard/app.py', default_timeout=30).run()
+        app.radio(key='bundle').set_value(index).run()
+        app.radio(key='tab').set_value('A/B').run()
+        assert not app.exception and not app.error and app.get('plotly_chart'), label
+        captions = [item.value for item in app.caption]
+        assert any('선택한 결과의 A/B 실험' in text or '같은 데이터·추천 모델' in text for text in captions), label
+
+
+def test_paired_ab_requires_the_same_data_and_models(tmp_path, report):
+    models = {kind: {'hashes': {'weights': kind}} for kind in ('candidate', 'ranking', 'session')}
+    report.update(data_fingerprint='same', recommendation=dict(report.get('recommendation', {}), models=models))
+    measured = dict(deepcopy(report), split='test')
+    measured['ab'] = dict(report['ab'], status='MEASURED')
+    root = tmp_path / 'docs' / 'results'
+    path = root / 'paired' / 'evaluation_full_test.json'
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(measured))
+    bundle = dict(root=root, ab=path)
+    ab, caption = data.paired_ab(dict(report, ab={'status': 'UNMEASURED'}), bundle)
+    assert ab['status'] == 'MEASURED' and '테스트 분할 결과의 A/B' in caption
+    assert caption.split(' · ')[1] == 'docs/results/paired/evaluation_full_test.json'
+    assert data.paired_ab(dict(report, data_fingerprint='other'), bundle) is None
+    changed = deepcopy(report)
+    changed['recommendation']['models']['ranking'] = {'hashes': {'weights': 'other'}}
+    assert data.paired_ab(changed, bundle) is None
+    path.write_text(json.dumps(dict(measured, split='valid')))
+    assert data.paired_ab(report, bundle) is None
+    assert data.paired_ab(report, dict(root=root, ab=root / 'missing.json')) is None
+    assert data.paired_ab(report, None) is None
 
 
 def test_reference_compares_data_search_and_active_recommender(tmp_path):

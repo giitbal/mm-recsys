@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from dashboard.data import ab_record
 from src.common.artifacts import file_hash, fingerprint
 from src.recommendation.bundle_compat import training_config_matches
 
@@ -164,7 +165,4 @@ def ab_result(results: Path) -> dict | None:
         return None
     if not _initial_models_match(active['model_dir'], value['identity']['bundle_metadata']):
         raise ValueError('A/B와 배포 초기 모델이 다릅니다.')
-    return dict(status='MEASURED', source=str(path), days=value['days'], seed=value['seed'],
-        strategies=value['strategies'], denominators=value['denominators'], inference=value['inference'],
-        arms={key: {k: v for k,v in row.items() if k != 'arm_statistics'} for key,row in value['arms'].items()},
-        limitations=value['limitations'])
+    return ab_record(value, path)

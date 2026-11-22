@@ -12,8 +12,8 @@ import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from dashboard.data import (REQUIREMENTS, api_call, bundles, ct_log, evidence, load_bundle, read_json, read_reference,
-                            read_report, search_payload, settings)
+from dashboard.data import (REQUIREMENTS, api_call, bundles, ct_log, evidence, load_bundle, paired_ab, read_json,
+                            read_reference, read_report, search_payload, settings)
 from dashboard.explore import catalog_section, data_tab, product_cards
 from dashboard.assets import ab_result, deployment, different_recommendation_policy, reference_identity
 from dashboard.formatting import display_frame, display_value
@@ -486,6 +486,9 @@ def ab_source(report: dict, bundle: dict | None, config: dict) -> tuple[dict, st
                   or report.get('integration', {}).get('checks', {}).get('ab_statistics'))
         return ab, f"선택한 결과의 A/B 실험 · {source['source']}" if source else None
     try:
+        paired = paired_ab(report, bundle)
+        if paired:
+            return paired
         actual = ab_result(config['results_dir'])
         if actual:
             return actual, f"저장된 초기 모델 합성 A/B · {actual['source']}"
@@ -508,7 +511,10 @@ def ab_tab(report: dict, bundle: dict | None, config: dict) -> None:
     if source:
         st.caption(source)
     if ab.get('status') != 'MEASURED':
-        st.info(ab.get('reason', 'A/B 실험 결과가 없습니다.'))
+        st.info('이 결과 파일에는 A/B 실험이 저장되어 있지 않고, 같은 데이터·추천 모델로 측정한 A/B도 찾지 못했습니다. '
+                'A/B는 테스트 통합 실행에서 측정하므로 사이드바의 「제출 기준 · 테스트 분할」 결과에서 확인할 수 있습니다.')
+        if ab.get('reason'):
+            st.caption(f"원본 기록: {ab['reason']}")
         return
     control, treatment = ab['arms']['control'], ab['arms']['treatment']
     st.markdown('**Control: 인기순 (popularity)** vs **Treatment: 전체 파이프라인 (full_pipeline)**')
