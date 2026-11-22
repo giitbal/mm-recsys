@@ -3,12 +3,6 @@
 텍스트·이미지로 상품을 검색하고, 사용자 행동과 현재 세션을 반영해 상품을 추천하는 시스템입니다.
 합성 고객 행동 데이터로 모델을 학습하며, 검색·추천 API, 평가 대시보드, A/B 실험과 자동 재학습을 로컬 Docker에서 실행합니다.
 
-**온라인 평가 대시보드: https://kpang-mm-recsys.streamlit.app**
-
-저장된 평가 결과를 Streamlit Community Cloud에서 보여 주는 읽기 전용 화면입니다.
-검색·추천 데모는 API 서버가 필요하므로 아래 Docker 절차로 로컬에서 실행합니다.
-접속이 한동안 없으면 앱이 잠들며, 화면의 깨우기 버튼을 누르면 1분 안팎으로 다시 열립니다.
-
 PDF 2·4·7절의 로컬 통합 검증을 통과했습니다. 전체 성능 기준 11개와 후보 300개 조건을 충족했습니다. 제출 소스와 통합 PR의 병합 내역은 공개 저장소에서 확인할 수 있습니다. [공개 저장소](https://github.com/k-pang-2026/mm-recsys) · [제출 보고서](docs/submission/report.md) · [최종 검사 결과](docs/results/final_acceptance.json)
 
 검색 600개 질의의 모드별 점수와 BM25 비교, 추천 1만 명의 성능과 기준선, 5,000명씩 30일간 비교한 합성 실험의 CTR·CVR을 각각 확인할 수 있습니다. [검색 보고서](docs/search_report.md) · [추천 보고서](docs/recommend_report.md) · [A/B 보고서](docs/ab_test_report.md) · [재현 절차](docs/submission/reproduction.md)
