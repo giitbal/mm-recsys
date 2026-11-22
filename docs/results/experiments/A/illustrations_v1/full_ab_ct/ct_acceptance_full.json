@@ -1,0 +1,31 @@
+{
+  "schema": "ct-full-separated-lifecycle-v1",
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "natural": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_full.json",
+    "sha256": "c49faa9f2deefaa44fcb7e48987a187fdc114922ad4d69571901dad58bd9d562"
+  },
+  "controlled_lifecycle": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_controlled_lifecycle_full.json",
+    "sha256": "772e53b42732588db313f4d90733092f3c72a053875c95b07cc8f24dd346ca8e"
+  },
+  "training": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_training_sources_full.json",
+    "sha256": "48935056dd69ba40937011b866283055ace739faec540764f6d235cb0e6a228b"
+  },
+  "candidate_validation": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_candidate_valid_full.json",
+    "sha256": "df9ac983624ee46b3f88bf57dbad75385951232f250e511c6022de752e2e86ed"
+  },
+  "configuration": {
+    "source": "docs/results/experiments/A/illustrations_v1/default_full/configuration_full.json",
+    "sha256": "9c1a954b3329d5243217e5da4a84301f933980bf9e2d477d8180e7a6fccdceea"
+  },
+  "controlled_reload": {
+    "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_controlled_reload_full.jsonl",
+    "sha256": "82d95c76f8d647531163752ce3c6f984b26b4d503b1241ed90156b06f12792cb"
+  },
+  "scope": "Natural deployment retraining RETAINED. Isolated constant baseline, exact candidate and default guard: HTTP promotion and rollback."
+}

@@ -227,14 +227,16 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--work-dir', type=Path)
     parser.add_argument('--verify-existing', action='store_true')
-    parser.add_argument('--output', type=Path, default=Path('docs/results/ct_dev_fixture.json'))
+    parser.add_argument('--output', type=Path)
     args = parser.parse_args()
+    cfg = load_config()
+    args.output = args.output or Path(cfg['paths']['results_dir']) / 'ct_dev_fixture.json'
     if args.verify_existing:
         verify_existing(args.output)
         log('CT', '기존 근거 검사', '저장된 CT 근거·등록 번들 검사 통과 / 새 재학습 측정 아님', status='통과(PASS)')
         emit_json(dict(status='PASS', output=str(args.output)))
         return 0
-    work = args.work_dir or Path('models/.ct/verification') / uuid.uuid4().hex[:10]
+    work = args.work_dir or Path(cfg['paths']['model_dir']) / '.ct/verification' / uuid.uuid4().hex[:10]
     report = verify(work.resolve(), args.output)
     verify_existing(args.output)
     print(json.dumps(dict(status=report['status'], new_events=report['new_events'],

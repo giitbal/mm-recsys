@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-21T04:44:57.993701+00:00",
+  "model_version": "v1.0",
+  "health": {
+    "status": "ok",
+    "search_ready": true,
+    "recommend_ready": true,
+    "scale": "full",
+    "model_version": "v1.0"
+  },
+  "ready": {
+    "status": "ready"
+  },
+  "recommendations": []
+}

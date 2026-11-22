@@ -14,18 +14,19 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from src.common.console import log, emit_json, run_cli, status_ko
 from src.common.artifacts import file_hash, write_json
+from docker.runtime import quality_dir, runtime_config
 from src.common.config import load_config
 from scripts.check_submission_evidence import (assemble_acceptance, audit_python, check_hashes,
                                                 assemble_integration, collect_integration_checks, collect_quality, read_json)
 
-OUTPUT = 'docs/results/final_submission'
+OUTPUT = 'docs/results/illustrations-v1/full/submission'
 
 
 def full_config() -> dict:
     previous = os.environ.get('SCALE')
     try:
         os.environ['SCALE'] = 'full'
-        return load_config()
+        return runtime_config(load_config())
     finally:
         if previous is None:
             os.environ.pop('SCALE', None)
@@ -159,10 +160,10 @@ def verify_saved(root: Path) -> dict:
     if report['delivery_status'] != 'PASS':
         raise ValueError('saved B11 delivery did not pass')
     cfg = full_config()
-    evidence_dir = report.get('evidence_dir', 'docs/results/docker')
+    evidence_dir = report['evidence_dir']
     collect_quality(root, cfg, evidence_dir)
     expected = (assemble_integration(root, cfg, f'{OUTPUT}/checks.json', evidence_dir, report['integration_checks'])
-                if report.get('integration_checks') else assemble_acceptance(root, cfg, f'{OUTPUT}/checks.json'))
+                if report.get('integration_checks') else assemble_acceptance(root, cfg, f'{OUTPUT}/checks.json', evidence_dir))
     if read_json(root, 'docs/results/final_acceptance.json') != expected:
         raise ValueError('final acceptance differs from measured inputs/submission readiness')
     return report
@@ -175,7 +176,7 @@ def main() -> int:
     parser.add_argument('--verify-existing', action='store_true')
     parser.add_argument('--require-ready', action='store_true', help='exit 2 unless all final submission conditions pass')
     parser.add_argument('--output-dir', default=OUTPUT, help='separate B11 and INTEGRATE execution evidence')
-    parser.add_argument('--evidence-dir', default='docs/results/docker')
+    parser.add_argument('--evidence-dir', default=str(quality_dir(full_config())))
     parser.add_argument('--integration-checks', help='actual executed non-submission integration checks JSON')
     args = parser.parse_args()
     OUTPUT = args.output_dir
@@ -242,7 +243,7 @@ def main() -> int:
             'config/serving.yaml', 'docs/results/gates/B9.json', 'docs/results/gates/B10.json',
             quality_path, args.evidence_dir + '/quality_full_valid.json', args.evidence_dir + '/quality_selection_full.json',
             args.evidence_dir + '/smoke_full.json', args.evidence_dir + '/verified_full.json',
-            'docs/results/ab_test.json', 'docs/results/ct_dev_fixture.json', f'{OUTPUT}/repository.json',
+            f'{OUTPUT}/repository.json',
             f'{OUTPUT}/python_audit.json', f'{OUTPUT}/pytest.xml'}
         if args.integration_checks:
             input_names |= {args.integration_checks, 'docs/submission/dataset_scope.json',
@@ -257,7 +258,7 @@ def main() -> int:
         write_json(ROOT / OUTPUT / 'checks.json', report)
         write_json(ROOT / 'docs/results/final_acceptance.json',
                    assemble_integration(ROOT, cfg, f'{OUTPUT}/checks.json', args.evidence_dir, args.integration_checks)
-                   if args.integration_checks else assemble_acceptance(ROOT, cfg, f'{OUTPUT}/checks.json'))
+                   if args.integration_checks else assemble_acceptance(ROOT, cfg, f'{OUTPUT}/checks.json', args.evidence_dir))
     log('동료 평가', '요약', f"{report.get('stage', 'B11')} / 제출물={status_ko(report['delivery_status'])}({report['delivery_status']}) / 최종 준비={status_ko(report['readiness_status'])}({report['readiness_status']})", status='완료')
     emit_json(report)
     for blocker in report['blockers']:
@@ -267,7 +268,6 @@ def main() -> int:
     return 2 if args.require_ready and report['readiness_status'] != 'PASS' else 0
 
 
-QUALITY_PATH = 'docs/results/docker/quality_full_test.json'
 
 if __name__ == '__main__':
     raise SystemExit(run_cli(main, '동료 평가', '제출 근거·실행 로그와 현재 소스 해시를 확인하세요. 과거 결과를 현재 측정으로 사용하지 마세요.'))

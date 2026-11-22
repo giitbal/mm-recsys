@@ -9,6 +9,8 @@ import base64
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from src.common.artifacts import file_hash
+
 import requests
 import yaml
 from dotenv import dotenv_values
@@ -20,7 +22,9 @@ def settings(root: Path) -> dict:
     path = Path(os.getenv('CONFIG_PATH', 'config.yaml'))
     path = path if path.is_absolute() else root / path
     cfg = yaml.safe_load(path.read_text(encoding='utf-8'))
-    configured = Path(os.getenv('RESULTS_DIR', cfg['paths']['results_dir']))
+    scale = os.getenv('SCALE', cfg.get('scale', 'dev'))
+    paths = {**cfg['paths'], **cfg['paths'].get('by_scale', {}).get(scale, {})}
+    configured = Path(os.getenv('RESULTS_DIR', paths['results_dir']))
     defaults = dotenv_values(root / '.env') if (root / '.env').is_file() else {}
     api_url = (os.getenv('API_URL') or defaults.get('API_URL') or 'http://localhost:8000').rstrip('/')
     public_api_url = os.getenv('PUBLIC_API_URL') or defaults.get('PUBLIC_API_URL')
@@ -30,10 +34,14 @@ def settings(root: Path) -> dict:
     serving_path = root / 'config' / 'serving.yaml'
     serving = yaml.safe_load(serving_path.read_text(encoding='utf-8')) if serving_path.is_file() else {}
     serving_ct: dict = next((v['ct'] for v in (serving or {}).values() if isinstance(v, dict) and isinstance(v.get('ct'), dict)), {})
-    return dict(results_dir=configured if configured.is_absolute() else root / configured,
+    reference = os.getenv('DASHBOARD_REFERENCE_REPORT')
+    published = Path(os.getenv('PUBLISHED_RESULTS_DIR', 'docs/results'))
+    return dict(reference_report=root / reference if reference else None,
+                published_dir=published if published.is_absolute() else root / published,
+                results_dir=configured if configured.is_absolute() else root / configured,
                 api_url=api_url, public_api_url=public_api_url.rstrip('/'),
                 api_timeout=float(os.getenv('DASHBOARD_API_TIMEOUT', '10')),
-                scale=os.getenv('SCALE', cfg.get('scale', 'dev')),
+                scale=scale,
                 taxonomy=cfg.get('simulator', {}).get('taxonomy', {}),
                 ct={**cfg.get('ct', {}), **serving_ct})
 
@@ -43,15 +51,23 @@ def available_reports(root: Path) -> list[Path]:
                    if re.fullmatch(r'evaluation_(dev|full)_(valid|test)\.json', p.name)), key=lambda p: p.name)
 
 
-# Published result bundles (relative to results_dir). The folder holds the bundle's side evidence
-# (data_audit, latency_conditions, CT records); missing bundles are skipped.
+# Published result bundles (relative to published_dir = docs/results, independent of the runtime results_dir).
+# The folder holds the bundle's side evidence (data_audit, latency_conditions, CT records); `files` overrides a
+# side-evidence file kept elsewhere. `reference` reports are verified against their .sha256. Missing bundles are skipped.
+ILLUSTRATIONS = 'experiments/A/illustrations_v1/integration_current'
+ILLUSTRATIONS_FILES = {'data_audit.json': f'{ILLUSTRATIONS}/cold_data_audit.json',
+                       'quality_full_valid.json': f'{ILLUSTRATIONS}/release_quality/quality_full_valid.json'}
 PUBLISHED = (
-    ('제출 기준 · 테스트 분할', 'experiments/A/final_validation_20261112/published/evaluation_full_test.json',
-     'experiments/A/final_validation_20261112'),
-    ('제출 기준 · 검증 분할', 'experiments/A/final_validation_20261112/quality_full_valid.json',
-     'experiments/A/final_validation_20261112'),
-    ('교정 실험 · 테스트 분할 (다른 데이터)', 'experiments/A/realism_full_20261115/quality/quality_full_test.json',
-     'experiments/A/realism_full_20261115'),
+    dict(label='제출 기준 · 테스트 분할 (새 도안 · 11/21)', path=f'{ILLUSTRATIONS}/release_display/evaluation_full_test.json',
+         folder=ILLUSTRATIONS, files=ILLUSTRATIONS_FILES, reference=True),
+    dict(label='제출 기준 · 검증 분할 (새 도안 · 11/21)', path=f'{ILLUSTRATIONS}/release_quality/quality_full_valid.json',
+         folder=ILLUSTRATIONS, files=ILLUSTRATIONS_FILES),
+    dict(label='이전 도안 · 테스트 분할 (11/12)', path='experiments/A/final_validation_20261112/published/evaluation_full_test.json',
+         folder='experiments/A/final_validation_20261112'),
+    dict(label='이전 도안 · 검증 분할 (11/12)', path='experiments/A/final_validation_20261112/quality_full_valid.json',
+         folder='experiments/A/final_validation_20261112'),
+    dict(label='교정 실험 · 테스트 분할 (이전 도안, 다른 데이터)', path='experiments/A/realism_full_20261115/quality/quality_full_test.json',
+         folder='experiments/A/realism_full_20261115'),
 )
 REQUIREMENTS = 'integration/20261107_requirements/requirements.json'
 REALISM = 'experiments/A/realism_full_20261115/realism_distance.json'
@@ -59,20 +75,46 @@ DEEPFASHION = 'external/expansion-v3/deepfashion_expanded.json'
 SPLIT_LABEL = dict(test='테스트', valid='검증')
 
 
-def bundles(root: Path, scale: str) -> tuple[list[dict], int]:
-    """Published bundles first, then runtime reports; returns the list and the default index."""
-    items = [dict(label=label, path=root / path, folder=root / folder)
-             for label, path, folder in PUBLISHED if (root / path).is_file()]
-    runtime = available_reports(root)
+def bundles(config: dict) -> tuple[list[dict], int]:
+    """Published bundles, an optional packaged reference, then runtime reports; returns the list and the default index.
+
+    A finished runtime evaluation for the configured scale is selected first, as in the Docker README; otherwise the
+    newest published bundle is the default.
+    """
+    published: Path = config['published_dir']
+    items = []
+    for entry in PUBLISHED:
+        path = published / entry['path']
+        if path.is_file():
+            items.append(dict(label=entry['label'], path=path, folder=published / entry['folder'], root=published,
+                              files={name: published / rel for name, rel in entry.get('files', {}).items()},
+                              reference=entry.get('reference', False)))
+    reference: Path | None = config.get('reference_report')
+    if reference and reference.is_file() and not any(item['reference'] for item in items):
+        items.insert(0, dict(label='제출 기준 · 테스트 분할 (패키지)', path=reference, folder=reference.parent,
+                             root=reference.parent, files={}, reference=True))
+    results: Path = config['results_dir']
+    runtime = available_reports(results) if results.is_dir() else []
+    first_runtime = len(items)
     for path in runtime:
         size, split = path.stem.split('_')[1:]
         data_label = '개발용 데이터' if size == 'dev' else 'full'
-        items.append(dict(label=f'실행 결과 · {SPLIT_LABEL[split]} 분할 ({data_label})', path=path, folder=root))
-    if len(items) > len(runtime):
-        return items, 0
-    preferred = next((i for split in ('test', 'valid') for i, path in enumerate(runtime)
-                      if path.name == f'evaluation_{scale}_{split}.json'), 0)
+        items.append(dict(label=f'실행 결과 · {SPLIT_LABEL[split]} 분할 ({data_label})', path=path, folder=results,
+                          root=results, files={}, reference=False))
+    preferred = next((first_runtime + i for split in ('test', 'valid') for i, path in enumerate(runtime)
+                      if path.name == f'evaluation_{config["scale"]}_{split}.json'), 0)
     return items, preferred
+
+
+def evidence(bundle: dict | None, name: str) -> Path | None:
+    """Side-evidence path for a bundle (override first, then the bundle folder)."""
+    if not bundle:
+        return None
+    return bundle.get('files', {}).get(name) or bundle['folder'] / name
+
+
+def load_bundle(bundle: dict) -> dict:
+    return read_reference(bundle['path']) if bundle.get('reference') else read_report(bundle['path'], bundle['root'])
 
 
 def read_json(path: Path, root: Path, limit: int = 20_000_000):
@@ -108,6 +150,24 @@ def read_report(path: Path, root: Path) -> dict:
     if any(type(counts.get(key)) is not int or counts[key] < 0 for key in ('products', 'users', 'events')):
         raise ValueError('평가 데이터 개수가 없습니다.')
     return value
+
+
+def read_reference(path: Path) -> dict:
+    report = read_report(path, path.parent)
+    integration = report.get('integration', {})
+    sources = report.get('measurement_sources') or {}
+    measured = (report['acceptance'] == 'UNMEASURED'
+                and all(sources.get(key, {}).get('sha256') for key in ('quality', 'ab'))
+                and report.get('test_used_for_selection') is False)
+    integrated = (integration.get('stage') == 'INTEGRATE'
+                  and integration.get('frozen_quality', {}).get('source')
+                  and integration.get('checks', {}).get('ab_statistics', {}).get('source'))
+    if (report['scale'] != 'full' or report['split'] != 'test'
+            or not (measured or integrated) or report.get('ab', {}).get('status') != 'MEASURED'):
+        raise ValueError('full test 평가와 A/B 근거가 연결된 제출 보고서가 필요합니다.')
+    if path.with_suffix('.sha256').read_text().split() != [file_hash(path), path.name]:
+        raise ValueError('기준 보고서의 체크섬이 다릅니다.')
+    return report
 
 
 def search_payload(text: str, image: bytes | None, top_k: int) -> dict:

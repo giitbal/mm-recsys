@@ -1,0 +1,58 @@
+{
+  "standard_24h_monitor": {
+    "event": "monitor",
+    "status": "MEASURED",
+    "model_version": "v1.0",
+    "ctr": 0.011940921861948516,
+    "hit_rate_at_50": 0.3315450643776824,
+    "clicks": 629,
+    "exposures": 52676,
+    "mature_requests": 1526,
+    "top50_requests": 932,
+    "hit_requests": 309,
+    "alerts": [],
+    "window_start": 1795165149.7213175,
+    "observed_through": 1795251549.7213175,
+    "attribution_seconds": 3600,
+    "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+    "thresholds": {
+      "ctr_threshold": 0.01,
+      "hitrate_threshold": 0.2,
+      "min_mature_requests": 20
+    }
+  },
+  "measured_at": "2026-11-21T08:59:09.764996+00:00",
+  "policy_ready": 1795247162.335123,
+  "requests_since_ready": 1187,
+  "thresholds": {
+    "attribution_seconds": 3600,
+    "min_mature_requests": 20,
+    "ctr_threshold": 0.01,
+    "hitrate_threshold": 0.2
+  },
+  "monitor": {
+    "event": "monitor",
+    "status": "ALERT",
+    "model_version": "v1.0",
+    "ctr": 0.00957751521661296,
+    "hit_rate_at_50": 0.325,
+    "clicks": 107,
+    "exposures": 11172,
+    "mature_requests": 464,
+    "top50_requests": 160,
+    "hit_requests": 52,
+    "alerts": [
+      "ctr_below_threshold"
+    ],
+    "window_start": 1795247162.7213175,
+    "observed_through": 1795251549.7213175,
+    "attribution_seconds": 3600,
+    "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+    "thresholds": {
+      "ctr_threshold": 0.01,
+      "hitrate_threshold": 0.2,
+      "min_mature_requests": 20
+    }
+  },
+  "scope": "Descriptive local simulator and API verification traffic after deployment; excludes earlier policy requests even with the same v1.0 weights. Real wall clock and 3600-second attribution. No writes, model changes or human experiment."
+}

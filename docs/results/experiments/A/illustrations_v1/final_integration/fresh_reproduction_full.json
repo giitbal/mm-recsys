@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "initial_data_files": 0,
+  "initial_model_files": 0,
+  "prepared_data_and_models_from_empty": true,
+  "initial": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/initial.json",
+    "sha256": "b142587a5fb64b8afcbad45611ca9b982b149080a5527900f64cfbea595c00db"
+  },
+  "preparation": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_preparation.json",
+    "sha256": "f2ff176bb17a2feec02015d445ca90af14df0147ac09877d32a53cfadebba45d"
+  },
+  "runtime_sources": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/runtime_sources.json",
+    "sha256": "59d46409b0757467a9e59112042cc80a7916869b891b18dc856be4b2ef76ec32"
+  },
+  "services": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_services.json",
+    "sha256": "65c85cdface8dfad55411cec0d562c75110f8fa74526ac86d0a7d67f2ec068a8"
+  },
+  "models": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_model_comparison.json",
+    "sha256": "2120f3b9b3dddd0db1ee9e29f61d9f6631735c0e270d04f19a08d23daf040b37"
+  },
+  "data_audit": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_data_audit.json",
+    "sha256": "1497f33ae74eaca340d05740db953297341e6f944fa50af171cedbdb48e51033"
+  },
+  "cold_search": {
+    "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_search_quality.json",
+    "sha256": "3d481146b0a7cdd5b2beb50733d44a7e9064587867e6c547edeb7441d536a30d"
+  },
+  "image_hashes_checked": 50000,
+  "manifest_sha256": "6305f4a33a7e0c41903659613cc2f1cd538b95bc9cbae277ef60c1f03e9d884b",
+  "scope": "Independent local clone with unpublished changes overlaid. Empty data/model/results volumes. All six production preparation steps, four default services, 50,000 image checksums and independent model comparison verified. Pretrained CLIP cache and dependency layers reused."
+}

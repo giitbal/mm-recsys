@@ -1,0 +1,566 @@
+{
+  "pdf": {
+    "pages": 14,
+    "sha256": "b333d4fdab2127c380b7750f7d8e491141ec15db97c15389f8c9a0ae1b983c7d"
+  },
+  "local_head": "03af3758f24fcdb8cfc20aad2138bb73b2a7eb17",
+  "public_main": "53e3e5448751404edd318322953a65687afb0cee",
+  "compose_services": [
+    "redis",
+    "api-server",
+    "storefront",
+    "simulator"
+  ],
+  "compose_with_dashboard": [
+    "redis",
+    "api-server",
+    "storefront",
+    "dashboard",
+    "simulator"
+  ],
+  "preserved_measurements": {
+    "pdf_audit_20261115": {
+      "fingerprint": "2df9b64e07e3b2aad48c967c4c8d3d8b04883dd19279896bb374c4f9926ad7d8",
+      "same_test_data": true,
+      "parquet_counts": {
+        "products": 50000,
+        "users": 10000,
+        "events": 1000000,
+        "split/train": 800000,
+        "split/valid": 100000,
+        "split/test": 100000
+      },
+      "all_historical_data_hashes_match": true,
+      "original_frozen_identity_matches_test": true,
+      "valid_snapshot_intact": true,
+      "metric_rows_recalculated_equal": true,
+      "passing_metric_rows": 11,
+      "smoke_file_matches": true,
+      "source_changes_since_measurement": [
+        "docker-compose.yml",
+        "src/serving/main.py"
+      ],
+      "added_serving_source": [
+        "src/serving/storefront.py"
+      ]
+    },
+    "realism_full_20261115": {
+      "fingerprint": "21ed7437e9e8f7d9f63afd37b6979d219e896ce12b6e863b846d1edc7e873b3f",
+      "same_test_data": true,
+      "parquet_counts": {
+        "products": 50000,
+        "users": 10000,
+        "events": 1000000,
+        "split/train": 800000,
+        "split/valid": 100000,
+        "split/test": 100000
+      },
+      "all_historical_data_hashes_match": true,
+      "original_frozen_identity_matches_test": true,
+      "valid_snapshot_intact": true,
+      "metric_rows_recalculated_equal": true,
+      "passing_metric_rows": 11,
+      "smoke_file_matches": true,
+      "source_changes_since_measurement": [
+        "docker-compose.yml",
+        "src/serving/main.py"
+      ],
+      "added_serving_source": [
+        "src/serving/storefront.py"
+      ]
+    }
+  },
+  "submission_files": {
+    "status": "FAIL",
+    "error": "evidence changed or missing: docs/submission/dataset_scope.json"
+  },
+  "types": {
+    "files": 146,
+    "public_functions": 530,
+    "missing_annotations": [
+      {
+        "file": "src/external_data/expansion_common.py",
+        "line": 8,
+        "function": "plan",
+        "missing": [
+          "path",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_common.py",
+        "line": 18,
+        "function": "frozen_sources",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_data.py",
+        "line": 11,
+        "function": "nested_users",
+        "missing": [
+          "original",
+          "all_ids",
+          "sizes",
+          "seed",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_data.py",
+        "line": 19,
+        "function": "run",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_deepfashion.py",
+        "line": 17,
+        "function": "nested_selection",
+        "missing": [
+          "partitions",
+          "old",
+          "limits",
+          "seed",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_deepfashion.py",
+        "line": 26,
+        "function": "retrieval",
+        "missing": [
+          "scores",
+          "labels",
+          "truth",
+          "duplicate",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_deepfashion.py",
+        "line": 36,
+        "function": "run",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_embeddings.py",
+        "line": 14,
+        "function": "run",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 44,
+        "function": "peak_rss_mib",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 51,
+        "function": "context",
+        "missing": [
+          "spec",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 61,
+        "function": "shards",
+        "missing": [
+          "spec",
+          "results",
+          "size",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 65,
+        "function": "training_users",
+        "missing": [
+          "frame",
+          "ids",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 72,
+        "function": "prepare_tensors",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 93,
+        "function": "tensor_records",
+        "missing": [
+          "spec",
+          "results",
+          "size",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 101,
+        "function": "content_projection",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 133,
+        "function": "train_candidate",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "size",
+          "variant",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 178,
+        "function": "item_times",
+        "missing": [
+          "spec",
+          "results",
+          "size",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 184,
+        "function": "ranking_features",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "size",
+          "encoder",
+          "table",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 210,
+        "function": "evaluation_inputs",
+        "missing": [
+          "data",
+          "evaluation",
+          "table",
+          "encoder",
+          "candidates",
+          "times",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 217,
+        "function": "train_ranker",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "size",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 252,
+        "function": "stage_metrics",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "size",
+          "variant",
+          "split",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 278,
+        "function": "fit_feature",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "size",
+          "variant",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 283,
+        "function": "main",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_hm.py",
+        "line": 34,
+        "function": "encode_items",
+        "missing": [
+          "indices",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_retail.py",
+        "line": 13,
+        "function": "observed_pairs",
+        "missing": [
+          "events",
+          "end",
+          "seconds",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_retail.py",
+        "line": 25,
+        "function": "categories_asof",
+        "missing": [
+          "events",
+          "properties",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_retail.py",
+        "line": 36,
+        "function": "keys",
+        "missing": [
+          "frame",
+          "kind",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_retail.py",
+        "line": 43,
+        "function": "fit",
+        "missing": [
+          "frame",
+          "kind",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_retail.py",
+        "line": 48,
+        "function": "predict",
+        "missing": [
+          "frame",
+          "kind",
+          "counts",
+          "global_probs",
+          "alpha",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_retail.py",
+        "line": 59,
+        "function": "score",
+        "missing": [
+          "frame",
+          "probabilities",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_retail.py",
+        "line": 67,
+        "function": "run",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_run.py",
+        "line": 8,
+        "function": "training_coverage",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_run.py",
+        "line": 31,
+        "function": "verify",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_run.py",
+        "line": 68,
+        "function": "report",
+        "missing": [
+          "spec",
+          "work",
+          "results",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_run.py",
+        "line": 155,
+        "function": "main",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_simulator.py",
+        "line": 21,
+        "function": "conditions",
+        "missing": [
+          "base",
+          "hm",
+          "retail",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_simulator.py",
+        "line": 29,
+        "function": "distribution",
+        "missing": [
+          "cfg",
+          "hm",
+          "retail",
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/expansion_simulator.py",
+        "line": 44,
+        "function": "run",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/hm_evaluate.py",
+        "line": 41,
+        "function": "candidate_lists",
+        "missing": [
+          "model",
+          "table",
+          "index"
+        ]
+      },
+      {
+        "file": "src/external_data/hm_revisit.py",
+        "line": 35,
+        "function": "counts_before",
+        "missing": [
+          "chunks"
+        ]
+      },
+      {
+        "file": "src/external_data/hm_revisit.py",
+        "line": 69,
+        "function": "population",
+        "missing": [
+          "table"
+        ]
+      },
+      {
+        "file": "src/external_data/hm_revisit.py",
+        "line": 77,
+        "function": "exact_lists",
+        "missing": [
+          "model",
+          "table"
+        ]
+      },
+      {
+        "file": "src/external_data/hm_revisit.py",
+        "line": 124,
+        "function": "load_ranker",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/external_data/hm_revisit.py",
+        "line": 135,
+        "function": "diagnostic",
+        "missing": [
+          "table"
+        ]
+      },
+      {
+        "file": "src/external_data/realism_metrics.py",
+        "line": 10,
+        "function": "quantiles",
+        "missing": [
+          "values"
+        ]
+      },
+      {
+        "file": "src/external_data/realism_metrics.py",
+        "line": 38,
+        "function": "purchase_stats",
+        "missing": [
+          "users"
+        ]
+      },
+      {
+        "file": "src/serving/storefront.py",
+        "line": 23,
+        "function": "source",
+        "missing": [
+          "return"
+        ]
+      },
+      {
+        "file": "src/serving/storefront.py",
+        "line": 31,
+        "function": "product",
+        "missing": [
+          "row"
+        ]
+      }
+    ]
+  },
+  "archived_acceptance_check": "PASS"
+}

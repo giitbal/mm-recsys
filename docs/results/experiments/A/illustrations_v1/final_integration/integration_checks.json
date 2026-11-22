@@ -1,0 +1,44 @@
+{
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "checks": {
+    "docker_reproduction": {
+      "source": "docs/results/experiments/A/illustrations_v1/final_integration/fresh_reproduction_full.json",
+      "sha256": "a8b4f49f8804998ecf9f773318890f75ab0832ed684b01b52ffde420c1ef2216",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "api_schemas": {
+      "source": "docs/results/experiments/A/illustrations_v1/final_integration/api_full.json",
+      "sha256": "4298409515f3d9c70cb5a1a1f2974c758600358700d5620fd61ab839d9c146b1",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "session_response": {
+      "source": "docs/results/experiments/A/illustrations_v1/final_integration/mab_full.json",
+      "sha256": "a24140f5ddc7d46417936f68c43f5d7ebc23bbbf50d0797c4b746d6052861c46",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "ab_statistics": {
+      "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ab_acceptance_full.json",
+      "sha256": "871ba216159da81d8f9020db7860ad4a23a68440800ee4c65b7774d73f34462a",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "ct_retrain_and_rollback": {
+      "source": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ct_acceptance_full.json",
+      "sha256": "03e49c967fb8bbc294973c63f030f5c17a6d8616ada41a2d6a899a70ce18f969",
+      "status": "PASS",
+      "exit_code": 0
+    }
+  },
+  "limitations": [
+    "This verdict covers the local working copy and the illustrations-v1 full synthetic catalog. Git publication and external course submission are separate.",
+    "The frozen single-stack 10-warmup, 100-serial-call latency benchmark was rechecked from raw samples. Cold reproduction was independently executed; no concurrent multi-stack latency claim.",
+    "Full 5,000/arm, 30-day simulator A/B: treatment CTR and CVR were lower than popularity. Results are synthetic, not live customer uplift.",
+    "The observed deployment CT candidate v1.1 was RETAINED and the serving model remained v1.0. A separate full-size constant-initial fixture demonstrated promotion/reload/rollback using the exact candidate. All 10,054 newly observed events were in the held-out chronological test interval.",
+    "Independent default 4-thread FAISS HNSW build: text/image/hybrid neighbor graphs differed. Identical vectors and query identities verified. The independently frozen 600-query test passed both search quality targets; see cold_search_quality.json.",
+    "Cold build used an independent local clone with the unpublished source overlay, empty data/models/results, the pinned pretrained CLIP cache and existing dependency layers. External real-dataset evaluation is outside this required acceptance scope."
+  ]
+}

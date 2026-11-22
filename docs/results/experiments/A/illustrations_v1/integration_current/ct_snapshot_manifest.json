@@ -1,0 +1,43 @@
+{
+  "generator_version": "ct-observed-snapshot-v2",
+  "scale": "full",
+  "seed": 42,
+  "generation_fingerprint": "ebeb622ff6b6ab7c3cfeceec5c802098742429bc7b569843d706db4701fa4c5e",
+  "parent_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "file_hashes": {
+    "products.parquet": "65eedc464009e05644a6430f985884ae9495b1c7eb6bc59520c2503ac8c37615",
+    "users.parquet": "a0d8e5f4218b36e5aa583cacd586e13dc31e2998dfb1c7e02871ea518926b128",
+    "events.parquet": "85f2f2c40fa2aec68f86308d6368c754eecd2bce40f600cdb3f3327f8d24ca5c",
+    "impressions.parquet": "0ea10aa3e430fb210ae6fe943d89b2ab4dba009bb6ab71a1d696b0cadcb0f41b",
+    "split/train.parquet": "169c985a4675f72d0dcb8d921e462f4d1f657a04a92e81d7a0c50437db3fff9b",
+    "split/valid.parquet": "8d4195b34ebe8fd68f8d7d49130559acfe1db52db391fb512304541ed71e454e",
+    "split/test.parquet": "69a0c10c651ca08caa620fbedd5154903761ec045923b4b6a42c2d018908028d"
+  },
+  "counts": {
+    "products": 50000,
+    "users": 10000,
+    "events": 1120212,
+    "impressions": 2342718
+  },
+  "split_counts": {
+    "train": 896169,
+    "valid": 112076,
+    "test": 111967
+  },
+  "boundaries": {
+    "train": {
+      "start": "2025-12-02T00:00:00+00:00",
+      "end": "2025-12-28T07:08:26.832900+00:00"
+    },
+    "valid": {
+      "start": "2025-12-28T07:08:28.889700+00:00",
+      "end": "2026-11-21T04:48:41.083389997+00:00"
+    },
+    "test": {
+      "start": "2026-11-21T04:48:41.213680029+00:00",
+      "end": "2026-11-21T08:58:54.030594110+00:00"
+    }
+  },
+  "observed_through": "2026-11-21T08:58:54.030594110+00:00",
+  "scope": "new chronological snapshot; train/valid only for fitting/selection; test unopened"
+}

@@ -1,0 +1,31 @@
+{
+  "version": "v1.3",
+  "source": "SQLite events.at and immutable CT snapshot event_id; test count by subtraction",
+  "previous_through": 20736,
+  "through": 56407,
+  "api_container_started": "2026-11-21T07:43:25.251375066Z",
+  "api_ready_observed": "2026-11-21T07:46:02.335123+00:00",
+  "rows": 35669,
+  "before_api_start": 35598,
+  "before_api_ready_observed": 35598,
+  "included_in_snapshot": 35669,
+  "folds": {
+    "train": 0,
+    "valid": 0,
+    "test": 35669
+  },
+  "manifest_bounds": {
+    "train": {
+      "start": "2025-12-02T00:00:00+00:00",
+      "end": "2025-12-26T18:25:12.391500+00:00"
+    },
+    "valid": {
+      "start": "2025-12-26T18:25:13.449300+00:00",
+      "end": "2025-12-29T22:54:48.442500+00:00"
+    },
+    "test": {
+      "start": "2025-12-29T22:54:48.971400+00:00",
+      "end": "2026-11-21T07:46:03.039596081+00:00"
+    }
+  }
+}

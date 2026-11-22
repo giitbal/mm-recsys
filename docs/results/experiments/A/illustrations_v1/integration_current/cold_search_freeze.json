@@ -1,0 +1,7 @@
+{
+  "recipe": "7aef1bae65d27f7d8b815f1d74e584bc6cab1695c2af16eed0078f60159d1474",
+  "selected_on": "valid",
+  "valid_sha256": "575a8e9e4874fcc477111442ea15e2ebe9f5048fd9a49f5009423e347c26bae6",
+  "query_fingerprint": "bec8120756df389ada3686be3a4f51813c7209a3b46f2674d37ddd8b4aab6d12",
+  "scope": "Replayed existing frozen settings on independent HNSW build; no retuning."
+}

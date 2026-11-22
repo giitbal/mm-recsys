@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "scale": "full",
+  "version": "v1.1",
+  "bundle_hashes": {
+    "meta.json": "784eb36dc457f307c09542cfdfd48120a9de8632ce4c88dadbf477d3554b586f",
+    "two_tower.pt": "ca6eeed6860540963ba720d5140c9c6ab979c079c426283c3aab741de0e8cde7",
+    "feature_vocab_scalers.json": "96dbd5621a6197b6eea535bd669a6941e5a08973ac04ddf803a54998ab0b823f",
+    "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+    "item_index.faiss": "7aaf1cbc3088bfa51e991b96da35f0bbd18371569d34f216391910964c1f5bc8",
+    "index_manifest.json": "b04eb703317d43e5c24e3656daf799c90a9a6580225f81ca4fe40d3677470084",
+    "ranking/meta.json": "bacdf376b9e41fdd3840ccedd8aff50ef1f01f211c946b67a2c5a9795ac0ad6b",
+    "ranking/deepfm.pt": "4bc02fbd34fa41badd04127cc75a4045b8e0cfa7b90d1071bb96e1d5e9117982",
+    "ranking/features.json": "0b9b670239bde0a450b26fea3c9eb169dcd99ff3b0f3474e2f9c9ab713c844ba",
+    "session/meta.json": "b12970afa27f516e50cff4d6acbba3108a2f54a7464e59639cc88e42ec31864d",
+    "session/session.pt": "0f41e1a3c80ee406045fab8650dc8f49704c5df8ba7538f10891c867cd50d07d",
+    "session/item_ids.json": "1597417f43fb70984d90a935c4202cbc73d84eaff15d274e3329fbb0ec93f953"
+  },
+  "comparison": {
+    "split": "valid",
+    "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185",
+    "baseline": {
+      "ctr_auc": 0.9661336950476113,
+      "ctr_logloss": 0.14420887853373487,
+      "hit_rate_at_50": 0.6927396710790212,
+      "truth_users": 7479,
+      "ctr_samples": 227686,
+      "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185"
+    },
+    "candidate": {
+      "ctr_auc": 0.9658397898822869,
+      "ctr_logloss": 0.14300948136969108,
+      "hit_rate_at_50": 0.6932745019387618,
+      "truth_users": 7479,
+      "ctr_samples": 227686,
+      "validation_fingerprint": "eab808b60d39bc9808d14fcbac6f2493ecdc4ffdcebd32a775affd32eaa99185"
+    },
+    "training_reports": {
+      "candidate": "fc92efc98fd89db824a5b6a5b8fc6ae28505d72cc86b66b6d7a2e1305c6cde48",
+      "ranking": "0ef3adeef25488ce8fd9733882297aacf1717aea17fcafd893c8ed5aee8d25bd",
+      "session": "3881a546d56f1285471fa5d8ecd01013ffc2142ec64777189d6e6fe52363d159"
+    }
+  }
+}

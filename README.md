@@ -5,10 +5,14 @@
 
 **온라인 평가 대시보드: https://kpang-mm-recsys.streamlit.app**
 
-저장된 평가 결과(`docs/results`)를 Streamlit Community Cloud에서 보여 주는 읽기 전용 화면입니다.
+저장된 평가 결과(`docs/results`)를 Streamlit Community Cloud에서 보여 주는 읽기 전용 화면입니다. 기본 화면은 새 도안(`illustrations-v1`) 카탈로그의 2026-11-21 full test이며, 사이드바에서 이전 도안 결과도 고를 수 있습니다.
 검색·추천 「직접 해보기」와 실시간 API 상태는 API 서버가 필요하므로 [Docker로 로컬 결과 확인](#docker로-로컬-결과-확인)에서 실행합니다.
 무료 앱이라 한동안 접속이 없으면 잠들며, 그때는 화면의 깨우기 버튼을 누르면 1분 안팎으로 다시 열립니다.
 배포 원본은 `giitbal/mm-recsys` 포크의 `feat/dashboard-redesign` 브랜치입니다.
+
+PDF 2·4·7절의 로컬 통합 검증을 통과했습니다. 전체 성능 기준 11개와 후보 300개 조건을 충족했습니다. 제출 소스와 통합 PR의 병합 내역은 공개 저장소에서 확인할 수 있습니다. [공개 저장소](https://github.com/k-pang-2026/mm-recsys) · [제출 보고서](docs/submission/report.md) · [최종 검사 결과](docs/results/final_acceptance.json)
+
+검색 600개 질의의 모드별 점수와 BM25 비교, 추천 1만 명의 성능과 기준선, 5,000명씩 30일간 비교한 합성 실험의 CTR·CVR을 각각 확인할 수 있습니다. [검색 보고서](docs/search_report.md) · [추천 보고서](docs/recommend_report.md) · [A/B 보고서](docs/ab_test_report.md) · [재현 절차](docs/submission/reproduction.md)
 
 ## PDF 요구사항 구현
 
@@ -29,6 +33,8 @@
 규모·페르소나·학습 설정은 [config.yaml](config.yaml), 검색·추천·서빙 설정은 [config/](config/)에서 관리합니다.
 지표 정의와 평가 조건은 [평가 계약](docs/contracts.md), 측정 결과는 [실험 보고서](docs/submission/report.md)를 참고하세요.
 
+## 시스템 아키텍처
+
 ```mermaid
 flowchart LR
     Simulator[행동 시뮬레이터] --> Data[상품·사용자·행동 데이터]
@@ -36,12 +42,15 @@ flowchart LR
     Data --> Candidate[Two-Tower 후보 생성]
     Candidate --> Ranking[DeepFM 랭킹]
     Ranking --> Reranking[다양성 · 신상품 · MAB]
-    Session[GRU 세션 인코더] --> Reranking
-    Simulator --> Redis[Redis 실시간 피처]
-    Redis --> API[FastAPI]
+    Redis[Redis 최근 클릭·세션 피처] --> Session[GRU 세션 인코더]
+    Session -->|장기 사용자 벡터와 결합| Candidate
+    Simulator -->|온라인 추천 요청과 행동 이벤트| API[FastAPI]
+    Simulator -->|행동 배치 반영| Redis
+    API -->|행동 반영| Redis
     Search --> API
     Reranking --> API
     API --> Dashboard[Streamlit 대시보드]
+    Reports[동결 평가·합성 A/B 보고서] --> Dashboard
     API --> Journal[노출·행동 로그]
     Journal --> CT[모니터링 · 재학습 · 검증]
     CT -->|승격 조건 충족 시 모델 교체| API
@@ -55,7 +64,7 @@ flowchart LR
 | 박정욱 | B · 추천 | Two-Tower, DeepFM, 재랭킹·MAB, 세션 기반 추천 |
 | 박채영 | C · 플랫폼 | Redis Feature Store, API 서빙, 평가·A/B, Streamlit 대시보드, CT 파이프라인 |
 
-작업별 기여와 변경 내역은 [닫힌 Pull Request](https://github.com/k-pang-2026/mm-recsys/pulls?q=is%3Apr+is%3Aclosed)에서 확인할 수 있습니다.
+담당 모듈과 단계별 작업 기록을 팀원별로 확인할 수 있습니다. [이제원 기여](docs/contributions/A.md) · [박정욱 기여](docs/contributions/B.md) · [박채영 기여](docs/contributions/C.md) · [닫힌 Pull Request](https://github.com/k-pang-2026/mm-recsys/pulls?q=is%3Apr+is%3Aclosed)
 
 ## Docker로 로컬 결과 확인
 
@@ -83,15 +92,33 @@ docker compose logs --tail=50 api-server
 curl --fail http://localhost:8000/ready
 ```
 
-`/ready`가 `{"status":"ready"}`를 반환하면 시연을 시작할 수 있습니다.
+`/ready`가 `{"status":"ready"}`를 반환하면 아래 요청으로 시연할 수 있습니다. 두 요청 모두 반환 개수의 기본값은 10입니다. 이미지 검색은 같은 검색 경로에 Base64 문자열 `query_image`를 보내고, 복합 검색은 `query_text`와 `query_image`를 함께 보냅니다.
+
+```bash
+curl --fail -H 'Content-Type: application/json' -d '{"query_text":"검정 오버핏 후드티"}' http://localhost:8000/api/search
+curl --fail 'http://localhost:8000/api/recommend?user_id=U000001'
+```
 
 | 확인할 내용 | 주소 |
 |---|---|
-| 검색·추천·평가 대시보드 | http://localhost:8501 |
+| Streamlit 평가 대시보드 (기본) | http://localhost:8501 |
 | API 문서와 요청 실행 | http://localhost:8000/docs |
 | 모델 준비 상태 | http://localhost:8000/ready |
+| 대시보드 카탈로그를 공유하는 쇼핑몰 | http://localhost:3000 · http://localhost:3000/operations |
 
 대시보드의 검색·추천 탭에서 「직접 해보기」로 검색·추천을 실행하고, 데이터 탭에서 EDA·페르소나·구매 원장을, 검색 탭에서 상품·CLIP 벡터를 확인할 수 있습니다.
+
+기본 대시보드·API·쇼핑몰은 같은 `illustrations-v1` 카탈로그와 CLIP 인덱스를 사용합니다. full 상품 5만 개의 JPEG와 독립 검색 평가 쿼리를 새 생성기로 그립니다. 모델 준비 중에는 같은 데이터의 full test와 합성 A/B 기준 측정을 표시합니다. A/B 탭에 실제 군별 인원과 기간이 표시됩니다.
+
+쇼핑몰을 추가로 실행하려면 저장소 루트에서 다음 명령을 실행하세요.
+
+```bash
+docker compose --profile storefront up -d --build --no-deps storefront
+```
+
+기본 시스템이 꺼져 있다면 `docker compose --profile storefront up -d --build storefront` 한 번으로 Redis·API·쇼핑몰을 시작할 수 있습니다.
+
+쇼핑몰은 시뮬레이터 상품 조회, 검색, 추천, 장바구니와 데모 구매를 실제 API에 연결합니다. 쇼핑몰만 멈추려면 `docker compose stop storefront`, 선택 서비스까지 모두 종료하려면 `docker compose --profile storefront down`을 실행하세요. [쇼핑몰 안내](storefront/README.md)
 
 ### 2. PDF 결과 예시 전체 시연
 
@@ -126,8 +153,8 @@ Windows에서는 `python scripts/demo_host.py examples`를 사용하거나 위 D
 ```bash
 # 텍스트·이미지·하이브리드 검색
 docker compose exec -T api-server demo search --query-text "검정 오버핏 후드티"
-docker compose exec -T api-server demo search --query-image data/full-v44/images/P000001.jpg
-docker compose exec -T api-server demo search --query-text "가방" --query-image data/full-v44/images/P000001.jpg
+docker compose exec -T api-server demo search --query-image data/full-illustrations-v1/images/P000001.jpg
+docker compose exec -T api-server demo search --query-text "가방" --query-image data/full-illustrations-v1/images/P000001.jpg
 
 # 개인화 추천과 실제 CT 모니터링 결과
 docker compose exec -T api-server demo recommend --user-id U000001
@@ -146,12 +173,12 @@ A/B와 CT 학습은 공유 잠금으로 순차 실행하므로, 다른 학습이
 
 ### 4. 품질 지표 확인
 
-새 실행 환경의 품질 지표는 평가 후 대시보드에 표시됩니다.
+현재 환경에서 직접 측정하려면 아래 순서로 실행하세요. 완료된 실행 경로의 평가 파일이 제출 기준 보고서보다 먼저 선택됩니다.
 초기 모델의 지연·품질을 측정할 때는 진행 중인 학습이 끝난 뒤 simulator를 멈추고 다음 순서로 실행합니다.
 
 ```bash
 docker compose stop simulator
-docker compose exec -T api-server python scripts/smoke_test.py --benchmark --output docs/results/docker/runtime-v44/full/quality/smoke_full.json
+docker compose exec -T api-server python scripts/smoke_test.py --benchmark --output docs/results/docker/runtime-illustrations-v1/full/quality/smoke_full.json
 docker compose run --rm --no-deps --pull never api-server demo evaluate --split valid
 docker compose run --rm --no-deps --pull never api-server demo evaluate --split test
 docker compose start simulator
@@ -163,13 +190,13 @@ valid 평가가 통과한 후 test를 실행합니다. 대시보드에서 **결�
 
 ### 5. 결과 저장과 종료
 
-데이터는 `data/`, 모델은 `models/`, 실행 결과는 `docs/results/docker/runtime-v44/full/`에 저장됩니다.
+데이터는 `data/`, 모델은 `models/`, 실행 결과는 `docs/results/docker/runtime-illustrations-v1/full/`에 저장됩니다.
 전체 시연 결과는 그 아래 `pdf-examples/<실행ID>/`, 품질 평가 원본은 `quality/`에서 확인합니다.
 데이터·모델·실행 결과는 호스트에 남고, Redis 상태와 모델 다운로드 캐시는 Docker 볼륨에 보존됩니다.
 
 ```bash
-# 전체 서비스 종료
-docker compose down
+# 선택 실행한 쇼핑몰까지 종료
+docker compose --profile storefront down
 
 # 다시 실행
 docker compose up -d
@@ -181,7 +208,7 @@ H&M 구매 추천·시뮬레이터 교정, Retailrocket Markov 전이 추정, De
 [실제 데이터 활용·재현 절차](docs/external_datasets.md)를 따른다. 원자료는 `학습 데이터셋 추천/`에 두며
 기존 합성 full 결과와 별도 경로에서 실행한다. 고객·이미지 표본 실험을 전체 데이터 품질로 해석하지 않는다.
 
-**교정 full 검증 완료 — 2026-11-15.** PDF의 실제 데이터 활용 목적에 맞춰 H&M의
+**기존 도안으로 측정한 교정 full 결과 (2026-11-15).** PDF의 실제 데이터 활용 목적에 맞춰 H&M의
 카테고리·상대 거래가격, Retailrocket의 Markov 전이·활동량·행동 간격을 시뮬레이터에
 반영했다. DeepFashion은 고정 CLIP의 실제 의류 사진 표현 품질 검증에 사용했다.
 가격·활동량 집중도·행동 간격의 분포 오차가 줄었으며, 세션 길이·반복 구매에는 차이가 남는다.
@@ -197,6 +224,4 @@ Two-Tower·DeepFM·GRU 및 CLIP 임베딩·FAISS 인덱스를 준비했다.
 [full 측정 보고서](docs/results/experiments/A/realism_full_20261115/report.md) ·
 [별도 Docker 실행 명령](docs/results/experiments/A/realism_full_20261115/README.md)
 
-기본 배포는 유지하며 `config/full_realism_v4.yaml`과 `docker/compose.realism-full.yaml`로
-교정 환경을 별도 실행한다. 원본 데이터·이미지·임베딩·모델은 저장소에 포함하지 않는다.
-아래 수치는 앞서 수행한 H&M 및 expansion-v3 실험 기록이며, 교정 full 측정과 구분한다.
+현재 `config/full_realism_v4.yaml`과 `docker/compose.realism-full.yaml`은 새 도안으로 교정 카탈로그를 생성한다. 새 교정 실험은 별도 출력 경로에 기록한다. 원본 데이터·이미지·임베딩·모델은 저장소에 포함하지 않는다.

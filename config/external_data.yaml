@@ -1,8 +1,8 @@
 # Fixed before evaluation. Increase limits in a NEW work/results version.
 seed: 42
 source_dir: 학습 데이터셋 추천
-work_dir: .team/external-data-v1
-results_dir: docs/results/external/v1
+work_dir: .team/external-data-v1-illustrations-v1
+results_dir: docs/results/external/v1-illustrations-v1
 hm:
   archive: h-and-m-personalized-fashion-recommendations.zip
   user_limit: 2000

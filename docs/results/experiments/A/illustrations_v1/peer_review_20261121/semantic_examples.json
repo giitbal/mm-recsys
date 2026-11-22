@@ -1,0 +1,207 @@
+{
+  "image_product_id": "P000001",
+  "query": "검정 오버핏 후드티 / 가방",
+  "queries": {
+    "text": {
+      "mode": "text",
+      "results": [
+        {
+          "product_id": "P000780",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P001542",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P003447",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P003627",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P003786",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P004774",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P005252",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P005957",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P008510",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P009019",
+          "category_l3": "hoodie",
+          "color": "black",
+          "style": "oversized"
+        }
+      ],
+      "matching": 10,
+      "total": 10
+    },
+    "image": {
+      "mode": "image",
+      "results": [
+        {
+          "product_id": "P000001",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P005833",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "slim"
+        },
+        {
+          "product_id": "P013633",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "slim"
+        },
+        {
+          "product_id": "P025105",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "slim"
+        },
+        {
+          "product_id": "P027937",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P028873",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "relaxed"
+        },
+        {
+          "product_id": "P043537",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "oversized"
+        },
+        {
+          "product_id": "P044089",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "slim"
+        },
+        {
+          "product_id": "P044281",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "slim"
+        },
+        {
+          "product_id": "P017307",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "relaxed"
+        }
+      ],
+      "matching": 10,
+      "total": 10
+    },
+    "hybrid": {
+      "mode": "hybrid",
+      "results": [
+        {
+          "product_id": "P000001",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P001682",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P002751",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P004424",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P004967",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P006806",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P008292",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P011062",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P011675",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        },
+        {
+          "product_id": "P013435",
+          "category_l3": "tote bag",
+          "color": "brown",
+          "style": "regular"
+        }
+      ],
+      "matching": 10,
+      "total": 10
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "ct-full-separated-lifecycle-v1",
+  "status": "PASS",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "natural": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/ct_full.json",
+    "sha256": "1ad195311bdbe3725320e6e504cbe15543d7b5a97d9dd3e5c93935a003b64a62"
+  },
+  "controlled_lifecycle": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/ct_controlled_lifecycle_full.json",
+    "sha256": "f87ffc9a322b93d536d5c2843dfa9a0253d1a1a5ff8092b5562974ee4197982f"
+  },
+  "training": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/ct_training_sources_full.json",
+    "sha256": "05b85042f2c5989c059b86d5b921cc5d1eb11be14bb31d52f5d65db16e67b675"
+  },
+  "candidate_validation": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/ct_candidate_valid_full.json",
+    "sha256": "8e258f285c8ade515c0c3e921303dd96d43bf38a9687a3ce4889a0114463633a"
+  },
+  "configuration": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/configuration_full.json",
+    "sha256": "9c1a954b3329d5243217e5da4a84301f933980bf9e2d477d8180e7a6fccdceea"
+  },
+  "controlled_reload": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/ct_controlled_reload_full.jsonl",
+    "sha256": "7bdb72b2ef2b05e8d6997fbc60583cdda45daac2314c5c6fb23dfd3498e91f7f"
+  },
+  "scope": "Live retention after production recovery, followed by a separate full-size controlled promotion and real HTTP rollback using the same challenger and unchanged thresholds."
+}

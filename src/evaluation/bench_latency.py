@@ -118,7 +118,7 @@ def main() -> None:
         raise ValueError("latency benchmark requires Redis")
     try:
         result = benchmark(cfg, store)
-        destination = args.output or Path(f"docs/results/latency/feature_{cfg['scale']}.json")
+        destination = args.output or Path(cfg["paths"]["results_dir"]) / "latency" / f"feature_{cfg['scale']}.json"
         write_json(destination, result)
         log('Redis 지연 평가', '결과', f"규모={result.get('scale', '설정 참조')} / 판정={result.get('status', '원본 JSON 참조')}", status='완료')
         print(json.dumps({key: value for key, value in result.items() if key != "samples_ms"}, indent=2))

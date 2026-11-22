@@ -131,3 +131,27 @@ def test_public_training_reports_exclude_weights_and_preserve_frozen_results(tmp
     assert [p.name for p in destination.iterdir()]==['result.json']
     (source/'result.json').write_text('{"changed":true}')
     with pytest.raises(ValueError,match='changed frozen'):module.publish_reports(tmp_path)
+
+
+def test_prepare_reads_relocated_source_reports_and_checks_raw_hashes(tmp_path, monkeypatch):
+    from src.common.artifacts import file_hash, write_json
+    from src.external_data import realism_data
+
+    reports = tmp_path / 'relocated-reports'
+    source = tmp_path / 'raw'
+    members = {}
+    for name in ('articles.csv', 'transactions_train.csv'):
+        path = source / 'hm_raw' / name
+        path.parent.mkdir(exist_ok=True, parents=True)
+        path.write_text(name)
+        members[name] = {'sha256': file_hash(path)}
+    write_json(reports / 'hm_data.json', {'source_members': members})
+    path = source / 'retailrocket_raw/events.csv'
+    path.parent.mkdir()
+    path.write_text('changed')
+    write_json(reports / 'retailrocket.json', {'source_members': {'events.csv': {'sha256': 'different'}}})
+    spec = dict(source_work=str(source), source_results=str(reports))
+    monkeypatch.setattr(realism_data, 'plan', lambda: (spec, tmp_path, tmp_path))
+    monkeypatch.chdir(tmp_path)
+    with pytest.raises(ValueError, match='changed source: .*retailrocket_raw/events.csv'):
+        realism_data.prepare()

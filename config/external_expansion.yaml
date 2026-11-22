@@ -1,9 +1,9 @@
 seed: 42
 source_dir: 학습 데이터셋 추천
-source_work: .team/external-data-v1
-source_results: docs/results/external/v1
-work_dir: .team/external-expansion-v3
-results_dir: docs/results/external/expansion-v3
+source_work: .team/external-data-v1-illustrations-v1
+source_results: docs/results/external/v1-illustrations-v1
+work_dir: .team/external-expansion-v3-illustrations-v1
+results_dir: docs/results/external/expansion-v3-illustrations-v1
 training_sizes: [2000, 20000, 100000]
 shard_users: 1000
 candidate_epochs: 5

@@ -1,0 +1,44 @@
+{
+  "default_services_observed": [
+    "api-server",
+    "redis",
+    "simulator",
+    "storefront"
+  ],
+  "dashboard_profile_used_for_browser": true,
+  "docker_engine_cpus": 8,
+  "docker_engine_memory_bytes": 12520095744,
+  "simulator_run": {
+    "ct_auto_train": false,
+    "batches": 5,
+    "event_rows": 500
+  },
+  "mypy_output": "Success: no issues found in 146 source files",
+  "pip_check": "No broken requirements found.",
+  "percentile_recomputation": {
+    "text": {
+      "samples": 100,
+      "p95_ms": 25.036355950015828
+    },
+    "image": {
+      "samples": 100,
+      "p95_ms": 87.74524555003609
+    },
+    "hybrid": {
+      "samples": 100,
+      "p95_ms": 96.55878925008209
+    },
+    "recommendation": {
+      "samples": 100,
+      "p95_ms": 23.1005856000138
+    },
+    "feature": {
+      "samples": 100,
+      "p95_ms": 0.25308995005843826
+    },
+    "candidate": {
+      "samples": 100,
+      "p95_ms": 4.063087000071164
+    }
+  }
+}

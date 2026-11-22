@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "services": {
+    "api-server": {
+      "State": "running",
+      "Health": "healthy"
+    },
+    "dashboard": {
+      "State": "running",
+      "Health": "healthy"
+    },
+    "redis": {
+      "State": "running",
+      "Health": "healthy"
+    },
+    "simulator": {
+      "State": "running",
+      "Health": ""
+    }
+  },
+  "ct_automatic_worker": true,
+  "recent_simulator_logs": [
+    "simulator-1  | [시뮬레이터 시작] API·대시보드 준비 완료; 배치=100건 / 주기=5.0초 / 합성 추천 흐름=1회 / 귀속 로그=audit/runtime/full/ct_api_traffic_48a5bfe4e4b447fc8c750cd3ba5bc6c8.jsonl",
+    "simulator-1  | [시뮬레이터 CT 연결] 주기적 모니터링·설정 임계치 기반 재학습을 함께 시작합니다.",
+    "simulator-1  | [CT 준비] API 준비 대기 / URL=http://127.0.0.1:8000",
+    "simulator-1  | [CT 시작] API 준비 완료 / 모니터링 및 임계치 기반 재학습 작업자를 시작합니다.",
+    "simulator-1  | [시뮬레이터 생성] 행동 로그 100건 생성 / 0.2초 / 471건/초 / CT 신규 로그=71건 / 합성 추천 흐름=1회"
+  ]
+}

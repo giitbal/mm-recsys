@@ -172,6 +172,8 @@ def test_cold_pool_is_bounded_diverse_and_excludes_future_and_purchases():
     service.table = SimpleNamespace(id_to_index=mapping)
     service.candidate = SimpleNamespace(allowed=set(range(499)))
     service.reranker = SimpleNamespace(categories={p: 'a' if i < 400 else 'b' for p, i in mapping.items()})
+    service.reranker.diversity_fields = ['category_l3']
+    service.reranker.paths = {p: (c,) for p, c in service.reranker.categories.items()}
     service.reranker.created = {p: service.at-pd.Timedelta(days=30) for p in mapping}
     service.catalog_by_recency = service.fallback_sorted
     cfg['recommend']['exclude_purchased'] = True

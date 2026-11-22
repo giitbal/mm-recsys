@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-11-21T09:20:14.997667+00:00",
+  "operating_system": "Windows host, WSL2 Linux aarch64, Docker CPU",
+  "windows_cim": {
+    "TotalPhysicalMemory": 16758542336,
+    "NumberOfCores": 8,
+    "NumberOfLogicalProcessors": 8
+  },
+  "docker": {
+    "cpus": 8,
+    "bytes": 12520095744,
+    "architecture": "aarch64"
+  },
+  "disk_bytes": 1081101176832,
+  "benchmark_environment": {
+    "python": "3.11.18",
+    "machine": "aarch64",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-aarch64-with-glibc2.41",
+    "cpu_count": 8,
+    "gpu_used": false,
+    "docker": true,
+    "packages": {
+      "torch": "2.6.0+cpu",
+      "torchvision": "0.21.0",
+      "transformers": "4.46.3",
+      "faiss-cpu": "1.9.0",
+      "redis": "5.2.1"
+    },
+    "cgroup": {
+      "memory.max": "4294967296",
+      "cpu.max": "400000 100000"
+    }
+  },
+  "single_request_counts": {
+    "text": {
+      "warmup": 10,
+      "requests": 100,
+      "errors": 0
+    },
+    "image": {
+      "warmup": 10,
+      "requests": 100,
+      "errors": 0
+    },
+    "hybrid": {
+      "warmup": 10,
+      "requests": 100,
+      "errors": 0
+    },
+    "recommendation": {
+      "warmup": 10,
+      "requests": 100,
+      "errors": 0
+    }
+  },
+  "gpu_used": false,
+  "benchmark": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/release_quality/smoke_full.json",
+    "sha256": "835bc2881618d707f5d269559a4d9b96c81211e538e38bb31082b8221b90bd9e"
+  },
+  "conditions": {
+    "source": "docs/results/experiments/A/illustrations_v1/integration_current/deployment_benchmark.json",
+    "sha256": "002d67f869da7294df56d341a5ca671e64cba090c29f1714df243fc7ec1a9478"
+  }
+}

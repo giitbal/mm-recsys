@@ -1,0 +1,60 @@
+{
+  "recalculation": "Randomization by independent user. Ratio of totals with user-cluster delta variance. Log survival probability for numerical underflow.",
+  "archive": "docs/results/experiments/A/illustrations_v1/full_ab_ct/ab_full_archive.json",
+  "original_sha256": "02cc33c5b7a0edb330110fbbad0d703d0fea97ca55ea8d7ee5cf8140c14bde13",
+  "days": 30,
+  "metrics": {
+    "ctr": {
+      "arms": {
+        "control": {
+          "users": 5000,
+          "events": 375073,
+          "impressions": 1500000,
+          "rate": 0.25004866666666664,
+          "variance": 2.896756836700673e-07
+        },
+        "treatment": {
+          "users": 5000,
+          "events": 309937,
+          "impressions": 1500000,
+          "rate": 0.20662466666666668,
+          "variance": 4.695366656442399e-07
+        }
+      },
+      "difference": -0.04342399999999996,
+      "ci95": [
+        -0.045131771347708245,
+        -0.04171622865229168
+      ],
+      "p_value_reported": 0.0,
+      "log10_p": -541.1209712771574,
+      "relative_lift": -0.17366219375961467
+    },
+    "cvr": {
+      "arms": {
+        "control": {
+          "users": 5000,
+          "events": 18380,
+          "impressions": 1500000,
+          "rate": 0.012253333333333333,
+          "variance": 1.3941952835011445e-08
+        },
+        "treatment": {
+          "users": 5000,
+          "events": 13285,
+          "impressions": 1500000,
+          "rate": 0.008856666666666667,
+          "variance": 1.0166813362672535e-08
+        }
+      },
+      "difference": -0.003396666666666666,
+      "ci95": [
+        -0.003700990232244729,
+        -0.003092343101088603
+      ],
+      "p_value_reported": 4.409705253929458e-106,
+      "log10_p": -105.35559043794026,
+      "relative_lift": -0.2772034820457018
+    }
+  }
+}

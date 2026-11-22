@@ -11,8 +11,6 @@ from typing import Any
 
 from src.common.artifacts import file_hash, fingerprint
 
-QUALITY = 'docs/results/docker/quality_full_test.json'
-SMOKE = 'docs/results/docker/smoke_full.json'
 
 
 def read_json(root: Path, name: str) -> dict:
@@ -99,7 +97,7 @@ def audit_python(root: Path, paths: list[str], setting_names: list[str]) -> dict
                 scope='AST inventory; absence of findings does not prove complete typing or determinism')
 
 
-def collect_quality(root: Path, cfg: dict, evidence_dir: str = "docs/results/docker") -> tuple[dict, dict]:
+def collect_quality(root: Path, cfg: dict, evidence_dir: str) -> tuple[dict, dict]:
     """Recompute result rows and raw percentiles; never promote dev evidence."""
     import numpy as np
     from src.evaluation.run_all import metric_rows
@@ -107,8 +105,7 @@ def collect_quality(root: Path, cfg: dict, evidence_dir: str = "docs/results/doc
     quality_path = evidence_dir + "/quality_full_test.json"
     smoke_path = evidence_dir + "/smoke_full.json"
     quality = read_json(root, quality_path)
-    if evidence_dir != 'docs/results/docker':
-        validate_configuration(root, cfg, quality, evidence_dir)
+    validate_configuration(root, cfg, quality, evidence_dir)
     valid = read_json(root, evidence_dir + '/quality_full_valid.json')
     frozen = read_json(root, evidence_dir + '/quality_selection_full.json')
     check_hashes(root, {frozen['source']: frozen['sha256'], **quality['identity']['source_hashes'],
@@ -127,6 +124,8 @@ def collect_quality(root: Path, cfg: dict, evidence_dir: str = "docs/results/doc
     smoke = read_json(root, smoke_path)
     if smoke['scale'] != 'full' or smoke['data_fingerprint'] != quality['data_fingerprint'] or smoke['status'] != 'PASS':
         raise ValueError('smoke and full test datasets differ')
+    if smoke.get('checks', {}).get('dashboard_http') != 'PASS':
+        raise ValueError('full submission requires the dashboard HTTP smoke check')
     if any(quality[key] != smoke['benchmark'][other] for key, other in
            [('candidate_latency', 'candidate'), ('feature_store', 'feature')]):
         raise ValueError('latency evidence differs from raw smoke')
@@ -192,22 +191,21 @@ def validate_configuration(root: Path, cfg: dict, quality: dict, evidence_dir: s
         raise ValueError('native generation recipe/order differs from measured dataset')
 
 
-def assemble_acceptance(root: Path, cfg: dict, submission_path: str) -> dict:
+def assemble_acceptance(root: Path, cfg: dict, submission_path: str, evidence_dir: str) -> dict:
     """B11 aggregates evidence; only INTEGRATE may establish a full system PASS."""
-    metrics, quality = collect_quality(root, cfg)
-    smoke = read_json(root, SMOKE)
+    metrics, quality = collect_quality(root, cfg, evidence_dir)
+    smoke_path = evidence_dir + '/smoke_full.json'
+    smoke = read_json(root, smoke_path)
     checks = {}
     for name in ('api_schemas', 'session_response'):
         ok = smoke['checks'].get(name) == 'PASS'
-        checks[name] = source(root, SMOKE, status='PASS' if ok else 'FAIL', exit_code=0 if ok else 1,
-                             scope='historical B10 full HTTP execution, not a new B11 full run')
-    checks['docker_reproduction'] = source(root, 'docs/results/docker/verified_full.json',
+        checks[name] = source(root, smoke_path, status='PASS' if ok else 'FAIL', exit_code=0 if ok else 1,
+                             scope='HTTP smoke with the selected quality dataset')
+    checks['docker_reproduction'] = source(root, evidence_dir + '/verified_full.json',
         status='UNMEASURED', exit_code=None,
         reason='B10 full Compose passed with existing data/search/HF cache; fresh-clone complete regeneration unmeasured')
-    checks['ab_statistics'] = source(root, 'docs/results/ab_test.json', status='UNMEASURED', exit_code=None,
-        reason='C dev 200 users/arm, 30-day in-memory simulation; no matching full/live Redis experiment')
-    checks['ct_retrain_and_rollback'] = source(root, 'docs/results/ct_dev_fixture.json', status='UNMEASURED', exit_code=None,
-        reason='C controlled fixture passed retraining/promotion/rollback; B10 full only reloaded the same v1.0')
+    for key in ('ab_statistics', 'ct_retrain_and_rollback'):
+        checks[key] = dict(status='UNMEASURED', exit_code=None, reason='requires dataset-matched integration evidence')
     submission = read_json(root, submission_path)
     ready = submission['readiness_status'] == 'PASS'
     checks['submission'] = source(root, submission_path, status='PASS' if ready else 'BLOCKED',
@@ -299,6 +297,31 @@ def collect_integration_checks(root: Path, execution: dict, data_fingerprint: st
     return checks
 
 
+def check_ct_watermark(root: Path, natural: dict) -> None:
+    """A live producer can fill the next window before the previous training finishes."""
+    repeated = natural['repeated_trigger']
+    if repeated['status'] == 'WAITING':
+        return
+    if repeated['status'] != 'NEXT_WINDOW':
+        raise ValueError('missing CT trigger recheck')
+    log = natural['deployment_events']
+    check_hashes(root, {log['source']: log['sha256']})
+    events: list[dict] = [json.loads(line) for line in (root / log['source']).read_text().splitlines()]
+    run = natural['retraining']
+    terminal = next((i for i, row in enumerate(events) if row.get('version') == run['version']
+                     and row['event'] == 'retained' and row['comparison'] == run['comparison']), None)
+    if terminal is None:
+        raise ValueError('missing observed CT retention')
+    start = next((row for row in reversed(events[:terminal]) if row['event'] == 'training_started'), {})
+    following = next((row for row in events[terminal + 1:] if row['event'] == 'training_started'), {})
+    if (start.get('version') != run['version'] or start.get('through_seq') != run['through_seq']
+            or start.get('new_events') != natural['observed_new_events']
+            or following != repeated.get('training_started') or not following
+            or following['version'] == run['version'] or following['parent'] != run['active']
+            or not natural['threshold'] <= following['new_events'] <= following['through_seq'] - run['through_seq']):
+        raise ValueError('subsequent CT trigger does not cover a fresh window')
+
+
 def validate_separated_ct(root: Path, receipt: dict, data_fingerprint: str) -> None:
     """Keep natural retention separate from a measured full-size initial-fault rollback drill."""
     values = {}
@@ -312,10 +335,10 @@ def validate_separated_ct(root: Path, receipt: dict, data_fingerprint: str) -> N
             or natural['retraining']['status'] != 'RETAINED'
             or natural['real_reload_and_rollback']
             or natural['observed_new_events'] < 10000 or natural['threshold'] != 10000
-            or natural['repeated_trigger']['status'] != 'WAITING'
             or not all(natural['checks'].get(key) is True for key in
                        ('full_three_model_retraining', 'threshold', 'event_watermark', 'paired_valid'))):
         raise ValueError('natural full CT retention/training evidence is incomplete')
+    check_ct_watermark(root, natural)
     check_hashes(root, natural['source_hashes'])
     counts = drill['counts']
     if (drill['status'] != 'PASS' or drill['scale'] != 'full'

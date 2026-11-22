@@ -1,0 +1,60 @@
+{
+  "before": {
+    "status": "WAITING",
+    "new_events": 0,
+    "threshold": 10000
+  },
+  "at_limit": {
+    "new_events": 0,
+    "through_seq": 0,
+    "trigger_reason": "performance_degradation",
+    "status": "WAITING_FOR_LABELS",
+    "data_path": "data/full-illustrations-v1",
+    "scope": "probe stopped at builder entry"
+  },
+  "monitor": {
+    "event": "monitor",
+    "status": "ALERT",
+    "model_version": "v1.0",
+    "ctr": 0.0,
+    "hit_rate_at_50": 0.0,
+    "clicks": 0,
+    "exposures": 1000,
+    "mature_requests": 20,
+    "top50_requests": 20,
+    "hit_requests": 0,
+    "alerts": [
+      "ctr_below_threshold",
+      "hitrate_below_threshold"
+    ],
+    "window_start": 1795160952.9122748,
+    "observed_through": 1795247352.9122748,
+    "attribution_seconds": 3600,
+    "semantics": "CTR: unique linked viewed items / mature exposed items; HitRate@50: mature top50 requests with attributed cart/purchase / mature top50 requests; online monitoring, distinct from fixed-origin offline quality",
+    "thresholds": {
+      "ctr_threshold": 0.01,
+      "hitrate_threshold": 0.2,
+      "min_mature_requests": 20
+    }
+  },
+  "repeat": {
+    "new_events": 0,
+    "through_seq": 0,
+    "trigger_reason": "performance_degradation",
+    "status": "WAITING_FOR_LABELS",
+    "data_path": "data/full-illustrations-v1",
+    "scope": "probe stopped at builder entry",
+    "threshold": 10000,
+    "retry_after_seconds": 299.99879932403564,
+    "reason": "unchanged_observations"
+  },
+  "builder_calls": [
+    {
+      "version": "v1.1",
+      "through": 0
+    }
+  ],
+  "default_threshold": 10000,
+  "source_active": "v1.0",
+  "scope": "Isolated real SQLite and registry, original full model; callback instrumented to observe dispatch only."
+}

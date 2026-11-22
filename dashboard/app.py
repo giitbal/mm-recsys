@@ -12,10 +12,10 @@ import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from dashboard.data import (REQUIREMENTS, api_call, bundles, ct_log, read_json, read_report, search_payload,
-                            settings)
+from dashboard.data import (REQUIREMENTS, api_call, bundles, ct_log, evidence, load_bundle, read_json, read_reference,
+                            read_report, search_payload, settings)
 from dashboard.explore import catalog_section, data_tab, product_cards
-from dashboard.assets import ab_result
+from dashboard.assets import ab_result, deployment, different_recommendation_policy, reference_identity
 from dashboard.formatting import display_frame, display_value
 from dashboard.style import BASE, CSS, GRAY, INDIGO, ORANGE, TEAL, baseline, chart
 
@@ -113,7 +113,8 @@ def overview_tab(report: dict, bundle: dict | None, config: dict) -> None:
         a, b, c = st.columns(3)
         a.metric('측정 기준 판정', STATUS.get(report['quality_status'], report['quality_status']))
         b.metric('측정 지표', f"{sum(row['value'] is not None for row in rows)}/{len(rows)}")
-        c.metric('최종 종합 품질', STATUS.get(report['acceptance'], report['acceptance']))
+        c.metric('이전 정책의 최종 종합 품질' if historical_policy(report, config) else '최종 종합 품질',
+                 STATUS.get(report['acceptance'], report['acceptance']))
     st.caption(f'측정 기준 판정은 수치 기준 {len(rows)}개, 최종 종합 품질은 그 결과와 필수 통합 검사를 함께 본 판정입니다. '
                '값은 원본 JSON 그대로입니다.')
     by_name = {row['name']: row for row in rows}
@@ -136,7 +137,7 @@ def overview_tab(report: dict, bundle: dict | None, config: dict) -> None:
                 table(pd.DataFrame([dict(검사=name, 판정=STATUS.get(row.get('status'), row.get('status')), 근거=row.get('source', '—'))
                                     for name, row in checks.items()]))
             st.json(display_value(integration))
-    requirements = read_json(config['results_dir'] / REQUIREMENTS, config['results_dir'])
+    requirements = read_json(config['published_dir'] / REQUIREMENTS, config['published_dir'])
     features(requirements, integration or {})
     requirement_sections(requirements)
     section('개요', 3)
@@ -245,10 +246,11 @@ def search_tab(report: dict, bundle: dict | None, config: dict) -> None:
 def ann_section(search: dict, bundle: dict | None, config: dict) -> None:
     section('검색', 1)
     rows = search.get('tradeoff') or []
-    if not rows and bundle and (bundle['folder'] / 'quality_full_valid.json').is_file():
+    valid = evidence(bundle, 'quality_full_valid.json')
+    if not rows and bundle and valid and valid.is_file():
         # The test report never tunes ANN; show the paired valid diagnosis from the same bundle.
         try:
-            rows = read_report(bundle['folder'] / 'quality_full_valid.json', config['results_dir'])['search'].get('tradeoff') or []
+            rows = read_report(valid, bundle['root'])['search'].get('tradeoff') or []
         except (OSError, ValueError, KeyError) as error:
             st.warning(f'valid 진단을 읽을 수 없습니다: {error}')
     if not rows:
@@ -475,13 +477,36 @@ def recommend_demo(config: dict) -> None:
 
 
 # ── A/B ──────────────────────────────────────────────────────────────────────
-def ab_tab(report: dict, bundle: dict | None, config: dict) -> None:
+def ab_source(report: dict, bundle: dict | None, config: dict) -> tuple[dict, str | None]:
+    """Which A/B to show: the selected report's paired experiment, else the deployed runtime A/B, else the packaged
+    reference measured on the same data and models."""
     ab = report.get('ab', {})
+    if ab.get('status') == 'MEASURED':
+        source = (report.get('measurement_sources', {}).get('ab')
+                  or report.get('integration', {}).get('checks', {}).get('ab_statistics'))
+        return ab, f"선택한 결과의 A/B 실험 · {source['source']}" if source else None
     try:
-        ab = ab_result(config['results_dir']) or ab
-    except (OSError, ValueError, KeyError) as error:
+        actual = ab_result(config['results_dir'])
+        if actual:
+            return actual, f"저장된 초기 모델 합성 A/B · {actual['source']}"
+        reference = config.get('reference_report')
+        if reference and reference.is_file() and report and not different_recommendation_policy(report, config['results_dir']):
+            archived = read_reference(reference)
+            if (not different_recommendation_policy(archived, config['results_dir'])
+                    and archived.get('ab', {}).get('status') == 'MEASURED'
+                    and report.get('data_fingerprint') == archived['data_fingerprint']
+                    and archived['recommendation']['models'] == report.get('recommendation', {}).get('models')):
+                return archived['ab'], '현재 배포의 A/B 측정 전입니다. 같은 데이터와 모델에서 측정한 기준 실험을 표시합니다.'
+    except (OSError, ValueError, KeyError, TypeError) as error:
         st.error(f'A/B 데이터 확인 실패: {error}')
+    return ab, None
+
+
+def ab_tab(report: dict, bundle: dict | None, config: dict) -> None:
+    ab, source = ab_source(report, bundle, config)
     section('A/B', 0)
+    if source:
+        st.caption(source)
     if ab.get('status') != 'MEASURED':
         st.info(ab.get('reason', 'A/B 실험 결과가 없습니다.'))
         return
@@ -669,7 +694,7 @@ def samples_section(report: dict) -> None:
 def conditions_section(report: dict, bundle: dict | None, config: dict) -> None:
     environment = report.get('environment', {})
     modes = report.get('api', {}).get('modes', {})
-    conditions = (read_json(bundle['folder'] / 'latency_conditions.json', config['results_dir']) if bundle else None) or {}
+    conditions = (read_json(evidence(bundle, 'latency_conditions.json'), bundle['root']) if bundle else None) or {}
     sample: dict = next(iter(modes.values()), {})
     if not (environment or sample or conditions):
         return
@@ -687,7 +712,8 @@ def conditions_section(report: dict, bundle: dict | None, config: dict) -> None:
              if memory.isdigit() and len(cpu) == 2 and all(part.isdigit() for part in cpu) else None),
             ('torch / faiss 스레드', f"{environment['torch_threads']} / {environment['faiss_threads']}" if 'torch_threads' in environment else None),
             ('GPU 사용', ('예' if environment['gpu_used'] else '아니오') if 'gpu_used' in environment else None),
-            ('후보 캐시', report.get('candidate_latency', {}).get('cache'))]
+            ('후보 캐시', report.get('candidate_latency', {}).get('cache')),
+            ('측정 부하', conditions.get('workload'))]
     table(pd.DataFrame([dict(항목=name, 값=str(value)) for name, value in rows if value is not None]))
     with st.expander('근거'):
         st.json(display_value(dict(environment=environment, latency_conditions=conditions, latency_source=report.get('latency_source'))))
@@ -695,20 +721,23 @@ def conditions_section(report: dict, bundle: dict | None, config: dict) -> None:
 
 def ct_section(bundle: dict | None, config: dict) -> None:
     section('시스템', 3)
-    root = config['results_dir']
+    root = bundle['root'] if bundle else config['results_dir']
     folder = bundle['folder'] if bundle else root
     ct = read_json(folder / 'ct_full.json', root)
     if ct:
         monitor = ct.get('monitor', {})
-        limits = {**config.get('ct', {}), **monitor.get('thresholds', {})}
+        # Older records keep thresholds under monitor; the 11/21 records keep them under guard.
+        limits = {**config.get('ct', {}), **ct.get('guard', {}), **monitor.get('thresholds', {})}
         cards = [('재학습 트리거 (신규 로그)', f"{ct.get('threshold', limits.get('retrain_log_threshold', 0)):,}건",
                   f"관측 신규 이벤트 {ct.get('observed_new_events', 0):,}건")]
         if 'hitrate_threshold' in limits:
             cards.append(('HitRate@50 경보 임계', f"{limits['hitrate_threshold']:.3f}",
-                          f"관측 {monitor.get('hit_rate_at_50', 0):.3f} · 성숙 요청 {monitor.get('mature_requests', 0):,}"))
+                          f"관측 {monitor['hit_rate_at_50']:.3f} · 성숙 요청 {monitor.get('mature_requests', 0):,}"
+                          if 'hit_rate_at_50' in monitor else '이 기록에는 모니터 관측값이 없습니다'))
         if 'ctr_threshold' in limits:
             cards.append(('CTR 경보 임계', f"{limits['ctr_threshold']:.3f}",
-                          f"관측 {monitor.get('ctr', 0):.3f} · 노출 {monitor.get('exposures', 0):,}"))
+                          f"관측 {monitor['ctr']:.3f} · 노출 {monitor.get('exposures', 0):,}"
+                          if 'ctr' in monitor else '이 기록에는 모니터 관측값이 없습니다'))
         for column, (label, value, note) in zip(st.columns(3), cards):
             with column.container(border=True):
                 st.metric(label, value)
@@ -785,11 +814,39 @@ def navigation(tab: str, config: dict, report: dict) -> None:
                 st.json(display_value(dict(identity=report.get('identity', {}), limitations=report.get('limitations', []))))
 
 
+def historical_policy(report: dict, config: dict) -> bool:
+    """True when the running deployment's reranking policy differs from the one the report measured."""
+    try:
+        return different_recommendation_policy(report, config['results_dir'])
+    except (OSError, ValueError, TypeError):
+        return False
+
+
+def provenance(report: dict, bundle: dict, config: dict) -> None:
+    """Where the selected measurement came from and whether it still describes the running deployment."""
+    try:
+        different_recommendation_policy(report, config['results_dir'])
+    except (OSError, ValueError, TypeError) as error:
+        st.warning(f'배포 추천 정책의 측정 시점을 확인할 수 없습니다. {error}')
+    if historical_policy(report, config):
+        st.warning('표시된 성능 지표는 이전 추천 정책에서 측정했습니다. API 검사는 현재 배포의 추천 정책을 사용합니다.')
+    if bundle.get('reference'):
+        quality = (report.get('measurement_sources', {}).get('quality')
+                   or report.get('integration', {}).get('frozen_quality') or {})
+        if quality.get('source'):
+            st.caption(f"새 도안 카탈로그에서 측정한 full test · 체크섬 확인 · 품질 측정 근거 {quality['source']}")
+        try:
+            if deployment(config['results_dir']) is not None:  # only a running Docker deployment can be compared
+                st.caption(reference_identity(report, config['results_dir']))
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            st.warning(f'현재 배포와의 비교를 완료할 수 없습니다. {error}')
+
+
 def main() -> None:
     st.set_page_config(page_title='검색·추천 평가실', page_icon='◈', layout='wide')
     st.markdown(CSS, unsafe_allow_html=True)
     config = settings(ROOT)
-    items, default = bundles(config['results_dir'], config['scale'])
+    items, default = bundles(config)
     st.session_state.setdefault('tab', TABS[0])
     report: dict = {}
     bundle: dict | None = None
@@ -801,7 +858,7 @@ def main() -> None:
                               key='bundle', label_visibility='collapsed')
             bundle = items[choice]
             try:
-                report = read_report(bundle['path'], config['results_dir'])
+                report = load_bundle(bundle)
             except (OSError, ValueError, KeyError, TypeError) as exc:
                 error = exc
         else:
@@ -811,6 +868,7 @@ def main() -> None:
         counts = report['data_counts']
         st.caption(f"{bundle['label']} · 상품 {counts['products']:,} · 사용자 {counts['users']:,} · 이벤트 {counts['events']:,} · "
                    '저장된 측정값을 보여주며 새로 측정하지 않습니다 · 시간 KST')
+        provenance(report, bundle, config)
     else:
         st.caption('저장된 측정값을 보여주며 새로 측정하지 않습니다 · 시간 KST')
     tab = st.radio('화면', TABS, key='tab', horizontal=True, label_visibility='collapsed')

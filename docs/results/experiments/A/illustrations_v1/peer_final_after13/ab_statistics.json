@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "run_id": "f869b758128d6bb2fae535561f1e2156d6bdf201586f107d6c2bd1f88ba1716c",
+  "prior_run_id": "e1d33a69c631cfcc51573a88c6470fd01f45a4fa42bd81fa35f4590127cef8d8",
+  "raw_sha256": "c84c2ace1a96bf6dc503cd397608278173d293dadbe3e1565a5b0daa5086733e",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "policy": {
+    "src/recommendation/recommender.py": "ca5cb1c56877fa47f4e988e6f26c8168dbf5c2089b2e4109b7926c1646e0cd54",
+    "src/recommendation/reranking.py": "85d31eb0c3e911811b009f2319c9c4fa3c506482d7574ba42ac7d6fab77b1c56"
+  },
+  "seed": 42,
+  "days": 30,
+  "top_n": 10,
+  "strategies": {
+    "control": "popularity",
+    "treatment": "full_pipeline"
+  },
+  "metrics": {
+    "ctr": {
+      "arms": {
+        "control": {
+          "users": 5000,
+          "impressions": 1500000,
+          "events": 375073,
+          "rate": 0.25004866666666664,
+          "variance": 2.896756836700673e-07
+        },
+        "treatment": {
+          "users": 5000,
+          "impressions": 1500000,
+          "events": 311399,
+          "rate": 0.20759933333333333,
+          "variance": 3.6562315120801934e-07
+        }
+      },
+      "delta": -0.04244933333333331,
+      "ci95": [
+        -0.044035934571651565,
+        -0.04086273209501506
+      ],
+      "p": 0.0,
+      "log10_p": -598.9310633762295,
+      "relative_lift": -0.16976428588568082,
+      "previous_treatment_rate": 0.20662466666666668,
+      "previous_relative_lift": -0.17366219375961467
+    },
+    "cvr": {
+      "arms": {
+        "control": {
+          "users": 5000,
+          "impressions": 1500000,
+          "events": 18380,
+          "rate": 0.012253333333333333,
+          "variance": 1.3941952835011445e-08
+        },
+        "treatment": {
+          "users": 5000,
+          "impressions": 1500000,
+          "events": 13330,
+          "rate": 0.008886666666666666,
+          "variance": 9.820728590162477e-09
+        }
+      },
+      "delta": -0.003366666666666667,
+      "ci95": [
+        -0.003668798032406934,
+        -0.0030645353009264003
+      ],
+      "p": 9.678059900560618e-106,
+      "log10_p": -105.01421169423375,
+      "relative_lift": -0.2747551686615888,
+      "previous_treatment_rate": 0.008856666666666667,
+      "previous_relative_lift": -0.2772034820457018
+    }
+  },
+  "same_randomized_users": true,
+  "identical_control_outcomes": true,
+  "same_initial_model_and_dataset": true,
+  "scope": "Simulated outcomes. User-cluster two-sided tests and 95% intervals independently recomputed. No live human experiment or independent pre/post policy trial."
+}

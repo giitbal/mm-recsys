@@ -1,7 +1,6 @@
 # 이제원 (A, 팀장) — 공통 준비
 
-사용자가 지정한 팀장 역할의 SHARED 준비를 Codex가 구현했다. 실제 Git 작성자 설정을
-유지하며 다른 팀원의 기여/리뷰/계정을 만들지 않는다. 박정욱(B), 박채영(C)의 구현은 아직 시작 전이다.
+공통 기반·시뮬레이터, 멀티모달 검색, Docker·성능 검증, 제출 문서와 최종 통합을 담당했다. 아래 SHARED 기록은 B·C의 구현 착수 전에 작성했다. [팀 전체 역할과 PR](../../README.md#팀원-역할-분담)
 
 - PDF·원본 프롬프트·환경 스크립트를 분석하고 B2 dependency/projection/index/relevance,
   B3 cutoff/truth/negative/signal/학습 진단과 full 지표 기준을 정리했다.

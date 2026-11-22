@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "default_services": [
+    "redis",
+    "api-server",
+    "dashboard",
+    "simulator"
+  ],
+  "storefront_profile": [
+    "redis",
+    "api-server",
+    "simulator",
+    "storefront",
+    "dashboard"
+  ],
+  "input_sha256": {
+    "storefront/package.json": "9c40d70780c132caf60d10860380f8367f2cb30a2b317ae82e132fc4ea6afb9f",
+    "storefront/package-lock.json": "cd2beff1f9b5d858780dbc23d113548afa8838bb705d913b6dbc2f9992dec096",
+    "storefront/src/app/layout.tsx": "588a622dea6c537ce554ef2dd2013088c66ab0ed2f7fe72bd408de48548f1a58",
+    "docker/Dockerfile.storefront": "02bd047d5ef20f2322989526db8f7960b7898895c4d11edec4e923d51ff7cf7b",
+    "docs/results/experiments/A/final_validation_20261112/release/published/evaluation_full_test.json": "9830adad03540fc35492ab594208983c633dc4774e2e08e9889ea4493147c12f"
+  },
+  "generated_frontend_excluded": true
+}

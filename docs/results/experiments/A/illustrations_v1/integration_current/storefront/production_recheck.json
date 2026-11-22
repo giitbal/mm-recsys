@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "unreachable_modules": 0,
+  "unused_locals": 0,
+  "unused_parameters": 0,
+  "removed_modules": 19,
+  "browser": "PASS"
+}

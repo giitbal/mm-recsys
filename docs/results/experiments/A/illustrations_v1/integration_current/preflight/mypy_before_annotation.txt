@@ -1,0 +1,3 @@
+scripts/check_submission_evidence.py:315: error: Need type annotation for "start"  [var-annotated]
+scripts/check_submission_evidence.py:316: error: Need type annotation for "following"  [var-annotated]
+Found 2 errors in 1 file (checked 171 source files)

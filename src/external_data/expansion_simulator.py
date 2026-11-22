@@ -18,7 +18,7 @@ from src.recommendation.eval_candidate import Evaluation
 from src.simulator.generate import generate
 
 
-def conditions(base,hm,retail):
+def conditions(base: dict, hm: dict, retail: dict) -> dict[str, dict]:
     combined=calibrated_config(base,hm,retail,.5)
     hm_only=copy.deepcopy(base);retail_only=copy.deepcopy(base)
     for key in ['personas','category_price_ranges']:hm_only['simulator'][key]=copy.deepcopy(combined['simulator'][key])
@@ -26,7 +26,7 @@ def conditions(base,hm,retail):
     return dict(original=copy.deepcopy(base),hm=hm_only,retailrocket=retail_only,both=combined)
 
 
-def distribution(cfg,hm,retail):
+def distribution(cfg: dict, hm: dict, retail: dict) -> dict:
     root=Path(cfg['paths']['data_dir']);events=pd.read_parquet(root/'events.parquet');products=pd.read_parquet(root/'products.parquet')
     purchases=events[events.event_type=='purchase'].merge(products[['product_id','category_l1','price']],on='product_id',how='left')
     categories=list(hm['category_purchase_shares']);observed=purchases.category_l1.value_counts(normalize=True)
@@ -41,7 +41,7 @@ def distribution(cfg,hm,retail):
         diagnostics=diagnostics)
 
 
-def run():
+def run() -> None:
     spec,work,results=plan();hm=json.loads((Path(spec['source_results'])/'hm_data.json').read_text())['calibration']
     retail=json.loads((Path(spec['source_results'])/'retailrocket.json').read_text());base=load_config();summary=[]
     for seed in spec['simulator']['seeds']:

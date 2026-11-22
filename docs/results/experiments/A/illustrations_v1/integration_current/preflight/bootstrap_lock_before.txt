@@ -1,0 +1,22 @@
+[Redis 준비] 사용자 프로필 적재 완료 / 결과={'status': 'PASS', 'scale': 'full', 'profile_count': 10000, 'batch_size': 1000, 'history_loaded': False, 'namespace': 'mm-recsys:full:33afdda4152a'}
+[환경 준비 실행] [실패] 원인: BlockingIOError: [Errno 11] Resource temporarily unavailable / 다음 조치: 위 단계의 원본 오류, 저장 공간·데이터 fingerprint·모델 경로·Redis 연결을 확인하세요. 기존 산출물은 보존하세요.
+Traceback (most recent call last):
+  File "/app/scripts/prepare_all.py", line 186, in <module>
+    raise SystemExit(run_cli(main, '환경 준비', '위 단계의 원본 오류, 저장 공간·데이터 fingerprint·모델 경로·Redis 연결을 확인하세요. 기존 산출물은 보존하세요.'))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/common/console.py", line 52, in run_cli
+    return main()
+           ^^^^^^
+  File "/app/scripts/prepare_all.py", line 177, in main
+    stage(cfg, args.stage)
+  File "/app/scripts/prepare_all.py", line 92, in stage
+    state = bootstrap(cfg)
+            ^^^^^^^^^^^^^^
+  File "/app/src/ct/bootstrap.py", line 19, in bootstrap
+    with file_lock(registry.root / '.ct' / 'training.lock', blocking=False):
+  File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/app/src/ct/storage.py", line 80, in file_lock
+    fcntl.flock(stream, fcntl.LOCK_EX | (0 if blocking else fcntl.LOCK_NB))
+BlockingIOError: [Errno 11] Resource temporarily unavailable

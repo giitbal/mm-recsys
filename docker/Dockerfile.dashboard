@@ -4,11 +4,15 @@ ENV PYTHONUTF8=1 PYTHONIOENCODING=utf-8 PYTHONUNBUFFERED=1 PIP_DISABLE_PIP_VERSI
 COPY requirements-dashboard.txt .
 COPY docker/constraints-dashboard-py311-linux-arm64.txt /tmp/constraints.txt
 RUN pip install --no-cache-dir -r requirements-dashboard.txt -c /tmp/constraints.txt && pip check
+COPY docs/submission/dashboard/ /app/reference/
+ENV DASHBOARD_REFERENCE_REPORT=/app/reference/evaluation_full_test.json
 COPY dashboard ./dashboard
 COPY docker/__init__.py docker/http.py docker/dashboard_entrypoint.py ./docker/
 COPY src/__init__.py ./src/
 COPY src/common/__init__.py src/common/console.py src/common/artifacts.py ./src/common/
+COPY src/recommendation/__init__.py src/recommendation/bundle_compat.py ./src/recommendation/
 COPY src/search/__init__.py src/search/text.py ./src/search/
 COPY config.yaml .env ./
-RUN python -c "import dashboard.explore"
+RUN (cd /app/reference && sha256sum -c evaluation_full_test.sha256) \
+ && python -c "import dashboard.explore"
 CMD ["python", "-m", "docker.dashboard_entrypoint"]

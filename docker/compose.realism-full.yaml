@@ -1,16 +1,16 @@
 # Use with the root docker-compose.yml and a separate Compose project.
-# The frozen recipe is validated separately from the default full-v44 deployment.
+# The frozen recipe is validated separately from the default illustrations-v1 deployment.
 services:
   api-server:
     environment: &realism_environment
       SCALE: full
       CONFIG_PATH: config/full_realism_v4.yaml
-      RUNTIME_RESULTS_DIR: .team/realism-full-20261115/runtime
-      QUALITY_RESULTS_DIR: docs/results/experiments/A/realism_full_20261115/quality
+      RUNTIME_RESULTS_DIR: .team/realism-v4-illustrations-v1/runtime
+      QUALITY_RESULTS_DIR: docs/results/experiments/A/realism_v4_illustrations_v1/quality
     volumes: &realism_volumes
-      - ./.team/realism-full-20261115/data:/app/data
-      - ./.team/realism-full-20261115/models:/app/models
-      - ./.team/realism-full-20261115:/app/.team/realism-full-20261115
+      - ./.team/realism-v4-illustrations-v1/data:/app/data
+      - ./.team/realism-v4-illustrations-v1/models:/app/models
+      - ./.team/realism-v4-illustrations-v1:/app/.team/realism-v4-illustrations-v1
       - ./config/full_realism_v4.yaml:/app/config/full_realism_v4.yaml:ro
   simulator:
     environment:
@@ -23,10 +23,10 @@ services:
     environment:
       SCALE: full
       CONFIG_PATH: config/full_realism_v4.yaml
-      RESULTS_DIR: .team/realism-full-20261115/runtime/full
+      RESULTS_DIR: .team/realism-v4-illustrations-v1/runtime/full
       PUBLIC_API_URL: http://localhost:${API_PORT:-8000}
     volumes:
-      - ./.team/realism-full-20261115/data:/app/data:ro
-      - ./.team/realism-full-20261115/models:/app/models:ro
-      - ./.team/realism-full-20261115:/app/.team/realism-full-20261115:ro
+      - ./.team/realism-v4-illustrations-v1/data:/app/data:ro
+      - ./.team/realism-v4-illustrations-v1/models:/app/models:ro
+      - ./.team/realism-v4-illustrations-v1:/app/.team/realism-v4-illustrations-v1:ro
       - ./config/full_realism_v4.yaml:/app/config/full_realism_v4.yaml:ro

@@ -1,0 +1,34 @@
+[
+  {
+    "step": "assemble",
+    "exit_code": 0
+  },
+  {
+    "step": "submission",
+    "exit_code": 0
+  },
+  {
+    "step": "verify-submission",
+    "exit_code": 0
+  },
+  {
+    "step": "publish-default",
+    "exit_code": 0
+  },
+  {
+    "step": "published-image",
+    "exit_code": 0
+  },
+  {
+    "step": "published-browser",
+    "exit_code": 0
+  },
+  {
+    "step": "published-scaffold",
+    "exit_code": 0
+  },
+  {
+    "step": "scaffold-build",
+    "exit_code": 0
+  }
+]

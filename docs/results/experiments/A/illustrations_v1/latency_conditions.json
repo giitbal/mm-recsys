@@ -1,0 +1,20 @@
+{
+  "running_containers": [
+    "mm-shop-designs-storefront-1",
+    "mm-shop-designs-api-server-1",
+    "mm-shop-designs-redis-1"
+  ],
+  "engine": {
+    "cpus": 8,
+    "memory_bytes": 12520095744,
+    "arch": "aarch64"
+  },
+  "api": {
+    "image_id": "sha256:8009baf309ece0efb5120a16c1e1362cf69ce8050e64377f049ae972ac86b5db",
+    "memory_bytes": 4294967296,
+    "nano_cpus": 4000000000
+  },
+  "workload": "One shopping API stack, no simulator or CT traffic. HTTP 10 warmups and 100 serial calls per mode, within API container. Serving thread configuration recorded in smoke_full.json.",
+  "smoke_sha256": "9c6ff0ea3b8884ba221c198f5dd5f5ffcd19e71e518ef9fa068491dae5ec0948",
+  "parallel_smoke_sha256": "831fa355159993a3d1650ccb2cd2009f792a4fced9d77fdb61583ca0519556b0"
+}

@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT))
 
 from scripts.check_submission_evidence import read_ab_evidence, read_json
 from src.common.artifacts import file_hash, write_json
+from docker.runtime import runtime_config
 
 
 def archive(report_name: str, verification_name: str, output_name: str) -> dict:
@@ -60,9 +61,10 @@ def archive(report_name: str, verification_name: str, output_name: str) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--report', default='docs/results/integration/ab_full.json')
-    parser.add_argument('--verification', default='docs/results/integration/ab_verification_full.json')
-    parser.add_argument('--output', default='docs/results/integration/ab_full_archive.json')
+    results = Path(runtime_config()['paths']['results_dir'])
+    parser.add_argument('--report', default=str(results / 'ab_test.json'))
+    parser.add_argument('--verification', default=str(results / 'ab_test_verification.json'))
+    parser.add_argument('--output', default=str(results / 'integration/ab_full_archive.json'))
     args = parser.parse_args()
     result = archive(args.report, args.verification, args.output)
     print(f"Full A/B lossless archive PASS: {result['source']}")

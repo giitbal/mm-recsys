@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "api_container_before": "dec0cc5b4237c372f572f210f41b57b97e8772e63017cbdc4de30dee2efc5534",
+  "api_container_after": "dec0cc5b4237c372f572f210f41b57b97e8772e63017cbdc4de30dee2efc5534",
+  "command": "docker compose --profile storefront up -d --build --no-deps storefront"
+}

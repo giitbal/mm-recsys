@@ -1,0 +1,42 @@
+{
+  "base": {
+    "data_fingerprint": "8b759bc8684efb8ef19f2f1bb8d0f1bc382fd71ff415631059a4f5242e59d1e9",
+    "rows": {
+      "products": 450,
+      "users": 120,
+      "events": 4000,
+      "impressions": 8956
+    },
+    "persona_counts": {
+      "pragmatist": 24,
+      "bargain": 24,
+      "trendsetter": 18,
+      "brand_loyal": 18,
+      "impulsive": 18,
+      "careful": 18
+    },
+    "new_branch_products": 0,
+    "images_present": 450,
+    "old_middle_count": 30
+  },
+  "changed": {
+    "data_fingerprint": "2fdddec88960feae2268d713b735d4edbdbb4030844d2697686162dc2e929b1c",
+    "rows": {
+      "products": 450,
+      "users": 120,
+      "events": 4000,
+      "impressions": 8808
+    },
+    "persona_counts": {
+      "trendsetter": 30,
+      "bargain": 24,
+      "brand_loyal": 18,
+      "impulsive": 18,
+      "careful": 18,
+      "pragmatist": 12
+    },
+    "new_branch_products": 11,
+    "images_present": 450,
+    "old_middle_count": 0
+  }
+}

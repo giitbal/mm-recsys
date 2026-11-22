@@ -1,8 +1,8 @@
 version: realism-v4
-work_dir: .team/external-realism-v4
-results_dir: docs/results/external/realism-v4
-source_work: .team/external-data-v1
-source_expansion: .team/external-expansion-v3
+work_dir: .team/external-realism-v4-illustrations-v1
+results_dir: docs/results/external/realism-v4-illustrations-v1
+source_work: .team/external-data-v1-illustrations-v1
+source_expansion: .team/external-expansion-v3-illustrations-v1
 seed: 41
 evaluation_seeds: [42, 43, 44]
 products: 3000

@@ -4,7 +4,7 @@
 full valid에서 CTR을 선택·동결한 뒤 한 정책만 test에서 평가했고 추천 품질과 B 주입 지연을 통과했다.
 이전 실패·원본 기여 문서는 `docs/results/experiments/B/ranking_original_contributions.md`와
 `ranking_pr8_contributions.md`에 보존했다. 현재 근거는 `ranking_metrics_v2.json`과 새 B5 gate다.
-기본 C 서버/Redis/Docker·전체 회귀·원격 전달은 완료되지 않았다.
+B5 인계 당시 공통 서버·Redis·Docker·전체 회귀·원격 전달은 후속 단계였다. [최신 통합 검증](../submission/report.md)
 
 ## A·C 인계 코멘트 — 모두 OPEN
 

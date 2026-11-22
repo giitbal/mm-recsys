@@ -10,6 +10,7 @@ from src.search.finalize import finalize
 def measured_fixture(monkeypatch, tmp_path):
     import src.search.finalize as module
     cfg = load_config(); cfg['scale'] = 'full'; monkeypatch.chdir(tmp_path)
+    cfg['paths']['results_dir'] = str(tmp_path / 'illustrations')
     modes = ('text', 'image', 'hybrid'); measured = {'queries': 200, 'mrr': 0.9, 'ndcg_at_10': 0.8}
     quality = {'scale': 'full', 'config_fingerprint': fingerprint(cfg), 'data_fingerprint': 'fixture-data',
         'model_fingerprint': 'fixture-model', 'query_manifest_sha256': 'fixture-query', 'split': 'test',
@@ -26,9 +27,9 @@ def measured_fixture(monkeypatch, tmp_path):
     monkeypatch.setattr(module, 'current_bundle', lambda cfg: {'manifest': {'fingerprint': 'fixture-model',
         'count': 50000, 'identity': {'data_fingerprint': 'fixture-data'}}})
     def save():
-        write_json(tmp_path/'docs/results/search_test_full.json', quality)
-        write_json(tmp_path/'docs/results/search_latency_full.json', latency)
-        write_json(tmp_path/'docs/results/search_valid_full.json', {'fixture': True})
+        write_json(tmp_path/'illustrations/search_test_full.json', quality)
+        write_json(tmp_path/'illustrations/search_latency_full.json', latency)
+        write_json(tmp_path/'illustrations/search_valid_full.json', {'fixture': True})
     save()
     return cfg, quality, latency, save
 

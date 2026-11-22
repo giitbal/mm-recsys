@@ -1,0 +1,24 @@
+{
+  "tabs": [
+    "검색",
+    "추천",
+    "A/B 실험",
+    "시스템",
+    "EDA·구매 이력",
+    "상품·CLIP"
+  ],
+  "panels": {
+    "검색": {
+      "charts": 0,
+      "text": "같은 쿼리로 비교한 검색 품질\n\n검색 품질이 아직 측정되지 않았습니다.\n\n검색 데모\n\n검색어\n\n이미지 · 선택\n\nDrag and drop file here\nLimit 200MB per file • PNG, JPG, JPEG\nBrowse files\n\n검색 결과 수\n\n검색 실행"
+    },
+    "추천": {
+      "charts": 0,
+      "text": "미래 행동에 대한 추천 품질\n\n추천 평가가 아직 없습니다.\n\n사용자 추천 데모\n\n사용자 ID\n\n추천 결과 수\n\n추천 실행"
+    },
+    "A/B 실험": {
+      "charts": 0,
+      "text": "사용자 단위 A/B 실험\n\nA/B 실험 결과가 없습니다."
+    }
+  }
+}

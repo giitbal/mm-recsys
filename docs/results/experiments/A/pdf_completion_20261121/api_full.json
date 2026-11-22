@@ -1,0 +1,538 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "scale": "full",
+  "data_fingerprint": "2df9b64e07e3b2aad48c967c4c8d3d8b04883dd19279896bb374c4f9926ad7d8",
+  "manifest_sha256": "62967222a57a01b43d79b021aa1dee8124655006b547f424cf6e9183188c7f86",
+  "config_fingerprint": "b01a87305e14c3fc895eaf97226d873328417ca2ae8466c5da937a64f208820d",
+  "models": {
+    "models/full-v44/v1.0/meta.json": "61b1e0994752a2565322af86808a57ed404628dd11e7ad771160a22cb881b305",
+    "models/full-v44/v1.0/index_manifest.json": "fee198acc9235766ba987c3aa197f53d7902ce80ca26c1eb46dee30760543705",
+    "models/full-v44/v1.0/ranking/meta.json": "8a49dba258ded72bcc2a2fd161d15b070a94a55859050768c990a44c6d7f322d",
+    "models/full-v44/v1.0/session/meta.json": "a5bfd599c7b7ef97a06a0d222a80eb4689301b3731bd3b769109f856c2f9d267",
+    "models/full-v44/search/embeddings_current.json": "c5bd88cecefeee533d182f68e07a066869bf98afe98414fdeddac09d74a11526",
+    "models/full-v44/search/embeddings/caf73094012ed7a948d87835cf3412da52b4f67182c42f5a3803a79b887c763a/manifest.json": "4398a1fccef8713027a602f385bf05846aa99580cf7095db60b1ea1a57e8eaa4",
+    "models/full-v44/search/indexes_current.json": "69d9eb1445f420ca6d6ca119a1c242ca31f36d96f6f15e3279888d55138bb159",
+    "models/full-v44/search/indexes/a202d3fbc543d7340999475e0d70145693093613989ed3101edb656780f53153/manifest.json": "786c9136c7e46318f942942083a91399d1c28a5b7c7b412ce91a85c1a649bc70"
+  },
+  "source_hashes": {
+    "/app/scripts/smoke_test.py": "19befcdbdbf1023bcdcb61caf615e43e2e196cff687d317e274aa7768760dc68",
+    "docker/runtime.py": "aab4df0f9ffab9ab661fb5c287458527fa7530d426d5a17ad4c37648bdb99308",
+    "docker/http.py": "e2e78703e0724044cfd10219166a1c75975f72ba9aa6f96fd3c478b5d899e52e",
+    "docker/serve.py": "dc92e79bcc1e4dd5312caa7a65c47dd687b20917c2db524c6a18815b05589d7d",
+    "docker/vision.py": "5f4a1769d02a3ec794ca0559e0f5a06a71419f07753ed5cc08600a167eb97374"
+  },
+  "health": {
+    "status": "ok",
+    "search_ready": true,
+    "recommend_ready": true,
+    "scale": "full",
+    "model_version": "v1.0"
+  },
+  "responses": {
+    "text": {
+      "search_type": "text",
+      "results": [
+        {
+          "product_id": "P000125",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 142000.0
+        },
+        {
+          "product_id": "P000562",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 103000.0
+        },
+        {
+          "product_id": "P000643",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 103000.0
+        },
+        {
+          "product_id": "P000985",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 58000.0
+        },
+        {
+          "product_id": "P000997",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 208000.0
+        },
+        {
+          "product_id": "P002528",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 32000.0
+        },
+        {
+          "product_id": "P002781",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 160000.0
+        },
+        {
+          "product_id": "P003159",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 114000.0
+        },
+        {
+          "product_id": "P003316",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 64000.0
+        },
+        {
+          "product_id": "P006290",
+          "name": "빨간색 슬림핏 옥스퍼드화",
+          "score": 0.9030251502990723,
+          "price": 158000.0
+        }
+      ],
+      "latency_ms": 70.34330199985561,
+      "total_count": 50000
+    },
+    "image": {
+      "search_type": "image",
+      "results": [
+        {
+          "product_id": "P000501",
+          "name": "갈색 릴랙스핏 볼캡",
+          "score": 0.9276891946792603,
+          "price": 136000.0
+        },
+        {
+          "product_id": "P001098",
+          "name": "갈색 릴랙스핏 버킷햇",
+          "score": 0.9276891946792603,
+          "price": 165000.0
+        },
+        {
+          "product_id": "P001666",
+          "name": "갈색 슬림핏 버킷햇",
+          "score": 0.9276891946792603,
+          "price": 150000.0
+        },
+        {
+          "product_id": "P002085",
+          "name": "갈색 슬림핏 비니",
+          "score": 0.9276891946792603,
+          "price": 126000.0
+        },
+        {
+          "product_id": "P002792",
+          "name": "갈색 레귤러핏 볼캡",
+          "score": 0.9276891946792603,
+          "price": 102000.0
+        },
+        {
+          "product_id": "P003029",
+          "name": "갈색 릴랙스핏 버킷햇",
+          "score": 0.9276891946792603,
+          "price": 135000.0
+        },
+        {
+          "product_id": "P004309",
+          "name": "갈색 릴랙스핏 비니",
+          "score": 0.9276891946792603,
+          "price": 115000.0
+        },
+        {
+          "product_id": "P004650",
+          "name": "갈색 레귤러핏 버킷햇",
+          "score": 0.9276891946792603,
+          "price": 42000.0
+        },
+        {
+          "product_id": "P004733",
+          "name": "갈색 릴랙스핏 볼캡",
+          "score": 0.9276891946792603,
+          "price": 54000.0
+        },
+        {
+          "product_id": "P004992",
+          "name": "갈색 레귤러핏 버킷햇",
+          "score": 0.9276891946792603,
+          "price": 67000.0
+        }
+      ],
+      "latency_ms": 110.23607400011315,
+      "total_count": 50000
+    },
+    "hybrid": {
+      "search_type": "hybrid",
+      "results": [
+        {
+          "product_id": "P001181",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 123000.0
+        },
+        {
+          "product_id": "P001846",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 116000.0
+        },
+        {
+          "product_id": "P002253",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 125000.0
+        },
+        {
+          "product_id": "P002256",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 44000.0
+        },
+        {
+          "product_id": "P003367",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 170000.0
+        },
+        {
+          "product_id": "P004153",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 31000.0
+        },
+        {
+          "product_id": "P004682",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 50000.0
+        },
+        {
+          "product_id": "P005069",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 27000.0
+        },
+        {
+          "product_id": "P007913",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 129000.0
+        },
+        {
+          "product_id": "P009345",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 115000.0
+        }
+      ],
+      "latency_ms": 96.28380999993169,
+      "total_count": 50000
+    },
+    "multipart": {
+      "search_type": "hybrid",
+      "results": [
+        {
+          "product_id": "P001181",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 123000.0
+        },
+        {
+          "product_id": "P001846",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 116000.0
+        },
+        {
+          "product_id": "P002253",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 125000.0
+        },
+        {
+          "product_id": "P002256",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 44000.0
+        },
+        {
+          "product_id": "P003367",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 170000.0
+        },
+        {
+          "product_id": "P004153",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 31000.0
+        },
+        {
+          "product_id": "P004682",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 50000.0
+        },
+        {
+          "product_id": "P005069",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 27000.0
+        },
+        {
+          "product_id": "P007913",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 129000.0
+        },
+        {
+          "product_id": "P009345",
+          "name": "검정 레귤러핏 벨트",
+          "score": 0.7028953433036804,
+          "price": 115000.0
+        }
+      ],
+      "latency_ms": 97.90921700005129,
+      "total_count": 50000
+    },
+    "known_user": {
+      "user_id": "U000001",
+      "recommendations": [
+        {
+          "product_id": "P000543",
+          "score": 0.9998297691345215,
+          "reason": "MAB 탐색",
+          "is_exploration": true
+        },
+        {
+          "product_id": "P029765",
+          "score": 0.9468508362770081,
+          "reason": "MAB 탐색",
+          "is_exploration": true
+        },
+        {
+          "product_id": "P000102",
+          "score": 0.9258319735527039,
+          "reason": "DeepFM 클릭 가능성",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000580",
+          "score": 0.9998050332069397,
+          "reason": "DeepFM 클릭 가능성",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P002556",
+          "score": 0.9994028806686401,
+          "reason": "DeepFM 클릭 가능성",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000261",
+          "score": 0.9239357709884644,
+          "reason": "DeepFM 클릭 가능성",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000959",
+          "score": 0.999193012714386,
+          "reason": "DeepFM 클릭 가능성",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P001334",
+          "score": 0.9990988969802856,
+          "reason": "DeepFM 클릭 가능성",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000898",
+          "score": 0.9171155095100403,
+          "reason": "DeepFM 클릭 가능성",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P002914",
+          "score": 0.9990192651748657,
+          "reason": "DeepFM 클릭 가능성",
+          "is_exploration": false
+        }
+      ],
+      "pipeline_latency": {
+        "candidate_ms": 13.059955000244372,
+        "ranking_ms": 5.990225999994436,
+        "reranking_ms": 6.9384290000016335,
+        "total_ms": 25.988610000240442
+      },
+      "session_context": {
+        "recent_clicks": [],
+        "session_interest": null
+      }
+    },
+    "new_user": {
+      "user_id": "__docker_new_140dc5b86ef8445089f4505bbe2665ea",
+      "recommendations": [
+        {
+          "product_id": "P000022",
+          "score": 1.0201863354037266,
+          "reason": "MAB 탐색",
+          "is_exploration": true
+        },
+        {
+          "product_id": "P000628",
+          "score": 0.0,
+          "reason": "MAB 탐색",
+          "is_exploration": true
+        },
+        {
+          "product_id": "P001816",
+          "score": 0.9906832298136645,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000229",
+          "score": 0.9301242236024845,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000255",
+          "score": 0.9078674948240165,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000068",
+          "score": 0.8928571428571429,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000462",
+          "score": 0.8856107660455487,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000301",
+          "score": 0.8561076604554865,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000104",
+          "score": 0.8467908902691511,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000084",
+          "score": 0.8312629399585921,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        }
+      ],
+      "pipeline_latency": {
+        "candidate_ms": 2.5690110001050925,
+        "ranking_ms": 3.4541149998403853,
+        "reranking_ms": 7.5328309999349585,
+        "total_ms": 13.555956999880436
+      },
+      "session_context": {
+        "recent_clicks": [],
+        "session_interest": null
+      }
+    },
+    "session": {
+      "user_id": "__docker_session_7e9bf52cf22c44d895b75627699fac8e",
+      "recommendations": [
+        {
+          "product_id": "P000022",
+          "score": 1.0201863354037266,
+          "reason": "MAB 탐색",
+          "is_exploration": true
+        },
+        {
+          "product_id": "P000628",
+          "score": 0.0,
+          "reason": "MAB 탐색",
+          "is_exploration": true
+        },
+        {
+          "product_id": "P001816",
+          "score": 0.9906832298136645,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000229",
+          "score": 0.9301242236024845,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000255",
+          "score": 0.9078674948240165,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000068",
+          "score": 0.8928571428571429,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000462",
+          "score": 0.8856107660455487,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000301",
+          "score": 0.8561076604554865,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000104",
+          "score": 0.8467908902691511,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        },
+        {
+          "product_id": "P000084",
+          "score": 0.8312629399585921,
+          "reason": "인기·최근 상승 상품",
+          "is_exploration": false
+        }
+      ],
+      "pipeline_latency": {
+        "candidate_ms": 2.2072090000619937,
+        "ranking_ms": 3.941417000078218,
+        "reranking_ms": 8.465935999993235,
+        "total_ms": 14.614562000133446
+      },
+      "session_context": {
+        "recent_clicks": [
+          "P000125"
+        ],
+        "session_interest": "oxford shoes"
+      }
+    }
+  },
+  "checks": {
+    "api_schemas": "PASS",
+    "multipart": "PASS",
+    "invalid_search": "PASS",
+    "session_response": "PASS",
+    "dashboard_http": "PASS",
+    "storefront_http": "PASS"
+  },
+  "scope": "actual HTTP smoke; UI HTTP health does not establish browser rendering"
+}

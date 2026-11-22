@@ -1,0 +1,52 @@
+{
+  "status": "DIFFERENT",
+  "bundles": {
+    "embeddings": {
+      "fingerprint": "a9c7dd3da8af8414bc842253392e78988773d5b10239588fb971194a1646d0e0",
+      "files": {
+        "text.npy": "064fc5377d84128b30e96bd7cb881fded17f3d36e40f117b3cc0352092195baf",
+        "image.npy": "0863beff7028ddd1c444db77ce81cea42622e498af80f0c04d1091f169cf3705",
+        "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+        "text_audit.json": "a85242d955fe72156e5bb3b69b5749f6f2b6835feb3cbb76f7deed8eb378e1e0"
+      }
+    },
+    "index": {
+      "fingerprint": "589aed294bbac6f7e42a892f4545262442bf31d1002cfc10bf0023232b256a9d",
+      "files": {
+        "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+        "text.faiss": "d66534d54ce54b8c18c0a3c73cd510fc08227c01f8f7e7566306df4ad74d0fda",
+        "image.faiss": "7334cc045f65a552e10e479ef4fc0406607e4a8749b8644ff849cb6f9f6e24a4",
+        "hybrid.faiss": "de2f41ee0491ac35e279eeeb7a37e9da9e0267a4cc119a3e08f68c7d499de954",
+        "text_members.json": "f5174232c786637c669121e441fd7018b1685b7ba3ee06a997982716ca1fbd7e",
+        "image_members.json": "5f09fa29494a1e45ab9ac4386b390ebb9b37a0676af7f2e7ec714c37fe72ed85",
+        "hybrid_members.json": "a48771494c111a496dcab3b5b1cf26d73edb71e28176605cc95188854a8719e9"
+      }
+    }
+  },
+  "differences": {
+    "embeddings": [],
+    "index": [
+      "text.faiss",
+      "image.faiss",
+      "hybrid.faiss"
+    ]
+  },
+  "measured": {
+    "embeddings": {
+      "text.npy": "064fc5377d84128b30e96bd7cb881fded17f3d36e40f117b3cc0352092195baf",
+      "image.npy": "0863beff7028ddd1c444db77ce81cea42622e498af80f0c04d1091f169cf3705",
+      "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+      "text_audit.json": "a85242d955fe72156e5bb3b69b5749f6f2b6835feb3cbb76f7deed8eb378e1e0"
+    },
+    "index": {
+      "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+      "text.faiss": "51d6464cec6997b042c9d350ecc9b14f5b3dbfc85ae2ed9039575bac4f507136",
+      "image.faiss": "c95f94bc9d6c4aa8ebb86865a16446231da51e56cc8447bd9937c3acac82bd75",
+      "hybrid.faiss": "49b1d6d7aabadaef9eb3f6579157adea9cfdc5140c132f046ee83bb24013246f",
+      "text_members.json": "f5174232c786637c669121e441fd7018b1685b7ba3ee06a997982716ca1fbd7e",
+      "image_members.json": "5f09fa29494a1e45ab9ac4386b390ebb9b37a0676af7f2e7ec714c37fe72ed85",
+      "hybrid_members.json": "a48771494c111a496dcab3b5b1cf26d73edb71e28176605cc95188854a8719e9"
+    }
+  },
+  "scope": "Cold and measured search artifacts compared by file checksum with original manifests."
+}

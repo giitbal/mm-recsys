@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "stage": "INTEGRATE",
+  "acceptance": "PASS",
+  "included_metrics": 12,
+  "required_checks": [
+    "docker_reproduction",
+    "api_schemas",
+    "session_response",
+    "ab_statistics",
+    "ct_retrain_and_rollback",
+    "submission"
+  ],
+  "original_runtime_directory_absent": true,
+  "trained_models_absent_from_checker_checkout": true,
+  "local_clone_head": "03af3758f24fcdb8cfc20aad2138bb73b2a7eb17",
+  "final_report_sha256": "2acf52833bacd5d02b00ba5c41c34f5381c978bc32e8ce7cdca6822469817c65",
+  "submission_sha256": "59475e9c5e042dd4b41e93eb424af11507a6df2d5e2dd8e70e08c548ec403834",
+  "scope": "Fresh local source checkout with the immutable submission results. Rechecked quality, raw latency, A/B archive, CT, all final checks and submission input hashes. Cold training and HTTP used separate mounted data and models."
+}

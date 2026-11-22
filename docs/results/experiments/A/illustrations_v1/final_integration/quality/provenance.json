@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "source_files": {
+    "quality_full_test.json": {
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+      "sha256": "3336264c075de96db621b04cad25d68aaff8882570ffb0704d8d87529b3f41dc"
+    },
+    "quality_full_valid.json": {
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_valid.json",
+      "sha256": "c5136f78c6a9ca423f7bbd5a8ef2208940f1e799602011cc533b4632f8a84780"
+    },
+    "quality_selection_full.json": {
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_selection_full.json",
+      "sha256": "3ddb3d73421021ba79580ef400866e2448df1487b05543d2182b8cfdb9336735"
+    },
+    "smoke_full.json": {
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/smoke_full.json",
+      "sha256": "548abfe86a7622a6e6e541bbe20cda725f81b4bc684bd3d3940156e1db0db16c"
+    },
+    "configuration_full.json": {
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/configuration_full.json",
+      "sha256": "9c1a954b3329d5243217e5da4a84301f933980bf9e2d477d8180e7a6fccdceea"
+    },
+    "verified_full.json": {
+      "source": "docs/results/experiments/A/illustrations_v1/default_full/verified_full.json",
+      "sha256": "d4ef6240783c53bd0721de49047cc16befe6c87b4cefebfd9c20ee918f1c78c2"
+    }
+  },
+  "relinked": {
+    "quality_full_test.json": {
+      "original": {
+        "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_full_test.json",
+        "sha256": "3336264c075de96db621b04cad25d68aaff8882570ffb0704d8d87529b3f41dc"
+      },
+      "original_source": "docs/results/docker/runtime-illustrations-v1/full/quality/smoke_full.json",
+      "archived_source": "docs/results/experiments/A/illustrations_v1/final_integration/quality/smoke_full.json",
+      "unchanged_source_sha256": "548abfe86a7622a6e6e541bbe20cda725f81b4bc684bd3d3940156e1db0db16c"
+    },
+    "quality_selection_full.json": {
+      "original": {
+        "source": "docs/results/experiments/A/illustrations_v1/default_full/quality_selection_full.json",
+        "sha256": "3ddb3d73421021ba79580ef400866e2448df1487b05543d2182b8cfdb9336735"
+      },
+      "original_source": "docs/results/docker/runtime-illustrations-v1/full/quality/freezes/c5136f78c6a9ca423f7bbd5a8ef2208940f1e799602011cc533b4632f8a84780.json",
+      "archived_source": "docs/results/experiments/A/illustrations_v1/final_integration/quality/quality_full_valid.json",
+      "unchanged_source_sha256": "c5136f78c6a9ca423f7bbd5a8ef2208940f1e799602011cc533b4632f8a84780"
+    }
+  },
+  "scope": "Frozen reports preserved at original locations. Two submission-copy source paths relocated to byte-identical archived inputs; numeric, identity, sample and guard fields unchanged."
+}

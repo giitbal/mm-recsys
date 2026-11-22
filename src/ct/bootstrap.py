@@ -16,11 +16,16 @@ from src.serving.memory_store import MemoryFeatureStore
 
 def bootstrap(cfg: dict) -> dict:
     _, _, registry = components(cfg)
-    with file_lock(registry.root / '.ct' / 'training.lock', blocking=False):
-        if registry.read()['active']:
-            registry.verify(registry.read()['active'])
-            return registry.read()
-        if 'v1.0' not in registry.read()['versions']:
+    state = registry.read()
+    if state['active']:
+        registry.verify(state['active'])
+        return state
+    with file_lock(registry.root / '.ct' / 'training.lock'):
+        state = registry.read()
+        if state['active']:
+            registry.verify(state['active'])
+            return state
+        if 'v1.0' not in state['versions']:
             registry.register('v1.0', cfg, Path(cfg['paths']['data_dir']),
                               dict(status='UNMEASURED', reason='initial existing bundle; no invented validation'), None, 0)
         load_record(registry, 'v1.0', MemoryFeatureStore())

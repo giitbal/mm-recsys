@@ -31,7 +31,7 @@ def test_impossible_conditions_are_reported():
     cfg=load_config(); at,products=catalog(5,1)
     reranker=Reranker(cfg,products)
     result,diag=reranker.run([RankedItem(p,1.) for p in products.product_id],10,at,0,{}, {},lambda p:p,np.random.default_rng(42))
-    assert len(result)==5 and diag['status']=='INFEASIBLE' and 'diversity' in diag['violations']
+    assert len(result)==2 and diag['status']=='INFEASIBLE' and 'diversity' in diag['violations']
     assert 'insufficient_distinct_candidates' in diag['diagnostics']
 
 
@@ -125,3 +125,35 @@ def test_completion_feasibility_matches_exhaustive_small_sequences():
                         return False
                     expected=brute([],counts,required)
                     assert completion_feasible(counts,required,slots,2,tail,run)==expected,(counts,required,slots,tail,run)
+
+
+def test_shared_labels_across_branches_can_require_reordering_an_earlier_choice():
+    cfg = load_config()
+    cfg['recommend']['mab']['exploration_slots'] = 0
+    at = pd.Timestamp(cfg['simulator']['reference_time'])
+    paths = [('A','shared','x'), ('B','other','y'), ('A','other','y'),
+             ('A','other','x'), ('A','shared','y')]
+    fields = ['category_l1','category_l2','category_l3']
+    products = pd.DataFrame(paths, columns=fields)
+    products['product_id'] = list('abcde')
+    products['created_at'] = at - pd.Timedelta(days=14)
+    ranked = [RankedItem(p, 5-i) for i, p in enumerate(products.product_id)]
+    result, diag = Reranker(cfg, products).run(ranked, 5, at, 10, {}, {}, str, np.random.default_rng(42))
+    ids = [item.product_id for item in result]
+    assert diag['status'] == 'PASS' and len(set(ids)) == 5
+    for level in fields:
+        cats = products.set_index('product_id').loc[ids, level]
+        assert all(a != b or b != c for a, b, c in zip(cats, cats.iloc[1:], cats.iloc[2:]))
+
+
+def test_one_available_diversity_slot_preserves_new_item_and_exploration():
+    cfg = load_config()
+    cfg['recommend']['max_consecutive_same_category'] = 1
+    at, products = catalog(5, 1)
+    products['created_at'] = at - pd.Timedelta(days=20)
+    products.loc[4, 'created_at'] = at
+    result, diag = Reranker(cfg, products).run(
+        [RankedItem(p, 5-i) for i,p in enumerate(products.product_id)], 5, at, 10, {}, {}, str, np.random.default_rng(42)
+    )
+    assert len(result) == 1 and result[0].product_id == 'p4' and result[0].is_exploration
+    assert diag['status'] == 'INFEASIBLE' and diag['violations'] == ['diversity']

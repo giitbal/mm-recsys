@@ -48,7 +48,18 @@ class SetupTests(unittest.TestCase):
         self.assertEqual(cfg['recommend']['candidate']['negatives_per_positive'], 4)
         self.assertEqual(cfg['recommend']['evaluation']['k'], 300)
         compose = yaml.safe_load((self.project / 'docker-compose.yml').read_text())
-        self.assertEqual(set(compose['services']), {'redis', 'api-server', 'dashboard', 'simulator'})
+        services = compose['services']
+        self.assertEqual({name for name, service in services.items() if not service.get('profiles')},
+                         {'redis', 'api-server', 'dashboard', 'simulator'})
+        self.assertEqual(services['storefront']['profiles'], ['storefront'])
+        for name in ('package.json', 'package-lock.json', 'src/app/layout.tsx'):
+            self.assertTrue((self.project / 'storefront' / name).is_file(), name)
+        reference = self.project / 'docs/submission/dashboard/evaluation_full_test.json'
+        import hashlib
+        self.assertEqual(reference.with_suffix('.sha256').read_text().split()[0],
+                         hashlib.sha256(reference.read_bytes()).hexdigest())
+        for name in ('node_modules', '.next'):
+            self.assertFalse((self.project / 'storefront' / name).exists())
         self.assertEqual(compose['services']['api-server']['mem_limit'], '4g')
         for name in ('requirements.txt', 'requirements-torch.txt', 'requirements-dashboard.txt'):
             lines = (self.project / name).read_text().splitlines()

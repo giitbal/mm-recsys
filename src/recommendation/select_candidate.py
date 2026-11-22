@@ -45,9 +45,10 @@ def selection(training_path: Path, valid_path: Path, benchmark_path: Path, diagn
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('--verify-existing', action='store_true')
-    parser.add_argument('--output', type=Path, default=Path('docs/results/candidate_selection.json'))
+    parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     cfg = load_config(); folder = Path(cfg['paths']['results_dir']); scale = cfg['scale']
+    args.output = args.output or folder / 'candidate_selection.json'
     result = selection(folder / f'candidate_training_{scale}.json', folder / f'candidate_{scale}_valid.json',
                        folder / f'candidate_benchmark_{scale}_valid.json', folder / 'candidate_diagnostics.json', cfg)
     if args.verify_existing:

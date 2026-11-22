@@ -1,0 +1,20 @@
+{
+  "started_at": "2026-11-21T01:59:38.637Z",
+  "browser": "141.0.7390.37",
+  "errors": [],
+  "failedRequests": [
+    {
+      "url": "http://127.0.0.1:18523/",
+      "error": {
+        "errorText": "net::ERR_SOCKET_NOT_CONNECTED"
+      }
+    }
+  ],
+  "captures": [
+    "docs/results/experiments/A/pdf_completion_20261121/dashboard_verified/browser_failure.png"
+  ],
+  "checks": {},
+  "status": "FAIL",
+  "error": "Error: page.goto: net::ERR_SOCKET_NOT_CONNECTED at http://127.0.0.1:18523/\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:18523/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+  "completed_at": "2026-11-21T01:59:38.791Z"
+}

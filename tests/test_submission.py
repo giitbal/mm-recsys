@@ -11,38 +11,46 @@ import httpx
 import pytest
 
 from scripts import check_submission as checker
-from scripts.check_submission_evidence import (QUALITY, SMOKE, assemble_acceptance, audit_python,
+from scripts.check_submission_evidence import (assemble_acceptance, audit_python,
                                                check_hashes, collect_integration_checks, collect_quality, read_json)
 from src.common.artifacts import file_hash
 
 ROOT = Path(__file__).resolve().parents[1]
+# Keep tamper tests independent of the mutable Docker results volume.
+ARCHIVE = Path('docs/results/experiments/A/illustrations_v1/integration_current/release_quality')
+EVIDENCE = ARCHIVE.as_posix()
+QUALITY = f'{EVIDENCE}/quality_full_test.json'
+SMOKE = f'{EVIDENCE}/smoke_full.json'
 
 
 @pytest.fixture
 def evidence(tmp_path):
-    quality = read_json(ROOT, QUALITY)
-    frozen = read_json(ROOT, 'docs/results/docker/quality_selection_full.json')
-    names = {QUALITY, SMOKE, 'docs/results/docker/quality_full_valid.json',
-             'docs/results/docker/quality_selection_full.json', frozen['source'],
-             'docs/results/docker/verified_full.json', 'docs/results/ab_test.json',
-             'docs/results/ct_dev_fixture.json'}
-    names |= set(quality['identity']['source_hashes']) | set(quality['identity']['docker_sources'])
-    measured_commit = subprocess.check_output(['git', 'log', '-1', '--format=%H', '--', QUALITY],
-                                              cwd=ROOT, text=True).strip()
-    measured_sources = set(quality['identity']['source_hashes']) | set(quality['identity']['docker_sources'])
-    for name in names:
-        (tmp_path / name).parent.mkdir(parents=True, exist_ok=True)
-        if name in measured_sources:
-            # This fixture audits immutable B10 measurements against their original
-            # sources, while current-source integration is measured separately.
-            (tmp_path / name).write_bytes(subprocess.check_output(
-                ['git', 'show', f'{measured_commit}:{name}'], cwd=ROOT))
+    target = tmp_path / EVIDENCE
+    target.mkdir(parents=True)
+    for name in ('quality_full_test.json', 'quality_full_valid.json', 'smoke_full.json',
+                 'quality_selection_full.json', 'verified_full.json', 'configuration_full.json'):
+        shutil.copyfile(ROOT / ARCHIVE / name, target / name)
+    frozen = read_json(tmp_path, f'{EVIDENCE}/quality_selection_full.json')
+    snapshot = tmp_path / frozen['source']
+    snapshot.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(target / 'quality_full_valid.json', snapshot)
+    identity = read_json(tmp_path, QUALITY)['identity']
+    sources = {**identity['source_hashes'], **identity['docker_sources']}
+    for name, digest in sources.items():
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if (ROOT / name).is_file() and file_hash(ROOT / name) == digest:
+            shutil.copyfile(ROOT / name, path)
         else:
-            shutil.copyfile(ROOT / name, tmp_path / name)
+            # After a source change the release commit still contains the measured bytes.
+            commit = subprocess.check_output(['git', 'log', '-1', '--format=%H', '--',
+                str(ARCHIVE / 'quality_full_test.json')], cwd=ROOT, text=True).strip()
+            path.write_bytes(subprocess.check_output(['git', 'show', f'{commit}:{name}'], cwd=ROOT))
+        assert file_hash(path) == digest
     return tmp_path
 
 
-@pytest.mark.parametrize('defect', ['row_value', 'below_target', 'raw_http', 'dev', 'source', 'freeze', 'coverage'])
+@pytest.mark.parametrize('defect', ['row_value', 'below_target', 'raw_http', 'dev', 'source', 'freeze', 'coverage', 'storefront_only'])
 def test_altered_measurement_cannot_be_aggregated(evidence, defect):
     quality = read_json(evidence, QUALITY)
     if defect == 'row_value':
@@ -55,19 +63,24 @@ def test_altered_measurement_cannot_be_aggregated(evidence, defect):
         quality['scale'] = 'dev'
     elif defect == 'source':
         (evidence / next(iter(quality['identity']['source_hashes']))).write_text('changed')
+    elif defect == 'storefront_only':
+        smoke = read_json(evidence, SMOKE)
+        smoke['checks'].update(dashboard_http='UNMEASURED', storefront_http='PASS')
+        (evidence / SMOKE).write_text(json.dumps(smoke))
+        quality['latency_source']['sha256'] = file_hash(evidence / SMOKE)
     elif defect == 'freeze':
-        frozen = read_json(evidence, 'docs/results/docker/quality_selection_full.json')
+        frozen = read_json(evidence, f'{EVIDENCE}/quality_selection_full.json')
         (evidence / frozen['source']).write_text('{}')
     else:
         quality['recommendation']['metrics']['full_pipeline']['coverage_users'] -= 1
     (evidence / QUALITY).write_text(json.dumps(quality))
     with pytest.raises(ValueError):
-        collect_quality(evidence, checker.full_config())
+        collect_quality(evidence, checker.full_config(), EVIDENCE)
 
 
 def test_dev_ab_and_fixture_ct_never_become_full_acceptance(evidence):
     (evidence / 'submission.json').write_text(json.dumps(dict(readiness_status='BLOCKED', blockers=['pending'])))
-    result = assemble_acceptance(evidence, checker.full_config(), 'submission.json')
+    result = assemble_acceptance(evidence, checker.full_config(), 'submission.json', EVIDENCE)
     assert result['status'] == 'UNMEASURED'
     assert result['checks']['ab_statistics']['status'] == 'UNMEASURED'
     assert result['checks']['ct_retrain_and_rollback']['status'] == 'UNMEASURED'
@@ -196,6 +209,25 @@ def test_artifact_aliases_cannot_change_measured_model_or_generator_recipe(tmp_p
     ordered['simulator']['taxonomy'] = dict(reversed(list(ordered['simulator']['taxonomy'].items())))
     with pytest.raises(ValueError, match='recipe/order differs'):
         validate_configuration(tmp_path, ordered, quality, 'integration')
+
+
+@pytest.mark.parametrize('overlap', [False, True])
+def test_live_ct_watermark_uses_the_next_observed_window(tmp_path, overlap):
+    from scripts.check_submission_evidence import check_ct_watermark
+    run = dict(version='v1.2', through_seq=10000, active='v1.0', comparison={'split': 'valid'})
+    start = dict(event='training_started', version='v1.2', new_events=10000, through_seq=10000)
+    terminal = dict(event='retained', version='v1.2', comparison=run['comparison'])
+    following = dict(event='training_started', version='v1.3', parent='v1.0', new_events=10000,
+                     through_seq=19999 if overlap else 20003)
+    (tmp_path / 'events.jsonl').write_text(''.join(json.dumps(row) + '\n' for row in (start, terminal, following)))
+    natural = dict(retraining=run, threshold=10000, observed_new_events=10000,
+                   repeated_trigger=dict(status='NEXT_WINDOW', training_started=following),
+                   deployment_events=dict(source='events.jsonl', sha256=file_hash(tmp_path / 'events.jsonl')))
+    if overlap:
+        with pytest.raises(ValueError, match='fresh window'):
+            check_ct_watermark(tmp_path, natural)
+    else:
+        check_ct_watermark(tmp_path, natural)
 
 
 @pytest.mark.parametrize('defect', [None, 'small', 'forced', 'guard', 'cohort', 'candidate', 'traffic', 'untrained', 'natural', 'split_logs'])

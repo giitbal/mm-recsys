@@ -10,7 +10,7 @@ from pathlib import Path
 import time
 from typing import Any
 
-from docker.runtime import runtime_config, configure_process_environment
+from docker.runtime import quality_dir, runtime_config, configure_process_environment
 
 if __name__ == '__main__':
     configure_process_environment()
@@ -32,7 +32,7 @@ def run(cfg: dict, split: str) -> dict:
     if os.getenv('PYTHONHASHSEED') != str(cfg['seed']):
         raise ValueError('set PYTHONHASHSEED before starting Python')
     started = time.perf_counter()
-    root = Path(os.getenv('QUALITY_RESULTS_DIR', 'docs/results/docker'))
+    root = quality_dir(cfg)
     inputs = input_identity(cfg)
     inputs['docker_sources'] = {str(p): file_hash(p) for p in
         (Path('docker/quality.py'), Path('docker/runtime.py'), Path('docker/serve.py'), Path('docker/vision.py'), Path('docker-compose.yml'))}
@@ -42,7 +42,9 @@ def run(cfg: dict, split: str) -> dict:
     set_seed(cfg['seed'])
     smoke_path = root / f"smoke_{cfg['scale']}.json"
     smoke = json.loads(smoke_path.read_text())
-    if smoke['status'] != 'PASS' or smoke['scale'] != cfg['scale']:
+    if (smoke['status'] != 'PASS' or smoke['scale'] != cfg['scale']
+            or smoke['manifest_sha256'] != inputs['data_manifest_sha256']
+            or smoke['config_fingerprint'] != inputs['config_fingerprint']):
         raise ValueError('matching successful Docker latency/smoke evidence required first')
     for path, digest in smoke['models'].items():
         if file_hash(Path(path)) != digest:
@@ -85,6 +87,7 @@ def run(cfg: dict, split: str) -> dict:
         # Selection is the unchanged recipe, not a new model/policy tuning step.
         snapshot = root / 'freezes' / f'{file_hash(output)}.json'
         write_json(snapshot, report)
+        write_json(root / f"configuration_{cfg['scale']}.json", cfg)
         write_json(selection, dict(selected_on='valid', identity=inputs, source=str(snapshot), sha256=file_hash(snapshot)))
     log('평가', 'Docker 품질', f'{split}: {quality} / 결과={output}', status='완료')
     report_metrics(rows)
@@ -100,7 +103,7 @@ def main() -> int:
         raise ValueError('run quality measurements inside the Docker API image')
     cfg = runtime_config()
     if args.verify_existing:
-        root = Path(os.getenv('QUALITY_RESULTS_DIR', 'docs/results/docker'))
+        root = quality_dir(cfg)
         result = json.loads((root / f"quality_{cfg['scale']}_{args.split}.json").read_text())
         current = input_identity(cfg)
         current['docker_sources'] = {str(p): file_hash(p) for p in

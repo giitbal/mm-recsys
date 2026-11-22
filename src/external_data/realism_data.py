@@ -9,6 +9,7 @@ import pandas as pd
 import yaml
 
 from src.common.artifacts import file_hash, write_json
+from src.external_data.io import load_spec
 from src.external_data.hm_prepare import simulator_category
 from src.external_data.expansion_retail import observed_pairs, fit, predict, STATES
 from src.external_data.realism_metrics import price_stats, purchase_stats, session_stats
@@ -33,8 +34,10 @@ def prepare() -> None:
             raise ValueError('modified prepared reference cache')
         return
     source = Path(spec['source_work'])
-    hm_old = json.loads(Path('docs/results/external/v1/hm_data.json').read_text())
-    retail_old = json.loads(Path('docs/results/external/v1/retailrocket.json').read_text())
+    source_results = Path(spec['source_results'] if 'source_results' in spec
+                          else load_spec('config/external_data.yaml')['results_dir'])
+    hm_old = json.loads((source_results / 'hm_data.json').read_text())
+    retail_old = json.loads((source_results / 'retailrocket.json').read_text())
     paths = {source / 'hm_raw' / n: hm_old['source_members'][n]['sha256'] for n in ['articles.csv', 'transactions_train.csv']}
     paths[source / 'retailrocket_raw/events.csv'] = retail_old['source_members']['events.csv']['sha256']
     for p, expected in paths.items():

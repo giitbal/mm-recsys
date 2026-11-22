@@ -14,7 +14,7 @@ from src.external_data.expansion_common import plan,frozen_sources
 from src.external_data.hm_evaluate import metrics,rank
 from src.external_data.hm_revisit import exact_lists,rerank_blend
 from src.recommendation.datasets import TrainingDataset,read_data
-from src.recommendation.features import FeatureEncoder
+from src.recommendation.features import FeatureEncoder, ItemTable
 from src.recommendation.two_tower import TwoTower,weighted_loss
 from src.recommendation.deepfm import DeepFM
 from src.recommendation.eval_candidate import Evaluation
@@ -22,16 +22,21 @@ from src.recommendation.ranking_features import RankingEncoder,HistoryIndex,DENS
 
 
 class ContentTower(TwoTower):
-    def __init__(self,encoder,table,spec,variant,embeddings=None):
+    text_vectors: torch.Tensor
+    image_vectors: torch.Tensor
+
+    def __init__(self, encoder: FeatureEncoder, table: ItemTable, spec: dict, variant: str, embeddings: Path | None = None) -> None:
         super().__init__(encoder,table,spec);self.variant=variant
         if variant!='metadata':
+            if embeddings is None:
+                raise ValueError('content variants require an embeddings directory')
             self.register_buffer('text_vectors',torch.from_numpy(np.load(embeddings/'text_features.npy',mmap_mode='c')),persistent=False)
             self.text_projection=nn.Linear(self.text_vectors.shape[1],spec['dim'],bias=False)
-        if variant=='multimodal':
-            self.register_buffer('image_vectors',torch.from_numpy(np.load(embeddings/'image_features.npy',mmap_mode='c')),persistent=False)
-            self.image_projection=nn.Linear(self.image_vectors.shape[1],spec['dim'],bias=False)
+            if variant=='multimodal':
+                self.register_buffer('image_vectors',torch.from_numpy(np.load(embeddings/'image_features.npy',mmap_mode='c')),persistent=False)
+                self.image_projection=nn.Linear(self.image_vectors.shape[1],spec['dim'],bias=False)
 
-    def encode_items(self,indices):
+    def encode_items(self, indices: torch.Tensor) -> torch.Tensor:
         # Compute repeated history IDs once per call; preserve gradients and padding.
         unique,inverse=torch.unique(indices,return_inverse=True)
         values=super().encode_items(unique)
@@ -41,14 +46,14 @@ class ContentTower(TwoTower):
         return values[inverse]
 
 
-def peak_rss_mib():
+def peak_rss_mib() -> float | None:
     # This metric was measured on Linux; other platforms remain unmeasured.
     if not sys.platform.startswith('linux'):return None
     import resource
     return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024
 
 
-def context(spec):
+def context(spec: dict) -> tuple[dict, dict, FeatureEncoder, ItemTable]:
     cfg=json.loads((Path(spec['source_work'])/'hm_models/two_tower/external_config.json').read_text())['config']
     cfg['recommend']['candidate'].update(epochs=spec['candidate_epochs'],patience=spec['patience'],threads=spec['threads'],batch_size=spec['batch_size'])
     cfg['recommend']['ranking'].update(epochs=spec['ranking_epochs'],threads=spec['threads'])
@@ -58,18 +63,18 @@ def context(spec):
     return cfg,data,encoder,table
 
 
-def shards(spec,results,size):
+def shards(spec: dict, results: Path, size: int) -> list[dict]:
     return [s for s in json.loads((results/'hm_data.json').read_text())['shards'] if s['number']<size//spec['shard_users']]
 
 
-def training_users(frame,ids):
+def training_users(frame: pd.DataFrame, ids: list[str]) -> pd.DataFrame:
     users=pd.DataFrame({'user_id':['HM-'+i for i in ids]})
     users['signup_at']=users.user_id.map(frame.groupby('user_id').timestamp.min()).fillna(pd.Timestamp('2100-01-01',tz='UTC'))
     users['age_group']='unknown';users['gender']='unknown';users['persona']='unobserved'
     return users
 
 
-def prepare_tensors(spec,work,results):
+def prepare_tensors(spec: dict, work: Path, results: Path) -> None:
     cfg,data,encoder,table=context(spec);root=work/'hm_tensors';root.mkdir(exist_ok=True)
     ids=json.loads((work/'hm_data/users.json').read_text());hashes={};records=[];started=time.perf_counter()
     for s in shards(spec,results,max(spec['training_sizes'])):
@@ -90,7 +95,7 @@ def prepare_tensors(spec,work,results):
         sampling='existing timestamp-safe TrainingDataset; 1:4 negatives, deterministic per-shard seed, reused across scales/variants'))
 
 
-def tensor_records(spec,results,size):
+def tensor_records(spec: dict, results: Path, size: int) -> list[dict]:
     report=json.loads((results/'hm_tensors.json').read_text())
     records=[r for r in report['records'] if r['shard']<size//spec['shard_users']]
     for r in records:
@@ -98,7 +103,7 @@ def tensor_records(spec,results,size):
     return records
 
 
-def content_projection(spec,work,results):
+def content_projection(spec: dict, work: Path, results: Path) -> dict:
     from sklearn.decomposition import PCA
     cfg,data,encoder,table=context(spec);root=work/'hm_embeddings'
     source=json.loads((results/'hm_embeddings.json').read_text())
@@ -130,7 +135,7 @@ def content_projection(spec,work,results):
     write_json(path,value);return value
 
 
-def train_candidate(spec,work,results,size,variant):
+def train_candidate(spec: dict, work: Path, results: Path, size: int, variant: str) -> None:
     tag=f'{size}-{variant}';root=work/'hm_models'/tag;root.mkdir(parents=True,exist_ok=True)
     report_path=results/f'hm_train_{tag}.json'
     if report_path.exists():
@@ -175,13 +180,13 @@ def train_candidate(spec,work,results,size,variant):
         training='nested train-only cohorts; shared per-shard samples; same hyperparameters and epochs budget'))
 
 
-def item_times(spec,results,size):
+def item_times(spec: dict, results: Path, size: int) -> dict[str, np.ndarray]:
     frames=[pd.read_parquet(s['path'],columns=['product_id','timestamp']) for s in shards(spec,results,size)]
     frame=pd.concat(frames,ignore_index=True)
     return {str(pid):g.timestamp.astype('int64').sort_values().to_numpy() for pid,g in frame.groupby('product_id',sort=False)}
 
 
-def ranking_features(spec,work,results,size,encoder,table):
+def ranking_features(spec: dict, work: Path, results: Path, size: int, encoder: FeatureEncoder, table: ItemTable) -> dict:
     root=work/'hm_ranking'/str(size);root.mkdir(parents=True,exist_ok=True)
     manifest=root/'features.json'
     if manifest.exists():
@@ -207,14 +212,14 @@ def ranking_features(spec,work,results,size,encoder,table):
     write_json(manifest,value);return value
 
 
-def evaluation_inputs(data,evaluation,table,encoder,candidates,times):
+def evaluation_inputs(data: dict, evaluation: Evaluation, table: ItemTable, encoder: RankingEncoder, candidates: list[list[str]], times: dict[str, np.ndarray]) -> tuple[np.ndarray, np.ndarray]:
     history_events=data['train'] if evaluation.split=='valid' else pd.concat([data['train'],data['valid']],ignore_index=True)
     history=HistoryIndex(history_events,table);history.item_times=times
     labels=pd.DataFrame([(uid,pid,evaluation.cutoff) for uid,row in zip(evaluation.user_ids,candidates) for pid in row],columns=['user_id','product_id','exposed_at'])
     return encoder.transform(labels,data['users'],table,history,freeze_at=evaluation.cutoff)
 
 
-def train_ranker(spec,work,results,size):
+def train_ranker(spec: dict, work: Path, results: Path, size: int) -> None:
     root=work/'hm_models'/f'{size}-metadata';report_path=results/f'hm_ranking_{size}.json'
     if report_path.exists():
         if json.loads(report_path.read_text())['model_sha256']!=file_hash(root/'ranker.pt'):raise ValueError('changed ranker')
@@ -249,7 +254,7 @@ def train_ranker(spec,work,results,size):
         objective='purchase vs random unobserved, 1:4; not CTR/CVR',feature_sha256=file_hash(root/'ranking_features.json')))
 
 
-def stage_metrics(spec,work,results,size,variant,split):
+def stage_metrics(spec: dict, work: Path, results: Path, size: int, variant: str, split: str) -> None:
     cfg,data,metadata,table=context(spec)
     if split=='test':data=read_data(Path(spec['source_work'])/'hm','test')
     evaluation=Evaluation(data,metadata,table,cfg,split);root=work/'hm_models'/f'{size}-{variant}'
@@ -275,12 +280,12 @@ def stage_metrics(spec,work,results,size,variant,split):
     write_json(results/f'hm_{split}_{size}_{variant}.json',report)
 
 
-def fit_feature(spec,work,results,size,variant):
+def fit_feature(spec: dict, work: Path, results: Path, size: int, variant: str) -> None:
     train_candidate(spec,work,results,size,variant)
     stage_metrics(spec,work,results,size,variant,'valid')
 
 
-def main():
+def main() -> None:
     parser=argparse.ArgumentParser();parser.add_argument('--task',choices=['tensors','scales','features','test'],required=True);args=parser.parse_args()
     spec,work,results=plan();torch.set_num_threads(spec['threads'])
     if args.task=='tensors':prepare_tensors(spec,work,results);return

@@ -1,0 +1,71 @@
+{
+  "bundles": {
+    "candidate": {
+      "feature_vocab_scalers.json": {
+        "measured": "cba8bfb7a5f2ceb90fb966c5b7febfe82387a72ee194475772343dfc616fc0eb",
+        "reproduced": "cba8bfb7a5f2ceb90fb966c5b7febfe82387a72ee194475772343dfc616fc0eb"
+      },
+      "index_manifest.json": {
+        "measured": "492878e303f81512bfab4a86e1be6cdf9c9080ade0fe74d6cbf36c9f4ee1750d",
+        "reproduced": "492878e303f81512bfab4a86e1be6cdf9c9080ade0fe74d6cbf36c9f4ee1750d"
+      },
+      "item_ids.json": {
+        "measured": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+        "reproduced": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c"
+      },
+      "item_index.faiss": {
+        "measured": "b96e79e08fbb96cea504723075752462fcf1ddc5bec29ff9860948496947c484",
+        "reproduced": "b96e79e08fbb96cea504723075752462fcf1ddc5bec29ff9860948496947c484"
+      },
+      "two_tower.pt": {
+        "measured": "3f942f08bdb4cdda4fe5a8bf20b2e56c0985a4abf3d94f59ef86e2011ac85a16",
+        "reproduced": "3f942f08bdb4cdda4fe5a8bf20b2e56c0985a4abf3d94f59ef86e2011ac85a16"
+      }
+    },
+    "ranking": {
+      "deepfm.pt": {
+        "measured": "c410ae300ebf265392d458afac29ab1fe4147ad62764f879e60be198d888cf8a",
+        "reproduced": "c410ae300ebf265392d458afac29ab1fe4147ad62764f879e60be198d888cf8a"
+      },
+      "features.json": {
+        "measured": "4396425d3f27b9d2b587dfe6c8af1858bc04ca44d5f1e6ab0e4ec70ab58125bc",
+        "reproduced": "4396425d3f27b9d2b587dfe6c8af1858bc04ca44d5f1e6ab0e4ec70ab58125bc"
+      }
+    },
+    "session": {
+      "item_ids.json": {
+        "measured": "1597417f43fb70984d90a935c4202cbc73d84eaff15d274e3329fbb0ec93f953",
+        "reproduced": "1597417f43fb70984d90a935c4202cbc73d84eaff15d274e3329fbb0ec93f953"
+      },
+      "session.pt": {
+        "measured": "de24632b15101ee04893c4d68842a347013358f188729d4ea8506c798819057a",
+        "reproduced": "de24632b15101ee04893c4d68842a347013358f188729d4ea8506c798819057a"
+      }
+    }
+  },
+  "search": {
+    "embeddings": {
+      "measured": "a9c7dd3da8af8414bc842253392e78988773d5b10239588fb971194a1646d0e0",
+      "reproduced": "a9c7dd3da8af8414bc842253392e78988773d5b10239588fb971194a1646d0e0"
+    },
+    "index": {
+      "measured": "589aed294bbac6f7e42a892f4545262442bf31d1002cfc10bf0023232b256a9d",
+      "reproduced": "589aed294bbac6f7e42a892f4545262442bf31d1002cfc10bf0023232b256a9d"
+    }
+  },
+  "reference_identity": "데이터·검색 설정·추천 모델은 일치하며 검색 파일 해시는 제출 기준과 다릅니다.",
+  "training": {
+    "candidate": {
+      "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_candidate_training.json",
+      "sha256": "15d80571123212790f605fc0e327e39c669ca5b5f467d43b9e6867c384bea933"
+    },
+    "ranking": {
+      "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_ranking_training.json",
+      "sha256": "ff49e0a7800b656348e7a617651df2999567b36ae64e0766db601989aa32422a"
+    },
+    "session": {
+      "source": "docs/results/experiments/A/illustrations_v1/final_integration/cold_session_training.json",
+      "sha256": "ce769bfb38ebfbc6a8ec237411b7acf82400ab3ed8c375d08a166766ea4d8b13"
+    }
+  }
+}

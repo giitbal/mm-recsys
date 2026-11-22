@@ -203,3 +203,44 @@ def test_ct_compares_models_under_the_same_runtime_policy(tmp_path,monkeypatch):
     monkeypatch.setattr(training,'validation',validate)
     build_from_journal(runtime,'v1.1',0,registry)
     assert seen==[{'strategy':'newest'},{'strategy':'newest'}]
+
+
+def test_refill_finds_separators_for_shared_parent_and_child_names():
+    service, context = serving_pool(history_count=20)
+    ids = service.fallback_sorted
+    products = pd.DataFrame({
+        'product_id': ids,
+        'category_l1': ['tops' if i < 410 else 'footwear' for i in range(len(ids))],
+        'category_l2': ['casual' if i < 450 else 'outdoor' for i in range(len(ids))],
+        'category_l3': [f'style-{i % 5}' for i in range(len(ids))],
+        'created_at': [service.reranker.created[p] for p in ids],
+    })
+    service.reranker = Reranker(service.cfg, products)
+    pool = service.candidate_products(context, UserFeatures(), 100)
+    assert len(set(pool)) == len(pool) == 300 and 'p400' in pool and not {'p499','p500'} & set(pool)
+    items = score_items(pool, np.full((len(pool), 2), .5), {'strategy':'ctr'})
+    result, diag = service.reranker.run(items, 100, service.at, 20, {}, {}, str, np.random.default_rng(42))
+    returned = [p.product_id for p in result]
+    assert diag['status'] == 'PASS' and len(set(returned)) == 100
+    assert 'p400' in returned and sum(p.is_exploration for p in result) == 2
+    for field in ['category_l1','category_l2','category_l3']:
+        cats = products.set_index('product_id').loc[returned, field].tolist()
+        assert all(a != b or b != c for a,b,c in zip(cats, cats[1:], cats[2:]))
+
+
+def test_valid_pool_reserves_items_that_break_both_consecutive_runs():
+    service, context = serving_pool(history_count=20)
+    ids = service.fallback_sorted
+    paths = ([('tops', 'casual')] * 283 + [('footwear', 'casual'), ('tops', 'knitwear')]
+             + [('bottoms', 'shorts')] * (len(ids) - 285))
+    catalog = pd.DataFrame(paths, columns=['category_l1', 'category_l2'])
+    catalog['category_l3'] = catalog.category_l2
+    catalog['product_id'] = ids
+    catalog['created_at'] = service.at - pd.Timedelta(days=30)
+    service.reranker = Reranker(service.cfg, catalog)
+    pool = service.candidate_products(context, UserFeatures(), 50)
+    assert len(set(pool)) == len(pool) == 300
+    assert sum(service.reranker.paths[p] == ('bottoms', 'shorts') for p in pool) >= 16
+    items = score_items(pool, np.full((len(pool), 2), .5), {'strategy': 'ctr'})
+    result, diag = service.reranker.run(items, 50, service.at, 20, {}, {}, str, np.random.default_rng(42))
+    assert diag['status'] == 'PASS' and len(result) == 50

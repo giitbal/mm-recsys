@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "at": "2026-11-21T05:53:46.794Z",
+  "browser": "141.0.7390.37",
+  "days": 30,
+  "users_per_arm": 5000,
+  "charts": 2,
+  "production_registry": "v1.0",
+  "production_http": "v1.0",
+  "candidate": "v1.1",
+  "decision": "RETAINED",
+  "errors": []
+}

@@ -1,0 +1,90 @@
+{
+  "v44": {
+    "products": 50000,
+    "distinct_jpegs": 256,
+    "same_name_totes": 47,
+    "distinct_black_regular_totes": 2,
+    "fingerprint": "2df9b64e07e3b2aad48c967c4c8d3d8b04883dd19279896bb374c4f9926ad7d8",
+    "counts": {
+      "products": 50000,
+      "users": 10000,
+      "events": 1000000,
+      "impressions": 2254172
+    },
+    "split_counts": {
+      "train": 800000,
+      "valid": 100000,
+      "test": 100000
+    },
+    "same_name_tote_silhouette": {
+      "pairs": 1081,
+      "median_iou": 1.0,
+      "min_iou": 1.0,
+      "max_iou": 1.0
+    }
+  },
+  "illustrations_v1": {
+    "products": 50000,
+    "distinct_jpegs": 3134,
+    "same_name_totes": 47,
+    "distinct_black_regular_totes": 20,
+    "fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+    "counts": {
+      "products": 50000,
+      "users": 10000,
+      "events": 1000000,
+      "impressions": 2254172
+    },
+    "split_counts": {
+      "train": 800000,
+      "valid": 100000,
+      "test": 100000
+    },
+    "jpeg_hashes_checked": 50000,
+    "same_name_tote_silhouette": {
+      "pairs": 1081,
+      "median_iou": 0.7163029525032092,
+      "min_iou": 0.5845464725643897,
+      "max_iou": 1.0
+    },
+    "image_headers": [
+      {
+        "format": "JPEG",
+        "mode": "RGB",
+        "size": [
+          224,
+          224
+        ],
+        "count": 50000
+      }
+    ]
+  },
+  "same_product_metadata_except_images": true,
+  "unchanged_dataset_file_hashes": [
+    "users.parquet",
+    "events.parquet",
+    "impressions.parquet",
+    "split/train.parquet",
+    "split/valid.parquet",
+    "split/test.parquet"
+  ],
+  "recipe_sources": {
+    "src/simulator/illustrations.py": "b97f2efa39de004c0e9574f54b8034545d6634811825f482d05ae95d836ea66c",
+    "src/simulator/catalog.py": "e27e3639f439a1c99ca12a9e9dba3e03eec20d91dc081486eafc339087361755",
+    "config/catalog_illustrations_v1.yaml": "63b1539317cbcbc38d32c89fe11d94d43c34c6abddec6534af12a98deffaef15"
+  },
+  "silhouette_measurement": "Every pair of the same 47 black regular totes. Dark foreground at grayscale <130 after 56x56 BOX downsampling. Intersection over union of those masks.",
+  "effective_full_config_changes": [
+    "paths.by_scale.dev",
+    "paths.by_scale.full.data_dir",
+    "paths.by_scale.full.model_dir",
+    "paths.by_scale.full.results_dir",
+    "paths.by_scale.full.split_dir",
+    "paths.data_dir",
+    "paths.model_dir",
+    "paths.results_dir",
+    "paths.split_dir",
+    "simulator.image_recipe",
+    "simulator.image_variants"
+  ]
+}

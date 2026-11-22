@@ -1,0 +1,378 @@
+{
+  "status": "MEASURED",
+  "split": "valid",
+  "cutoff": "2025-12-25T10:07:46.606500+00:00",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "primary": {
+    "queries": 600,
+    "mrr": 0.9401851851851851,
+    "ndcg_at_10": 0.9345231663704779,
+    "mean_relevant_items": 458.135
+  },
+  "per_mode": {
+    "text": {
+      "gallery": "text",
+      "queries": 200,
+      "mrr": 0.965,
+      "ndcg_at_10": 0.965,
+      "mean_relevant_items": 81.62,
+      "ann_vs_exact": {
+        "k": 10,
+        "queries": 200,
+        "label_overlap_recall": 1.0,
+        "exact_score_tie_aware_agreement": 1.0,
+        "max_reported_score_error": 2.980232238769531e-07,
+        "interpretation": "ANN vs exact vector search; not relevance MRR/NDCG"
+      },
+      "bm25_relative_lift": {
+        "mrr": -0.03500000000000003,
+        "ndcg_at_10": -0.03500000000000003
+      }
+    },
+    "image": {
+      "gallery": "image",
+      "queries": 200,
+      "mrr": 0.9005555555555556,
+      "ndcg_at_10": 0.8835694991114338,
+      "mean_relevant_items": 1204.735,
+      "ann_vs_exact": {
+        "k": 10,
+        "queries": 200,
+        "label_overlap_recall": 0.9690000000000001,
+        "exact_score_tie_aware_agreement": 1.0,
+        "max_reported_score_error": 5.364418029785156e-07,
+        "interpretation": "ANN vs exact vector search; not relevance MRR/NDCG"
+      }
+    },
+    "hybrid": {
+      "gallery": "text",
+      "queries": 200,
+      "mrr": 0.955,
+      "ndcg_at_10": 0.955,
+      "mean_relevant_items": 88.05,
+      "ann_vs_exact": {
+        "k": 10,
+        "queries": 200,
+        "label_overlap_recall": 1.0,
+        "exact_score_tie_aware_agreement": 1.0,
+        "max_reported_score_error": 2.384185791015625e-07,
+        "interpretation": "ANN vs exact vector search; not relevance MRR/NDCG"
+      },
+      "bm25_relative_lift": {
+        "mrr": -0.04500000000000004,
+        "ndcg_at_10": -0.04500000000000004
+      }
+    }
+  },
+  "bm25": {
+    "text": {
+      "queries": 200,
+      "mrr": 1.0,
+      "ndcg_at_10": 1.0,
+      "mean_relevant_items": 81.62
+    },
+    "image": {
+      "status": "UNMEASURED",
+      "reason": "BM25 is not applicable to image-only queries"
+    },
+    "hybrid": {
+      "queries": 200,
+      "mrr": 1.0,
+      "ndcg_at_10": 1.0,
+      "mean_relevant_items": 88.05
+    }
+  },
+  "tradeoff": [
+    {
+      "mode": "text",
+      "parameter": "efSearch",
+      "requested_value": 32,
+      "effective_min": 32,
+      "effective_max": 32,
+      "queries": 200,
+      "mrr": 0.965,
+      "ndcg_at_10": 0.965,
+      "mean_relevant_items": 81.62,
+      "vector_p95_ms": 0.0707090495779994,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "text",
+      "parameter": "efSearch",
+      "requested_value": 64,
+      "effective_min": 64,
+      "effective_max": 64,
+      "queries": 200,
+      "mrr": 0.965,
+      "ndcg_at_10": 0.965,
+      "mean_relevant_items": 81.62,
+      "vector_p95_ms": 0.1007390515951556,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "text",
+      "parameter": "efSearch",
+      "requested_value": 128,
+      "effective_min": 128,
+      "effective_max": 128,
+      "queries": 200,
+      "mrr": 0.965,
+      "ndcg_at_10": 0.965,
+      "mean_relevant_items": 81.62,
+      "vector_p95_ms": 0.15956904862832738,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "text",
+      "parameter": "efSearch",
+      "requested_value": 256,
+      "effective_min": 256,
+      "effective_max": 256,
+      "queries": 200,
+      "mrr": 0.965,
+      "ndcg_at_10": 0.965,
+      "mean_relevant_items": 81.62,
+      "vector_p95_ms": 0.25102495128521696,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "image",
+      "parameter": "efSearch",
+      "requested_value": 32,
+      "effective_min": 32,
+      "effective_max": 32,
+      "queries": 200,
+      "mrr": 0.9005555555555556,
+      "ndcg_at_10": 0.8835694991114338,
+      "mean_relevant_items": 1204.735,
+      "vector_p95_ms": 0.10761994926724582,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "image",
+      "parameter": "efSearch",
+      "requested_value": 64,
+      "effective_min": 64,
+      "effective_max": 64,
+      "queries": 200,
+      "mrr": 0.9005555555555556,
+      "ndcg_at_10": 0.8835694991114338,
+      "mean_relevant_items": 1204.735,
+      "vector_p95_ms": 0.31098499694053305,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "image",
+      "parameter": "efSearch",
+      "requested_value": 128,
+      "effective_min": 128,
+      "effective_max": 128,
+      "queries": 200,
+      "mrr": 0.9005555555555556,
+      "ndcg_at_10": 0.8835694991114338,
+      "mean_relevant_items": 1204.735,
+      "vector_p95_ms": 0.2685899484276888,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "image",
+      "parameter": "efSearch",
+      "requested_value": 256,
+      "effective_min": 256,
+      "effective_max": 256,
+      "queries": 200,
+      "mrr": 0.9005555555555556,
+      "ndcg_at_10": 0.8835694991114338,
+      "mean_relevant_items": 1204.735,
+      "vector_p95_ms": 0.39201404979394283,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "hybrid",
+      "parameter": "efSearch",
+      "requested_value": 32,
+      "effective_min": 32,
+      "effective_max": 32,
+      "queries": 200,
+      "mrr": 0.955,
+      "ndcg_at_10": 0.955,
+      "mean_relevant_items": 88.05,
+      "vector_p95_ms": 0.18758000060188348,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "hybrid",
+      "parameter": "efSearch",
+      "requested_value": 64,
+      "effective_min": 64,
+      "effective_max": 64,
+      "queries": 200,
+      "mrr": 0.955,
+      "ndcg_at_10": 0.955,
+      "mean_relevant_items": 88.05,
+      "vector_p95_ms": 0.13758499990217385,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "hybrid",
+      "parameter": "efSearch",
+      "requested_value": 128,
+      "effective_min": 128,
+      "effective_max": 128,
+      "queries": 200,
+      "mrr": 0.955,
+      "ndcg_at_10": 0.955,
+      "mean_relevant_items": 88.05,
+      "vector_p95_ms": 0.4532850012765266,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    },
+    {
+      "mode": "hybrid",
+      "parameter": "efSearch",
+      "requested_value": 256,
+      "effective_min": 256,
+      "effective_max": 256,
+      "queries": 200,
+      "mrr": 0.955,
+      "ndcg_at_10": 0.955,
+      "mean_relevant_items": 88.05,
+      "vector_p95_ms": 0.45061094970151294,
+      "warmup": 10,
+      "requests": 100,
+      "scope": "serial vector retrieval only; encoding/HTTP excluded; not the API latency gate"
+    }
+  ],
+  "query_fingerprint": "bec8120756df389ada3686be3a4f51813c7209a3b46f2674d37ddd8b4aab6d12",
+  "query_manifest_sha256": "86bc08550b368ef702e80dc9b8667f2c9a0b0f147d2507aed5682acbd7f75621",
+  "evaluation_fingerprint": "4194e12e588944ecfd7f28feb18f86e4cf21811b7a6480e716f93ce601b094a5",
+  "models": {
+    "embeddings": {
+      "status": "COMPLETE",
+      "fingerprint": "a9c7dd3da8af8414bc842253392e78988773d5b10239588fb971194a1646d0e0",
+      "identity": {
+        "version": 1,
+        "scale": "full",
+        "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+        "catalog_sha256": "65eedc464009e05644a6430f985884ae9495b1c7eb6bc59520c2503ac8c37615",
+        "ids_fingerprint": "49f6b0a90003a1202e87ef9c94ebacb588931cf4686141f1f3681a09f1cdced6",
+        "text_content_fingerprint": "eadcf94405eeec3448989c03843d7983ed65a4a00a8825691853b1dd62baa128",
+        "image_content_fingerprint": "6080b0327f5ef87e91701d74d6389295950e53e053894486e8991e4c7b377a21",
+        "encoder": {
+          "model": "openai/clip-vit-base-patch32",
+          "model_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+          "processor_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+          "projection_dim": 512,
+          "normalization": "L2",
+          "dtype": "float32",
+          "max_text_length": 77,
+          "preprocess_version": "observable-alias-v1",
+          "alias_fingerprint": "4839d249f340369c7e1c913f5755f452c6264f0a4242f5806e6b4126f266be29",
+          "transformers": "4.46.3",
+          "torch": "2.6.0+cpu",
+          "device": "cpu"
+        }
+      },
+      "count": 50000,
+      "content_cache": {
+        "text": {
+          "unique_contents": 1440,
+          "cache_hits": 48560
+        },
+        "image": {
+          "unique_contents": 3134,
+          "cache_hits": 46866
+        }
+      },
+      "files": {
+        "text.npy": "064fc5377d84128b30e96bd7cb881fded17f3d36e40f117b3cc0352092195baf",
+        "image.npy": "0863beff7028ddd1c444db77ce81cea42622e498af80f0c04d1091f169cf3705",
+        "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+        "text_audit.json": "a85242d955fe72156e5bb3b69b5749f6f2b6835feb3cbb76f7deed8eb378e1e0"
+      }
+    },
+    "index": {
+      "status": "COMPLETE",
+      "fingerprint": "589aed294bbac6f7e42a892f4545262442bf31d1002cfc10bf0023232b256a9d",
+      "identity": {
+        "version": 1,
+        "embedding_fingerprint": "a9c7dd3da8af8414bc842253392e78988773d5b10239588fb971194a1646d0e0",
+        "ids_fingerprint": "49f6b0a90003a1202e87ef9c94ebacb588931cf4686141f1f3681a09f1cdced6",
+        "faiss": {
+          "type": "HNSW",
+          "metric": "inner_product",
+          "M": 32,
+          "ef_construction": 200,
+          "ef_search": 32,
+          "threads": 4,
+          "nlist": 256,
+          "m": 16,
+          "nbits": 8,
+          "nprobe": 16
+        },
+        "fusion": {
+          "text_weight": 0.5,
+          "image_weight": 0.5
+        },
+        "seed": 42,
+        "faiss_version": "1.9.0",
+        "deduplicate_vectors": true
+      },
+      "count": 50000,
+      "projection_dim": 512,
+      "files": {
+        "item_ids.json": "e23c0461ef0c7dc5854056f44cb50441710d1c6a97bc8912063c88a11d0d843c",
+        "text.faiss": "b42b5063af10bd179fd5832ccf0130ab1a8eda13443115a619dc9d23a064f5a3",
+        "image.faiss": "10432f8fe6e8f7b112f800fab7582004d304bf2175eb637e0e5787d8a87b24e1",
+        "hybrid.faiss": "359a2bc39af95948d7ad68acc20746b56ff2cb519d5c0ba9cb7a1b9968c8cc42",
+        "text_members.json": "f5174232c786637c669121e441fd7018b1685b7ba3ee06a997982716ca1fbd7e",
+        "image_members.json": "5f09fa29494a1e45ab9ac4386b390ebb9b37a0676af7f2e7ec714c37fe72ed85",
+        "hybrid_members.json": "a48771494c111a496dcab3b5b1cf26d73edb71e28176605cc95188854a8719e9"
+      }
+    }
+  },
+  "evaluation": "observable attributes; independent augmented queries; no exact duplicate quality queries; labels never passed to the searcher",
+  "test_used_for_selection": false,
+  "settings_changed": false,
+  "runtime_threads": 4,
+  "query_encoder_runtime": {
+    "enabled": true,
+    "implementation": "torch.jit.optimize_for_inference",
+    "dtype": "float32",
+    "query_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "startup_max_abs_vector_error": 3.129243850708008e-07,
+    "process_environment": {
+      "OMP_NUM_THREADS": "2",
+      "MKL_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2"
+    },
+    "scope": "same pinned FP32 weights and preprocessing; CPU query vision graph only; no response cache"
+  },
+  "runtime_policy": "B inference thread guard reused; search/model/index configuration remains unchanged"
+}

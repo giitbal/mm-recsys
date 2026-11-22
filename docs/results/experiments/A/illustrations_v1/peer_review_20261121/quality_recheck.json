@@ -1,0 +1,92 @@
+{
+  "test_replayed": false,
+  "source": "docs/results/experiments/A/illustrations_v1/final_integration/quality/quality_full_test.json",
+  "source_sha": "dd20dc1dc1da5775aefb48d8091b02aaff7592fbcd65c17cfa4f02c5c128187f",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "split": {
+    "train": {
+      "count": 800000,
+      "start": "2025-12-02T00:00:00+00:00",
+      "end": "2025-12-25T10:07:46.606500+00:00"
+    },
+    "valid": {
+      "count": 100000,
+      "start": "2025-12-25T10:07:47.605500+00:00",
+      "end": "2025-12-28T09:52:12.492900+00:00"
+    },
+    "test": {
+      "count": 100000,
+      "start": "2025-12-28T09:52:14.549700+00:00",
+      "end": "2025-12-31T22:14:57.414300+00:00"
+    }
+  },
+  "same_frozen_identity": true,
+  "candidate_k": 300,
+  "metrics": {
+    "mrr": {
+      "value": 0.9357222222222223,
+      "target": 0.55,
+      "passed": true
+    },
+    "ndcg_at_10": {
+      "value": 0.9306251710641011,
+      "target": 0.5,
+      "passed": true
+    },
+    "auc": {
+      "value": 0.9657847659453032,
+      "target": 0.7,
+      "passed": true
+    },
+    "recall_at_300": {
+      "value": 0.7457929264118653,
+      "target": 0.3,
+      "passed": true
+    },
+    "hit_rate_at_50": {
+      "value": 0.6651454649172847,
+      "target": 0.2,
+      "passed": true
+    },
+    "ndcg_at_50": {
+      "value": 0.32991414345182957,
+      "target": 0.08,
+      "passed": true
+    },
+    "coverage": {
+      "value": 0.37448,
+      "target": 0.2,
+      "passed": true
+    }
+  },
+  "search_queries": 600,
+  "truth_users": 7012,
+  "coverage_numerator": 18724,
+  "coverage_users": 10000,
+  "coverage_denominator": 50000,
+  "cvr_auc": 0.5304082557977491,
+  "http": {
+    "text": {
+      "p95_ms": 24.34987370015733,
+      "max_ms": 26.134161998925265,
+      "over_200": 0
+    },
+    "image": {
+      "p95_ms": 105.98233650161998,
+      "max_ms": 146.13431500038132,
+      "over_200": 0
+    },
+    "hybrid": {
+      "p95_ms": 90.71206085172889,
+      "max_ms": 110.82943800283829,
+      "over_200": 0
+    },
+    "recommendation": {
+      "p95_ms": 34.56366294867621,
+      "max_ms": 39.36783500103047,
+      "over_200": 0
+    }
+  },
+  "feature_p95_ms": 0.25973899719247123,
+  "feature_max_ms": 0.5433990008896217
+}

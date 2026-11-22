@@ -29,6 +29,23 @@ def event(i='e', **extra):
     return dict(event_id=i, user_id='u', product_id='p', event_type='view', **extra)
 
 
+def test_live_ingestion_commits_during_ct_read_snapshot(tmp_path):
+    path = tmp_path / 'events.sqlite3'
+    journal = Journal(path)
+    assert journal.event(event('before'), 1.)
+    # Existing deployments have a populated rollback-journal database.
+    with journal.connect() as legacy:
+        assert legacy.execute('PRAGMA journal_mode=DELETE').fetchone()[0] == 'delete'
+    journal = Journal(path)
+    with journal.connect() as reader:
+        reader.execute('BEGIN')
+        assert reader.execute('SELECT COUNT(*) FROM events').fetchone()[0] == 1
+        writer = Journal(path)
+        assert writer.event(event('during'), 2.)
+        assert reader.execute('SELECT COUNT(*) FROM events').fetchone()[0] == 1
+    assert journal.count_since(0) == 2
+
+
 def test_attribution_maturity_dedup_and_alert(tmp_path):
     journal = Journal(tmp_path / 'events.sqlite3'); cfg = config(tmp_path); spec = settings(cfg)
     spec.update(ctr_threshold=.6, hitrate_threshold=.5)
@@ -88,6 +105,17 @@ def registry_fixture(tmp_path, monkeypatch):
     registry.register('v1.0', cfg, Path(cfg['paths']['data_dir']), {}, None, 0)
     registry.initialize('v1.0')
     return cfg, journal, registry
+
+
+def test_bootstrap_serves_verified_active_bundle_during_training(registry_fixture):
+    from src.ct.bootstrap import bootstrap
+    from src.ct.storage import file_lock
+
+    cfg, _, registry = registry_fixture
+    before = registry.read()
+    with file_lock(registry.root / '.ct' / 'training.lock'):
+        assert bootstrap(cfg) == before
+    assert registry.read() == before
 
 
 def comparison(before=.5, after=.8, split='valid'):

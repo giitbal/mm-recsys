@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "acceptance": "UNMEASURED",
+  "scale": "full",
+  "data_fingerprint": "5920312fef26aa5584898dc576e8c337a791efe3935d9ab0a5cdd3741accaa40",
+  "manifest_sha256": "6305f4a33a7e0c41903659613cc2f1cd538b95bc9cbae277ef60c1f03e9d884b",
+  "config_fingerprint": "0d906fe9f27cb241bb87c4d20e508e264cbbef15f34081a72321bb38653633cb",
+  "stages": [
+    {
+      "stage": "data",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "data"
+      ],
+      "exit_code": 0,
+      "seconds": 8.490125308999268,
+      "log": ".team/illustrations-v1/runtime/full/logs/prepare-data-1795232820582355282.log"
+    },
+    {
+      "stage": "audit",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "audit"
+      ],
+      "exit_code": 0,
+      "seconds": 10.80269342900101,
+      "log": ".team/illustrations-v1/runtime/full/logs/prepare-audit-1795232829072655691.log"
+    },
+    {
+      "stage": "embeddings",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "embeddings"
+      ],
+      "exit_code": 0,
+      "seconds": 9.19498490800106,
+      "log": ".team/illustrations-v1/runtime/full/logs/prepare-embeddings-1795232839875333020.log"
+    },
+    {
+      "stage": "indexes",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "indexes"
+      ],
+      "exit_code": 0,
+      "seconds": 1.7203636790000019,
+      "log": ".team/illustrations-v1/runtime/full/logs/prepare-indexes-1795232849070386328.log"
+    },
+    {
+      "stage": "recommendation",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "recommendation"
+      ],
+      "exit_code": 0,
+      "seconds": 28.660708900999452,
+      "log": ".team/illustrations-v1/runtime/full/logs/prepare-recommendation-1795232850790811807.log"
+    },
+    {
+      "stage": "warmup",
+      "command": [
+        "/usr/local/bin/python",
+        "/app/scripts/prepare_all.py",
+        "--stage",
+        "warmup"
+      ],
+      "exit_code": 0,
+      "seconds": 29.563799785999436,
+      "log": ".team/illustrations-v1/runtime/full/logs/prepare-warmup-1795232879451654208.log"
+    }
+  ],
+  "artifact_state_before": {
+    "data_manifest": true,
+    "search_indexes": true,
+    "recommendation": true
+  },
+  "elapsed_seconds": 88.44257422800001,
+  "scope": "artifact readiness; no full-test quality claim"
+}

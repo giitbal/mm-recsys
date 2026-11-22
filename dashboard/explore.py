@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from dashboard.assets import catalog, clip_item, deployment, image_path
-from dashboard.data import DEEPFASHION, REALISM, api_call, read_json
+from dashboard.data import DEEPFASHION, REALISM, api_call, evidence, read_json
 from dashboard.formatting import display_frame, display_value
 from dashboard.style import GRAY, INDIGO, chart
 from src.common.artifacts import file_hash
@@ -93,8 +93,8 @@ def with_table(column, fig: go.Figure, frame: pd.DataFrame) -> None:
 
 
 def data_tab(report: dict, bundle: dict | None, config: dict) -> None:
-    root = config['results_dir']
-    audit = read_json(bundle['folder'] / 'data_audit.json', root) if bundle else None
+    root = config['published_dir']
+    audit = read_json(evidence(bundle, 'data_audit.json'), bundle['root']) if bundle else None
     if audit:
         audit_sections(audit, config)
     else:
