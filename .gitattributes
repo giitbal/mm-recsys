@@ -1,0 +1,4 @@
+# Keep Linux scripts and checksum inputs byte-identical across checkouts.
+* text=auto eol=lf
+
+*.png binary
