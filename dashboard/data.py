@@ -52,6 +52,7 @@ def available_reports(root: Path) -> list[Path]:
 
 
 # Published result bundles (relative to published_dir = docs/results, independent of the runtime results_dir).
+# Each is a measurement record (`record`, named in plain words) scored on 시험 or 검증 data (`split`).
 # The folder holds the bundle's side evidence (data_audit, latency_conditions, CT records); `files` overrides a
 # side-evidence file kept elsewhere. `reference` reports are verified against their .sha256. `ab` names the A/B
 # measured on the same data and recommendation models when the report itself stores none (paired_ab checks the
@@ -59,23 +60,32 @@ def available_reports(root: Path) -> list[Path]:
 ILLUSTRATIONS = 'experiments/A/illustrations_v1/integration_current'
 ILLUSTRATIONS_FILES = {'data_audit.json': f'{ILLUSTRATIONS}/cold_data_audit.json',
                        'quality_full_valid.json': f'{ILLUSTRATIONS}/release_quality/quality_full_valid.json'}
+FINAL, BEFORE_IMAGES, CALIBRATED = '최종 제출', '상품 그림 바꾸기 전', '통계 보정 실험'
+# One line under each record name in the picker.
+RECORD_NOTES = {FINAL: '11/21 · 기본으로 보여 주는 기록',
+                BEFORE_IMAGES: '11/12 · 비교용 · 상품 그림을 바꾸기 전에 같은 방식으로 측정',
+                CALIBRATED: '11/15 · 비교용 · 실제 쇼핑 통계에 맞춰 바꾼 데이터로 측정'}
 PUBLISHED = (
-    dict(label='제출 기준 · 테스트 분할 (새 도안 · 11/21)', path=f'{ILLUSTRATIONS}/release_display/evaluation_full_test.json',
+    dict(record=FINAL, split='시험', path=f'{ILLUSTRATIONS}/release_display/evaluation_full_test.json',
          folder=ILLUSTRATIONS, files=ILLUSTRATIONS_FILES, reference=True),
-    dict(label='제출 기준 · 검증 분할 (새 도안 · 11/21)', path=f'{ILLUSTRATIONS}/release_quality/quality_full_valid.json',
+    dict(record=FINAL, split='검증', path=f'{ILLUSTRATIONS}/release_quality/quality_full_valid.json',
          folder=ILLUSTRATIONS, files=ILLUSTRATIONS_FILES, ab=f'{ILLUSTRATIONS}/release_display/evaluation_full_test.json'),
-    dict(label='이전 도안 · 테스트 분할 (11/12)', path='experiments/A/final_validation_20261112/published/evaluation_full_test.json',
+    dict(record=BEFORE_IMAGES, split='시험', path='experiments/A/final_validation_20261112/published/evaluation_full_test.json',
          folder='experiments/A/final_validation_20261112'),
-    dict(label='이전 도안 · 검증 분할 (11/12)', path='experiments/A/final_validation_20261112/quality_full_valid.json',
+    dict(record=BEFORE_IMAGES, split='검증', path='experiments/A/final_validation_20261112/quality_full_valid.json',
          folder='experiments/A/final_validation_20261112',
          ab='experiments/A/final_validation_20261112/published/evaluation_full_test.json'),
-    dict(label='교정 실험 · 테스트 분할 (이전 도안, 다른 데이터)', path='experiments/A/realism_full_20261115/quality/quality_full_test.json',
+    dict(record=CALIBRATED, split='시험', path='experiments/A/realism_full_20261115/quality/quality_full_test.json',
          folder='experiments/A/realism_full_20261115', ab='experiments/A/realism_full_20261115/ab_test.json'),
 )
 REQUIREMENTS = 'integration/20261107_requirements/requirements.json'
 REALISM = 'experiments/A/realism_full_20261115/realism_distance.json'
 DEEPFASHION = 'external/expansion-v3/deepfashion_expanded.json'
-SPLIT_LABEL = dict(test='테스트', valid='검증')
+SPLIT_LABEL = dict(test='시험', valid='검증')
+
+
+def label(record: str, split: str) -> str:
+    return f'{record} · {split} 데이터'
 
 
 def bundles(config: dict) -> tuple[list[dict], int]:
@@ -89,22 +99,24 @@ def bundles(config: dict) -> tuple[list[dict], int]:
     for entry in PUBLISHED:
         path = published / entry['path']
         if path.is_file():
-            items.append(dict(label=entry['label'], path=path, folder=published / entry['folder'], root=published,
-                              files={name: published / rel for name, rel in entry.get('files', {}).items()},
+            items.append(dict(record=entry['record'], split=entry['split'], note=RECORD_NOTES[entry['record']],
+                              label=label(entry['record'], entry['split']), path=path, folder=published / entry['folder'],
+                              root=published, files={name: published / rel for name, rel in entry.get('files', {}).items()},
                               reference=entry.get('reference', False),
                               ab=published / entry['ab'] if entry.get('ab') else None))
     reference: Path | None = config.get('reference_report')
     if reference and reference.is_file() and not any(item['reference'] for item in items):
-        items.insert(0, dict(label='제출 기준 · 테스트 분할 (패키지)', path=reference, folder=reference.parent,
-                             root=reference.parent, files={}, reference=True, ab=None))
+        items.insert(0, dict(record=FINAL, split='시험', note='Docker 이미지에 함께 넣은 최종 제출 기록', label=label(FINAL, '시험'),
+                             path=reference, folder=reference.parent, root=reference.parent, files={}, reference=True, ab=None))
     results: Path = config['results_dir']
     runtime = available_reports(results) if results.is_dir() else []
     first_runtime = len(items)
     for path in runtime:
         size, split = path.stem.split('_')[1:]
-        data_label = '개발용 데이터' if size == 'dev' else 'full'
-        items.append(dict(label=f'실행 결과 · {SPLIT_LABEL[split]} 분할 ({data_label})', path=path, folder=results,
-                          root=results, files={}, reference=False, ab=None))
+        record = f"이 컴퓨터에서 실행 ({'개발용 데이터' if size == 'dev' else '전체 데이터'})"
+        items.append(dict(record=record, split=SPLIT_LABEL[split], note='results 폴더에 저장된 직접 실행 결과',
+                          label=label(record, SPLIT_LABEL[split]), path=path, folder=results, root=results, files={},
+                          reference=False, ab=None))
     preferred = next((first_runtime + i for split in ('test', 'valid') for i, path in enumerate(runtime)
                       if path.name == f'evaluation_{config["scale"]}_{split}.json'), 0)
     return items, preferred
@@ -149,7 +161,7 @@ def paired_ab(report: dict, bundle: dict | None) -> tuple[dict, str] | None:
         fingerprint, models = value.get('data_fingerprint'), value.get('recommendation', {}).get('models') or {}
         source = (value.get('measurement_sources', {}).get('ab')
                   or value.get('integration', {}).get('checks', {}).get('ab_statistics') or {}).get('source')
-        caption = ('이 결과 파일에는 A/B가 없어 같은 데이터·추천 모델로 측정한 테스트 분할 결과의 A/B를 표시합니다 · '
+        caption = ('이 기록에는 A/B가 없어 같은 데이터·추천 모델로 측정한 시험 데이터 결과의 A/B를 표시합니다 · '
                    f"{shown}" + (f' · A/B 원자료 {source}' if source else ''))
         ab = dict(ab, source=source or str(shown))
     else:  # an ab_test.json kept next to the report
@@ -158,7 +170,7 @@ def paired_ab(report: dict, bundle: dict | None) -> tuple[dict, str] | None:
         fingerprint = value.get('identity', {}).get('data_fingerprint')
         models = value.get('identity', {}).get('bundle_metadata') or {}
         ab = ab_record(value, shown)
-        caption = f'이 결과 파일에는 A/B가 없어 같은 폴더에 저장된 같은 데이터·추천 모델의 A/B 실행 기록을 표시합니다 · {shown}'
+        caption = f'이 기록에는 A/B가 없어 같은 폴더에 저장된 같은 데이터·추천 모델의 A/B 실행 기록을 표시합니다 · {shown}'
     if fingerprint != report.get('data_fingerprint') or not _same_models(models, report):
         return None
     return ab, caption

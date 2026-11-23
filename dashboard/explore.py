@@ -12,6 +12,8 @@ import streamlit as st
 from dashboard.assets import catalog, clip_item, deployment, image_path
 from dashboard.data import DEEPFASHION, REALISM, api_call, evidence, read_json
 from dashboard.formatting import display_frame, display_value, korean
+from dashboard.guide import html, split_bar
+from dashboard.sections import section
 from dashboard.style import GRAY, INDIGO, chart
 from src.common.artifacts import file_hash
 from src.search.text import display_text
@@ -93,23 +95,30 @@ def with_table(column, fig: go.Figure, frame: pd.DataFrame) -> None:
         st.dataframe(frame, hide_index=True, use_container_width=True)
 
 
+def audit(bundle: dict | None) -> dict | None:
+    return read_json(evidence(bundle, 'data_audit.json'), bundle['root']) if bundle else None
+
+
 def data_tab(report: dict, bundle: dict | None, config: dict) -> None:
-    root = config['published_dir']
-    audit = read_json(evidence(bundle, 'data_audit.json'), bundle['root']) if bundle else None
-    if audit:
-        audit_sections(audit, config)
+    found = audit(bundle)
+    ratios = (found or {}).get('split_ratios', {})
+    if found:
+        counts = found.get('counts', {})
+        split = '/'.join(f'{ratios[name]:.1%}' for name in ('train', 'valid', 'test') if name in ratios)
+        st.markdown(f"**합성 데이터: 상품 {counts.get('products', 0):,} · 사용자 {counts.get('users', 0):,} · 이벤트 {counts.get('events', 0):,}"
+                    f" · 노출 {counts.get('impressions', 0):,}, 시간순 {split} 분할**")
+    section('데이터', 0)
+    st.markdown('기록을 시간순으로 나눠, 과거로 학습하고 그 뒤에 실제로 일어난 행동을 맞히는지로 채점합니다.')
+    html(split_bar(ratios))
+    if found:
+        audit_sections(found, config)
     else:
-        st.info('이 결과 묶음에는 데이터 감사 결과(data_audit.json)가 없습니다. 외부 데이터셋 검증만 표시합니다.')
-    st.divider()
-    external_section(root)
+        st.info('이 결과 묶음에는 데이터 감사 결과(data_audit.json)가 없습니다. 외부 데이터 검증만 표시합니다.')
+    external_section(config['published_dir'])
 
 
 def audit_sections(audit: dict, config: dict) -> None:
-    counts, ratios = audit.get('counts', {}), audit.get('split_ratios', {})
-    split = '/'.join(f'{ratios[name]:.1%}' for name in ('train', 'valid', 'test') if name in ratios)
-    st.markdown(f"**합성 데이터: 상품 {counts.get('products', 0):,} · 사용자 {counts.get('users', 0):,} · 이벤트 {counts.get('events', 0):,}"
-                f" · 노출 {counts.get('impressions', 0):,}, 시간순 {split} 분할**")
-    st.subheader('평가 프로토콜: 시간 분할', anchor='protocol')
+    ratios = audit.get('split_ratios', {})
     boundaries, split_counts = audit.get('boundaries', {}), audit.get('split_counts', {})
     st.dataframe(pd.DataFrame([{'분할': SPLITS.get(name, name), '비율': f'{ratios.get(name, 0):.1%}', '이벤트': f'{split_counts.get(name, 0):,}',
                                 '시작': display_value(row['start']), '끝': display_value(row['end'])} for name, row in boundaries.items()]),
@@ -117,7 +126,7 @@ def audit_sections(audit: dict, config: dict) -> None:
     st.caption(f"seed={audit.get('seed')} · 생성기={audit.get('generator_version')} · 분석 시각={display_value(audit.get('generated_at'))}")
     personas = audit.get('personas', [])
     if personas:
-        st.subheader(f'페르소나 {len(personas)}개 비교', anchor='personas')
+        section('데이터', 1, f'유형 {len(personas)}개 · 설정값과 관측값')
         names = [PERSONAS.get(row['persona'], row['persona']) for row in personas]
         specs = [('buyer_rate', '구매 경험 사용자 비율', '.0%', lambda v: f'{v:.1%}'),
                  ('purchase_per_view', '조회당 구매', '.1%', lambda v: f'{v:.1%}'),
@@ -139,16 +148,16 @@ def audit_sections(audit: dict, config: dict) -> None:
             '설정 가격 민감도': f"{row.get('configured', {}).get('price_sensitivity', 0):.3f}",
             '설정 전환율': f"{row.get('configured', {}).get('cvr', 0):.1%}", '관측 조회당 구매': f"{row.get('purchase_per_view', 0):.1%}"}
             for name, row in zip(names, personas)]), hide_index=True, use_container_width=True)
-        with st.expander('페르소나별 구매 카테고리 비중'):
+        with st.expander('진단'):
+            st.caption('페르소나별 구매 카테고리 비중')
             shares = pd.DataFrame({name: row.get('purchase_category_shares', {}) for name, row in zip(names, personas)})
             st.dataframe(shares.rename(index=CATEGORIES).map(lambda v: f'{v:.1%}'), use_container_width=True)
     catalog_events(audit, config)
     integrity(audit)
-    ledger(audit)
 
 
 def catalog_events(audit: dict, config: dict) -> None:
-    st.subheader('카탈로그와 이벤트', anchor='catalog')
+    section('데이터', 2)
     leaves = audit.get('category_counts', {})
     taxonomy = config.get('taxonomy', {})
     parent = {leaf: top for top, middles in taxonomy.items() for items in middles.values() for leaf in items}
@@ -189,7 +198,7 @@ def catalog_events(audit: dict, config: dict) -> None:
 
 
 def integrity(audit: dict) -> None:
-    st.subheader('무결성 검사', anchor='integrity')
+    section('데이터', 3)
     checks = audit.get('checks', {})
     passed = sum(bool(v) for v in checks.values())
     st.markdown(f"**무결성 검사 {len(checks)}개 {'모두 통과' if passed == len(checks) else f'중 {passed}개 통과'}**")
@@ -198,12 +207,12 @@ def integrity(audit: dict) -> None:
     a.metric('구매 없는 사용자 (제외 아님)', f"{excluded.get('no_purchase_users', 0):,}")
     b.metric('상품 없는 이벤트 (검색)', f"{excluded.get('null_product_events', 0):,}")
     c.metric('참조 오류', f'{sum(references.values()):,}')
-    with st.expander('근거: 검사 전체와 분모·결측·중복·참조 원시값'):
+    with st.expander('근거'):
+        st.caption('검사 전체와 분모·결측·중복·참조 원시값')
         st.json(display_value({key: audit.get(key) for key in ('checks', 'denominators', 'integrity', 'references', 'limitations')}))
 
 
 def ledger(audit: dict) -> None:
-    st.subheader('사용자 구매 원장', anchor='ledger')
     uid = st.text_input('구매 원장 사용자 ID', 'U000001', key='ledger_user')
     path = ROOT / audit.get('purchase_ledger', '')
     if not audit.get('purchase_ledger') or not path.is_file():
@@ -227,7 +236,7 @@ def ledger(audit: dict) -> None:
 
 
 def external_section(root: Path) -> None:
-    st.subheader('외부 데이터셋 검증 (선택 과제: 학습 데이터셋 추천)', anchor='external')
+    section('데이터', 4, '선택 과제 · 학습 데이터셋 추천')
     realism = read_json(root / REALISM, root)
     if realism and realism.get('distances'):
         distances = realism['distances']

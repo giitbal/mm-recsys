@@ -17,45 +17,51 @@ CSS = """<style>
 .block-container{padding:4rem 5rem 4rem;max-width:1440px}
 [data-testid="stAppViewContainer"] :is(p, li, span, summary, h1, h2, h3){word-break:keep-all;overflow-wrap:break-word}
 [data-testid="stAppViewContainer"] h1{font-size:2.05rem;letter-spacing:-.025em;padding-bottom:0}
-[data-testid="stMain"] h2{font-size:1.5rem}
+[data-testid="stMain"] h2{font-size:1.85rem;letter-spacing:-.02em}
 [data-testid="stMain"] h3{font-size:1.375rem}
-/* the title now sits directly above the tab bar (result details moved below it), so give the bar room */
-.st-key-tab{margin-top:.75rem}
-/* tab bar: horizontal radio drawn as underline tabs; the selected tab's straight 2px line lies on the 1px baseline */
-.st-key-tab [role="radiogroup"]{gap:1.75rem;align-items:flex-end;border-bottom:1px solid light-dark(#e4e4e8, #2b2e38);flex-wrap:wrap}
-.st-key-tab label[data-baseweb="radio"]{margin:0 0 -1px;padding:.5rem 0 .625rem;border-bottom:2px solid transparent;border-radius:0}
-.st-key-tab label[data-baseweb="radio"] > div:first-child{display:none}
-.st-key-tab label[data-baseweb="radio"] > div:last-child{padding-left:0}
-.st-key-tab label[data-baseweb="radio"] p{font-size:15px;color:light-dark(#6b6f7b, #9ea3b0)}
-.st-key-tab label[data-baseweb="radio"]:hover p{color:light-dark(#2a2c33, #e6e7eb)}
-.st-key-tab label[data-baseweb="radio"]:has(input:checked){border-color:light-dark(#7a4fe0, #9277f2)}
-.st-key-tab label[data-baseweb="radio"]:has(input:checked) p{color:light-dark(#1d1d22, #f5f5f7)}
-/* sidebar table of contents */
-.toc-label{font-size:13px;font-weight:500;margin:.4rem 0 .1rem}
-.st-key-bundle label[data-baseweb="radio"]{width:calc(100% - 22px);margin:0 0 2px 22px;padding:5px 8px;border-radius:6px}
-.st-key-bundle label[data-baseweb="radio"] > div:first-child{display:none}
-.st-key-bundle label[data-baseweb="radio"] p{font-size:14.5px;opacity:.85}
-.st-key-bundle label[data-baseweb="radio"]:has(input:checked){background:light-dark(#e3dafa, rgba(122,79,224,.35))}
-.st-key-bundle label[data-baseweb="radio"]:has(input:checked) p{font-weight:700;opacity:1;color:light-dark(#4b2c9f, #e4dbff)}
-[data-testid="stSidebar"] [data-testid="stBaseButton-tertiary"] p{font-size:17px;font-weight:700}
-.st-key-tools [data-testid="stBaseButton-tertiary"] p, .st-key-tools a p{font-size:16px;font-weight:400}
+/* left contents: every category; the one being read is open (purple, ⌄) with its sections under it, the rest closed */
+.toc{display:flex;flex-direction:column;gap:2px}
+.toc-cat{display:flex;align-items:center;gap:6px;padding:6px 4px;border-radius:6px;font-size:16.5px;font-weight:600;
+  color:inherit !important;text-decoration:none !important}
+.toc-cat::before{content:'›';display:inline-block;width:16px;text-align:center;font-size:19px;line-height:1;opacity:.7;
+  transition:transform .15s}
+.toc-cat:hover{color:light-dark(#4b2c9f, #b9a4ff) !important}
+.toc-group.open .toc-cat{font-weight:700;color:light-dark(#4b2c9f, #b9a4ff) !important}
+.toc-group.open .toc-cat::before{transform:rotate(90deg);opacity:1}
+.toc-items{display:none;margin:2px 0 10px}
+.toc-group.open .toc-items{display:block}
 .toc-item{display:block;margin-left:22px;padding:5px 8px;border-radius:6px;font-size:14.5px;color:inherit !important;
   opacity:.85;text-decoration:none !important;line-height:1.38}
-.toc-item:hover{background:light-dark(#e3dafa, rgba(122,79,224,.35));opacity:1}
-/* "측정 결과 / 직접 해보기": radio drawn as a segmented control, purple accent like the tab bar */
-:is(.st-key-search_view, .st-key-recommend_view) [role="radiogroup"]{gap:0}
-:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]{margin:0;padding:4px 16px;border:1px solid light-dark(#d5d6d8, #4a4a4f)}
-:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:first-child{border-radius:8px 0 0 8px}
-:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:last-child{border-radius:0 8px 8px 0;border-left:none}
-:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"] > div:first-child{display:none}
-:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:has(input:checked){border-color:#7a4fe0;background:light-dark(#efe9fc, rgba(122,79,224,.25))}
-:is(.st-key-search_view, .st-key-recommend_view) label[data-baseweb="radio"]:has(input:checked) p{color:light-dark(#6a3fd4, #b9a4ff)}
+/* the record line under each category and the jumps further down the page */
+.now-line{font-size:14px;opacity:.75}
+a.go-link{font-size:14px;font-weight:600;color:light-dark(#5b3fc4, #b9a4ff) !important;text-decoration:none !important}
+a.go-link:hover{text-decoration:underline !important}
+/* 측정 기록 card at the top of 개요: records as a plain list, the scoring data as a two-way switch */
+.st-key-record label[data-baseweb="radio"]{padding:4px 0}
+.st-key-record label[data-baseweb="radio"] p{font-size:15.5px;font-weight:600}
+.st-key-record label[data-baseweb="radio"]:has(input:checked) > div:first-child{background-color:#7a4fe0 !important}
+.st-key-split [role="radiogroup"]{gap:0}
+.st-key-split label[data-baseweb="radio"]{margin:0;padding:4px 16px;border:1px solid light-dark(#d5d6d8, #4a4a4f)}
+.st-key-split label[data-baseweb="radio"]:first-child{border-radius:8px 0 0 8px}
+.st-key-split label[data-baseweb="radio"]:last-child{border-radius:0 8px 8px 0;border-left:none}
+.st-key-split label[data-baseweb="radio"] > div:first-child{display:none}
+.st-key-split label[data-baseweb="radio"]:has(input:checked){border-color:#7a4fe0;background:light-dark(#efe9fc, rgba(122,79,224,.25))}
+.st-key-split label[data-baseweb="radio"]:has(input:checked) p{color:light-dark(#6a3fd4, #b9a4ff);font-weight:700}
+.toc-item:hover{background:light-dark(#efe9fc, rgba(122,79,224,.2));opacity:1}
+/* the section being read (dashboard/sections.py SPY): same purple as the open category */
+.toc-item.active{background:light-dark(#e3dafa, rgba(122,79,224,.35));color:light-dark(#4b2c9f, #e4dbff) !important;
+  font-weight:700;opacity:1}
+/* the zero-height component that adds that script takes no room in the sidebar */
+.st-key-toc_spy{position:absolute;width:0;height:0;overflow:hidden}
+/* 「기록 다시 읽기」 in the 측정 기록 card */
+[data-testid="stMain"] [data-testid="stBaseButton-tertiary"] p{font-size:14px;color:light-dark(#5b3fc4, #b9a4ff)}
 /* chart cards */
 [data-testid="stPlotlyChart"]{background:light-dark(#f2f2f7, #1c1c1e);border-radius:14px;overflow:hidden}
 .st-key-verdict [data-testid="stMetricValue"]{font-size:20px;font-weight:700}
 .st-key-verdict [data-testid="stMetricLabel"] p{font-size:14px}
 .stage-note{font-size:14px;opacity:.75}
-/* home: figures drawn in HTML so they read without any saved measurement; each sits in the chart-card gray */
+/* explanatory figures (dashboard/guide.py) drawn in HTML so they read without any saved measurement; each sits in the
+   chart-card gray */
 /* subgrid rows line up titles, bodies and footers across the columns */
 .steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;grid-template-rows:repeat(3,auto);gap:0 14px;
   margin:.4rem 0 1rem;padding:18px 22px;
@@ -71,6 +77,16 @@ CSS = """<style>
 .step em{padding-top:8px;font-style:normal;font-size:12.5px;opacity:.65}
 .step-arrow{grid-row:1;align-self:start;font-size:22px;line-height:1.1;opacity:.35}
 .steps.numbers .step-arrow{font-size:30px;line-height:1.2}
+/* 프로젝트 소개: the five steps as cards in the order of the left list; they wrap to fewer columns when narrow */
+.story{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:.4rem 0 1rem;padding:0;list-style:none}
+/* !important: Streamlit's markdown list style indents every <li> */
+.story-card{margin:0 !important;padding:16px 18px !important;border-radius:14px;background:light-dark(#f2f2f7, #1c1c1e);font-size:14px;line-height:1.55}
+.story-step{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:13px;font-weight:700;color:light-dark(#4b2c9f, #b9a4ff)}
+.story-step span{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:12px;
+  background:light-dark(#e3dafa, rgba(122,79,224,.35))}
+.story-card b{display:block;margin-bottom:3px;font-size:15.5px}
+.story-card p{margin:0;font-size:13px;opacity:.7}
+.story-facts{margin:-.4rem 0 .2rem;font-size:14px;opacity:.7}
 .figure{margin:.4rem 0 1rem;padding:18px 22px;border-radius:14px;background:light-dark(#f2f2f7, #1c1c1e)}
 .figure svg{display:block;width:100%;max-width:720px;height:auto;margin:0 auto}
 .split-bar{display:flex;gap:3px;height:14px}
